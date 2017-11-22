@@ -53,7 +53,14 @@ public class LoginFilter implements Filter {
                 //chain.doFilter(request, response);
                 
                 //BLOQUEADOR DE PAGINAS
-                int perfil = (int) ses.getAttribute("perfil");
+                int perfil;
+                
+                try {
+                    perfil = (int) ses.getAttribute("perfil");
+                } catch (Exception e) {
+                    perfil = 0;
+                }
+                
                 if(perfil == 1){
                     //Para acceder a paginas de estudiante o publicas
                     if(reqURI.indexOf("/user/estudiantes") >= 0 || reqURI.indexOf("/public/") >=0){
@@ -79,7 +86,8 @@ public class LoginFilter implements Filter {
                     }
                 } // FIN estudiante
                 else{
-                    if(ses == null){
+                    //if(ses == null){
+                    if(perfil == 0){
                         chain.doFilter(request, response);
                     }
                 }

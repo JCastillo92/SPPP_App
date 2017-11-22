@@ -43,12 +43,12 @@
                             
                             <fieldset>
                                 <div class="form-group">
-                                    <i class="fa fa-user fa-fw"></i><h:inputText class="form-control" value="#{usuario.id_cedula}" pt:placeholder="Usuario" required="true" />
+                                    <i class="fa fa-user fa-fw"></i><h:inputText class="form-control" value="#{login.user}" pt:placeholder="Usuario" required="true" />
                                 </div>
                                 <div class="form-group">
-                                    <i class="fa fa-key fa-fw"></i><h:inputSecret class="form-control" value="#{usuario.clave}" pt:placeholder="Clave" required="true"/>
+                                    <i class="fa fa-key fa-fw"></i><h:inputSecret class="form-control" value="#{login.pwd}" pt:placeholder="Clave" required="true"/>
                                 </div>
-                                <h:commandButton action="#{sEXO.metodo}" value="Login" class="btn btn-lg btn-success btn-block" />    
+                                <h:commandButton action="#{login.validateUser}" value="Login" class="btn btn-lg btn-success btn-block" />    
                             </fieldset>
                             
                         </h:form>

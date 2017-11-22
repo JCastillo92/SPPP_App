@@ -22,13 +22,28 @@ public class LoginDAO {
         
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
-        Transaction tx = sesion.beginTransaction();
+        
+        Transaction tx=null;
+        Usuario usuario=null;
+        try {
+            tx = sesion.beginTransaction();
         
         System.out.println("U: "+user+" P: "+password);
-        Query query = sesion.createQuery(" from Usuario where id_cedula = :id");
+        Query query = sesion.createQuery(" from Usuario where id_cedula = :id and clave = :password");
         query.setString("id", user);
+        query.setString("password", password);
+        usuario = (Usuario)query.uniqueResult();
+        tx.commit();
         
-        Usuario usuario = (Usuario)query.uniqueResult();
+        } catch (Exception e) {
+            if (tx != null){
+                tx.rollback();
+            }
+        }
+        finally{
+            //para cerrar seesion
+            sesion.close();
+        }
         
         if (usuario == null){
             return false;

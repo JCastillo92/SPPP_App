@@ -86,7 +86,7 @@ public class LoginFilter implements Filter {
                 
                 
             } else {
-                resp.sendRedirect(reqt.getContextPath() + "/faces/login.xhtml");
+                resp.sendRedirect(reqt.getContextPath() + "/faces/public/login.xhtml");
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());

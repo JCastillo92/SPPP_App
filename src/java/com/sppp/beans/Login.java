@@ -70,14 +70,25 @@ public class Login implements Serializable{
             HttpSession session = SessionUtils.getSession();
             session.setAttribute("username", user);
             session.setAttribute("perfil", usuario.getPerfil().getId_tbperfil());
-            return "student";
+            
+            //Capturar el perfil 
+            int perfil = (int) session.getAttribute("perfil");
+            if (perfil == 1){
+                return "/user/estudiantes/student.xhtml";
+            }else if (perfil == 2){
+                return "/user/gestores/attendant.xhtml";
+            }
+            
+            //NO DEBERIA LLEGAR
+            return "/public/login";
+            
         }else{
             FacesContext.getCurrentInstance().addMessage(
                     null,
                     new FacesMessage(FacesMessage.SEVERITY_WARN,
                             "Incorrect Username and Passowrd",
                             "Please enter correct username and Password"));
-            return "login";
+            return "/public/login";
         }
     }
     

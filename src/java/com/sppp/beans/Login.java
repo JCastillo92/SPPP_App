@@ -27,6 +27,7 @@ public class Login implements Serializable{
     private String pwd;
     private String msg;
     private String user;
+    private String perfil;
 
     public String getPwd() {
         return pwd;
@@ -51,13 +52,24 @@ public class Login implements Serializable{
     public void setUser(String user) {
         this.user = user;
     }
+
+    public String getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(String perfil) {
+        this.perfil = perfil;
+    }
+    
+    
     
     //Metodo Validacion
     public String validateUser(){
-        boolean valid = LoginDAO.validate(user, pwd);
-        if (valid){
+    Usuario usuario = LoginDAO.validate(user, pwd);
+        if (usuario != null){
             HttpSession session = SessionUtils.getSession();
             session.setAttribute("username", user);
+            session.setAttribute("perfil", usuario.getPerfil().getId_tbperfil());
             return "student";
         }else{
             FacesContext.getCurrentInstance().addMessage(

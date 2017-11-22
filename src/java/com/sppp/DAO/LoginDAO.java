@@ -18,7 +18,7 @@ import org.hibernate.Transaction;
  */
 public class LoginDAO {
     
-    public static boolean validate(String user, String password){
+    public static Usuario validate(String user, String password){
         
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
@@ -44,12 +44,7 @@ public class LoginDAO {
             //para cerrar seesion
             sesion.close();
         }
-        
-        if (usuario == null){
-            return false;
-        }else{
-            return true;
-        }
+        return usuario;
     }
     
 }

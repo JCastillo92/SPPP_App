@@ -63,6 +63,10 @@ public class LoginFilter implements Filter {
                 
                 if(perfil == 1){
                     //Para acceder a paginas de estudiante o publicas
+                    if(reqURI.indexOf("/user/gestores/") >= 1){
+                        resp.sendRedirect(reqt.getContextPath() + "/faces/user/estudiantes/student.xhtml");
+                    }
+                    
                     if(reqURI.indexOf("/user/estudiantes") >= 0 || reqURI.indexOf("/public/") >=0 || reqURI.contains("javax.faces.resource")){
                         
                         //No debe volver al login
@@ -74,6 +78,11 @@ public class LoginFilter implements Filter {
                     }
                 } // FIN estudiante
                 if(perfil == 2){
+                    
+                    if(reqURI.indexOf("/user/estudiantes/") >= 1){
+                        resp.sendRedirect(reqt.getContextPath() + "/faces/user/gestores/attendant.xhtml");
+                    }
+                    
                     //Para acceder a paginas de estudiante o publicas
                     if(reqURI.indexOf("/user/gestores") >= 0 || reqURI.indexOf("/public/") >=0 || reqURI.contains("javax.faces.resource")){
                         

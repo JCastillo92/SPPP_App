@@ -7,6 +7,7 @@ package com.sppp.beans;
 
 import com.sppp.DAO.LoginDAO;
 import com.sppp.utils.SessionUtils;
+import com.sppp.classes.Cls_PerfilNotation;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -73,10 +74,22 @@ public class Login implements Serializable{
             
             //Capturar el perfil 
             int perfil = (int) session.getAttribute("perfil");
-            if (perfil == 1){
+            Cls_PerfilNotation obj1= new Cls_PerfilNotation();
+            
+            if (obj1.perfilChooser(perfil).equals("Estudiante")){
                 return "/user/estudiantes/student.xhtml";
-            }else if (perfil == 2){
+            }else if (obj1.perfilChooser(perfil).equals("Gestor")){
                 return "/user/gestores/attendant.xhtml";
+            }else if(obj1.perfilChooser(perfil).equals("Tutor")){
+                return "/user/tutor/tutor.xhtml";
+            }else if(obj1.perfilChooser(perfil).equals("Consejo")){
+                return "/user/consejo/councel.xhtml";
+            }else if(obj1.perfilChooser(perfil).equals("Secretaria")){
+                return "/user/secretaria/secretary.xhtml";
+            }else if(obj1.perfilChooser(perfil).equals("Coordinador")){
+                return "/user/coordinador/coordinator.xhtml";
+            }else if(obj1.perfilChooser(perfil).equals("Administrador")){
+                return "/user/administrador/administrator.xhtml";
             }
             
             //NO DEBERIA LLEGAR

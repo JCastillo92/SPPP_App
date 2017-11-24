@@ -12,7 +12,7 @@ package com.sppp.classes;
 public class Cls_PerfilNotation {
     
     public String perfilChooser(int recive_perfil){
-        String profile_name=null;
+        String profile_name="0";
         if (recive_perfil==1){
             return profile_name="Estudiante";
         }else if(recive_perfil==2){
@@ -25,7 +25,7 @@ public class Cls_PerfilNotation {
             return profile_name="Secretaria";
         }else if(recive_perfil==6){
             return profile_name="Coordinador";
-        }else if(recive_perfil==6){
+        }else if(recive_perfil==7){
             return profile_name="Administrador";
         }
         return profile_name;

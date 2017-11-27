@@ -31,9 +31,20 @@ public class LoginDAO {
         
             Estudiante xxx=new Estudiante();
             xxx.setActividadRealizar("actividad 1");
-            xxx.setApellido("aest");
+            xxx.setApellido("apellido1");
             xxx.setClave("1111");
             xxx.setCorreo("uno@correo");
+            xxx.setHorasPasantia(60);
+            xxx.setId_cedula("1111111111");
+            xxx.setNombre("nombre1");
+            xxx.getPerfil().setId_tbperfil(1);
+            xxx.setPorcentajeMateriasAprobadas(60);
+            xxx.setTelefono("11111111");
+            xxx.setUltimoNivel(6);
+            sesion.save(xxx);
+            
+            
+            
             
             
             

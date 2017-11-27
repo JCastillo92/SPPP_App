@@ -50,13 +50,14 @@ Contributor(s):
         <property name="clave" type="string"></property>
           <property name="nombre" type="string"></property>
           <property name="apellido" type="string"></property>
-          <property name="telefono" type="string"></property>
-          <property name="direccion" type="string"></property>
+          <property name="telefono" type="string" not-null="false"></property>
+          <property name="direccion" type="string" not-null="false"></property>
           
           <many-to-one name="perfil" class="Perfil">
               <column name="id_perfil" not-null="true"></column>
-              
           </many-to-one>
+          
+          
           
     </class>
     

@@ -5,6 +5,7 @@
  */
 package com.sppp.DAO;
 
+import com.sppp.beans.Estudiante;
 import com.sppp.beans.Usuario;
 import com.sppp.utils.HibernateUtil;
 import org.hibernate.Query;
@@ -28,6 +29,16 @@ public class LoginDAO {
         try {
             tx = sesion.beginTransaction();
         
+            Estudiante xxx=new Estudiante();
+            xxx.setActividadRealizar("actividad 1");
+            xxx.setApellido("aest");
+            xxx.setClave("1111");
+            xxx.setCorreo("uno@correo");
+            
+            
+            
+            
+            
         System.out.println("U: "+user+" P: "+password);
         Query query = sesion.createQuery(" from Usuario where id_cedula = :id and clave = :password");
         query.setString("id", user);

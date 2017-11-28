@@ -1,26 +1,19 @@
-<?xml version='1.0' encoding='utf-8'?>
-
-<!DOCTYPE hibernate-configuration PUBLIC
-        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory>
-
-        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/db_jpa</property>
-        <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">DeveloperAdministrador92</property>
-        <property name="hbm2ddl.auto">update</property>
-        <property name="show_sql">true</property>
-        <property name="format_sql">true</property>
-        <property name="use_sql_comments">true</property>
-        
-        <mapping resource="com/sppp/beans/estudiante.hbm.xml"/>
-        <mapping resource="com/sppp/beans/usuario.hbm.xml"/>
-        <mapping resource="com/sppp/beans/perfil.hbm.xml"/>
-        
-        
-        
-    </session-factory>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/db_sp3</property>
+    <property name="hibernate.connection.username">postgres</property>
+    <property name="hibernate.connection.password">jairo</property>
+    <property name="hbm2ddl.auto">update</property>
+    <property name="show_sql">true</property>
+    <property name="format_sql">true</property>
+    <mapping resource="com/sppp/beans/usuario.hbm.xml"/>
+    <mapping resource="com/sppp/beans/perfil.hbm.xml"/>
+    <mapping resource="com/sppp/beans/proceso.xml"/>
+    <mapping resource="com/sppp/beans/detallePasantia.xml"/>
+    <mapping resource="com/sppp/beans/pasantia.xml"/>
+  </session-factory>
 </hibernate-configuration>

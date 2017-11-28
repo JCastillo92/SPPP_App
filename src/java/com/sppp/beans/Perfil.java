@@ -32,6 +32,8 @@ public class Perfil {
         this.id_tbperfil = id_tbperfil;
     }
 
+    
+
     public String getDescripcion() {
         return descripcion;
     }

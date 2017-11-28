@@ -15,7 +15,7 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class Usuario {
     
-  private String id_cedula;
+  private long id_cedula;
   private String correo;
   private String clave;
   private String nombre;
@@ -25,6 +25,8 @@ public class Usuario {
   private Perfil perfil;
   private Estudiante estudiante;
 
+  
+  
     public Estudiante getEstudiante() {
         return estudiante;
     }
@@ -46,11 +48,11 @@ public class Usuario {
     }
   private boolean estado;
 
-    public String getId_cedula() {
+    public long getId_cedula() {
         return id_cedula;
     }
 
-    public void setId_cedula(String id_cedula) {
+    public void setId_cedula(long id_cedula) {
         this.id_cedula = id_cedula;
     }
 

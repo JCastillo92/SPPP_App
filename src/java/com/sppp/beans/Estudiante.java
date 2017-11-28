@@ -11,7 +11,7 @@ package com.sppp.beans;
  */
 public class Estudiante{
     
-    private String cedula;
+    private long cedula;
     private int ultimoNivel;
     private int horasPasantia;
     private int porcentajeMateriasAprobadas;
@@ -26,13 +26,15 @@ public class Estudiante{
         this.usuario = usuario;
     }
 
-    public String getCedula() {
+    public long getCedula() {
         return cedula;
     }
 
-    public void setCedula(String cedula) {
+    public void setCedula(long cedula) {
         this.cedula = cedula;
     }
+
+    
 
     public String getActividadRealizar() {
         return actividadRealizar;

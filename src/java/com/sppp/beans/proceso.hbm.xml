@@ -6,8 +6,8 @@
 <hibernate-mapping package="com.sppp.beans">
 <class name="Proceso" table="tb_proceso">
     <!--si el campo es serial en type="integer" y abajo se agrega <generator class="increment"></generator> -->
-        <id name="id_proceso" column="id_proceso" type="integer">
-            <generator class="increment"></generator>
+        <id name="id_proceso" column="id_proceso" type="long">
+            <generator class="identity" ></generator>
         </id>
         <property name="descripcion" type="string"></property>
         <property name="estado" type="boolean" not-null="true"></property>

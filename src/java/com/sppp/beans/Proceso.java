@@ -10,7 +10,7 @@ import java.util.Set;
  * @author Jairo
  */
 public class Proceso {
-    private int id_proceso;
+    private long id_proceso;
     private String descripcion;
     private boolean estado;
     private String proceso_de;
@@ -23,16 +23,15 @@ public class Proceso {
     public void setDetallePasantias(Set<DetallePasantia> detallePasantias) {
         this.detallePasantias = detallePasantias;
     }
-    
 
-    public int getId_proceso() {
+    public long getId_proceso() {
         return id_proceso;
     }
 
-    public void setId_proceso(int id_proceso) {
+    public void setId_proceso(long id_proceso) {
         this.id_proceso = id_proceso;
     }
-
+   
     public String getDescripcion() {
         return descripcion;
     }

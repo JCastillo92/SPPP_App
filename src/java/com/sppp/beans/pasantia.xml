@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.sppp.beans">
+<class name="Pasantia" table="tb_pasantia">
+    <!--si el campo es serial en type="integer" y abajo se agrega <generator class="increment"></generator> -->
+    
+    <composite-id>
+        <key-property name="tipo_ppp" column="tipo_ppp" type="string"></key-property>
+        <key-property name="cod_ppp" column="cod_ppp" type="integer"></key-property>
+    </composite-id>
+        <property name="fechaInicio" type="date"></property>
+        <property name="fechaFin" type="date"></property>
+        <property name="tiempoEsperaEstado" type="integer"></property>
+        <property name="estado" type="boolean"></property>
+        
+        <set name="detallePasantias" table="tb_detalle_pasantia" fetch="select">
+            <key>
+                <column name="tipo_ppp" not-null="true"></column>
+                <column name="cod_ppp" not-null="true"></column>
+            </key>
+            <one-to-many class="DetallePasantia"></one-to-many>
+        </set>
+    </class>
+
+
+</hibernate-mapping>

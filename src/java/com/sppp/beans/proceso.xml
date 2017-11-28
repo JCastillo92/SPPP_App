@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.sppp.beans">
+<class name="Proceso" table="tb_proceso">
+    <!--si el campo es serial en type="integer" y abajo se agrega <generator class="increment"></generator> -->
+        <id name="id_proceso" column="id_proceso" type="integer">
+            <generator class="increment"></generator>
+        </id>
+        <property name="descripcion" type="string"></property>
+        <property name="estado" type="boolean" not-null="true"></property>
+        <property name="proceso_de" type="string" not-null="true"></property>
+        
+        <set name="detallePasantias" table="tb_detalle_pasantia" fetch="select">
+            <key>
+                <column name="id_proceso" not-null="true"></column>
+            </key>
+            <one-to-many class="DetallePasantia"></one-to-many>
+        </set>
+    </class>
+
+
+</hibernate-mapping>

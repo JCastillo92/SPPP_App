@@ -6,8 +6,8 @@
 
 <hibernate-mapping package="com.sppp.beans">
     <class name="Usuario" table="tb_usuario">
-        <id name="id_cedula" column="id_usuario" type="string">
-            <generator class="native"/>
+        <id name="id_cedula" column="id_usuario" type="long">
+            
         </id>
         
         <property name="correo" column="correo" type="string"></property>
@@ -21,9 +21,10 @@
             <column name="id_perfil" not-null="true"></column>
         </many-to-one>
         
+        
         <one-to-one name="estudiante" class="Estudiante"
                     cascade="save-update" />
-          
+        
           
     </class>
     

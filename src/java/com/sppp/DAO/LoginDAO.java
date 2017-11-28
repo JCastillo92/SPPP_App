@@ -29,13 +29,13 @@ public class LoginDAO {
         Usuario usuario=null;
         try {
             tx = sesion.beginTransaction();
-            /*
+            
             Perfil p = new Perfil();
-            p.setId_tbperfil(1);
-            p.setDescripcion("Estudiante");
+            //p.setId_tbperfil(1);
+            p.setDescripcion("Docente");
             
             Usuario s = new Usuario();
-            s.setId_cedula("46");
+            s.setId_cedula(1707409395);
             s.setApellido("c");
             s.setClave("12");
             s.setCorreo("s.com");
@@ -43,9 +43,10 @@ public class LoginDAO {
             s.setEstado(true);
             s.setNombre("ff");
             s.setTelefono("233");
-            s.setPerfil(p);*/
-            
-            
+            s.setPerfil(p);
+            System.out.println("INICIO GUARDADO");
+            sesion.saveOrUpdate(p);
+            sesion.saveOrUpdate(s);
             /*
             Estudiante esss = new Estudiante();
             esss.setActividadRealizar("ninguna");
@@ -55,14 +56,17 @@ public class LoginDAO {
             
             s.setEstudiante(esss);
             esss.setUsuario(s);*/
-            //sesion.saveOrUpdate(s);
-            
+            //sesion.save(s);
+            System.out.println("FIN GUARDADO");
             
             
             
         System.out.println("U: "+user+" P: "+password);
         Query query = sesion.createQuery(" from Usuario WHERE id_cedula = :id and clave = :password");
-        query.setString("id", user);
+        Long usuarioI = Long.parseLong(user);
+        
+        //Cambio a Long
+        query.setLong("id", usuarioI);
         query.setString("password", password);
         usuario = (Usuario)query.uniqueResult();
         tx.commit();

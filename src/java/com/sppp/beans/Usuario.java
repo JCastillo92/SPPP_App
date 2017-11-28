@@ -5,6 +5,7 @@
  */
 package com.sppp.beans;
 
+import java.util.Set;
 import javax.faces.bean.ManagedBean;
 
 /**
@@ -13,6 +14,7 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean
 public class Usuario {
+    
   private String id_cedula;
   private String correo;
   private String clave;
@@ -21,6 +23,19 @@ public class Usuario {
   private String telefono;
   private String direccion;
   private Perfil perfil;
+  private Estudiante estudiante;
+
+    public Estudiante getEstudiante() {
+        return estudiante;
+    }
+
+    public void setEstudiante(Estudiante estudiante) {
+        this.estudiante = estudiante;
+    }
+  
+  
+  
+  
 
     public Perfil getPerfil() {
         return perfil;

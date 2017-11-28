@@ -7,14 +7,21 @@
 
 <hibernate-mapping package="com.sppp.beans">
     <class name="Estudiante" table="tb_estudiante">
-        <id name="id_cedula" column="id_cedula" type="string">
-            <generator class="native"></generator>
+        
+        <id name="cedula" column="cedula_est" type="string">
+            <generator class="foreign">
+                <param name="property">usuario</param>
+            </generator>
         </id>
+        
+        <one-to-one name="usuario" class="Usuario"
+                    constrained="true">
+        </one-to-one>
+        
         <property name="ultimoNivel" column="ultimoNivel" type="integer" not-null="true"></property>
         <property name="horasPasantia" type="integer" not-null="false"></property>
-          <property name="porcentajeMateriasAprobadas" type="integer" not-null="true"></property>
-          <property name="actividadRealizar" type="integer" not-null="false"></property>
-           
+        <property name="porcentajeMateriasAprobadas" type="integer" not-null="true"></property>
+        <property name="actividadRealizar" type="string" not-null="false"></property>
           
     </class>
 

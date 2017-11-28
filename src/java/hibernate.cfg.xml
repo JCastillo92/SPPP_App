@@ -10,6 +10,7 @@
     <property name="hbm2ddl.auto">update</property>
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
+    <mapping resource="com/sppp/beans/estudiante.hbm.xml"/>
     <mapping resource="com/sppp/beans/usuario.hbm.xml"/>
     <mapping resource="com/sppp/beans/perfil.hbm.xml"/>
     <mapping resource="com/sppp/beans/proceso.hbm.xml"/>

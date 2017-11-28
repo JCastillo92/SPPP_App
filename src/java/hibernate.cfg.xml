@@ -12,9 +12,11 @@
     <property name="format_sql">true</property>
     <mapping resource="com/sppp/beans/usuario.hbm.xml"/>
     <mapping resource="com/sppp/beans/perfil.hbm.xml"/>
-    <mapping resource="com/sppp/beans/proceso.xml"/>
-    <mapping resource="com/sppp/beans/detallePasantia.xml"/>
-    <mapping resource="com/sppp/beans/pasantia.xml"/>
+    <mapping resource="com/sppp/beans/proceso.hbm.xml"/>
     <mapping resource="com/sppp/beans/detallePasantia.hbm.xml"/>
+    <mapping resource="com/sppp/beans/pasantia.hbm.xml"/>
+    <mapping resource="com/sppp/beans/detallePasantia.hbm.xml"/>
+    <mapping/>
+    <mapping/>
   </session-factory>
 </hibernate-configuration>

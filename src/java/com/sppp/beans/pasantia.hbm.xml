@@ -23,6 +23,13 @@
             </key>
             <one-to-many class="DetallePasantia"></one-to-many>
         </set>
+        
+        <set name="encargado" table="tb_empresa_encargado" fetch="select">
+            <key>
+                <column name="id_encargado" not-null="true"></column>
+            </key>
+            <one-to-many class="DetallePasantia"></one-to-many>
+        </set>
     </class>
 
 

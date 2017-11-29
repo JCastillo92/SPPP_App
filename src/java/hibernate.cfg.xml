@@ -4,20 +4,21 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/db_jpa</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/db_sp3</property>
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password">DeveloperAdministrador92</property>
     <property name="hbm2ddl.auto">update</property>
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
-    
     <mapping resource="com/sppp/beans/perfil.hbm.xml"/>
     <mapping resource="com/sppp/beans/usuario.hbm.xml"/>
-    
     <mapping resource="com/sppp/beans/estudiante.hbm.xml"/>
     <mapping resource="com/sppp/beans/proceso.hbm.xml"/>
     <mapping resource="com/sppp/beans/detallePasantia.hbm.xml"/>
     <mapping resource="com/sppp/beans/pasantia.hbm.xml"/>
-    
+    <mapping resource="com/sppp/beans/encargado.hbm.xml"/>
+    <mapping resource="com/sppp/beans/empresa.hbm.xml"/>
+    <mapping resource="com/sppp/beans/datos.hbm.xml"/>
+    <mapping resource="com/sppp/beans/respuesta.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

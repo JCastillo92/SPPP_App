@@ -21,6 +21,15 @@ public class Pasantia implements Serializable{
     private int tiempoEsperaEstado;
     private boolean estado;
     private Set<DetallePasantia> detallePasantias;
+    private Encargado encargado;
+
+    public Encargado getEncargado() {
+        return encargado;
+    }
+
+    public void setEncargado(Encargado encargado) {
+        this.encargado = encargado;
+    }
 
     public String getTipo_ppp() {
         return tipo_ppp;

@@ -28,7 +28,7 @@
                
                <!--RECIBO LAS CLAVES FORANEAS -->
           <many-to-one name="encargado" class="Encargado">
-              <column name="id_encargado" not-null="true"></column>
+              <column name="id_encargado" not-null="false"></column>
           </many-to-one>
           
                <!--RECIBO LAS CLAVES FORANEAS -->

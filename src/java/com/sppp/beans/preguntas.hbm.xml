@@ -19,9 +19,10 @@
             <one-to-many class="Respuesta"></one-to-many>
         </set>
         
+           <!--RECIBO LAS CLAVES FORANEAS -->
+          <many-to-one name="tipoPregunta" class="TipoPregunta">
+              <column name="id_tipopregunta" not-null="true"></column>
+          </many-to-one>
                
  </class>
-
-
-
 </hibernate-mapping>

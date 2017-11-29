@@ -16,6 +16,7 @@ public class Preguntas {
     private String descripcion;
     private boolean estado_preguntas;
     private Set<Respuesta> respuesta;
+    private TipoPregunta tipoPregunta;
 
     public long getId_tbpreguntas() {
         return id_tbpreguntas;
@@ -47,6 +48,14 @@ public class Preguntas {
 
     public void setRespuesta(Set<Respuesta> respuesta) {
         this.respuesta = respuesta;
+    }
+
+    public TipoPregunta getTipoPregunta() {
+        return tipoPregunta;
+    }
+
+    public void setTipoPregunta(TipoPregunta tipoPregunta) {
+        this.tipoPregunta = tipoPregunta;
     }
     
     

@@ -9,13 +9,16 @@
             <generator class="identity" ></generator>
         </id>
         <property name="valor_datos" type="string"></property>
+               
+               
+               
+        <many-to-one name="detallePasantias" class="DetallePasantia">
+            <column name="id_tbdatos" not-null="true"></column>
+        </many-to-one>
         
-
-<set name="detallePasantias" table="tb_detalle_pasantia" fetch="select">
-            <key>
-                <column name="id_tbdatos" not-null="true"></column>
-            </key>
-            <one-to-many class="DetallePasantia"></one-to-many>
-        </set>
+        
+        <many-to-one name="respuesta" class="Respuesta">
+            <column name="id_tbrespuesta" not-null="true"></column>
+        </many-to-one>
  </class>
 </hibernate-mapping>

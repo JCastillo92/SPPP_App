@@ -13,6 +13,13 @@
           <many-to-one name="proceso" class="Proceso">
               <column name="id_proceso" not-null="true"></column>
           </many-to-one>
+          
+           <set name="detallePasantias" table="tb_detalle_pasantia" fetch="select">
+            <key>
+                <column name="id_proceso" not-null="true"></column>
+            </key>
+            <one-to-many class="DetallePasantia"></one-to-many>
+        </set>
 </class>
 
 </hibernate-mapping>

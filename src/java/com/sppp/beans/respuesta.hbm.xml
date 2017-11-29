@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.sppp.beans">
+<class name="Respuesta" table="tb_respuesta">   
+   <id name="id_tbrespuesta" column="id_tbrespuesta" type="long">
+            <generator class="identity" ></generator>
+        </id>
+        <property name="descripcion_resp" type="string"></property>
+        
+        <set name="datos" table="tb_datos" fetch="select">
+            <key>
+                <column name="id_tbrespuesta" not-null="true"></column>
+            </key>
+            <one-to-many class="Datos"></one-to-many>
+        </set>
+        
+        
+        
+
+
+</class>
+</hibernate-mapping>

@@ -15,6 +15,15 @@ public class Datos {
     private long id_tbdatos;
     private String valor_datos;
     private Set<DetallePasantia> detallePasantias;
+    private Respuesta respuesta;
+
+    public Respuesta getRespuesta() {
+        return respuesta;
+    }
+
+    public void setRespuesta(Respuesta respuesta) {
+        this.respuesta = respuesta;
+    }
 
     public long getId_tbdatos() {
         return id_tbdatos;

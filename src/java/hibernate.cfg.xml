@@ -10,7 +10,7 @@
     <property name="hibernate.connection.password">DeveloperAdministrador92</property>
     -->
     <property name="hibernate.connection.password">jairo</property>
-    <property name="hbm2ddl.auto">create</property>
+    <property name="hbm2ddl.auto">update</property>
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
     <mapping resource="com/sppp/beans/perfil.hbm.xml"/>
@@ -23,5 +23,6 @@
     <mapping resource="com/sppp/beans/empresa.hbm.xml"/>
     <mapping resource="com/sppp/beans/datos.hbm.xml"/>
     <mapping resource="com/sppp/beans/respuesta.hbm.xml"/>
+    <mapping resource="com/sppp/beans/preguntas.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.sppp.beans">
+<class name="Preguntas" table="tb_preguntas">   
+   <id name="id_tbpreguntas" column="id_tbpreguntas" type="long">
+            <generator class="identity" ></generator>
+        </id>
+        <property name="descripcion" type="string"></property>
+        <property name="estado_preguntas" type="boolean"></property>
+               
+            <!-- ENVIO LA CLAVE PRIMARIA-->
+         <set name="respuesta" table="tb_respuesta" fetch="select">
+            <key>
+                <column name="id_tbpreguntas" not-null="true"></column>
+            </key>
+            <one-to-many class="Respuesta"></one-to-many>
+        </set>
+        
+               
+ </class>
+
+
+
+</hibernate-mapping>

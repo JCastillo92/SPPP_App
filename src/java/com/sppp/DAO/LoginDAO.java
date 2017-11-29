@@ -5,10 +5,15 @@
  */
 package com.sppp.DAO;
 
+import com.sppp.beans.DetallePasantia;
 import com.sppp.beans.Estudiante;
+import com.sppp.beans.Pasantia;
 import com.sppp.beans.Perfil;
+import com.sppp.beans.Proceso;
 import com.sppp.beans.Usuario;
 import com.sppp.utils.HibernateUtil;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -30,36 +35,9 @@ public class LoginDAO {
         try {
             tx = sesion.beginTransaction();
             
-            Perfil p = new Perfil();
-            //p.setId_tbperfil(1);
-            p.setDescripcion("Docente");
+            System.out.println("INICIO SECCION DE PRUEBAS");
             
-            Usuario s = new Usuario();
-            s.setId_cedula(1707409395);
-            s.setApellido("c");
-            s.setClave("12");
-            s.setCorreo("s.com");
-            s.setDireccion("hola");
-            s.setEstado(true);
-            s.setNombre("ff");
-            s.setTelefono("233");
-            s.setPerfil(p);
-            System.out.println("INICIO GUARDADO");
-            sesion.saveOrUpdate(p);
-            sesion.saveOrUpdate(s);
-            /*
-            Estudiante esss = new Estudiante();
-            esss.setActividadRealizar("ninguna");
-            esss.setHorasPasantia(4);
-            esss.setPorcentajeMateriasAprobadas(40);
-            esss.setUltimoNivel(6);
-            
-            s.setEstudiante(esss);
-            esss.setUsuario(s);*/
-            //sesion.save(s);
-            System.out.println("FIN GUARDADO");
-            
-            
+            System.out.println("FIN SECCION DE PRUEBAS");
             
         System.out.println("U: "+user+" P: "+password);
         Query query = sesion.createQuery(" from Usuario WHERE id_cedula = :id and clave = :password");

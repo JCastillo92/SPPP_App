@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.sppp.beans">
+<class name="Empresa" table="tb_empresa">
+    <!--si el campo es serial en type="integer" y abajo se agrega <generator class="increment"></generator> -->
+    
+   <id name="id_empresa" column="id_empresa" type="long">
+            <generator class="identity" ></generator>
+        </id>
+        <property name="nombre_empresa" type="string"></property>
+        <property name="nombre_gerente" type="string"></property>
+        <property name="telefono_empresa" type="string"></property>
+        <property name="direccion_empresa" type="string"></property>
+        <!-- this table does not receibe any fk do not do nothing in this section-->
+</class>
+</hibernate-mapping>

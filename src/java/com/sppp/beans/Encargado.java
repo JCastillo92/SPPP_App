@@ -17,6 +17,16 @@ public class Encargado {
     private String nombre_encargado;
     private String cargo_encargado;
     private Set<Pasantia> pasantias;
+    private Empresa empresa;
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+    
 
     public long getId_encargado() {
         return id_encargado;

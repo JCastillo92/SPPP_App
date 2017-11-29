@@ -9,15 +9,27 @@
         <id name="idDetallePasantia" column="idDetallePasantia" type="integer"></id>
         <property name="descripcion" column="descripcion" type="string"></property>
         <property name="estado" type="boolean" not-null="false"></property>
-                  
+        
+        <!-- ENVIO LA CLAVE PRIMARIA-->
+         <set name="datos" table="tb_datos" fetch="select">
+            <key>
+                <column name="idDetallePasantia" not-null="true"></column>
+            </key>
+            <one-to-many class="Datos"></one-to-many>
+        </set>
+                                    
+                                      
+            <!--RECIBO LAS CLAVES FORANEAS -->
           <many-to-one name="proceso" class="Proceso">
               <column name="id_proceso" not-null="true"></column>
           </many-to-one>
-
+          <!--RECIBO LAS CLAVES FORANEAS -->
           <many-to-one name="pasantia" class="Pasantia">
               <column name="tipo_ppp" not-null="true"></column>
               <column name="cod_ppp" not-null="true"></column>
           </many-to-one>
+           
+        
 
 </class>
 

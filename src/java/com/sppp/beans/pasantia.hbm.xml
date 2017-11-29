@@ -16,6 +16,8 @@
         <property name="tiempoEsperaEstado" type="integer"></property>
         <property name="estado" type="boolean"></property>
         
+        
+        <!-- ENVIO LA CLAVE PRIMARIA-->
         <set name="detallePasantias" table="tb_detalle_pasantia" fetch="select">
             <key>
                 <column name="tipo_ppp" not-null="true"></column>
@@ -23,13 +25,11 @@
             </key>
             <one-to-many class="DetallePasantia"></one-to-many>
         </set>
-        
-        <set name="encargado" table="tb_empresa_encargado" fetch="select">
-            <key>
-                <column name="id_encargado" not-null="true"></column>
-            </key>
-            <one-to-many class="DetallePasantia"></one-to-many>
-        </set>
+               
+               <!--RECIBO LAS CLAVES FORANEAS -->
+          <many-to-one name="encargado" class="Encargado">
+              <column name="id_encargado" not-null="true"></column>
+          </many-to-one>
     </class>
 
 

@@ -13,6 +13,15 @@
         <property name="nombre_gerente" type="string"></property>
         <property name="telefono_empresa" type="string"></property>
         <property name="direccion_empresa" type="string"></property>
-        <!-- this table does not receibe any fk do not do nothing in this section-->
+        
+           <!-- ENVIO LA CLAVE PRIMARIA-->
+         <set name="encargado" table="tb_empresa_encargado" fetch="select">
+            <key>
+                <column name="id_empresa" not-null="true"></column>
+            </key>
+            <one-to-many class="Empresa"></one-to-many>
+        </set>
+                                            
+        
 </class>
 </hibernate-mapping>

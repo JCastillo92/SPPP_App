@@ -13,17 +13,24 @@
         <property name="ci_encargado" type="long"></property>
         <property name="nombre_encargado" type="string"></property>
         <property name="cargo_encargado" type="string"></property>
-
-<!--name="empresa", ya que la variable se llama asi
-table="tb_empresa" ya que viene de la tb_empresa
-name="id_empresa" es porque va a llegar como foranea y se va a llamar asi
-class="Empresa" porque la clase se llama Empresa.java
-        -->
-<set name="empresa" table="tb_empresa" fetch="select">
+      
+      
+        <!-- ENVIO LA CLAVE PRIMARIA-->
+         <set name="pasantias" table="tb_pasantia" fetch="select">
             <key>
-                <column name="id_empresa" not-null="true"></column>
+                <column name="id_encargado" not-null="true"></column>
             </key>
-            <one-to-many class="Empresa"></one-to-many>
+            <one-to-many class="Pasantia"></one-to-many>
         </set>
+                                    
+                                      
+            <!--RECIBO LAS CLAVES FORANEAS -->
+          <many-to-one name="empresa" class="Empresa">
+              <column name="id_empresa" not-null="true"></column>
+          </many-to-one>
+          
+
+        
+        
  </class>
 </hibernate-mapping>

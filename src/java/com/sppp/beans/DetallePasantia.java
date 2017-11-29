@@ -5,6 +5,8 @@
  */
 package com.sppp.beans;
 
+import java.util.Set;
+
 /**
  *
  * @author Jairo
@@ -15,6 +17,16 @@ public class DetallePasantia {
     private boolean estado;
     private Proceso proceso;
     private Pasantia pasantia;
+    private Set<Datos> datos;
+
+    public Set<Datos> getDatos() {
+        return datos;
+    }
+
+    public void setDatos(Set<Datos> datos) {
+        this.datos = datos;
+    }
+    
 
     public Pasantia getPasantia() {
         return pasantia;

@@ -13,7 +13,37 @@ public class Proceso {
     private long id_proceso;
     private String descripcion;
     private boolean estado;
-    private String proceso_de;
+    private Set procesos;
+
+    public Set getProcesos() {
+        return procesos;
+    }
+
+    public void setProcesos(Set procesos) {
+        this.procesos = procesos;
+    }
+    
+    private Proceso subproceso;
+    private long proceso_de;
+
+    public Proceso getSubproceso() {
+        return subproceso;
+    }
+
+    public void setSubproceso(Proceso subproceso) {
+        this.subproceso = subproceso;
+    }
+
+    public long getProceso_de() {
+        return proceso_de;
+    }
+
+    public void setProceso_de(long proceso_de) {
+        this.proceso_de = proceso_de;
+    }
+    
+    
+    
     private Set<DetallePasantia> detallePasantias;
     private Set<Formato> formato;
 
@@ -57,13 +87,7 @@ public class Proceso {
         this.estado = estado;
     }
 
-    public String getProceso_de() {
-        return proceso_de;
-    }
 
-    public void setProceso_de(String proceso_de) {
-        this.proceso_de = proceso_de;
-    }
     
     
 }

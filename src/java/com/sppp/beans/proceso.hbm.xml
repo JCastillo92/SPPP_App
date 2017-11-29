@@ -9,9 +9,22 @@
         <id name="id_proceso" column="id_proceso" type="long">
             <generator class="identity" ></generator>
         </id>
+        
         <property name="descripcion" type="string"></property>
         <property name="estado" type="boolean" not-null="true"></property>
-        <property name="proceso_de" type="string" not-null="true"></property>
+        
+        <!-- Columna de subproceso -->
+        <property name="proceso_de" type="long" update="false" insert="false"/>
+        
+        <many-to-one name="subproceso" class="Proceso" column="proceso_de" not-null="false"/>
+        
+        <set name="procesos" table="tb_proceso" lazy="false" cascade="all-delete-orphan" inverse="false">
+            <key column="proceso_de" />
+            <one-to-many class="Proceso" />
+        </set>
+        
+        <!-- FIN SUBPROCESO -->
+        
         
         <!-- ENVIO LA CLAVE PRIMARIA-->
         <set name="detallePasantias" table="tb_detalle_pasantia" fetch="select">

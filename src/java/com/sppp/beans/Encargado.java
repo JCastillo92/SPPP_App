@@ -12,20 +12,21 @@ import java.util.Set;
  * @author Jairo
  */
 public class Encargado {
-    private int id_encargado;
+    private long id_encargado;
     private long ci_encargado;
     private String nombre_encargado;
     private String cargo_encargado;
     private Set<Pasantia> pasantias;
 
-    public int getId_encargado() {
+    public long getId_encargado() {
         return id_encargado;
     }
 
-    public void setId_encargado(int id_encargado) {
+    public void setId_encargado(long id_encargado) {
         this.id_encargado = id_encargado;
     }
 
+ 
     public long getCi_encargado() {
         return ci_encargado;
     }

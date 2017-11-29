@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.sppp.beans">
+<class name="Encargado" table="tb_empresa_encargado">
+    <!--si el campo es serial en type="integer" y abajo se agrega <generator class="increment"></generator> -->
+    
+   <id name="id_encargado" column="id_encargado" type="long">
+            <generator class="identity" ></generator>
+        </id>
+        <property name="ci_encargado" type="long"></property>
+        <property name="nombre_encargado" type="string"></property>
+        <property name="cargo_encargado" type="string"></property>
+
+
+</class>
+</hibernate-mapping>

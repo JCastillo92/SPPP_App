@@ -4,22 +4,21 @@
   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="com.sppp.beans">
-<class name="Formato" table="tb_formato">   
-   <id name="id_tbformato" column="id_tbformato" type="long">
+    <class name="Formato" table="tb_formato">   
+        <id name="id_tbformato" column="id_tbformato" type="long">
             <generator class="identity" ></generator>
         </id>
         <property name="nombre_formato" type="string"></property>
         <property name="estado_formato" type="boolean"></property>
                
-            <!-- ENVIO LA CLAVE PRIMARIA-->
-         <set name="preguntas" table="tb_preguntas" fetch="select">
+        <!-- ENVIO LA CLAVE PRIMARIA-->
+        <set name="preguntas" table="tb_preguntas" fetch="select">
             <key>
                 <column name="id_tbformato" not-null="true"></column>
             </key>
             <one-to-many class="Preguntas"></one-to-many>
         </set>
         
-        <!-- RELACION 1 A 1 cascade="save-update" ES DE QUIEN ENVIA --> 
-<one-to-one name="proceso" class="Proceso"  cascade="save-update"></one-to-one>
- </class>
+        
+    </class>
 </hibernate-mapping>

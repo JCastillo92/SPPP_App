@@ -15,6 +15,7 @@ public class Proceso {
     private boolean estado;
     private Set procesos;
     private Set<DetallePasantia> detallePasantias;
+    
     private Formato formato;
 
     public Formato getFormato() {

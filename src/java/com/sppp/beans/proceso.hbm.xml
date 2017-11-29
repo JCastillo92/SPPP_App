@@ -35,8 +35,10 @@
         </set>
         
         <!-- RELACION 1 A 1 constrained="true" Aqui se le setea como primaria -->
-        <one-to-one name="formato" class="Formato" constrained="true" >
-        </one-to-one>
+        <many-to-one name="formato" class="Formato" unique="true" column="formato_id" not-null="false" cascade="all">
+            
+        </many-to-one>
+        
         
     </class>
 </hibernate-mapping>

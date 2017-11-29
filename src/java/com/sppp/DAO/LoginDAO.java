@@ -40,6 +40,7 @@ public class LoginDAO {
             System.out.println("INICIO SECCION DE PRUEBAS");
             
             
+            
             System.out.println("FIN SECCION DE PRUEBAS");
             
         System.out.println("U: "+user+" P: "+password);

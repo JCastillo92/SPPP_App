@@ -10,13 +10,12 @@
         </id>
         <property name="valor_datos" type="string"></property>
                
-               
-               
+                <!--RECIBO LAS CLAVES FORANEAS -->        
         <many-to-one name="detallePasantias" class="DetallePasantia">
-            <column name="id_tbdatos" not-null="true"></column>
+            <column name="idDetallePasantia" not-null="true"></column>
         </many-to-one>
         
-        
+                <!--RECIBO LAS CLAVES FORANEAS -->
         <many-to-one name="respuesta" class="Respuesta">
             <column name="id_tbrespuesta" not-null="true"></column>
         </many-to-one>

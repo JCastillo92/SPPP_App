@@ -10,6 +10,7 @@
         </id>
         <property name="descripcion_resp" type="string"></property>
         
+                <!-- ENVIO LA CLAVE PRIMARIA-->
         <set name="datos" table="tb_datos" fetch="select">
             <key>
                 <column name="id_tbrespuesta" not-null="true"></column>
@@ -17,9 +18,10 @@
             <one-to-many class="Datos"></one-to-many>
         </set>
         
+             <!--RECIBO LAS CLAVES FORANEAS -->
+          <many-to-one name="preguntas" class="Preguntas">
+              <column name="id_tbpreguntas" not-null="true"></column>
+          </many-to-one>
         
-        
-
-
 </class>
 </hibernate-mapping>

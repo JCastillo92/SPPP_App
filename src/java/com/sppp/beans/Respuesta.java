@@ -15,6 +15,16 @@ public class Respuesta {
     private long id_tbrespuesta;
     private String descripcion_resp;
     private Set<Datos> datos;
+    private Preguntas preguntas;
+
+    public Preguntas getPreguntas() {
+        return preguntas;
+    }
+
+    public void setPreguntas(Preguntas preguntas) {
+        this.preguntas = preguntas;
+    }
+    
 
     public long getId_tbrespuesta() {
         return id_tbrespuesta;

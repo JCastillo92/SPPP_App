@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.sppp.beans">
+<class name="Datos" table="tb_datos">   
+   <id name="id_tbdatos" column="id_tbdatos" type="long">
+            <generator class="identity" ></generator>
+        </id>
+        <property name="valor_datos" type="string"></property>
+        
+
+<set name="detallePasantias" table="tb_detalle_pasantia" fetch="select">
+            <key>
+                <column name="id_tbdatos" not-null="true"></column>
+            </key>
+            <one-to-many class="DetallePasantia"></one-to-many>
+        </set>
+ </class>
+</hibernate-mapping>

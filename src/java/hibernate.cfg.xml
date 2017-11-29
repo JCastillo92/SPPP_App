@@ -18,5 +18,6 @@
     <mapping resource="com/sppp/beans/pasantia.hbm.xml"/>
     <mapping resource="com/sppp/beans/encargado.hbm.xml"/>
     <mapping resource="com/sppp/beans/empresa.hbm.xml"/>
+    <mapping resource="com/sppp/beans/datos.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

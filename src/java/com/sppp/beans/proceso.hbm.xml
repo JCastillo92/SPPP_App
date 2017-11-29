@@ -13,13 +13,17 @@
         <property name="estado" type="boolean" not-null="true"></property>
         <property name="proceso_de" type="string" not-null="true"></property>
         
+        <!-- ENVIO LA CLAVE PRIMARIA-->
         <set name="detallePasantias" table="tb_detalle_pasantia" fetch="select">
             <key>
                 <column name="id_proceso" not-null="true"></column>
             </key>
             <one-to-many class="DetallePasantia"></one-to-many>
         </set>
+        
+        <!-- RELACION 1 A 1 constrained="true" Aqui se le setea como primaria -->
+        <one-to-one name="formato" class="Formato" constrained="true">
+        </one-to-one>
+        
     </class>
-
-
 </hibernate-mapping>

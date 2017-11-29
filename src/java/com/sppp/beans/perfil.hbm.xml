@@ -11,7 +11,7 @@
         </id>
         <property name="descripcion" column="descripcion_perfil" type="string"></property>
         
-        
+        <!-- ENVIO LA CLAVE PRIMARIA-->
         <set name="usuarios" table="tb_usuario" fetch="select">
             <key>
                 <column name="id_perfil" not-null="true"></column>

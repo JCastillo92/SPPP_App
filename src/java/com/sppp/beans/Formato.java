@@ -16,6 +16,16 @@ public class Formato {
     private String nombre_formato;
     private boolean estado_formato;
     private Set<Preguntas> preguntas;
+    private Set<Proceso> proceso;
+
+    public Set<Proceso> getProceso() {
+        return proceso;
+    }
+
+    public void setProceso(Set<Proceso> proceso) {
+        this.proceso = proceso;
+    }
+    
 
     public long getId_tbformato() {
         return id_tbformato;

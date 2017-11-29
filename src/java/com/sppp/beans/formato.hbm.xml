@@ -19,7 +19,7 @@
             <one-to-many class="Preguntas"></one-to-many>
         </set>
         
-
-               
+        <!-- RELACION 1 A 1 cascade="save-update" ES DE QUIEN ENVIA --> 
+<one-to-one name="proceso" class="Proceso"  cascade="save-update"></one-to-one>
  </class>
 </hibernate-mapping>

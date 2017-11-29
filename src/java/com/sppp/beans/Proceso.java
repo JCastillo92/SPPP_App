@@ -15,7 +15,16 @@ public class Proceso {
     private boolean estado;
     private String proceso_de;
     private Set<DetallePasantia> detallePasantias;
+    private Set<Formato> formato;
 
+    public Set<Formato> getFormato() {
+        return formato;
+    }
+
+    public void setFormato(Set<Formato> formato) {
+        this.formato = formato;
+    }
+    
     public Set<DetallePasantia> getDetallePasantias() {
         return detallePasantias;
     }

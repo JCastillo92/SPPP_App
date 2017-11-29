@@ -10,13 +10,13 @@
         <property name="descripcion" column="descripcion" type="string"></property>
         <property name="estado" type="boolean" not-null="false"></property>
         
-        <!-- ENVIO LA CLAVE PRIMARIA-->
+        <!-- ENVIO LA CLAVE PRIMARIA
          <set name="datos" table="tb_datos" fetch="select">
             <key>
                 <column name="idDetallePasantia" not-null="true"></column>
             </key>
             <one-to-many class="Datos"></one-to-many>
-        </set>
+        </set> -->
                                     
                                       
             <!--RECIBO LAS CLAVES FORANEAS -->

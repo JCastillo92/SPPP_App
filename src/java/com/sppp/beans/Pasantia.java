@@ -22,6 +22,17 @@ public class Pasantia implements Serializable{
     private boolean estado;
     private Set<DetallePasantia> detallePasantias;
     private Encargado encargado;
+    private Estudiante estudiante;
+
+    public Estudiante getEstudiante() {
+        return estudiante;
+    }
+
+    public void setEstudiante(Estudiante estudiante) {
+        this.estudiante = estudiante;
+    }
+    
+    
 
     public Encargado getEncargado() {
         return encargado;

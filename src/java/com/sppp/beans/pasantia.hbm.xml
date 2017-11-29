@@ -30,5 +30,11 @@
           <many-to-one name="encargado" class="Encargado">
               <column name="id_encargado" not-null="true"></column>
           </many-to-one>
+          
+               <!--RECIBO LAS CLAVES FORANEAS -->
+          <many-to-one name="estudiante" class="Estudiante">
+              <column name="cedula" not-null="true"></column>
+          </many-to-one>
+          
     </class>
 </hibernate-mapping>

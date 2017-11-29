@@ -5,6 +5,8 @@
  */
 package com.sppp.beans;
 
+import java.util.Set;
+
 /**
  *
  * @author Jairo
@@ -17,6 +19,17 @@ public class Estudiante{
     private int porcentajeMateriasAprobadas;
     private String actividadRealizar;
     private Usuario usuario;
+    private Set<Pasantia> pasantia;
+
+    public Set<Pasantia> getPasantia() {
+        return pasantia;
+    }
+
+    public void setPasantia(Set<Pasantia> pasantia) {
+        this.pasantia = pasantia;
+    }
+    
+    
 
     public Usuario getUsuario() {
         return usuario;

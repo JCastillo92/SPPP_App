@@ -39,34 +39,6 @@ public class LoginDAO {
             
             System.out.println("INICIO SECCION DE PRUEBAS");
             
-            Perfil p = new Perfil();
-            p.setId_tbperfil(1);
-            p.setDescripcion("Docente");
-            
-            Usuario s = new Usuario();
-            s.setId_cedula(1735);
-            s.setApellido("c");
-            s.setClave("1735");
-            s.setCorreo("s.com");
-            s.setDireccion("hola");
-            s.setEstado(true);
-            s.setNombre("ff");
-            s.setTelefono("233");
-            s.setPerfil(p);
-            System.out.println("INICIO GUARDADO");
-            sesion.save(p);
-            //sesion.saveOrUpdate(s);
-            
-            Estudiante esss = new Estudiante();
-            esss.setActividadRealizar("ninguna");
-            esss.setHorasPasantia(4);
-            esss.setPorcentajeMateriasAprobadas(40);
-            esss.setUltimoNivel(6);
-            
-            s.setEstudiante(esss);
-            esss.setUsuario(s);
-            sesion.save(s);
-
             
             System.out.println("FIN SECCION DE PRUEBAS");
             

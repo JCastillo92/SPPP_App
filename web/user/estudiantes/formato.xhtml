@@ -1,0 +1,131 @@
+<ui:composition
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+     template="/templates/main.xhtml"
+     xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:p="http://primefaces.org/ui">
+    
+    <ui:define name="title">
+        Formato
+    </ui:define>
+    
+    <ui:define name="barra-lateral">
+        <ui:include src="/snippets/menu_estudiante.xhtml" />
+    </ui:define>
+    
+    <ui:define name="contenido">
+        
+        <!-- ENCABEZADO -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Solicitud Inicio Proceso de Pasantia</h1>
+            </div>
+        </div>
+        
+        <!-- FORMULARIO WIZZARD -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel-default">
+                    
+                    <div class="panel-heading">
+                        Ingreso de Informacion
+                    </div>
+                    
+                    <div class="panel-body">
+                        
+                        <!-- Zona Wizzard -->
+                        <div class="row">
+                            
+                            <h:form>
+                                
+                                <p:growl id="growl" sticky="true" showDetail="true"/>
+                                <p:wizard flowListener="#{userWizard.onFlowProcess}">
+                                    
+                                    <p:tab id="estudiante_info" title="Estudiante">
+                                        
+                                        
+                                        <p:panel header="Datos Estudiante">
+                                            <p:messages />
+                                            <h:panelGrid columns="2" columnClasses="label, value">
+                                                <h:outputText value="Firstname: *" style="color: black;" />
+                                                <p:inputText value="#{userWizard.usuario.nombre}" required="true" label="Firstname"/>
+
+                                                <h:outputText value="Lastname: *" />
+                                                <p:inputText value="#{userWizard.usuario.apellido}" required="true" label="Lastname"/>
+
+                                                <h:outputText value="Age: " />
+                                                <p:inputText value="#{userWizard.usuario.correo}" />
+                                            </h:panelGrid>
+                                            
+                                        </p:panel>
+                                        
+                                    </p:tab>
+                                    
+                                    <p:tab id="empresa_info" title="Empresa">
+                                        
+                                        <p:panel header="Datos Empresa">
+                                            <p:messages />
+                                            <h:panelGrid columns="2" columnClasses="label, value">
+                                                <h:outputText value="Firstname: *" />
+                                                <p:inputText value="#{userWizard.emp.nombre_empresa}" required="true" label="Firstname"/>
+
+                                                <h:outputText value="Lastname: *" />
+                                                <p:inputText value="#{userWizard.emp.nombre_gerente}" required="true" label="Lastname"/>
+
+                                                <h:outputText value="Age: " />
+                                                <p:inputText value="#{userWizard.emp.telefono_empresa}" />
+                                            </h:panelGrid>
+
+                                        </p:panel>
+
+                                    </p:tab>
+                                    
+                                    <!-- Pestana Confirmacion -->
+                                    <p:tab id="confirm" title="Confirmacion">
+                                        <p:panel header="Confirmacion">
+                                            <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid">
+                                                
+                                                <h:panelGrid columns="2" columnClasses="label, value">
+                                                    <h:outputText value="Firstname: " />
+                                                    <h:outputText value="#{userWizard.usuario.nombre}" styleClass="outputLabel"/>
+
+                                                    <h:outputText value="Lastname: " />
+                                                    <h:outputText value="#{userWizard.usuario.apellido}" styleClass="outputLabel"/>
+
+                                                    <h:outputText value="Age: " />
+                                                    <h:outputText value="#{userWizard.usuario.correo}" styleClass="outputLabel"/>
+                                                </h:panelGrid>
+
+                                                <h:panelGrid columns="2" columnClasses="label, value">
+                                                    <h:outputText value="Street: " />
+                                                    <h:outputText value="#{userWizard.emp.nombre_empresa}" styleClass="outputLabel"/>
+
+                                                    <h:outputText value="Postal: " />
+                                                    <h:outputText value="#{userWizard.emp.nombre_gerente}" styleClass="outputLabel"/>
+
+                                                    <h:outputText value="City: " />
+                                                    <h:outputText value="#{userWizard.emp.telefono_empresa}" styleClass="outputLabel"/>
+                                                </h:panelGrid>
+
+                                                
+                                            </h:panelGrid>
+
+                                            <p:commandButton value="Enviar" actionListener="#{userWizard.guardar()}" update="growl" process="@this"/>
+                                        </p:panel>
+                                    </p:tab>
+
+                                </p:wizard>
+                            </h:form>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        
+    </ui:define>
+    
+</ui:composition>

@@ -3,7 +3,8 @@
      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
      template="/templates/main.xhtml"
      xmlns:h="http://xmlns.jcp.org/jsf/html"
-     xmlns:p="http://primefaces.org/ui">
+     xmlns:p="http://primefaces.org/ui"
+     xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <ui:define name="title">
         Formato
@@ -47,6 +48,7 @@
                                         <p:panel header="Datos Estudiante">
                                             <p:messages />
                                             <h:panelGrid columns="2" columnClasses="label, value">
+                                                <!--
                                                 <h:outputText value="Firstname: *" style="color: black;" />
                                                 <p:inputText value="#{userWizard.usuario.nombre}" required="true" label="Firstname"/>
 
@@ -55,7 +57,32 @@
 
                                                 <h:outputText value="Age: " />
                                                 <p:inputText value="#{userWizard.usuario.correo}" />
+                                                
+                                                <ui:repeat value="#{userWizard.camposFormulario}" var="campo">
+                                                    <h:outputText value="#{campo.nombre}" style="color: black;" />
+                                                    <h:inputText value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'TEXT'}" />
+                                                    <h:inputSecret value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'SECRET'}" />
+                                                    <h:inputTextarea value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'TEXTAREA'}" />
+                                                    <h:selectOneRadio value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'RADIO'}">
+                                                        <f:selectItems value="#{campo.opciones}" />
+                                                    </h:selectOneRadio>
+
+                                                </ui:repeat>-->
                                             </h:panelGrid>
+                                            
+                                            <h:dataTable value="#{userWizard.camposFormulario}" var="campo" cellspacing="10px">
+                                                <h:column>
+                                                    <h:outputText value="#{campo.nombre}" style="color: black;" />
+                                                </h:column>
+                                                <h:column>
+                                                    <h:inputText value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'TEXT'}" />
+                                                    <h:inputSecret value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'SECRET'}" />
+                                                    <h:inputTextarea value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'TEXTAREA'}" />
+                                                    <h:selectOneRadio value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'RADIO'}">
+                                                        <f:selectItems value="#{campo.opciones}" />
+                                                    </h:selectOneRadio>
+                                                </h:column>
+                                            </h:dataTable>
                                             
                                         </p:panel>
                                         

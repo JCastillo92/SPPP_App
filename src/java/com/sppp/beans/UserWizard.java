@@ -5,7 +5,10 @@
  */
 package com.sppp.beans;
 
+import com.sppp.DAO.CampoDAO;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import org.primefaces.event.FlowEvent;
@@ -22,6 +25,14 @@ public class UserWizard implements Serializable{
     private Estudiante est = new Estudiante();
     private Empresa emp = new Empresa();
     private boolean skip;
+    
+    private List<Campo> camposFormulario = new ArrayList();
+
+    public List<Campo> getCamposFormulario() {
+        CampoDAO cd = new CampoDAO();
+        camposFormulario = cd.obternerCampos(1);
+        return camposFormulario;
+    }
 
     public Empresa getEmp() {
         return emp;

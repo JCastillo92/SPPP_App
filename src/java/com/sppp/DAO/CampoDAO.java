@@ -6,21 +6,14 @@
 package com.sppp.DAO;
 
 import com.sppp.beans.Campo;
-import com.sppp.beans.DetallePasantia;
-import com.sppp.beans.Empresa;
-import com.sppp.beans.Encargado;
 import com.sppp.beans.Estudiante;
 import com.sppp.beans.Formato;
-import com.sppp.beans.Pasantia;
 import com.sppp.beans.Perfil;
 import com.sppp.beans.Preguntas;
-import com.sppp.beans.Proceso;
 import com.sppp.beans.Respuesta;
 import com.sppp.beans.Usuario;
 import com.sppp.utils.HibernateUtil;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -33,32 +26,29 @@ import org.hibernate.Transaction;
  *
  * @author EstJhonAlexanderCast
  */
-public class LoginDAO {
+public class CampoDAO {
     
-    public static Usuario validate(String user, String password){
-        
+    
+    public List<Campo> obternerCampos(int idformato) {
+        idformato=1;
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
-        
         Transaction tx=null;
-        Usuario usuario=null;
+        
+        Set<Preguntas> preguntas=null;
+        List<Campo> campos = new ArrayList<>();
+        Campo campo;
+        Set<Respuesta> resp = null;
+        List<String> respuestas = null;
+
         try {
             tx = sesion.beginTransaction();
-            
-            System.out.println("INICIO SECCION DE PRUEBAS");
-            
-            /*
-            int idformato = 1;
-            Set<Preguntas> preguntas;
-            List<Campo> campos = new ArrayList<>() ;
-            Campo campo;
-            Set<Respuesta> resp=null;
-            List<String> respuestas=null;
-            Query query2 = sesion.createQuery(" from Formato WHERE id_tbformato = :id");
+
+            Query query = sesion.createQuery(" from Formato WHERE id_tbformato = :id");
             Formato formato = new Formato();
             //Cambio a Long
-            query2.setLong("id", idformato);
-            formato = (Formato) query2.uniqueResult();
+            query.setLong("id", idformato);
+            formato = (Formato) query.uniqueResult();
 
             preguntas = formato.getPreguntas();
             for (Iterator<Preguntas> iterator = preguntas.iterator(); iterator.hasNext();) {
@@ -71,18 +61,7 @@ public class LoginDAO {
                 campo = new Campo(next.getDescripcion(),next.getTipoPregunta().getTipo(),respuestas);
                 campos.add(campo);
                 System.out.println("Hola "+campo.getNombre()+" "+campo.getTipo());
-            }*/
-
-            System.out.println("FIN SECCION DE PRUEBAS");
-
-            System.out.println("U: " + user + " P: " + password);
-            Query query = sesion.createQuery(" from Usuario WHERE id_cedula = :id and clave = :password");
-            Long usuarioI = Long.parseLong(user);
-
-            //Cambio a Long
-            query.setLong("id", usuarioI);
-            query.setString("password", password);
-            usuario = (Usuario) query.uniqueResult();
+            }
             tx.commit();
 
         } catch (Exception e) {
@@ -95,7 +74,9 @@ public class LoginDAO {
             //para cerrar seesion
             sesion.close();
         }
-        return usuario;
+         
+        return campos;
+        
     }
     
 }

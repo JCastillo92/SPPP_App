@@ -6,7 +6,7 @@
   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="com.sppp.beans">
-    <class name="PeriodoTutor" table="tb_tb_periodo_tutor">   
+    <class name="PeriodoTutor" table="tb_periodo_tutor">   
    <id name="id_tbpt" column="id_tbpt" type="long">
             <generator class="identity" ></generator>
         </id>

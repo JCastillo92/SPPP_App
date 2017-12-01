@@ -25,7 +25,9 @@
         <one-to-one name="estudiante" class="Estudiante"
                     cascade="save-update" />
         
-          
+            <one-to-one name="tutor" class="Tutor"
+                    cascade="save-update" />
+        
     </class>
     
     

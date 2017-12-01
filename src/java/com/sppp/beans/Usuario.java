@@ -24,6 +24,16 @@ public class Usuario {
   private String direccion;
   private Perfil perfil;
   private Estudiante estudiante;
+  private Tutor tutor;
+
+    public Tutor getTutor() {
+        return tutor;
+    }
+
+    public void setTutor(Tutor tutor) {
+        this.tutor = tutor;
+    }
+  
 
   
   

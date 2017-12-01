@@ -21,6 +21,10 @@
             <one-to-many class="HorarioTutor"></one-to-many>
         </set>
         
+          <!-- RELACION 1 A 1 constrained="true" Aqui se le setea como primaria -->
+        <many-to-one name="tutor" class="Tutor" unique="true" column="cedula_tut" not-null="false" cascade="all">
+            
+        </many-to-one>
         
         
         

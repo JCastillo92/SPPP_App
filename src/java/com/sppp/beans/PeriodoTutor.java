@@ -15,6 +15,16 @@ public class PeriodoTutor {
     private long id_tbpt;
     private int cantidad_visitas;
     private Set<HorarioTutor> horarioTutor ; 
+    private Tutor tutor;
+
+    public Tutor getTutor() {
+        return tutor;
+    }
+
+    public void setTutor(Tutor tutor) {
+        this.tutor = tutor;
+    }
+    
 
     public long getId_tbpt() {
         return id_tbpt;

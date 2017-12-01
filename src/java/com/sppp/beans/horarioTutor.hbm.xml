@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.sppp.beans">
+    <class name="HorarioTutor" table="tb_horariotutor">   
+   <id name="id_horario" column="id_horario" type="long">
+            <generator class="identity" ></generator>
+        </id>
+        <property name="hora" type="string"></property>
+    
+        <property name="dia" type="string"></property>
+      
+        
+          <!--RECIBO LAS CLAVES FORANEAS -->
+          <many-to-one name="periodoTutor" class="PeriodoTutor">
+              <column name="id_tbpt" not-null="true"></column>
+          </many-to-one>
+        
+    </class>
+
+
+
+</hibernate-mapping>

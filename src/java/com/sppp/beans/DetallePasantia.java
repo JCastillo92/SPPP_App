@@ -19,7 +19,16 @@ public class DetallePasantia {
     private Pasantia pasantia;
     private Set<Datos> datos;
     private Tutor tutor;
+    private VisitaTutor visitaTutor;
 
+    public VisitaTutor getVisitaTutor() {
+        return visitaTutor;
+    }
+
+    public void setVisitaTutor(VisitaTutor visitaTutor) {
+        this.visitaTutor = visitaTutor;
+    }
+    
     public Set<Datos> getDatos() {
         return datos;
     }

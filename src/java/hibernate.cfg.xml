@@ -32,5 +32,6 @@
     <mapping resource="com/sppp/beans/periodoTutor.hbm.xml"/>
     <mapping resource="com/sppp/beans/horarioTutor.hbm.xml"/>
     <mapping resource="com/sppp/beans/tutor.hbm.xml"/>
+    <mapping resource="com/sppp/beans/visitaTutor.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

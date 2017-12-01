@@ -26,7 +26,13 @@
             <one-to-many class="DetallePasantia"></one-to-many>
         </set>
         
-       
+       <!-- ENVIO LA CLAVE PRIMARIA-->
+        <set name="visitaTutor" table="tb_visitatutor" fetch="select">
+            <key>
+                <column name="cedula_tut" not-null="true"></column>
+            </key>
+            <one-to-many class="Tutor"></one-to-many>
+        </set>
       
 
     </class>

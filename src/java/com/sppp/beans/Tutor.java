@@ -18,6 +18,16 @@ public class Tutor {
     private String sector_preferencia;
     private Set<DetallePasantia> detallePasantia;
      private Usuario usuario2;
+    private Set<VisitaTutor> visitaTutor;
+
+    public Set<VisitaTutor> getVisitaTutor() {
+        return visitaTutor;
+    }
+
+    public void setVisitaTutor(Set<VisitaTutor> visitaTutor) {
+        this.visitaTutor = visitaTutor;
+    }
+     
 
     public Usuario getUsuario2() {
         return usuario2;

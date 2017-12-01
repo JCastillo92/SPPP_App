@@ -33,6 +33,11 @@
               <column name="cedula_tut" not-null="true"></column>
           </many-to-one>
            
+            <!-- RELACION 1 A 1 constrained="true" Aqui se le setea como primaria -->
+        <many-to-one name="visitaTutor" class="VisitaTutor" unique="true" column="id_visita" not-null="false" cascade="all">
+            
+        </many-to-one>
+       
         
 
 </class>

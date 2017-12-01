@@ -28,6 +28,10 @@
               <column name="tipo_ppp" not-null="true"></column>
               <column name="cod_ppp" not-null="true"></column>
           </many-to-one>
+            <!--RECIBO LAS CLAVES FORANEAS -->
+          <many-to-one name="tutor" class="Tutor">
+              <column name="cedula_tut" not-null="true"></column>
+          </many-to-one>
            
         
 

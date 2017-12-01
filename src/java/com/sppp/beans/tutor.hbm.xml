@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.sppp.beans">
+    <class name="Tutor" table="tb_tutor">
+        
+        <id name="cedula" column="cedula_tut" type="long">
+            <generator class="foreign">
+                <param name="property">usuario</param>
+            </generator>
+        </id>
+          <property name="cant_visitas" column="cant_visitas" type="integer" not-null="true"></property>
+        <property name="sector_preferencia" column="sector_preferencia" type="string" not-null="true"></property>
+      
+      
+       <!-- ENVIO LA CLAVE PRIMARIA-->
+        <set name="detallePasantia" table="tb_detalle_pasantia" fetch="select">
+            <key>
+                <column name="cedula_tut" not-null="true"></column>
+            </key>
+            <one-to-many class="DetallePasantia"></one-to-many>
+        </set>
+        
+       
+      
+
+    </class>
+
+</hibernate-mapping>

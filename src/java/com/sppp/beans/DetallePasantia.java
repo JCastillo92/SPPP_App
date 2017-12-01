@@ -18,6 +18,7 @@ public class DetallePasantia {
     private Proceso proceso;
     private Pasantia pasantia;
     private Set<Datos> datos;
+    private Tutor tutor;
 
     public Set<Datos> getDatos() {
         return datos;
@@ -66,6 +67,14 @@ public class DetallePasantia {
 
     public void setProceso(Proceso proceso) {
         this.proceso = proceso;
+    }
+
+    public Tutor getTutor() {
+        return tutor;
+    }
+
+    public void setTutor(Tutor tutor) {
+        this.tutor = tutor;
     }
     
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.sppp.beans">
+    <class name="PeriodoTutor" table="tb_tb_periodo_tutor">   
+   <id name="id_tbpt" column="id_tbpt" type="long">
+            <generator class="identity" ></generator>
+        </id>
+        <property name="cantidad_visitas" type="integer"></property>
+    
+        
+        <!-- ENVIO LA CLAVE PRIMARIA-->
+        <set name="horarioTutor" table="tb_horariotutor" fetch="select">
+            <key>
+                <column name="id_tbpt" not-null="true"></column>
+            </key>
+            <one-to-many class="HorarioTutor"></one-to-many>
+        </set>
+        
+        
+        
+        
+        
+    </class>
+</hibernate-mapping>

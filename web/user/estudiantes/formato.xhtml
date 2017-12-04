@@ -159,26 +159,34 @@
                 startAnimation="false"
                 showIndicators="false"
                 wrap="false">
-        <b:carouselItem style="width:400px; height:230px">
+        <b:carouselItem style="width:400px; height:auto">
             <b:panel title="Datos Estudiante" look="default">
+                <!-- AQUI ABAJO FORMULARIO DINAMICO ESTUDIANTE-->
                 <h:dataTable value="#{userWizard.camposFormulario}" var="campo" cellspacing="10px">
                                                 <h:column>
-                                                    <h:outputText value="#{campo.nombre}" style="color: black;" />
-                                                </h:column>
-                                                <h:column>
-                                                    <h:inputText value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'TEXT'}" />
-                                                    <h:inputSecret value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'SECRET'}" />
-                                                    <h:inputTextarea value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'TEXTAREA'}" />
-                                                    <h:selectOneRadio value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'RADIO'}">
-                                                        <f:selectItems value="#{campo.opciones}" />
-                                                    </h:selectOneRadio>
+                                                    <b:inputText value="#{userWizard.usuario.nombre}" label="#{campo.nombre}" rendered="#{campo.tipo == 'TEXT'}"/>
+                                                    <b:inputText value="#{userWizard.usuario.nombre}" label="#{campo.nombre}" rendered="#{campo.tipo == 'SECRET'}" />
+                                                    <b:inputText value="#{userWizard.usuario.nombre}" label="#{campo.nombre}" rendered="#{campo.tipo == 'TEXTAREA'}" />
+                                                    <b:inputText value="#{userWizard.usuario.nombre}" label="#{campo.nombre}" rendered="#{campo.tipo == 'RADIO'}">
+                                                       <f:selectItems value="#{campo.opciones}" />
+                                                    </b:inputText>
                                                 </h:column>
                                             </h:dataTable>
             </b:panel>
         </b:carouselItem>
-        <b:carouselItem style="width:400px;height:230px">
-            <b:panel title="Step 2" look="danger  ">
-                <b:inputText label="Street"  />
+        <b:carouselItem style="width:400px;height:auto">
+            <b:panel title="Datos Empresa" look="default">
+                <!-- AQUI ABAJO FORMULARIO DINAMICO EMPRESA-->
+                <h:dataTable value="#{userWizard.camposFormulario}" var="campo" cellspacing="10px">
+                                                <h:column>
+                                                    <b:inputText value="#{userWizard.emp.nombre_empresa}" label="#{campo.nombre}" rendered="#{campo.tipo == 'TEXT'}"/>
+                                                    <b:inputText value="#{userWizard.emp.nombre_empresa}" label="#{campo.nombre}" rendered="#{campo.tipo == 'SECRET'}" />
+                                                    <b:inputText value="#{userWizard.emp.nombre_empresa}" label="#{campo.nombre}" rendered="#{campo.tipo == 'TEXTAREA'}" />
+                                                    <b:inputText value="#{userWizard.emp.nombre_empresa}" label="#{campo.nombre}" rendered="#{campo.tipo == 'RADIO'}">
+                                                       <f:selectItems value="#{campo.opciones}" />
+                                                    </b:inputText>
+                                                </h:column>
+                                            </h:dataTable>
             </b:panel>
         </b:carouselItem>
         <b:carouselItem style="width:400px;height:230px">

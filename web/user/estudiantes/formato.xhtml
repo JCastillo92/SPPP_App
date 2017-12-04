@@ -160,9 +160,20 @@
                 showIndicators="false"
                 wrap="false">
         <b:carouselItem style="width:400px; height:230px">
-            <b:panel title="Step 1" look="default">
-                <b:inputText label="First name" />
-                <b:inputText label="Last name"  />
+            <b:panel title="Datos Estudiante" look="default">
+                <h:dataTable value="#{userWizard.camposFormulario}" var="campo" cellspacing="10px">
+                                                <h:column>
+                                                    <h:outputText value="#{campo.nombre}" style="color: black;" />
+                                                </h:column>
+                                                <h:column>
+                                                    <h:inputText value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'TEXT'}" />
+                                                    <h:inputSecret value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'SECRET'}" />
+                                                    <h:inputTextarea value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'TEXTAREA'}" />
+                                                    <h:selectOneRadio value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'RADIO'}">
+                                                        <f:selectItems value="#{campo.opciones}" />
+                                                    </h:selectOneRadio>
+                                                </h:column>
+                                            </h:dataTable>
             </b:panel>
         </b:carouselItem>
         <b:carouselItem style="width:400px;height:230px">

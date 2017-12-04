@@ -13,7 +13,7 @@
     <property name="hibernate.connection.password">jairo</property>
     -->
     <property name="hibernate.connection.password">1234</property>
-    <property name="hbm2ddl.auto">create</property>
+    <property name="hbm2ddl.auto">update</property>
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
     <mapping resource="com/sppp/beans/perfil.hbm.xml"/>
@@ -33,5 +33,6 @@
     <mapping resource="com/sppp/beans/horarioTutor.hbm.xml"/>
     <mapping resource="com/sppp/beans/tutor.hbm.xml"/>
     <mapping resource="com/sppp/beans/visitaTutor.hbm.xml"/>
+    <mapping resource="com/sppp/beans/periodo.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

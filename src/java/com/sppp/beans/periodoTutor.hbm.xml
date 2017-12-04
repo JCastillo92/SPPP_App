@@ -26,7 +26,10 @@
             
         </many-to-one>
         
-        
+        <!-- RELACION 1 A 1 constrained="true" Aqui se le setea como primaria -->
+        <many-to-one name="periodo" class="Periodo" unique="true" column="id_periodo" not-null="false" cascade="all">
+            
+        </many-to-one>
         
         
     </class>

@@ -12,15 +12,12 @@
         <property name="hora" type="string"></property>
     
         <property name="dia" type="string"></property>
-      
-        
+              
           <!--RECIBO LAS CLAVES FORANEAS -->
           <many-to-one name="periodoTutor" class="PeriodoTutor">
               <column name="id_tbpt" not-null="true"></column>
           </many-to-one>
         
     </class>
-
-
 
 </hibernate-mapping>

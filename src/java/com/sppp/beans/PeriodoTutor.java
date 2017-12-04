@@ -16,6 +16,7 @@ public class PeriodoTutor {
     private int cantidad_visitas;
     private Set<HorarioTutor> horarioTutor ; 
     private Tutor tutor;
+    private Periodo periodo;
 
     public Tutor getTutor() {
         return tutor;
@@ -48,6 +49,14 @@ public class PeriodoTutor {
 
     public void setHorarioTutor(Set<HorarioTutor> horarioTutor) {
         this.horarioTutor = horarioTutor;
+    }
+
+    public Periodo getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(Periodo periodo) {
+        this.periodo = periodo;
     }
 
     

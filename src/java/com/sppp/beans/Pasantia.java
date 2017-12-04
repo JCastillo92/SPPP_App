@@ -23,6 +23,7 @@ public class Pasantia implements Serializable{
     private Set<DetallePasantia> detallePasantias;
     private Encargado encargado;
     private Estudiante estudiante;
+    private Periodo periodo;
 
     public Estudiante getEstudiante() {
         return estudiante;
@@ -96,6 +97,14 @@ public class Pasantia implements Serializable{
 
     public void setDetallePasantias(Set<DetallePasantia> detallePasantias) {
         this.detallePasantias = detallePasantias;
+    }
+
+    public Periodo getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(Periodo periodo) {
+        this.periodo = periodo;
     }
     
     

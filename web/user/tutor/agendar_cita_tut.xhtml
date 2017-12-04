@@ -1,0 +1,193 @@
+<ui:composition
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+     xmlns:p="http://primefaces.org/ui"
+     xmlns:h="http://xmlns.jcp.org/jsf/html"
+     template="/templates/main.xhtml">
+    
+    <ui:define name="title">
+       Tutor
+    </ui:define>
+    
+    <ui:define name="barra-lateral">
+        <ui:include src="/snippets/menu_tutor.xhtml" />
+    </ui:define>
+    
+    <ui:define name="contenido">
+       <h:form>
+            
+            
+             <br/><br/>
+          
+            <legend><center><h:outputLabel value="Agendar cita"/></center></legend>
+            
+            <br/><br/>
+            
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Solicitud:
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    
+                                 Estudiante asignado:
+                                   
+                                   </div>
+                               
+                                <div class="col-lg-10">
+                                        <h:inputText class="form-control"  style="width: 24%" value="#{controllerBean.nombre_est}" />
+                                         
+                                   </div>
+                                
+                                <br/><br/>
+                                <div class="col-lg-2">
+                                    
+                                   Fecha de cita:
+                                   
+                                    
+                                   </div>
+                                <div class="col-lg-10">
+                                    
+                                  
+                                    <p:calendar id="fecha" pattern="dd/MM/yyyy" style="date-input" beforeShowDay="fridaysDisabled"  locale="es"  mindate="today" value="#{controllerBean.data}"  > 
+                 
+                </p:calendar>
+                                    
+                                   </div>
+                                 <script>
+       function fridaysDisabled(date)
+{
+  var day = date.getDay();
+ 
+  
+  return [day != 0, '']
+}
+
+today = Date();
+
+</script>
+                                
+                                <br/><br/>
+                                <div class="col-lg-2">
+                                    
+                                   Hora de cita:
+                                                   
+                                   </div>
+                                   <div class="col-lg-10">
+                                  
+               <p:calendar id="time" value="#{controllerBean.time}" pattern="HH:mm" timeOnly="true" locale="es"  />
+                
+                                    
+                                   </div>
+                                
+                                
+          
+                                
+                                
+                                <br/><br/>
+                                 <div class="col-lg-12">
+                                 
+                                     <center> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"  >Enviar</button> </center>
+                                    <br/>
+                                   </div>
+                                
+                                 <br/><br/>
+                                 
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <center>Horario</center>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#lunes" data-toggle="tab">Lunes</a>
+                                </li>
+                                <li><a href="#martes" data-toggle="tab">Martes</a>
+                                </li>
+                                <li><a href="#miercoles" data-toggle="tab">Miercoles</a>
+                                </li>
+                                <li><a href="#jueves" data-toggle="tab">Jueves</a>
+                                </li>
+                                
+                                <li><a href="#viernes" data-toggle="tab">Viernes</a>
+                                </li>
+                                
+                                <li><a href="#sabado" data-toggle="tab">Sabado</a>
+                                </li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="lunes">
+                                #{controllerBean.total}
+                                </div>
+                                <div class="tab-pane fade" id="martes">
+                                #{controllerBean.total1}
+                                </div>
+                                <div class="tab-pane fade" id="miercoles">
+                                #{controllerBean.total2}
+                                </div>
+                                <div class="tab-pane fade" id="jueves">
+                                #{controllerBean.total3}
+                                </div>
+                                <div class="tab-pane fade" id="viernes">
+                                #{controllerBean.total4}
+                                </div>
+                                
+                                <div class="tab-pane fade" id="sabado">
+                                #{controllerBean.total5}
+                                </div>
+                                
+                                                           </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                                
+
+                                    
+                                   </div>
+                                
+                            </div>
+                          
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+        
+            
+       <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">X</button>
+        <h4 class="modal-title">Alerta!!!</h4>
+      </div>
+      <div class="modal-body">
+          Seguro desea realizar el envio?
+         </div>
+      <div class="modal-footer">
+          <h:commandButton class="btn btn-primary" value="Si" action="#{controllerBean.enviarCita()}"  />
+        <button type="button" class="btn btn-default" data-dismiss="modal" >Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+           
+           
+        </h:form>
+      
+    </ui:define>
+    
+</ui:composition>

@@ -81,18 +81,18 @@ insert into tb_formato (nombre_formato,estado_formato) values ('FORMATO_LLENADO_
 
 /*llenar tb_preguntas BASARSE EN LA PRIMARYKEY DE tipo_pregunta y tb_formato (pencil 2.1 Alumno)*/
 insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('Correo:',true,1,1);
-insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('Tel&eacute;fono estudiante:',true,1,1);
+insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('Telefono estudiante:',true,1,1);
 insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('Actividades bien definidas:',true,3,1);
-insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('Pasant&iacute;a:',true,8,1);
-insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('Pr&aacute;ctica pre-profesional:',true,8,1);
+insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('Pasantia:',true,8,1);
+insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('Practica pre-profesional:',true,8,1);
 
 
 insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('RUC:',true,1,2);
 insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('Nombre empresa:',true,1,2);
-insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('Tel&eacute;fono empresa:',true,1,2);
-insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('Direcci&oacute;n empresa:',true,1,2);
-insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('Nombre a quien va dirig&iacute;do el oficio en la empresa:',true,1,2);/*este se guardara en el campo gerente*/
-insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('T&iacute;tulo profesional:',true,1,2);
+insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('Telefono empresa:',true,1,2);
+insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('Direccion empresa:',true,1,2);
+insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('Nombre a quien va dirigido el oficio en la empresa:',true,1,2);/*este se guardara en el campo gerente*/
+insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('Titulo profesional:',true,1,2);
 
 /*llenado de datos sobre tutorrr*/
 
@@ -130,6 +130,7 @@ insert into tb_pasantia (tipo_ppp,cod_ppp,fechainicio,fechafin,tiempoesperaestad
 
 
 /*llenado de datos en tb_detalle_pasantia*/
+
 
 
 # SPPP_App

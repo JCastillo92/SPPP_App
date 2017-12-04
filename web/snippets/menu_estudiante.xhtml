@@ -1,19 +1,41 @@
 <ui:composition
      xmlns="http://www.w3.org/1999/xhtml"
-     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-     xmlns:h="http://xmlns.jcp.org/jsf/html">
+     xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     
         <li>
             <a href=""><i class="fa fa-th-list fa-fw"></i>General Est.</a>
         </li>
         <li>
-            <a href=""><i class="fa fa-gears fa-fw"></i>Proceso Actual</a>
+            <h:link  outcome="student" ><i class="fa fa-gears fa-fw"></i>&#160;Proceso Actual</h:link>
+            
         </li>
         <li>
-            <a href=""><i class="fa fa-info-circle fa-fw"></i>Estado</a>
+             <h:link  outcome="estado" ><i class="fa fa-info-circle fa-fw"></i>&#160;Estado</h:link>
+            
         </li>
+    <li>
+            <a href="#"><i class="fa fa-envelope"></i>&#160;Cita<span class="fa arrow"></span></a>
+             <ul class="nav nav-second-level">
+                <li>
+                     <h:link  outcome="confirma_cita_est" ><i class="fa fa-ticket"></i>&#160;Confirmar cita</h:link>
+                    
+                </li>
+                
+            </ul>
+        </li>
+         <li>
+             <h:link  outcome="solicitud_vfinal" ><i class="fa fa-paper-plane"></i>&#160;Solicitud Validación</h:link>
+         </li>
+       
         <li>
-            <a href=""><i class="fa fa-files-o fa-fw"></i>Formatos</a>
+            <a href=""><i class="fa fa-files-o fa-fw"></i>Formatos<span class="fa arrow"></span></a>
+             <ul class="nav nav-second-level">
+                <li>
+                    <h:link  outcome="autoEvaluacion" ><i class="fa fa-cloud-upload fa-fw"></i>&#160;Autoevaluación</h:link>
+                     </li>
+               
+            </ul>
         </li>
         <li>
             <a href="#"><i class="fa fa-folder fa-fw"></i> Subir Documentos<span class="fa arrow"></span></a>

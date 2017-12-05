@@ -30,7 +30,7 @@
           </many-to-one>
             <!--RECIBO LAS CLAVES FORANEAS -->
           <many-to-one name="tutor" class="Tutor">
-              <column name="cedula_tut" not-null="true"></column>
+              <column name="cedula_tut" not-null="false"></column>
           </many-to-one>
            
             <!-- RELACION 1 A 1 constrained="true" Aqui se le setea como primaria -->

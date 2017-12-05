@@ -21,7 +21,7 @@
        <!-- ENVIO LA CLAVE PRIMARIA-->
         <set name="detallePasantia" table="tb_detalle_pasantia" fetch="select">
             <key>
-                <column name="cedula_tut" not-null="true"></column>
+                <column name="cedula_tut" not-null="false"></column>
             </key>
             <one-to-many class="DetallePasantia"></one-to-many>
         </set>

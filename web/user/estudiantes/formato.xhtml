@@ -16,197 +16,83 @@
     </ui:define>
     
     <ui:define name="contenido">
-        
+
         <!-- ENCABEZADO -->
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Solicitud Inicio Proceso de Pasantia</h1>
             </div>
         </div>
-        
+
         <!-- FORMULARIO WIZZARD -->
         <div class="row">
             <div class="col-lg-12">
-                <div class="panel-default">
-                    
-                    <div class="panel-heading">
-                        Ingreso de Informacion
-                    </div>
-                    
-                    <div class="panel-body">
-                        
-                        <!-- Zona Wizzard -->
-                        <div class="row">
+
+                <b:form>
+                    <b:carousel id="wizard" styleClass="wizardPseudoClass"
+                                style="width:400px; padding-top:20px"
+                                startAnimation="false"
+                                showIndicators="false"
+                                wrap="false">
+                        <b:carouselItem style="width:400px; height:auto">
+                            <b:panel title="Datos Estudiante" look="default">
+                                <!-- AQUI ABAJO FORMULARIO DINAMICO ESTUDIANTE-->
+                                <h:dataTable value="#{userWizard.getCamposFormulario(1)}" var="campo" cellspacing="10px">
+                                    <h:column>
+                                        <b:inputText value="#{userWizard.usuario.nombre}" label="#{campo.nombre}" rendered="#{campo.tipo == 'TEXT'}"/>
+                                        <b:inputSecret value="#{userWizard.usuario.nombre}" label="#{campo.nombre}" rendered="#{campo.tipo == 'SECRET'}" />
+                                        <b:inputTextarea value="#{userWizard.usuario.nombre}" label="#{campo.nombre}" rendered="#{campo.tipo == 'TEXTAREA'}" />
+                                        
+                                        <h:outputText value="#{campo.nombre}" rendered="#{campo.tipo == 'RADIO'}" style="font-weight:bold"/>
+                                        <b:radiobutton value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'RADIO'}">
+                                            <f:selectItems value="#{campo.opciones}" rendered="#{campo.tipo == 'RADIO'}" />
+                                        </b:radiobutton> 
+                                    </h:column>
+                                </h:dataTable>
+                            </b:panel>
+                        </b:carouselItem>
+                        <b:carouselItem style="width:400px;height:auto">
+                            <b:panel title="Datos Empresa" look="default">
+                                <!-- AQUI ABAJO FORMULARIO DINAMICO EMPRESA-->
+                                <h:dataTable value="#{userWizard.getCamposFormulario(2)}" var="campo" cellspacing="10px">
+                                    <h:column>
+                                        <b:inputText value="#{userWizard.emp.nombre_empresa}" label="#{campo.nombre}" rendered="#{campo.tipo == 'TEXT'}"/>
+                                        <b:inputText value="#{userWizard.emp.nombre_empresa}" label="#{campo.nombre}" rendered="#{campo.tipo == 'SECRET'}" />
+                                        <b:inputText value="#{userWizard.emp.nombre_empresa}" label="#{campo.nombre}" rendered="#{campo.tipo == 'TEXTAREA'}" />
+                                        <b:inputText value="#{userWizard.emp.nombre_empresa}" label="#{campo.nombre}" rendered="#{campo.tipo == 'RADIO'}">
+                                            <f:selectItems value="#{campo.opciones}" />
+                                        </b:inputText>
+                                    </h:column>
+                                </h:dataTable>
+                            </b:panel>
+                        </b:carouselItem>
+                        <b:carouselControl direction="right" >
+                            <b:button value="Anterior"
+                                      onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');"
+                                      look="info" />
+                        </b:carouselControl>
+                        <b:carouselControl>
                             
-                            <h:form>
-                                
-                                <p:growl id="growl" sticky="true" showDetail="true"/>
-                                <p:wizard flowListener="#{userWizard.onFlowProcess}">
-                                    
-                                    <p:tab id="estudiante_info" title="Estudiante">
-                                        
-                                        
-                                        <p:panel header="Datos Estudiante">
-                                            <p:messages />
-                                            <h:panelGrid columns="2" columnClasses="label, value">
-                                                <!--
-                                                <h:outputText value="Firstname: *" style="color: black;" />
-                                                <p:inputText value="#{userWizard.usuario.nombre}" required="true" label="Firstname"/>
-
-                                                <h:outputText value="Lastname: *" />
-                                                <p:inputText value="#{userWizard.usuario.apellido}" required="true" label="Lastname"/>
-
-                                                <h:outputText value="Age: " />
-                                                <p:inputText value="#{userWizard.usuario.correo}" />
-                                                
-                                                <ui:repeat value="#{userWizard.camposFormulario}" var="campo">
-                                                    <h:outputText value="#{campo.nombre}" style="color: black;" />
-                                                    <h:inputText value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'TEXT'}" />
-                                                    <h:inputSecret value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'SECRET'}" />
-                                                    <h:inputTextarea value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'TEXTAREA'}" />
-                                                    <h:selectOneRadio value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'RADIO'}">
-                                                        <f:selectItems value="#{campo.opciones}" />
-                                                    </h:selectOneRadio>
-
-                                                </ui:repeat>-->
-                                            </h:panelGrid>
-                                            
-                                            <h:dataTable value="#{userWizard.camposFormulario}" var="campo" cellspacing="10px">
-                                                <h:column>
-                                                    <h:outputText value="#{campo.nombre}" style="color: black;" />
-                                                </h:column>
-                                                <h:column>
-                                                    <h:inputText value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'TEXT'}" />
-                                                    <h:inputSecret value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'SECRET'}" />
-                                                    <h:inputTextarea value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'TEXTAREA'}" />
-                                                    <h:selectOneRadio value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'RADIO'}">
-                                                        <f:selectItems value="#{campo.opciones}" />
-                                                    </h:selectOneRadio>
-                                                </h:column>
-                                            </h:dataTable>
-                                            
-                                        </p:panel>
-                                        
-                                    </p:tab>
-                                    
-                                    <p:tab id="empresa_info" title="Empresa">
-                                        
-                                        <p:panel header="Datos Empresa">
-                                            <p:messages />
-                                            <h:panelGrid columns="2" columnClasses="label, value">
-                                                <h:outputText value="Firstname: *" />
-                                                <p:inputText value="#{userWizard.emp.nombre_empresa}" required="true" label="Firstname"/>
-
-                                                <h:outputText value="Lastname: *" />
-                                                <p:inputText value="#{userWizard.emp.nombre_gerente}" required="true" label="Lastname"/>
-
-                                                <h:outputText value="Age: " />
-                                                <p:inputText value="#{userWizard.emp.telefono_empresa}" />
-                                            </h:panelGrid>
-
-                                        </p:panel>
-
-                                    </p:tab>
-                                    
-                                    <!-- Pestana Confirmacion -->
-                                    <p:tab id="confirm" title="Confirmacion">
-                                        <p:panel header="Confirmacion">
-                                            <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid">
-                                                
-                                                <h:panelGrid columns="2" columnClasses="label, value">
-                                                    <h:outputText value="Firstname: " />
-                                                    <h:outputText value="#{userWizard.usuario.nombre}" styleClass="outputLabel"/>
-
-                                                    <h:outputText value="Lastname: " />
-                                                    <h:outputText value="#{userWizard.usuario.apellido}" styleClass="outputLabel"/>
-
-                                                    <h:outputText value="Age: " />
-                                                    <h:outputText value="#{userWizard.usuario.correo}" styleClass="outputLabel"/>
-                                                </h:panelGrid>
-
-                                                <h:panelGrid columns="2" columnClasses="label, value">
-                                                    <h:outputText value="Street: " />
-                                                    <h:outputText value="#{userWizard.emp.nombre_empresa}" styleClass="outputLabel"/>
-
-                                                    <h:outputText value="Postal: " />
-                                                    <h:outputText value="#{userWizard.emp.nombre_gerente}" styleClass="outputLabel"/>
-
-                                                    <h:outputText value="City: " />
-                                                    <h:outputText value="#{userWizard.emp.telefono_empresa}" styleClass="outputLabel"/>
-                                                </h:panelGrid>
-
-                                                
-                                            </h:panelGrid>
-
-                                            <p:commandButton value="Enviar" actionListener="#{userWizard.guardar()}" update="growl" process="@this"/>
-                                        </p:panel>
-                                    </p:tab>
-
-                                </p:wizard>
-                            </h:form>
-                            
-                        </div>
+                            <b:commandButton value="Enviar" style="position:absolute;right:0px"
+                                      look="success" />
+                        </b:carouselControl>
+                        <b:carouselControl direction="left">
+                            <b:button value="Siguiente" style="position:absolute;right:100px"
+                                      onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');"
+                                      look="info" />
+                        </b:carouselControl>
                         
-                    </div>
-                    
-                </div>
+                    </b:carousel>
+                </b:form>
+
             </div>
         </div>
-        
-        <b:form>
-    <b:carousel id="wizard" styleClass="wizardPseudoClass"
-                style="width:400px; padding-top:20px"
-                startAnimation="false"
-                showIndicators="false"
-                wrap="false">
-        <b:carouselItem style="width:400px; height:auto">
-            <b:panel title="Datos Estudiante" look="default">
-                <!-- AQUI ABAJO FORMULARIO DINAMICO ESTUDIANTE-->
-                <h:dataTable value="#{userWizard.camposFormulario}" var="campo" cellspacing="10px">
-                                                <h:column>
-                                                    <b:inputText value="#{userWizard.usuario.nombre}" label="#{campo.nombre}" rendered="#{campo.tipo == 'TEXT'}"/>
-                                                    <b:inputText value="#{userWizard.usuario.nombre}" label="#{campo.nombre}" rendered="#{campo.tipo == 'SECRET'}" />
-                                                    <b:inputText value="#{userWizard.usuario.nombre}" label="#{campo.nombre}" rendered="#{campo.tipo == 'TEXTAREA'}" />
-                                                    <b:inputText value="#{userWizard.usuario.nombre}" label="#{campo.nombre}" rendered="#{campo.tipo == 'RADIO'}">
-                                                       <f:selectItems value="#{campo.opciones}" />
-                                                    </b:inputText>
-                                                </h:column>
-                                            </h:dataTable>
-            </b:panel>
-        </b:carouselItem>
-        <b:carouselItem style="width:400px;height:auto">
-            <b:panel title="Datos Empresa" look="default">
-                <!-- AQUI ABAJO FORMULARIO DINAMICO EMPRESA-->
-                <h:dataTable value="#{userWizard.camposFormulario}" var="campo" cellspacing="10px">
-                                                <h:column>
-                                                    <b:inputText value="#{userWizard.emp.nombre_empresa}" label="#{campo.nombre}" rendered="#{campo.tipo == 'TEXT'}"/>
-                                                    <b:inputText value="#{userWizard.emp.nombre_empresa}" label="#{campo.nombre}" rendered="#{campo.tipo == 'SECRET'}" />
-                                                    <b:inputText value="#{userWizard.emp.nombre_empresa}" label="#{campo.nombre}" rendered="#{campo.tipo == 'TEXTAREA'}" />
-                                                    <b:inputText value="#{userWizard.emp.nombre_empresa}" label="#{campo.nombre}" rendered="#{campo.tipo == 'RADIO'}">
-                                                       <f:selectItems value="#{campo.opciones}" />
-                                                    </b:inputText>
-                                                </h:column>
-                                            </h:dataTable>
-            </b:panel>
-        </b:carouselItem>
-        <b:carouselItem style="width:400px;height:230px">
-            <b:panel title="Step 3" look="success">
-                <b:inputText label="Zip code"  />
-                <b:inputText label="City"  />
-            </b:panel>
-        </b:carouselItem>
-        <b:carouselControl direction="right" >
-            <b:button value="Previous step"
-                      onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');"
-                      look="info" />
-        </b:carouselControl>
-        <b:carouselControl direction="left">
-            <b:button value="Next step" style="position:absolute;right:0px"
-                      onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');"
-                      look="success" />
-        </b:carouselControl>
-    </b:carousel>
-</b:form>
+
+        <div class="row">
+            <br/>
+            <br/>
+        </div>
+
 
         
     </ui:define>

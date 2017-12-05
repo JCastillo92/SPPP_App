@@ -29,8 +29,12 @@ public class UserWizard implements Serializable{
     private List<Campo> camposFormulario = new ArrayList();
 
     public List<Campo> getCamposFormulario() {
+        return camposFormulario;
+    }
+
+    public List<Campo> getCamposFormulario(int formulario) {
         CampoDAO cd = new CampoDAO();
-        camposFormulario = cd.obternerCampos(1);
+        camposFormulario = cd.obternerCampos(formulario);
         
         return camposFormulario;
     }

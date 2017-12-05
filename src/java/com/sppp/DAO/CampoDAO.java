@@ -30,7 +30,7 @@ public class CampoDAO {
     
     
     public List<Campo> obternerCampos(int idformato) {
-        idformato=1;
+        //idformato=1;
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;
@@ -39,7 +39,7 @@ public class CampoDAO {
         List<Campo> campos = new ArrayList<>();
         Campo campo;
         Set<Respuesta> resp = null;
-        List<String> respuestas = null;
+        List<String> respuestas;
 
         try {
             tx = sesion.beginTransaction();
@@ -53,14 +53,19 @@ public class CampoDAO {
             preguntas = formato.getPreguntas();
             for (Iterator<Preguntas> iterator = preguntas.iterator(); iterator.hasNext();) {
                 Preguntas next = iterator.next();
+                
+                
                 resp = next.getRespuesta();
+                respuestas = new ArrayList<>();
+                
                 for (Iterator<Respuesta> iterator1 = resp.iterator(); iterator1.hasNext();) {
                     Respuesta next1 = iterator1.next();
                     respuestas.add(next1.getDescripcion_resp());
+                    System.out.println("=========================================== resp ==========="+next1.getDescripcion_resp());
                 }
                 campo = new Campo(next.getDescripcion(),next.getTipoPregunta().getTipo(),respuestas);
                 campos.add(campo);
-                System.out.println("Hola "+campo.getNombre()+" "+campo.getTipo());
+                System.out.println("========================= campo  "+campo.getNombre()+" "+campo.getTipo());
             }
             tx.commit();
 

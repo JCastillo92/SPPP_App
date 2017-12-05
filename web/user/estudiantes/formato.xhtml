@@ -39,11 +39,11 @@
                                 <!-- AQUI ABAJO FORMULARIO DINAMICO ESTUDIANTE-->
                                 <h:dataTable value="#{userWizard.getCamposFormulario(1)}" var="campo" cellspacing="10px">
                                     <h:column>
-                                        <b:inputText value="#{userWizard.usuario.nombre}" label="#{campo.nombre}" rendered="#{campo.tipo == 'TEXT'}"/>
-                                        <b:inputSecret value="#{userWizard.usuario.nombre}" label="#{campo.nombre}" rendered="#{campo.tipo == 'SECRET'}" />
+                                        <b:inputText value="#{userWizard.respuestas_obtenidas[campo.nombre]}" label="#{campo.nombre}" rendered="#{campo.tipo == 'TEXT'}"/>
+                                        <b:inputSecret value="#{userWizard.respuestas_obtenidas[campo.nombre]}" label="#{campo.nombre}" rendered="#{campo.tipo == 'SECRET'}" />
                                         <b:inputTextarea value="#{userWizard.usuario.nombre}" label="#{campo.nombre}" rendered="#{campo.tipo == 'TEXTAREA'}" />
                                         
-                                        <h:outputText value="#{campo.nombre}" rendered="#{campo.tipo == 'RADIO'}" style="font-weight:bold"/>
+                                        <h:outputText value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'RADIO'}" style="font-weight:bold"/>
                                         <b:radiobutton value="#{userWizard.usuario.nombre}" rendered="#{campo.tipo == 'RADIO'}">
                                             <f:selectItems value="#{campo.opciones}" rendered="#{campo.tipo == 'RADIO'}" />
                                         </b:radiobutton> 
@@ -56,10 +56,10 @@
                                 <!-- AQUI ABAJO FORMULARIO DINAMICO EMPRESA-->
                                 <h:dataTable value="#{userWizard.getCamposFormulario(2)}" var="campo" cellspacing="10px">
                                     <h:column>
-                                        <b:inputText value="#{userWizard.emp.nombre_empresa}" label="#{campo.nombre}" rendered="#{campo.tipo == 'TEXT'}"/>
-                                        <b:inputText value="#{userWizard.emp.nombre_empresa}" label="#{campo.nombre}" rendered="#{campo.tipo == 'SECRET'}" />
-                                        <b:inputText value="#{userWizard.emp.nombre_empresa}" label="#{campo.nombre}" rendered="#{campo.tipo == 'TEXTAREA'}" />
-                                        <b:inputText value="#{userWizard.emp.nombre_empresa}" label="#{campo.nombre}" rendered="#{campo.tipo == 'RADIO'}">
+                                        <b:inputText value="#{userWizard.respuestas_obtenidas[campo.nombre]}" label="#{campo.nombre}" rendered="#{campo.tipo == 'TEXT'}"/>
+                                        <b:inputText value="#{userWizard.respuestas_obtenidas[campo.nombre]}" label="#{campo.nombre}" rendered="#{campo.tipo == 'SECRET'}" />
+                                        <b:inputText value="#{userWizard.respuestas_obtenidas[campo.nombre]}" label="#{campo.nombre}" rendered="#{campo.tipo == 'TEXTAREA'}" />
+                                        <b:inputText value="#{userWizard.respuestas_obtenidas[campo.nombre]}" label="#{campo.nombre}" rendered="#{campo.tipo == 'RADIO'}">
                                             <f:selectItems value="#{campo.opciones}" />
                                         </b:inputText>
                                     </h:column>
@@ -73,7 +73,7 @@
                         </b:carouselControl>
                         <b:carouselControl>
                             
-                            <b:commandButton value="Enviar" style="position:absolute;right:0px"
+                            <b:commandButton value="Enviar" style="position:absolute;right:0px" action="#{userWizard.guardarDatos()}" 
                                       look="success" />
                         </b:carouselControl>
                         <b:carouselControl direction="left">

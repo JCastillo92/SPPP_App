@@ -8,7 +8,11 @@ package com.sppp.beans;
 import com.sppp.DAO.CampoDAO;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import org.primefaces.event.FlowEvent;
@@ -26,6 +30,26 @@ public class UserWizard implements Serializable{
     private Empresa emp = new Empresa();
     private boolean skip;
     
+    //CONTENIDO DE PRUEBA
+    private Map<String, Object> respuestas_obtenidas = new HashMap<>();
+
+    public Map<String, Object> getRespuestas_obtenidas() {
+        return respuestas_obtenidas;
+    }
+
+    public void setRespuestas_obtenidas(Map<String, Object> respuestas_obtenidas) {
+        this.respuestas_obtenidas = respuestas_obtenidas;
+    }
+    
+    public void guardarDatos(){
+        
+        System.out.println("Punto de quiebre");
+        
+    }
+
+    //FIN CONTENIDO PRUEBA
+    
+    
     private List<Campo> camposFormulario = new ArrayList();
 
     public List<Campo> getCamposFormulario() {
@@ -35,6 +59,13 @@ public class UserWizard implements Serializable{
     public List<Campo> getCamposFormulario(int formulario) {
         CampoDAO cd = new CampoDAO();
         camposFormulario = cd.obternerCampos(formulario);
+        
+        for (Iterator<Campo> iterator = camposFormulario.iterator(); iterator.hasNext();) {
+            Campo next = iterator.next();
+            respuestas_obtenidas.put(next.getNombre(), null);
+            
+        }
+        
         
         return camposFormulario;
     }
@@ -83,11 +114,7 @@ public class UserWizard implements Serializable{
             return event.getNewStep();
         }
     }
-    
-    public void guardar(){
-        //Realizar el proceso de guardado de datos
-        
-    }
+
     
     
 }

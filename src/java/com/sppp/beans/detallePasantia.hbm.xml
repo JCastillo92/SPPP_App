@@ -10,6 +10,12 @@
         <property name="descripcion" column="descripcion" type="string"></property>
         <property name="estado" type="boolean" not-null="false"></property>
         
+        <property name="validacion" column="validacion">
+            <type name="integer">
+                <param name="EnumEstado"></param>
+            </type>
+        </property>
+        
         <!-- ENVIO LA CLAVE PRIMARIA
          <set name="datos" table="tb_datos" fetch="select">
             <key>

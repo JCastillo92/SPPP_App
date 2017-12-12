@@ -47,6 +47,17 @@ public class ControllerBean {
      
      private   String total5="------------------";
       private String observaciones;
+      
+     private String boton="btn btn-success btn-circle";
+
+    public String getBoton() {
+        return boton;
+    }
+
+    public void setBoton(String boton) {
+        this.boton = boton;
+    }
+     
 
     public String getNombre() {
         return nombre;

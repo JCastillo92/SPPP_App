@@ -94,6 +94,30 @@ insert into tb_proceso(descripcion,estado,proceso_de) values ('VALIDACION ingres
 insert into tb_proceso(descripcion,estado) values ('PROCESO carga y descarga solicitud inicio actividades en la empresa',true);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('descarga y carga de archivos iniciar actividades',true,7);
 
+insert into tb_proceso(descripcion,estado) values ('PROCESO Agendacion cita',true);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('creacion fecha tentiva',true,21);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('confirmacion cita',true,21);
+
+insert into tb_proceso(descripcion,estado) values ('PROCESO Llenar informes',true);
+insert into tb_proceso(descripcion,estado,proceso_de) values (' ingresar datos informe seguimiento',true,24);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('ingresar datos informe tutor',true,24);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('ingresar datos hoja de ruta',true,24);
+
+
+insert into tb_proceso(descripcion,estado) values ('PROCESO Carga y descarga archivos visita',true);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('descarga y carga informe seguimiento',true,28);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('descarga y carga informe tutor',true,28);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('descarga y carga hoja de ruta',true,28);
+
+insert into tb_proceso(descripcion,estado) values ('PROCESO Validacion pasantia',true);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('llenar solicitud de validacion final',true,32);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('llenar formato autoevaluacion',true,32);
+
+insert into tb_proceso(descripcion,estado) values ('PROCESO Carga y descarga archivos validacion final',true);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('descarga y carga formato autoevaluacion',true,35);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('carga certificado empresa',true,35);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('carga derecho validacion',true,35);
+
 
 
 

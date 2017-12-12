@@ -20,6 +20,11 @@ public class DetallePasantia {
     private Set<Datos> datos;
     private Tutor tutor;
     private VisitaTutor visitaTutor;
+    private EnumEstado validacion;
+
+    DetallePasantia(EnumEstado enumEstado) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     public VisitaTutor getVisitaTutor() {
         return visitaTutor;
@@ -84,6 +89,14 @@ public class DetallePasantia {
 
     public void setTutor(Tutor tutor) {
         this.tutor = tutor;
+    }
+    
+    public EnumEstado getValidacion() {
+        return validacion;
+    }
+
+    public void setValidacion(EnumEstado validacion) {
+        this.validacion = validacion;
     }
     
 }

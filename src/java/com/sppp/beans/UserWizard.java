@@ -6,15 +6,21 @@
 package com.sppp.beans;
 
 import com.sppp.DAO.CampoDAO;
+import com.sppp.DAO.UsuarioDAO;
+import com.sppp.DAO.WizardDAO;
+import com.sppp.utils.SessionUtils;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.servlet.http.HttpSession;
 import org.primefaces.event.FlowEvent;
 
 /**
@@ -28,7 +34,25 @@ public class UserWizard implements Serializable{
     private Usuario usuario = new Usuario();
     private Estudiante est = new Estudiante();
     private Empresa emp = new Empresa();
+    private Encargado enc = new Encargado();
+    private String tipo_p;
+
+    public String getTipo_p() {
+        return tipo_p;
+    }
+
+    public void setTipo_p(String tipo_p) {
+        this.tipo_p = tipo_p;
+    }
     private boolean skip;
+
+    public Encargado getEnc() {
+        return enc;
+    }
+
+    public void setEnc(Encargado enc) {
+        this.enc = enc;
+    }
     
     //CONTENIDO DE PRUEBA
     private Map<String, Object> respuestas_obtenidas = new HashMap<>();
@@ -40,10 +64,64 @@ public class UserWizard implements Serializable{
     public void setRespuestas_obtenidas(Map<String, Object> respuestas_obtenidas) {
         this.respuestas_obtenidas = respuestas_obtenidas;
     }
+
+    public UserWizard() {
+        
+        //Obteniendo el Usuario del Sistema
+        UsuarioDAO u = new UsuarioDAO();
+        HttpSession session = SessionUtils.getSession();
+        long id;
+        int perfil;
+        try {
+            perfil = (int)session.getAttribute("perfil");
+            id = (long) session.getAttribute("id");
+        } catch (Exception e) {
+            perfil = 0;
+            id = 0;
+            System.out.println("========== ERROR AL TRAER INFO DE USUARIO ==============0");
+        }
+        
+        if(perfil == 1){
+            UsuarioDAO uDAO = new UsuarioDAO();
+            usuario = uDAO.findUsuario(id); 
+        }
+        
+        
+        //Solo para Docente
+        
+    }
     
-    public void guardarDatos(){
+    
+    
+    public String guardarDatos(){
         
         System.out.println("Punto de quiebre");
+        Set<Pasantia> setPas = new LinkedHashSet<>();
+        
+        Periodo per = new Periodo();
+        per.setId_periodo(1);
+        
+        Pasantia p = new Pasantia();
+        p.setTipo_ppp(tipo_p);
+        p.setCod_ppp(2);
+        p.setTiempoEsperaEstado(4);
+        p.setEstado(true);
+        p.setPeriodo(per);
+        
+        setPas.add(p);
+        //est.setPasantia(setPas);
+        //usuario.getEstudiante().setPasantia(setPas);
+        System.out.println("================= "+usuario.getEstudiante().getCedula());
+        WizardDAO wd = new WizardDAO();
+        wd.guardarDatosBasicos(usuario,p);
+        
+        try {
+            
+        } catch (Exception e) {
+            
+        }
+        
+        return "student";
         
     }
 

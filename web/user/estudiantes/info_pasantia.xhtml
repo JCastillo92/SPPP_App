@@ -1,0 +1,94 @@
+<ui:composition
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+     template="/templates/main.xhtml"
+     xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:p="http://primefaces.org/ui"
+     xmlns:f="http://xmlns.jcp.org/jsf/core"
+     xmlns:b="http://bootsfaces.net/ui">
+    
+    <ui:define name="title">
+        Formato
+    </ui:define>
+    
+    <ui:define name="barra-lateral">
+        <ui:include src="/snippets/menu_estudiante.xhtml" />
+    </ui:define>
+    
+    <ui:define name="contenido">
+
+        <!-- ENCABEZADO -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Solicitud Inicio Proceso de Pasantia</h1>
+            </div>
+        </div>
+
+        <!-- FORMULARIO WIZZARD -->
+        <div class="row">
+            <div class="col-lg-12">
+
+                <b:form>
+                    <b:carousel id="wizard" styleClass="wizardPseudoClass"
+                                style="width:400px; padding-top:20px"
+                                startAnimation="false"
+                                showIndicators="false"
+                                wrap="false">
+                        <b:carouselItem style="width:400px; height:auto">
+                            <b:panel title="Datos Estudiante" look="default">
+                                <!-- AQUI ABAJO FORMULARIO DINAMICO ESTUDIANTE-->
+                                <b:inputText value="#{userWizard.usuario.nombre}" label="Nombre:" />
+                                <b:inputText value="#{userWizard.usuario.telefono}" label="Telefono:"/>
+                                <b:inputText value="#{userWizard.usuario.correo}" label="Correo:" />
+                                <b:inputText value="#{userWizard.usuario.estudiante.ultimoNivel}" label="Nivel mas bajo:" />
+                                <b:inputTextarea value="#{userWizard.usuario.estudiante.actividadRealizar}" label="Actividad a Realizar:" />
+                                <h:outputText value="Tipo de Practica" style="font-weight:bold"/>
+                                <b:radiobutton value="#{userWizard.tipo_p}" required="true">
+                                    <f:selectItem itemLabel="Pasantia" itemValue="pa"/>
+                                    <f:selectItem itemLabel="Practica Pre Profesional" itemValue="pp"/>
+                                </b:radiobutton>
+                            </b:panel>
+                        </b:carouselItem>
+                        <b:carouselItem style="width:400px;height:auto">
+                            <b:panel title="Datos Empresa" look="default">
+                                <!-- AQUI ABAJO FORMULARIO DINAMICO EMPRESA-->
+                                <b:inputText value="#{userWizard.emp.id_empresa}" label="RUC:" />
+                                <b:inputText value="#{userWizard.emp.nombre_empresa}" label="Nombre Empresa:" />
+                                <b:inputText value="#{userWizard.emp.telefono_empresa}" label="Telefono:" />
+                                <b:inputText value="#{userWizard.emp.direccion_empresa}" label="Direccion:" />
+                                <b:inputText value="#{userWizard.enc.nombre_encargado}" label="Nombre Encargado:" />
+                                <b:inputText value="#{userWizard.enc.cargo_encargado}" label="Cargo Encargado:" />
+                            </b:panel>
+                        </b:carouselItem>
+                        <b:carouselControl direction="right" >
+                            <b:button value="Anterior"
+                                      onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');"
+                                      look="info" />
+                        </b:carouselControl>
+                        <b:carouselControl>
+                            
+                            <b:commandButton value="Enviar" style="position:absolute;right:0px" action="#{userWizard.guardarDatos()}" 
+                                      look="success" />
+                        </b:carouselControl>
+                        <b:carouselControl direction="left">
+                            <b:button value="Siguiente" style="position:absolute;right:100px"
+                                      onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');"
+                                      look="info" />
+                        </b:carouselControl>
+                        
+                    </b:carousel>
+                </b:form>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <br/>
+            <br/>
+        </div>
+
+
+        
+    </ui:define>
+    
+</ui:composition>

@@ -5,7 +5,10 @@
  */
 package com.sppp.beans;
 
+import com.sppp.DAO.EstudianteDAO;
+import com.sppp.utils.SessionUtils;
 import java.util.Set;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -80,8 +83,33 @@ public class Estudiante{
     public void setPorcentajeMateriasAprobadas(int porcentajeMateriasAprobadas) {
         this.porcentajeMateriasAprobadas = porcentajeMateriasAprobadas;
     }
-    
-    
+
+    public Estudiante() {
+        /*
+        HttpSession session = SessionUtils.getSession();
+        int perfil;
+        long id;
+        //Obtengo el perfil
+        try {
+            perfil = (int)session.getAttribute("perfil");
+        } catch (Exception e) {
+            perfil = 0;
+        }
+        
+        //Lo clasifico con sus datos
+        if (perfil == 1){
+            System.out.println("============= Bienvenido a Usuario ===================");
+            id = (long) session.getAttribute("id");
+            
+            //TraerData
+            EstudianteDAO eDAO = new EstudianteDAO();
+            eDAO.encontrarEst(id);
+            
+        }
+        */
+        
+        
+    }
     
     
 }

@@ -71,7 +71,7 @@ public class Login implements Serializable{
             HttpSession session = SessionUtils.getSession();
             session.setAttribute("username", user);
             session.setAttribute("perfil", usuario.getPerfil().getId_tbperfil());
-            
+            session.setAttribute("id", usuario.getId_cedula());
             //Capturar el perfil 
             int perfil = (int) session.getAttribute("perfil");
             Cls_PerfilNotation obj1= new Cls_PerfilNotation();

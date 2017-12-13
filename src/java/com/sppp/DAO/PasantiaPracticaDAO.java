@@ -75,7 +75,7 @@ public class PasantiaPracticaDAO {
     
     
     //metodos de busqueda
-    public static Pasantia findPasantia(String tipoPasantia, String codigoPasantia){
+    public static Pasantia findPasantiaPractica(String tipoPasantia, String codigoPasantia){
            SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         

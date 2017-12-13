@@ -29,12 +29,13 @@ public class WizardDAO {
         
         Transaction tx=null;
         pas.setEstudiante(est.getEstudiante());
+        pas.setEncargado(enc);
         try {
             tx = sesion.beginTransaction();
             sesion.saveOrUpdate(est);
-            sesion.saveOrUpdate(pas);
             sesion.saveOrUpdate(emp);
             sesion.saveOrUpdate(enc);
+            sesion.saveOrUpdate(pas);
             tx.commit();
             System.out.println("====================== PASO LA INFO ==================");
         } catch (Exception e) {

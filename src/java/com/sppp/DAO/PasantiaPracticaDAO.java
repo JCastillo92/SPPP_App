@@ -40,7 +40,8 @@ public class PasantiaPracticaDAO {
             //para cerrar seesion
             sesion.close();
         }
-         return ultimo_valor;
+         //en el retorno le sumo 1 para que el codigo de pasantia se setee en el NUEVO registro.
+         return ultimo_valor+1;
     }//fin metodo        
     
     public int encontrarUltimoPP(){
@@ -65,6 +66,7 @@ public class PasantiaPracticaDAO {
             //para cerrar seesion
             sesion.close();
         }
-         return ultimo_valor;
+         //en el retorno le sumo 1 para que el codigo de practica pre profesional se setee en el NUEVO registro.
+         return ultimo_valor+1;
     }//fin metodo
 }//END OF CLASS

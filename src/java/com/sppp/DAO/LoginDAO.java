@@ -12,6 +12,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import com.sppp.DAO.PeriodoDAO;
 
 /**
  *
@@ -29,8 +30,6 @@ public class LoginDAO {
         try {
             tx = sesion.beginTransaction();
             
-            System.out.println("INICIO SECCION DE PRUEBAS");
-        
             /*
             int idformato = 1;
             Set<Preguntas> preguntas;

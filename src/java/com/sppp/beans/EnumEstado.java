@@ -10,4 +10,5 @@ package com.sppp.beans;
  */
 public enum EnumEstado {
         llenar,validar,aprobar;
+        //0     ,1  ,2
 }

@@ -32,7 +32,7 @@ public class PasantiaPracticaDAO {
             ultimo_valor=(int) query.uniqueResult();       
             tx.commit();
         }catch (Exception e) {
-            e.printStackTrace();
+            ultimo_valor=0;
             if (tx != null){
                 tx.rollback();
             }
@@ -58,7 +58,7 @@ public class PasantiaPracticaDAO {
             ultimo_valor=(int) query.uniqueResult();       
             tx.commit();
         }catch (Exception e) {
-            e.printStackTrace();
+            ultimo_valor=0;
             if (tx != null){
                 tx.rollback();
             }

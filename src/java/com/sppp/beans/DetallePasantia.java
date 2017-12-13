@@ -98,5 +98,10 @@ public class DetallePasantia {
     public void setValidacion(EnumEstado validacion) {
         this.validacion = validacion;
     }
+
+    public DetallePasantia() {
+    }
+    
+    
     
 }

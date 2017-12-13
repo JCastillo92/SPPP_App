@@ -14,8 +14,8 @@
         <property name="estado" type="boolean" not-null="false"></property>
         
         <property name="validacion" column="validacion">
-            <type name="integer">
-                <param name="EnumEstado"></param>
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.sppp.beans.EnumEstado</param>
             </type>
         </property>
         

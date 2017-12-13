@@ -80,8 +80,7 @@ public class PasantiaPracticaDAO {
         Session sesion=sf.openSession();
         
         Transaction tx=null;
-        Pasantia pasantia_practicapreprofesional=null;
-        int ultimo_valor=0;
+        Pasantia pasantia_practicapreprofesional=null;      
          try {
             tx = sesion.beginTransaction();
             Query query = sesion.createQuery("from Pasantia P WHERE P.tipo_ppp = :tipo AND P.cod_ppp = :cod_ppp");

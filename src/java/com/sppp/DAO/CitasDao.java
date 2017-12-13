@@ -5,6 +5,7 @@
  */
 package com.sppp.DAO;
 
+import com.sppp.beans.Usuario;
 import com.sppp.beans.VisitaTutor;
 import java.util.List;
 
@@ -15,5 +16,6 @@ import java.util.List;
 public interface CitasDao {
     public List<VisitaTutor> findAll(String id);
      public List<VisitaTutor> confirma(String id);
+     public List<Usuario> listar();
     
 }

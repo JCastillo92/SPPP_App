@@ -5,6 +5,8 @@
  */
 package com.sppp.DAO;
 
+import com.sppp.beans.Estudiante;
+import com.sppp.beans.Usuario;
 import com.sppp.beans.VisitaTutor;
 import com.sppp.utils.HibernateUtil;
 import java.util.List;
@@ -70,6 +72,37 @@ public class CitasDaoImp implements CitasDao {
             throw e;
         }
         return listado2;
+    }
+
+    @Override
+    public List<Usuario> listar() {
+         
+        List<Usuario>estudiante=null;
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+            
+        Transaction tx = null;
+        
+        String sql = "FROM Usuario WHERE id_perfil =:num";
+        int id=1;
+        try {
+            tx = sesion.beginTransaction();
+         estudiante = sesion.createQuery(sql).setParameter("num", id).list();
+
+            //    Query query = sesion.createQuery(sql);
+        // estudiante=query.list();
+         /*Long id1=Long.parseLong(id);
+         boolean estado=false;
+         boolean estado1=false;
+         
+*///query.setInteger("id", id);
+            tx.commit();
+        } catch (RuntimeException e) {
+            tx.rollback();
+            throw e;
+        }
+        
+        return estudiante;
     }
     
     

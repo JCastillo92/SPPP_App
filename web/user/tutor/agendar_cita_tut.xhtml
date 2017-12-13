@@ -43,7 +43,7 @@
                                     <p:selectOneMenu id="estudiante" value="#{confirmaCita.estudiantes.id_cedula}">
                                         
                                         <f:selectItem itemLabel="Seleccione:"/>
-                                        <f:selectItems itemLabelEscaped="#{controllerBean.listaest}" value="#{confirmaCita.listarEstudiantes}"/>
+                                        <f:selectItems value="#{confirmaCita.listarEstudiantes}"/>
                                        
                                     </p:selectOneMenu>
                                     
@@ -185,7 +185,7 @@ today = Date();
           Seguro desea realizar el envio?
          </div>
       <div class="modal-footer">
-          <h:commandButton class="btn btn-primary" value="Si" action="#{controllerBean.enviarCita(login.user)}"  />
+          <h:commandButton class="btn btn-primary" value="Si" action="#{controllerBean.enviarCita(login.user,confirmaCita.estudiantes.id_cedula)}"  />
         <button type="button" class="btn btn-default" data-dismiss="modal" >Cerrar</button>
       </div>
     </div>

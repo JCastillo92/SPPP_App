@@ -5,25 +5,9 @@
  */
 package com.sppp.DAO;
 
-import com.sppp.beans.Campo;
-import com.sppp.beans.DetallePasantia;
-import com.sppp.beans.Empresa;
-import com.sppp.beans.Encargado;
-import com.sppp.beans.Estudiante;
-import com.sppp.beans.Formato;
-import com.sppp.beans.Pasantia;
-import com.sppp.beans.Perfil;
-import com.sppp.beans.Preguntas;
-import com.sppp.beans.Proceso;
-import com.sppp.beans.Respuesta;
+
 import com.sppp.beans.Usuario;
 import com.sppp.utils.HibernateUtil;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -46,7 +30,7 @@ public class LoginDAO {
             tx = sesion.beginTransaction();
             
             System.out.println("INICIO SECCION DE PRUEBAS");
-            
+        
             /*
             int idformato = 1;
             Set<Preguntas> preguntas;

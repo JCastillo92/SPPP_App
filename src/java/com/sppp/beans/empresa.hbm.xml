@@ -7,7 +7,6 @@
 <class name="Empresa" table="tb_empresa">
     <!--si el campo es serial en type="integer" y abajo se agrega <generator class="increment"></generator> -->
    <id name="id_empresa" column="id_empresa" type="long">
-            <generator class="identity" ></generator>
         </id>
         <property name="nombre_empresa" type="string"></property>
         <property name="nombre_gerente" type="string"></property>

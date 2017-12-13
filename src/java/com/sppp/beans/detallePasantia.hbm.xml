@@ -6,7 +6,10 @@
 
 <hibernate-mapping package="com.sppp.beans">
 <class name="DetallePasantia" table="tb_detalle_pasantia">
-        <id name="idDetallePasantia" column="idDetallePasantia" type="integer"></id>
+        <id name="idDetallePasantia" column="idDetallePasantia" type="integer">
+            <generator class="identity" ></generator>
+        </id>
+        
         <property name="descripcion" column="descripcion" type="string"></property>
         <property name="estado" type="boolean" not-null="false"></property>
         

@@ -11,11 +11,27 @@ import java.util.Date;
  *
  * @author KarenVanessaAchigGua
  */
-public class VisitaTutor {
+public class VisitaTutor implements java.io.Serializable{
     private long id_visita;
     private Date fecha_visita;
+    private String hora_visita;
     private boolean estado_visita;
+    private boolean confirmada;
     private Tutor tutor;
+    private Estudiante estudiante;
+  
+     public VisitaTutor() {
+    }
+
+   
+
+    public Estudiante getEstudiante() {
+        return estudiante;
+    }
+
+    public void setEstudiante(Estudiante estudiante) {
+        this.estudiante = estudiante;
+    }
 
     public Tutor getTutor() {
         return tutor;
@@ -49,7 +65,24 @@ public class VisitaTutor {
     public void setEstado_visita(boolean estado_visita) {
         this.estado_visita = estado_visita;
     }
-    
-    
+
+    public String getHora_visita() {
+        return hora_visita;
+    }
+
+    public void setHora_visita(String hora_visita) {
+        this.hora_visita = hora_visita;
+    }
+
+    public boolean isConfirmada() {
+        return confirmada;
+    }
+
+    public void setConfirmada(boolean confirmada) {
+        this.confirmada = confirmada;
+    }
+
+   
+   
     
 }

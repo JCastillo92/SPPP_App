@@ -39,10 +39,12 @@ public class Tutor {
    
 
     public long getCedula() {
+       
         return cedula;
     }
 
     public void setCedula(long cedula) {
+        
         this.cedula = cedula;
     }
 

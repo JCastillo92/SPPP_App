@@ -5,10 +5,13 @@
  */
 package com.sppp.beans;
 
+import com.sppp.DAO.VisitaDAO;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -23,7 +26,14 @@ import org.primefaces.event.UnselectEvent;
 @SessionScoped
 public class ControllerBean {
    
-
+private Usuario usuario = new Usuario();
+  private long id_visita;
+    private Date fecha_visita;
+    private String hora_visita;
+    private boolean estado_visita;
+    private boolean confirmada;
+   private Tutor tutor= new Tutor();
+    
     java.util.Date data;
        java.util.Date time;
       
@@ -199,8 +209,93 @@ public class ControllerBean {
         this.total5 = total5;
     }
 
-    
+    public long getId_visita() {
+        return id_visita;
+    }
+
+    public void setId_visita(long id_visita) {
+        this.id_visita = id_visita;
+    }
+
+    public Date getFecha_visita() {
+        return fecha_visita;
+    }
+
+    public void setFecha_visita(Date fecha_visita) {
+        this.fecha_visita = fecha_visita;
+    }
+
+    public String getHora_visita() {
+        return hora_visita;
+    }
+
+    public void setHora_visita(String hora_visita) {
+        this.hora_visita = hora_visita;
+    }
+
+    public boolean isEstado_visita() {
+        return estado_visita;
+    }
+
+    public void setEstado_visita(boolean estado_visita) {
+        this.estado_visita = estado_visita;
+    }
+
+    public boolean isConfirmada() {
+        return confirmada;
+    }
+
+    public void setConfirmada(boolean confirmada) {
+        this.confirmada = confirmada;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public Tutor getTutor() {
+        return tutor;
+    }
+
+   
+
   
+      public void guardarDatos(String id){
+        
+        Set<VisitaTutor> setVisita = new LinkedHashSet<>();
+        Long id1=Long.parseLong(id);
+       tutor.setCedula(id1);
+               
+        Estudiante est = new Estudiante();
+        est.setCedula(1111111111);
+        
+        VisitaTutor vt = new VisitaTutor();
+        vt.setId_visita(id_visita);
+        vt.setFecha_visita(data);
+         vt.setHora_visita(horaConFormato);
+        vt.setConfirmada(false);
+        vt.setEstado_visita(false);
+        vt.setTutor(tutor);
+        vt.setEstudiante(est);
+          System.out.println("tutor"+tutor.getCedula());
+        setVisita.add(vt);
+        
+        VisitaDAO vi= new VisitaDAO();
+        vi.guardarDatosVisita(vt);
+          System.out.println(vt.getId_visita());
+        try {
+            
+        } catch (Exception e) {
+            
+        }
+        
+    }
+     public void updateVisita(){
+          VisitaTutor newVisitaTutor = new VisitaTutor();
+          VisitaDAO visitaDAO = new VisitaDAO();
+          visitaDAO.updateVisita(1, newVisitaTutor);
+                  
+      }
      
   public void imprimirData(){
       
@@ -215,12 +310,14 @@ public class ControllerBean {
   }
   
   
-    public void enviarCita(){
+    public void enviarCita(String id){
         horaConFormato= sdf_time.format(time);
         fechaConFormato = sdf_data.format(data); 
         console="Ing. Rodas";
         envioCita="Ud cuenta con una cita previa por confirmar";
             System.out.println("nombre"+console+"dataaaa" + fechaConFormato+"timeeee"+ horaConFormato);
+        guardarDatos(id);
+        System.out.println("pasoooooooooooooooooooooooo");
     }
     public void blanqueo(){
         observaciones="";

@@ -33,12 +33,12 @@
           
                <!--RECIBO LAS CLAVES FORANEAS -->
           <many-to-one name="estudiante" class="Estudiante">
-              <column name="cedula" not-null="true"></column>
+              <column name="cedula" not-null="false"></column>
           </many-to-one>
           
             <!--RECIBO LAS CLAVES FORANEAS -->
           <many-to-one name="periodo" class="Periodo">
-              <column name="id_periodo" not-null="true"></column>
+              <column name="id_periodo" not-null="false"></column>
           </many-to-one>
           
     </class>

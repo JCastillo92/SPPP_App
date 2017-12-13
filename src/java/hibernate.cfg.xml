@@ -7,10 +7,10 @@
     <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/db_sp3</property>
     <property name="hibernate.connection.username">postgres</property>
     <!-- 
-    <property name="hibernate.connection.password">1234</property>
+    <property name="hibernate.connection.password">DeveloperAdministrador92</property>
     <property name="hibernate.connection.password">jairo</property>
     -->
-    <property name="hibernate.connection.password">DeveloperAdministrador92</property>
+    <property name="hibernate.connection.password">1234</property>
     <property name="hbm2ddl.auto">update</property>
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>

@@ -3,6 +3,7 @@
      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
      template="/templates/main.xhtml">
     
     <ui:define name="title">
@@ -25,43 +26,37 @@
             <br/><br/>
            
             
-                  <center>
-                    <div class="panel panel-default">
-                       
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Nombre del Tutor:</th>
-                                            <th>Fecha de la visita:</th>
-                                            <th>Hora de la visita:</th>
-                                          <h:column rendered="#{controllerBean.envioCita.length() >= 50 eq false}"  >  <th>Aprobar</th>  </h:column> 
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="success" >
-                                            <td><center> #{controllerBean.console} </center></td>
-                                            <td><center>#{controllerBean.fechaConFormato} </center></td>
-                                            <td> <center> #{controllerBean.horaConFormato} </center></td>
-                                            <h:column rendered="#{controllerBean.envioCita.length() >= 50 eq false}"  ><td><center> <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal"  >Si</button> &#160; <h:commandButton class="btn btn-danger"  value="No" action="#{controllerBean.observacion()}" /> </center>
-    			</td>          </h:column>                       
+            <div class="panel-body">
+                        <div class="table-responsive">
+                            <b:dataTable class="table table-striped table-bordered table-hover" var="campo" value="#{confirmaCita.getVisitas(login.user)}">
+                              
+                                <b:dataTableColumn label="Nombre del tutor:">                   
+
+                                    <b:column>
+                                        <h:outputText value="#{campo.id_visita}" />
+                                    </b:column>
+                                </b:dataTableColumn>
+                                <b:dataTableColumn label="Fecha visita">                   
+                                    <b:column >
+                                        <h:outputText value="#{campo.fecha_visita}" />
+                                    </b:column>
+                                </b:dataTableColumn>
+                                <b:dataTableColumn label="Hora visita">                   
+                                    <b:column >
+                                        <h:outputText value="#{campo.hora_visita}" />
+                                    </b:column>
+                                </b:dataTableColumn>
+                                <b:dataTableColumn label="Aprobar">                   
+                                    <b:column rendered="#{controllerBean.envioCita.length() >= 50 eq false}"  ><center> <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal"  >Si</button> &#160; <h:commandButton class="btn btn-danger"  value="No" action="#{controllerBean.observacion()}" /> </center>
+    			         </b:column>                       
                                            
-                                        </tr>
-                                      
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.table-responsive -->
+                                </b:dataTableColumn>
+
+
+                            </b:dataTable>
+
                         </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                
-                
-</center>
-            <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+                             <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -74,13 +69,19 @@
           Seguro desea realizar el envio?
          </div>
       <div class="modal-footer">
-          <h:commandButton class="btn btn-primary" value="Si" action="#{controllerBean.enviarCitaTut()}"  />
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <h:commandButton class="btn btn-primary" value="Si" action="#{controllerBean.updateVisita()}"  />
+        <button type="button" class="btn btn-default" data-dismiss="modal" >Cerrar</button>
       </div>
     </div>
 
   </div>
 </div>
+                        
+                        <!-- /.table-responsive -->
+                    </div>
+            
+            
+            
             <br/>
                 
                 <h:outputLabel value = "#{controllerBean.observaciones}" />

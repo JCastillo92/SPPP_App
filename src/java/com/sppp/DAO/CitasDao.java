@@ -13,6 +13,7 @@ import java.util.List;
  * @author KarenVanessaAchigGua
  */
 public interface CitasDao {
-    public List<VisitaTutor> findAll();
+    public List<VisitaTutor> findAll(String id);
+     public List<VisitaTutor> confirma(String id);
     
 }

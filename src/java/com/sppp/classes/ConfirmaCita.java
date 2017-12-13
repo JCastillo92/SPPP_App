@@ -13,18 +13,15 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 
-/**
- *
- * @author KarenVanessaAchigGua
- */
-@ManagedBean(name = "citasAgendadas")
 
-public class CitasAgendadas {
+@ManagedBean(name = "confirmaCita")
+
+public class ConfirmaCita {
 
     private List<VisitaTutor> visitas;
     private Login login;
     
-    public CitasAgendadas() {
+    public ConfirmaCita() {
         this.visitas= new ArrayList<VisitaTutor>();
         
     }
@@ -32,7 +29,7 @@ public class CitasAgendadas {
     public List<VisitaTutor> getVisitas(String id) {
         
         CitasDao citasdao=new CitasDaoImp();
-        this.visitas=citasdao.findAll(id);
+        this.visitas=citasdao.confirma(id);
         return visitas;
        
     }

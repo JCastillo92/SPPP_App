@@ -57,6 +57,7 @@
                 </p:calendar>
                                     
                                    </div>
+                                Bienvenido: <h:outputLabel value="#{login.user}"/>
                                  <script>
        function fridaysDisabled(date)
 {
@@ -177,7 +178,7 @@ today = Date();
           Seguro desea realizar el envio?
          </div>
       <div class="modal-footer">
-          <h:commandButton class="btn btn-primary" value="Si" action="#{controllerBean.enviarCita()}"  />
+          <h:commandButton class="btn btn-primary" value="Si" action="#{controllerBean.enviarCita(login.user)}"  />
         <button type="button" class="btn btn-default" data-dismiss="modal" >Cerrar</button>
       </div>
     </div>

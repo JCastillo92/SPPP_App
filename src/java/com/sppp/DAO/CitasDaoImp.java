@@ -20,20 +20,23 @@ import org.hibernate.Transaction;
 public class CitasDaoImp implements CitasDao {
 
     
-    public List<VisitaTutor> findAll() {
+    public List<VisitaTutor> findAll(String id) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session sesion = sf.openSession();
-
+            
         Transaction tx = null;
         List<VisitaTutor> listado = null;
 
-        String sql = "FROM VisitaTutor";
+        String sql = "FROM VisitaTutor WHERE cedula_tut =:id and estado_visita =:false and confirmada =:TRUE";
 
         try {
             tx = sesion.beginTransaction();
-              Query query = sesion.createQuery(sql);
-          listado=query.list();
-         //   listado = sesion.createQuery(sql).list();
+        //      Query query = sesion.createQuery(sql);
+         // listado=query.list();
+         Long id1=Long.parseLong(id);
+         boolean estado=true;
+         boolean estado1=false;
+         listado = sesion.createQuery(sql).setParameter("id", id1).setParameter("false", estado1).setParameter("TRUE", estado).list();
 //query.setInteger("id", id);
             tx.commit();
         } catch (RuntimeException e) {
@@ -42,6 +45,34 @@ public class CitasDaoImp implements CitasDao {
         }
         return listado;
     }
+    
+     public List<VisitaTutor> confirma(String id) {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+            
+        Transaction tx = null;
+        List<VisitaTutor> listado2 = null;
+
+        String sql = "FROM VisitaTutor WHERE cedula_est =:id and estado_visita =:false and confirmada =:false";
+
+        try {
+            tx = sesion.beginTransaction();
+        //      Query query = sesion.createQuery(sql);
+         // listado=query.list();
+         Long id1=Long.parseLong(id);
+         boolean estado=false;
+         boolean estado1=false;
+         listado2 = sesion.createQuery(sql).setParameter("id", id1).setParameter("false", estado1).setParameter("false", estado).list();
+//query.setInteger("id", id);
+            tx.commit();
+        } catch (RuntimeException e) {
+            tx.rollback();
+            throw e;
+        }
+        return listado2;
+    }
+    
+    
 
   
 

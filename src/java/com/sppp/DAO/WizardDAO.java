@@ -34,7 +34,6 @@ public class WizardDAO {
             sesion.saveOrUpdate(est);
             sesion.saveOrUpdate(pas);
             sesion.save(emp);
-            
             tx.commit();
             System.out.println("====================== PASO LA INFO ==================");
         } catch (Exception e) {

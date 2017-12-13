@@ -33,6 +33,7 @@ private Usuario usuario = new Usuario();
     private boolean estado_visita;
     private boolean confirmada;
    private Tutor tutor= new Tutor();
+   private String listaest;
     
     java.util.Date data;
        java.util.Date time;
@@ -257,9 +258,18 @@ private Usuario usuario = new Usuario();
         return tutor;
     }
 
-   
+    public String getListaest() {
+        return listaest;
+    }
 
-  
+    public void setListaest(String listaest) {
+        this.listaest = listaest;
+    }
+
+    
+    
+    
+    
       public void guardarDatos(String id){
         
         Set<VisitaTutor> setVisita = new LinkedHashSet<>();
@@ -297,6 +307,13 @@ private Usuario usuario = new Usuario();
                   
       }
      
+      public void updateVisitaAgendada(){
+          VisitaTutor newVisitaTutor = new VisitaTutor();
+          VisitaDAO visitaDAO = new VisitaDAO();
+          visitaDAO.updateVisita(1, newVisitaTutor);
+                  
+      }
+     
   public void imprimirData(){
       
         FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -317,7 +334,8 @@ private Usuario usuario = new Usuario();
         envioCita="Ud cuenta con una cita previa por confirmar";
             System.out.println("nombre"+console+"dataaaa" + fechaConFormato+"timeeee"+ horaConFormato);
         guardarDatos(id);
-        System.out.println("pasoooooooooooooooooooooooo");
+        
+        System.out.println("pasoooooooooooooooooooooooo"+listaest);
     }
     public void blanqueo(){
         observaciones="";

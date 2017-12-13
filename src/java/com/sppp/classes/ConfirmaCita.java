@@ -7,11 +7,14 @@ package com.sppp.classes;
 
 import com.sppp.DAO.CitasDao;
 import com.sppp.DAO.CitasDaoImp;
+import com.sppp.beans.Estudiante;
 import com.sppp.beans.Login;
+import com.sppp.beans.Usuario;
 import com.sppp.beans.VisitaTutor;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.model.SelectItem;
 
 
 @ManagedBean(name = "confirmaCita")
@@ -20,9 +23,36 @@ public class ConfirmaCita {
 
     private List<VisitaTutor> visitas;
     private Login login;
+    private List<SelectItem>listarEstudiantes;
+    private Usuario estudiantes;
+
+    public List<SelectItem> getListarEstudiantes() {
+        this.listarEstudiantes=new ArrayList<SelectItem>();
+        CitasDao citasDAO = new CitasDaoImp();
+        List <Usuario> est=citasDAO.listar();
+        
+        for(Usuario est2: est){
+            SelectItem listar = new SelectItem(est2.getId_cedula(),est2.getNombre());
+            this.listarEstudiantes.add(listar);
+            
+        }
+        return listarEstudiantes;
+    }
+
+
+    public Usuario getEstudiantes() {
+        return estudiantes;
+    }
+
+    public void setEstudiantes(Usuario estudiantes) {
+        this.estudiantes = estudiantes;
+    }
+    
+    
     
     public ConfirmaCita() {
         this.visitas= new ArrayList<VisitaTutor>();
+        estudiantes=new Usuario();
         
     }
 

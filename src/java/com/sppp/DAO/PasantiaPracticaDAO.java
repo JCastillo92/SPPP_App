@@ -11,6 +11,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import com.sppp.beans.Pasantia;
 
 /**
  *
@@ -69,4 +70,38 @@ public class PasantiaPracticaDAO {
          //en el retorno le sumo 1 para que el codigo de practica pre profesional se setee en el NUEVO registro.
          return ultimo_valor+1;
     }//fin metodo
+    
+    
+    
+    
+    //metodos de busqueda
+    public static Pasantia findPasantiaPractica(String tipoPasantia, String codigoPasantia){
+           SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        
+        Transaction tx=null;
+        Pasantia pasantia_practicapreprofesional=null;
+        int ultimo_valor=0;
+         try {
+            tx = sesion.beginTransaction();
+            Query query = sesion.createQuery("from Pasantia P WHERE P.tipo_ppp = :tipo AND P.cod_ppp = :cod_ppp");
+            query.setString("tipo", tipoPasantia);  
+            query.setString("cod_ppp", codigoPasantia);
+            
+            pasantia_practicapreprofesional= (Pasantia) query.uniqueResult();       
+            tx.commit();
+        }catch (Exception e) {
+            e.printStackTrace();
+            if (tx != null){
+                tx.rollback();
+            }
+        }
+        finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+         //en el retorno le sumo 1 para que el codigo de practica pre profesional se setee en el NUEVO registro.
+         return pasantia_practicapreprofesional;
+      
+    }//fin findPasantia   
 }//END OF CLASS

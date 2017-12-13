@@ -18,11 +18,6 @@ import org.hibernate.Transaction;
 public class PeriodoDAO {
     public long encontrarPeriodoActual(){
         //ESTE METODO PERMITE SABER EL PERIODO EL CUAL ESTA HABILITADO
-        /*
-         int id_periodo;
-    private String periodo;
-    private boolean estado_periodo;
-        */
        SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;

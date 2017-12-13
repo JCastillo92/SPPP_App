@@ -170,10 +170,15 @@ insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('Pasantia',4)
 insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('Practica pre-profesional',4);
 
 /*llenado de datos en tb_detalle_pasantia*/
-insert into tb_detalle_pasantia (iddetallepasantia,descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values (1,'datos inicio proceso pasantia',true,1,'PA',1);
 
-insert into tb_detalle_pasantia (iddetallepasantia,descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values (2,'seccion de carga y descarga de archivos (oficio y carta aceptacion)',false,3,'PA',1);
+insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('datos inicio proceso pasantia',true,1,'PA',1);
+insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('seccion de carga y descarga de archivos (oficio y carta aceptacion)',false,3,'PA',1);
+insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('datos carta compromiso',false,5,'PA',1);
+insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('carga y descarga solicitud inicio pasantia',false,7,'PA',1);
 
-insert into tb_detalle_pasantia (iddetallepasantia,descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values (3,'datos carta compromiso',false,5,'PA',1);
 
-insert into tb_detalle_pasantia (iddetallepasantia,descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values (4,'carga y descarga solicitud inicio pasantia',false,7,'PA',1);
+
+insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('datos inicio proceso pasantia',true,1,'PA',2);
+insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('seccion de carga y descarga de archivos (oficio y carta aceptacion)',false,3,'PA',2);
+insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('datos carta compromiso',false,5,'PA',2);
+insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('carga y descarga solicitud inicio pasantia',false,7,'PA',2);

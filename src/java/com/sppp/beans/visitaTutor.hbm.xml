@@ -10,14 +10,20 @@
             <generator class="identity" ></generator>
         </id>
         <property name="fecha_visita" type="date"></property>
+        <property name="hora_visita" type="string"></property>
+        <property name="confirmada" type="boolean"></property>
         <property name="estado_visita" type="boolean"></property>
+        
     
        <!--RECIBO LAS CLAVES FORANEAS -->
           <many-to-one name="tutor" class="Tutor">
-              <column name="cedula_tut" not-null="true"></column>
+              <column name="cedula_tut" not-null="false"></column>
           </many-to-one>
     
-    
+    <!-- RELACION 1 A 1 constrained="true" Aqui se le setea como primaria -->
+        <many-to-one name="estudiante" class="Estudiante" unique="true" column="cedula_est" not-null="false" cascade="all">
+            
+        </many-to-one>
     
     
     </class>

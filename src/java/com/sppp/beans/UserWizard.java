@@ -11,6 +11,7 @@ import com.sppp.DAO.WizardDAO;
 import com.sppp.utils.SessionUtils;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -35,7 +36,16 @@ public class UserWizard implements Serializable{
     private Estudiante est = new Estudiante();
     private Empresa emp = new Empresa();
     private Encargado enc = new Encargado();
+    Pasantia p = new Pasantia();
     private String tipo_p;
+
+    public Pasantia getP() {
+        return p;
+    }
+
+    public void setP(Pasantia p) {
+        this.p = p;
+    }
 
     public String getTipo_p() {
         return tipo_p;
@@ -96,24 +106,23 @@ public class UserWizard implements Serializable{
     public String guardarDatos(){
         
         System.out.println("Punto de quiebre");
-        Set<Pasantia> setPas = new LinkedHashSet<>();
-        
         Periodo per = new Periodo();
         per.setId_periodo(1);
-        
-        Pasantia p = new Pasantia();
-        p.setTipo_ppp(tipo_p);
-        p.setCod_ppp(2);
+        p.setCod_ppp(3);
         p.setTiempoEsperaEstado(4);
         p.setEstado(true);
         p.setPeriodo(per);
-        
-        setPas.add(p);
         //est.setPasantia(setPas);
         //usuario.getEstudiante().setPasantia(setPas);
+        
+        //Datos de la Empresa
+        enc.setEmpresa(emp);
+        
+        
+        
         System.out.println("================= "+usuario.getEstudiante().getCedula());
         WizardDAO wd = new WizardDAO();
-        wd.guardarDatosBasicos(usuario,p);
+        wd.guardarDatosBasicos(usuario,p,enc,emp); 
         
         try {
             

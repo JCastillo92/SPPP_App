@@ -5,7 +5,8 @@
  */
 package com.sppp.DAO;
 
-import com.sppp.beans.Estudiante;
+import com.sppp.beans.Empresa;
+import com.sppp.beans.Encargado;
 import com.sppp.beans.Pasantia;
 import com.sppp.beans.Usuario;
 import com.sppp.utils.HibernateUtil;
@@ -21,7 +22,7 @@ import org.hibernate.Transaction;
  */
 public class WizardDAO {
     
-    public void guardarDatosBasicos(Usuario est, Pasantia pas){
+    public void guardarDatosBasicos(Usuario est, Pasantia pas, Encargado enc, Empresa emp){
         
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
@@ -31,7 +32,9 @@ public class WizardDAO {
         try {
             tx = sesion.beginTransaction();
             sesion.saveOrUpdate(est);
-            sesion.save(pas);
+            sesion.saveOrUpdate(pas);
+            sesion.save(emp);
+            
             tx.commit();
             System.out.println("====================== PASO LA INFO ==================");
         } catch (Exception e) {
@@ -41,8 +44,7 @@ public class WizardDAO {
             if (tx != null){
                 tx.rollback();
             }
-        }
-        finally{
+        }finally{
             //para cerrar seesion
             sesion.close();
         }

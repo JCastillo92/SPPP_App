@@ -131,9 +131,10 @@ insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbform
 /*llenado de datos sobre tutor*/
 /*llenado de Periodo*/
 
-insert into tb_periodo (periodo,estado_periodo) values('1',false);
-insert into tb_periodo (periodo,estado_periodo) values('2',false);
-insert into tb_periodo (periodo,estado_periodo) values('3',false);
+insert into tb_periodo (periodo,estado_periodo) values('49',false);
+insert into tb_periodo (periodo,estado_periodo) values('50',false);
+insert into tb_periodo (periodo,estado_periodo) values('51',true);
+insert into tb_periodo (periodo,estado_periodo) values('52',false);
 
 
 /*llenado tb_periodotutor los cuales seran automaticos*/

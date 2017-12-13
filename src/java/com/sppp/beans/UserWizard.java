@@ -104,10 +104,15 @@ public class UserWizard implements Serializable{
         System.out.println("Punto de quiebre");
         PasantiaPracticaDAO objeto_ppp = new PasantiaPracticaDAO();
         PeriodoDAO objeto_periodo = new PeriodoDAO();
+        
+        //veo el periodo
+        Periodo per = new Periodo();
         long id_periodo=0;//creo la variable long ya que periodo es de tipo long
         id_periodo=objeto_periodo.encontrarPeriodoActual();//lamo a obtener el ID del periodo actual el cual estara en TRUE
-        Periodo per = new Periodo();
         per.setId_periodo(id_periodo);//aqui seteo el periodo actual obtenido
+        
+        
+        //veo tipo de pasantia o practca pre-profesional
         String tipo_pa_pp="none";
         tipo_pa_pp=p.getTipo_ppp();
         //<f:selectItem itemLabel="Pasantia" itemValue="pa"/>
@@ -122,6 +127,7 @@ public class UserWizard implements Serializable{
             receive_new_code=objeto_ppp.encontrarUltimoPA();//aqui recibo el nuevo codigo de Pa
             p.setCod_ppp(receive_new_code);
         }
+        
         
         p.setTiempoEsperaEstado(4);
         p.setEstado(true);       

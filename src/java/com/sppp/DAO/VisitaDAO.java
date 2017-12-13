@@ -65,5 +65,25 @@ Session session = HibernateUtil.getSessionFactory().openSession();
              session.close();
          }
 }
+     
+      public void updateVisitaAgendada(long id_visita,VisitaTutor newVisitaTutor){
+Transaction trns= null;
+Session session = HibernateUtil.getSessionFactory().openSession();
+         try {
+             trns= session.beginTransaction();
+             VisitaTutor oldVisitaTuror =(VisitaTutor) session.load(VisitaTutor.class, new Long(id_visita));
+             oldVisitaTuror.setConfirmada(true);
+             session.update(oldVisitaTuror);
+             trns.commit();
+         } catch (RuntimeException e) {
+         e.printStackTrace();
+         if(trns !=null){
+             trns.rollback();
+         }
+         e.printStackTrace();
+         }finally{
+             session.close();
+         }
+}
    
 }

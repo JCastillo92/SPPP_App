@@ -270,14 +270,15 @@ private Usuario usuario = new Usuario();
     
     
     
-      public void guardarDatos(String id){
+      public void guardarDatos(String id,String id2){
         
         Set<VisitaTutor> setVisita = new LinkedHashSet<>();
-        Long id1=Long.parseLong(id);
+       Long id1=Long.parseLong(id);
        tutor.setCedula(id1);
-               
+          
+       Long id3=Long.parseLong(id2);    
         Estudiante est = new Estudiante();
-        est.setCedula(1111111111);
+        est.setCedula(id3);
         
         VisitaTutor vt = new VisitaTutor();
         vt.setId_visita(id_visita);
@@ -327,15 +328,15 @@ private Usuario usuario = new Usuario();
   }
   
   
-    public void enviarCita(String id){
+    public void enviarCita(String id, String id2){
         horaConFormato= sdf_time.format(time);
         fechaConFormato = sdf_data.format(data); 
         console="Ing. Rodas";
         envioCita="Ud cuenta con una cita previa por confirmar";
             System.out.println("nombre"+console+"dataaaa" + fechaConFormato+"timeeee"+ horaConFormato);
-        guardarDatos(id);
+        guardarDatos(id, id2);
         
-        System.out.println("pasoooooooooooooooooooooooo"+listaest);
+        System.out.println("pasoooooooooooooooooooooooo");
     }
     public void blanqueo(){
         observaciones="";

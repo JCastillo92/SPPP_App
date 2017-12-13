@@ -11,19 +11,16 @@ import com.sppp.DAO.WizardDAO;
 import com.sppp.utils.SessionUtils;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.servlet.http.HttpSession;
 import org.primefaces.event.FlowEvent;
-
+import com.sppp.DAO.PasantiaPracticaDAO;
+import com.sppp.DAO.PeriodoDAO;
 /**
  *
  * @author EstJhonAlexanderCast
@@ -104,13 +101,36 @@ public class UserWizard implements Serializable{
     
     
     public String guardarDatos(){
-        
         System.out.println("Punto de quiebre");
+        PasantiaPracticaDAO objeto_ppp = new PasantiaPracticaDAO();
+        PeriodoDAO objeto_periodo = new PeriodoDAO();
+        
+        //veo el periodo
         Periodo per = new Periodo();
-        per.setId_periodo(1);
-        p.setCod_ppp(3);
+        long id_periodo=0;//creo la variable long ya que periodo es de tipo long
+        id_periodo=objeto_periodo.encontrarPeriodoActual();//lamo a obtener el ID del periodo actual el cual estara en TRUE
+        per.setId_periodo(id_periodo);//aqui seteo el periodo actual obtenido
+        
+        
+        //veo tipo de pasantia o practca pre-profesional
+        String tipo_pa_pp="none";
+        tipo_pa_pp=p.getTipo_ppp();
+        //<f:selectItem itemLabel="Pasantia" itemValue="pa"/>
+        //<f:selectItem itemLabel="Practica Pre Profesional" itemValue="pp"/>
+        
+        int receive_new_code=0;
+        if(tipo_pa_pp.equals("pp")){
+            receive_new_code=objeto_ppp.encontrarUltimoPP();//aqui recibo el nuevo codigo de PP
+            p.setCod_ppp(receive_new_code);
+        }
+        if(tipo_pa_pp.equals("pa")){
+            receive_new_code=objeto_ppp.encontrarUltimoPA();//aqui recibo el nuevo codigo de Pa
+            p.setCod_ppp(receive_new_code);
+        }
+        
+        
         p.setTiempoEsperaEstado(4);
-        p.setEstado(true);
+        p.setEstado(true);       
         p.setPeriodo(per);
         //est.setPasantia(setPas);
         //usuario.getEstudiante().setPasantia(setPas);

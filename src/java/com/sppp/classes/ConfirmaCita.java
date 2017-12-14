@@ -22,7 +22,7 @@ import javax.faces.model.SelectItem;
 public class ConfirmaCita {
 
     private List<VisitaTutor> visitas;
-    private Login login;
+    private List<VisitaTutor> confirmaVisitas;
     private List<SelectItem>listarEstudiantes;
     private Usuario estudiantes;
 
@@ -52,6 +52,7 @@ public class ConfirmaCita {
     
     public ConfirmaCita() {
         this.visitas= new ArrayList<VisitaTutor>();
+        this.confirmaVisitas= new ArrayList<VisitaTutor>();
         estudiantes=new Usuario();
         
     }
@@ -63,6 +64,13 @@ public class ConfirmaCita {
         return visitas;
        
     }
+
+    public List<VisitaTutor> getConfirmaVisitas(String id) {
+        CitasDao citasdao=new CitasDaoImp();
+        this.confirmaVisitas=citasdao.confirmaCita(id);
+        return confirmaVisitas;
+    }
+
     
-    
+  
 }

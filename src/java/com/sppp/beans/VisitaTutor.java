@@ -6,11 +6,13 @@
 package com.sppp.beans;
 
 import java.util.Date;
+import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author KarenVanessaAchigGua
  */
+@ManagedBean
 public class VisitaTutor implements java.io.Serializable{
     private long id_visita;
     private Date fecha_visita;

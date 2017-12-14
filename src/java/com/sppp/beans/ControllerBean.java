@@ -44,7 +44,6 @@ private Usuario usuario = new Usuario();
      private String console="----------";
        private String fechaConFormato ="----------"; 
       private String horaConFormato ="----------"; 
-      private String envioCita ="Aún no cuenta con una cita previa";
       private String fecha="-------------------";
       private String hora="-------------------";
       private String nombre="------------------";
@@ -144,14 +143,6 @@ private Usuario usuario = new Usuario();
 
     public void setHoraConFormato(String horaConFormato) {
         this.horaConFormato = horaConFormato;
-    }
-
-    public String getEnvioCita() {
-        return envioCita;
-    }
-
-    public void setEnvioCita(String envioCita) {
-        this.envioCita = envioCita;
     }
 
     public String getObservaciones() {
@@ -266,10 +257,6 @@ private Usuario usuario = new Usuario();
         this.listaest = listaest;
     }
 
-    
-    
-    
-    
       public void guardarDatos(String id,String id2){
         
         Set<VisitaTutor> setVisita = new LinkedHashSet<>();
@@ -301,18 +288,20 @@ private Usuario usuario = new Usuario();
         }
         
     }
-     public void updateVisita(){
+     public void updateVisita(long id_visita){
           VisitaTutor newVisitaTutor = new VisitaTutor();
           VisitaDAO visitaDAO = new VisitaDAO();
-          visitaDAO.updateVisita(1, newVisitaTutor);
-                  
+          visitaDAO.updateVisita(id_visita, newVisitaTutor);
+          //agregar();
+         
+                  System.out.println("jaaaaaaaaaaaaaaaaaaaaaaa"+id_visita);
       }
      
-      public void updateVisitaAgendada(){
+      public void updateVisitaAgendada(long id_visita2){
           VisitaTutor newVisitaTutor = new VisitaTutor();
           VisitaDAO visitaDAO = new VisitaDAO();
-          visitaDAO.updateVisita(1, newVisitaTutor);
-                  
+          visitaDAO.updateVisitaAgendada(id_visita2, newVisitaTutor);
+                    System.out.println("jaaaaaaaaaaaaaaaaaaaaaaajeeeeeeee"+id_visita2);
       }
      
   public void imprimirData(){
@@ -331,8 +320,7 @@ private Usuario usuario = new Usuario();
     public void enviarCita(String id, String id2){
         horaConFormato= sdf_time.format(time);
         fechaConFormato = sdf_data.format(data); 
-        console="Ing. Rodas";
-        envioCita="Ud cuenta con una cita previa por confirmar";
+        
             System.out.println("nombre"+console+"dataaaa" + fechaConFormato+"timeeee"+ horaConFormato);
         guardarDatos(id, id2);
         
@@ -340,22 +328,18 @@ private Usuario usuario = new Usuario();
     }
     public void blanqueo(){
         observaciones="";
-        envioCita ="!!! Ud ya ha confirmado una cita con el tutor !!!!";
-          System.out.println("nombresitoooo "+console+" dataaaa " + fechaConFormato+" timeeee"+ horaConFormato);
-    }
+       
+           }
     
     
     public void envioObservacion(){
-         console="----------";
-        fechaConFormato ="----------"; 
-       horaConFormato ="----------"; 
-        envioCita ="En espera de confirmación de parte del tutor";
+        
+       
         observaciones="";
     }
   public void enviarCitaTut(){
         fecha= sdf_time.format(time);
         hora = sdf_data.format(data); 
-        nombre=nombre_est;   
         agregar();
         blanqueo();
     }

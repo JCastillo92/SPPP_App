@@ -46,12 +46,12 @@ public class VisitaDAO {
         
     }
      
-     public void updateVisita(long id_tutor,VisitaTutor newVisitaTutor){
+     public void updateVisita(long cedula_est,VisitaTutor newVisitaTutor){
 Transaction trns= null;
 Session session = HibernateUtil.getSessionFactory().openSession();
          try {
              trns= session.beginTransaction();
-             VisitaTutor oldVisitaTuror =(VisitaTutor) session.load(VisitaTutor.class, new Long(id_tutor));
+             VisitaTutor oldVisitaTuror =(VisitaTutor) session.load(VisitaTutor.class, new Long(cedula_est));
              oldVisitaTuror.setConfirmada(true);
              session.update(oldVisitaTuror);
              trns.commit();
@@ -66,14 +66,14 @@ Session session = HibernateUtil.getSessionFactory().openSession();
          }
 }
      
-      public void updateVisitaAgendada(long id_tutor,VisitaTutor newVisitaTutor){
+      public void updateVisitaAgendada(long cedula_tut,VisitaTutor newVisita){
 Transaction trns= null;
 Session session = HibernateUtil.getSessionFactory().openSession();
          try {
              trns= session.beginTransaction();
-             VisitaTutor oldVisitaTuror =(VisitaTutor) session.load(VisitaTutor.class, new Long(id_tutor));
-             oldVisitaTuror.setEstado_visita(true);
-             session.update(oldVisitaTuror);
+             VisitaTutor oldVisita =(VisitaTutor) session.load(VisitaTutor.class, new Long(cedula_tut));
+             oldVisita.setEstado_visita(true);
+             session.update(oldVisita);
              trns.commit();
          } catch (RuntimeException e) {
          e.printStackTrace();
@@ -85,5 +85,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
              session.close();
          }
 }
+   
+      
    
 }

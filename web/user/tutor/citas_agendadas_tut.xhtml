@@ -33,12 +33,7 @@
                     <div class="panel-body">
                         <div class="table-responsive">
                             <b:dataTable class="table table-striped table-bordered table-hover" var="campo" value="#{citasAgendadas.getVisitas(login.user)}">
-                                <b:dataTableColumn label="Estado">                   
-                                    <b:column >
-                                        <center>    <button type="button" class="#{controllerBean.boton}"><i class="glyphicon glyphicon"></i></button></center>
-
-                                    </b:column>
-                                </b:dataTableColumn>
+                               
                                 <b:dataTableColumn label="Nombre estudiante">                   
 
                                     <b:column >
@@ -79,8 +74,18 @@
           Seguro desea realizar el envio?
          </div>
       <div class="modal-footer">
-          <h:commandButton class="btn btn-primary" value="Si" action="#{controllerBean.updateVisitaAgendada()}"  />
-        <button type="button" class="btn btn-default" data-dismiss="modal" >Cerrar</button>
+          <h:dataTable rows="1" class="table table-striped table-bordered table-hover" var="campo" value="#{citasAgendadas.getVisitas(login.user)}">
+                              
+                                <b:dataTableColumn  >                   
+                                    <b:column >
+                                        <h:commandButton class="btn btn-primary" value="Si" action="#{controllerBean.updateVisitaAgendada(campo.id_visita)}"  />
+        <button type="button" class="btn btn-default" data-dismiss="modal" >No</button>
+                                    </b:column>
+                                </b:dataTableColumn>
+                             
+                            </h:dataTable>
+
+        
       </div>
     </div>
 
@@ -96,16 +101,10 @@
 
             </center>
 
-
-
-
-
-
-
-
         </h:form>
 
 
     </ui:define>
 
 </ui:composition>
+

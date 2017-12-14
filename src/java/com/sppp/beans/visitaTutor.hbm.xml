@@ -21,7 +21,8 @@
           </many-to-one>
     
     <!-- RELACION 1 A 1 constrained="true" Aqui se le setea como primaria -->
-        <many-to-one name="estudiante" class="Estudiante" unique="true" column="cedula_est" not-null="false" cascade="all">
+    <!--<many-to-one name="estudiante" class="Estudiante" unique="true" column="cedula_est" not-null="false" cascade="all"> -->
+        <many-to-one name="estudiante" class="Estudiante" unique="true" column="cedula_est" not-null="false" >
             
         </many-to-one>
     

@@ -304,6 +304,13 @@ private Usuario usuario = new Usuario();
                     System.out.println("jaaaaaaaaaaaaaaaaaaaaaaajeeeeeeee"+id_visita2);
       }
      
+      public String deleteVisita(long id){
+          VisitaDAO visitaDAO = new VisitaDAO();
+          visitaDAO.deleteVisita(id);
+           
+          return "confirma_cita_est";
+      }
+      
   public void imprimirData(){
       
         FacesContext facesContext = FacesContext.getCurrentInstance();

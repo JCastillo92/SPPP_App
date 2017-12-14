@@ -68,7 +68,7 @@
                                     </b:column>
                                 </b:dataTableColumn>
                                 <b:dataTableColumn label="Aprobar">                   
-                                   <center> <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal"  >Si</button> &#160; <h:commandButton class="btn btn-danger"  value="No" action="#{controllerBean.observacion()}" /> </center>
+                                   <center> <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal"  >Si</button> &#160; <h:commandButton class="btn btn-danger"  value="No" action="#{controllerBean.deleteVisita(campo.id_visita)}" /> </center>
     			                   
                                 </b:dataTableColumn>
 
@@ -121,7 +121,7 @@
             
                 <br/>
                 
-                <h:commandButton  class="btn btn-primary" value="Enviar" rendered="#{controllerBean.observaciones.length() > 0 eq true}" action="#{controllerBean.envioObservacion()}"/>
+                <h:commandButton  class="btn btn-primary" value="Enviar" rendered="#{controllerBean.observaciones.length() > 0 eq true}" />
             
             </center>
                 

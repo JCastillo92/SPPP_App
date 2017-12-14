@@ -86,6 +86,25 @@ Session session = HibernateUtil.getSessionFactory().openSession();
          }
 }
    
-      
+      public void deleteVisita(long id){
+          Transaction trns= null;
+Session session = HibernateUtil.getSessionFactory().openSession();
+         try {
+             trns= session.beginTransaction();
+             VisitaTutor visitaTutor =(VisitaTutor) session.load(VisitaTutor.class, new Long(id));
+            session.delete(visitaTutor);
+             session.getTransaction().commit();
+         } catch (RuntimeException e) {
+           if(trns !=null){
+             trns.rollback();
+         }
+         e.printStackTrace();
+         }finally{
+             session.close();
+         }
+
+          
+          
+      }
    
 }

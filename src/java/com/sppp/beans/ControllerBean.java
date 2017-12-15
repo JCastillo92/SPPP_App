@@ -11,13 +11,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.LinkedHashSet;
+
 import java.util.Set;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.SelectEvent;
-import org.primefaces.event.UnselectEvent;
+
 /**
  *
  * @author
@@ -293,7 +295,7 @@ private Usuario usuario = new Usuario();
           VisitaDAO visitaDAO = new VisitaDAO();
           visitaDAO.updateVisita(id_visita, newVisitaTutor);
           //agregar();
-         
+     
                   System.out.println("jaaaaaaaaaaaaaaaaaaaaaaa"+id_visita);
       }
      
@@ -324,31 +326,26 @@ private Usuario usuario = new Usuario();
   }
   
   
+ 
+  
+  
     public void enviarCita(String id, String id2){
         horaConFormato= sdf_time.format(time);
         fechaConFormato = sdf_data.format(data); 
         
+           
             System.out.println("nombre"+console+"dataaaa" + fechaConFormato+"timeeee"+ horaConFormato);
         guardarDatos(id, id2);
         
         System.out.println("pasoooooooooooooooooooooooo");
     }
-    public void blanqueo(){
-        observaciones="";
-       
-           }
-    
-    
-    public void envioObservacion(){
-        
-       
-        observaciones="";
-    }
+   
+   
   public void enviarCitaTut(){
         fecha= sdf_time.format(time);
         hora = sdf_data.format(data); 
         agregar();
-        blanqueo();
+      
     }
     
     /** evento para fecha seleccionado de agregar cita*/

@@ -55,16 +55,14 @@ public class CitasDaoImp implements CitasDao {
         Transaction tx = null;
         List<VisitaTutor> listado2 = null;
 
-        String sql = "FROM VisitaTutor WHERE cedula_est =:id and estado_visita =:false and confirmada =:false";
+        String sql = "FROM VisitaTutor WHERE cedula_est =:id";
 
         try {
             tx = sesion.beginTransaction();
         //      Query query = sesion.createQuery(sql);
          // listado=query.list();
          Long id1=Long.parseLong(id);
-         boolean estado=false;
-         boolean estado1=false;
-         listado2 = sesion.createQuery(sql).setParameter("id", id1).setParameter("false", estado1).setParameter("false", estado).list();
+         listado2 = sesion.createQuery(sql).setParameter("id", id1).list();
 //query.setInteger("id", id);
             tx.commit();
         } catch (RuntimeException e) {

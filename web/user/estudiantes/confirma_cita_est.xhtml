@@ -16,66 +16,85 @@
     
     <ui:define name="contenido">
          <h:form>
-            
-            
+             
             <br/><br/>
           
-            <legend><center><h:outputLabel value="Confirmar cita"/></center></legend>
+            <legend><center><h:outputLabel value="Cita"/></center></legend>
             <br/><br/>
+          <div class="row" >
+                <div class="col-lg-12">
+                      
              <div class="panel panel-default">
                     <div class="panel-heading">
-                        Notificación de cita:
+                        Confirmar cita
                     </div>
-                  <div class="panel-body">
-           <div class="table-responsive">
-               <h:dataTable class="table table-striped table-bordered table-hover" var="campo2" value="#{confirmaCita.getConfirmaVisitas(login.user)}">
-                               
-                                <b:dataTableColumn >                   
-                                    <b:column >
-                                      Fecha:  <h:outputText value="#{campo2.fecha_visita}" />
-                                   &#160;    Hora: <h:outputText value="#{campo2.hora_visita}" />
-                                    </b:column>
-                                </b:dataTableColumn>
-                                
-
-
-                            </h:dataTable>
-
-                        </div>
-                       </div>
-                  </div>
-            <br/><br/>
-           
-            
             <div class="panel-body">
+                 <div class="row">
+                      <div class="col-lg-1" >
+                      </div>
+                     <div class="col-lg-10" >
                         <div class="table-responsive">
-                            <b:dataTable class="table table-striped table-bordered table-hover" var="campo" value="#{confirmaCita.getVisitas(login.user)}">
+                             
+                            <h:dataTable  class="table table-striped table-bordered table-hover" var="campo" value="#{confirmaCita.getVisitas(login.user)}">
                               
-                                <b:dataTableColumn label="Nombre del tutor:" >                   
-
-                                    <b:column>
+                                    <h:column  >
+                                       
+                                        <div class="col-lg-2" >
+                                        Tutor: 
+                                        </div>
+                                        <div class="col-lg-10" >
                                         <h:outputText value="#{campo.id_visita}" />
-                                    </b:column>
-                                </b:dataTableColumn>
-                                <b:dataTableColumn label="Fecha visita">                   
-                                    <b:column >
-                                        <h:outputText value="#{campo.fecha_visita}" />
-                                    </b:column>
-                                </b:dataTableColumn>
-                                <b:dataTableColumn label="Hora visita">                   
-                                    <b:column >
-                                        <h:outputText value="#{campo.hora_visita}" />
-                                    </b:column>
-                                </b:dataTableColumn>
-                                <b:dataTableColumn label="Aprobar">                   
-                                   <center> <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal"  >Si</button> &#160; <h:commandButton class="btn btn-danger"  value="No" action="#{controllerBean.deleteVisita(campo.id_visita)}" /> </center>
-    			                   
-                                </b:dataTableColumn>
-
-
-                            </b:dataTable>
-
+                                        </div>
+                                    <br/><br/>
+                                       <div class="col-lg-2" >
+                                      Dia: 
+                                      </div>
+                                    <div class="col-lg-10" >
+                                      <h:outputText value="#{campo.fecha_visita}" />
+                                      </div>
+                                       <br/><br/>
+                                      <div class="col-lg-2" >
+                                      Fecha: 
+                                      </div>
+                                       <div class="col-lg-10" >
+                                      <h:outputText value="#{campo.fecha_visita}" />
+                                   </div>
+                                      <br/> <br/>          
+                                   <div class="col-lg-2" >
+                                       Hora:
+                                       </div>
+                                       <div class="col-lg-10" >
+                                       <h:outputText value="#{campo.hora_visita}" />
+                                       </div>
+                                        <br/>  <br/> 
+                                        <div class="col-lg-6" >
+                                        Observación:
+                                         </div>
+                                        <br/>
+                                        <div class="col-lg-12" >
+                                   <h:inputTextarea  class="form-control" rows="3"  />
+                                   </div>
+                                   <br/>   <br/><br/>   <br/><br/>
+                                   <div class="col-lg-12" >
+                                       <h:column rendered="#{campo.confirmada == true eq false}">
+             <center> <button type="button" class="btn btn-primary"   data-toggle="modal" data-target="#myModal"  >Enviar</button> &#160; <button type="button" class="btn btn-default" data-dismiss="modal" >Cancelar</button></center>
+    			          </h:column>
+                                   </div>
+                                   <div class="col-lg-12" >
+                                       <h:column rendered="#{campo.confirmada == true eq true}">
+                                           Notificación: <h:outputLabel value="Ud ya cuanta con una cita." />
+            	          </h:column>
+                                   </div>
+                                        
+                                    </h:column>
+                              
+                            </h:dataTable>
+ 
+                         </div>        
                         </div>
+                     <div class="col-lg-1" >
+                      </div>
+                     </div> 
                              <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -110,12 +129,13 @@
                         
                         <!-- /.table-responsive -->
                     </div>
-            
-            
+            </div>
+                 </div>
+            </div>
             
             <br/>
                 
-                <h:outputLabel value = "#{controllerBean.observaciones}" />
+               
                 <center>
                     <h:inputTextarea  class="form-control" rows="3"  rendered="#{controllerBean.observaciones.length() > 0 eq true}"  />
             

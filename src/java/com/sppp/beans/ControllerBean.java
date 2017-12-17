@@ -6,6 +6,7 @@
 package com.sppp.beans;
 
 import com.sppp.DAO.VisitaDAO;
+import com.sppp.classes.CitasAgendadas;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -257,7 +258,7 @@ private Usuario usuario = new Usuario();
         this.listaest = listaest;
     }
 
-      public void guardarDatos(String id,String id2){
+      public void guardarDatos(String id,String id2,String dia){
         
         Set<VisitaTutor> setVisita = new LinkedHashSet<>();
        Long id1=Long.parseLong(id);
@@ -269,10 +270,11 @@ private Usuario usuario = new Usuario();
         
         VisitaTutor vt = new VisitaTutor();
         vt.setId_visita(id_visita);
+        vt.setDia(dia);
         vt.setFecha_visita(data);
          vt.setHora_visita(horaConFormato);
         vt.setConfirmada(false);
-        vt.setEstado_visita(false);
+        vt.setEstado_visita("agendada");
         vt.setTutor(tutor);
         vt.setEstudiante(est);
           System.out.println("tutor"+tutor.getCedula());
@@ -327,11 +329,46 @@ private Usuario usuario = new Usuario();
     public void enviarCita(String id, String id2){
         horaConFormato= sdf_time.format(time);
         fechaConFormato = sdf_data.format(data); 
+        int dia;
+        String dia1 = null;
+         GregorianCalendar cal = new GregorianCalendar();
+	cal.setTime(data);
+        dia=cal.get(Calendar.DAY_OF_WEEK);
+      
+        if(dia==6){
+              
+               dia1="Viernes";
+        }
+        if(dia==2){
         
-            System.out.println("nombre"+console+"dataaaa" + fechaConFormato+"timeeee"+ horaConFormato);
-        guardarDatos(id, id2);
+               dia1="Lunes";
+        }
         
-        System.out.println("pasoooooooooooooooooooooooo");
+        if(dia==3){
+                
+               dia1="Martes";
+        }
+        
+        if(dia==4){
+                     
+               dia1="Miercoles";
+  }
+        if(dia==5){
+         
+               dia1="Jueves";
+        }
+        
+        if(dia==7){
+   
+               dia1="Sabado";
+        } 
+        
+        
+        
+        
+        
+        guardarDatos(id, id2,dia1);
+     
     }
     public void blanqueo(){
         observaciones="";

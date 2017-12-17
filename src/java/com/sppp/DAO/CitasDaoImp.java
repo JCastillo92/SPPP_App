@@ -29,16 +29,16 @@ public class CitasDaoImp implements CitasDao {
         Transaction tx = null;
         List<VisitaTutor> listado = null;
 
-        String sql = "FROM VisitaTutor WHERE cedula_tut =:id and estado_visita =:false and confirmada =:TRUE";
+        String sql = "FROM VisitaTutor  WHERE cedula_tut =:id and estado_visita =:agendada and confirmada =:False";
 
         try {
             tx = sesion.beginTransaction();
         //      Query query = sesion.createQuery(sql);
          // listado=query.list();
          Long id1=Long.parseLong(id);
-         boolean estado=true;
-         boolean estado1=false;
-         listado = sesion.createQuery(sql).setParameter("id", id1).setParameter("false", estado1).setParameter("TRUE", estado).list();
+         boolean estado=false;
+         String estado1="agendada";
+         listado = sesion.createQuery(sql).setParameter("id", id1).setParameter("agendada", estado1).setParameter("False", estado).list();
 //query.setInteger("id", id);
             tx.commit();
         } catch (RuntimeException e) {
@@ -131,6 +131,42 @@ public class CitasDaoImp implements CitasDao {
         }
         return listado;
         }
+
+   @Override
+    public String obtenerNombre(String id) {
+        String nombre;
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+            
+        Transaction tx = null;
+        
+        String sql = "SELECT nombre FROM Usuario WHERE id_usuario =:idUs and id_perfil =:num";
+        int id1=1,idUs;
+        idUs=Integer.parseInt(id);
+        try {
+            tx = sesion.beginTransaction();
+        nombre =(String) sesion.createQuery(sql).setParameter("num", id1).setParameter("idUs", idUs).uniqueResult();
+
+            //    Query query = sesion.createQuery(sql);
+        // estudiante=query.list();
+         /*Long id1=Long.parseLong(id);
+         boolean estado=false;
+         boolean estado1=false;
+         
+*///query.setInteger("id", id);
+            tx.commit();
+        } catch (RuntimeException e) {
+            tx.rollback();
+            throw e;
+        }
+        
+        return nombre;
+ 
+    
+    
+    }
+
+
     
     
     

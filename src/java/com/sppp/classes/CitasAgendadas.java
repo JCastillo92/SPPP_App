@@ -23,9 +23,12 @@ public class CitasAgendadas {
 
     private List<VisitaTutor> visitas;
     private Login login;
+    private String nombre;
+    
     
     public CitasAgendadas() {
         this.visitas= new ArrayList<VisitaTutor>();
+        this.nombre=nombre;
         
     }
 
@@ -33,8 +36,18 @@ public class CitasAgendadas {
         
         CitasDao citasdao=new CitasDaoImp();
         this.visitas=citasdao.findAll(id);
-        return visitas;
        
+       
+        
+        return visitas;
+        
+       
+    }
+
+    public String getNombre(String id) {
+         CitasDao citasdao=new CitasDaoImp();
+        this.nombre=citasdao.obtenerNombre(id);
+        return nombre;
     }
     
     

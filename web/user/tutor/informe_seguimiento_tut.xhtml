@@ -3,14 +3,14 @@
      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
      template="/templates/main.xhtml"
      
-     xmlns:h="http://xmlns.jcp.org/jsf/html">
+     xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:b="http://bootsfaces.net/ui">
     
     <ui:define name="title">
        Tutor
     </ui:define>
     
     <ui:define name="barra-lateral">
-        <ui:include src="/snippets/menu_tutor.xhtml" />
     </ui:define>
     
     <ui:define name="contenido">
@@ -193,7 +193,10 @@
                       <br/>
             <p><label>Calificar sobre 5 el criterio personal y contextual. (5 - Muy Satisfactorio, 4 - Satisfactorio, 3 - Aceptable, 2 - Deficiente, 1 - Malo)</label></p>
                     <p><label> Calificar sobre 5 cada actividad. (5 - Muy Satisfactorio, 4 - Satisfactorio, 3 - Aceptable, 2 - Deficiente, 1 - Malo)</label>   </p> 
-                        </div>                            
+                              <b:button outcome="hoja_ruta_tut.xhtml"  class="btn btn-primary btn-xs" icon="arrow-right"  ></b:button> 
+                              <b:button outcome="agendar_cita_tut.xhtml"  class="btn btn-primary btn-xs" icon="remove"  ></b:button> 
+                           
+                </div>                            
                                             
               </div>
                  </div>

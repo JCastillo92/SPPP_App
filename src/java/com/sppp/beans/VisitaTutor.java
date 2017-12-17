@@ -17,10 +17,13 @@ public class VisitaTutor implements java.io.Serializable{
     private long id_visita;
     private Date fecha_visita;
     private String hora_visita;
-    private boolean estado_visita;
+    private String estado_visita;
     private boolean confirmada;
+    private String dia;
+  
     private Tutor tutor;
     private Estudiante estudiante;
+    
   
      public VisitaTutor() {
     }
@@ -60,13 +63,23 @@ public class VisitaTutor implements java.io.Serializable{
         this.fecha_visita = fecha_visita;
     }
 
-    public boolean isEstado_visita() {
+    public String getEstado_visita() {
         return estado_visita;
     }
 
-    public void setEstado_visita(boolean estado_visita) {
+    public void setEstado_visita(String estado_visita) {
         this.estado_visita = estado_visita;
     }
+
+    public String getDia() {
+        return dia;
+    }
+
+    public void setDia(String dia) {
+        this.dia = dia;
+    }
+
+
 
     public String getHora_visita() {
         return hora_visita;

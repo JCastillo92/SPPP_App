@@ -9,10 +9,12 @@
    <id name="id_visita" column="id_visita" type="long">
             <generator class="identity" ></generator>
         </id>
+        
+        <property name="dia" type="string"></property>
         <property name="fecha_visita" type="date"></property>
         <property name="hora_visita" type="string"></property>
         <property name="confirmada" type="boolean"></property>
-        <property name="estado_visita" type="boolean"></property>
+        <property name="estado_visita" type="string"></property>
         
     
        <!--RECIBO LAS CLAVES FORANEAS -->

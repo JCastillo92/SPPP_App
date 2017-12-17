@@ -2,14 +2,14 @@
      xmlns="http://www.w3.org/1999/xhtml"
      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
      template="/templates/main.xhtml"
-         xmlns:h="http://xmlns.jcp.org/jsf/html">
+     xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:b="http://bootsfaces.net/ui">
     
     <ui:define name="title">
        Tutor
     </ui:define>
     
     <ui:define name="barra-lateral">
-        <ui:include src="/snippets/menu_tutor.xhtml" />
     </ui:define>
     
     <ui:define name="contenido">
@@ -96,11 +96,12 @@
                                             </td>
                                             </tr>
                                 </table>                
-                            </div>
+                   
+                        </div>
                             
                             
                          
-                    
+                                 
                     
                           
                     </div> </div> 
@@ -157,7 +158,10 @@
                                             <br/>
                                             <center>  <hr color="blue" size="5" width="150"></hr>
                                                 <label for="disabledSelect">Firma tutor</label>
-                </center>      
+                </center>   
+                                             <b:button outcome="informe_seguimiento_tut.xhtml"  class="btn btn-primary btn-xs" icon="arrow-right"  ></b:button> 
+                      <b:button outcome="agendar_cita_tut.xhtml"  class="btn btn-primary btn-xs" icon="remove"  ></b:button> 
+                           
                         </div> 
                     </div>
               </div>

@@ -18,6 +18,6 @@ public interface CitasDao {
      public List<VisitaTutor> confirma(String id);
       public List<VisitaTutor> confirmaCita(String id);
      public List<Usuario> listar();
-     
+     public String obtenerNombre(String id);
     
 }

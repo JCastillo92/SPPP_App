@@ -149,8 +149,8 @@ insert into tb_horariotutor (hora,dia,id_tbpt) values ('07:00','Viernes',1);
 insert into tb_horariotutor (hora,dia,id_tbpt) values ('09:00','Lunes',1);
 
 /*llenado tb_visitatutor sera automatica*/
-insert into tb_visitatutor (fecha_visita,hora_visita,confirmada,estado_visita,cedula_tut,cedula_est)values('2017-11-28','07:00',false,false,333,123);
-insert into tb_visitatutor (fecha_visita,hora_visita,confirmada,estado_visita,cedula_tut,cedula_est)values('2018-11-28','09:00',false,false,3333333333,321);
+insert into tb_visitatutor (dia, fecha_visita,hora_visita,confirmada,estado_visita,cedula_tut,cedula_est)values('Lunes','2017-11-28','07:00',false,'agendada',333,123);
+insert into tb_visitatutor (dia,fecha_visita,hora_visita,confirmada,estado_visita,cedula_tut,cedula_est)values('martes','2018-11-28','09:00',false,'agendada',3333333333,321);
 
 /*llenar tabla TB_PASANTIA*/
 insert into tb_pasantia (tipo_ppp,cod_ppp,fechainicio,fechafin,tiempoesperaestado,estado,cedula,id_periodo) values ('PA',1,'2017-11-28','2017-12-13',0,true,'1111111111',1);

@@ -9,6 +9,7 @@ import com.sppp.DAO.CitasDao;
 import com.sppp.DAO.CitasDaoImp;
 import com.sppp.beans.Estudiante;
 import com.sppp.beans.Login;
+import com.sppp.beans.Pasantia;
 import com.sppp.beans.Tutor;
 import com.sppp.beans.Usuario;
 import com.sppp.beans.VisitaTutor;
@@ -27,9 +28,22 @@ public class CitasAgendadas {
     private List<VisitaTutor> visitas;
     private Login login;
     private String nombre;
+    
+    private String coordinador;
     Tutor tutor=new Tutor();
     Estudiante estudiante=new Estudiante();
+    
+    Pasantia pasantia=new Pasantia();
 
+    public Pasantia getPasantia() {
+        return pasantia;
+    }
+
+    public void setPasantia(Pasantia pasantia) {
+        this.pasantia = pasantia;
+    }
+
+    
     public Estudiante getEstudiante() {
         return estudiante;
     }
@@ -50,6 +64,7 @@ public class CitasAgendadas {
     public CitasAgendadas() {
         this.visitas= new ArrayList<VisitaTutor>();
         this.nombre=nombre;
+        this.coordinador=coordinador;
         
     }
 
@@ -69,6 +84,12 @@ public class CitasAgendadas {
          CitasDao citasdao=new CitasDaoImp();
         this.nombre=citasdao.obtenerNombre(id);
         return nombre;
+    }
+
+    public String getCoordinador() {
+         CitasDao citasdao=new CitasDaoImp();
+        this.coordinador=citasdao.obtenerCoordinador("6");
+        return coordinador;
     }
     
     

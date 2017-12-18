@@ -4,7 +4,8 @@
      template="/templates/main.xhtml"
      
      xmlns:h="http://xmlns.jcp.org/jsf/html"
-     xmlns:b="http://bootsfaces.net/ui">
+     xmlns:b="http://bootsfaces.net/ui"
+     xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <ui:define name="title">
        Tutor
@@ -14,6 +15,9 @@
     </ui:define>
     
     <ui:define name="contenido">
+        <f:metadata>
+    <f:viewParam name="id" value="#{datosFormatos.id}" />
+</f:metadata>
          <h:form>
              
 
@@ -32,73 +36,95 @@
                         </div>
                     <br/>
                     <br/>
-                       <div class="row">
-                <div class="col-lg-12">
-                    <div class="col-lg-6">
-
-                       
-                        <table>
-                            <tr>
-                                <td>  <label for="disabledSelect">Carta compromiso:&#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;</label></td>
-                                <td>    <input class="form-control"  id="disabledInput" type="text" placeholder="Disabled input" disabled="true"/><br/>
-                                            </td>
-                            </tr>
-                            
-                                    <tr><td>
-                                          <label for="disabledSelect">Estudiante:     &#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;       </label>
-                                </td>
-                                        <td>
-                                                <input class="form-control"  id="disabledInput" type="text" placeholder="Disabled input" disabled="true"/><br/>
-                                            
-                                        </td>
+                      
+                    <h:dataTable var="campo1" value="#{datosFormatos.getPasantia(datosFormatos.id)}" >
+                            <div class="col-lg-8"> 
+                            <h:column >
+                               
+                                <div class="col-lg-4">
                                     
-                                    </tr>
-                            <tr>
-                                <td>
-                                                <label for="disabledSelect">Tutor UPS:   &#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;    </label></td>
-                                <td>  <input class="form-control"  id="disabledInput" type="text" placeholder="Disabled input" disabled="true"/></td>
-                            </tr>
-                                              
-                       </table>
-                        
-                        </div> 
-                        <div class="col-lg-6">
-                            <table>
-                                <tr>
-                               <td>   <label for="disabledSelect">Tipo de actividad: &#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;</label></td>
+                                <label for="disabledSelect">Carta Compromiso: </label>
                                 
-                               <td>     <input class="form-control"  id="disabledInput" type="text" placeholder="Disabled input" disabled="true"/>
-                                   <br/>
-                               </td>
-                                     </tr>    
+                                </div>
                                 
-                                <tr>
-                                    <td>    <label for="disabledSelect">Cedula: &#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;</label></td>
-                                    <td>    <input class="form-control"  id="disabledInput" type="text" placeholder="Disabled input" disabled="true"/><br/></td>
+                                <div class="col-lg-6">
+                                      
+                                 <h:inputText class="form-control"  value="#{campo1.tipo_ppp}#{campo1.cod_ppp}" disabled="true"/>
+                               <br/>
+                              
+                                </div>
+                                 <div class="col-lg-4">
+                                <label for="disabledSelect">Estudiante </label>
+                                 </div>
+                                <div class="col-lg-6">
+                                           <h:inputText class="form-control"  value="#{citasAgendadas.getNombre(campo1.estudiante.cedula)}" disabled="true"/>
+                           <br/>
                            
-                              </tr>
-                                <tr>
-                                       <td>    <label for="disabledSelect">Tutor de la institucion:&#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160; </label></td>
-                                        <td>    <input class="form-control"  id="disabledInput" type="text" placeholder="Disabled input" disabled="true"/><br/></td>
-                           
-                                       
-                                            </tr>
-                                <tr>
-                                       <td>    <label for="disabledSelect">Responsable de la institucion: &#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;</label></td>
-                                        <td>    <input class="form-control"  id="disabledInput" type="text" placeholder="Disabled input" disabled="true"/></td>
-                           
-                                       
-                                            </tr>
+                                </div> 
                                 
-                                </table>                
-                            </div>
-                            
-                            
-                         
-                    
-                    
+                                  
+                                <div class="col-lg-4">
+                                
+                                    <label for="disabledSelect">Tutor UPS:</label>
+                                
+                                </div>
+                                     <div class="col-lg-6">
+                                         
+                                          <h:inputText class="form-control"   value="#{citasAgendadas.getNombre(login.user)}" disabled="true"/>
+                                    <br/>
+                                     </div>
+                                  <div class="col-lg-4">
+                                
+                                    <label for="disabledSelect">Responsable de la institucion:</label>
+                                
+                                </div>
+                                     <div class="col-lg-6">
+                                         
+                                         <h:inputText class="form-control"   value="#{campo1.encargado.empresa.nombre_gerente}" disabled="true"/>
+                           
+                                     </div>
+                                
+                            </h:column>
+                                    </div> 
+                            <div class="col-lg-8">
+                            <h:column >
+                                <div class="col-lg-6">
+                                    
+                                <label for="disabledSelect">Tipo de actividad: </label>
+                                <br/>
+                                </div>
+                                <div class="col-lg-6">
+                                    <h:inputText class="form-control"  value="#{campo1.estudiante.actividadRealizar}" disabled="true"/>
+                                    <br/>
+                                </div>
+                                <div class="col-lg-6">
+                                
+                                <label for="disabledSelect">Cedula estudiante: </label> 
+                                </div>
+                                <div class="col-lg-6">
+                                    <h:inputText class="form-control"  value="#{datosFormatos.id}" disabled="true"/>
                           
-                    </div> </div> 
+                                    <br/>
+                                </div>
+                                <div class="col-lg-6">
+                                
+                                    <label for="disabledSelect">Tutor de la institucion:</label>
+                                
+                                </div>
+                                     <div class="col-lg-6">
+                                         
+                                         <h:inputText class="form-control"   value="#{campo1.encargado.nombre_encargado}" disabled="true"/>
+                           
+                                     </div>
+                               
+                                  
+                            </h:column>
+                            
+                            </div>                  
+                        </h:dataTable>
+                        
+                    
+                  
                 <br/>
                 <br/>
                 <center>
@@ -193,9 +219,16 @@
                       <br/>
             <p><label>Calificar sobre 5 el criterio personal y contextual. (5 - Muy Satisfactorio, 4 - Satisfactorio, 3 - Aceptable, 2 - Deficiente, 1 - Malo)</label></p>
                     <p><label> Calificar sobre 5 cada actividad. (5 - Muy Satisfactorio, 4 - Satisfactorio, 3 - Aceptable, 2 - Deficiente, 1 - Malo)</label>   </p> 
-                              <b:button outcome="hoja_ruta_tut.xhtml"  class="btn btn-primary btn-xs" icon="arrow-right"  ></b:button> 
-                              <b:button outcome="agendar_cita_tut.xhtml"  class="btn btn-primary btn-xs" icon="remove"  ></b:button> 
-                           
+                    
+                              <p align="right">
+                                                <b:button outcome="hoja_ruta_tut.xhtml"  class="btn btn-success" icon="arrow-right"  >
+                                                    <f:param name="id" value="#{datosFormatos.id}"/>
+                                          
+                                                </b:button>  &#160;&#160;&#160; &#160; &#160;&#160;&#160;
+                                             <b:button outcome="agendar_cita_tut.xhtml"  class="btn btn-danger" icon="remove"  >
+                                             </b:button> 
+                                            </p>
+                              
                 </div>                            
                                             
               </div>

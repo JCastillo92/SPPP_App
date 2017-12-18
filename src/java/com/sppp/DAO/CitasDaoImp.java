@@ -6,6 +6,7 @@
 package com.sppp.DAO;
 
 import com.sppp.beans.Estudiante;
+import com.sppp.beans.Pasantia;
 import com.sppp.beans.Usuario;
 import com.sppp.beans.VisitaTutor;
 import com.sppp.utils.HibernateUtil;
@@ -138,12 +139,12 @@ public class CitasDaoImp implements CitasDao {
             
         Transaction tx = null;
         
-        String sql = "SELECT nombre FROM Usuario WHERE id_usuario =:idUs and id_perfil =:num";
-        int id1=1,idUs;
+        String sql = "SELECT nombre FROM Usuario WHERE id_usuario =:idUs";
+        int idUs;
         idUs=Integer.parseInt(id);
         try {
             tx = sesion.beginTransaction();
-        nombre =(String) sesion.createQuery(sql).setParameter("num", id1).setParameter("idUs", idUs).uniqueResult();
+        nombre =(String) sesion.createQuery(sql).setParameter("idUs", idUs).uniqueResult();
 
             //    Query query = sesion.createQuery(sql);
         // estudiante=query.list();
@@ -168,9 +169,9 @@ public class CitasDaoImp implements CitasDao {
     
     
     @Override
-    public List<Usuario> findUser(long id) {
+    public List<Pasantia> findUser(long id) {
     
-        List<Usuario> listado = null;
+        List<Pasantia> listado = null;
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;
@@ -179,7 +180,7 @@ public class CitasDaoImp implements CitasDao {
         try {
             tx = sesion.beginTransaction();
             
-            String sql=" from Usuario WHERE id_cedula = :id ";
+            String sql=" from Pasantia WHERE cedula = :id ";
                      listado = sesion.createQuery(sql).setParameter("id", id).list();
 
             tx.commit();
@@ -190,11 +191,43 @@ public class CitasDaoImp implements CitasDao {
                 tx.rollback();
             }
         }
-        finally{
-            //para cerrar seesion
-            sesion.close();
-        }
+       
         return listado;
+    
+    
+    }
+
+    @Override
+    public String obtenerCoordinador(String id) {
+  String nombre;
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+            
+        Transaction tx = null;
+        
+        String sql = "SELECT nombre FROM Usuario WHERE id_perfil =:idUs";
+        int idUs;
+        idUs=Integer.parseInt(id);
+        try {
+            tx = sesion.beginTransaction();
+        nombre =(String) sesion.createQuery(sql).setParameter("idUs", idUs).uniqueResult();
+
+            //    Query query = sesion.createQuery(sql);
+        // estudiante=query.list();
+         /*Long id1=Long.parseLong(id);
+         boolean estado=false;
+         boolean estado1=false;
+         
+*///query.setInteger("id", id);
+            tx.commit();
+        } catch (RuntimeException e) {
+            tx.rollback();
+            throw e;
+        }
+        
+        return nombre;
+ 
+    
     
     
     }

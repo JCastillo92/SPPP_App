@@ -21,6 +21,7 @@ import javax.servlet.http.HttpSession;
 import org.primefaces.event.FlowEvent;
 import com.sppp.DAO.PasantiaPracticaDAO;
 import com.sppp.DAO.PeriodoDAO;
+import com.sppp.classes.AlmacenamientoPDF;
 /**
  *
  * @author EstJhonAlexanderCast
@@ -104,6 +105,7 @@ public class UserWizard implements Serializable{
         System.out.println("Punto de quiebre");
         PasantiaPracticaDAO objeto_ppp = new PasantiaPracticaDAO();
         PeriodoDAO objeto_periodo = new PeriodoDAO();
+        AlmacenamientoPDF one_time_unique= new AlmacenamientoPDF();
         
         //veo el periodo
         Periodo per = new Periodo();
@@ -143,6 +145,10 @@ public class UserWizard implements Serializable{
         System.out.println("================= "+usuario.getEstudiante().getCedula());
         WizardDAO wd = new WizardDAO();
         wd.guardarDatosBasicos(usuario,p,enc,emp); 
+        
+        
+        //aqui llamo por una y solo una vez al siguiente metodo "create_student_folder_first_time"
+        one_time_unique.create_student_folder_first_time(usuario.getEstudiante().getCedula());
         
         try {
             

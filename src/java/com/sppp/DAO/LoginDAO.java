@@ -30,6 +30,7 @@ public class LoginDAO {
         try {
             tx = sesion.beginTransaction();
             
+          
             /*
             int idformato = 1;
             Set<Preguntas> preguntas;

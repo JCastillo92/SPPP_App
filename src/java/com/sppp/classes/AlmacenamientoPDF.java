@@ -5,7 +5,12 @@
  */
 package com.sppp.classes;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
 /**
  *
@@ -33,5 +38,24 @@ public class AlmacenamientoPDF {
     return exitoalguardar;
     }
     
-    
+    public boolean guardado_archivo_pdf() throws FileNotFoundException{
+        boolean exitoalguardar=false;
+        FileOutputStream archivo = new FileOutputStream("E:\\hola.pdf");
+        try {
+             Document documento = new Document();
+
+      PdfWriter.getInstance(documento, archivo);
+
+      documento.open();
+
+      documento.add(new Paragraph("Hola Mundo!"));
+
+      documento.add(new Paragraph("SoloInformaticaYAlgoMas.blogspot.com"));
+
+      documento.close();
+        } catch (Exception e) {
+        }
+     
+        return exitoalguardar;
+    }//fin guardado
 }//end of class

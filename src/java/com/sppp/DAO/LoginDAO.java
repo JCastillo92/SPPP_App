@@ -7,6 +7,7 @@ package com.sppp.DAO;
 
 
 import com.sppp.beans.Usuario;
+import com.sppp.classes.AlmacenamientoPDF;
 import com.sppp.utils.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -30,7 +31,11 @@ public class LoginDAO {
         try {
             tx = sesion.beginTransaction();
             
+            
             /*
+                      AlmacenamientoPDF obj=new AlmacenamientoPDF();
+                      obj.create_student_folder_first_time(123);
+                      obj.guardado_archivo_pdf_subido(123,1);
             int idformato = 1;
             Set<Preguntas> preguntas;
             List<Campo> campos = new ArrayList<>() ;

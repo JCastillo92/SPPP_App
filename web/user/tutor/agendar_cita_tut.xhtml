@@ -49,7 +49,7 @@
                                 <b:dataTableColumn label="Nombre estudiante" >                   
 
                                     <b:column >
-                                        <h:outputText value="#{campo.id_visita}" />
+                                        <h:outputText value="#{citasAgendadas.getNombre(campo.estudiante.cedula)}" />
                                     </b:column>
                                 </b:dataTableColumn>
                                 <b:dataTableColumn label="Dia visita">                   
@@ -75,8 +75,15 @@
                                 </b:dataTableColumn>
                                 <b:dataTableColumn label="Acciones">                   
                                     <b:column >
-                                          <center> <b:button outcome="informe_tut.xhtml"  class="btn btn-danger btn-xs" icon="remove"  ></b:button> 
-                                              <b:button outcome="informe_tut.xhtml"  class="btn btn-success btn-xs" icon="ok"  ></b:button> </center>
+                                          <center> 
+                                              <b:button outcome="informe_tut.xhtml"  class="btn btn-success btn-xs" icon="ok"  >
+                                                  <f:param name="id" value="#{campo.estudiante.cedula}"/>
+                                              </b:button>
+                                                    &#160;&#160; &#160;&#160;
+                                                    <b:button outcome="informe_tut.xhtml"  class="btn btn-danger btn-xs" icon="remove"  >
+                                                         <f:param name="id" value="#{campo.estudiante.cedula}"/>
+                                                    </b:button> 
+                                               </center>
                                    
                                     </b:column>
                                 </b:dataTableColumn>
@@ -120,21 +127,29 @@
                                 
                                 <f:facet name="footer">
        
-                                    <b:button  dismiss="responsiveModal"  icon="plus" look="success" 
-                                               onclick="$('.abrirPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();"
-                  size="xs"/>
-                                    
-         <h:commandButton onclick="$('.abrirPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();" class="btn btn-primary" value="Agendar" action="#{controllerBean.enviarCita(login.user,confirmaCita.estudiantes.id_cedula)}"  />
-     
+                                    <b:button dismiss="close" value="Cerrar" />  
+                          <h:commandButton onclick="$('.abrirPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();"  class="btn btn-primary" value="Agendar" action="#{controllerBean.enviarCita(login.user,confirmaCita.estudiantes.id_cedula)}"  />            
+        
     </f:facet>
 </b:modal>
                             
-                     <b:modal title="Agendar cita" styleClass="abrirPseudoClass"
+                     <b:modal title="Estudiante Visitado" styleClass="abrirPseudoClass"
                          id="abrir">
                                   
+                         <p>Debe llenar los informes del estudiante visitado</p>   
+                         <p> ¿Desea realizar ahora?</p>   
                          
-                     </b:modal>       
+                         <f:facet name="footer">
+                             <b:button dismiss="modal" class="btn btn-default " value="Mas tarde">
+                                 
+                             </b:button>
+                             <b:button outcome="informe_tut.xhtml"  class="btn btn-primary"  value="Llenar ahora">
+                             </b:button>
                             
+                             
+                         </f:facet>
+                     </b:modal>       
+               
                             
                             </div>
                           

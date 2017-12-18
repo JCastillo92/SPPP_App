@@ -346,8 +346,12 @@ private Usuario usuario = new Usuario();
         }
         if(dia==2){
         
+
                dia1="Lunes";
         }
+
+           
+ 
         
         if(dia==3){
                 

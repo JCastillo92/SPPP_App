@@ -19,5 +19,5 @@ public interface CitasDao {
       public List<VisitaTutor> confirmaCita(String id);
      public List<Usuario> listar();
      public String obtenerNombre(String id);
-    
+    public List<Usuario> findUser(long id);
 }

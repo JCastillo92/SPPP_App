@@ -28,6 +28,9 @@ public class CitasDaoImp implements CitasDao {
             
         Transaction tx = null;
         List<VisitaTutor> listado = null;
+        Long id1=Long.parseLong(id);
+         boolean estado=false;
+         String estado1="agendada";
 
         String sql = "FROM VisitaTutor  WHERE cedula_tut =:id and estado_visita =:agendada and confirmada =:False";
 
@@ -35,9 +38,6 @@ public class CitasDaoImp implements CitasDao {
             tx = sesion.beginTransaction();
         //      Query query = sesion.createQuery(sql);
          // listado=query.list();
-         Long id1=Long.parseLong(id);
-         boolean estado=false;
-         String estado1="agendada";
          listado = sesion.createQuery(sql).setParameter("id", id1).setParameter("agendada", estado1).setParameter("False", estado).list();
 //query.setInteger("id", id);
             tx.commit();
@@ -167,6 +167,38 @@ public class CitasDaoImp implements CitasDao {
 
     
     
+    @Override
+    public List<Usuario> findUser(long id) {
+    
+        List<Usuario> listado = null;
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;
+       // Long user=Long.parseLong(id);
+        
+        try {
+            tx = sesion.beginTransaction();
+            
+            String sql=" from Usuario WHERE id_cedula = :id ";
+                     listado = sesion.createQuery(sql).setParameter("id", id).list();
+
+            tx.commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (tx != null){
+                tx.rollback();
+            }
+        }
+        finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+        return listado;
+    
+    
+    }
+
     
 
   

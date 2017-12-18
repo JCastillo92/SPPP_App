@@ -7,7 +7,10 @@ package com.sppp.classes;
 
 import com.sppp.DAO.CitasDao;
 import com.sppp.DAO.CitasDaoImp;
+import com.sppp.beans.Estudiante;
 import com.sppp.beans.Login;
+import com.sppp.beans.Tutor;
+import com.sppp.beans.Usuario;
 import com.sppp.beans.VisitaTutor;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +27,24 @@ public class CitasAgendadas {
     private List<VisitaTutor> visitas;
     private Login login;
     private String nombre;
+    Tutor tutor=new Tutor();
+    Estudiante estudiante=new Estudiante();
+
+    public Estudiante getEstudiante() {
+        return estudiante;
+    }
+
+    public void setEstudiante(Estudiante estudiante) {
+        this.estudiante = estudiante;
+    }
+        
+    public Tutor getTutor() {
+        return tutor;
+    }
+
+    public void setTutor(Tutor tutor) {
+        this.tutor = tutor;
+    }
     
     
     public CitasAgendadas() {

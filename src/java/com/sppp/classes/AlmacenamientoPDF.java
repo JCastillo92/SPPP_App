@@ -123,11 +123,11 @@ public class AlmacenamientoPDF {
                  
      try {
             //FileOutputStream archivo = new FileOutputStream("/home/SPPP_PDF/"+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
-            FileOutputStream archivo = new FileOutputStream("E:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
+            FileOutputStream archivo = new FileOutputStream("D:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
             PdfWriter.getInstance(documento, archivo);
       documento.open();
       //logo de la UPS
-       Image image = Image.getInstance("/resources/images/logo-ups-home.png");
+       Image image = Image.getInstance("C:\\Users\\DidiAndy\\Documents\\NetBeansProjects\\SPPP_App\\web\\resources\\images\\logo-ups-home.png");
         image.setAlignment(Image.ALIGN_LEFT);
         image.setAbsolutePosition(10, 780);
         image.scalePercent(60, 50);

@@ -126,18 +126,27 @@ public class AlmacenamientoPDF {
             FileOutputStream archivo = new FileOutputStream("E:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
             PdfWriter.getInstance(documento, archivo);
       documento.open();
+      //logo de la UPS
+       Image image = Image.getInstance("/resources/images/logo-ups-home.png");
+        image.setAlignment(Image.ALIGN_LEFT);
+        image.setAbsolutePosition(10, 780);
+        image.scalePercent(60, 50);
+        documento.add(image);
+        
       documento.addAuthor("Universidad Politecnica Salesiana");
-      Paragraph p1=new Paragraph("OFICIO PARA LA EMRPESA");
+      Paragraph salto_linea=new Paragraph("\n");
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      
+      Paragraph p1=new Paragraph("OFICIO PARA LA EMRPESA",estitulo);
       p1.setAlignment(Element.ALIGN_CENTER);
       documento.add(p1);
-      documento.add(new Paragraph("OFICIO PARA LA EMRPESA",estitulo));
-      documento.add(new Paragraph("Parrafo numero dos",estextoespecial));
       
-      Image image = Image.getInstance("C:\\Users\\Jairo\\Documents\\NetBeansProjects\\SPPP_App\\web\\resources\\images\\logo-ups-home.png");
-        image.setAlignment(Image.ALIGN_LEFT);
-        image.setAbsolutePosition(10, 10);
-//        image.scalePercent(60, 50);
-        documento.add(image);
+      documento.add(new Paragraph("dsajhdjashdjashdkjashdskja",estexto));
+      documento.add(new Paragraph("jairo flores",estextoespecial));
+      
+     
 
       documento.close();
       

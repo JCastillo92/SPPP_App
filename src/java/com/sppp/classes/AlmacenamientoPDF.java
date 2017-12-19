@@ -14,25 +14,27 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.sppp.DAO.UsuarioDAO;
+import com.sppp.beans.Usuario;
+import com.sppp.utils.SessionUtils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Map;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import org.jboss.weld.logging.ElLogger;
+import javax.servlet.http.HttpSession;
+
 
 /**
  *
  * @author Jairo
  */
-public class AlmacenamientoPDF {
+public class AlmacenamientoPDF{
+    //invocacion a clases que debo usar para obtener los datos
+                private Usuario usuario = new Usuario();
+    
+    
+    
     public boolean create_student_folder_first_time(long cedula){
         //NOTA el path /home/SPPP_PDF/ ya debe estar creado, para que lueg se proceda a crear cada carpeta con la ci
     File dir = new File("/home/SPPP_PDF/"+cedula+"");
@@ -114,6 +116,10 @@ public class AlmacenamientoPDF {
         
         switch(numero_pdf){
             case 101:
+                 
+            UsuarioDAO uDAO = new UsuarioDAO();
+            usuario = uDAO.findUsuario(cedula);              
+                
                 //GENERAR OFICIO [ARA LA EMPRESA
                  Document documento = new Document();
                  documento.setPageSize(PageSize.A4);
@@ -121,13 +127,15 @@ public class AlmacenamientoPDF {
                  Font estexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
                  Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL);  
                  
+                 
+                 
      try {
             //FileOutputStream archivo = new FileOutputStream("/home/SPPP_PDF/"+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
             FileOutputStream archivo = new FileOutputStream("D:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
             PdfWriter.getInstance(documento, archivo);
       documento.open();
       //logo de la UPS
-       Image image = Image.getInstance("C:\\Users\\DidiAndy\\Documents\\NetBeansProjects\\SPPP_App\\web\\resources\\images\\logo-ups-home.png");
+       Image image = Image.getInstance("C:\\Users\\Jairo\\Documents\\NetBeansProjects\\SPPP_App\\web\\resources\\images\\logo-ups-home.png");
         image.setAlignment(Image.ALIGN_LEFT);
         image.setAbsolutePosition(10, 780);
         image.scalePercent(60, 50);
@@ -139,12 +147,13 @@ public class AlmacenamientoPDF {
       documento.add(salto_linea);
       documento.add(salto_linea);
       
-      Paragraph p1=new Paragraph("OFICIO PARA LA EMRPESA",estitulo);
+      Paragraph p1=new Paragraph("OFICIO PARA LA EMPRESA",estitulo);
       p1.setAlignment(Element.ALIGN_CENTER);
       documento.add(p1);
+      documento.add(salto_linea);
       
-      documento.add(new Paragraph("dsajhdjashdjashdkjashdskja",estexto));
-      documento.add(new Paragraph("jairo flores",estextoespecial));
+      documento.add(new Paragraph("La Universidad Politecnica Salesiana",estexto));
+      documento.add(new Paragraph(""+usuario.getEstudiante().getCedula(),estextoespecial));
       
      
 

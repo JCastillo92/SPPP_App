@@ -232,6 +232,35 @@ public class CitasDaoImp implements CitasDao {
     
     }
 
+    @Override
+    public List<VisitaTutor> listarVisitados(String id) {
+    SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+            
+        Transaction tx = null;
+        List<VisitaTutor> listado = null;
+        Long id1=Long.parseLong(id);
+         String estado1="visitado";
+
+        String sql = "FROM VisitaTutor  WHERE cedula_tut =:id and estado_visita =:visitado";
+
+        try {
+            tx = sesion.beginTransaction();
+        //      Query query = sesion.createQuery(sql);
+         // listado=query.list();
+         listado = sesion.createQuery(sql).setParameter("id", id1).setParameter("visitado", estado1).list();
+//query.setInteger("id", id);
+            tx.commit();
+        } catch (RuntimeException e) {
+            tx.rollback();
+            throw e;
+        }
+        return listado;
+    
+    
+    
+    }
+
     
 
   

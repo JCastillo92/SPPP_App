@@ -13,7 +13,6 @@
         <property name="dia" type="string"></property>
         <property name="fecha_visita" type="date"></property>
         <property name="hora_visita" type="string"></property>
-        <property name="confirmada" type="boolean"></property>
         <property name="estado_visita" type="string"></property>
         
     

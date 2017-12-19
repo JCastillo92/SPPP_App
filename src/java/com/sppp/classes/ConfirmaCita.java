@@ -65,12 +65,12 @@ public class ConfirmaCita {
        
     }
 
-    public List<VisitaTutor> getConfirmaVisitas(String id) {
+   /* public List<VisitaTutor> getConfirmaVisitas(String id) {
         CitasDao citasdao=new CitasDaoImp();
         this.confirmaVisitas=citasdao.confirmaCita(id);
         return confirmaVisitas;
     }
-
+*/
     
   
 }

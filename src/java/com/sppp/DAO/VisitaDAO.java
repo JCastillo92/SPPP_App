@@ -52,7 +52,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
          try {
              trns= session.beginTransaction();
              VisitaTutor oldVisitaTuror =(VisitaTutor) session.load(VisitaTutor.class, new Long(cedula_est));
-             oldVisitaTuror.setConfirmada(true);
+             oldVisitaTuror.setEstado_visita("Agendada");
              session.update(oldVisitaTuror);
              trns.commit();
          } catch (RuntimeException e) {
@@ -72,7 +72,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
          try {
              trns= session.beginTransaction();
              VisitaTutor oldVisita =(VisitaTutor) session.load(VisitaTutor.class, new Long(cedula_tut));
-             oldVisita.setEstado_visita("Agendada");
+             oldVisita.setEstado_visita("Visitado");
              session.update(oldVisita);
              trns.commit();
          } catch (RuntimeException e) {

@@ -63,9 +63,9 @@
                                         <h:outputText value="#{campo.fecha_visita}" />
                                     </b:column>
                                 </b:dataTableColumn>
-                                <b:dataTableColumn label="Hora visita">                   
+                                <b:dataTableColumn label="Hora visita">                    
                                     <b:column >
-                                        <h:outputText value="#{campo.fecha_visita}" />
+                                        <h:outputText value="#{campo.hora_visita}" />
                                     </b:column>
                                 </b:dataTableColumn>
                                  <b:dataTableColumn label="Estado visita">                   
@@ -80,9 +80,9 @@
                                                   <f:param name="id" value="#{campo.estudiante.cedula}"/>
                                               </b:button>
                                                     &#160;&#160; &#160;&#160;
-                                                    <b:button outcome="informe_tut.xhtml"  class="btn btn-danger btn-xs" icon="remove"  >
-                                                         <f:param name="id" value="#{campo.estudiante.cedula}"/>
-                                                    </b:button> 
+                                                    <b:commandButton action="#{controllerBean.deleteVisita(campo.id_visita)}" class="btn btn-danger btn-xs" icon="remove"  />
+                                                         
+                                                   
                                                </center>
                                    
                                     </b:column>
@@ -128,7 +128,7 @@
                                 <f:facet name="footer">
        
                                     <b:button dismiss="close" value="Cerrar" />  
-                          <h:commandButton onclick="$('.abrirPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();"  class="btn btn-primary" value="Agendar" action="#{controllerBean.enviarCita(login.user,confirmaCita.estudiantes.id_cedula)}"  />            
+                          <h:commandButton  class="btn btn-primary" value="Agendar" action="#{controllerBean.enviarCita(login.user,confirmaCita.estudiantes.id_cedula)}"  />            
         
     </f:facet>
 </b:modal>

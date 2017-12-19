@@ -38,57 +38,53 @@
                     
                     
                     <h:dataTable var="campo1" value="#{datosFormatos.getPasantia(datosFormatos.id)}" >
-                            <div class="col-lg-8"> 
+                            <div class="col-lg-12"> 
                             <h:column >
                                
-                                <div class="col-lg-4">
+                                <div class="col-lg-3">
                                     
                                 <label for="disabledSelect">Entidad colaboradora: </label>
                                 
                                 </div>
                                 
-                                <div class="col-lg-6">
+                                <div class="col-lg-3">
                                       
                                     <h:inputText class="form-control"  value="#{campo1.encargado.empresa.nombre_empresa}" disabled="true"/>
-                               <br/>
-                              
+                              </div>
+                                <div class="col-lg-3">
+                                
+                                <label for="disabledSelect">Dirección empresa: </label> 
                                 </div>
-                                 <div class="col-lg-4">
+                                <div class="col-lg-3">
+                                    <h:inputText class="form-control"  value="#{campo1.encargado.empresa.direccion_empresa}" disabled="true"/>
+                          <br/>
+                                </div>
+                                
+                                 <div class="col-lg-3">
                                 <label for="disabledSelect">Estudiante </label>
                                  </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-3">
                                            <h:inputText class="form-control"  value="#{citasAgendadas.getNombre(campo1.estudiante.cedula)}" disabled="true"/>
                             </div> 
-                                
+                                 <div class="col-lg-6">
+                                 <br/>
+                                </div>
                                   
-                                
-                            </h:column>
-                                    </div> 
-                            <div class="col-lg-8">
-                            <h:column >
-                                <div class="col-lg-6">
+                                 <div class="col-lg-3">
                                     
                                 <label for="disabledSelect">Docente coordinador: </label>
                                 <br/>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-3">
                                   
                                     <h:inputText class="form-control"  value="#{citasAgendadas.getCoordinador()}" disabled="true"/>
                           
                                     <br/>
                                 </div>
-                                <div class="col-lg-6">
                                 
-                                <label for="disabledSelect">Direccion empresa: </label> 
-                                </div>
-                                <div class="col-lg-6">
-                                    <h:inputText class="form-control"  value="#{campo1.encargado.empresa.direccion_empresa}" disabled="true"/>
-                          
-                                </div>
-                                  
                             </h:column>
-                            
-                            </div>                  
+                                    </div> 
+                                         
                         </h:dataTable>
                     
                     

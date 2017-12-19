@@ -14,8 +14,10 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.sppp.DAO.PasantiaDAO;
 import com.sppp.DAO.UsuarioDAO;
 import com.sppp.beans.LocalTimeDate;
+import com.sppp.beans.Pasantia;
 import com.sppp.beans.Usuario;
 import java.io.File;
 import java.io.FileInputStream;
@@ -29,6 +31,7 @@ import java.io.IOException;
 public class AlmacenamientoPDF{
     //invocacion a clases que debo usar para obtener los datos
                 private Usuario usuario = new Usuario();
+                private Pasantia pasantia=new Pasantia();
     
     
     
@@ -115,7 +118,11 @@ public class AlmacenamientoPDF{
             case 101:
                  
             UsuarioDAO uDAO = new UsuarioDAO();
-            usuario = uDAO.findUsuario(cedula);              
+            usuario = uDAO.findUsuario(cedula);   
+            
+            PasantiaDAO passDAO=new PasantiaDAO();
+            pasantia = passDAO.findPasantia(cedula);
+            
                 
                 //GENERAR OFICIO [ARA LA EMPRESA
                  Document documento = new Document();
@@ -158,10 +165,12 @@ public class AlmacenamientoPDF{
       documento.add(salto_linea);
       
       
-      documento.add(new Paragraph("La Universidad Politécnica Salesiana solicita de la forma mas comedida que "
+      Paragraph cuerpo=new Paragraph("La Universidad Politécnica Salesiana solicita de la forma mas comedida que "
               + ""+usuario.getNombre()+" "+usuario.getApellido()+", con cédula número: "+usuario.getEstudiante().getCedula()+", "
-                      + " " ,estexto));
+                      + " se le otorgue la oprtuninda de realizar la "+giveMeNamePPP(pasantia.getTipo_ppp()),estexto);
+      cuerpo.setAlignment(Element.ALIGN_JUSTIFIED);
       
+      documento.add(salto_linea);
       documento.add(new Paragraph("xxxxxxxxxx"));
       
       
@@ -207,5 +216,17 @@ public class AlmacenamientoPDF{
                
         return exitoalguardar;
         
+    }
+    
+    
+    private String giveMeNamePPP(String nameppp){
+        if(nameppp.equals("pa")){
+            nameppp="pasantía";
+        }
+        if(nameppp.equals("pp")){
+            nameppp="práctica pre profesional";
+        }
+         
+        return nameppp;
     }
 }//end of class

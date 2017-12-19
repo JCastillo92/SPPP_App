@@ -18,7 +18,6 @@ public class VisitaTutor implements java.io.Serializable{
     private Date fecha_visita;
     private String hora_visita;
     private String estado_visita;
-    private boolean confirmada;
     private String dia;
   
     private Tutor tutor;
@@ -89,15 +88,4 @@ public class VisitaTutor implements java.io.Serializable{
         this.hora_visita = hora_visita;
     }
 
-    public boolean isConfirmada() {
-        return confirmada;
-    }
-
-    public void setConfirmada(boolean confirmada) {
-        this.confirmada = confirmada;
-    }
-
-   
-   
-    
 }

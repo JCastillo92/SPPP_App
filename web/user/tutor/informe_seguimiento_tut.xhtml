@@ -38,41 +38,70 @@
                     <br/>
                       
                     <h:dataTable var="campo1" value="#{datosFormatos.getPasantia(datosFormatos.id)}" >
-                            <div class="col-lg-8"> 
+                            <div class="col-lg-12"> 
                             <h:column >
                                
-                                <div class="col-lg-4">
+                                <div class="col-lg-3">
                                     
                                 <label for="disabledSelect">Carta Compromiso: </label>
                                 
                                 </div>
                                 
-                                <div class="col-lg-6">
+                                <div class="col-lg-3">
                                       
                                  <h:inputText class="form-control"  value="#{campo1.tipo_ppp}#{campo1.cod_ppp}" disabled="true"/>
-                               <br/>
-                              
+                                                           
                                 </div>
-                                 <div class="col-lg-4">
+                                 <div class="col-lg-3">
+                                    
+                                <label for="disabledSelect">Tipo de actividad: </label>
+                                <br/>
+                                </div>
+                                <div class="col-lg-3">
+                                    <h:inputText class="form-control"  value="#{campo1.estudiante.actividadRealizar}" disabled="true"/>
+                                    <br/>
+                                </div>
+                                
+                                
+                                 <div class="col-lg-3">
                                 <label for="disabledSelect">Estudiante </label>
                                  </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-3">
                                            <h:inputText class="form-control"  value="#{citasAgendadas.getNombre(campo1.estudiante.cedula)}" disabled="true"/>
-                           <br/>
-                           
-                                </div> 
+                                 </div> 
+                                 <div class="col-lg-3">
+                                
+                                <label for="disabledSelect">Cédula estudiante: </label> 
+                                </div>
+                                <div class="col-lg-3">
+                                    <h:inputText class="form-control"  value="#{datosFormatos.id}" disabled="true"/>
+                          
+                                    <br/>
+                                </div>
+                                
                                 
                                   
-                                <div class="col-lg-4">
+                                <div class="col-lg-3">
                                 
                                     <label for="disabledSelect">Tutor UPS:</label>
                                 
                                 </div>
-                                     <div class="col-lg-6">
+                                     <div class="col-lg-3">
                                          
                                           <h:inputText class="form-control"   value="#{citasAgendadas.getNombre(login.user)}" disabled="true"/>
-                                    <br/>
+                                    
                                      </div>
+                                 <div class="col-lg-3">
+                                
+                                    <label for="disabledSelect">Tutor de la institución:</label>
+                                
+                                </div>
+                                     <div class="col-lg-3">
+                                         
+                                         <h:inputText class="form-control"   value="#{campo1.encargado.nombre_encargado}" disabled="true"/>
+                           
+                                     </div>
+                                
                                   <div class="col-lg-4">
                                 
                                     <label for="disabledSelect">Responsable de la institucion:</label>
@@ -86,41 +115,7 @@
                                 
                             </h:column>
                                     </div> 
-                            <div class="col-lg-8">
-                            <h:column >
-                                <div class="col-lg-6">
-                                    
-                                <label for="disabledSelect">Tipo de actividad: </label>
-                                <br/>
-                                </div>
-                                <div class="col-lg-6">
-                                    <h:inputText class="form-control"  value="#{campo1.estudiante.actividadRealizar}" disabled="true"/>
-                                    <br/>
-                                </div>
-                                <div class="col-lg-6">
-                                
-                                <label for="disabledSelect">Cedula estudiante: </label> 
-                                </div>
-                                <div class="col-lg-6">
-                                    <h:inputText class="form-control"  value="#{datosFormatos.id}" disabled="true"/>
-                          
-                                    <br/>
-                                </div>
-                                <div class="col-lg-6">
-                                
-                                    <label for="disabledSelect">Tutor de la institucion:</label>
-                                
-                                </div>
-                                     <div class="col-lg-6">
-                                         
-                                         <h:inputText class="form-control"   value="#{campo1.encargado.nombre_encargado}" disabled="true"/>
-                           
-                                     </div>
-                               
-                                  
-                            </h:column>
-                            
-                            </div>                  
+                                             
                         </h:dataTable>
                         
                     

@@ -33,8 +33,7 @@ private Usuario usuario = new Usuario();
   private long id_visita;
     private Date fecha_visita;
     private String hora_visita;
-    private boolean estado_visita;
-    private boolean confirmada;
+    private String estado_visita;
    private Tutor tutor= new Tutor();
    private String listaest;
     
@@ -228,22 +227,15 @@ private Usuario usuario = new Usuario();
         this.hora_visita = hora_visita;
     }
 
-    public boolean isEstado_visita() {
+    public String getEstado_visita() {
         return estado_visita;
     }
 
-    public void setEstado_visita(boolean estado_visita) {
+    public void setEstado_visita(String estado_visita) {
         this.estado_visita = estado_visita;
     }
 
-    public boolean isConfirmada() {
-        return confirmada;
-    }
-
-    public void setConfirmada(boolean confirmada) {
-        this.confirmada = confirmada;
-    }
-
+   
     public Usuario getUsuario() {
         return usuario;
     }
@@ -275,8 +267,7 @@ private Usuario usuario = new Usuario();
         vt.setDia(dia);
         vt.setFecha_visita(data);
          vt.setHora_visita(horaConFormato);
-        vt.setConfirmada(false);
-        vt.setEstado_visita("agendada");
+        vt.setEstado_visita("Enviada");
         vt.setTutor(tutor);
         vt.setEstudiante(est);
           System.out.println("tutor"+tutor.getCedula());
@@ -312,7 +303,7 @@ private Usuario usuario = new Usuario();
           VisitaDAO visitaDAO = new VisitaDAO();
           visitaDAO.deleteVisita(id);
            
-          return "confirma_cita_est";
+          return "agendar_cita_tut";
       }
       
   public void imprimirData(){

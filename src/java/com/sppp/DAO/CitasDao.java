@@ -18,7 +18,7 @@ import java.util.List;
 public interface CitasDao {
     public List<VisitaTutor> findAll(String id);
      public List<VisitaTutor> confirma(String id);
-      public List<VisitaTutor> confirmaCita(String id);
+     // public List<VisitaTutor> confirmaCita(String id);
      public List<Usuario> listar();
      public String obtenerNombre(String id);
     public List<Pasantia> findUser(long id);

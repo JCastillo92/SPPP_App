@@ -6,13 +6,21 @@
 package com.sppp.classes;
 
 import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Map;
+import org.jboss.weld.logging.ElLogger;
 
 /**
  *
@@ -45,16 +53,19 @@ public class AlmacenamientoPDF {
         
         
         boolean exitoalguardar=false;
-        
-        //hago una redundacia de seguridad por si acaso
-        create_student_folder_first_time(cedula);
-        
-        
-        
+                
         switch(numero_pdf){
             case 1:
 //https://www.mkyong.com/java/itext-read-and-write-pdf-in-java/
-                
+                try {
+                    PdfReader reader=new PdfReader(new FileInputStream("/home/SPPP_PDF/123/4.pdf"));
+                    if(!reader.isEncrypted()){//si el archivo PDF no esta encriptado
+                        
+                    }else{
+                        
+                    }
+                } catch (Exception e) {
+                }
                 break;
             case 2:
                 
@@ -83,45 +94,73 @@ public class AlmacenamientoPDF {
             case 10:
                 
                 break;
-            case 11:
-                
-                break;
-            case 12:
-                
-                break;
-            case 13:
-                
-                break;
-            case 14:
-                
-                break;
             default:
                 System.out.println("No se ha encontrado dentro del case el numero para almacenar el .PDF");
                 exitoalguardar=false;
                 break;
-        }   
+        }//end of SWITCH 
+        return exitoalguardar;
+    }//fin guardado
+    
+    
+    public boolean guardado_archivo_pdf_creado(long cedula,int numero_pdf){
+        boolean exitoalguardar=false;
         
-        try {
-            FileOutputStream archivo = new FileOutputStream("/home/SPPP_PDF/"+cedula+"/"+numero_pdf+".pdf");
-             Document documento = new Document();
-
-      PdfWriter.getInstance(documento, archivo);
+        
+        
+        switch(numero_pdf){
+            case 101:
+                //GENERAR OFICIO [ARA LA EMPRESA
+                 Document documento = new Document();
+                 documento.setPageSize(PageSize.A4);
+                 Font estitulo = FontFactory.getFont(FontFactory.TIMES_ROMAN, 14, Font.NORMAL);
+                 Font estexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
+                 Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL);
+              
+     try {
+            //FileOutputStream archivo = new FileOutputStream("/home/SPPP_PDF/"+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
+            FileOutputStream archivo = new FileOutputStream("E:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
+            PdfWriter.getInstance(documento, archivo);
       documento.open();
-      documento.add(new Paragraph("Hola Mundo!"));
-      documento.add(new Paragraph("SoloInformaticaYAlgoMas.blogspot.com"));
+      documento.addAuthor("Universidad Politecnica Salesiana");
+      Paragraph p1=new Paragraph("OFICIO PARA LA EMRPESA");
+      p1.setAlignment(Element.ALIGN_CENTER);
+      documento.add(p1);
+      documento.add(new Paragraph("OFICIO PARA LA EMRPESA",estitulo));
+      documento.add(new Paragraph("Parrafo numero dos",estextoespecial));
       documento.close();
       exitoalguardar=true;
         } catch (Exception e) {
             exitoalguardar=false;
         }
-     
-        return exitoalguardar;
-    }//fin guardado
-    
-    
-    public boolean guardado_archivo_pdf_creado(long cedula,int numero_pdf) throws FileNotFoundException{
-        boolean exitoalguardar=false;
+                
+                break;
+            case 102:
+                
+                break;
+            case 103:
+                
+                break;
+            default:
+                System.out.println("No se ha encontrado dentro del case el numero para crear el .PDF");
+                exitoalguardar=false;
+                break;
+        }//end of SWITCH
         
+        
+          
+        
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
         return exitoalguardar;
         
     }

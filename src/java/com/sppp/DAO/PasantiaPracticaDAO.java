@@ -90,7 +90,6 @@ public class PasantiaPracticaDAO {
             pasantia_practicapreprofesional= (Pasantia) query.uniqueResult();       
             tx.commit();
         }catch (Exception e) {
-            e.printStackTrace();
             if (tx != null){
                 tx.rollback();
             }

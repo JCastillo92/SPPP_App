@@ -26,6 +26,8 @@ import javax.faces.bean.ManagedBean;
 public class CitasAgendadas {
 
     private List<VisitaTutor> visitas;
+    
+    private List<VisitaTutor> visitasRealizadas;
     private Login login;
     private String nombre;
     
@@ -90,6 +92,13 @@ public class CitasAgendadas {
          CitasDao citasdao=new CitasDaoImp();
         this.coordinador=citasdao.obtenerCoordinador("6");
         return coordinador;
+    }
+
+    public List<VisitaTutor> getVisitasRealizadas(String id) {
+           CitasDao citasdao=new CitasDaoImp();
+        this.visitasRealizadas=citasdao.listarVisitados(id);
+     
+        return visitasRealizadas;
     }
     
     

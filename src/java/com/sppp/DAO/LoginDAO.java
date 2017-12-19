@@ -30,10 +30,10 @@ public class LoginDAO {
         Usuario usuario=null;
         try {
             tx = sesion.beginTransaction();
-        
-            /*
-                AlmacenamientoPDF obj=new AlmacenamientoPDF();
+        AlmacenamientoPDF obj=new AlmacenamientoPDF();
             obj.guardado_archivo_pdf_creado(123,101);
+            /*
+                
             
                       AlmacenamientoPDF obj=new AlmacenamientoPDF();
                       obj.create_student_folder_first_time(123);

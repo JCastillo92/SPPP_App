@@ -9,6 +9,7 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfReader;
@@ -20,6 +21,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Map;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import org.jboss.weld.logging.ElLogger;
 
 /**
@@ -104,9 +110,7 @@ public class AlmacenamientoPDF {
     
     
     public boolean guardado_archivo_pdf_creado(long cedula,int numero_pdf){
-        boolean exitoalguardar=false;
-        
-        
+        boolean exitoalguardar=false;     
         
         switch(numero_pdf){
             case 101:
@@ -115,8 +119,8 @@ public class AlmacenamientoPDF {
                  documento.setPageSize(PageSize.A4);
                  Font estitulo = FontFactory.getFont(FontFactory.TIMES_ROMAN, 14, Font.NORMAL);
                  Font estexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
-                 Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL);
-              
+                 Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL);  
+                 
      try {
             //FileOutputStream archivo = new FileOutputStream("/home/SPPP_PDF/"+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
             FileOutputStream archivo = new FileOutputStream("E:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
@@ -128,7 +132,18 @@ public class AlmacenamientoPDF {
       documento.add(p1);
       documento.add(new Paragraph("OFICIO PARA LA EMRPESA",estitulo));
       documento.add(new Paragraph("Parrafo numero dos",estextoespecial));
+      
+      Image image = Image.getInstance("C:\\Users\\Jairo\\Documents\\NetBeansProjects\\SPPP_App\\web\\resources\\images\\logo-ups-home.png");
+        image.setAlignment(Image.ALIGN_LEFT);
+        image.setAbsolutePosition(10, 10);
+//        image.scalePercent(60, 50);
+        documento.add(image);
+
       documento.close();
+      
+      
+      
+      
       exitoalguardar=true;
         } catch (Exception e) {
             exitoalguardar=false;

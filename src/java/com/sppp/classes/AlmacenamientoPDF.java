@@ -15,16 +15,13 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.sppp.DAO.UsuarioDAO;
+import com.sppp.beans.LocalTimeDate;
 import com.sppp.beans.Usuario;
-import com.sppp.utils.SessionUtils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import javax.servlet.http.HttpSession;
-
-
 /**
  *
  * @author Jairo
@@ -152,11 +149,25 @@ public class AlmacenamientoPDF{
       documento.add(p1);
       documento.add(salto_linea);
       
-      documento.add(new Paragraph("La Universidad Politecnica Salesiana",estexto));
-      documento.add(new Paragraph(""+usuario.getEstudiante().getCedula(),estextoespecial));
+      
+      documento.add(new Paragraph("Para: "));
+      documento.add(salto_linea);
+      
+       LocalTimeDate obtenerfecha=new LocalTimeDate(); 
+      documento.add(new Paragraph("Fecha: "+obtenerfecha.fechaAnioMesDia(),estexto));
+      documento.add(salto_linea);
+      
+      
+      documento.add(new Paragraph("La Universidad Politécnica Salesiana solicita de la forma mas comedida que "
+              + ""+usuario.getNombre()+" "+usuario.getApellido()+", con cédula número: "+usuario.getEstudiante().getCedula()+", "
+                      + " " ,estexto));
+      
+      documento.add(new Paragraph("xxxxxxxxxx"));
+      
+      
       
      
-
+      
       documento.close();
       
       

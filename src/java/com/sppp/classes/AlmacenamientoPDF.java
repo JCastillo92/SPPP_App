@@ -135,7 +135,7 @@ public class AlmacenamientoPDF{
                  
      try {
             //FileOutputStream archivo = new FileOutputStream("/home/SPPP_PDF/"+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
-            FileOutputStream archivo = new FileOutputStream("D:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
+            FileOutputStream archivo = new FileOutputStream("E:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
             PdfWriter.getInstance(documento, archivo);
       documento.open();
       //logo de la UPS

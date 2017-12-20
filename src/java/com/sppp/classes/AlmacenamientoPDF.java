@@ -24,6 +24,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 /**
  *
  * @author Jairo
@@ -35,6 +36,7 @@ public class AlmacenamientoPDF{
     //invocacion a clases que debo usar para obtener los datos
                 private Usuario usuario = new Usuario();
                 private Pasantia pasantia=new Pasantia();
+                private List<Pasantia> pas;
     
     
     
@@ -299,4 +301,7 @@ RUC de la empresa
          
         return nameppp;
     }
+    
+    
+    
 }//end of class

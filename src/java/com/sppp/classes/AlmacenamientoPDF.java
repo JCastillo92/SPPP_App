@@ -167,7 +167,7 @@ public class AlmacenamientoPDF{
         
           Image image2 = Image.getInstance(local_path_images+"bkj2.png");
         image2.setAlignment(Image.ALIGN_RIGHT);
-        image2.setAbsolutePosition(10, 780);
+        image2.setAbsolutePosition(600, 300);
         image2.scalePercent(60, 50);
         documento.add(image2);
         
@@ -390,10 +390,10 @@ public class AlmacenamientoPDF{
     
     
     private String giveMeNamePPP(String nameppp){
-        if(nameppp.equals("pa")){
+        if(nameppp.equals("PA")){
             nameppp="pasantía";
         }
-        if(nameppp.equals("pp")){
+        if(nameppp.equals("PP")){
             nameppp="práctica pre profesional";
         }
         return nameppp;

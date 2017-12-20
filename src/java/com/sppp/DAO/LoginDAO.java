@@ -39,8 +39,7 @@ public class LoginDAO {
             
             obj.guardado_archivo_pdf_creado(123,104);
        
-            /*
-            MailingMain obj2=new MailingMain();
+            /*            MailingMain obj2=new MailingMain();
         obj2.deliverMain();
                 
             

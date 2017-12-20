@@ -33,7 +33,7 @@ public class LoginDAO {
             tx = sesion.beginTransaction();
 
             MailingMain obj2 = new MailingMain();
-            obj2.mensajes(1, "jairdean@hotmail.com", "Titulo mensaje");
+            obj2.mensajes(1,"jairdean@hotmail.com","requiere que actualice pdf.");
             //obj.create_student_folder_first_time(123);
             AlmacenamientoPDF obj = new AlmacenamientoPDF();
             obj.create_student_folder_first_time(123);

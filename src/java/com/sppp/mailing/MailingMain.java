@@ -19,11 +19,46 @@ public class MailingMain {
     private String username = "spppsistemasups@gmail.com";
     private String password = "@sistemasKJ2B";
     
-    public void mensajes(int tipo_mensaje, String AddRecipientDestination,String AddSubject){
+    //Texto quemado que puede REPETIRSE
+    private String ponnombreAPP="SPPP (Sistema de Pasantías y Prácticas Pre Profesionales). ";
+    private String pondespedida="No usar este medio para realizar preguntas o envio de información. ";
+    private String poningreso="Se requiere que ingrese al sistema con sus creadenciales y revise el estado de sus datos o documentos. ";
+    
+    public void mensajes(int tipo_mensaje, String AddRecipientDestination, String observaciones){
+        String contentMessage="";
+        String AddSubject="";//siempre deba existir un sujeto en CADA CASE
+        switch(tipo_mensaje){
+            case 1:
+               AddSubject="CORRECCION DE DOCUMNETACION";
+                contentMessage="Estimada/o estudiante, se ha revisado sus últimos cambios realizados en el "+ponnombreAPP+". "
+                        +poningreso;
+                break;
+            case 2:
+                AddSubject="APROVACION DE DOCUMENTACION E INFORMACION";
+                contentMessage="Estimada/o estudiante, se ha revisado sus últimos cambios realizados en el "+ponnombreAPP+", "
+                        + "los cuales han sido aprobados.  "+poningreso+"";
+                break;
+            case 3:
+                AddSubject="";
+                contentMessage="";
+                break;
+            case 4:
+                AddSubject="";
+                contentMessage="";
+                break;    
+                default:
+                    break;
+        }
+        if(!observaciones.equals("vacio")){
+            //envio de mensaje CON observaciones
+            contentMessage=contentMessage+"\n"+"\nObservaciones realizadas: \n"+observaciones;
+            deliverMail(AddRecipientDestination,AddSubject.toUpperCase(),contentMessage);
+        }else{
+            //envio de mensaje SIN observaciones
+            deliverMail(AddRecipientDestination,AddSubject.toUpperCase(),contentMessage);
+        }
         
-        
-        
-    }
+    }//fin void mensajes
     
     
     

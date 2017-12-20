@@ -35,12 +35,12 @@ import java.io.IOException;
 public class AlmacenamientoPDF{
     //variables globales
     private String //local_path="/home/SPPP_PDF/";
-                    //local_path="E:/home/SPPP_PDF/";
-                    local_path="D:/home/SPPP_PDF/";
+                    local_path="E:/home/SPPP_PDF/";
+                    //local_path="D:/home/SPPP_PDF/";
     
     private String //local_path_images="/home/SPPP_PDF/images/";
-                    //local_path_images="E:/home/SPPP_PDF/images/";
-                    local_path_images="D:/home/SPPP_PDF/images/";
+                    local_path_images="E:/home/SPPP_PDF/images/";
+                    //local_path_images="D:/home/SPPP_PDF/images/";
     
     //invocacion a clases que debo usar para obtener los datos
                 private Usuario usuario = new Usuario();//jairo

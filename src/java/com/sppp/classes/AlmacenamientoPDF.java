@@ -35,12 +35,12 @@ import java.io.IOException;
 public class AlmacenamientoPDF{
     //variables globales
     private String //local_path="/home/SPPP_PDF/";
-                    local_path="E:/home/SPPP_PDF/";
-                    //local_path="D:/home/SPPP_PDF/";
+                    //local_path="E:/home/SPPP_PDF/";
+                    local_path="D:/home/SPPP_PDF/";
     
     private String //local_path_images="/home/SPPP_PDF/images/";
-                    local_path_images="E:/home/SPPP_PDF/images/";
-                    //local_path_images="D:/home/SPPP_PDF/images/";
+                    //local_path_images="E:/home/SPPP_PDF/images/";
+                    local_path_images="D:/home/SPPP_PDF/images/";
     
     //invocacion a clases que debo usar para obtener los datos
                 private Usuario usuario = new Usuario();//jairo
@@ -164,6 +164,12 @@ public class AlmacenamientoPDF{
         image.setAbsolutePosition(10, 780);
         image.scalePercent(60, 50);
         documento.add(image);
+        
+          Image image2 = Image.getInstance(local_path_images+"bkj2.png");
+        image2.setAlignment(Image.ALIGN_RIGHT);
+        image2.setAbsolutePosition(10, 780);
+        image2.scalePercent(60, 50);
+        documento.add(image2);
         
       documento.addAuthor("Universidad Politecnica Salesiana");
       Paragraph salto_linea=new Paragraph("\n");

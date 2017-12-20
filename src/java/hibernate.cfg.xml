@@ -18,7 +18,7 @@
     <property name="format_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <mapping resource="com/sppp/beans/perfil.hbm.xml"/>
-    <mapping class="" file="" jar="" package="" resource="com/sppp/beans/usuario.hbm.xml"/>
+    <mapping resource="com/sppp/beans/usuario.hbm.xml"/>
     <mapping resource="com/sppp/beans/estudiante.hbm.xml"/>
     <mapping resource="com/sppp/beans/proceso.hbm.xml"/>
     <mapping resource="com/sppp/beans/detallePasantia.hbm.xml"/>

@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.sppp.mailing;
-import java.net.PasswordAuthentication;
 import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -12,13 +11,16 @@ import javax.mail.internet.MimeMessage;
 /**
  *
  * @author Jairo
+ * 
  */
+
 public class MailingMain {
     public void deliverMain(){
-        String GetRecipientDestination=null,GetRecipientNick=null,LibraryPredeterminated=null;
-		String username = "clubecologicoups@gmail.com";
-	    String password = "est.ups.edu.ec";
-             try {
+        String GetRecipientDestination="jairdean@hotmail.com",GetRecipientNick="NICK",LibraryPredeterminated="AQUI VA EL MENSAJE";
+        
+		String username = "spppsistemasups@gmail.com";
+	    String password = "@sistemasKJ2B";
+            try {
 	        Properties props = System.getProperties();
 	        props.setProperty("mail.transport.protocol", "smtp");
 	        props.setProperty("mail.host", "smtp.gmail.com");
@@ -35,9 +37,9 @@ public class MailingMain {
 	 
 	        emailSession.setDebug(true);
 	        Message message = new MimeMessage(emailSession);
-	        message.setFrom(new InternetAddress("clubecologicoups@gmail.com"));
+	        message.setFrom(new InternetAddress("spppsistemasups@gmail.com"));
 	        message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(GetRecipientDestination));
-	        message.setSubject("ClubEcológicoUps mensaje automático");
+	        message.setSubject("Sppp mensaje automático");
 	        message.setText(LibraryPredeterminated);
 	 
 	        Transport transport = emailSession.getTransport("smtps");
@@ -48,3 +50,21 @@ public class MailingMain {
 	       }
     }//end of main
 }
+/*
+Nombre 
+Ingenieria de sistemas UPS 
+Apellido
+Sede quito
+Nombre usuario
+spppsistemasups@gmail.com
+contraseña
+@sistemasKJ2B
+fecha 26 /08/1993
+telefono movil
++593983466689
+direccion actual
+jairdean@hotmail.com
+ubicacion 
+ecuador
+
+*/

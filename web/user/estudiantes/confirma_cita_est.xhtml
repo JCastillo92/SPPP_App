@@ -36,8 +36,8 @@
                      <div class="col-lg-10" >
                         <div class="table-responsive">
                              
-                            <h:dataTable  class="table  table-bordered table-hover" var="campo" value="#{confirmaCita.getVisitas(login.user)}">
-                                    <h:column  >
+                            <p:dataTable  emptyMessage="Notificación: Ud aún no cuenta con una cita!!!!!!!!" style="width:100%; font-family:Arial; font-size: 16px;"  class="table  table-bordered table-hover" var="campo" value="#{confirmaCita.getVisitas(login.user)}">
+                                    <p:column  >
                                        
                                         <div class="col-lg-2" >
                                      <h:outputLabel value="Tutor:" />
@@ -100,9 +100,9 @@
             	                      </h:column>
                                    </div>
                                       
-                                    </h:column>
+                                    </p:column>
                               
-                            </h:dataTable>
+                            </p:dataTable>
  
                          </div>        
                         </div>

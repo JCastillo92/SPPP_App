@@ -17,6 +17,7 @@
     <ui:define name="contenido">
          <f:metadata>
     <f:viewParam name="id" value="#{datosFormatos.id}" />
+    
 </f:metadata>
          <h:form>
             
@@ -66,7 +67,7 @@
                                 <div class="col-lg-3">
                                            <h:inputText class="form-control"  value="#{citasAgendadas.getNombre(campo1.estudiante.cedula)}" disabled="true"/>
                             </div> 
-                                 <div class="col-lg-6">
+                                 <div class="col-lg-12">
                                  <br/>
                                 </div>
                                   
@@ -129,6 +130,8 @@
                                 </table>
                             </div>
                             <!-- /.table-responsive -->
+                            
+                            
                         </div>
                         <!-- /.panel-body -->
                  
@@ -163,8 +166,34 @@
                                                 </center>
                       <br/>
                       <br/>
-                   <b:button outcome="agendar_cita_tut.xhtml"  class="btn btn-primary btn-xs" icon="remove"  ></b:button> 
-                                               
+                  <!-- <b:button outcome="agendar_cita_tut.xhtml"  class="btn btn-primary btn-xs" icon="remove"  ></b:button>--> 
+                             
+                   <p align="right">
+                                                <b:button outcome="hoja_ruta_tut.xhtml"  class="btn btn-success"  icon="ok" />  &#160;&#160;&#160; &#160; &#160;&#160;&#160;
+                                             <b:button outcome="agendar_cita_tut.xhtml"  class="btn btn-danger" icon="remove"  >
+                                             </b:button> 
+                                            </p>
+                  
+                   <center><h:dataTable var="campo1" value="#{datosFormatos.getPasantia(datosFormatos.id)}" >
+                     
+                      
+                            <div class="col-lg-12"> 
+                               
+                            <h:column >
+                               
+                                <b:commandButton class="btn btn-success" action="#{controllerBean.updateVisitaAgendada(campo1.id_visita)}"  icon="ok" />  &#160;&#160;&#160; &#160; &#160;&#160;&#160;
+                                             <b:button outcome="agendar_cita_tut.xhtml"  class="btn btn-danger" icon="remove"  >
+                                             </b:button>     
+                                
+                                
+                            </h:column>
+                                    
+                                    </div> 
+                      
+                                         
+                        </h:dataTable></center> <br/>
+                  
+                  
               </div>
                  </div>
                 </div>

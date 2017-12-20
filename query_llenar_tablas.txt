@@ -26,7 +26,7 @@ insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direcci
 
 /*LLENAR TABLA ESTUDIANTES como si fuese llenado automaticamente con los datos del EXCEL cabe mencionar que dichos usuarios deben pasarse la ci como USUARIO Y CLAVE a la tabla usuarios (primero se debe crear en la tb_usuario)*/
 /*primero crearlos en tb_usuario*/
-insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil,actividadrealizar) values ('123','123@hotmail.com','123','Bryan','Torres','123','123 direcccion',1,'cocinar, barrer, trapear');
+insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('123','123@hotmail.com','123','Bryan','Torres','123','123 direcccion',1);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('1234','1234@hotmail.com','1234','Jairo','Flores','1234','1234 direcccion',1);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('321','321@hotmail.com','321','Karen','Achig','321','321 direcccion',1);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('1111','hotm','1111','nom','app','3060649','direcccion',1);
@@ -36,7 +36,7 @@ insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direcci
 
 
 insert into tb_estudiante (cedula_est,ultimonivel,horaspasantia,porcentajemateriasaprobadas) values (1111111111,6,0,60);
-insert into tb_estudiante (cedula_est,ultimonivel,horaspasantia,porcentajemateriasaprobadas) values (123,6,0,60);
+insert into tb_estudiante (cedula_est,ultimonivel,horaspasantia,porcentajemateriasaprobadas,actividadrealizar) values (123,6,0,60,'lavarhfhhjhjg kuhkyuky');
 insert into tb_estudiante (cedula_est,ultimonivel,horaspasantia,porcentajemateriasaprobadas) values (1234,6,0,60);
 insert into tb_estudiante (cedula_est,ultimonivel,horaspasantia,porcentajemateriasaprobadas) values (321,6,0,60);
 insert into tb_estudiante (cedula_est,ultimonivel,horaspasantia,porcentajemateriasaprobadas) values (1111,6,0,60);
@@ -193,14 +193,10 @@ insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp)
 
 
 
-
-
-
-
-//aqui pongo agregacion manual, LA CUAL ES AUTOMATICA EN EL SISTEMA, este caso es para pruebas.
-insert into tb-empresa (id_empresa,nombre_empresa,nombre_gerente,
+/*aqui pongo agregacion manual, LA CUAL ES AUTOMATICA EN EL SISTEMA, este caso es para pruebas.*/
+insert into tb_empresa (id_empresa,nombre_empresa,nombre_gerente,
 telefono_empresa,
-direccion_empresa) values (172139113001,'vimeworks','Muy senor','30696969','av siempre priva y calle falsa');
+direccion_empresa) values (1721397113001,'vimeworks','Muy senor','30696969','av siempre priva y calle falsa');
 insert into tb_empresa_encargado (ci_encargado,nombre_encargado,cargo_encargado,id_empresa) values (1769696969,'spiderman','defensor del pueblo',1721397113001);
 
 update tb_pasantia set tiempoesperaestado=4, id_encargado=1,fechainicio='2017-12-20',

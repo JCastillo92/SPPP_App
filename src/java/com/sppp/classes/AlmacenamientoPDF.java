@@ -6,6 +6,7 @@
 package com.sppp.classes;
 
 import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
@@ -90,7 +91,7 @@ public class AlmacenamientoPDF{
                     }else{
                         
                     }
-                } catch (Exception e) {
+                } catch (IOException e) {
                 }
                 break;
             case 2:
@@ -146,6 +147,7 @@ public class AlmacenamientoPDF{
             
                    //VARIABLES INICIALES DEL  P D F 
                  Document documento = new Document();
+                 PdfPCell cell;
                  documento.setPageSize(PageSize.A4);
                  Font estitulo = FontFactory.getFont(FontFactory.TIMES_ROMAN, 14, Font.NORMAL);
                  Font estexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
@@ -227,7 +229,7 @@ public class AlmacenamientoPDF{
       //F I N  D O C U M E N T O 
       documento.close();
       exitoalguardar=true;
-        } catch (Exception e) {
+        } catch (DocumentException | IOException e) {
             exitoalguardar=false;
         }
                 break;
@@ -306,7 +308,7 @@ public class AlmacenamientoPDF{
       //F I N  D O C U M E N T O 
       documento.close();
       exitoalguardar=true;
-        } catch (Exception e) {
+        } catch (DocumentException | FileNotFoundException e) {
             exitoalguardar=false;
         }
                 break;
@@ -323,6 +325,18 @@ public class AlmacenamientoPDF{
         image.setAbsolutePosition(10, 780);
         image.scalePercent(60, 55);
         documento.add(image);
+        
+         Image image2 = Image.getInstance(local_path_images+"bkj2.png");
+        image2.setAlignment(Image.ALIGN_RIGHT);
+        image2.setAbsolutePosition(562, 458);
+        image2.scalePercent(60, 75);
+        documento.add(image2);
+        
+        Image image3 = Image.getInstance(local_path_images+"batl.png");
+        image3.setAlignment(Image.ALIGN_RIGHT);
+        image3.setAbsolutePosition(445, 775);
+        image3.scalePercent(6, 6);
+        documento.add(image3);
              
       documento.addAuthor("Universidad Politecnica Salesiana");
       Paragraph salto_linea=new Paragraph("\n");
@@ -337,7 +351,7 @@ public class AlmacenamientoPDF{
       documento.add(p1);
       documento.add(salto_linea);
       
-      //SEPARAR POR SECCIONES
+      //                            SEPARAR POR SECCIONES
       //SEC INFORMACION GENERAL
       //https://developers.itextpdf.com/examples/tables/colspan-and-rowspan
        documento.add(new Paragraph("INFORMACIÓN GENERAL",estexto));
@@ -346,34 +360,67 @@ public class AlmacenamientoPDF{
   PdfPTable table = new PdfPTable(4);//# columns
   
   //1 row
-  table.addCell(new Paragraph("Código:",estexto));
+  table.addCell(new Paragraph("CÓDIGO:",estexto));
   table.addCell(new Paragraph(""+pasantia.getTipo_ppp()+" "+pasantia.getCod_ppp(),estexto));
   table.addCell(new Paragraph("No.:",estexto));
   table.addCell("XXXXXXXXXXXXXX");
   
   //2 row
   table.addCell(new Paragraph("NOMBRE DE LA EMPRESA O INSTITUCIÓN:",estexto));
-  PdfPCell cell;
-  cell = new PdfPCell(new Paragraph(empresa.getNombre_empresa()));
-  cell.setColspan(2);//total de celdas que va MERGE a esta FILA
+  cell = new PdfPCell(new Paragraph(empresa.getNombre_empresa(),estexto));
+  cell.setColspan(3);//total de celdas que va MERGE a esta FILA
+  table.addCell(cell);
+   
+  //3 row
+  table.addCell(new Paragraph("DIRECCIÓN:",estexto));
+  table.addCell(new Paragraph(empresa.getDireccion_empresa(),estexto));
+  table.addCell(new Paragraph("TELÉFONO:",estexto));
+  table.addCell(new Paragraph(empresa.getTelefono_empresa(),estexto));
+  
+  //4 row
+  table.addCell(new Paragraph("ACTIVIDAD PRINCIPAL DE LA EMPRESA O INSTITUCIÓN:",estexto));
+  cell = new PdfPCell(new Paragraph(usuario.getEstudiante().getActividadRealizar(),estexto));
+  cell.setColspan(3);//total de celdas que va MERGE a esta FILA
   table.addCell(cell);
   
+  //5 row
+  table.addCell(new Paragraph("APELLIDOS Y NOMBRES DEL ESTUDIANTE:",estexto));
+   cell = new PdfPCell(new Paragraph(usuario.getApellido()+" "+usuario.getNombre(),estexto));
+  cell.setColspan(3);//total de celdas que va MERGE a esta FILA
+  table.addCell(cell);
   
-  table.addCell(new Paragraph("Código:",estexto));
-  table.addCell("row 7");
-  table.addCell(new Paragraph("Código:",estexto));
-  table.addCell("row 9");
-  
+  //6 row
+  table.addCell(new Paragraph("CARRERA DE GRADO:",estexto));
+  table.addCell(new Paragraph("INGENIERÍA DE SISTEMAS",estexto));
+  table.addCell(new Paragraph("CICLO o SEMESTRE QUE CURSA:",estexto));
+  table.addCell(new Paragraph(""+usuario.getEstudiante().getUltimoNivel(),estexto));
   documento.add(table);
-      
-      
-      
-      
-      
+  
+  //DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN
+  documento.add(salto_linea);
+  documento.add(salto_linea);
+  
+   documento.add(new Paragraph("DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN",estexto));
+  documento.add(salto_linea);
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
       //F I N  D O C U M E N T O 
       documento.close();
       exitoalguardar=true;
-        } catch (Exception e) {
+        } catch (DocumentException | IOException e) {
             exitoalguardar=false;
         }
                 
@@ -449,7 +496,7 @@ public class AlmacenamientoPDF{
       //F I N  D O C U M E N T O 
       documento.close();
       exitoalguardar=true;
-        } catch (Exception e) {
+        } catch (DocumentException | FileNotFoundException e) {
             exitoalguardar=false;
         }
                 break;

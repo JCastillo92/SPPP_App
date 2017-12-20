@@ -37,6 +37,10 @@ public class AlmacenamientoPDF{
     //variables globales
     private String local_path="/home/SPPP_PDF/";
                     //local_path="E:/";
+    
+    private String local_path_images="/home/SPPP_PDF/images/";
+                    //local_path_images="E:/images/";
+    
     //invocacion a clases que debo usar para obtener los datos
                 private Usuario usuario = new Usuario();
                 private Pasantia pasantia=new Pasantia();
@@ -153,7 +157,8 @@ public class AlmacenamientoPDF{
             PdfWriter.getInstance(documento, archivo);
       documento.open();
       //logo de la UPS
-       Image image = Image.getInstance("C:\\Users\\Jairo\\Documents\\NetBeansProjects\\SPPP_App\\web\\resources\\images\\logo-ups-home.png");
+
+       Image image = Image.getInstance(local_path_images+"logo-ups-home.png");
         image.setAlignment(Image.ALIGN_LEFT);
         image.setAbsolutePosition(10, 780);
         image.scalePercent(60, 50);

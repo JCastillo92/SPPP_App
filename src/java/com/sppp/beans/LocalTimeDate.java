@@ -35,7 +35,7 @@ public class LocalTimeDate {
         int segundo = fecha.get(Calendar.SECOND);
      
        
-        return  year+"/" + (month) + "/" + day +" "+formatoHora.format(fechaActual);
+        return  year+"-" + (month) + "-" + day +" "+formatoHora.format(fechaActual);
     }
     
  

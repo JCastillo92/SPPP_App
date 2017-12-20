@@ -26,7 +26,7 @@ import javax.inject.Named;
  */
 @ManagedBean(name = "datosFormatos")
 public class DatosFormatos implements Serializable {
-    
+   
     private List<Pasantia> pasantia;
     Estudiante estudiante=new Estudiante();
     Usuario usuario=new Usuario();
@@ -84,6 +84,8 @@ public class DatosFormatos implements Serializable {
        
         return pasantia;
     }
+    
+    
     
 }
 

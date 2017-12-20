@@ -292,11 +292,12 @@ private Usuario usuario = new Usuario();
                   System.out.println("jaaaaaaaaaaaaaaaaaaaaaaa"+id_visita);
       }
      
-      public void updateVisitaAgendada(long id_visita2){
+      public String updateVisitaAgendada(long id_visita2){
           VisitaTutor newVisitaTutor = new VisitaTutor();
           VisitaDAO visitaDAO = new VisitaDAO();
           visitaDAO.updateVisitaAgendada(id_visita2, newVisitaTutor);
                     System.out.println("jaaaaaaaaaaaaaaaaaaaaaaajeeeeeeee"+id_visita2);
+                    return "agendar_cita_tut";
       }
      
       public String deleteVisita(long id){

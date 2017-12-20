@@ -5,7 +5,8 @@
  */
 package com.sppp.DAO;
 
-import com.sppp.beans.Pasantia;
+
+import com.sppp.beans.Empresa;
 import com.sppp.utils.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -16,19 +17,19 @@ import org.hibernate.Transaction;
  *
  * @author Jairo
  */
-public class PasantiaDAO {
-    public Pasantia findPasantia(long cedulaest){
-         Pasantia passp=new Pasantia();
+public class EmpresaDAO {
+    public Empresa findEmpresa(long ruc_empresa){
+        Empresa empre=new Empresa();
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;
         
         try{
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery(" from Pasantia WHERE cedula = :id ");
-            query.setLong("id", cedulaest);
+            Query query = sesion.createQuery(" from Empresa WHERE id_empresa = :id ");
+            query.setLong("id", ruc_empresa);
             
-            passp = (Pasantia) query.uniqueResult();
+            empre = (Empresa) query.uniqueResult();
             tx.commit();
         }catch (Exception e) {
             if (tx != null){
@@ -36,9 +37,8 @@ public class PasantiaDAO {
             }
         }
         finally{
-            //para cerrar seesion
             sesion.close();
         }
-        return passp;
+        return empre;
     }
 }

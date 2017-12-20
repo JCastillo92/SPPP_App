@@ -5,7 +5,7 @@
  */
 package com.sppp.DAO;
 
-import com.sppp.beans.Pasantia;
+import com.sppp.beans.Encargado;
 import com.sppp.utils.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -16,19 +16,21 @@ import org.hibernate.Transaction;
  *
  * @author Jairo
  */
-public class PasantiaDAO {
-    public Pasantia findPasantia(long cedulaest){
-         Pasantia passp=new Pasantia();
+public class EncargadoDAO {
+    public Encargado findEncargado(long id_encargado){
+        //id_encargado NO ES LA CEDULA
+        //buscar por id encargado y cedua est
+        Encargado encar=new Encargado();
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;
         
         try{
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery(" from Pasantia WHERE cedula = :id ");
-            query.setLong("id", cedulaest);
+            Query query = sesion.createQuery(" from Encargado WHERE id_encargado = :id ");
+            query.setLong("id", id_encargado);//NO ES LA CEDULA del encargado
             
-            passp = (Pasantia) query.uniqueResult();
+            encar = (Encargado) query.uniqueResult();
             tx.commit();
         }catch (Exception e) {
             if (tx != null){
@@ -36,9 +38,9 @@ public class PasantiaDAO {
             }
         }
         finally{
-            //para cerrar seesion
             sesion.close();
         }
-        return passp;
+        return encar;
+
     }
 }

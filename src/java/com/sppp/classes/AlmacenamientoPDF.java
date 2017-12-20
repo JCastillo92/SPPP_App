@@ -28,7 +28,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.List;
 /**
  *
  * @author Jairo
@@ -44,10 +43,10 @@ public class AlmacenamientoPDF{
                     //local_path_images="D:/home/SPPP_PDF/images/";
     
     //invocacion a clases que debo usar para obtener los datos
-                private Usuario usuario = new Usuario();
-                private Pasantia pasantia=new Pasantia();
-                private Encargado encargado=new Encargado();
-                private Empresa empresa=new Empresa();
+                private Usuario usuario = new Usuario();//jairo
+                private Pasantia pasantia=new Pasantia();//jairo
+                private Encargado encargado=new Encargado();//jairo
+                private Empresa empresa=new Empresa();//jairo
     
     
     

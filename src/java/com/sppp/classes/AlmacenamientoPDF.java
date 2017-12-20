@@ -35,7 +35,7 @@ import java.io.IOException;
 public class AlmacenamientoPDF{
     //variables globales
     private String local_path="/home/SPPP_PDF/";
-    
+                    //local_path="E:/";
     //invocacion a clases que debo usar para obtener los datos
                 private Usuario usuario = new Usuario();
                 private Pasantia pasantia=new Pasantia();
@@ -49,7 +49,7 @@ public class AlmacenamientoPDF{
     File dir = new File("/home/SPPP_PDF/"+cedula+"");
     boolean exitoalguardar=false;
     if(!dir.exists()){
-        System.out.println("intentando crear nuevo directorio "+dir.getName());
+        System.out.println("intentando crear nuevo directorio por primera y unica vez"+dir.getName());
          try{
         dir.mkdir();// attempt to create the directory here
         exitoalguardar=true;
@@ -147,8 +147,8 @@ public class AlmacenamientoPDF{
             case 101:
                 //FORMATO OFICIO PARA LA EMPRESA
      try {
-            //FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
-            FileOutputStream archivo = new FileOutputStream("E:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
+            FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
+            //FileOutputStream archivo = new FileOutputStream("E:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
             PdfWriter.getInstance(documento, archivo);
       documento.open();
       //logo de la UPS
@@ -213,8 +213,8 @@ public class AlmacenamientoPDF{
             case 102:
                 //FORMATO CARTA DE ACEPTACION
      try{
-            //FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
-            FileOutputStream archivo = new FileOutputStream("E:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
+            FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
+            //FileOutputStream archivo = new FileOutputStream("E:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
             PdfWriter.getInstance(documento, archivo);
       documento.open();
  
@@ -296,8 +296,8 @@ public class AlmacenamientoPDF{
             case 104:
                 //FORMATO DE INICIAR PASANTIAS EN LA EMPRESA / FORMATO SOLICITUD RESOLUCION
                      try{
-            //FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
-            FileOutputStream archivo = new FileOutputStream("E:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
+            FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
+            //FileOutputStream archivo = new FileOutputStream("E:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
             PdfWriter.getInstance(documento, archivo);
       documento.open();
  

@@ -131,26 +131,7 @@
                           <h:commandButton  class="btn btn-primary" value="Agendar" action="#{controllerBean.enviarCita(login.user,confirmaCita.estudiantes.id_cedula)}"  />            
         
     </f:facet>
-</b:modal>
-                            
-                     <b:modal title="Estudiante Visitado" styleClass="abrirPseudoClass"
-                         id="abrir">
-                                  
-                         <p>Debe llenar los informes del estudiante visitado</p>   
-                         <p> ¿Desea realizar ahora?</p>   
-                         
-                         <f:facet name="footer">
-                             <b:button dismiss="modal" class="btn btn-default " value="Mas tarde">
-                                 
-                             </b:button>
-                             <b:button outcome="informe_tut.xhtml"  class="btn btn-primary"  value="Llenar ahora">
-                             </b:button>
-                            
-                             
-                         </f:facet>
-                     </b:modal>       
-               
-                            
+</b:modal>        
                             </div>
                           
                         </div>

@@ -164,7 +164,7 @@
                                                     <f:param name="id" value="#{datosFormatos.id}"/>
                                           
                                                 </b:button>  &#160;&#160;&#160; &#160; &#160;&#160;&#160;
-                                             <b:button outcome="agendar_cita_tut.xhtml"  class="btn btn-danger" icon="remove"  >
+                                             <b:button onclick="$('.abrirPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();"  class="btn btn-danger" icon="remove"  >
                                              </b:button> 
                                             </p>
                         </div> 
@@ -172,6 +172,24 @@
               </div>
           </div>
          
+             <b:modal title="Estudiante Visitado" styleClass="abrirPseudoClass"
+                         id="abrir">
+                                  
+                         <p>¿Esta seguro que desea salir?</p>   
+                         <p> Los cambios realizados se perderan</p>   
+                         
+                         <f:facet name="footer">
+                             <b:button outcome="agendar_cita_tut.xhtml" class="btn btn-success " value="Si">
+                                 
+                             </b:button>
+                             <b:button  dismiss="modal" class="btn btn-danger"  value="No">
+                             </b:button>
+                            
+                             
+                         </f:facet>
+                     </b:modal>     
+            
+            
       </h:form>
 
         

@@ -14,8 +14,10 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.sppp.DAO.EncargadoDAO;
 import com.sppp.DAO.PasantiaDAO;
 import com.sppp.DAO.UsuarioDAO;
+import com.sppp.beans.Encargado;
 import com.sppp.beans.LocalTimeDate;
 import com.sppp.beans.Pasantia;
 import com.sppp.beans.Usuario;
@@ -35,6 +37,7 @@ public class AlmacenamientoPDF{
     //invocacion a clases que debo usar para obtener los datos
                 private Usuario usuario = new Usuario();
                 private Pasantia pasantia=new Pasantia();
+                private Encargado encargado=new Encargado();
     
     
     
@@ -123,6 +126,8 @@ public class AlmacenamientoPDF{
             PasantiaDAO passDAO=new PasantiaDAO();
             pasantia = passDAO.findPasantia(cedula);
             
+            EncargadoDAO encarDAO=new EncargadoDAO();
+            encargado=encarDAO.findEncargado(pasantia.getEncargado().getId_encargado());
             
             
                    //VARIABLES INICIALES DEL  P D F 
@@ -263,10 +268,12 @@ public class AlmacenamientoPDF{
       documento.add(salto_linea);
       documento.add(salto_linea);
       
-      /*Nombre Responsable de la empresa 
-Cargo dentro de la empresa 
-RUC de la empresa
-      */
+      //documento.add(new Paragraph("ID encargado: "+encargado.getId_encargado(),estexto));
+      documento.add(new Paragraph("Persona a cargo: "+encargado.getNombre_encargado(),estexto));//Nombre Responsableen la empresa 
+      documento.add(new Paragraph("Identificación: "+encargado.getCi_encargado(),estexto));//CEDULA  Nombre Responsable en la empresa NO es el ID
+      documento.add(new Paragraph("Cargo/Profesión: "+encargado.getCargo_encargado(),estexto));//Cargo dentro de la empresa 
+      documento.add(new Paragraph("RUC: "+encargado.getEmpresa().getId_empresa(),estexto));//RUC empresa donde trabaja encargado
+      
       //SELLO DE LA EMPRESA
       documento.add(new Paragraph("Se requiere el sello de la empresa. ",esnota));
       //F I N  D O C U M E N T O 
@@ -284,7 +291,6 @@ RUC de la empresa
                 exitoalguardar=false;
                 break;
         }//end of SWITCH
- 
         return exitoalguardar;
     }//fin metodo
     

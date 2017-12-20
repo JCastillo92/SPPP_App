@@ -154,12 +154,11 @@ public class AlmacenamientoPDF{
                 //FORMATO OFICIO PARA LA EMPRESA
      try {
             FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
-            //FileOutputStream archivo = new FileOutputStream("E:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
             PdfWriter.getInstance(documento, archivo);
       documento.open();
-      //logo de la UPS
-
-       Image image = Image.getInstance(local_path_images+"logo-ups-home.png");
+      
+        //logo de la UPS
+        Image image = Image.getInstance(local_path_images+"logo-ups-home.png");
         image.setAlignment(Image.ALIGN_LEFT);
         image.setAbsolutePosition(10, 780);
         image.scalePercent(60, 55);
@@ -309,7 +308,48 @@ public class AlmacenamientoPDF{
         }
                 break;
             case 103:
-                //CARTA COMPROMISO
+                //FORMATO CARTA COMPROMISO INTERINSTITUCIONAL
+                try {
+            FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
+            PdfWriter.getInstance(documento, archivo);
+      documento.open();
+      
+        //logo de la UPS
+        Image image = Image.getInstance(local_path_images+"logo-ups-home.png");
+        image.setAlignment(Image.ALIGN_LEFT);
+        image.setAbsolutePosition(10, 780);
+        image.scalePercent(60, 55);
+        documento.add(image);
+             
+      documento.addAuthor("Universidad Politecnica Salesiana");
+      Paragraph salto_linea=new Paragraph("\n");
+      Paragraph linea_firma=new Paragraph("________________",estexto);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      
+      // T I T U L O
+      Paragraph p1=new Paragraph("FORMATO CARTA COMPROMISO INTERINSTITUCIONAL",estitulo);
+      p1.setAlignment(Element.ALIGN_CENTER);
+      documento.add(p1);
+      documento.add(salto_linea);
+      
+      //SEPARAR POR SECCIONES
+      //SEC INFORMACION GENERAL
+      //https://developers.itextpdf.com/examples/tables/colspan-and-rowspan
+      
+      
+      
+      
+      
+      
+      //F I N  D O C U M E N T O 
+      documento.close();
+      exitoalguardar=true;
+        } catch (Exception e) {
+            exitoalguardar=false;
+        }
+                
                 
                 break;
             case 104:

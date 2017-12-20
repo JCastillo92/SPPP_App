@@ -140,7 +140,7 @@ public class AlmacenamientoPDF{
                  
         switch(numero_pdf){
             case 101:
-                //OFICIO PARA LA EMPRESA
+                //FORMATO OFICIO PARA LA EMPRESA
      try {
             //FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
             FileOutputStream archivo = new FileOutputStream("E:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
@@ -206,7 +206,7 @@ public class AlmacenamientoPDF{
         }
                 break;
             case 102:
-                //CARTA DE ACEPTACION
+                //FORMATO CARTA DE ACEPTACION
      try {
             //FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
             FileOutputStream archivo = new FileOutputStream("E:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
@@ -284,6 +284,11 @@ public class AlmacenamientoPDF{
         }
                 break;
             case 103:
+                //CARTA COMPROMISO
+                
+                break;
+            case 104:
+                //FORMATO DE INICIAR PASANTIAS EN LA EMPRESA / FORMATO SOLICITUD RESOLUCION
                 
                 break;
             default:
@@ -302,7 +307,6 @@ public class AlmacenamientoPDF{
         if(nameppp.equals("pp")){
             nameppp="práctica pre profesional";
         }
-         
         return nameppp;
     }
 }//end of class

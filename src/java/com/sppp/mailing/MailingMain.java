@@ -15,11 +15,29 @@ import javax.mail.internet.MimeMessage;
  */
 
 public class MailingMain {
-    public void deliverMain(){
-        String GetRecipientDestination="jairdean@hotmail.com",GetRecipientNick="NICK",LibraryPredeterminated="AQUI VA EL MENSAJE";
+    private String username = "spppsistemasups@gmail.com";
+    private String password = "@sistemasKJ2B";
+    
+    public void mensajes(int tipo_mensaje, String AddRecipientDestination,String AddSubject){
         
-		String username = "spppsistemasups@gmail.com";
-	    String password = "@sistemasKJ2B";
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    private void deliverMail(String AddRecipientDestination, String AddSubject,String contentMessage){       
             try {
 	        Properties props = System.getProperties();
 	        props.setProperty("mail.transport.protocol", "smtp");
@@ -38,9 +56,9 @@ public class MailingMain {
 	        emailSession.setDebug(true);
 	        Message message = new MimeMessage(emailSession);
 	        message.setFrom(new InternetAddress("spppsistemasups@gmail.com"));
-	        message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(GetRecipientDestination));
-	        message.setSubject("Sppp mensaje automático");
-	        message.setText(LibraryPredeterminated);
+	        message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(AddRecipientDestination));
+	        message.setSubject(AddSubject);//tema, asunto del email
+	        message.setText(contentMessage);
 	 
 	        Transport transport = emailSession.getTransport("smtps");
 	        transport.connect("smtp.gmail.com", username, password);
@@ -48,8 +66,15 @@ public class MailingMain {
 	       } catch (MessagingException e) {
 	    	  e.getMessage();
 	       }
-    }//end of main
-}
+    }//end of method deliverMail()
+}//end of CLASS
+
+
+
+
+
+
+
 /*
 Nombre 
 Ingenieria de sistemas UPS 

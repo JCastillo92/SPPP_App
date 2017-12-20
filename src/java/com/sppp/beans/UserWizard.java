@@ -121,11 +121,11 @@ public class UserWizard implements Serializable{
         //<f:selectItem itemLabel="Practica Pre Profesional" itemValue="pp"/>
         
         int receive_new_code=0;
-        if(tipo_pa_pp.equals("pp")){
+        if(tipo_pa_pp.equals("PP")){
             receive_new_code=objeto_ppp.encontrarUltimoPP();//aqui recibo el nuevo codigo de PP
             p.setCod_ppp(receive_new_code);
         }
-        if(tipo_pa_pp.equals("pa")){
+        if(tipo_pa_pp.equals("PA")){
             receive_new_code=objeto_ppp.encontrarUltimoPA();//aqui recibo el nuevo codigo de Pa
             p.setCod_ppp(receive_new_code);
         }

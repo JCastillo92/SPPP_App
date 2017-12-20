@@ -12,6 +12,9 @@ import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.sppp.DAO.EmpresaDAO;
@@ -337,7 +340,31 @@ public class AlmacenamientoPDF{
       //SEPARAR POR SECCIONES
       //SEC INFORMACION GENERAL
       //https://developers.itextpdf.com/examples/tables/colspan-and-rowspan
-      
+       documento.add(new Paragraph("INFORMACIÓN GENERAL",estexto));
+  documento.add(salto_linea);
+  
+  PdfPTable table = new PdfPTable(4);//# columns
+  
+  //1 row
+  table.addCell(new Paragraph("Código:",estexto));
+  table.addCell(new Paragraph(""+pasantia.getTipo_ppp()+" "+pasantia.getCod_ppp(),estexto));
+  table.addCell(new Paragraph("No.:",estexto));
+  table.addCell("XXXXXXXXXXXXXX");
+  
+  //2 row
+  table.addCell(new Paragraph("NOMBRE DE LA EMPRESA O INSTITUCIÓN:",estexto));
+  PdfPCell cell;
+  cell = new PdfPCell(new Paragraph(empresa.getNombre_empresa()));
+  cell.setColspan(2);//total de celdas que va MERGE a esta FILA
+  table.addCell(cell);
+  
+  
+  table.addCell(new Paragraph("Código:",estexto));
+  table.addCell("row 7");
+  table.addCell(new Paragraph("Código:",estexto));
+  table.addCell("row 9");
+  
+  documento.add(table);
       
       
       

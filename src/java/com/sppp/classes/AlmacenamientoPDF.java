@@ -162,14 +162,20 @@ public class AlmacenamientoPDF{
        Image image = Image.getInstance(local_path_images+"logo-ups-home.png");
         image.setAlignment(Image.ALIGN_LEFT);
         image.setAbsolutePosition(10, 780);
-        image.scalePercent(60, 50);
+        image.scalePercent(60, 55);
         documento.add(image);
         
           Image image2 = Image.getInstance(local_path_images+"bkj2.png");
         image2.setAlignment(Image.ALIGN_RIGHT);
-        image2.setAbsolutePosition(600, 300);
-        image2.scalePercent(60, 50);
+        image2.setAbsolutePosition(562, 458);
+        image2.scalePercent(60, 75);
         documento.add(image2);
+        
+        Image image3 = Image.getInstance(local_path_images+"batl.png");
+        image3.setAlignment(Image.ALIGN_RIGHT);
+        image3.setAbsolutePosition(445, 775);
+        image3.scalePercent(6, 6);
+        documento.add(image3);
         
       documento.addAuthor("Universidad Politecnica Salesiana");
       Paragraph salto_linea=new Paragraph("\n");

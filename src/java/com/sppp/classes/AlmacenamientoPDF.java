@@ -14,9 +14,11 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.sppp.DAO.EmpresaDAO;
 import com.sppp.DAO.EncargadoDAO;
 import com.sppp.DAO.PasantiaDAO;
 import com.sppp.DAO.UsuarioDAO;
+import com.sppp.beans.Empresa;
 import com.sppp.beans.Encargado;
 import com.sppp.beans.LocalTimeDate;
 import com.sppp.beans.Pasantia;
@@ -38,6 +40,7 @@ public class AlmacenamientoPDF{
                 private Usuario usuario = new Usuario();
                 private Pasantia pasantia=new Pasantia();
                 private Encargado encargado=new Encargado();
+                private Empresa empresa=new Empresa();
     
     
     
@@ -119,7 +122,7 @@ public class AlmacenamientoPDF{
     
     public boolean guardado_archivo_pdf_creado(long cedula,int numero_pdf){
         boolean exitoalguardar=false;     
-          //LLAMADO A informacion NECESERAIA PARA INGRESAR AL P D F
+          //LLAMADO A informacion NECESERAIA PARA ingresar, crear AL P D F
             UsuarioDAO uDAO = new UsuarioDAO();
             usuario = uDAO.findUsuario(cedula);   
             
@@ -129,6 +132,8 @@ public class AlmacenamientoPDF{
             EncargadoDAO encarDAO=new EncargadoDAO();
             encargado=encarDAO.findEncargado(pasantia.getEncargado().getId_encargado());
             
+            EmpresaDAO empreDAO = new EmpresaDAO();
+            empresa=empreDAO.findEmpresa(encargado.getEmpresa().getId_empresa());
             
                    //VARIABLES INICIALES DEL  P D F 
                  Document documento = new Document();
@@ -171,8 +176,8 @@ public class AlmacenamientoPDF{
       documento.add(new Paragraph("Fecha: Quito, "+obtenerfecha.fechaAnioMesDia(),estexto));
       documento.add(salto_linea);
       
-      //D I R I G I D O
-      documento.add(new Paragraph("Para: ",estexto));
+      //D I R I G I D O AL GERENTE DE LA EMPRESA O INSTITUCION
+      documento.add(new Paragraph("Para: "+empresa.getNombre_gerente(),estexto));
       documento.add(salto_linea);
       
       // C U  E R  P O   DE  D O C U M E N T O 
@@ -207,7 +212,7 @@ public class AlmacenamientoPDF{
                 break;
             case 102:
                 //FORMATO CARTA DE ACEPTACION
-     try {
+     try{
             //FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
             FileOutputStream archivo = new FileOutputStream("E:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
             PdfWriter.getInstance(documento, archivo);
@@ -238,19 +243,20 @@ public class AlmacenamientoPDF{
       documento.add(salto_linea);
       documento.add(salto_linea);
       ListaDocentesAdministrativos buscar_docadmin=new ListaDocentesAdministrativos();
-      documento.add(new Paragraph(buscar_docadmin.nombreDocenteAdministrativo(1)+"\n Presente.-",estexto));
+      documento.add(new Paragraph(buscar_docadmin.nombreDocenteAdministrativo(1),estexto));
+      
+      //ADICIONAL VA EL NOMBRE DE LA UNIVERSIDAD Y SEDE
+      documento.add(new Paragraph("Universidad Politécnica Salesiana, Sede Quito",estexto));
+      
+      //SALUDO
+      documento.add(new Paragraph("Presente.-",estexto));
       documento.add(salto_linea);
       documento.add(salto_linea);
       documento.add(salto_linea);
       documento.add(new Paragraph("De mis consideraciones:",estexto));
       documento.add(salto_linea);
       documento.add(salto_linea);
-      
-      //ADICIONAL VA EL NOMBRE DE LA UNIVERSIDAD Y SEDE
-      documento.add(new Paragraph("Universidad Politécnica Salesiana, Sede Quito ",estexto));
-      documento.add(salto_linea);
-      documento.add(salto_linea);
-      
+           
       // C U  E R  P O   DE  D O C U M E N T O 
       Paragraph cuerpo=new Paragraph("Por medio de la presente comunicamos a usted, la aceptación del estudiante "
               + ""+usuario.getNombre()+" "+usuario.getApellido()+", con cédula de ciudadanía: "+usuario.getEstudiante().getCedula()+", "
@@ -289,7 +295,77 @@ public class AlmacenamientoPDF{
                 break;
             case 104:
                 //FORMATO DE INICIAR PASANTIAS EN LA EMPRESA / FORMATO SOLICITUD RESOLUCION
-                
+                     try{
+            //FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
+            FileOutputStream archivo = new FileOutputStream("E:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
+            PdfWriter.getInstance(documento, archivo);
+      documento.open();
+ 
+      documento.addAuthor("Universidad Politecnica Salesiana");
+      Paragraph salto_linea=new Paragraph("\n");
+      Paragraph linea_firma=new Paragraph("________________",estexto);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      
+        //F E C H A  DEL  S I S T E M A  
+      LocalTimeDate obtenerfecha=new LocalTimeDate(); 
+      Paragraph poner_fecha=new Paragraph("Fecha: Quito, "+obtenerfecha.fechaAnioMesDia(),estexto);
+      poner_fecha.setAlignment(Element.ALIGN_RIGHT);
+      documento.add(poner_fecha);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      
+        // T I T U L O
+      Paragraph p1=new Paragraph("FORMATO SOLICITUD RESOLUCIÓN",estitulo);
+      p1.setAlignment(Element.ALIGN_CENTER);
+      documento.add(p1);
+      documento.add(salto_linea);
+      
+            //nombre  DOCENTE, TUTOR, ADMINISTRATIVO
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+           ListaDocentesAdministrativos buscar_docadmin=new ListaDocentesAdministrativos();
+      documento.add(new Paragraph(buscar_docadmin.nombreDocenteAdministrativo(1),estexto));
+      
+      //ADICIONAL VA EL NOMBRE DE LA UNIVERSIDAD Y SEDE
+      documento.add(new Paragraph("Universidad Politécnica Salesiana, Sede Quito",estexto));
+      
+      //SALUDO
+      documento.add(new Paragraph("Presente.-",estexto));
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      documento.add(new Paragraph("De mis consideraciones:",estexto));
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      
+      // C U  E R  P O   DE  D O C U M E N T O 
+      Paragraph cuerpo=new Paragraph("Yo,"+usuario.getNombre()+" "+usuario.getApellido()+", con cédula de ciudadanía: "+usuario.getEstudiante().getCedula()+", "
+                      + " solicito a Ud. la autorización del inicio de la actividad de "+giveMeNamePPP(pasantia.getTipo_ppp())+", en "+empresa.getNombre_empresa()+" "
+                              + "desde "+pasantia.getFechaInicio()+" hasta "+pasantia.getFechaFin()+".",estexto);
+      cuerpo.setAlignment(Element.ALIGN_JUSTIFIED);
+      documento.add(cuerpo);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      
+      
+      //FIRMA ALUMNO
+      documento.add(linea_firma);
+      documento.add(new Paragraph("Atentamente, ",estexto));
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      
+      documento.add(new Paragraph(usuario.getNombre()+" "+usuario.getApellido(),estexto));
+      documento.add(new Paragraph(""+usuario.getEstudiante().getCedula(),estexto));
+            
+      //F I N  D O C U M E N T O 
+      documento.close();
+      exitoalguardar=true;
+        } catch (Exception e) {
+            exitoalguardar=false;
+        }
                 break;
             default:
                 System.out.println("No se ha encontrado dentro del case el numero para crear el .PDF");

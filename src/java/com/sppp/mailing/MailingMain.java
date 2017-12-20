@@ -30,13 +30,13 @@ public class MailingMain {
         switch(tipo_mensaje){
             case 1:
                AddSubject="CORRECCION DE DOCUMNETACION";
-                contentMessage="Estimada/o estudiante, se ha revisado sus últimos cambios realizados en el "+ponnombreAPP+". "
+                contentMessage="Estimada/o estudiante, se ha revisado sus últimos cambios realizados en el "+ponnombreAPP+" "
                         +poningreso;
                 break;
             case 2:
                 AddSubject="APROVACION DE DOCUMENTACION E INFORMACION";
-                contentMessage="Estimada/o estudiante, se ha revisado sus últimos cambios realizados en el "+ponnombreAPP+", "
-                        + "los cuales han sido aprobados.  "+poningreso+"";
+                contentMessage="Estimada/o estudiante, se ha revisado sus últimos cambios realizados en el "+ponnombreAPP+" "
+                        + "Dicha información ha sido aprobada. "+poningreso+"";
                 break;
             case 3:
                 AddSubject="";

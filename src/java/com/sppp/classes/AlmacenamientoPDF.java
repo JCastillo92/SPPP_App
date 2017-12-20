@@ -34,11 +34,13 @@ import java.io.IOException;
  */
 public class AlmacenamientoPDF{
     //variables globales
-    private String local_path="/home/SPPP_PDF/";
-                    //local_path="E:/";
+    private String //local_path="/home/SPPP_PDF/";
+                    local_path="E:/home/SPPP_PDF/";
+                    //local_path="D:/home/SPPP_PDF/";
     
-    private String local_path_images="/home/SPPP_PDF/images/";
-                    //local_path_images="E:/images/";
+    private String //local_path_images="/home/SPPP_PDF/images/";
+                    local_path_images="E:/home/SPPP_PDF/images/";
+                    //local_path_images="D:/home/SPPP_PDF/images/";
     
     //invocacion a clases que debo usar para obtener los datos
                 private Usuario usuario = new Usuario();
@@ -50,7 +52,7 @@ public class AlmacenamientoPDF{
     
     public boolean create_student_folder_first_time(long cedula){
         //NOTA el path /home/SPPP_PDF/ ya debe estar creado, para que lueg se proceda a crear cada carpeta con la ci
-    File dir = new File("/home/SPPP_PDF/"+cedula+"");
+    File dir = new File(local_path+cedula+"");
     boolean exitoalguardar=false;
     if(!dir.exists()){
         System.out.println("intentando crear nuevo directorio por primera y unica vez"+dir.getName());

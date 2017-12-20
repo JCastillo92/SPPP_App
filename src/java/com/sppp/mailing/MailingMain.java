@@ -28,6 +28,7 @@ public class MailingMain {
         String contentMessage="";
         String AddSubject="";//siempre deba existir un sujeto en CADA CASE
         switch(tipo_mensaje){
+            //case para alumnos del 1 al 1000
             case 1:
                AddSubject="CORRECCION DE DOCUMNETACION";
                 contentMessage="Estimada/o estudiante, se ha revisado sus últimos cambios realizados en el "+ponnombreAPP+" "
@@ -45,8 +46,21 @@ public class MailingMain {
             case 4:
                 AddSubject="";
                 contentMessage="";
+                break;
+                
+                
+                
+                //CASE P A R A  D O C E N T E , A D I M I N S T R A T I V O S , T U T O R E S, SE C RE T A R I A
+            case 1001:
+                AddSubject="NOTIFICACION PARA REVISION";
+                contentMessage="Se informa que un alumno a subido información o documentacion lista para revisar y aprobar.";
+                break;
+            case 1009:
+                AddSubject="";
+                contentMessage="";
                 break;    
                 default:
+                    
                     break;
         }
         if(!observaciones.equals("vacio")){

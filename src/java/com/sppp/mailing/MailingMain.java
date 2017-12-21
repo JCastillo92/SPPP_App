@@ -64,7 +64,6 @@ public class MailingMain {
                     break;
         }
         if(!observaciones.equals("vacio")){
-            System.out.println("xxxxxxxxxxxxxxxxxxxxx if 1");
             //envio de mensaje CON observaciones
             contentMessage=contentMessage+"\n"+"\nObservaciones realizadas: \n"+observaciones;
             deliverMail(AddRecipientDestination,AddSubject.toUpperCase(),contentMessage);
@@ -89,7 +88,6 @@ public class MailingMain {
     
     
     private void deliverMail(String AddRecipientDestination, String AddSubject,String contentMessage){       
-        System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");     
         try {
 	        Properties props = System.getProperties();
 	        props.setProperty("mail.transport.protocol", "smtp");

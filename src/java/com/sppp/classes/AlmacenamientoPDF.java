@@ -402,7 +402,6 @@ public class AlmacenamientoPDF {
                     documento.add(new Paragraph("DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN", estexto));
                     documento.add(salto_linea);
 
-//tabla 2
                     PdfPTable table2 = new PdfPTable(6);//# columns
                     //1 row
                     table2.addCell(new Paragraph("TIPO DE ACTIVIDAD ACADÉMICA:", estexto));
@@ -413,23 +412,56 @@ public class AlmacenamientoPDF {
                     table2.addCell(new Paragraph("" + usuario.getEstudiante().getHorasPasantia(), estexto));
 
                     //2 row
-                    table2.addCell(new Paragraph("OBJETO DE LA ACTIVIDAD ACADÉMICA:", estexto));
-
-                    cell = new PdfPCell(new Paragraph(empresa.getNombre_empresa(), estexto));
-                    cell.setColspan(3);//total de celdas que va MERGE a esta FILA
+                    cell = new PdfPCell(new Paragraph("OBJETO DE LA ACTIVIDAD ACADÉMICA", estexto));
+                    cell.setRowspan(2);//#columnas a merge para esta celda
                     table2.addCell(cell);
-                    table2.addCell("XXXXXXXXXXXXXX");
-                    table2.addCell("XXXXXXXXXXXXXX");
-                    table2.addCell("XXXXXXXXXXXXXX");
-                    table2.addCell("XXXXXXXXXXXXXX");
-                    table2.addCell("XXXXXXXXXXXXXX");
-                    table2.addCell("XXXXXXXXXXXXXX");
-                    table2.addCell("XXXXXXXXXXXXXX");
-                    table2.addCell("XXXXXXXXXXXXXX");
-                    table2.addCell("XXXXXXXXXXXXXX");
+                    cell = new PdfPCell(new Paragraph("xxxxxxxxx", estexto));
+                    cell.setColspan(3);//total de celdas que va MERGE a esta FILA
+                    cell.setRowspan(2);//#columnas a merge para esta celda
+                    table2.addCell(cell);
+                    table2.addCell(new Paragraph("FECHA INICIO:", estexto));
+                    table2.addCell(new Paragraph("" + pasantia.getFechaInicio(), estexto));
+                    table2.addCell(new Paragraph("FECHA FINAL:", estexto));
+                    table2.addCell(new Paragraph("" + pasantia.getFechaFin(), estexto));
 
+                    //3 row
+                    table2.addCell(new Paragraph("HORARIO PREVISTO:", estexto));
+                    cell = new PdfPCell(new Paragraph("xxxxxxxxxxxxxxx", estexto));
+                    cell.setColspan(2);//total de celdas que va MERGE a esta FILA
+                    table2.addCell(cell);
+                    table2.addCell(new Paragraph("NOMBRE PROGRAMA:", estexto));
+                    cell = new PdfPCell(new Paragraph("xxxxxxxxxxxxxxx", estexto));
+                    cell.setColspan(2);//total de celdas que va MERGE a esta FILA
+                    table2.addCell(cell);
+
+                    //4 row
+                    table2.addCell(new Paragraph("ÁREA QUE REQUIERE LA ACTIVIDAD ACADÉMICA:", estexto));
+                    cell = new PdfPCell(new Paragraph("xxxxxxxxxxxxxxx", estexto));
+                    cell.setColspan(2);//total de celdas que va MERGE a esta FILA
+                    table2.addCell(cell);
+                    table2.addCell(new Paragraph("RESPONSABLE DEL ÁREA:", estexto));
+                    cell = new PdfPCell(new Paragraph(encargado.getNombre_encargado(), estexto));
+                    cell.setColspan(2);//total de celdas que va MERGE a esta FILA
+                    table2.addCell(cell);
                     documento.add(table2);
                     //FIN TABLA 2
+
+                    //SEC ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA: (SEÑALE AQUELLAS QUE PREVÉN RESULTADOS Y PRODUCTOS)
+                    documento.add(salto_linea);
+                    documento.add(salto_linea);
+
+                    documento.add(new Paragraph("ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA", estexto));
+                    documento.add(salto_linea);
+                    documento.add(salto_linea);
+
+                    documento.add(new Paragraph("(SEÑALE AQUELLAS QUE PREVÉN RESULTADOS Y PRODUCTOS)", estexto));
+                    documento.add(salto_linea);
+                    //TABLA 3 INICIO
+                    PdfPTable table3 = new PdfPTable(1);//# columns
+                    //1 row
+                    table3.addCell(new Paragraph("XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX", estexto));
+                    documento.add(table3);
+                    //FIN TABLA 3
 
                     //F I N  D O C U M E N T O 
                     documento.close();

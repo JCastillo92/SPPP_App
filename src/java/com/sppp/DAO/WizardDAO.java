@@ -42,7 +42,7 @@ public class WizardDAO {
         DetallePasantia dp = new DetallePasantia();
         dp.setDescripcion("Dato Inicio Proesos Pasantia");
         dp.setEstado(true);
-        dp.setValidacion(EnumEstado.llenar);
+        dp.setValidacion(EnumEstado.validar);
         dp.setProceso(proceso);
         
         //Asignando a pasantia

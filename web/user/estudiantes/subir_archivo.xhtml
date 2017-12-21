@@ -1,0 +1,60 @@
+<ui:composition
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+     template="/templates/main.xhtml"
+     xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <ui:define name="title">
+        Formato
+    </ui:define>
+    
+    <ui:define name="barra-lateral">
+        <ui:include src="/snippets/menu_estudiante.xhtml" />
+    </ui:define>
+    
+    <ui:define name="contenido">
+
+        <div class="row">
+            
+            <h1 class="page-header">Cargar Archivos</h1>
+        </div>
+        
+        <div class="row">
+            
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Archivos Firmados del Proceso
+                </div>
+                <div class="panel-body">
+
+                    <h:form enctype="multipart/form-data" role="form">
+
+                        <div class="form-group">
+                            <label>Formulario 1</label>
+                            <h:inputFile value="#{uploadFile.file}">
+                            <f:ajax listener="#{uploadFile.guardar(1)}"/>
+                            </h:inputFile>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Formulario 2</label>
+                            <h:inputFile value="#{uploadFile.file}">
+                            <f:ajax listener="#{uploadFile.guardar(2)}"/>
+                            </h:inputFile>
+                        </div>
+                        
+
+                    </h:form>
+
+                </div>
+            </div>
+
+
+             
+            
+        </div>
+        
+    </ui:define>
+    
+</ui:composition>

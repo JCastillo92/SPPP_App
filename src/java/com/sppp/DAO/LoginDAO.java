@@ -31,7 +31,7 @@ public class LoginDAO {
         Usuario usuario=null;
         try {
             tx = sesion.beginTransaction();
-
+            /*
             MailingMain obj2 = new MailingMain();
             obj2.mensajes(1,"jairdean@hotmail.com","requiere que actualice pdf.");
             //obj.create_student_folder_first_time(123);
@@ -41,7 +41,7 @@ public class LoginDAO {
             obj.guardado_archivo_pdf_creado(123, 102);
             obj.guardado_archivo_pdf_creado(123, 103);
             obj.guardado_archivo_pdf_creado(123, 104);
-
+            */
 
             /*
 =======

@@ -169,19 +169,19 @@ public class CitasDaoImp implements CitasDao {
     
     
     @Override
-    public List<Pasantia> findUser(long id) {
+    public List<Pasantia> findUser(String id) {
     
         List<Pasantia> listado = null;
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;
-       // Long user=Long.parseLong(id);
+        Long user=Long.parseLong(id);
         
         try {
             tx = sesion.beginTransaction();
             
             String sql=" from Pasantia WHERE cedula = :id ";
-                     listado = sesion.createQuery(sql).setParameter("id", id).list();
+                     listado = sesion.createQuery(sql).setParameter("id", user).list();
 
             tx.commit();
 

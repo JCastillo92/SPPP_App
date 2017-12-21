@@ -415,20 +415,18 @@ public class AlmacenamientoPDF{
   table2.addCell(new Paragraph(""+usuario.getEstudiante().getHorasPasantia(),estexto));
   
   //2 row
-  table2.addCell(new Paragraph("OBJETO DE LA ACTIVIDAD ACADÉMICA:",estexto));
-  
-  
-  cell = new PdfPCell(new Paragraph(empresa.getNombre_empresa(),estexto));
-  cell.setColspan(3);//total de celdas que va MERGE a esta FILA
+  cell = new PdfPCell(new Paragraph("OBJETO DE LA ACTIVIDAD ACADÉMICA",estexto));
+  cell.setRowspan(2);//#columnas a merge para esta celda
   table2.addCell(cell);
-  table2.addCell("XXXXXXXXXXXXXX");
-  table2.addCell("XXXXXXXXXXXXXX");
-table2.addCell("XXXXXXXXXXXXXX");
-table2.addCell("XXXXXXXXXXXXXX");
-table2.addCell("XXXXXXXXXXXXXX");
-table2.addCell("XXXXXXXXXXXXXX");
-table2.addCell("XXXXXXXXXXXXXX");
-table2.addCell("XXXXXXXXXXXXXX");table2.addCell("XXXXXXXXXXXXXX");
+  cell = new PdfPCell(new Paragraph("text area",estexto));
+  cell.setColspan(3);//total de celdas que va MERGE a esta FILA
+  cell.setRowspan(2);
+  table2.addCell(cell);
+  table2.addCell(new Paragraph("FECHA INICIO:",estexto));
+  table2.addCell(new Paragraph(""+pasantia.getFechaInicio(),estexto));
+  table2.addCell(new Paragraph("FECHA FINAL:",estexto));
+  table2.addCell(new Paragraph(""+pasantia.getFechaFin(),estexto));
+
    
   
   documento.add(table2);

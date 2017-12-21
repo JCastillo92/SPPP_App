@@ -31,17 +31,18 @@ public class LoginDAO {
         Usuario usuario=null;
         try {
             tx = sesion.beginTransaction();
-           /* 
+            
             AlmacenamientoPDF obj = new AlmacenamientoPDF();
             MailingMain obj2 = new MailingMain();
             obj2.mensajes(1,"jairdean@hotmail.com","requiere que actualice pdf.");
+            obj2.mensajes(1,"karenchis2622@gmail.com","vacio");
             obj.create_student_folder_first_time(123);
             obj.create_student_folder_first_time(123);
             obj.guardado_archivo_pdf_creado(123, 101);
             obj.guardado_archivo_pdf_creado(123, 102);
             obj.guardado_archivo_pdf_creado(123, 103);
             obj.guardado_archivo_pdf_creado(123, 104);
-            */
+            
 
             /*
 =======

@@ -16,8 +16,8 @@ import javax.mail.internet.MimeMessage;
  */
 
 public class MailingMain {
-    private String username = "spppsistemasups@gmail.com";
-    private String password = "@sistemasKJ2B";
+    String username = "spppsistemasups@gmail.com";
+    String password = "@sistemasKJ2B";
     
     //Texto quemado que puede REPETIRSE
     private String ponnombreAPP="SPPP (Sistema de Pasantías y Prácticas Pre Profesionales). ";
@@ -64,6 +64,7 @@ public class MailingMain {
                     break;
         }
         if(!observaciones.equals("vacio")){
+            System.out.println("xxxxxxxxxxxxxxxxxxxxx if 1");
             //envio de mensaje CON observaciones
             contentMessage=contentMessage+"\n"+"\nObservaciones realizadas: \n"+observaciones;
             deliverMail(AddRecipientDestination,AddSubject.toUpperCase(),contentMessage);
@@ -88,7 +89,8 @@ public class MailingMain {
     
     
     private void deliverMail(String AddRecipientDestination, String AddSubject,String contentMessage){       
-            try {
+        System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");     
+        try {
 	        Properties props = System.getProperties();
 	        props.setProperty("mail.transport.protocol", "smtp");
 	        props.setProperty("mail.host", "smtp.gmail.com");
@@ -100,14 +102,14 @@ public class MailingMain {
 	        props.put("mail.smtp.socketFactory.fallback", "false");
 	 
 	        Session emailSession = Session.getInstance(props,new javax.mail.Authenticator() {
-	        protected PasswordAuthentication getPasswordAuthentication() {return new PasswordAuthentication(username,password);
+	        protected PasswordAuthentication getPasswordAuthentication() {return new PasswordAuthentication("spppsistemasups@gmail.com","@sistemasKJ2B");
 	        }});
 	 
 	        emailSession.setDebug(true);
 	        Message message = new MimeMessage(emailSession);
-	        message.setFrom(new InternetAddress("spppsistemasups@gmail.com"));
+	        message.setFrom(new InternetAddress(username));
 	        message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(AddRecipientDestination));
-	        message.setSubject(AddSubject);//tema, asunto del email
+	        message.setSubject(AddSubject);
 	        message.setText(contentMessage);
 	 
 	        Transport transport = emailSession.getTransport("smtps");
@@ -116,6 +118,7 @@ public class MailingMain {
 	       } catch (MessagingException e) {
 	    	  e.getMessage();
 	       }
+	    
     }//end of method deliverMail()
 }//end of CLASS
 

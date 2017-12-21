@@ -428,10 +428,7 @@ public class AlmacenamientoPDF{
                     table8.addCell(new Paragraph("DIRECCIÓN TÉCNICA DE VINCULACIÓN CON LA SOCIEDAD:", estexto));
                     table8.addCell(new Paragraph("firma:", esnota));
                     table8.addCell(new Paragraph("sello:", esnota));
-
-                    documento.add(table8);
-                    documento.add(salto_linea);
-                    
+                    documento.add(table8);                                    
                     
                     
       //F I N  D O C U M E N T O 

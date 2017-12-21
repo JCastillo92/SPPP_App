@@ -331,10 +331,11 @@ public class AlmacenamientoPDF{
                     documento.add(salto_linea);
                     documento.add(salto_linea);
 
-                    documento.add(new Paragraph("ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA", estexto));
-                    documento.add(salto_linea);
-                    documento.add(salto_linea);
-
+                    Paragraph p2 = new Paragraph("ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA", estexto);
+                    p2.setAlignment(Element.ALIGN_CENTER);
+                    documento.add(p2);
+                    
+                   
                     documento.add(new Paragraph("(SEÑALE AQUELLAS QUE PREVÉN RESULTADOS Y PRODUCTOS)", estexto));
                     documento.add(salto_linea);
                     //TABLA 3 INICIO
@@ -344,6 +345,45 @@ public class AlmacenamientoPDF{
                     documento.add(table3);
                     //FIN TABLA 3
 
+                    documento.add(salto_linea);
+                    documento.add(salto_linea);
+                    documento.add(new Paragraph("RESULTADOS PREVISTOS DE ACTIVIDAD ACADÉMICA", estexto));
+                    documento.add(salto_linea);
+                    //TABLA 4 INICIO
+                    PdfPTable table4 = new PdfPTable(1);//# columns
+                    //1 row
+                    table4.addCell(new Paragraph("XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX", estexto));
+                    documento.add(table4);
+                    //FIN TABLA 4
+                    
+                    documento.add(salto_linea);
+                    documento.add(salto_linea);
+                    Paragraph p3 = new Paragraph("PRODUCTOS ENTREGABLES PREVISTOS DE LA ACTIVIDAD ACADÉMICA", estexto);
+                    p3.setAlignment(Element.ALIGN_CENTER);
+                    documento.add(p3);
+                    documento.add(salto_linea);
+                    documento.add(new Paragraph("(INCLUYA TODOS LOS MATERIALES FÍSICOS QUE SE GENERAN EN LA INTERVENCIÓN)", estexto));
+                    documento.add(salto_linea);
+                    
+                    //TABLA 5 INICIO
+                    PdfPTable table5 = new PdfPTable(1);//# columns
+                    //1 row
+                    table5.addCell(new Paragraph("XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX", estexto));
+                    documento.add(table4);
+                    //FIN TABLA 5
+                    
+                    
+                    //inicio tabla 6
+  PdfPTable table6 = new PdfPTable(4);//# columns
+                 //1row
+                 documento.add(salto_linea);
+  table6.addCell(new Paragraph("NOMBRE DEL TUTOR:",estexto));
+          cell = new PdfPCell(new Paragraph("xxxxxxxxxxxxxx urgente aqui se asiigna el tutor",estexto));
+  cell.setColspan(3);//total de celdas que va MERGE a esta FILA
+  table6.addCell(cell);
+  documento.add(table6);
+  //FIN TABLA 6
+                    
       //F I N  D O C U M E N T O 
       documento.close();
       exitoalguardar=true;

@@ -14,8 +14,8 @@ public class ListaDocentesAdministrativos {
         String retorno="",
                 DireccionCarreraSistemas="\nING. PATSY MALENA PRIETO MSc. \nDirectora de la Carrera de Ingeniería de Sistemas",
                 Secretaria="\nSecretaria de la UPS",
-                ConsejoCarreraSistemas="\nConsejo Carrera Sistemas"
-                
+                ConsejoCarreraSistemas="\nConsejo Carrera Sistemas",
+                DelegadoUPS="\nNombre delegado UPS. \nDirectora técnica de vinculación UPS. \n3962800 ext.2167"
                 ;
         try{
         switch(codigo_cargo){
@@ -29,7 +29,7 @@ public class ListaDocentesAdministrativos {
                 retorno=ConsejoCarreraSistemas;
                 break;
             case 4:
-                
+                retorno=DelegadoUPS;
                 break;
             case 5:
                 

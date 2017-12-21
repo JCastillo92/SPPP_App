@@ -13,7 +13,6 @@ import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfReader;
@@ -52,7 +51,7 @@ public class AlmacenamientoPDF{
                 private Pasantia pasantia=new Pasantia();//jairo
                 private Encargado encargado=new Encargado();//jairo
                 private Empresa empresa=new Empresa();//jairo
-    
+    ListaDocentesAdministrativos buscar_docadmin=new ListaDocentesAdministrativos();
     
     
     public boolean create_student_folder_first_time(long cedula){
@@ -180,6 +179,7 @@ public class AlmacenamientoPDF{
             
             EmpresaDAO empreDAO = new EmpresaDAO();
             empresa=empreDAO.findEmpresa(encargado.getEmpresa().getId_empresa());
+            
             
          
              //VARIABLES INICIALES DEL  P D F 
@@ -384,6 +384,56 @@ public class AlmacenamientoPDF{
   documento.add(table6);
   //FIN TABLA 6
                     
+  
+  //SEC ACEPTACIÓN Y LEGALIZACIÓN
+  documento.add(salto_linea);
+    documento.add(new Paragraph("ACEPTACIÓN Y LEGALIZACIÓN",estexto));
+  documento.add(salto_linea);
+
+
+                    //tabla 7
+                    PdfPTable table7 = new PdfPTable(6);//# columns
+                    //1 row
+                    table7.addCell(new Paragraph("APELLIDOS Y NOMBRES DEL REPRESENTANTE LEGAL:", estexto));
+                    cell = new PdfPCell(new Paragraph(empresa.getNombre_gerente(),estexto));
+                    cell.setColspan(2);//total de celdas que va MERGE a esta FILA
+                    table7.addCell(cell);
+                    table7.addCell(new Paragraph("TELÉFONO:", estexto));
+                    cell = new PdfPCell(new Paragraph(empresa.getTelefono_empresa(),estexto));
+                    cell.setColspan(2);//total de celdas que va MERGE a esta FILA
+                    table7.addCell(cell);
+                    
+                    //2 row
+                    table7.addCell(new Paragraph("APELLIDOS Y NOMBRES DELEGADO UPS:", estexto));
+                    cell = new PdfPCell(new Paragraph(buscar_docadmin.nombreDocenteAdministrativo(4),estexto));
+                    cell.setColspan(5);//total de celdas que va MERGE a esta FILA
+                    table7.addCell(cell);
+                    
+                    //3 row
+                    table7.addCell(new Paragraph("LUGAR Y FECHA SUSCRIPCIÓN:", estexto));
+                    cell = new PdfPCell(new Paragraph("xxxxx",estexto));
+                    cell.setColspan(5);//total de celdas que va MERGE a esta FILA
+                    table7.addCell(cell);
+                    documento.add(table7);
+                    documento.add(salto_linea);
+                    
+                    //tabla 8
+                    PdfPTable table8 = new PdfPTable(3);//# columns
+                    //1 row
+                    table8.addCell(new Paragraph("REPRESENTANTE LEGAL:", estexto));
+                    table8.addCell(new Paragraph("firma:", esnota));
+                    table8.addCell(new Paragraph("sello:", esnota));
+                    
+                    //2 row
+                    table8.addCell(new Paragraph("DIRECCIÓN TÉCNICA DE VINCULACIÓN CON LA SOCIEDAD:", estexto));
+                    table8.addCell(new Paragraph("firma:", esnota));
+                    table8.addCell(new Paragraph("sello:", esnota));
+
+                    documento.add(table8);
+                    documento.add(salto_linea);
+                    
+                    
+                    
       //F I N  D O C U M E N T O 
       documento.close();
       exitoalguardar=true;
@@ -473,7 +523,7 @@ public class AlmacenamientoPDF{
       //nombre  DOCENTE, TUTOR, ADMINISTRATIVO
       documento.add(salto_linea);
       documento.add(salto_linea);
-      ListaDocentesAdministrativos buscar_docadmin=new ListaDocentesAdministrativos();
+      
       documento.add(new Paragraph("Atentamente: "+buscar_docadmin.nombreDocenteAdministrativo(1),estexto));
       
       //ADICIONAL VA EL NOMBRE DE LA UNIVERSIDAD Y SEDE

@@ -6,12 +6,16 @@
 package com.sppp.classes;
 
 import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.sppp.DAO.EmpresaDAO;
@@ -35,12 +39,12 @@ import java.io.IOException;
 public class AlmacenamientoPDF{
     //variables globales
     private String //local_path="/home/SPPP_PDF/";
-                    //local_path="E:/home/SPPP_PDF/";
-                    local_path="D:/home/SPPP_PDF/";
+                    local_path="E:/home/SPPP_PDF/";
+                    //local_path="D:/home/SPPP_PDF/";
     
     private String //local_path_images="/home/SPPP_PDF/images/";
-                    //local_path_images="E:/home/SPPP_PDF/images/";
-                    local_path_images="D:/home/SPPP_PDF/images/";
+                    local_path_images="E:/home/SPPP_PDF/images/";
+                    //local_path_images="D:/home/SPPP_PDF/images/";
     
     //invocacion a clases que debo usar para obtener los datos
                 private Usuario usuario = new Usuario();//jairo
@@ -87,7 +91,7 @@ public class AlmacenamientoPDF{
                     }else{
                         
                     }
-                } catch (Exception e) {
+                } catch (IOException e) {
                 }
                 break;
             case 2:
@@ -143,6 +147,7 @@ public class AlmacenamientoPDF{
             
                    //VARIABLES INICIALES DEL  P D F 
                  Document documento = new Document();
+                 PdfPCell cell;
                  documento.setPageSize(PageSize.A4);
                  Font estitulo = FontFactory.getFont(FontFactory.TIMES_ROMAN, 14, Font.NORMAL);
                  Font estexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
@@ -154,12 +159,11 @@ public class AlmacenamientoPDF{
                 //FORMATO OFICIO PARA LA EMPRESA
      try {
             FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
-            //FileOutputStream archivo = new FileOutputStream("E:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
             PdfWriter.getInstance(documento, archivo);
       documento.open();
-      //logo de la UPS
-
-       Image image = Image.getInstance(local_path_images+"logo-ups-home.png");
+      
+        //logo de la UPS
+        Image image = Image.getInstance(local_path_images+"logo-ups-home.png");
         image.setAlignment(Image.ALIGN_LEFT);
         image.setAbsolutePosition(10, 780);
         image.scalePercent(60, 55);
@@ -225,7 +229,7 @@ public class AlmacenamientoPDF{
       //F I N  D O C U M E N T O 
       documento.close();
       exitoalguardar=true;
-        } catch (Exception e) {
+        } catch (DocumentException | IOException e) {
             exitoalguardar=false;
         }
                 break;
@@ -304,12 +308,122 @@ public class AlmacenamientoPDF{
       //F I N  D O C U M E N T O 
       documento.close();
       exitoalguardar=true;
-        } catch (Exception e) {
+        } catch (DocumentException | FileNotFoundException e) {
             exitoalguardar=false;
         }
                 break;
             case 103:
-                //CARTA COMPROMISO
+                //FORMATO CARTA COMPROMISO INTERINSTITUCIONAL
+                try {
+            FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
+            PdfWriter.getInstance(documento, archivo);
+      documento.open();
+      
+        //logo de la UPS
+        Image image = Image.getInstance(local_path_images+"logo-ups-home.png");
+        image.setAlignment(Image.ALIGN_LEFT);
+        image.setAbsolutePosition(10, 780);
+        image.scalePercent(60, 55);
+        documento.add(image);
+        
+         Image image2 = Image.getInstance(local_path_images+"bkj2.png");
+        image2.setAlignment(Image.ALIGN_RIGHT);
+        image2.setAbsolutePosition(562, 458);
+        image2.scalePercent(60, 75);
+        documento.add(image2);
+        
+        Image image3 = Image.getInstance(local_path_images+"batl.png");
+        image3.setAlignment(Image.ALIGN_RIGHT);
+        image3.setAbsolutePosition(445, 775);
+        image3.scalePercent(6, 6);
+        documento.add(image3);
+             
+      documento.addAuthor("Universidad Politecnica Salesiana");
+      Paragraph salto_linea=new Paragraph("\n");
+      Paragraph linea_firma=new Paragraph("________________",estexto);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      
+      // T I T U L O
+      Paragraph p1=new Paragraph("FORMATO CARTA COMPROMISO INTERINSTITUCIONAL",estitulo);
+      p1.setAlignment(Element.ALIGN_CENTER);
+      documento.add(p1);
+      documento.add(salto_linea);
+      
+      //                            SEPARAR POR SECCIONES
+      //SEC INFORMACION GENERAL
+      //https://developers.itextpdf.com/examples/tables/colspan-and-rowspan
+       documento.add(new Paragraph("INFORMACIÓN GENERAL",estexto));
+  documento.add(salto_linea);
+  
+  PdfPTable table = new PdfPTable(4);//# columns
+  
+  //1 row
+  table.addCell(new Paragraph("CÓDIGO:",estexto));
+  table.addCell(new Paragraph(""+pasantia.getTipo_ppp()+" "+pasantia.getCod_ppp(),estexto));
+  table.addCell(new Paragraph("No.:",estexto));
+  table.addCell("XXXXXXXXXXXXXX");
+  
+  //2 row
+  table.addCell(new Paragraph("NOMBRE DE LA EMPRESA O INSTITUCIÓN:",estexto));
+  cell = new PdfPCell(new Paragraph(empresa.getNombre_empresa(),estexto));
+  cell.setColspan(3);//total de celdas que va MERGE a esta FILA
+  table.addCell(cell);
+   
+  //3 row
+  table.addCell(new Paragraph("DIRECCIÓN:",estexto));
+  table.addCell(new Paragraph(empresa.getDireccion_empresa(),estexto));
+  table.addCell(new Paragraph("TELÉFONO:",estexto));
+  table.addCell(new Paragraph(empresa.getTelefono_empresa(),estexto));
+  
+  //4 row
+  table.addCell(new Paragraph("ACTIVIDAD PRINCIPAL DE LA EMPRESA O INSTITUCIÓN:",estexto));
+  cell = new PdfPCell(new Paragraph(usuario.getEstudiante().getActividadRealizar(),estexto));
+  cell.setColspan(3);//total de celdas que va MERGE a esta FILA
+  table.addCell(cell);
+  
+  //5 row
+  table.addCell(new Paragraph("APELLIDOS Y NOMBRES DEL ESTUDIANTE:",estexto));
+   cell = new PdfPCell(new Paragraph(usuario.getApellido()+" "+usuario.getNombre(),estexto));
+  cell.setColspan(3);//total de celdas que va MERGE a esta FILA
+  table.addCell(cell);
+  
+  //6 row
+  table.addCell(new Paragraph("CARRERA DE GRADO:",estexto));
+  table.addCell(new Paragraph("INGENIERÍA DE SISTEMAS",estexto));
+  table.addCell(new Paragraph("CICLO o SEMESTRE QUE CURSA:",estexto));
+  table.addCell(new Paragraph(""+usuario.getEstudiante().getUltimoNivel(),estexto));
+  documento.add(table);
+  
+  //DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN
+  documento.add(salto_linea);
+  documento.add(salto_linea);
+  
+   documento.add(new Paragraph("DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN",estexto));
+  documento.add(salto_linea);
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      //F I N  D O C U M E N T O 
+      documento.close();
+      exitoalguardar=true;
+        } catch (DocumentException | IOException e) {
+            exitoalguardar=false;
+        }
+                
                 
                 break;
             case 104:
@@ -382,7 +496,7 @@ public class AlmacenamientoPDF{
       //F I N  D O C U M E N T O 
       documento.close();
       exitoalguardar=true;
-        } catch (Exception e) {
+        } catch (DocumentException | FileNotFoundException e) {
             exitoalguardar=false;
         }
                 break;

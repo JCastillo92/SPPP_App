@@ -357,8 +357,8 @@ public class AlmacenamientoPDF{
        documento.add(new Paragraph("INFORMACIÓN GENERAL",estexto));
   documento.add(salto_linea);
   
+  //tabla 1
   PdfPTable table = new PdfPTable(4);//# columns
-  
   //1 row
   table.addCell(new Paragraph("CÓDIGO:",estexto));
   table.addCell(new Paragraph(""+pasantia.getTipo_ppp()+" "+pasantia.getCod_ppp(),estexto));
@@ -395,15 +395,44 @@ public class AlmacenamientoPDF{
   table.addCell(new Paragraph("CICLO o SEMESTRE QUE CURSA:",estexto));
   table.addCell(new Paragraph(""+usuario.getEstudiante().getUltimoNivel(),estexto));
   documento.add(table);
+  //FIN TABLA 1
   
-  //DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN
+  //SEC DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN
   documento.add(salto_linea);
   documento.add(salto_linea);
   
    documento.add(new Paragraph("DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN",estexto));
   documento.add(salto_linea);
+   
+//tabla 2
+   PdfPTable table2 = new PdfPTable(6);//# columns
+  //1 row
+  table2.addCell(new Paragraph("TIPO DE ACTIVIDAD ACADÉMICA:",estexto));
+  cell = new PdfPCell(new Paragraph(giveMeNamePPP(pasantia.getTipo_ppp()),estexto));
+  cell.setColspan(3);//total de celdas que va MERGE a esta FILA
+  table2.addCell(cell);
+  table2.addCell(new Paragraph("TOTAL HORAS:",estexto));
+  table2.addCell(new Paragraph(""+usuario.getEstudiante().getHorasPasantia(),estexto));
+  
+  //2 row
+  table2.addCell(new Paragraph("OBJETO DE LA ACTIVIDAD ACADÉMICA:",estexto));
   
   
+  cell = new PdfPCell(new Paragraph(empresa.getNombre_empresa(),estexto));
+  cell.setColspan(3);//total de celdas que va MERGE a esta FILA
+  table2.addCell(cell);
+  table2.addCell("XXXXXXXXXXXXXX");
+  table2.addCell("XXXXXXXXXXXXXX");
+table2.addCell("XXXXXXXXXXXXXX");
+table2.addCell("XXXXXXXXXXXXXX");
+table2.addCell("XXXXXXXXXXXXXX");
+table2.addCell("XXXXXXXXXXXXXX");
+table2.addCell("XXXXXXXXXXXXXX");
+table2.addCell("XXXXXXXXXXXXXX");table2.addCell("XXXXXXXXXXXXXX");
+   
+  
+  documento.add(table2);
+  //FIN TABLA 2
   
   
   

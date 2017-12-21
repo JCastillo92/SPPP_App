@@ -21,7 +21,7 @@ public interface CitasDao {
      // public List<VisitaTutor> confirmaCita(String id);
      public List<Usuario> listar();
      public String obtenerNombre(String id);
-    public List<Pasantia> findUser(long id);
+    public List<Pasantia> findUser(String id);
      public String obtenerCoordinador(String id);
         public List<VisitaTutor> listarVisitados(String id);
    

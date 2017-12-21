@@ -17,6 +17,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.sppp.DAO.CitasDaoImp;
 import com.sppp.DAO.EmpresaDAO;
 import com.sppp.DAO.EncargadoDAO;
 import com.sppp.DAO.PasantiaDAO;
@@ -26,6 +27,7 @@ import com.sppp.beans.Encargado;
 import com.sppp.beans.LocalTimeDate;
 import com.sppp.beans.Pasantia;
 import com.sppp.beans.Usuario;
+import com.sppp.beans.VisitaTutor;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -51,6 +53,7 @@ public class AlmacenamientoPDF{
                 private Pasantia pasantia=new Pasantia();//jairo
                 private Encargado encargado=new Encargado();//jairo
                 private Empresa empresa=new Empresa();//jairo
+                private VisitaTutor tutor=new VisitaTutor();//karen
     ListaDocentesAdministrativos buscar_docadmin=new ListaDocentesAdministrativos();
     
     
@@ -151,6 +154,10 @@ public class AlmacenamientoPDF{
                
                 break; 
             case 111:
+               
+                break;
+            case 200:
+                exitoalguardar=pdf_InformeTutor(cedula, numero_pdf);
                
                 break;
             default:
@@ -732,6 +739,205 @@ public class AlmacenamientoPDF{
         }
                      return exitoalguardar;
     }//fin metodo
+    
+    
+
+
+  public boolean pdf_InformeTutor(long cedula,int numero_pdf){//200
+      exitoalguardar=false;
+         //FORMATO CARTA COMPROMISO INTERINSTITUCIONAL
+         
+         //LLAMADO A informacion NECESERAIA PARA ingresar, crear AL P D F
+            UsuarioDAO uDAO = new UsuarioDAO();
+            usuario = uDAO.findUsuario(cedula);   
+            
+            PasantiaDAO passDAO=new PasantiaDAO();
+            pasantia = passDAO.findPasantia(cedula);
+            
+            EncargadoDAO encarDAO=new EncargadoDAO();
+            encargado=encarDAO.findEncargado(pasantia.getEncargado().getId_encargado());
+            
+            EmpresaDAO empreDAO = new EmpresaDAO();
+            empresa=empreDAO.findEmpresa(encargado.getEmpresa().getId_empresa());
+            
+           CitasDaoImp tut=new CitasDaoImp();
+           tutor=tut.findTutor(cedula);
+         
+             //VARIABLES INICIALES DEL  P D F 
+                 Document documento = new Document();
+                 PdfPCell cell;
+                 documento.setPageSize(PageSize.A4);
+                 Font estitulo = FontFactory.getFont(FontFactory.TIMES_ROMAN, 14, Font.NORMAL);
+                 Font estexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
+                 Font esnota = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6, Font.NORMAL);
+                 Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL); 
+                 
+                try {
+            FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
+            PdfWriter.getInstance(documento, archivo);
+      documento.open();
+      
+        //logo de la UPS
+        Image image = Image.getInstance(local_path_images+"logo-ups-home.png");
+        image.setAlignment(Image.ALIGN_LEFT);
+        image.setAbsolutePosition(10, 780);
+        image.scalePercent(60, 55);
+        documento.add(image);
+        
+             
+      documento.addAuthor("Universidad Politecnica Salesiana");
+      Paragraph salto_linea=new Paragraph("\n");
+      Paragraph linea_firma=new Paragraph("________________",estexto);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      
+      // T I T U L O
+      Paragraph p1=new Paragraph("FORMATO INFORME TUTOR",estitulo);
+      p1.setAlignment(Element.ALIGN_CENTER);
+      documento.add(p1);
+      documento.add(salto_linea);
+      
+      //                            SEPARAR POR SECCIONES
+      //SEC INFORMACION GENERAL
+      //https://developers.itextpdf.com/examples/tables/colspan-and-rowspan
+       documento.add(new Paragraph("Datos",estexto));
+  documento.add(salto_linea);
+  documento.add(new Paragraph( "Carta Compromiso:   "+pasantia.getTipo_ppp()+pasantia.getCod_ppp()+"                                              Tipo de actividad:            "+giveMeNamePPP(pasantia.getTipo_ppp()),estexto));
+  documento.add(salto_linea);
+  
+  documento.add(new Paragraph("Tutor:                         "+tutor.getTutor().getUsuario2().getNombre(),estexto));
+  documento.add(salto_linea);
+  
+  
+       documento.add(new Paragraph("Estudiante:                "+usuario.getNombre()+usuario.getApellido()+"                                    Cèdula estudiante:            "+usuario.getId_cedula(),estexto));
+     
+      
+       documento.add(salto_linea); 
+  
+       
+  
+  
+  //tabla 1
+  PdfPTable table = new PdfPTable(4);//# columns
+  //1 row
+  table.addCell(new Paragraph("CÓDIGO:",estexto));
+  table.addCell(new Paragraph(""+pasantia.getTipo_ppp()+" "+pasantia.getCod_ppp(),estexto));
+  table.addCell(new Paragraph("No.:",estexto));
+  table.addCell("XXXXXXXXXXXXXX");
+  
+  //2 row
+  table.addCell(new Paragraph("NOMBRE DE LA EMPRESA O INSTITUCIÓN:",estexto));
+  cell = new PdfPCell(new Paragraph(empresa.getNombre_empresa(),estexto));
+  cell.setColspan(3);//total de celdas que va MERGE a esta FILA
+  table.addCell(cell);
+   
+  //3 row
+  table.addCell(new Paragraph("DIRECCIÓN:",estexto));
+  table.addCell(new Paragraph(empresa.getDireccion_empresa(),estexto));
+  table.addCell(new Paragraph("TELÉFONO:",estexto));
+  table.addCell(new Paragraph(empresa.getTelefono_empresa(),estexto));
+  
+  //4 row
+  table.addCell(new Paragraph("ACTIVIDAD PRINCIPAL DE LA EMPRESA O INSTITUCIÓN:",estexto));
+  cell = new PdfPCell(new Paragraph(usuario.getEstudiante().getActividadRealizar(),estexto));
+  cell.setColspan(3);//total de celdas que va MERGE a esta FILA
+  table.addCell(cell);
+  
+  //5 row
+  table.addCell(new Paragraph("APELLIDOS Y NOMBRES DEL ESTUDIANTE:",estexto));
+   cell = new PdfPCell(new Paragraph(usuario.getApellido()+" "+usuario.getNombre(),estexto));
+  cell.setColspan(3);//total de celdas que va MERGE a esta FILA
+  table.addCell(cell);
+  
+  //6 row
+  table.addCell(new Paragraph("CARRERA DE GRADO:",estexto));
+  table.addCell(new Paragraph("INGENIERÍA DE SISTEMAS",estexto));
+  table.addCell(new Paragraph("CICLO o SEMESTRE QUE CURSA:",estexto));
+  table.addCell(new Paragraph(""+usuario.getEstudiante().getUltimoNivel(),estexto));
+  documento.add(table);
+  //FIN TABLA 1
+  
+  //SEC DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN
+  documento.add(salto_linea);
+  documento.add(salto_linea);
+  
+   documento.add(new Paragraph("DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN",estexto));
+  documento.add(salto_linea);
+   
+//tabla 2
+   PdfPTable table2 = new PdfPTable(6);//# columns
+  //1 row
+  table2.addCell(new Paragraph("TIPO DE ACTIVIDAD ACADÉMICA:",estexto));
+  cell = new PdfPCell(new Paragraph(giveMeNamePPP(pasantia.getTipo_ppp()),estexto));
+  cell.setColspan(3);//total de celdas que va MERGE a esta FILA
+  table2.addCell(cell);
+  table2.addCell(new Paragraph("TOTAL HORAS:",estexto));
+  table2.addCell(new Paragraph(""+usuario.getEstudiante().getHorasPasantia(),estexto));
+  
+  //2 row
+  cell = new PdfPCell(new Paragraph("OBJETO DE LA ACTIVIDAD ACADÉMICA",estexto));
+  cell.setRowspan(2);//#columnas a merge para esta celda
+  table2.addCell(cell);
+  cell = new PdfPCell(new Paragraph("xxxxxxxxx",estexto));
+  cell.setColspan(3);//total de celdas que va MERGE a esta FILA
+  cell.setRowspan(2);//#columnas a merge para esta celda
+  table2.addCell(cell);
+  table2.addCell(new Paragraph("FECHA INICIO:",estexto));
+  table2.addCell(new Paragraph(""+pasantia.getFechaInicio(),estexto));
+  table2.addCell(new Paragraph("FECHA FINAL:",estexto));
+  table2.addCell(new Paragraph(""+pasantia.getFechaFin(),estexto));
+
+  //3 row
+  table2.addCell(new Paragraph("HORARIO PREVISTO:",estexto));
+  cell = new PdfPCell(new Paragraph("xxxxxxxxxxxxxxx",estexto));
+  cell.setColspan(2);//total de celdas que va MERGE a esta FILA
+  table2.addCell(cell);
+  table2.addCell(new Paragraph("NOMBRE PROGRAMA:",estexto));
+  cell = new PdfPCell(new Paragraph("xxxxxxxxxxxxxxx",estexto));
+  cell.setColspan(2);//total de celdas que va MERGE a esta FILA
+  table2.addCell(cell);
+  
+  //4 row
+  table2.addCell(new Paragraph("ÁREA QUE REQUIERE LA ACTIVIDAD ACADÉMICA:",estexto));
+  cell = new PdfPCell(new Paragraph("xxxxxxxxxxxxxxx",estexto));
+  cell.setColspan(2);//total de celdas que va MERGE a esta FILA
+  table2.addCell(cell);
+  table2.addCell(new Paragraph("RESPONSABLE DEL ÁREA:",estexto));
+  cell = new PdfPCell(new Paragraph(encargado.getNombre_encargado(),estexto));
+  cell.setColspan(2);//total de celdas que va MERGE a esta FILA
+  table2.addCell(cell);
+  documento.add(table2);
+  //FIN TABLA 2
+  
+  
+                    //SEC ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA: (SEÑALE AQUELLAS QUE PREVÉN RESULTADOS Y PRODUCTOS)
+                    documento.add(salto_linea);
+                    documento.add(salto_linea);
+
+                    documento.add(new Paragraph("ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA", estexto));
+                    documento.add(salto_linea);
+                    documento.add(salto_linea);
+
+                    documento.add(new Paragraph("(SEÑALE AQUELLAS QUE PREVÉN RESULTADOS Y PRODUCTOS)", estexto));
+                    documento.add(salto_linea);
+                    //TABLA 3 INICIO
+                    PdfPTable table3 = new PdfPTable(1);//# columns
+                    //1 row
+                    table3.addCell(new Paragraph("XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX", estexto));
+                    documento.add(table3);
+                    //FIN TABLA 3
+
+      //F I N  D O C U M E N T O 
+      documento.close();
+      exitoalguardar=true;
+        } catch (DocumentException | IOException e) {
+            exitoalguardar=false;
+        }
+                return exitoalguardar;
+
+    }//fin metodo
+    
     
     private String giveMeNamePPP(String nameppp){
         if(nameppp.equals("PA")){

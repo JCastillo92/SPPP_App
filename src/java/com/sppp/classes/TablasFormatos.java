@@ -8,13 +8,13 @@ package com.sppp.classes;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author KarenVanessaAchigGua
  */
-@Named(value = "tablasFormatos")
-@SessionScoped
+@ManagedBean(name="tablasFormatos")
 public class TablasFormatos implements Serializable {
 
     /**

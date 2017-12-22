@@ -70,7 +70,7 @@ public class LoginDAO {
             usuario = (Usuario) query.uniqueResult();
             tx.commit();
 
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             e.printStackTrace();
             if (tx != null){
                 tx.rollback();

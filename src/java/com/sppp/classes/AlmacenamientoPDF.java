@@ -78,59 +78,6 @@ public class AlmacenamientoPDF{
     return exitoalguardar;
     }
     
-    public boolean guardado_archivo_pdf_subido(long cedula,int numero_pdf) throws FileNotFoundException, IOException{
-        //metodo que permite coger el archivo subido al sistema y almacenarlo en un directorio
-       exitoalguardar=false;
-                
-        switch(numero_pdf){
-            case 1:
-//https://www.mkyong.com/java/itext-read-and-write-pdf-in-java/
-                try {
-                    PdfReader reader=new PdfReader(new FileInputStream(local_path+""));
-                    if(!reader.isEncrypted()){//si el archivo PDF no esta encriptado
-                        
-                    }else{
-                        
-                    }
-                } catch (IOException e) {
-                }
-                break;
-            case 2:
-                
-                break;
-            case 3:
-                
-                break;
-            case 4:
-                
-                break;
-            case 5:
-                
-                break;
-            case 6:
-                
-                break;
-            case 7:
-                
-                break;
-            case 8:
-                
-                break;
-            case 9:
-                
-                break;
-            case 10:
-                
-                break;
-            default:
-                System.out.println("No se ha encontrado dentro del case el numero para almacenar el .PDF");
-                exitoalguardar=false;
-                break;
-        }//end of SWITCH 
-        return exitoalguardar;
-    }//fin guardado
-    
-    
     public boolean guardado_archivo_pdf_creado(long cedula,int numero_pdf){
         exitoalguardar=false;     
         switch(numero_pdf){

@@ -44,4 +44,35 @@ public class ListaDocentesAdministrativos {
         
         return retorno;
     }
+    
+    
+    public String corrreoDocenteAdministrativo(int codigo_correo){
+        String devuelvo_correo="",
+                DireccionCarreraSistemas="blarat@est.ups.edu.ec",
+                Secretaria="kachig@est.ups.edu.ec",
+                ConsejoCarreraSistemas="jfloresg1@est.ups.edu.ec",
+                DelegadoUPS="jcastillor1@est.ups.edu.ec",
+                RevisorInicioProcesoPasantia="jfloresg1@est.ups.edu.ec"
+                ;
+        switch(codigo_correo){
+            case 1:
+                devuelvo_correo=DireccionCarreraSistemas;
+                break;
+            case 2:
+                devuelvo_correo=Secretaria;
+                break;
+            case 3:
+                devuelvo_correo=ConsejoCarreraSistemas;
+                break;
+            case 5:
+                devuelvo_correo=DelegadoUPS;
+                break;
+            case 6:
+                devuelvo_correo=RevisorInicioProcesoPasantia;
+                break;
+            default:
+                break;
+        }    
+        return devuelvo_correo;
+    }
 }

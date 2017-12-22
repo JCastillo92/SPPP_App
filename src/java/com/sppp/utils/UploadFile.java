@@ -5,6 +5,8 @@
  */
 package com.sppp.utils;
 
+import com.sppp.classes.ListaDocentesAdministrativos;
+import com.sppp.mailing.MailingMain;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -70,7 +72,7 @@ public class UploadFile {
             id = 0;
             System.out.println("========== ERROR AL TRAER INFO  S E S S I O N  DE USUARIO ==============0");
         }
-        
+
             switch(opcion){
                 case 1:
                     //1 SCAN OFICIO PARA LA EMPRESA .PDF
@@ -81,11 +83,16 @@ public class UploadFile {
                     //2 SCAN CARTA DE ACEPTACION .PDF
                     Files.copy(input, new File(local_path+id, "2" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
                     break;
+                default:
+                    
+                    break;
             }
-
+//aqui envio el email al docente encargado para que revise que han subido scan de docs en  oficio y carta aceptacion.
+        MailingMain primer_mensaje=new MailingMain();
+        ListaDocentesAdministrativos corrreo_De=new ListaDocentesAdministrativos();
+        primer_mensaje.mensajes(1002,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
+        
             System.out.println(new File("/").getAbsolutePath());
-            
-            
         } catch (IOException ex) {
             System.out.println("Error Al Cargar: "+ex.getMessage());
         }

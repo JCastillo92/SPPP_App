@@ -41,16 +41,12 @@
                         <!-- INICIO INFORMACIÓN GENERAL-->
                         <b:carouselItem style="width:400px; height:auto">
                             <b:panel title="Informaci&oacute;n General" look="default">
-                                <b:inputText value="#{userWizard.p.tipo_ppp}" label="C&oacute;digo:" />
-                                <b:inputText value="#{userWizard.p.cod_ppp}" label="No.:"/>
-                                <b:inputText value="#{userWizard.usuario.correo}" label="Nombre de la empresa o instituci&oacute;n:" />
-                                <b:inputText value="#{userWizard.usuario.correo}" label="Direcci&oacute;n:" />
-                                <b:inputText value="#{userWizard.emp.telefono_empresa}" label="Tel&eacute;fono:" />
-                                <b:inputText value="#{userWizard.usuario.estudiante.actividadRealizar}" label="Actividad Principal que Ejerce la Empresa:" />
-                                <b:inputText value="#{userWizard.usuario.apellido}" label="Apellidos Estudiante:" />
-                                <b:inputText value="#{userWizard.usuario.nombre}" label="Nombres Estudiante:" />
-                                <b:inputText value="#{userWizard.usuario.estudiante.actividadRealizar}" label="Carrera de Grado:" />
-                                <b:inputText value="#{userWizard.usuario.estudiante.actividadRealizar}" label="Ciclo o Semestre que Cursa:" />
+                                <b:inputText value="#{wizardCartaCompromiso}" label="C&oacute;digo:" disabled="true" tooltip="Tipo pasant&iacute;a o pr&acirc;ctica pre profesional"/>
+                                <b:inputText value="#{wizardCartaCompromiso}" label="No.:" disabled="true" tooltip="N&uacute;merro relacionado al c&oacute;digo"/>
+                                <b:inputText value="#{wizardCartaCompromiso}" label="Nombre de la empresa o instituci&oacute;n:" disabled="true" tooltip="Nombre de la empresa o instituci&oacute;n"/>
+                                <b:inputTextarea value="#{wizardCartaCompromiso}" label="Objeto de la Actividad Acad&eacute;mica:" placeholder="Describir todas las actividades." tooltip="Describir el objeto de actividad acad&eacute;mica"/>
+                                <b:inputText value="#{wizardCartaCompromiso}" label="Carrera de Grado:" disabled="true" tooltip="Carrera a la que pertenece"/>
+                                <b:inputText value="#{wizardCartaCompromiso}" label="Ciclo o Semestre que Cursa:" disabled="true" tooltip="Semestre en curso"/>
                             </b:panel>
                         </b:carouselItem>
                         <!-- FIN INFORMACIÓN GENERAL-->
@@ -58,15 +54,15 @@
                         <!--INICIO DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN -->
                         <b:carouselItem style="width:400px;height:auto">
                             <b:panel title="Descripci&oacute;n Estrat&eacute;gica de Intervenci&oacute;n" look="default">
-                                <b:inputText value="#{userWizard.emp.id_empresa}" label="Tipo Actividad Acad&eacute;mica:" />
-                                <b:inputText value="#{userWizard.emp.nombre_empresa}" label="Total Horas:" />
-                                <b:inputTextarea value="#{userWizard.emp.nombre_gerente}" label="Objeto de la Actividad Acad&eacute;mica:" />
-                                <b:inputText value="#{userWizard.emp.telefono_empresa}" label="Fecha Inicio:" />
-                                <b:inputText value="#{userWizard.emp.direccion_empresa}" label="Fecha Fin:" />
-                                <b:inputText value="#{userWizard.enc.ci_encargado}" label="Horario Previsto:" />
-                                <b:inputText value="#{userWizard.enc.nombre_encargado}" label="Nombre del Programa:" />
-                                <b:inputText value="#{userWizard.enc.cargo_encargado}" label="&Aacute;rea que Requiere la Actividad Acad&eacute;mica:" />
-                                <b:inputText value="#{userWizard.enc.cargo_encargado}" label="Responsable del &Aacute;rea:" />
+                                <b:inputText value="#{wizardCartaCompromiso}" label="Tipo Actividad Acad&eacute;mica:" disabled="true" tooltip="PA o PP"/>
+                                <b:inputText value="#{wizardCartaCompromiso}" label="Total Horas:" placeholder="Ejemplo: 200" tooltip="Horas"/>
+                                
+                                <b:inputText value="#{wizardCartaCompromiso}" label="Fecha Inicio:" tooltip="Fecha inicio actividades" disabled="true"/>
+                                <b:inputText value="#{wizardCartaCompromiso}" label="Fecha Fin:"  tooltip="Fecha fin actividades" disabled="true"/>
+                                <b:inputText value="" label="Horario Previsto:" placeholder="Ejemplo 1: L - Ma - Mi -V de 7am a 10am"/>
+                                <b:inputText value="#{wizardCartaCompromiso}" label="Nombre del Programa:" placeholder="Nombre de la aplicaci&oacute;n, programa"/>
+                                <b:inputText value="#{wizardCartaCompromiso}" label="&Aacute;rea que Requiere la Actividad Acad&eacute;mica:" placeholder="Ejemplo: Departamento de QA"/>
+                                <b:inputText value="#{wizardCartaCompromiso}" label="Responsable del &Aacute;rea:" disabled="true"/>
                             </b:panel>
                         </b:carouselItem>
                         <!--FIN INICIO DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN -->
@@ -75,10 +71,10 @@
                         <!--INICIO ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA-->
                         <b:carouselItem style="width:400px;height:auto">
                             <b:panel title="Actividades Previstas a ser Desarrolladas en la Actividad Acad&eacute;mica" look="default">
-                                <b:inputTextarea value="#{userWizard.emp.id_empresa}" label="Se&ntilde;ale Aquellas que Prev&eacute;n Resultados y Productos:" />
-                                <b:inputTextarea value="#{userWizard.emp.id_empresa}" label="Resultados Previstoa de la Actividad Acad&eacute;mica:" />
-                                <b:inputTextarea value="#{userWizard.emp.id_empresa}" label="Incluya el Listado de todos los Materiales F&iacute;sicos que se Generan en la Intervenci&oacute;n:" />
-                                <b:inputText value="#{userWizard.emp.id_empresa}" label="Nombre del Tutor:" />
+                                <b:inputTextarea value="#{wizardCartaCompromiso}" label="Se&ntilde;ale Aquellas que Prev&eacute;n Resultados y Productos:" tooltip="Listar m&iacute;nimo 4"/>
+                                <b:inputTextarea value="#{wizardCartaCompromiso}" label="Resultados Previstoa de la Actividad Acad&eacute;mica:" tooltip="Listar m&iacute;nimo 4"/>
+                                <b:inputTextarea value="#{wizardCartaCompromiso}" label="Incluya el Listado de todos los Materiales F&iacute;sicos que se Generan en la Intervenci&oacute;n:" />
+                                <b:inputText value="#{wizardCartaCompromiso}" label="Nombre del Tutor:" tooltip="Tutor asignado para visitas" disabled="true"/>
                             </b:panel>
                         </b:carouselItem>
                         <!--FIN ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA-->
@@ -90,7 +86,7 @@
                         </b:carouselControl>
                         <b:carouselControl>
                             
-                            <b:commandButton value="Enviar" style="position:absolute;right:0px" action="#{userWizard.guardarDatos()}" 
+                            <b:commandButton value="Enviar" style="position:absolute;right:0px" action="#{wizardCartaCompromiso.guardarDatos()}" 
                                       look="success" />
                         </b:carouselControl>
                         <b:carouselControl direction="left">

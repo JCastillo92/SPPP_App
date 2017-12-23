@@ -15,7 +15,6 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.sppp.DAO.CitasDaoImp;
 import com.sppp.DAO.EmpresaDAO;
@@ -892,5 +891,5 @@ public class AlmacenamientoPDF{
     }
     
     
-    
+
 }//end of class

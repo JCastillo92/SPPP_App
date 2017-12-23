@@ -31,6 +31,8 @@ public class LoginDAO {
         Usuario usuario=null;
         try {
             tx = sesion.beginTransaction();
+            AlmacenamientoPDF obj =new AlmacenamientoPDF();
+            obj.guardado_archivo_pdf_creado(123, 103);
             
             /*
             int idformato = 1;

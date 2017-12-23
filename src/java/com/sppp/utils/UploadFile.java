@@ -6,6 +6,7 @@
 package com.sppp.utils;
 
 import com.sppp.classes.ListaDocentesAdministrativos;
+import com.sppp.classes.Paths;
 import com.sppp.mailing.MailingMain;
 import java.io.File;
 import java.io.IOException;
@@ -22,9 +23,8 @@ import javax.servlet.http.Part;
  */
 @ManagedBean
 public class UploadFile {
-     private String //local_path="/home/SPPP_PDF/";
-                    local_path="E:/home/SPPP_PDF/";
-                    //local_path="D:/home/SPPP_PDF/";  
+    
+    
     private Part file;
 
     public Part getFile() {
@@ -48,6 +48,8 @@ public class UploadFile {
     
     //METODO PARA GUARDAR EL ARCHIVO
     public void guardar(int opcion){
+         Paths directorio=new Paths();
+     String local_path=directorio.local_path();
         String nombre;
         String nombreSinExt, extension;
         int punto;

@@ -29,7 +29,6 @@ import com.sppp.beans.Pasantia;
 import com.sppp.beans.Usuario;
 import com.sppp.beans.VisitaTutor;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -40,13 +39,9 @@ import java.io.IOException;
 public class AlmacenamientoPDF{
     //variables globales
     boolean exitoalguardar=false;
-    private String //local_path="/home/SPPP_PDF/";
-                    local_path="E:/home/SPPP_PDF/";
-                    //local_path="D:/home/SPPP_PDF/";
-    
-    private String //local_path_images="/home/SPPP_PDF/images/";
-                    local_path_images="E:/home/SPPP_PDF/images/";
-                    //local_path_images="D:/home/SPPP_PDF/images/";
+    Paths directorio=new Paths();
+    private final String local_path=directorio.local_path();
+    private final String local_path_images=directorio.local_path_images();
     
     //invocacion a clases que debo usar para obtener los datos
                 private Usuario usuario = new Usuario();//jairo

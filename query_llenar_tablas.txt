@@ -66,21 +66,33 @@ insert into tb_tipopregunta (tipo) values ('CHECKMANY');
 
 
 /*llenar tb_proceso ESTA TABLA TENDRA DATOS QUEMADOS*/
-insert into tb_proceso(descripcion,estado) values ('PROCESO solicitud inicio proceso pasantia',true);
+insert into tb_proceso(descripcion,estado) values ('Ingreso Datos Basicos',true);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('ingreso datos alumno',true,1);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('ingreso datos empresa',true,1);
 
-insert into tb_proceso(descripcion,estado) values ('POCESO carga y descarga de archivos oficio y carta aceptacion',true);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('descarga y carga de archivos',true,4);
+insert into tb_proceso(descripcion,estado) values ('Descargar/Subir Oficio',true);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Descargar Oficio',true,4);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir Oficio',true,4);
 
-insert into tb_proceso(descripcion,estado) values ('PROCESO llenar carta compromiso',true);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('ingreso datos a la carta compromiso',true,6);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('ingreso datos a la carta compromiso DESEMPENO ESTRATEGIAS',true,6);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('ingreso datos a la carta compromiso LEGALIZACION',true,6);
+insert into tb_proceso(descripcion,estado) values ('Ingreso Datos Carta Compromiso',true);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Información General',true,6);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Descripción Estratégica de Intervención',true,6);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Actividades Previstas a ser Desarrolladas en la Actividad Académica',true,6);
 
-insert into tb_proceso(descripcion,estado) values ('PROCESO carga y descarga solicitud inicio actividades en la empresa',true);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('descarga y carga de archivos iniciar actividades',true,10);
 
+insert into tb_proceso(descripcion,estado) values ('Descargar/Subir Carta Compromiso',true);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Descargar Carta Compromiso',true,10);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir Carta Compromiso',true,10);
+
+insert into tb_proceso(descripcion,estado) values ('Solicitar Inicio Actividades',true);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Descargar Inicio Actividades',true,13);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir Inicio Actividades',true,13);
+
+insert into tb_proceso(descripcion,estado) values ('Resolucion de Proceso',true);
+
+
+
+/*
 insert into tb_proceso(descripcion,estado) values ('PROCESO Agendacion cita',true);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('creacion fecha tentiva',true,12);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('confirmacion cita',true,12);
@@ -104,7 +116,7 @@ insert into tb_proceso(descripcion,estado) values ('PROCESO Carga y descarga arc
 insert into tb_proceso(descripcion,estado,proceso_de) values ('descarga y carga formato autoevaluacion',true,25);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('carga certificado empresa',true,25);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('carga derecho validacion',true,25);
-
+*/
 
 
 
@@ -198,4 +210,3 @@ insert into tb_empresa (id_empresa,nombre_empresa,nombre_gerente,telefono_empres
 insert into tb_empresa_encargado (ci_encargado,nombre_encargado,cargo_encargado,id_empresa) values (1769696969,'spiderman','defensor del pueblo',1721397113001);
 
 update tb_pasantia set tiempoesperaestado=4, id_encargado=1,fechainicio='2017-12-20',fechafin='2017-12-30' where tipo_ppp='PP' and cod_ppp=1;
-

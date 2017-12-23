@@ -654,7 +654,7 @@ public class AlmacenamientoPDF{
       documento.add(salto_linea);
       
       // C U  E R  P O   DE  D O C U M E N T O 
-      Paragraph cuerpo=new Paragraph("Yo,"+usuario.getNombre()+" "+usuario.getApellido()+", con cédula de ciudadanía: "+usuario.getEstudiante().getCedula()+", "
+      Paragraph cuerpo=new Paragraph("Yo, "+usuario.getNombre()+" "+usuario.getApellido()+", con cédula de ciudadanía: "+usuario.getEstudiante().getCedula()+", "
                       + " solicito a Ud. la autorización del inicio de la actividad de "+giveMeNamePPP(pasantia.getTipo_ppp())+", en "+empresa.getNombre_empresa()+" "
                               + "desde "+pasantia.getFechaInicio()+" hasta "+pasantia.getFechaFin()+".",estexto);
       cuerpo.setAlignment(Element.ALIGN_JUSTIFIED);

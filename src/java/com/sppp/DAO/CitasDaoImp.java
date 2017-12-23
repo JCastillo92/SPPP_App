@@ -260,7 +260,30 @@ public class CitasDaoImp implements CitasDao {
     
     
     }
+ public VisitaTutor findTutor(long user){
+        
+        VisitaTutor usu = new VisitaTutor();
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;
+        
+        try {
+            tx = sesion.beginTransaction();
+            Query query = sesion.createQuery(" from VisitaTutor WHERE cedula_est = :id ");
+            query.setLong("id", user);
+            
+            usu = (VisitaTutor) query.uniqueResult();
+            tx.commit();
 
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (tx != null){
+                tx.rollback();
+            }
+        }
+        
+        return usu;
+    }
     
 
   

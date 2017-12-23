@@ -100,6 +100,10 @@ public class CitasAgendadas {
      
         return visitasRealizadas;
     }
-    
+    public void pdf(){
+   AlmacenamientoPDF crear=new AlmacenamientoPDF();
+   crear.create_student_folder_first_time(123);
+   crear.guardado_archivo_pdf_creado(123, 200);
+   } 
     
 }

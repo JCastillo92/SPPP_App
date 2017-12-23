@@ -16,8 +16,8 @@ import javax.mail.internet.MimeMessage;
  */
 
 public class MailingMain {
-    private String username = "spppsistemasups@gmail.com";
-    private String password = "@sistemasKJ2B";
+    String username = "spppsistemasups@gmail.com";
+    String password = "@sistemasKJ2B";
     
     //Texto quemado que puede REPETIRSE
     private String ponnombreAPP="SPPP (Sistema de Pasantías y Prácticas Pre Profesionales). ";
@@ -52,8 +52,13 @@ public class MailingMain {
                 
                 //CASE P A R A  D O C E N T E , A D I M I N S T R A T I V O S , T U T O R E S, SE C RE T A R I A
             case 1001:
-                AddSubject="NOTIFICACION PARA REVISION";
-                contentMessage="Se informa que un alumno a subido información o documentacion lista para revisar y aprobar.";
+                AddSubject="REVISIÓN INICIO PROCESO PASANTÍA";
+                contentMessage="Existe nuevos alumnos que han onrgesado datos personales y de la empresa, los cuales "
+                        + "se requiere revisar, validar y aprobar.";
+                break;
+            case 1002:
+                AddSubject="REVISIÓN DE OFICIO Y CARTA DE ACEPTACIÓN";
+                contentMessage="Existe documentos subidos (escaneados) a la plataforma, listos para revisar y aprobar.";
                 break;
             case 1009:
                 AddSubject="";
@@ -88,7 +93,7 @@ public class MailingMain {
     
     
     private void deliverMail(String AddRecipientDestination, String AddSubject,String contentMessage){       
-            try {
+        try {
 	        Properties props = System.getProperties();
 	        props.setProperty("mail.transport.protocol", "smtp");
 	        props.setProperty("mail.host", "smtp.gmail.com");
@@ -100,14 +105,14 @@ public class MailingMain {
 	        props.put("mail.smtp.socketFactory.fallback", "false");
 	 
 	        Session emailSession = Session.getInstance(props,new javax.mail.Authenticator() {
-	        protected PasswordAuthentication getPasswordAuthentication() {return new PasswordAuthentication("clubecologicoups@gmail.com","est.ups.edu.ec");
+	        protected PasswordAuthentication getPasswordAuthentication() {return new PasswordAuthentication("spppsistemasups@gmail.com","@sistemasKJ2B");
 	        }});
 	 
 	        emailSession.setDebug(true);
 	        Message message = new MimeMessage(emailSession);
-	        message.setFrom(new InternetAddress("spppsistemasups@gmail.com"));
+	        message.setFrom(new InternetAddress(username));
 	        message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(AddRecipientDestination));
-	        message.setSubject(AddSubject);//tema, asunto del email
+	        message.setSubject(AddSubject);
 	        message.setText(contentMessage);
 	 
 	        Transport transport = emailSession.getTransport("smtps");
@@ -116,6 +121,7 @@ public class MailingMain {
 	       } catch (MessagingException e) {
 	    	  e.getMessage();
 	       }
+	    
     }//end of method deliverMail()
 }//end of CLASS
 

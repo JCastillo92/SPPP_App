@@ -31,28 +31,10 @@ public class LoginDAO {
         Usuario usuario=null;
         try {
             tx = sesion.beginTransaction();
-            /*
-            MailingMain obj2 = new MailingMain();
-            obj2.mensajes(1,"jairdean@hotmail.com","requiere que actualice pdf.");
-            //obj.create_student_folder_first_time(123);
-            AlmacenamientoPDF obj = new AlmacenamientoPDF();
-            obj.create_student_folder_first_time(123);
-            obj.guardado_archivo_pdf_creado(123, 101);
-            obj.guardado_archivo_pdf_creado(123, 102);
+            AlmacenamientoPDF obj =new AlmacenamientoPDF();
             obj.guardado_archivo_pdf_creado(123, 103);
-            obj.guardado_archivo_pdf_creado(123, 104);
-            */
-
-            /*
-=======
-            /*            MailingMain obj2=new MailingMain();
-        obj2.deliverMain();
->>>>>>> origin/master
-                
             
-                      AlmacenamientoPDF obj=new AlmacenamientoPDF();
-                      obj.create_student_folder_first_time(123);
-                      obj.guardado_archivo_pdf_subido(123,1);
+            /*
             int idformato = 1;
             Set<Preguntas> preguntas;
             List<Campo> campos = new ArrayList<>() ;
@@ -90,7 +72,7 @@ public class LoginDAO {
             usuario = (Usuario) query.uniqueResult();
             tx.commit();
 
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             e.printStackTrace();
             if (tx != null){
                 tx.rollback();

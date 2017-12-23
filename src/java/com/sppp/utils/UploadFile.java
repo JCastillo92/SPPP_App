@@ -5,12 +5,14 @@
  */
 package com.sppp.utils;
 
+import com.sppp.classes.ListaDocentesAdministrativos;
+import com.sppp.classes.Paths;
+import com.sppp.mailing.MailingMain;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import javax.servlet.http.HttpSession;
 import java.nio.file.StandardCopyOption;
 import javax.faces.bean.ManagedBean;
 import javax.servlet.http.Part;
@@ -21,6 +23,7 @@ import javax.servlet.http.Part;
  */
 @ManagedBean
 public class UploadFile {
+    
     
     private Part file;
 
@@ -45,6 +48,8 @@ public class UploadFile {
     
     //METODO PARA GUARDAR EL ARCHIVO
     public void guardar(int opcion){
+         Paths directorio=new Paths();
+     String local_path=directorio.local_path();
         String nombre;
         String nombreSinExt, extension;
         int punto;
@@ -59,23 +64,37 @@ public class UploadFile {
             extension = nombre.substring(punto,nombre.length());
             System.out.println(nombreSinExt+" "+extension);
             
-            //SI NECESITAS MAS DOCUMENTOS, AUMENTA LOS CASOS AQUI Y TAMBIEN EN EL XHTML
+            
+        //LO SIGUIENTE ME PERMITE SABER LA CEDULA DEL ALUMNO, CON ESO PUEDO SABER A QUE CARPETA MANDAR EL .PDF SUBIDO
+                 HttpSession session = SessionUtils.getSession();
+        long id;
+            try {
+            id = (long) session.getAttribute("id");
+        } catch (Exception e) {
+            id = 0;
+            System.out.println("========== ERROR AL TRAER INFO  S E S S I O N  DE USUARIO ==============0");
+        }
+
             switch(opcion){
                 case 1:
-                    //PATH DONDE SE VA A GUARDAR EL ARCHIVO
-                    //PARA CAMBIAR EL NOMBRE DEL ARCHIVO MODIFICAR DONDE DICE "documento1"
-                    Files.copy(input, new File("C:\\Users\\EstJhonAlexanderCast\\Documents\\Programacion\\NetBeanSpaces\\EjerciciosJSFs\\JsfImagen", "documento1" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
-
+                    //1 SCAN OFICIO PARA LA EMPRESA .PDF
+                    Files.copy(input, new File(local_path+id, "1" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
                     break;
 
                 case 2:
-                    Files.copy(input, new File("C:\\Users\\EstJhonAlexanderCast\\Documents\\Programacion\\NetBeanSpaces\\EjerciciosJSFs\\JsfImagen", "documento2" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    //2 SCAN CARTA DE ACEPTACION .PDF
+                    Files.copy(input, new File(local_path+id, "2" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    break;
+                default:
+                    
                     break;
             }
-
+//aqui envio el email al docente encargado para que revise que han subido scan de docs en  oficio y carta aceptacion.
+        MailingMain primer_mensaje=new MailingMain();
+        ListaDocentesAdministrativos corrreo_De=new ListaDocentesAdministrativos();
+        primer_mensaje.mensajes(1002,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
+        
             System.out.println(new File("/").getAbsolutePath());
-            
-            
         } catch (IOException ex) {
             System.out.println("Error Al Cargar: "+ex.getMessage());
         }

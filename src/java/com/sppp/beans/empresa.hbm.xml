@@ -13,6 +13,8 @@
         <property name="nombre_gerente" type="string"></property>
         <property name="telefono_empresa" type="string"></property>
         <property name="direccion_empresa" type="string"></property>
+        <property name="actividad_principal_empresa" type="string"></property>
+        
         
            <!-- ENVIO LA CLAVE PRIMARIA-->
          <set name="encargado" table="tb_empresa_encargado" fetch="select">

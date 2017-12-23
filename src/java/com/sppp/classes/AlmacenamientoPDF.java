@@ -187,8 +187,8 @@ public class AlmacenamientoPDF{
   PdfPTable table = new PdfPTable(4);//# columns
   //1 row
   table.addCell(new Paragraph("CÓDIGO:",estexto));
-  table.addCell(new Paragraph(""+pasantia.getTipo_ppp()+" "+pasantia.getCod_ppp(),estexto));
-  table.addCell(new Paragraph("No.:",estexto));
+  table.addCell(new Paragraph(""+pasantia.getTipo_ppp(),estexto));
+  table.addCell(new Paragraph("No.:"+pasantia.getCod_ppp(),estexto));
   table.addCell("XXXXXXXXXXXXXX");
   
   //2 row
@@ -205,7 +205,7 @@ public class AlmacenamientoPDF{
   
   //4 row
   table.addCell(new Paragraph("ACTIVIDAD PRINCIPAL DE LA EMPRESA O INSTITUCIÓN:",estexto));
-  cell = new PdfPCell(new Paragraph(usuario.getEstudiante().getActividadRealizar(),estexto));
+  cell = new PdfPCell(new Paragraph(empresa.getActividad_principal_empresa(),estexto));
   cell.setColspan(3);//total de celdas que va MERGE a esta FILA
   table.addCell(cell);
   

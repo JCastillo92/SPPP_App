@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+     template="/templates/main.xhtml"
+     xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:p="http://primefaces.org/ui"
+     xmlns:f="http://xmlns.jcp.org/jsf/core"
+     xmlns:b="http://bootsfaces.net/ui">
+    
+    <ui:define name="title">
+        Carta Compromiso
+    </ui:define>
+    
+    <ui:define name="barra-lateral">
+        <ui:include src="/snippets/menu_estudiante.xhtml" />
+    </ui:define>
+    
+    <ui:define name="contenido">
+
+        <!-- ENCABEZADO -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Solicitud Carta Compromiso</h1>
+            </div>
+        </div>
+
+        <!-- FORMULARIO WIZZARD -->
+        <div class="row">
+            <div class="col-lg-12">
+
+                <b:form>
+                    <!-- inicio CAROUSEL-->
+                    <b:carousel id="wizard" styleClass="wizardPseudoClass"
+                                style="width:400px; padding-top:20px"
+                                startAnimation="false"
+                                showIndicators="false"
+                                wrap="false">
+                        
+                        <!-- INICIO INFORMACIÓN GENERAL-->
+                        <b:carouselItem style="width:400px; height:auto">
+                            <b:panel title="Informaci&oacute;n General" look="default">
+                                <b:inputText value="#{userWizard.p.tipo_ppp}" label="C&oacute;digo:" />
+                                <b:inputText value="#{userWizard.p.cod_ppp}" label="No.:"/>
+                                <b:inputText value="#{userWizard.usuario.correo}" label="Nombre de la empresa o instituci&oacute;n:" />
+                                <b:inputText value="#{userWizard.usuario.correo}" label="Direcci&oacute;n:" />
+                                <b:inputText value="#{userWizard.emp.telefono_empresa}" label="Tel&eacute;fono:" />
+                                <b:inputText value="#{userWizard.usuario.estudiante.actividadRealizar}" label="Actividad Principal que Ejerce la Empresa:" />
+                                <b:inputText value="#{userWizard.usuario.apellido}" label="Apellidos Estudiante:" />
+                                <b:inputText value="#{userWizard.usuario.nombre}" label="Nombres Estudiante:" />
+                                <b:inputText value="#{userWizard.usuario.estudiante.actividadRealizar}" label="Carrera de Grado:" />
+                                <b:inputText value="#{userWizard.usuario.estudiante.actividadRealizar}" label="Ciclo o Semestre que Cursa:" />
+                            </b:panel>
+                        </b:carouselItem>
+                        <!-- FIN INFORMACIÓN GENERAL-->
+                        
+                        <!--INICIO DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN -->
+                        <b:carouselItem style="width:400px;height:auto">
+                            <b:panel title="Descripci&oacute;n Estrat&eacute;gica de Intervenci&oacute;n" look="default">
+                                <b:inputText value="#{userWizard.emp.id_empresa}" label="Tipo Actividad Acad&eacute;mica:" />
+                                <b:inputText value="#{userWizard.emp.nombre_empresa}" label="Total Horas:" />
+                                <b:inputTextarea value="#{userWizard.emp.nombre_gerente}" label="Objeto de la Actividad Acad&eacute;mica:" />
+                                <b:inputText value="#{userWizard.emp.telefono_empresa}" label="Fecha Inicio:" />
+                                <b:inputText value="#{userWizard.emp.direccion_empresa}" label="Fecha Fin:" />
+                                <b:inputText value="#{userWizard.enc.ci_encargado}" label="Horario Previsto:" />
+                                <b:inputText value="#{userWizard.enc.nombre_encargado}" label="Nombre del Programa:" />
+                                <b:inputText value="#{userWizard.enc.cargo_encargado}" label="&Aacute;rea que Requiere la Actividad Acad&eacute;mica:" />
+                                <b:inputText value="#{userWizard.enc.cargo_encargado}" label="Responsable del &Aacute;rea:" />
+                            </b:panel>
+                        </b:carouselItem>
+                        <!--FIN INICIO DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN -->
+                        
+                        
+                        <!--INICIO ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA-->
+                        <b:carouselItem style="width:400px;height:auto">
+                            <b:panel title="Actividades Previstas a ser Desarrolladas en la Actividad Acad&eacute;mica" look="default">
+                                <b:inputTextarea value="#{userWizard.emp.id_empresa}" label="Se&ntilde;ale Aquellas que Prev&eacute;n Resultados y Productos:" />
+                                <b:inputTextarea value="#{userWizard.emp.id_empresa}" label="Resultados Previstoa de la Actividad Acad&eacute;mica:" />
+                                <b:inputTextarea value="#{userWizard.emp.id_empresa}" label="Incluya el Listado de todos los Materiales F&iacute;sicos que se Generan en la Intervenci&oacute;n:" />
+                                <b:inputText value="#{userWizard.emp.id_empresa}" label="Nombre del Tutor:" />
+                            </b:panel>
+                        </b:carouselItem>
+                        <!--FIN ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA-->
+                        
+                        <b:carouselControl direction="right" >
+                            <b:button value="Anterior"
+                                      onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');"
+                                      look="info" />
+                        </b:carouselControl>
+                        <b:carouselControl>
+                            
+                            <b:commandButton value="Enviar" style="position:absolute;right:0px" action="#{userWizard.guardarDatos()}" 
+                                      look="success" />
+                        </b:carouselControl>
+                        <b:carouselControl direction="left">
+                            <b:button value="Siguiente" style="position:absolute;right:100px"
+                                      onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');"
+                                      look="info" />
+                        </b:carouselControl>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </b:carousel> <!-- FIN DE TODO EL CAROUSEL-->
+                </b:form>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <br/>
+            <br/>
+        </div>
+
+
+        
+    </ui:define>
+    
+</ui:composition>

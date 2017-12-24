@@ -262,8 +262,9 @@ public class WizardCartaCompromiso {
         empresa.getActividad_principal_empresa();
         
         //Recolectando info estudiante
-        usuario.getNombre();
         usuario.getApellido();
+        usuario.getNombre();
+        
         usuario.getEstudiante().getUltimoNivel();
         
         

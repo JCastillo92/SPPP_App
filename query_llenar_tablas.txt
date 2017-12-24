@@ -149,7 +149,10 @@ insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbform
 insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('ProductosEntregablesPrevistosActividad',true,3,1);/*3 = text area*/
 insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('NombreTutorAsignado',true,1,1);
 insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('ApellidosNombresGerenteEmpresa',true,1,1);
+insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('CargoGerenteEmpresa',true,1,1);
 insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('ApellidosNombresDelegadoUPS',true,1,1);
+insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('CargoDelegadoUPS',true,1,1);
+insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('TelefonoNombresDelegadoUPS',true,1,1);
 insert into tb_preguntas (descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values ('LugarFechaSuscripcion',true,1,1);
 
 
@@ -192,32 +195,35 @@ insert into tb_pasantia (tipo_ppp,cod_ppp,fechainicio,fechafin,tiempoesperaestad
 
 
 /*tb_respuesta DATOS_QUEMADOS*/
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_codigo',1);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_nro',2);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_nombreEmpresaInstitucion',3);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_direccionEmpresa',4);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_elefonoEmpresa',5);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_actividadPrincipalEmpresa',6);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_apellidosEstudiante',7);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_nombresEstudiante',8);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_carreraGrado',9);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_emestreActual',10);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_tipoActividadAcademicaPAPP',11);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_objetoActividadAcademica',12);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_totalHoras',13);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_fechaInicio',14);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_fechaFinal',15);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_horarioPrevisto',16);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_nombrePrograma',17);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_areaActividadAcademicaEmpresa',18);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_responsableArea',19);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_actividadesPrevistasASerDesarrolladas',20);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_resultadosPrevistoActividad',21);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_productosEntregablesPrevistosActividad',22);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_nombreTutorAsignado',23);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_apellidosNombresGerenteEmpresa',24);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_apellidosNombresDelegadoUPS',25);
-insert into tb_respuesta (descripcion_resp,id_tbpreguntas) values ('para_lugarFechaSuscripcion',26);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (1,'para_codigo',1);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (2,'para_nro',2);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (3,'para_nombreEmpresaInstitucion',3);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (4,'para_direccionEmpresa',4);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (5,'para_telefonoEmpresa',5);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (6,'para_actividadPrincipalEmpresa',6);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (7,'para_apellidosEstudiante',7);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (8,'para_nombresEstudiante',8);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (9,'para_carreraGrado',9);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (10,'para_semestreActual',10);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (11,'para_tipoActividadAcademicaPAPP',11);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (12,'para_objetoActividadAcademica',12);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (13,'para_totalHoras',13);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (14,'para_fechaInicio',14);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (15,'para_fechaFinal',15);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (16,'para_horarioPrevisto',16);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (17,'para_nombrePrograma',17);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (18,'para_areaActividadAcademicaEmpresa',18);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (19,'para_responsableArea',19);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (20,'para_actividadesPrevistasASerDesarrolladas',20);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (21,'para_resultadosPrevistoActividad',21);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (22,'para_productosEntregablesPrevistosActividad',22);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (23,'para_nombreTutorAsignado',23);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (24,'para_apellidosNombresGerenteEmpresa',24);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (25,'para_cargoGerenteEmpresa',25);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (26,'para_apellidosNombresDelegadoUPS',26);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (27,'para_cargoDelegadoUPS',27);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (28,'para_telefonoNombresDelegadoUPS',28);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (29,'para_lugarFechaSuscripcion',29);
 
 
 

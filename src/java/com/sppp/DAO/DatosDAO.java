@@ -25,7 +25,7 @@ import org.hibernate.Transaction;
  */
 public class DatosDAO {
 
-    public void DatosDAO(Usuario user, Empresa emp, Encargado enc, Pasantia pa, DetallePasantia dp, List<String> resps) {
+    public void datosGuardar(Usuario user, Empresa emp, Encargado enc, Pasantia pa, DetallePasantia dp, List<String> resps) {
 
         Respuesta idRespuesta = new Respuesta();
 

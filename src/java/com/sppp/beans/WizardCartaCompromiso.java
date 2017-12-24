@@ -5,6 +5,8 @@
  */
 package com.sppp.beans;
 
+import com.sppp.DAO.DatosDAO;
+import com.sppp.DAO.DetallePasantiaDAO;
 import com.sppp.DAO.EmpresaDAO;
 import com.sppp.DAO.EncargadoDAO;
 import com.sppp.DAO.PasantiaDAO;
@@ -313,13 +315,15 @@ public class WizardCartaCompromiso {
         resp.add(telefonoDelegado);//12
         resp.add(lugarFecha);//13
         
-        
-        
-        
         //Obtener idDetallePasantia
-        
+        DetallePasantia dp2 = new DetallePasantia();
+        DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
+        dp2 = dpDAO.findDetallePasantia(pasantia.getTipo_ppp(), pasantia.getCod_ppp());
         
         //Guardar en la tb_datos;
+        
+        DatosDAO obj = new DatosDAO();
+        obj.datosGuardar(usuario, empresa, encargado, pasantia, dp2, resp);
         
         
         //Incrementar cargo en la BD;

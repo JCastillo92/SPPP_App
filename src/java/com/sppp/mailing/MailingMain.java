@@ -53,7 +53,7 @@ public class MailingMain {
                 //CASE P A R A  D O C E N T E , A D I M I N S T R A T I V O S , T U T O R E S, SE C RE T A R I A
             case 1001:
                 AddSubject="REVISIÓN INICIO PROCESO PASANTÍA";
-                contentMessage="Existe nuevos alumnos que han onrgesado datos personales y de la empresa, los cuales "
+                contentMessage="Existe nuevos alumnos que han inrgesado datos personales y de la empresa, los cuales "
                         + "se requiere revisar, validar y aprobar.";
                 break;
             case 1002:

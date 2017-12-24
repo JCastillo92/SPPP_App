@@ -41,15 +41,18 @@ public class AlmacenamientoPDF{
     Paths directorio=new Paths();
     private final String local_path=directorio.local_path();
     private final String local_path_images=directorio.local_path_images();
-    
+    ListaDocentesAdministrativos buscar_docadmin=new ListaDocentesAdministrativos();
+  
+
     //invocacion a clases que debo usar para obtener los datos
                 private Usuario usuario = new Usuario();//jairo
                 private Pasantia pasantia=new Pasantia();//jairo
                 private Encargado encargado=new Encargado();//jairo
                 private Empresa empresa=new Empresa();//jairo
                 private VisitaTutor tutor=new VisitaTutor();//karen
-    ListaDocentesAdministrativos buscar_docadmin=new ListaDocentesAdministrativos();
-    
+
+
+        
     
     public boolean create_student_folder_first_time(long cedula){
         //NOTA el path /home/SPPP_PDF/ ya debe estar creado, para que lueg se proceda a crear cada carpeta con la ci

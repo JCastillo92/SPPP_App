@@ -59,16 +59,34 @@ public class DatosDAO {
         Datos d18 = new Datos();
         Datos d19 = new Datos();
         Datos d20 = new Datos();
-        Datos d21 = new Datos();
-        Datos d22 = new Datos();
-        Datos d23 = new Datos();
-        Datos d24 = new Datos();
-        Datos d25 = new Datos();
-        Datos d26 = new Datos();
-        Datos d27 = new Datos();
-        Datos d28 = new Datos();
-        Datos d29 = new Datos();
-        Datos d30 = new Datos();
+        
+        idRespuesta.setId_tbrespuesta(21);//para_resultadosPrevistoActividad
+        Datos d21 = new Datos(resps.get(7),dp,idRespuesta);//traigo del LIST<>
+        
+        idRespuesta.setId_tbrespuesta(22);//para_productosEntregablesPrevistosActividad
+        Datos d22 = new Datos(resps.get(8),dp,idRespuesta);//traigo del LIST<>
+        
+        idRespuesta.setId_tbrespuesta(23);//para_nombreTutorAsignado
+        Datos d23 = new Datos("DEFAUL VALUE JAJA",dp,idRespuesta);
+        
+        idRespuesta.setId_tbrespuesta(24);//para_apellidosNombresGerenteEmpresa
+        Datos d24 = new Datos(emp.getNombre_gerente(),dp,idRespuesta);//nombregerenteempresa
+        
+        idRespuesta.setId_tbrespuesta(25);//para_cargoGerenteEmpresa
+        Datos d25 = new Datos(resps.get(9),dp,idRespuesta);//traigo del LIST<>
+        
+        idRespuesta.setId_tbrespuesta(26);//para_apellidosNombresDelegadoUPS
+        Datos d26 = new Datos(resps.get(10),dp,idRespuesta);//traigo del LIST<>
+
+        idRespuesta.setId_tbrespuesta(27);//para_cargoDelegadoUPS
+        Datos d27 = new Datos(resps.get(11),dp,idRespuesta);//traigo del LIST<>
+        
+        idRespuesta.setId_tbrespuesta(28);//para_telefonoNombresDelegadoUPS
+        Datos d28 = new Datos(resps.get(12),dp,idRespuesta);//traigo del LIST<>
+        
+        idRespuesta.setId_tbrespuesta(29);//para_lugarFechaSuscripcion
+        Datos d29 = new Datos(resps.get(13),dp,idRespuesta);//traigo del LIST<>
+        
         
         
         

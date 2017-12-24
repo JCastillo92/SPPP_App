@@ -1,3 +1,5 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition
      xmlns="http://www.w3.org/1999/xhtml"
      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -37,15 +39,16 @@
                         <b:carouselItem style="width:400px; height:auto">
                             <b:panel title="Datos Estudiante" look="default">
                                 <!-- AQUI ABAJO FORMULARIO DINAMICO ESTUDIANTE-->
-                                <b:inputText value="#{userWizard.usuario.nombre}" label="Nombre:" />
-                                <b:inputText value="#{userWizard.usuario.telefono}" label="Telefono:"/>
+                                <b:inputText value="#{userWizard.usuario.nombre}" label="Nombre:" disabled="true"/>
+                                <b:inputText value="#{userWizard.usuario.apellido}" label="Apellido:" disabled="true"/>
+                                <b:inputText value="#{userWizard.usuario.telefono}" label="Tel&eacute;fono:"/>
                                 <b:inputText value="#{userWizard.usuario.correo}" label="Correo:" />
-                                <b:inputText value="#{userWizard.usuario.estudiante.ultimoNivel}" label="Nivel mas bajo:" />
+                                <b:inputText value="#{userWizard.usuario.estudiante.ultimoNivel}" label="Nivel m&acute;s bajo:" disabled="true"/>
                                 <b:inputTextarea value="#{userWizard.usuario.estudiante.actividadRealizar}" label="Actividad a Realizar:" />
                                 <h:outputText value="Tipo de Practica" style="font-weight:bold"/>
                                 <b:radiobutton value="#{userWizard.p.tipo_ppp}" required="true">
-                                    <f:selectItem itemLabel="Pasantia" itemValue="PA"/>
-                                    <f:selectItem itemLabel="Practica Pre Profesional" itemValue="PP"/>
+                                    <f:selectItem itemLabel="Pasant&iacute;a" itemValue="PA"/>
+                                    <f:selectItem itemLabel="Pr&aacute;ctica Pre Profesional" itemValue="PP"/>
                                 </b:radiobutton>
                                 <b:dateTimePicker value="#{userWizard.p.fechaInicio}" label="Fecha Tentativa Inicio:" show-time="false"/>
                                 <b:dateTimePicker value="#{userWizard.p.fechaFin}" label="Fecha Tentativa Fin" show-time="false"/>
@@ -58,10 +61,10 @@
                                 <b:inputText value="#{userWizard.emp.id_empresa}" label="RUC:" />
                                 <b:inputText value="#{userWizard.emp.nombre_empresa}" label="Nombre Empresa:" />
                                 <b:inputText value="#{userWizard.emp.nombre_gerente}" label="Nombre Gerente Empresa:" />
-                                <b:inputText value="#{userWizard.emp.telefono_empresa}" label="Telefono:" />
-                                <b:inputText value="#{userWizard.emp.direccion_empresa}" label="Direccion:" />
+                                <b:inputText value="#{userWizard.emp.telefono_empresa}" label="Tel&eacute;fono:" />
+                                <b:inputText value="#{userWizard.emp.direccion_empresa}" label="Direcci&oacute;n:" />
                                 <b:inputText value="#{userWizard.emp.actividad_principal_empresa}" label="Actividad Principal que Ejerce Empresa:" />
-                                <b:inputText value="#{userWizard.enc.ci_encargado}" label="Cedula Encargado:" />
+                                <b:inputText value="#{userWizard.enc.ci_encargado}" label="C&eacute;dula Encargado:" />
                                 <b:inputText value="#{userWizard.enc.nombre_encargado}" label="Nombre Encargado:" />
                                 <b:inputText value="#{userWizard.enc.cargo_encargado}" label="Cargo Encargado:" />
                             </b:panel>

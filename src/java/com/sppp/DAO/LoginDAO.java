@@ -6,6 +6,7 @@
 package com.sppp.DAO;
 
 
+import com.sppp.beans.DetallePasantia;
 import com.sppp.beans.Usuario;
 import com.sppp.classes.AlmacenamientoPDF;
 import com.sppp.mailing.MailingMain;
@@ -31,8 +32,7 @@ public class LoginDAO {
         Usuario usuario=null;
         try {
             tx = sesion.beginTransaction();
-          
-            
+                     
             /*
             int idformato = 1;
             Set<Preguntas> preguntas;

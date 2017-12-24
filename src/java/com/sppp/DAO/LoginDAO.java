@@ -33,7 +33,6 @@ public class LoginDAO {
             
             /*
             System.out.println("INICIO SECCION PRUEBAS");
-            
             System.out.println("FIN SECCION DE PRUEBAS");
             */
             

@@ -12,6 +12,7 @@ import com.sppp.beans.Encargado;
 import com.sppp.beans.Pasantia;
 import com.sppp.beans.Respuesta;
 import com.sppp.beans.Usuario;
+import java.util.List;
 
 
 /**
@@ -20,13 +21,8 @@ import com.sppp.beans.Usuario;
  */
 public class DatosDAO {
     
-    public void DatosDAO(Usuario user, Empresa emp, Encargado enc, Pasantia pa, DetallePasantia dp){
+    public void DatosDAO(Usuario user, Empresa emp, Encargado enc, Pasantia pa, DetallePasantia dp,List<String>resps){
         
-        Respuesta rTipo_ppp = new Respuesta();
-        Respuesta rCod_ppp = new Respuesta();
-        Respuesta rNombreEmpresa = new Respuesta();
-        Respuesta rDireccionEmpresa = new Respuesta();
-        Respuesta rTelefonoEmpresa = new Respuesta();
         
         Respuesta idRespuesta = new Respuesta();
         
@@ -41,8 +37,9 @@ public class DatosDAO {
         // ------ FIN INSERTAR 1 PREGUNTA ----------
         
         //Datos d1 = new Datos("valor" (String),"idpasantia"(int), "idRespuesta"(int));
+        idRespuesta.setId_tbrespuesta(1);
+        Datos d1 = new Datos(pa.getTipo_ppp(),dp,idRespuesta);
         
-        Datos d1 = new Datos();
         Datos d2 = new Datos();
         Datos d3 = new Datos();
         Datos d4 = new Datos();

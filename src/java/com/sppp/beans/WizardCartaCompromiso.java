@@ -10,6 +10,9 @@ import com.sppp.DAO.EncargadoDAO;
 import com.sppp.DAO.PasantiaDAO;
 import com.sppp.DAO.UsuarioDAO;
 import com.sppp.utils.SessionUtils;
+import com.sun.javafx.scene.control.skin.VirtualFlow;
+import java.util.LinkedList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.servlet.http.HttpSession;
@@ -278,7 +281,39 @@ public class WizardCartaCompromiso {
         //Nombre Gerente
         empresa.getNombre_gerente();
         
-        //Generando LISTA DE RESPUESTAS
+        //Generando LISTA DE RESPUESTAS solo de los Strings
+        /*
+        private String carrera_grado;
+                private String tipo_actividad_academica;
+                private String objetoDeLaActividad;
+                private String horarioPrevisto;
+                private String nombrePrograma;
+                private String areaAcademica;
+                private String actividadPrevista;
+                private String resultadosPrevistos;
+                private String productosEntregables;
+                private String cargo;
+                private String delegadoUPS;
+                private String cargoDelegado;
+                private String telefonoDelegado;
+                private String lugarFecha;*/
+        List<String> resp = new LinkedList<>();
+        resp.add(carrera_grado);
+        resp.add(tipo_actividad_academica);
+        resp.add(objetoDeLaActividad);
+        resp.add(horarioPrevisto);
+        resp.add(nombrePrograma);
+        resp.add(areaAcademica);
+        resp.add(actividadPrevista);
+        resp.add(resultadosPrevistos);
+        resp.add(productosEntregables);
+        resp.add(cargo);
+        resp.add(delegadoUPS);
+        resp.add(cargoDelegado);
+        resp.add(telefonoDelegado);
+        resp.add(lugarFecha);
+        
+        
         
         
         //Obtener idDetallePasantia

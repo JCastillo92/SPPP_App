@@ -5,6 +5,7 @@
  */
 package com.sppp.beans;
 
+import java.util.List;
 import java.util.Set;
 
 /**

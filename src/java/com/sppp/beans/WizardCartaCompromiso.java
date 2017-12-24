@@ -298,20 +298,20 @@ public class WizardCartaCompromiso {
                 private String telefonoDelegado;
                 private String lugarFecha;*/
         List<String> resp = new LinkedList<>();
-        resp.add(carrera_grado);
-        resp.add(tipo_actividad_academica);
-        resp.add(objetoDeLaActividad);
-        resp.add(horarioPrevisto);
-        resp.add(nombrePrograma);
-        resp.add(areaAcademica);
-        resp.add(actividadPrevista);
-        resp.add(resultadosPrevistos);
-        resp.add(productosEntregables);
-        resp.add(cargo);
-        resp.add(delegadoUPS);
-        resp.add(cargoDelegado);
-        resp.add(telefonoDelegado);
-        resp.add(lugarFecha);
+        resp.add(carrera_grado);//0
+        resp.add(tipo_actividad_academica);//1
+        resp.add(objetoDeLaActividad);//2
+        resp.add(horarioPrevisto);//3
+        resp.add(nombrePrograma);//4
+        resp.add(areaAcademica);//5
+        resp.add(actividadPrevista);//6
+        resp.add(resultadosPrevistos);//7
+        resp.add(productosEntregables);//8
+        resp.add(cargo);//9
+        resp.add(delegadoUPS);//10
+        resp.add(cargoDelegado);//11
+        resp.add(telefonoDelegado);//12
+        resp.add(lugarFecha);//13
         
         
         

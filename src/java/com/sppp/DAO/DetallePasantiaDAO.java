@@ -5,9 +5,10 @@
  */
 package com.sppp.DAO;
 
-
+import com.sppp.beans.DetallePasantia;
 import com.sppp.utils.HibernateUtil;
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -56,6 +57,34 @@ public class DetallePasantiaDAO {
         
         return numeroProceso;
 
+    }
+    
+    
+    public DetallePasantia findDetallePasantia(String tipo_ppp,int cod_ppp){
+      DetallePasantia detallePas=new DetallePasantia();
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;
+        
+        try{
+            tx = sesion.beginTransaction();
+            Query query = sesion.createQuery(" from DetallePasantia WHERE tipo_ppp = :tipo_ppp AND cod_ppp = :cod_ppp AND estado =  TRUE ");
+            query.setString("tipo_ppp", tipo_ppp);//PA PP
+            query.setInteger("cod_ppp", cod_ppp);//1 9
+            
+            detallePas = (DetallePasantia) query.uniqueResult();
+            tx.commit();
+        }catch (Exception e) {
+            e.printStackTrace();
+            if (tx != null){
+                tx.rollback();
+            }
+        }
+        finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+        return detallePas;
     }
 
 }

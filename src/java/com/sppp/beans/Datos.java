@@ -14,7 +14,7 @@ import java.util.Set;
 public class Datos {
     private long id_tbdatos;
     private String valor_datos;
-    private Set<DetallePasantia> detallePasantias;
+    private DetallePasantia detallePasantias;
     private Respuesta respuesta;
 
     public Respuesta getRespuesta() {
@@ -41,12 +41,14 @@ public class Datos {
         this.valor_datos = valor_datos;
     }
 
-    public Set<DetallePasantia> getDetallePasantias() {
+    public DetallePasantia getDetallePasantias() {
         return detallePasantias;
     }
 
-    public void setDetallePasantias(Set<DetallePasantia> detallePasantias) {
+    public void setDetallePasantias(DetallePasantia detallePasantias) {
         this.detallePasantias = detallePasantias;
     }
+
+    
     
 }

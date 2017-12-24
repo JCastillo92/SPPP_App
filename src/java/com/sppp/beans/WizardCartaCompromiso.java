@@ -162,6 +162,12 @@ public class WizardCartaCompromiso {
                 
 
     public String getTipo_actividad_academica() {
+        if(pasantia.getTipo_ppp().equals("PA")){
+            tipo_actividad_academica="pasantía";
+        }
+        if(pasantia.getTipo_ppp().equals("PP")){
+            tipo_actividad_academica="práctica pre profesional";
+        }
         return tipo_actividad_academica;
     }
 
@@ -260,12 +266,7 @@ public class WizardCartaCompromiso {
         usuario.getApellido();
         usuario.getEstudiante().getUltimoNivel();
         
-        if(pasantia.getTipo_ppp().equals("PA")){
-            tipo_actividad_academica="pasantía";
-        }
-        if(pasantia.getTipo_ppp().equals("PP")){
-            tipo_actividad_academica="práctica pre profesional";
-        }
+        
         
         //carrera-grado objetoDeLaActividad - horarioPrevisto - nombrePrograma - areaAcademica - actividadPrevista - resultadosPrevistos - TutorXXX - cargo
         usuario.getEstudiante().getHorasPasantia();

@@ -46,12 +46,12 @@ public class WizardCartaCompromiso {
                 private String delegadoUPS;
                 private String cargoDelegado;
                 private String telefonoDelegado;
-                private String lugarFecha;
-
+                private String lugarFecha; //Quito, 30-10-1992;
+ 
+                
+                
+                
     public String getLugarFecha() {
-        FechaSistema fc = new FechaSistema();
-        
-        lugarFecha = "Quito,  "+fc.fecha(); //Quito, 30-10-1992
         return lugarFecha;
     }
 
@@ -87,6 +87,7 @@ public class WizardCartaCompromiso {
     }
 
     public String getCargo() {
+        
         return cargo;
     }
 
@@ -225,6 +226,14 @@ public class WizardCartaCompromiso {
     }
     
     public WizardCartaCompromiso(){
+        
+        //Datos Quemados Generales
+        delegadoUPS="Lola Vazquez";;
+        cargoDelegado="Directora Técnica de Vinculación UPS";
+        telefonoDelegado="3962800 Ext.-2167";
+        FechaSistema fc = new FechaSistema();
+        lugarFecha= "Quito,  "+fc.fecha(); //Quito, 30-10-1992;
+        cargo = "Gerente";
         
         
         //Obteniendo el Usuario del Sistema

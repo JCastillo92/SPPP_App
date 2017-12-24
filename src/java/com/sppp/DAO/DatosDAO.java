@@ -32,40 +32,17 @@ public class DatosDAO {
         
         
         Datos d1 = new Datos();
+        
+        // ------- PARA INSERTAR LA PREGUNTA -------
         d1.setValor_datos("Hola");
         //Este ID debe ir cambiando para la pregunta 
         idRespuesta.setId_tbrespuesta(1);
         d1.setRespuesta(idRespuesta);
         //Seteo el id de la detallePasantia
         d1.setDetallePasantias(dp);
-        
-
-        /*Respuesta  = new Respuesta();
-        Respuesta  = new Respuesta();
-        Respuesta  = new Respuesta();
-        Respuesta  = new Respuesta();
-        Respuesta  = new Respuesta();
-        Respuesta  = new Respuesta();
-        Respuesta  = new Respuesta();
-        Respuesta  = new Respuesta();
-        Respuesta  = new Respuesta();
-        Respuesta  = new Respuesta();
-        Respuesta  = new Respuesta();
-        Respuesta  = new Respuesta();
-        Respuesta  = new Respuesta();
-        Respuesta  = new Respuesta();
-        Respuesta  = new Respuesta();
-        Respuesta  = new Respuesta();
-        Respuesta  = new Respuesta();
-        Respuesta  = new Respuesta();
-        Respuesta  = new Respuesta();
-        Respuesta  = new Respuesta();
-        Respuesta  = new Respuesta();*/
+        // ------ FIN INSERTAR 1 PREGUNTA ----------
         
         
-        
-        
-         
         
         
     }

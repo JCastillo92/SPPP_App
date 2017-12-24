@@ -41,12 +41,12 @@
                         <!-- INICIO INFORMACIÓN GENERAL-->
                         <b:carouselItem style="width:400px; height:auto">
                             <b:panel title="Informaci&oacute;n General" look="default">
-                                <b:inputText value="#{wizardCartaCompromiso}" label="C&oacute;digo:" disabled="true" tooltip="Tipo pasant&iacute;a o pr&acirc;ctica pre profesional"/>
-                                <b:inputText value="#{wizardCartaCompromiso}" label="No.:" disabled="true" tooltip="N&uacute;merro relacionado al c&oacute;digo"/>
-                                <b:inputText value="#{wizardCartaCompromiso}" label="Nombre de la empresa o instituci&oacute;n:" disabled="true" tooltip="Nombre de la empresa o instituci&oacute;n"/>
-                                <b:inputTextarea value="#{wizardCartaCompromiso}" label="Objeto de la Actividad Acad&eacute;mica:" placeholder="Describir todas las actividades." tooltip="Describir el objeto de actividad acad&eacute;mica"/>
-                                <b:inputText value="#{wizardCartaCompromiso}" label="Carrera de Grado:" disabled="true" tooltip="Carrera a la que pertenece"/>
-                                <b:inputText value="#{wizardCartaCompromiso}" label="Ciclo o Semestre que Cursa:" disabled="true" tooltip="Semestre en curso"/>
+                                <b:inputText value="#{wizardCartaCompromiso.pasantia.tipo_ppp}" label="C&oacute;digo:" disabled="true" tooltip="Tipo pasant&iacute;a o pr&acirc;ctica pre profesional"/>
+                                <b:inputText value="#{wizardCartaCompromiso.pasantia.cod_ppp}" label="No.:" disabled="true" tooltip="N&uacute;merro relacionado al c&oacute;digo"/>
+                                <b:inputText value="#{wizardCartaCompromiso.empresa.nombre_empresa}" label="Nombre de la empresa o instituci&oacute;n:" disabled="true" tooltip="Nombre de la empresa o instituci&oacute;n"/>
+                                <b:inputTextarea value="#{wizardCartaCompromiso.objetoDeLaActividad}" label="Objeto de la Actividad Acad&eacute;mica:" placeholder="Describir todas las actividades." tooltip="Describir el objeto de actividad acad&eacute;mica"/>
+                                <b:inputText value="#{wizardCartaCompromiso.carrera_grado}" label="Carrera de Grado:" disabled="true" tooltip="Carrera a la que pertenece"/>
+                                <b:inputText value="#{wizardCartaCompromiso.usuario.estudiante.ultimoNivel}" label="Ciclo o Semestre que Cursa:" disabled="true" tooltip="Semestre en curso"/>
                             </b:panel>
                         </b:carouselItem>
                         <!-- FIN INFORMACIÓN GENERAL-->
@@ -54,15 +54,15 @@
                         <!--INICIO DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN -->
                         <b:carouselItem style="width:400px;height:auto">
                             <b:panel title="Descripci&oacute;n Estrat&eacute;gica de Intervenci&oacute;n" look="default">
-                                <b:inputText value="#{wizardCartaCompromiso}" label="Tipo Actividad Acad&eacute;mica:" disabled="true" tooltip="PA o PP"/>
-                                <b:inputText value="#{wizardCartaCompromiso}" label="Total Horas:" placeholder="Ejemplo: 200" tooltip="Horas"/>
+                                <b:inputText value="#{wizardCartaCompromiso.tipo_actividad_academica}" label="Tipo Actividad Acad&eacute;mica:" disabled="true" tooltip="PA o PP"/>
+                                <b:inputText value="#{wizardCartaCompromiso.usuario.estudiante.horasPasantia}" label="Total Horas:" placeholder="Ejemplo: 200" tooltip="Horas"/>
                                 
-                                <b:inputText value="#{wizardCartaCompromiso}" label="Fecha Inicio:" tooltip="Fecha inicio actividades" disabled="true"/>
-                                <b:inputText value="#{wizardCartaCompromiso}" label="Fecha Fin:"  tooltip="Fecha fin actividades" disabled="true"/>
-                                <b:inputText value="" label="Horario Previsto:" placeholder="Ejemplo 1: L - Ma - Mi -V de 7am a 10am"/>
-                                <b:inputText value="#{wizardCartaCompromiso}" label="Nombre del Programa:" placeholder="Nombre de la aplicaci&oacute;n, programa"/>
-                                <b:inputText value="#{wizardCartaCompromiso}" label="&Aacute;rea que Requiere la Actividad Acad&eacute;mica:" placeholder="Ejemplo: Departamento de QA"/>
-                                <b:inputText value="#{wizardCartaCompromiso}" label="Responsable del &Aacute;rea:" disabled="true"/>
+                                <b:inputText value="#{wizardCartaCompromiso.pasantia.fechaInicio}" label="Fecha Inicio:" tooltip="Fecha inicio actividades" disabled="true"/>
+                                <b:inputText value="#{wizardCartaCompromiso.pasantia.fechaFin}" label="Fecha Fin:"  tooltip="Fecha fin actividades" disabled="true"/>
+                                <b:inputText value="#{wizardCartaCompromiso.horarioPrevisto}" label="Horario Previsto:" placeholder="Ejemplo: L - Mi - V de 7am a 10am"/>
+                                <b:inputText value="#{wizardCartaCompromiso.nombrePrograma}" label="Nombre del Programa:" placeholder="Nombre de la aplicaci&oacute;n o programa"/>
+                                <b:inputText value="#{wizardCartaCompromiso.areaAcademica}" label="&Aacute;rea que Requiere la Actividad Acad&eacute;mica:" placeholder="Ejemplo: Departamento de QA"/>
+                                <b:inputText value="#{wizardCartaCompromiso.encargado.nombre_encargado}" label="Responsable del &Aacute;rea:" disabled="true"/>
                             </b:panel>
                         </b:carouselItem>
                         <!--FIN INICIO DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN -->
@@ -71,10 +71,10 @@
                         <!--INICIO ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA-->
                         <b:carouselItem style="width:400px;height:auto">
                             <b:panel title="Actividades Previstas a ser Desarrolladas en la Actividad Acad&eacute;mica" look="default">
-                                <b:inputTextarea value="#{wizardCartaCompromiso}" label="Se&ntilde;ale Aquellas que Prev&eacute;n Resultados y Productos:" tooltip="Listar m&iacute;nimo 4"/>
-                                <b:inputTextarea value="#{wizardCartaCompromiso}" label="Resultados Previstoa de la Actividad Acad&eacute;mica:" tooltip="Listar m&iacute;nimo 4"/>
-                                <b:inputTextarea value="#{wizardCartaCompromiso}" label="Incluya el Listado de todos los Materiales F&iacute;sicos que se Generan en la Intervenci&oacute;n:" />
-                                <b:inputText value="#{wizardCartaCompromiso}" label="Nombre del Tutor:" tooltip="Tutor asignado para visitas" disabled="true"/>
+                                <b:inputTextarea value="#{wizardCartaCompromiso.actividadPrevista}" label="Se&ntilde;ale Aquellas que Prev&eacute;n Resultados y Productos:" tooltip="Listar m&iacute;nimo 4"/>
+                                <b:inputTextarea value="#{wizardCartaCompromiso.resultadosPrevistos}" label="Resultados Previstoa de la Actividad Acad&eacute;mica:" tooltip="Listar m&iacute;nimo 4"/>
+                                <b:inputTextarea value="#{wizardCartaCompromiso.productosEntregables}" label="Incluya el Listado de todos los Materiales F&iacute;sicos que se Generan en la Intervenci&oacute;n:" />
+                                <b:inputText value="#{wizardCartaCompromiso.tutorXXX}" label="Nombre del Tutor:" tooltip="Tutor asignado para visitas" disabled="true"/>
                             </b:panel>
                         </b:carouselItem>
                         <!--FIN ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA-->

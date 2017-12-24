@@ -330,7 +330,7 @@ public class WizardCartaCompromiso {
         dp2 = dpDAO.findDetallePasantia(pasantia.getTipo_ppp(), pasantia.getCod_ppp());
         
         //Guardar en la tb_datos;
-        
+        System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"+dp2.getIdDetallePasantia());
         DatosDAO obj = new DatosDAO();
         obj.datosGuardar(usuario, empresa, encargado, pasantia, dp2, resp);
         

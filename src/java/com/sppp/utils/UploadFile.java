@@ -15,6 +15,10 @@ import java.nio.file.Files;
 import javax.servlet.http.HttpSession;
 import java.nio.file.StandardCopyOption;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 /**
@@ -102,7 +106,26 @@ public class UploadFile {
         
     }
     
+        public String subir_archivo(){///aqui recibir nombre de archivo 103.pdf
+     String info_pasantia="";
+       try {
+ 
+    FacesContext facesContext = FacesContext.getCurrentInstance();
+    ExternalContext context = facesContext.getExternalContext();  
+     
+ 
+        HttpServletRequest request =  (HttpServletRequest)context.getRequest();
+        HttpServletResponse response =  (HttpServletResponse)context.getResponse(); 
+ 
+        response.sendRedirect(request.getContextPath()+"/faces/user/estudiantes/download/103.pdf");
+        //response.sendRedirect("index.jsf");
+ 
     
+} catch (IOException e) {
+    e.printStackTrace();
+}
+        return info_pasantia;
+    }
     
     
 }

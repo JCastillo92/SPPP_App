@@ -15,7 +15,6 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.sppp.DAO.CitasDaoImp;
 import com.sppp.DAO.EmpresaDAO;
@@ -187,8 +186,8 @@ public class AlmacenamientoPDF{
   PdfPTable table = new PdfPTable(4);//# columns
   //1 row
   table.addCell(new Paragraph("CÓDIGO:",estexto));
-  table.addCell(new Paragraph(""+pasantia.getTipo_ppp()+" "+pasantia.getCod_ppp(),estexto));
-  table.addCell(new Paragraph("No.:",estexto));
+  table.addCell(new Paragraph(""+pasantia.getTipo_ppp(),estexto));
+  table.addCell(new Paragraph("No.:"+pasantia.getCod_ppp(),estexto));
   table.addCell("XXXXXXXXXXXXXX");
   
   //2 row
@@ -205,7 +204,7 @@ public class AlmacenamientoPDF{
   
   //4 row
   table.addCell(new Paragraph("ACTIVIDAD PRINCIPAL DE LA EMPRESA O INSTITUCIÓN:",estexto));
-  cell = new PdfPCell(new Paragraph(usuario.getEstudiante().getActividadRealizar(),estexto));
+  cell = new PdfPCell(new Paragraph(empresa.getActividad_principal_empresa(),estexto));
   cell.setColspan(3);//total de celdas que va MERGE a esta FILA
   table.addCell(cell);
   
@@ -654,7 +653,7 @@ public class AlmacenamientoPDF{
       documento.add(salto_linea);
       
       // C U  E R  P O   DE  D O C U M E N T O 
-      Paragraph cuerpo=new Paragraph("Yo,"+usuario.getNombre()+" "+usuario.getApellido()+", con cédula de ciudadanía: "+usuario.getEstudiante().getCedula()+", "
+      Paragraph cuerpo=new Paragraph("Yo, "+usuario.getNombre()+" "+usuario.getApellido()+", con cédula de ciudadanía: "+usuario.getEstudiante().getCedula()+", "
                       + " solicito a Ud. la autorización del inicio de la actividad de "+giveMeNamePPP(pasantia.getTipo_ppp())+", en "+empresa.getNombre_empresa()+" "
                               + "desde "+pasantia.getFechaInicio()+" hasta "+pasantia.getFechaFin()+".",estexto);
       cuerpo.setAlignment(Element.ALIGN_JUSTIFIED);
@@ -892,5 +891,5 @@ public class AlmacenamientoPDF{
     }
     
     
-    
+
 }//end of class

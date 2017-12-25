@@ -337,7 +337,7 @@ public class WizardCartaCompromiso {
         
         //Incrementar cargo en la BD;
         
-        
+        //aqui llamar a crear la carta de compromiso
         return redireccion;
     }
     

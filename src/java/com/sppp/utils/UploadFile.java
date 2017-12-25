@@ -5,6 +5,7 @@
  */
 package com.sppp.utils;
 
+import com.sppp.classes.AlmacenamientoPDF;
 import com.sppp.classes.ListaDocentesAdministrativos;
 import com.sppp.classes.Paths;
 import com.sppp.mailing.MailingMain;
@@ -50,7 +51,10 @@ public class UploadFile {
         return null;
     }
     
-    //METODO PARA GUARDAR EL ARCHIVO
+    
+    
+    
+    //METODO PARA GUARDAR ARCHIVOS SCANEADOS
     public void save_file(int opcion){
          Paths directorio = new Paths();
         String local_path = directorio.local_path();
@@ -84,17 +88,20 @@ public class UploadFile {
                     //1 SCAN OFICIO PARA LA EMPRESA .PDF
                     Files.copy(input, new File(local_path+id, "1" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
                     break;
-
                 case 2:
                     //2 SCAN CARTA DE ACEPTACION .PDF
                     Files.copy(input, new File(local_path+id, "2" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
                     break;
                 case 3:
-                    //3
-                    
+                    //3 SCAN CARTA COMPROMICO
+                    Files.copy(input, new File(local_path+id, "3" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
                     break;
                  case 4:
-                    //4
+                    //4 SCAN INICIO PASANTIA / FORMATO RESOLUCION
+                    Files.copy(input, new File(local_path+id, "4" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    break;
+                 case 5:
+                    //5
                     
                     break;
                 default:
@@ -114,13 +121,24 @@ public class UploadFile {
         
     }
     
+    
+    
+    
+    
+    //METODO PARA GUARDAR/DESCARGAR ARCHIVOS CREADOR
         public void download_file(int opcion) {///aqui recibir nombre de archivo 103.pdf
         try {
+            AlmacenamientoPDF obj_crearpdf = new AlmacenamientoPDF();
+            HttpSession session = SessionUtils.getSession();
+            long id;
+            id = (long) session.getAttribute("id");
+        
             FacesContext facesContext = FacesContext.getCurrentInstance();
             ExternalContext context = facesContext.getExternalContext();
             HttpServletRequest request = (HttpServletRequest) context.getRequest();
             HttpServletResponse response = (HttpServletResponse) context.getResponse();
 
+            obj_crearpdf.guardado_archivo_pdf_creado(id, opcion);
             response.sendRedirect(request.getContextPath() + "/faces/user/estudiantes/download/" + opcion + ".pdf");
             //response.sendRedirect("index.jsf");
 

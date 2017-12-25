@@ -16,47 +16,53 @@
     <ui:define name="contenido">
 
         <div class="row">
-            
-            <h1 class="page-header">Cargar Archivos</h1>
+            <h1 class="page-header">Descargar y subir archivos .pdf</h1>
         </div>
         
         <div class="row">
-            
-            <div class="panel panel-default">
+            <!-- SECCION DE D O W N L O A D  FILES -->
+             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Archivos Firmados del Proceso
+                    Paso 1. Descarga de Archivos .pdf.
                 </div>
                 <div class="panel-body">
-
                     <h:form enctype="multipart/form-data" role="form">
-
-                        <div class="form-group">
-                            <label>Formulario 1</label>
-                            <h:inputFile value="#{uploadFile.file}">
-                            <f:ajax listener="#{uploadFile.guardar(1)}"/>
-                            </h:inputFile>
+                         <div class="form-group">
+                             <label>Descargar el oficio para la empresa </label><br/>
+                           <h:commandButton action="#{uploadFile.download_file(101)}" value="Descarga PDF"/>
                         </div>
-                        
                         <div class="form-group">
-                            <label>Formulario 2</label>
-                            <h:inputFile value="#{uploadFile.file}">
-                            <f:ajax listener="#{uploadFile.guardar(2)}"/>
-                            </h:inputFile>
-                        </div>
-                        
-                        <h:commandButton action="#{almacenamientoPDF.prueba}" value="enviar"/>
-                        
+                            <label>Descargar la carta de aceptacion para la empresa </label><br/>
+                           <h:commandButton action="#{uploadFile.download_file(102)}" value="Descargar PDF"/>
+                        </div>                        
                     </h:form>
-                    
-                    
-                    
-
                 </div>
             </div>
-
-
-             
-            
+            </div>
+        <div class="row">
+            <!-- SECCION DE U P L O A D  FILES -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Paso 2. Subir archivos firmados y sellados .pdf.
+                </div>
+                <div class="panel-body">
+                    <h:form enctype="multipart/form-data" role="form">
+                        <div class="form-group">
+                            <label>Subir el oficio sellado por la empresa en formato .pdf</label>
+                            <h:inputFile value="#{uploadFile.file}">
+                                <f:ajax listener="#{uploadFile.save_file(1)}"/>
+                            </h:inputFile>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Subir la carta de aceptacion sellada por la empresa en formato .pdf</label>
+                            <h:inputFile value="#{uploadFile.file}">
+                            <f:ajax listener="#{uploadFile.save_file(2)}"/>
+                            </h:inputFile>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
         </div>
         
     </ui:define>

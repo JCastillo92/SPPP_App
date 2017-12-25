@@ -51,9 +51,9 @@ public class UploadFile {
     }
     
     //METODO PARA GUARDAR EL ARCHIVO
-    public void guardar(int opcion){
-         Paths directorio=new Paths();
-     String local_path=directorio.local_path();
+    public void save_file(int opcion){
+         Paths directorio = new Paths();
+        String local_path = directorio.local_path();
         String nombre;
         String nombreSinExt, extension;
         int punto;
@@ -89,8 +89,16 @@ public class UploadFile {
                     //2 SCAN CARTA DE ACEPTACION .PDF
                     Files.copy(input, new File(local_path+id, "2" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
                     break;
-                default:
+                case 3:
+                    //3
                     
+                    break;
+                 case 4:
+                    //4
+                    
+                    break;
+                default:
+                    System.out.println("No se ha encontrado la orden para subir el archivo scaneado");
                     break;
             }
 //aqui envio el email al docente encargado para que revise que han subido scan de docs en  oficio y carta aceptacion.
@@ -106,26 +114,19 @@ public class UploadFile {
         
     }
     
-        public String subir_archivo(){///aqui recibir nombre de archivo 103.pdf
-     String info_pasantia="";
-       try {
- 
-    FacesContext facesContext = FacesContext.getCurrentInstance();
-    ExternalContext context = facesContext.getExternalContext();  
-     
- 
-        HttpServletRequest request =  (HttpServletRequest)context.getRequest();
-        HttpServletResponse response =  (HttpServletResponse)context.getResponse(); 
- 
-        response.sendRedirect(request.getContextPath()+"/faces/user/estudiantes/download/103.pdf");
-        //response.sendRedirect("index.jsf");
- 
-    
-} catch (IOException e) {
-    e.printStackTrace();
-}
-        return info_pasantia;
-    }
-    
-    
-}
+        public void download_file(int opcion) {///aqui recibir nombre de archivo 103.pdf
+        try {
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            ExternalContext context = facesContext.getExternalContext();
+            HttpServletRequest request = (HttpServletRequest) context.getRequest();
+            HttpServletResponse response = (HttpServletResponse) context.getResponse();
+
+            response.sendRedirect(request.getContextPath() + "/faces/user/estudiantes/download/" + opcion + ".pdf");
+            //response.sendRedirect("index.jsf");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }//end of DOWNLOAD_FILE
+        
+}//end of class

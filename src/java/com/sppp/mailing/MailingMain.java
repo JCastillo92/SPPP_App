@@ -24,13 +24,14 @@ public class MailingMain {
     private String pondespedida="No usar este medio para realizar preguntas o envio de información. ";
     private String poningreso="Se requiere que ingrese al sistema con sus creadenciales y revise el estado de sus datos o documentos. ";
     
+    
     public void mensajes(int tipo_mensaje, String AddRecipientDestination, String observaciones){
         String contentMessage="";
         String AddSubject="";//siempre deba existir un sujeto en CADA CASE
         switch(tipo_mensaje){
             //case para alumnos del 1 al 1000
             case 1:
-               AddSubject="CORRECCION DE DOCUMNETACION";
+               AddSubject="CORRECCIÓN DE DOCUMETACIÓN";
                 contentMessage="Estimada/o estudiante, se ha revisado sus últimos cambios realizados en el "+ponnombreAPP+" "
                         +poningreso;
                 break;
@@ -47,7 +48,23 @@ public class MailingMain {
                 AddSubject="";
                 contentMessage="";
                 break;
-                
+                //Didiershito
+                 case 5:
+                AddSubject="FECHA DE VISITA " + ponnombreAPP;
+                contentMessage= "Visita a realizar";
+                break;
+                 case 6:
+                AddSubject="CANCELACIÓN DE VISITA " + ponnombreAPP;
+                contentMessage="Visita a cancelar";
+                break;
+                case 7:
+                AddSubject="CONFIRMACIÓN DE VISITA " + ponnombreAPP;
+                contentMessage="Visita confirmada";
+                break;
+                case 8:
+                AddSubject="VALIDACIÓN DE PASANTÍAS/PRÁCTICAS PREPROFESIONALES" + ponnombreAPP;
+                contentMessage="Validación final";
+                break;
                 
                 
                 //CASE P A R A  D O C E N T E , A D I M I N S T R A T I V O S , T U T O R E S, SE C RE T A R I A
@@ -64,7 +81,6 @@ public class MailingMain {
                     break;
         }
         if(!observaciones.equals("vacio")){
-            System.out.println("xxxxxxxxxxxxxxxxxxxxx if 1");
             //envio de mensaje CON observaciones
             contentMessage=contentMessage+"\n"+"\nObservaciones realizadas: \n"+observaciones;
             deliverMail(AddRecipientDestination,AddSubject.toUpperCase(),contentMessage);
@@ -77,19 +93,7 @@ public class MailingMain {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     private void deliverMail(String AddRecipientDestination, String AddSubject,String contentMessage){       
-        System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");     
         try {
 	        Properties props = System.getProperties();
 	        props.setProperty("mail.transport.protocol", "smtp");

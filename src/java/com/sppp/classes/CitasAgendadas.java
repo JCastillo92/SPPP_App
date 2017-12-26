@@ -15,6 +15,7 @@ import com.sppp.beans.Usuario;
 import com.sppp.beans.VisitaTutor;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javax.faces.bean.ManagedBean;
 
 /**
@@ -28,8 +29,11 @@ public class CitasAgendadas {
     private List<VisitaTutor> visitas;
     
     private List<VisitaTutor> visitasRealizadas;
+    
+    private List<VisitaTutor> informeCoor;
     private Login login;
     private String nombre;
+    private String apellido_est;
     
     private String coordinador;
     Tutor tutor=new Tutor();
@@ -65,6 +69,8 @@ public class CitasAgendadas {
     
     public CitasAgendadas() {
         this.visitas= new ArrayList<VisitaTutor>();
+        
+        this.informeCoor= new ArrayList<VisitaTutor>();
         this.nombre=nombre;
         this.coordinador=coordinador;
         
@@ -81,11 +87,19 @@ public class CitasAgendadas {
         
        
     }
+    
 
-    public String getNombre(String id) {
+    public String getNombre(long id) {
          CitasDao citasdao=new CitasDaoImp();
         this.nombre=citasdao.obtenerNombre(id);
         return nombre;
+    }
+    
+     public String getApellido_est(long id) {
+        CitasDao citasdao=new CitasDaoImp();
+        this.apellido_est=citasdao.obtenerApellido(id);
+        
+        return apellido_est;
     }
 
     public String getCoordinador() {
@@ -94,16 +108,62 @@ public class CitasAgendadas {
         return coordinador;
     }
 
-    public List<VisitaTutor> getVisitasRealizadas(String id) {
+    public List<VisitaTutor> getVisitasRealizadas(long id) {
            CitasDao citasdao=new CitasDaoImp();
         this.visitasRealizadas=citasdao.listarVisitados(id);
      
         return visitasRealizadas;
     }
-    public void pdf(){
+      public List<VisitaTutor> getInformeCoor() {
+        CitasDao citasdao=new CitasDaoImp();
+        this.informeCoor=citasdao.listarInformeCoor();
+      
+        return informeCoor;
+    }
+      
+    public void pdf(long cedula,int numero_pdf){
    AlmacenamientoPDF crear=new AlmacenamientoPDF();
-   crear.create_student_folder_first_time(123);
-   crear.guardado_archivo_pdf_creado(123, 200);
+  
+        switch(numero_pdf){
+                
+             case 200:
+               crear.pdf_InformeTutor(cedula, numero_pdf);
+               
+                break;
+                case 201:
+                crear.pdf_InformeSeguimientoTutor(cedula, numero_pdf);
+               
+                break;
+                 case 203:
+                crear.pdf_autoevaluacion(cedula, numero_pdf);
+               
+                break;
+                 case 204:
+                crear.pdf_solicitudFinal(cedula, numero_pdf);
+               
+                break;
+            case 205:
+                crear.pdf_InformeSeguimientoTutor(cedula, numero_pdf);
+               
+                break;
+            default:
+              System.out.println("No se ha encontrado dentro del case el numero para almacenar el .PDF");
+break;
+        }
+                
+  // crear.create_student_folder_first_time(123);
+  // crear.guardado_archivo_pdf_creado(123, 200);
+  // crear.guardado_archivo_pdf_creado(123, 201);
+   
+ //  crear.guardado_archivo_pdf_creado(123, 202);
+   
+  // crear.guardado_archivo_pdf_creado(123, 203);
+   
+  // crear.guardado_archivo_pdf_creado(123, 204);
    } 
-    
+    public void pdftut(long cedula,long cedula1,int numero_pdf){
+   AlmacenamientoPDF crear=new AlmacenamientoPDF();
+   crear.create_student_folder_first_time(cedula);
+   crear.pdf_hojaRuta(cedula1,cedula,202);
+    }
 }

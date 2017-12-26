@@ -33,7 +33,7 @@ public class DatosFormatos implements Serializable {
     Encargado encargado=new Encargado();
     Empresa empresa=new Empresa();
     
-    private String id;
+    private String id="";
 
     public Encargado getEncargado() {
         return encargado;

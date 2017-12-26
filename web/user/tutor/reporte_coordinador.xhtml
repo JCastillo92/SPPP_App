@@ -1,0 +1,71 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="/templates/main.xhtml"
+
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:b="http://bootsfaces.net/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">
+        Informe de estudiantes q culminaron las pasantias
+    </ui:define>
+
+    <ui:define name="barra-lateral">
+        <ui:include src="/snippets/menu_tutor.xhtml" />
+    </ui:define>
+
+    <ui:define name="contenido">
+
+        <h:form>
+
+            <br/><br/>
+
+            <legend><center><h:outputLabel value="Citas Agendadas"/></center></legend>
+            <br/><br/>
+
+            <center>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Citas
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            
+                            <b:dataTable var="campo" value="#{citasAgendadas.getInformeCoor()}" pdf="true">
+                               
+                            <b:dataTableColumn label="Cèdula">
+                                <h:outputText value="#{campo.estudiante.cedula}"/>
+                                </b:dataTableColumn>
+                            <b:dataTableColumn label="Nombre">
+                                <h:outputText value="#{citasAgendadas.getNombre(campo.estudiante.cedula)}"/>
+                                </b:dataTableColumn>
+                            <b:dataTableColumn label="Horas pasantia">
+                                <h:outputText value="#{campo.estudiante.horasPasantia}"/>
+                                </b:dataTableColumn>
+                            
+                                
+                            </b:dataTable>  
+                                      
+                                              
+                        </div>
+                  
+        
+      </div>
+    </div>
+
+
+                        
+          
+
+            </center>
+
+        </h:form>
+
+
+    </ui:define>
+
+</ui:composition>
+

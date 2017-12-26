@@ -30,8 +30,7 @@ public class CitasDaoImp implements CitasDao {
         Transaction tx = null;
         List<VisitaTutor> listado = null;
         Long id1=Long.parseLong(id);
-         boolean estado=false;
-         String estado1="agendada";
+         
 
         String sql = "FROM VisitaTutor  WHERE cedula_tut =:id";
 
@@ -45,6 +44,9 @@ public class CitasDaoImp implements CitasDao {
         } catch (RuntimeException e) {
             tx.rollback();
             throw e;
+        }finally{
+            sesion.flush();
+            sesion.close();
         }
         return listado;
     }
@@ -69,7 +71,10 @@ public class CitasDaoImp implements CitasDao {
         } catch (RuntimeException e) {
             tx.rollback();
             throw e;
-        }
+        }finally{
+            sesion.flush();
+             sesion.close();
+         }
         return listado2;
     }
 
@@ -99,52 +104,27 @@ public class CitasDaoImp implements CitasDao {
         } catch (RuntimeException e) {
             tx.rollback();
             throw e;
+        }finally{
+            sesion.flush();
+            sesion.close();
         }
         
         return estudiante;
     }
-/*
-    @Override
-    public List<VisitaTutor> confirmaCita(String id) {
-        SessionFactory sf = HibernateUtil.getSessionFactory();
-        Session sesion = sf.openSession();
-            
-        Transaction tx = null;
-        List<VisitaTutor> listado = null;
 
-        String sql = "FROM VisitaTutor WHERE cedula_est =:id and estado_visita =:false and confirmada =:TRUE";
-
-        try {
-            tx = sesion.beginTransaction();
-        //      Query query = sesion.createQuery(sql);
-         // listado=query.list();
-         Long id1=Long.parseLong(id);
-         boolean estado=true;
-         boolean estado1=false;
-         listado = sesion.createQuery(sql).setParameter("id", id1).setParameter("false", estado1).setParameter("TRUE", estado).list();
-//query.setInteger("id", id);
-            tx.commit();
-        } catch (RuntimeException e) {
-            tx.rollback();
-            throw e;
-        }
-        return listado;
-        }
-*/
    @Override
-    public String obtenerNombre(String id) {
+    public String obtenerNombre(long id) {
         String nombre;
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session sesion = sf.openSession();
             
         Transaction tx = null;
         
-        String sql = "SELECT nombre FROM Usuario WHERE id_usuario =:idUs";
-        int idUs;
-        idUs=Integer.parseInt(id);
+        String sql = "SELECT nombre FROM Usuario WHERE id_usuario =:id";
+       
         try {
             tx = sesion.beginTransaction();
-        nombre =(String) sesion.createQuery(sql).setParameter("idUs", idUs).uniqueResult();
+        nombre =(String) sesion.createQuery(sql).setParameter("id", id).uniqueResult();
 
             //    Query query = sesion.createQuery(sql);
         // estudiante=query.list();
@@ -157,17 +137,124 @@ public class CitasDaoImp implements CitasDao {
         } catch (RuntimeException e) {
             tx.rollback();
             throw e;
-        }
+        }finally{
+            sesion.flush();
+             sesion.close();
+         }
         
         return nombre;
+    
+    }
+    
+    @Override
+    public String obtenerApellido(long id) {
+        String apellido;
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+            
+        Transaction tx = null;
+        
+        String sql = "SELECT apellido FROM Usuario WHERE id_usuario =:idUs";
+       long idUs;
+        idUs=id;
+        try {
+            tx = sesion.beginTransaction();
+        apellido =(String) sesion.createQuery(sql).setParameter("idUs", idUs).uniqueResult();
+
+            tx.commit();
+        } catch (RuntimeException e) {
+            tx.rollback();
+            throw e;
+        }finally{
+            sesion.flush();
+             sesion.close();
+         }
+          return apellido;
  
+    }
     
+      @Override
+    public String obtenerCorreo(long id) {
+        String correo;
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+            
+        Transaction tx = null;
+        
+        String sql = "SELECT correo FROM Usuario WHERE id_usuario =:idUs";
+        long idUs;
+        idUs=id;
+        try {
+            tx = sesion.beginTransaction();
+        correo =(String) sesion.createQuery(sql).setParameter("idUs", idUs).uniqueResult();
+
+            tx.commit();
+        } catch (RuntimeException e) {
+            tx.rollback();
+            throw e;
+        }finally{
+            sesion.flush();
+            sesion.close();
+        }
+          return correo;
+ 
+    }
     
+    @Override
+    public String obtenerTelefono(long id) {
+        String telefono;
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+            
+        Transaction tx = null;
+        
+        String sql = "SELECT telefono FROM Usuario WHERE id_usuario =:idUs";
+        long idUs;
+        idUs=id;
+        try {
+            tx = sesion.beginTransaction();
+        telefono =(String) sesion.createQuery(sql).setParameter("idUs", idUs).uniqueResult();
+
+            tx.commit();
+        } catch (RuntimeException e) {
+            tx.rollback();
+            throw e;
+        }finally{
+            sesion.flush();
+             sesion.close();
+         }
+          return telefono;
+ 
+    }
+    
+      @Override
+    public String obtenerCorreoDirector(int id) {
+  String correo_dir;
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+            
+        Transaction tx = null;
+        
+        String sql = "SELECT correo FROM Usuario WHERE id_perfil =:id";
+     
+        try {
+            tx = sesion.beginTransaction();
+        correo_dir =(String) sesion.createQuery(sql).setParameter("id", id).uniqueResult();
+
+            tx.commit();
+        } catch (RuntimeException e) {
+            tx.rollback();
+            throw e;
+        }finally{
+            sesion.flush();
+             sesion.close();
+         }
+        
+        return correo_dir;
+ 
     }
 
 
-    
-    
     @Override
     public List<Pasantia> findUser(String id) {
     
@@ -190,6 +277,9 @@ public class CitasDaoImp implements CitasDao {
             if (tx != null){
                 tx.rollback();
             }
+        }finally{
+            sesion.flush();
+           // sesion.close();
         }
        
         return listado;
@@ -211,19 +301,14 @@ public class CitasDaoImp implements CitasDao {
         try {
             tx = sesion.beginTransaction();
         nombre =(String) sesion.createQuery(sql).setParameter("idUs", idUs).uniqueResult();
-
-            //    Query query = sesion.createQuery(sql);
-        // estudiante=query.list();
-         /*Long id1=Long.parseLong(id);
-         boolean estado=false;
-         boolean estado1=false;
-         
-*///query.setInteger("id", id);
             tx.commit();
         } catch (RuntimeException e) {
             tx.rollback();
             throw e;
-        }
+        }finally{
+            sesion.flush();
+             sesion.close();
+         }
         
         return nombre;
  
@@ -233,14 +318,13 @@ public class CitasDaoImp implements CitasDao {
     }
 
     @Override
-    public List<VisitaTutor> listarVisitados(String id) {
+    public List<VisitaTutor> listarVisitados(long id) {
     SessionFactory sf = HibernateUtil.getSessionFactory();
         Session sesion = sf.openSession();
             
         Transaction tx = null;
         List<VisitaTutor> listado = null;
-        Long id1=Long.parseLong(id);
-         String estado1="visitado";
+       
 
         String sql = "FROM VisitaTutor  WHERE cedula_tut =:id and estado_visita =:visitado";
 
@@ -248,12 +332,21 @@ public class CitasDaoImp implements CitasDao {
             tx = sesion.beginTransaction();
         //      Query query = sesion.createQuery(sql);
          // listado=query.list();
-         listado = sesion.createQuery(sql).setParameter("id", id1).setParameter("visitado", estado1).list();
+         String estado="visitado";
+       //    Query query = sesion.createQuery(sql);
+         //   query.setLong("id", id);
+           // query.setString("visitado", estado);
+           // listado = (VisitaTutor) query.uniqueResult();
+          //  tx.commit();
+         listado = sesion.createQuery(sql).setParameter("id", id).setParameter("visitado",estado).list();
 //query.setInteger("id", id);
             tx.commit();
         } catch (RuntimeException e) {
             tx.rollback();
             throw e;
+        }finally{
+            sesion.flush();
+            sesion.close();
         }
         return listado;
     
@@ -280,11 +373,44 @@ public class CitasDaoImp implements CitasDao {
             if (tx != null){
                 tx.rollback();
             }
+        }finally{
+            sesion.flush();
+           // sesion.close();
         }
         
         return usu;
     }
     
+    @Override
+    public List<VisitaTutor> listarInformeCoor() {
+    SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+            
+        Transaction tx = null;
+        List<VisitaTutor> listado = null;
+       
+        String sql = "FROM VisitaTutor  WHERE estado_visita =:visitado";
+        String estado="visitado";
+        try {
+            tx = sesion.beginTransaction();
+        //      Query query = sesion.createQuery(sql);
+         // listado=query.list();
+         listado = sesion.createQuery(sql).setParameter("visitado", estado).list();
+//query.setInteger("id", id);
+            tx.commit();
+        } catch (RuntimeException e) {
+            tx.rollback();
+            throw e;
+        }finally{
+            sesion.flush();
+            sesion.close();
+        }
+        return listado;
+    
+    
+    
+    }
+
 
   
 

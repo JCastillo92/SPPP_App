@@ -49,7 +49,8 @@
                                 <b:dataTableColumn label="Nombre estudiante" >                   
 
                                     <b:column >
-                                        <h:outputText value="#{citasAgendadas.getNombre(campo.estudiante.cedula)}" />
+                                        <h:outputText value="#{citasAgendadas.getNombre(campo.estudiante.cedula)}" />&#160;
+                                        <h:outputText value="#{citasAgendadas.getApellido_est(campo.estudiante.cedula)}" />
                                     </b:column>
                                 </b:dataTableColumn>
                                 <b:dataTableColumn label="Dia visita">                   
@@ -76,13 +77,13 @@
                                 <b:dataTableColumn label="Acciones">                   
                                     <b:column >
                                           <center> 
-                                              <b:button outcome="informe_tut.xhtml"  class="btn btn-success btn-xs" icon="ok"  >
+                                              <b:button rendered="#{campo.estado_visita == 'Agendada' eq true}" outcome="informe_tut.xhtml"  class="btn btn-success btn-xs" icon="ok"  >
                                                   <f:param name="id" value="#{campo.estudiante.cedula}"/>
                                               </b:button>
                                                     &#160;&#160; &#160;&#160;
-                                                    <b:commandButton action="#{controllerBean.deleteVisita(campo.id_visita)}" class="btn btn-danger btn-xs" icon="remove"  />
-                                                         
-                                                   
+                                                      
+                                                    <b:button rendered="#{campo.estado_visita == 'Visitado' eq false}" onclick="$('.abrirPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();"  class="btn btn-danger btn-xs" icon="remove"  >
+                                             </b:button> 
                                                </center>
                                    
                                     </b:column>
@@ -92,6 +93,28 @@
                             </b:dataTable>
 
                         </div>
+                            
+                            <b:modal title="Cancelar Cita" styleClass="abrirPseudoClass"
+                         id="abrir">
+                                  
+                         <p>¿Esta seguro que desea cancelar la cita con el estudiante?</p>   
+                         <p> !!Se le enviará un correo al estudiande afirmando dicha cancelación¡¡</p> 
+                          
+                         <f:facet name="footer">
+                               <h:dataTable class="table table-striped table-bordered table-hover" var="campo" value="#{citasAgendadas.getVisitas(login.user)}">
+                              
+              <h:column>                   
+                         
+                             
+                        <b:commandButton class="btn btn-primary" value="SI" action="#{controllerBean.sendCancelacionTutor(citasAgendadas.getNombre(campo.estudiante.cedula),citasAgendadas.getApellido_est(campo.estudiante.cedula), 'bryans71@live.com')}" />
+                             <b:button  dismiss="modal" class="btn btn-danger"  value="No"></b:button>
+                                
+                              </h:column>
+                                                 
+                                   
+                            </h:dataTable>
+                         </f:facet>
+                     </b:modal>   
 
                             
                             <b:modal title="Agendar cita" styleClass="responsiveModalPseudoClass"
@@ -101,7 +124,7 @@
                                         <td>Estudiante asignado:&#160;&#160;&#160;&#160;&#160;</td>
                                         <td>    <b:selectOneMenu required="true" colMd="60" value="#{confirmaCita.estudiantes.id_cedula}"  >
                                         
-                                        <f:selectItem itemLabel="Seleccione:"/>
+                                                <f:selectItem noSelectionOption="true" itemLabel="Seleccione:"/>
                                         <f:selectItems value="#{confirmaCita.listarEstudiantes}"/>
                                        
                                             </b:selectOneMenu></td>
@@ -126,10 +149,11 @@
                                
                                 
                                 <f:facet name="footer">
-       
+                                   
+                                      
                                     <b:button dismiss="close" value="Cerrar" />  
-                          <h:commandButton  class="btn btn-primary" value="Agendar" action="#{controllerBean.enviarCita(login.user,confirmaCita.estudiantes.id_cedula)}"  />            
-        
+                                    <h:commandButton  class="btn btn-primary" value="Agendar" action="#{controllerBean.enviarCita(login.user,confirmaCita.estudiantes.id_cedula,confirmaCita.getNombre_est(confirmaCita.estudiantes.id_cedula),confirmaCita.getApellido_est(confirmaCita.estudiantes.id_cedula),confirmaCita.getCorreo(confirmaCita.estudiantes.id_cedula))}"  />            
+                                     
     </f:facet>
 </b:modal>        
                             </div>

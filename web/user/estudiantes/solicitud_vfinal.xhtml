@@ -2,7 +2,9 @@
      xmlns="http://www.w3.org/1999/xhtml"
      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
      xmlns:h="http://xmlns.jcp.org/jsf/html"
-     template="/templates/main.xhtml">
+     template="/templates/main.xhtml"
+     xmlns:b="http://bootsfaces.net/ui"
+     xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <ui:define name="title">
         Estudiante
@@ -60,9 +62,11 @@
                                     
                                    </div>
                                 <div class="col-lg-9">
-                                     
-                                     <h:inputText class="form-control" required="true"/> 
-                                    
+                                      <h:dataTable class="table " var="campo" value="#{datosFormatos.getPasantia(login.user)}">
+                                        <h:column>
+                                            <h:inputText class="form-control"  disabled="true" value="#{campo.estudiante.actividadRealizar}" required="true"/> 
+                                        </h:column>
+                                      </h:dataTable>
                                    </div>
                                     <br/><br/>
                                 
@@ -72,20 +76,36 @@
                                     <span style="color: red">*</span>Contenido: 
                                     
                                    </div>
-                                <div class="col-lg-9">
-                                     
-                                    <h:inputTextarea class="form-control" rows="6" required="true"/>
-                                      
+                                    
+                               
+                                            <div class="col-lg-9" >
+                                    <div class="table-responsive">
+                                    <h:dataTable class="table " var="campo" value="#{datosFormatos.getPasantia(login.user)}">
+                                        <h:column>
+                                            
+                                            <h:inputTextarea class="form-control" rows="6" required="true" disabled="true"
+                                                     value="Yo  #{campo.estudiante.usuario.nombre} #{campo.estudiante.usuario.apellido}   con cédula de ciudadanía:  #{login.user}, solicito a Ud. la autorización para la validaciòn de #{campo.estudiante.actividadRealizar}, en #{campo.encargado.empresa.nombre_empresa} desde #{campo.fechaInicio} hasta #{campo.fechaFin}" />
+                                 
+                                        </h:column>
+                                    </h:dataTable>  
+                                </div>  </div>
                                     <br/><br/>  <br/> 
-                                   </div>
                                         
+                                     
+                                        
+                                 <div class="col-lg-12">
+                                            <h:outputLabel rendered="#{controllerBean.paso == false eq false}" value="Notificación: Correo enviado correctamente"/>
+                                           
+                                </div>  
                                      
                                         <div class="col-lg-12">
-                                        
-                                            <center> <h:commandButton class="btn btn-success"   value="Enviar" /> &#160; <h:commandButton class="btn btn-danger"  value="Cancelar"   /> </center>
-                                  
+                                        <h:dataTable class="table " var="campo" value="#{datosFormatos.getPasantia(login.user)}">
+                                        <h:column>
+                                    
+                                            <center> <b:commandButton class="btn btn-success" rendered="#{controllerBean.paso == false eq true}"  value="Enviar#{citasAgendadas.pdf(login.user, 204)}"  action="#{controllerBean.sendValidacion(confirmaCita.co_director,campo.estudiante.usuario.nombre,campo.estudiante.usuario.apellido,login.user,campo.estudiante.actividadRealizar,campo.encargado.empresa.nombre_empresa,campo.fechaInicio,campo.fechaFin)}" /> </center>
+                                        </h:column>
+                                        </h:dataTable>
                                 </div>
-                              
                                 
                             </div>
                           
@@ -98,16 +118,9 @@
             </div>
             <br/>
                 
-                <h:outputLabel value = "#{controllerBean.observaciones}" />
-                <center>
-                <h:inputTextarea  class="form-control" rows="3"  rendered="#{controllerBean.observaciones.length() > 0 eq true}"/>
-            
-                <br/>
-                
-                <h:commandButton  class="btn btn-primary" value="Enviar" rendered="#{controllerBean.observaciones.length() > 0 eq true}" action="#{controllerBean.envioObservacion()}"/>
-            
-            </center>
+             
         </h:form>
+        
     </ui:define>
     
 </ui:composition>

@@ -7,11 +7,13 @@ package com.sppp.beans;
 
 import com.sppp.DAO.VisitaDAO;
 import com.sppp.classes.CitasAgendadas;
+import com.sppp.mailing.MailingMain;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.LinkedHashSet;
+import java.util.Locale;
 
 import java.util.Set;
 
@@ -31,12 +33,17 @@ public class ControllerBean {
    
 private Usuario usuario = new Usuario();
   private long id_visita;
+  private String dia;
     private Date fecha_visita;
     private String hora_visita;
     private String estado_visita;
    private Tutor tutor= new Tutor();
    private String listaest;
     
+   private String mensajeMail;
+   private String mensajeMail_asunto;
+   private boolean paso=false;
+   
     java.util.Date data;
        java.util.Date time;
       
@@ -58,7 +65,7 @@ private Usuario usuario = new Usuario();
      private   String total4="------------------";
      
      private   String total5="------------------";
-      private String observaciones;
+      
       
      private String boton="btn btn-success btn-circle";
 
@@ -147,14 +154,7 @@ private Usuario usuario = new Usuario();
         this.horaConFormato = horaConFormato;
     }
 
-    public String getObservaciones() {
-        return observaciones;
-    }
-
-    public void setObservaciones(String observaciones) {
-        this.observaciones = observaciones;
-    }
-
+   
     public String getTotal() {
         return total;
     }
@@ -211,6 +211,14 @@ private Usuario usuario = new Usuario();
         this.id_visita = id_visita;
     }
 
+    public String getDia() {
+        return dia;
+    }
+
+    public void setDia(String dia) {
+        this.dia = dia;
+    }
+
     public Date getFecha_visita() {
         return fecha_visita;
     }
@@ -252,6 +260,32 @@ private Usuario usuario = new Usuario();
         this.listaest = listaest;
     }
 
+    public String getMensajeMail() {
+        return mensajeMail;
+    }
+
+    public void setMensajeMail(String mensajeMail) {
+        this.mensajeMail = mensajeMail;
+    }
+
+    public String getMensajeMail_asunto() {
+        return mensajeMail_asunto;
+    }
+
+    public void setMensajeMail_asunto(String mensajeMail_asunto) {
+        this.mensajeMail_asunto = mensajeMail_asunto;
+    }
+
+    public boolean isPaso() {
+        return paso;
+    }
+
+    public void setPaso(boolean paso) {
+        this.paso = paso;
+    }
+
+    
+    
       public void guardarDatos(String id,String id2,String dia){
         
         Set<VisitaTutor> setVisita = new LinkedHashSet<>();
@@ -283,7 +317,11 @@ private Usuario usuario = new Usuario();
         }
         
     }
-     public void updateVisita(long id_visita){
+     public void updateVisita(long id_visita, String tutor, String apellido,String correo, String dia ,Date fecha, String hora,String est, String ap_est,String co_est,String tele_est ){
+      
+        fechaConFormato = sdf_data.format(fecha); 
+        
+         sendConfirmacion(tutor, apellido, correo, dia, fechaConFormato, hora, est, ap_est, co_est, tele_est);
           VisitaTutor newVisitaTutor = new VisitaTutor();
           VisitaDAO visitaDAO = new VisitaDAO();
           visitaDAO.updateVisita(id_visita, newVisitaTutor);
@@ -303,27 +341,76 @@ private Usuario usuario = new Usuario();
       public String deleteVisita(long id){
           VisitaDAO visitaDAO = new VisitaDAO();
           visitaDAO.deleteVisita(id);
-           
+                      
           return "agendar_cita_tut";
+      }
+      
+       public void deleteVisitaEst(long id,String tutor, String apellido,String correo,String est, String ap_est,String co_est,String tele_est){
+           sendCancelacionEst(tutor,apellido,correo,est,ap_est,co_est,tele_est);
+          VisitaDAO visitaDAO = new VisitaDAO();
+          visitaDAO.deleteVisita(id);
+          
       }
       
   public void imprimirData(){
       
         FacesContext facesContext = FacesContext.getCurrentInstance();
                 facesContext.addMessage(null, new FacesMessage("La fecha debe ser de Lunes a Viernes"));
-      System.out.println("hola  "+ observaciones);
+      
       
   }
   
-  public void observacion(){
-      observaciones=" Observaciones:";
-  }
-  
-  
  
   
+  public void sendTutor(String alumno, String apellido,String correo , String dia, String fecha_visita, String hora ){
+     String observaciones="Estimado(a) alumno(a) "+alumno+" "+apellido+", la visita a la institución en la que realiza su pasantía se llevará a cabo el dia "+dia+" con fecha "+fecha_visita+" en la siguiente hora: "+ hora +"."+"\n"+" Porfavor confirmar la visita en el Sistema (SPPP).";
+      MailingMain po = new MailingMain();
+      
+      po.mensajes(5, correo, observaciones);
+      System.out.println("probarrrr");  
+  }
   
-    public void enviarCita(String id, String id2){
+ public void sendCancelacionTutor(String alumno, String apellido,String correo){
+     String observaciones="Estimado(a) alumno(a) "+alumno+" "+apellido+", la visita a la institución en la que realiza su pasantía se cancela por el siguiente motivo:"+"\n"+mensajeMail+"\n"+" Pronto se le enviara la proxima fecha de visita!";
+     
+      MailingMain por = new MailingMain();
+      por.mensajes(6, correo, observaciones);
+      System.out.println("beeee"+ alumno+apellido+correo+observaciones);
+ }
+ 
+public void sendConfirmacion(String tutor, String apellido, String correo, String dia, String fecha_visita, String hora ,String est, String ap_est,String co_est,String tele_est){
+     String observaciones="Estimado(a) Ing. "+tutor+" "+apellido+", acepto que la visita se lleve a cabo el dia "+dia+" con fecha "+fecha_visita+" en la siguiente hora: "+ hora +"."+"\n"+"Observacion para visita:"+"\n"+ mensajeMail+"\n"+"\n"+"**DATOS DEL ESTUDIANTE**"+"\n"+ "Nombre: "+est
+             +" "+ap_est+"\n"+"Correo: "+co_est+"\n"+"Telefono: "+tele_est;
+     
+    MailingMain por = new MailingMain();
+      por.mensajes(7, correo, observaciones);
+    
+}
+
+public void sendCancelacionEst(String tutor, String apellido,String correo,String est, String ap_est,String co_est,String tele_est){
+     String observaciones="Estimado(a) Ing. "+tutor+" "+apellido+", la visita no puede darse por el siguiente motivo:"+"\n"+mensajeMail+"\n"+" Espero una nueva fecha!!"+"\n"+"\n"+"**DATOS DEL ESTUDIANTE**"+"\n"+ "Nombre: "+est
+             +" "+ap_est+"\n"+"Correo: "+co_est+"\n"+"Telefono: "+tele_est;
+     
+      MailingMain por = new MailingMain();
+      por.mensajes(6, correo, observaciones);
+      
+ }
+
+public void sendValidacion(String correo,String nombre,String apellido,String cedula,String actividad,String empresa,String fechaI,String fechaF){
+    
+  //  String observación= mensajeMail_asunto.toUpperCase(Locale.ENGLISH)+"\n"+"\n"+mensajeMail;
+   String observación="Yo  "+nombre+"  " + apellido+" con cédula de ciudadanía: "+cedula+" , solicito a Ud. la autorización para la validaciòn de "+actividad+"  ,en "+empresa+" desde "+fechaI+" hasta "+fechaF;
+        
+  MailingMain por = new MailingMain();
+      por.mensajes(8, correo, observación);
+      paso=true;
+      
+ }
+
+
+  
+    public void enviarCita(String id, String id2,String alumno, String apellido,String correo ){
+        
         horaConFormato= sdf_time.format(time);
         fechaConFormato = sdf_data.format(data); 
         int dia;
@@ -366,9 +453,10 @@ private Usuario usuario = new Usuario();
         
         
         
-        
+        sendTutor(alumno,apellido,correo,dia1,fechaConFormato,horaConFormato);
         
         guardarDatos(id, id2,dia1);
+        
      
     }
    
@@ -431,6 +519,3 @@ private Usuario usuario = new Usuario();
   
   
 }
-  
-
-

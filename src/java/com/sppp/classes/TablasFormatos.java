@@ -35,7 +35,7 @@ public class TablasFormatos implements Serializable {
     private String pregunta9;
     
     private String pregunta10;
-
+   
     public String getPregunta10() {
         return pregunta10;
     }
@@ -115,6 +115,8 @@ public class TablasFormatos implements Serializable {
     public void setPregunta1(String pregunta1) {
         this.pregunta1 = pregunta1;
     }
-    
+
+   
+   
     
 }

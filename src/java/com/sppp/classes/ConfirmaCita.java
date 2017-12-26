@@ -22,10 +22,17 @@ import javax.faces.model.SelectItem;
 public class ConfirmaCita {
 
     private List<VisitaTutor> visitas;
+     private List<Usuario> usuarios;
     private List<VisitaTutor> confirmaVisitas;
     private List<SelectItem>listarEstudiantes;
     private Usuario estudiantes;
-
+     private String nombre_est;
+     private String apellido_est;
+     private String correo;
+     private String telefono;
+     private String co_director;
+     
+     
     public List<SelectItem> getListarEstudiantes() {
         this.listarEstudiantes=new ArrayList<SelectItem>();
         CitasDao citasDAO = new CitasDaoImp();
@@ -65,12 +72,43 @@ public class ConfirmaCita {
        
     }
 
-   /* public List<VisitaTutor> getConfirmaVisitas(String id) {
-        CitasDao citasdao=new CitasDaoImp();
-        this.confirmaVisitas=citasdao.confirmaCita(id);
-        return confirmaVisitas;
+//cambio aca
+    public String getNombre_est(long id) {
+        
+         CitasDao citasdao=new CitasDaoImp();
+        this.nombre_est=citasdao.obtenerNombre(id);
+        
+        return nombre_est;
     }
-*/
+
+    public String getApellido_est(long id) {
+        CitasDao citasdao=new CitasDaoImp();
+        this.apellido_est=citasdao.obtenerApellido(id);
+        
+        return apellido_est;
+    }
+
+    public String getCorreo(long id) {
+        CitasDao citasdao=new CitasDaoImp();
+        this.correo=citasdao.obtenerCorreo(id);
+        return correo;
+    }
+
+    public String getTelefono(long id) {
+         CitasDao citasdao=new CitasDaoImp();
+        this.telefono=citasdao.obtenerTelefono(id);
+        return telefono;
+    }
+
+    
+
+    public String getCo_director() {
+         CitasDao citasdao=new CitasDaoImp();
+        this.co_director=citasdao.obtenerCorreoDirector(8);
+        return co_director;
+    }
+    
+    
     
   
 }

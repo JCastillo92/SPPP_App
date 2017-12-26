@@ -20,10 +20,16 @@ public interface CitasDao {
      public List<VisitaTutor> confirma(String id);
      // public List<VisitaTutor> confirmaCita(String id);
      public List<Usuario> listar();
-     public String obtenerNombre(String id);
+     
+     public String obtenerNombre(long id);
+     public String obtenerApellido(long id);
+     public String obtenerCorreo(long id);
+     public String obtenerTelefono(long id);
+     public String obtenerCorreoDirector(int id);
     public List<Pasantia> findUser(String id);
      public String obtenerCoordinador(String id);
-        public List<VisitaTutor> listarVisitados(String id);
-   
+        public List<VisitaTutor> listarVisitados(long id);
+   public List<VisitaTutor> listarInformeCoor();
+ 
     
 }

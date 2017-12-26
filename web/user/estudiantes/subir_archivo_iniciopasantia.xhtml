@@ -46,12 +46,20 @@
                 <div class="panel-body">
                     <h:form enctype="multipart/form-data" role="form">
                         <div class="form-group">
-                            <label>Subir la solicitud resoluci&oacute;n en formato .pdf</label>
+                            <label>Subir la solicitud resoluci&oacute;n en formato .pdf <i class="fa fa-file-pdf-o fa-2x"></i></label>
                             <h:inputFile value="#{uploadFile.file}" required="true">
                                 <f:ajax listener="#{uploadFile.save_file(4)}"/>
                             </h:inputFile>
                         </div>
-                        <b:commandButton value="Enviar" look="success" />
+                        
+                        <!-- BOTON LLAMA AL RESPECTIVO E-MAIL -->
+                        <b:commandButton value="Enviar" look="success"/>
+                        <!-- 
+                        //aqui envio el email al docente encargado para que revise que han subido scan de docs en  oficio y carta aceptacion.
+        MailingMain primer_mensaje=new MailingMain();
+        ListaDocentesAdministrativos corrreo_De=new ListaDocentesAdministrativos();
+        primer_mensaje.mensajes(1002,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
+                        -->
                     </h:form>
                 </div>
             </div>

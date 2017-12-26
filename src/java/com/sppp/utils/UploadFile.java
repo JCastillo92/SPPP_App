@@ -86,32 +86,37 @@ public class UploadFile {
             switch(opcion){
                 case 1:
                     //1 SCAN OFICIO PARA LA EMPRESA .PDF
-                    Files.copy(input, new File(local_path+id, "1" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    Files.copy(input, new File(local_path + id, "1" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
                     break;
                 case 2:
                     //2 SCAN CARTA DE ACEPTACION .PDF
-                    Files.copy(input, new File(local_path+id, "2" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    Files.copy(input, new File(local_path + id, "2" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
                     break;
                 case 3:
                     //3 SCAN CARTA COMPROMICO
-                    Files.copy(input, new File(local_path+id, "3" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    Files.copy(input, new File(local_path + id, "3" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
                     break;
-                 case 4:
+                case 4:
                     //4 SCAN INICIO PASANTIA / FORMATO RESOLUCION
-                    Files.copy(input, new File(local_path+id, "4" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    Files.copy(input, new File(local_path + id, "4" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
                     break;
-                 case 5:
+                case 5:
                     //5
-                    
+
+                    break;
+                case 6:
+                    //6
+
+                    break;
+                case 7:
+                    //7
+
                     break;
                 default:
                     System.out.println("No se ha encontrado la orden para subir el archivo scaneado");
                     break;
             }
-//aqui envio el email al docente encargado para que revise que han subido scan de docs en  oficio y carta aceptacion.
-        MailingMain primer_mensaje=new MailingMain();
-        ListaDocentesAdministrativos corrreo_De=new ListaDocentesAdministrativos();
-        primer_mensaje.mensajes(1002,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
+
         
             System.out.println(new File("/").getAbsolutePath());
         } catch (IOException ex) {

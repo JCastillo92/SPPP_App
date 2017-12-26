@@ -5,14 +5,21 @@
  */
 package com.sppp.utils;
 
+import com.sppp.classes.AlmacenamientoPDF;
+import com.sppp.classes.ListaDocentesAdministrativos;
+import com.sppp.classes.Paths;
+import com.sppp.mailing.MailingMain;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import javax.servlet.http.HttpSession;
 import java.nio.file.StandardCopyOption;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 /**
@@ -21,6 +28,7 @@ import javax.servlet.http.Part;
  */
 @ManagedBean
 public class UploadFile {
+    
     
     private Part file;
 
@@ -43,8 +51,13 @@ public class UploadFile {
         return null;
     }
     
-    //METODO PARA GUARDAR EL ARCHIVO
-    public void guardar(int opcion){
+    
+    
+    
+    //METODO PARA GUARDAR ARCHIVOS SCANEADOS
+    public void save_file(int opcion){
+         Paths directorio = new Paths();
+        String local_path = directorio.local_path();
         String nombre;
         String nombreSinExt, extension;
         int punto;
@@ -59,23 +72,53 @@ public class UploadFile {
             extension = nombre.substring(punto,nombre.length());
             System.out.println(nombreSinExt+" "+extension);
             
-            //SI NECESITAS MAS DOCUMENTOS, AUMENTA LOS CASOS AQUI Y TAMBIEN EN EL XHTML
+            
+        //LO SIGUIENTE ME PERMITE SABER LA CEDULA DEL ALUMNO, CON ESO PUEDO SABER A QUE CARPETA MANDAR EL .PDF SUBIDO
+                 HttpSession session = SessionUtils.getSession();
+        long id;
+            try {
+            id = (long) session.getAttribute("id");
+        } catch (Exception e) {
+            id = 0;
+            System.out.println("========== ERROR AL TRAER INFO  S E S S I O N  DE USUARIO ==============0");
+        }
+
             switch(opcion){
                 case 1:
-                    //PATH DONDE SE VA A GUARDAR EL ARCHIVO
-                    //PARA CAMBIAR EL NOMBRE DEL ARCHIVO MODIFICAR DONDE DICE "documento1"
-                    Files.copy(input, new File("C:\\Users\\EstJhonAlexanderCast\\Documents\\Programacion\\NetBeanSpaces\\EjerciciosJSFs\\JsfImagen", "documento1" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    //1 SCAN OFICIO PARA LA EMPRESA .PDF
+                    Files.copy(input, new File(local_path + id, "1" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    break;
+                case 2:
+                    //2 SCAN CARTA DE ACEPTACION .PDF
+                    Files.copy(input, new File(local_path + id, "2" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    break;
+                case 3:
+                    //3 SCAN CARTA COMPROMICO
+                    Files.copy(input, new File(local_path + id, "3" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    break;
+                case 4:
+                    //4 SCAN INICIO PASANTIA / FORMATO RESOLUCION
+                    Files.copy(input, new File(local_path + id, "4" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    break;
+                case 5:
+                    //5
 
                     break;
+                case 6:
+                    //6
 
-                case 2:
-                    Files.copy(input, new File("C:\\Users\\EstJhonAlexanderCast\\Documents\\Programacion\\NetBeanSpaces\\EjerciciosJSFs\\JsfImagen", "documento2" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    break;
+                case 7:
+                    //7
+
+                    break;
+                default:
+                    System.out.println("No se ha encontrado la orden para subir el archivo scaneado");
                     break;
             }
 
+        
             System.out.println(new File("/").getAbsolutePath());
-            
-            
         } catch (IOException ex) {
             System.out.println("Error Al Cargar: "+ex.getMessage());
         }
@@ -86,4 +129,27 @@ public class UploadFile {
     
     
     
-}
+    
+    //METODO PARA GUARDAR/DESCARGAR ARCHIVOS CREADOR
+        public void download_file(int opcion) {///aqui recibir nombre de archivo 103.pdf
+        try {
+            AlmacenamientoPDF obj_crearpdf = new AlmacenamientoPDF();
+            HttpSession session = SessionUtils.getSession();
+            long id;
+            id = (long) session.getAttribute("id");
+        
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            ExternalContext context = facesContext.getExternalContext();
+            HttpServletRequest request = (HttpServletRequest) context.getRequest();
+            HttpServletResponse response = (HttpServletResponse) context.getResponse();
+
+            obj_crearpdf.guardado_archivo_pdf_creado(id, opcion);
+            response.sendRedirect(request.getContextPath() + "/faces/user/estudiantes/download/" + opcion + ".pdf");
+            //response.sendRedirect("index.jsf");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }//end of DOWNLOAD_FILE
+        
+}//end of class

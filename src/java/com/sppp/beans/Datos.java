@@ -5,6 +5,7 @@
  */
 package com.sppp.beans;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -14,11 +15,17 @@ import java.util.Set;
 public class Datos {
     private long id_tbdatos;
     private String valor_datos;
-    private Set<DetallePasantia> detallePasantias;
+    private DetallePasantia detallePasantias;
     private Respuesta respuesta;
 
     public Respuesta getRespuesta() {
         return respuesta;
+    }
+
+    public Datos(String valor_datos, DetallePasantia detallePasantias, Respuesta respuesta) {
+        this.valor_datos = valor_datos;
+        this.detallePasantias = detallePasantias;
+        this.respuesta = respuesta;
     }
 
     public void setRespuesta(Respuesta respuesta) {
@@ -41,12 +48,17 @@ public class Datos {
         this.valor_datos = valor_datos;
     }
 
-    public Set<DetallePasantia> getDetallePasantias() {
+    public DetallePasantia getDetallePasantias() {
         return detallePasantias;
     }
 
-    public void setDetallePasantias(Set<DetallePasantia> detallePasantias) {
+    public void setDetallePasantias(DetallePasantia detallePasantias) {
         this.detallePasantias = detallePasantias;
     }
+
+    public Datos() {
+    }
+
+    
     
 }

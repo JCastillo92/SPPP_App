@@ -66,14 +66,14 @@ public class LoginFilter implements Filter {
          if(obj1.perfilChooser(perfil).equals("Estudiante")){
                     //Para acceder a paginas de estudiante o publicas
                     if(reqURI.indexOf("/user/administrador/") >= 1 || reqURI.indexOf("/user/consejo/") >= 1 || reqURI.indexOf("/user/coordinador/") >= 1 || reqURI.indexOf("/user/gestores/") >= 1 || reqURI.indexOf("/user/secretaria/") >= 1 || reqURI.indexOf("/user/tutor/") >= 1){
-                        resp.sendRedirect(reqt.getContextPath() + "/faces/user/estudiantes/student.xhtml");
+                        resp.sendRedirect(reqt.getContextPath() + "/faces/user/estudiantes/dashboard_est.xhtml");
                     }
                     
                     if(reqURI.indexOf("/user/estudiantes") >= 0 || reqURI.indexOf("/public/") >=0 || reqURI.contains("javax.faces.resource")){
                         
                         //No debe volver al login
                         if (reqURI.indexOf("/public/login.xhtml") >= 0){
-                            resp.sendRedirect(reqt.getContextPath() + "/faces/user/estudiantes/student.xhtml");
+                            resp.sendRedirect(reqt.getContextPath() + "/faces/user/estudiantes/dashboard_est.xhtml");
                         }else{
                             chain.doFilter(request, response);
                         }

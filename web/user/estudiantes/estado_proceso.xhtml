@@ -1,0 +1,143 @@
+<ui:composition
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+     template="/templates/main.xhtml"
+     xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <ui:define name="title">
+        Formato
+    </ui:define>
+    
+    <ui:define name="barra-lateral">
+        <ui:include src="/snippets/menu_estudiante.xhtml" />
+    </ui:define>
+    
+    <ui:define name="contenido">
+
+        <div class="row">
+            <div class="col-lg-12">
+            <h1 class="page-header">Estado</h1>
+            </div>
+        </div>
+        
+        <div class="row">
+            
+            <div class="panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-clock-o fa-fw"></i> Estado del Proceso
+                </div>
+                
+                <div class="panel-body">
+                    <ul class="timeline">
+                        <!-- PROCESO 1 -->
+                        <li>
+                            <div class="#{ (estadoProceso.proceso + 1) &gt; 1 ? 'timeline-badge success' : 'timeline-badge' }"><i class="fa fa-check"></i></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">1.- Ingreso Datos Basicos</h4>
+                                    <p><small class="text-muted"><i class="fa fa-clock-o"></i> 11 hours ago via Twitter</small>
+                                    </p>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>Realizar el ingreso de datos del estudiante como de la empresa en el Wizard</p>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- PROCESO 2 -->
+                        <li class="timeline-inverted">
+                            <div class="#{ (estadoProceso.proceso + 1) &gt; 2 ? 'timeline-badge success' : 'timeline-badge' }"><i class="fa fa-credit-card"></i>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">2.- Descargar/Subir Oficio</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p> La carrera generará un oficio para la empresa el cual debe ser descargado por el estudiante y entregado en la empresa</p>
+                                    <p> Como respuesta a este oficio la empresa debe emitir una carta de aceptación la misma que debe ser escaneada y subida al sistema</p>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- PROCESO 3 -->
+                        <li>
+                            <div class="#{ (estadoProceso.proceso + 1) &gt; 3 ? 'timeline-badge success' : 'timeline-badge' }"><i class="fa fa-check"></i></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">3.- Ingreso Datos Carta Compromiso</h4>
+                                    <p><small class="text-muted"><i class="fa fa-clock-o"></i> 11 hours ago via Twitter</small>
+                                    </p>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>Llenar los datos solicitados en la carta compromiso acerca del estudiante, empresa y el proceso</p>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- PROCESO 4 -->
+                        <li class="timeline-inverted">
+                            <div class="#{ (estadoProceso.proceso + 1) &gt; 4 ? 'timeline-badge success' : 'timeline-badge' }"><i class="fa fa-credit-card"></i>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">4.- Descargar/Subir Carta Compromiso</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>Descargar la carta compromiso para proceder a que las firmen las autoridades necesarias</p>
+                                    <p>La carta compromiso una vez firmada debera ser subida al sistema por el estudiante</p>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- PROCESO 5 -->
+                        <li>
+                            <div class="#{ (estadoProceso.proceso + 1) &gt; 5 ? 'timeline-badge success' : 'timeline-badge' }"><i class="fa fa-check"></i></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">5.- Solicitar Inicio</h4>
+                                    <p><small class="text-muted"><i class="fa fa-clock-o"></i> 11 hours ago via Twitter</small>
+                                    </p>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>Descargar el documento generado automaticamente para solicitar el inicio formal del proceso</p>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- PROCESO 6 -->
+                        <li class="timeline-inverted">
+                            <div class="#{ (estadoProceso.proceso + 1) &gt; 6 ? 'timeline-badge success' : 'timeline-badge' }"><i class="fa fa-credit-card"></i>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">6.- Descargar/Subir Solicitud</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>Descargar la solicitud de inicio para proceder a que la firmen</p>
+                                    <p>La solicitud inicio una vez firmada debera ser subida al sistema por el estudiante</p>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- PROCESO 7 -->
+                        <li>
+                            <div class="#{ (estadoProceso.proceso + 1) &gt; 7 ? 'timeline-badge success' : 'timeline-badge' }"><i class="fa fa-check"></i></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">7.- Resolucion de Proceso</h4>
+                                    <p><small class="text-muted"><i class="fa fa-clock-o"></i> 11 hours ago via Twitter</small>
+                                    </p>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>Esperar por la resolucion que se otorgue al proceso</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                
+            </div>
+            
+        </div>
+        
+        
+        
+    </ui:define>
+    
+</ui:composition>

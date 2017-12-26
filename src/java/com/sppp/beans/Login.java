@@ -77,7 +77,7 @@ public class Login implements Serializable{
             Cls_PerfilNotation obj1= new Cls_PerfilNotation();
             
             if (obj1.perfilChooser(perfil).equals("Estudiante")){
-                return "/user/estudiantes/student.xhtml";
+                return "/user/estudiantes/dashboard_est.xhtml";
             }else if (obj1.perfilChooser(perfil).equals("Gestor")){
                 return "/user/gestores/attendant.xhtml";
             }else if(obj1.perfilChooser(perfil).equals("Tutor")){

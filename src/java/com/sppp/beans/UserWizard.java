@@ -22,6 +22,8 @@ import org.primefaces.event.FlowEvent;
 import com.sppp.DAO.PasantiaPracticaDAO;
 import com.sppp.DAO.PeriodoDAO;
 import com.sppp.classes.AlmacenamientoPDF;
+import com.sppp.classes.ListaDocentesAdministrativos;
+import com.sppp.mailing.MailingMain;
 /**
  *
  * @author EstJhonAlexanderCast
@@ -149,14 +151,12 @@ public class UserWizard implements Serializable{
         
         //aqui llamo por una y solo una vez al siguiente metodo "create_student_folder_first_time"
         one_time_unique.create_student_folder_first_time(usuario.getEstudiante().getCedula());
-        
-        try {
-            
-        } catch (Exception e) {
-            
-        }
-        
-        return "student";
+
+        //aqui envio el email al docente encargado del inicio del PROCESO de pasantias.
+        MailingMain primer_mensaje=new MailingMain();
+        ListaDocentesAdministrativos corrreo_De=new ListaDocentesAdministrativos();
+        primer_mensaje.mensajes(1001,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
+        return "dashboard_est";
         
     }
 

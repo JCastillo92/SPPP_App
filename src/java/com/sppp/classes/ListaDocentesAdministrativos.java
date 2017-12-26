@@ -15,7 +15,7 @@ public class ListaDocentesAdministrativos {
                 DireccionCarreraSistemas="\nING. PATSY MALENA PRIETO MSc. \nDirectora de la Carrera de Ingeniería de Sistemas",
                 Secretaria="\nSecretaria de la UPS",
                 ConsejoCarreraSistemas="\nConsejo Carrera Sistemas",
-                DelegadoUPS="\nNombre delegado UPS. \nDirectora técnica de vinculación UPS. \n3962800 ext.2167"
+                DelegadoUPS="\nMgst. LOLA VASQUEZ. \nDirectora técnica de vinculación UPS. \n3962800 ext.2167"
                 ;
         try{
         switch(codigo_cargo){
@@ -43,5 +43,36 @@ public class ListaDocentesAdministrativos {
         }
         
         return retorno;
+    }
+    
+    
+    public String corrreoDocenteAdministrativo(int codigo_correo){
+        String devuelvo_correo="",
+                DireccionCarreraSistemas="blarat@est.ups.edu.ec",
+                Secretaria="kachig@est.ups.edu.ec",
+                ConsejoCarreraSistemas="jfloresg1@est.ups.edu.ec",
+                DelegadoUPS="jcastillor1@est.ups.edu.ec",
+                RevisorInicioProcesoPasantia="jfloresg1@est.ups.edu.ec"
+                ;
+        switch(codigo_correo){
+            case 1:
+                devuelvo_correo=DireccionCarreraSistemas;
+                break;
+            case 2:
+                devuelvo_correo=Secretaria;
+                break;
+            case 3:
+                devuelvo_correo=ConsejoCarreraSistemas;
+                break;
+            case 5:
+                devuelvo_correo=DelegadoUPS;
+                break;
+            case 6:
+                devuelvo_correo=RevisorInicioProcesoPasantia;
+                break;
+            default:
+                break;
+        }    
+        return devuelvo_correo;
     }
 }

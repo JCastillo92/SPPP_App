@@ -17,6 +17,15 @@ public class Empresa {
     private String nombre_gerente;
     private String telefono_empresa;
     private String direccion_empresa;
+    private String actividad_principal_empresa;
+
+    public String getActividad_principal_empresa() {
+        return actividad_principal_empresa;
+    }
+
+    public void setActividad_principal_empresa(String actividad_principal_empresa) {
+        this.actividad_principal_empresa = actividad_principal_empresa;
+    }
     private Set<Encargado> encargado;
 
     public long getId_empresa() {

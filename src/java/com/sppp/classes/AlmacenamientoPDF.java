@@ -15,7 +15,6 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.sppp.DAO.CitasDaoImp;
 import com.sppp.DAO.EmpresaDAO;
@@ -29,7 +28,6 @@ import com.sppp.beans.Pasantia;
 import com.sppp.beans.Usuario;
 import com.sppp.beans.VisitaTutor;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -41,23 +39,21 @@ import java.util.List;
 public class AlmacenamientoPDF{
     //variables globales
     boolean exitoalguardar=false;
-    private String //local_path="/home/SPPP_PDF/";
-                   // local_path="E:/home/SPPP_PDF/";
-                   local_path="D:/home/SPPP_PDF/";
-    
-    private String //local_path_images="/home/SPPP_PDF/images/";
-                   // local_path_images="E:/home/SPPP_PDF/images/";
-                    local_path_images="D:/home/SPPP_PDF/images/";
-    
+    Paths directorio=new Paths();
+    private final String local_path=directorio.local_path();
+    private final String local_path_images=directorio.local_path_images();
+    ListaDocentesAdministrativos buscar_docadmin=new ListaDocentesAdministrativos();
+  
+
     //invocacion a clases que debo usar para obtener los datos
                 private Usuario usuario = new Usuario();//jairo
                 private Pasantia pasantia=new Pasantia();//jairo
                 private Encargado encargado=new Encargado();//jairo
                 private Empresa empresa=new Empresa();//jairo
                 private VisitaTutor tutor=new VisitaTutor();//karen
-                private VisitaTutor tut;// karen
-    ListaDocentesAdministrativos buscar_docadmin=new ListaDocentesAdministrativos();
-    
+
+
+        
     
     public boolean create_student_folder_first_time(long cedula){
         //NOTA el path /home/SPPP_PDF/ ya debe estar creado, para que lueg se proceda a crear cada carpeta con la ci
@@ -72,66 +68,15 @@ public class AlmacenamientoPDF{
         catch(SecurityException se){
         exitoalguardar=false;
         }
-    }//end if(!dir.exists()){
+    }else{
+        exitoalguardar=true;
+    }
     
     //comprobacion local
     if(exitoalguardar){System.out.println("directory was created successfully");
         }else{System.out.println("failed trying to create the directory");}
     return exitoalguardar;
     }
-    
-    public boolean guardado_archivo_pdf_subido(long cedula,int numero_pdf) throws FileNotFoundException, IOException{
-        //metodo que permite coger el archivo subido al sistema y almacenarlo en un directorio
-       exitoalguardar=false;
-                
-        switch(numero_pdf){
-            case 1:
-//https://www.mkyong.com/java/itext-read-and-write-pdf-in-java/
-                try {
-                    PdfReader reader=new PdfReader(new FileInputStream(local_path+""));
-                    if(!reader.isEncrypted()){//si el archivo PDF no esta encriptado
-                        
-                    }else{
-                        
-                    }
-                } catch (IOException e) {
-                }
-                break;
-            case 2:
-                
-                break;
-            case 3:
-                
-                break;
-            case 4:
-                
-                break;
-            case 5:
-                
-                break;
-            case 6:
-                
-                break;
-            case 7:
-                
-                break;
-            case 8:
-                
-                break;
-            case 9:
-                
-                break;
-            case 10:
-                
-                break;
-            default:
-                System.out.println("No se ha encontrado dentro del case el numero para almacenar el .PDF");
-                exitoalguardar=false;
-                break;
-        }//end of SWITCH 
-        return exitoalguardar;
-    }//fin guardado
-    
     
     public boolean guardado_archivo_pdf_creado(long cedula,int numero_pdf){
         exitoalguardar=false;     
@@ -171,7 +116,8 @@ public class AlmacenamientoPDF{
     public boolean pdf_cartadecompromiso(long cedula,int numero_pdf){//103
         exitoalguardar=false;
          //FORMATO CARTA COMPROMISO INTERINSTITUCIONAL
-         
+        
+         try {
          //LLAMADO A informacion NECESERAIA PARA ingresar, crear AL P D F
             UsuarioDAO uDAO = new UsuarioDAO();
             usuario = uDAO.findUsuario(cedula);   
@@ -196,7 +142,7 @@ public class AlmacenamientoPDF{
                  Font esnota = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6, Font.NORMAL);
                  Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL); 
                  
-                try {
+                
             FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
             PdfWriter.getInstance(documento, archivo);
       documento.open();
@@ -243,9 +189,9 @@ public class AlmacenamientoPDF{
   PdfPTable table = new PdfPTable(4);//# columns
   //1 row
   table.addCell(new Paragraph("CÓDIGO:",estexto));
-  table.addCell(new Paragraph(""+pasantia.getTipo_ppp()+" "+pasantia.getCod_ppp(),estexto));
+  table.addCell(new Paragraph(pasantia.getTipo_ppp(),estexto));
   table.addCell(new Paragraph("No.:",estexto));
-  table.addCell("XXXXXXXXXXXXXX");
+  table.addCell(new Paragraph(""+pasantia.getCod_ppp(),estexto));
   
   //2 row
   table.addCell(new Paragraph("NOMBRE DE LA EMPRESA O INSTITUCIÓN:",estexto));
@@ -261,7 +207,7 @@ public class AlmacenamientoPDF{
   
   //4 row
   table.addCell(new Paragraph("ACTIVIDAD PRINCIPAL DE LA EMPRESA O INSTITUCIÓN:",estexto));
-  cell = new PdfPCell(new Paragraph(usuario.getEstudiante().getActividadRealizar(),estexto));
+  cell = new PdfPCell(new Paragraph(empresa.getActividad_principal_empresa(),estexto));
   cell.setColspan(3);//total de celdas que va MERGE a esta FILA
   table.addCell(cell);
   
@@ -448,7 +394,7 @@ public class AlmacenamientoPDF{
     public boolean pdf_oficioempresa(long cedula, int numero_pdf){//101
          //FORMATO OFICIO PARA LA EMPRESA
                       exitoalguardar=false;
-        
+     try {   
          
          //LLAMADO A informacion NECESERAIA PARA ingresar, crear AL P D F
             UsuarioDAO uDAO = new UsuarioDAO();
@@ -459,7 +405,9 @@ public class AlmacenamientoPDF{
             
             EncargadoDAO encarDAO=new EncargadoDAO();
             encargado=encarDAO.findEncargado(pasantia.getEncargado().getId_encargado());
-
+            
+            EmpresaDAO empreDAO = new EmpresaDAO();
+            empresa=empreDAO.findEmpresa(encargado.getEmpresa().getId_empresa());
              //VARIABLES INICIALES DEL  P D F 
                  Document documento = new Document();
                  PdfPCell cell;
@@ -468,7 +416,7 @@ public class AlmacenamientoPDF{
                  Font estexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
                  Font esnota = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6, Font.NORMAL);
                  Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL); 
-     try {
+     
             FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
             PdfWriter.getInstance(documento, archivo);
       documento.open();
@@ -507,7 +455,9 @@ public class AlmacenamientoPDF{
       
       //F E C H A  DEL  S I S T E M A  
       LocalTimeDate obtenerfecha=new LocalTimeDate(); 
-      documento.add(new Paragraph("Fecha: Quito, "+obtenerfecha.fechaAnioMesDia(),estexto));
+      Paragraph la_fehca=new Paragraph("Fecha: Quito, "+obtenerfecha.fechaAnioMesDia(),estexto);
+      la_fehca.setAlignment(Element.ALIGN_RIGHT);
+      documento.add(la_fehca);
       documento.add(salto_linea);
       
       //D I R I G I D O AL GERENTE DE LA EMPRESA O INSTITUCION
@@ -522,20 +472,19 @@ public class AlmacenamientoPDF{
       cuerpo.setAlignment(Element.ALIGN_JUSTIFIED);
       documento.add(cuerpo);
       
+      
+      
       //nombre  DOCENTE, TUTOR, ADMINISTRATIVO
       documento.add(salto_linea);
       documento.add(salto_linea);
       
+      //FIRMA linea de firma
+      documento.add(linea_firma);
+      
       documento.add(new Paragraph("Atentamente: "+buscar_docadmin.nombreDocenteAdministrativo(1),estexto));
       
       //ADICIONAL VA EL NOMBRE DE LA UNIVERSIDAD Y SEDE
-      documento.add(new Paragraph("Universidad Politécnica Salesiana, Sede Quito ",estexto));
-      
-      //FIRMA linea de firma
-      documento.add(salto_linea);
-      documento.add(salto_linea);      
-      documento.add(linea_firma);
-      
+      documento.add(new Paragraph("Universidad Politécnica Salesiana, Sede Quito ",estexto));    
       
       //F I N  D O C U M E N T O 
       documento.close();
@@ -549,7 +498,8 @@ public class AlmacenamientoPDF{
     public boolean pdf_cartaaceptacion(long cedula, int numero_pdf){//102
                //FORMATO CARTA DE ACEPTACION
                 exitoalguardar=false;
-         //LLAMADO A informacion NECESERAIA PARA ingresar, crear AL P D F
+        try{
+                //LLAMADO A informacion NECESERAIA PARA ingresar, crear AL P D F
             UsuarioDAO uDAO = new UsuarioDAO();
             usuario = uDAO.findUsuario(cedula);   
             
@@ -568,7 +518,7 @@ public class AlmacenamientoPDF{
                  Font esnota = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6, Font.NORMAL);
                  Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL); 
                  
-     try{
+     
             FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
             PdfWriter.getInstance(documento, archivo);
       documento.open();
@@ -615,7 +565,7 @@ public class AlmacenamientoPDF{
       // C U  E R  P O   DE  D O C U M E N T O 
       Paragraph cuerpo=new Paragraph("Por medio de la presente comunicamos a usted, la aceptación del estudiante "
               + ""+usuario.getNombre()+" "+usuario.getApellido()+", con cédula de ciudadanía: "+usuario.getEstudiante().getCedula()+", "
-                      + " para la ejecución de "+giveMeNamePPP(pasantia.getTipo_ppp())+", del "+pasantia.getFechaInicio()+" al "+pasantia.getFechaFin()+".",estexto);
+                      + "para la ejecución de "+giveMeNamePPP(pasantia.getTipo_ppp())+", del "+pasantia.getFechaInicio()+" al "+pasantia.getFechaFin()+".",estexto);
       cuerpo.setAlignment(Element.ALIGN_JUSTIFIED);
       documento.add(cuerpo);
       documento.add(salto_linea);
@@ -649,7 +599,8 @@ public class AlmacenamientoPDF{
     public boolean pdf_formatoiniciopasantiaempresa(long cedula, int numero_pdf){//104
          //FORMATO DE INICIAR PASANTIAS EN LA EMPRESA / FORMATO SOLICITUD RESOLUCION
                 exitoalguardar=false;
-         //LLAMADO A informacion NECESERAIA PARA ingresar, crear AL P D F
+try{         
+//LLAMADO A informacion NECESERAIA PARA ingresar, crear AL P D F
             UsuarioDAO uDAO = new UsuarioDAO();
             usuario = uDAO.findUsuario(cedula);   
             
@@ -664,7 +615,7 @@ public class AlmacenamientoPDF{
                  Font estexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
                  Font esnota = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6, Font.NORMAL);
                  Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL);
-                     try{
+                     
             FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
             //FileOutputStream archivo = new FileOutputStream("E:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
             PdfWriter.getInstance(documento, archivo);
@@ -710,8 +661,8 @@ public class AlmacenamientoPDF{
       documento.add(salto_linea);
       
       // C U  E R  P O   DE  D O C U M E N T O 
-      Paragraph cuerpo=new Paragraph("Yo,"+usuario.getNombre()+" "+usuario.getApellido()+", con cédula de ciudadanía: "+usuario.getEstudiante().getCedula()+", "
-                      + " solicito a Ud. la autorización del inicio de la actividad de "+giveMeNamePPP(pasantia.getTipo_ppp())+", en "+empresa.getNombre_empresa()+" "
+      Paragraph cuerpo=new Paragraph("Yo, "+usuario.getNombre()+" "+usuario.getApellido()+", con cédula de ciudadanía: "+usuario.getEstudiante().getCedula()+", "
+                      + " solicito a Ud. la autorización del inicio de la actividad de "+giveMeNamePPP(pasantia.getTipo_ppp())+", "
                               + "desde "+pasantia.getFechaInicio()+" hasta "+pasantia.getFechaFin()+".",estexto);
       cuerpo.setAlignment(Element.ALIGN_JUSTIFIED);
       documento.add(cuerpo);
@@ -744,7 +695,7 @@ public class AlmacenamientoPDF{
   public boolean pdf_InformeTutor(long cedula,int numero_pdf){//200
       exitoalguardar=false;
          //FORMATO CARTA COMPROMISO INTERINSTITUCIONAL
-         
+         try {
          //LLAMADO A informacion NECESERAIA PARA ingresar, crear AL P D F
             UsuarioDAO uDAO = new UsuarioDAO();
             usuario = uDAO.findUsuario(cedula);   
@@ -771,7 +722,7 @@ public class AlmacenamientoPDF{
                  Font esnota = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6, Font.NORMAL);
                  Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL); 
                  
-                try {
+                
             FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
             PdfWriter.getInstance(documento, archivo);
       documento.open();
@@ -1748,11 +1699,7 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
       documento.add(p1);
       documento.add(salto_linea);
       
-     
-      documento.add(new Paragraph("Universidad Politécnica Salesiana, Sede Quito"+tut.getId_visita(),estexto));
-   
-      documento.add(new Paragraph("Universidad Politécnica Salesiana, Sede Quito"+tut.getId_visita(),estexto));
-   
+       
 //F I N  D O C U M E N T O 
       documento.close();
       exitoalguardar=true;
@@ -1776,5 +1723,5 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
     }
     
     
-    
+
 }//end of class

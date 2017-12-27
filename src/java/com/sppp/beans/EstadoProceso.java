@@ -75,16 +75,16 @@ public class EstadoProceso {
                 break;
 
             case 3:
-                ruta = "subir_archivo";
+                ruta = "subir_archivo_cartacompromiso";
                 break;
 
             case 4:
-                ruta = "subir_archivo";
+                ruta = "xxx";
 
                 break;
 
             case 5:
-                ruta = "subir_archivo";
+                ruta = "subir_archivo_iniciopasantia";
                 break;
             //PARA FUTUROS CASOS
             case 6:

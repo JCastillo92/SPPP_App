@@ -28,7 +28,7 @@
                     Paso 1. Descarga de Archivo .pdf.
                 </div>
                 <div class="panel-body">
-                    <h:form enctype="multipart/form-data" role="form">
+                    <h:form>
                          <div class="form-group">
                              <label>Descargar la carta compromiso </label><br/>
                            <h:commandButton action="#{uploadFile.download_file(103)}" value="Descarga PDF"/>
@@ -44,7 +44,7 @@
                     Paso 2. Subir Archivo Firmado y Sellado .pdf.
                 </div>
                 <div class="panel-body">
-                    <h:form enctype="multipart/form-data" role="form">
+                    <b:form enctype="multipart/form-data" role="form">
                         <div class="form-group">
                             <label>Subir la carta compromiso en formato .pdf <i class="fa fa-file-pdf-o fa-2x"></i></label>
                             <h:inputFile value="#{uploadFile.file}" required="true">
@@ -53,14 +53,8 @@
                         </div>
                         
                         <!-- BOTON LLAMA AL RESPECTIVO E-MAIL -->
-                        <b:commandButton value="Enviar" look="success" />
-                        <!-- 
-                        //aqui envio el email al docente encargado para que revise que han subido scan de docs en  oficio y carta aceptacion.
-        MailingMain primer_mensaje=new MailingMain();
-        ListaDocentesAdministrativos corrreo_De=new ListaDocentesAdministrativos();
-        primer_mensaje.mensajes(1002,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
-                        -->
-                    </h:form>
+                        <b:commandButton action="#{uploadFile.enviar_arch_msj(3)}" value="Enviar" look="success" />
+                    </b:form>
                 </div>
             </div>
         </div>

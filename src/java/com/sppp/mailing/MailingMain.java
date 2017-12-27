@@ -83,7 +83,7 @@ public class MailingMain {
                 break;    
                 case 1004:
                 AddSubject="REVISIÓN DE INICIAR PASANTÍA";
-                contentMessage="Existe documento subido (escaneado) a la plataforma, Solicitud Inicio Pasantía/Práctica Pre'Profesional, lista para revisar y aprobar.";
+                contentMessage="Existe documento subido (escaneado) a la plataforma, Solicitud Inicio Pasantía/Práctica Pre-Profesional, lista para revisar y aprobar.";
                 break;    
                 default:
                     

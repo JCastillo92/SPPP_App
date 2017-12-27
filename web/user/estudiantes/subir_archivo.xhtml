@@ -28,7 +28,7 @@
                     Paso 1. Descarga de Archivos .pdf.
                 </div>
                 <div class="panel-body">
-                    <h:form>
+                    <h:form enctype="multipart/form-data" role="form">
                          <div class="form-group">
                              <label>Descargar el oficio para la empresa </label><br/>
                            <h:commandButton action="#{uploadFile.download_file(101)}" value="Descarga PDF"/>
@@ -48,7 +48,7 @@
                     Paso 2. Subir archivos firmados y sellados .pdf.
                 </div>
                 <div class="panel-body">
-                    <b:form enctype="multipart/form-data" role="form">
+                    <h:form enctype="multipart/form-data" role="form">
                         <div class="form-group">
                             <label>Subir el oficio sellado por la empresa en formato .pdf <i class="fa fa-file-pdf-o fa-2x"></i></label>
                             
@@ -65,10 +65,11 @@
                             <f:ajax listener="#{uploadFile.save_file(2)}"/>
                             </h:inputFile>
                         </div>
-                        
+                    </h:form>
+                    <h:form> 
                         <!-- BOTON LLAMA AL RESPECTIVO E-MAIL -->
-                        <b:commandButton action="#{uploadFile.enviar_arch_msj(2)}" value="Enviar" look="success" />
-                    </b:form>
+                        <h:commandButton class="btn btn-success" action="#{uploadFile.enviar_arch_msj(2)}" value="Enviar" />
+                    </h:form>
                 </div>
             </div>
         </div>

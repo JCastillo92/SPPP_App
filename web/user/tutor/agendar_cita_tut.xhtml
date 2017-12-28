@@ -18,7 +18,6 @@
     <ui:define name="contenido">
        <h:form>
             
-            
              <br/><br/>
           
             <legend><center><h:outputLabel value="Citas agendadas"/></center></legend>
@@ -36,12 +35,8 @@
                   size="xs"/>
                       
   </p>
-           
                         </div>
                         
-                        
-                        
-            
                         <div class="panel-body">
                                 <div class="table-responsive">
                                     <b:dataTable  class="table table-striped table-bordered table-hover" var="campo" value="#{citasAgendadas.getVisitas(login.user)}">
@@ -80,43 +75,17 @@
                                               <b:button rendered="#{campo.estado_visita == 'Agendada' eq true}" outcome="informe_tut.xhtml"  class="btn btn-success btn-xs" icon="ok"  >
                                                   <f:param name="id" value="#{campo.estudiante.cedula}"/>
                                               </b:button>
-                                                    &#160;&#160; &#160;&#160;
-                                                      
-                                                    <b:button rendered="#{campo.estado_visita == 'Visitado' eq false}" onclick="$('.abrirPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();"  class="btn btn-danger btn-xs" icon="remove"  >
-                                             </b:button> 
-                                               </center>
+                                                    </center>
                                    
                                     </b:column>
                                 </b:dataTableColumn>
 
 
                             </b:dataTable>
-
+                                    
+                                 
                         </div>
-                            
-                            <b:modal title="Cancelar Cita" styleClass="abrirPseudoClass"
-                         id="abrir">
-                                  
-                         <p>¿Esta seguro que desea cancelar la cita con el estudiante?</p>   
-                         <p> !!Se le enviará un correo al estudiande afirmando dicha cancelación¡¡</p> 
-                          
-                         <f:facet name="footer">
-                               <h:dataTable class="table table-striped table-bordered table-hover" var="campo" value="#{citasAgendadas.getVisitas(login.user)}">
-                              
-              <h:column>                   
                          
-                             
-                        <b:commandButton class="btn btn-primary" value="SI" action="#{controllerBean.sendCancelacionTutor(citasAgendadas.getNombre(campo.estudiante.cedula),citasAgendadas.getApellido_est(campo.estudiante.cedula), 'bryans71@live.com')}" />
-                             <b:button  dismiss="modal" class="btn btn-danger"  value="No"></b:button>
-                                
-                              </h:column>
-                                                 
-                                   
-                            </h:dataTable>
-                         </f:facet>
-                     </b:modal>   
-
-                            
                             <b:modal title="Agendar cita" styleClass="responsiveModalPseudoClass"
          id="responsiveModal">
                                 <table>
@@ -150,7 +119,6 @@
                                 
                                 <f:facet name="footer">
                                    
-                                      
                                     <b:button dismiss="close" value="Cerrar" />  
                                     <h:commandButton  class="btn btn-primary" value="Agendar" action="#{controllerBean.enviarCita(login.user,confirmaCita.estudiantes.id_cedula,confirmaCita.getNombre_est(confirmaCita.estudiantes.id_cedula),confirmaCita.getApellido_est(confirmaCita.estudiantes.id_cedula),confirmaCita.getCorreo(confirmaCita.estudiantes.id_cedula))}"  />            
                                      
@@ -164,11 +132,7 @@
                     <!-- /.panel -->
                 </div>
                 <!-- /.col-lg-12 -->
-        
-            
-   
-
-                
+                            
                              <script>
        function fridaysDisabled(date)
 {
@@ -181,9 +145,9 @@
 today = Date();
 
 </script>           
-           
+               
         </h:form>
-      
+        
     </ui:define>
     
 </ui:composition>

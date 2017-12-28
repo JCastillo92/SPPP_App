@@ -332,7 +332,7 @@ public class CitasDaoImp implements CitasDao {
             tx = sesion.beginTransaction();
         //      Query query = sesion.createQuery(sql);
          // listado=query.list();
-         String estado="visitado";
+         String estado="Visitado";
        //    Query query = sesion.createQuery(sql);
          //   query.setLong("id", id);
            // query.setString("visitado", estado);
@@ -346,7 +346,7 @@ public class CitasDaoImp implements CitasDao {
             throw e;
         }finally{
             sesion.flush();
-            sesion.close();
+            //sesion.close();
         }
         return listado;
     
@@ -390,7 +390,7 @@ public class CitasDaoImp implements CitasDao {
         List<VisitaTutor> listado = null;
        
         String sql = "FROM VisitaTutor  WHERE estado_visita =:visitado";
-        String estado="visitado";
+        String estado="Visitado";
         try {
             tx = sesion.beginTransaction();
         //      Query query = sesion.createQuery(sql);
@@ -403,7 +403,7 @@ public class CitasDaoImp implements CitasDao {
             throw e;
         }finally{
             sesion.flush();
-            sesion.close();
+            //sesion.close();
         }
         return listado;
     

@@ -152,4 +152,28 @@ public class UploadFile {
         }
     }//end of DOWNLOAD_FILE
         
+        
+        
+        public String enviar_arch_msj(int button_action){
+          //aqui envio el email al docente encargado de acorde a la accion dada.
+        MailingMain primer_mensaje=new MailingMain();
+        ListaDocentesAdministrativos corrreo_De=new ListaDocentesAdministrativos();
+        switch(button_action){
+            case 2:
+                //envio mail a encargado mail para que revise scan de REVISIÓN DE OFICIO Y CARTA DE ACEPTACIÓN 
+        primer_mensaje.mensajes(1002,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
+        break;
+            case 3:
+                //envio mail a encargado mail para que revise scan de REVISIÓN DE CARTA COMPROMISO
+        primer_mensaje.mensajes(1003,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");        
+                break;
+            case 4:
+                //envio mail a encargado mail para que revise scan de REVISIÓN DE INICIAR PASANTÍA
+        primer_mensaje.mensajes(1004,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");                
+                break;
+            default:
+                break;
+        }
+            return "revision_window";
+        }
 }//end of class

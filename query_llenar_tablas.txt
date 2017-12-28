@@ -199,9 +199,6 @@ ci_encargado,nombre_encargado,cargo_encargado,id_empresa) values (1,1723434565,'
 /*llenar tabla TB_PASANTIA*/
 insert into tb_pasantia (tipo_ppp,cod_ppp,fechainicio,fechafin,tiempoesperaestado,estado,id_encargado,cedula,id_periodo) values ('PA',1,'2017-11-28','2017-12-13',4,true,'1',123,3);
 
-/*llenar tb_detalle_pasantia*/
-insert into tb_detalle_pasantia (iddetallepasantia,descripcion,estado,validacion,id_proceso,
-tipo_ppp,cod_ppp) values (1,'Datos Inicio Procesos Pasantia',true,1,1,'PA',1);
 
 /*tb_respuesta DATOS_QUEMADOS*/
 insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (1,'para_codigo',1);
@@ -240,22 +237,8 @@ insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values
 
 /*llenado de datos en tb_detalle_pasantia*/
 
-insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('datos inicio proceso pasantia',true,1,'PA',1);
+insert into tb_detalle_pasantia (iddetallepasantia,descripcion,estado,validacion,id_proceso,
+tipo_ppp,cod_ppp) values (1,'Datos Inicio Procesos Pasantia',true,1,1,'PA',1);
 insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('seccion de carga y descarga de archivos (oficio y carta aceptacion)',false,4,'PA',1);
 insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('datos carta compromiso',false,6,'PA',1);
 insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('carga y descarga solicitud inicio pasantia',false,10,'PA',1);
-
-
-
-insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('datos inicio proceso pasantia',true,1,'PA',2);
-insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('seccion de carga y descarga de archivos (oficio y carta aceptacion)',false,4,'PA',2);
-insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('datos carta compromiso',false,6,'PA',2);
-insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('carga y descarga solicitud inicio pasantia',false,10,'PA',2);
-
-
-insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('datos inicio proceso pasantia',true,1,'PA',2);
-insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('seccion de carga y descarga de archivos (oficio y carta aceptacion)',false,4,'PA',2);
-insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('datos carta compromiso',false,6,'PA',2);
-insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('carga y descarga solicitud inicio pasantia',false,10,'PA',2);
-
-

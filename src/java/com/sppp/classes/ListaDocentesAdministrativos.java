@@ -52,7 +52,7 @@ public class ListaDocentesAdministrativos {
                 Secretaria="kachig@est.ups.edu.ec",
                 ConsejoCarreraSistemas="jfloresg1@est.ups.edu.ec",
                 DelegadoUPS="jcastillor1@est.ups.edu.ec",
-                RevisorInicioProcesoPasantia="jfloresg1@est.ups.edu.ec"
+                Gestor="jfloresg1@est.ups.edu.ec"
                 ;
         switch(codigo_correo){
             case 1:
@@ -68,7 +68,7 @@ public class ListaDocentesAdministrativos {
                 devuelvo_correo=DelegadoUPS;
                 break;
             case 6:
-                devuelvo_correo=RevisorInicioProcesoPasantia;
+                devuelvo_correo=Gestor;
                 break;
             default:
                 break;

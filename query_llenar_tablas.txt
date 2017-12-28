@@ -26,7 +26,7 @@ insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direcci
 
 /*LLENAR TABLA ESTUDIANTES como si fuese llenado automaticamente con los datos del EXCEL cabe mencionar que dichos usuarios deben pasarse la ci como USUARIO Y CLAVE a la tabla usuarios (primero se debe crear en la tb_usuario)*/
 /*primero crearlos en tb_usuario*/
-insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('123','123@hotmail.com','123','Bryan','Torres','123','123 direcccion',1);
+insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('123','bryans@hotmail.com','123','Bryan','Torres','123','123 direcccion',1);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('1234','1234@hotmail.com','1234','Jairo','Flores','1234','1234 direcccion',1);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('321','321@hotmail.com','321','Karen','Achig','321','321 direcccion',1);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('1111','hotm','1111','nom','app','3060649','direcccion',1);
@@ -233,12 +233,11 @@ insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values
 
 
 
-
-
 /*llenado de datos en tb_detalle_pasantia*/
-
-insert into tb_detalle_pasantia (iddetallepasantia,descripcion,estado,validacion,id_proceso,
-tipo_ppp,cod_ppp) values (1,'Datos Inicio Procesos Pasantia',true,1,1,'PA',1);
+/*
+insert into tb_detalle_pasantia (iddetallepasantia,descripcion,estado,validacion,id_proceso,tipo_ppp,cod_ppp) values (1,'Datos Inicio Procesos Pasantia',true,1,1,'PA',1);
+*/
+insert into tb_detalle_pasantia (descripcion,estado,validacion,id_proceso,tipo_ppp,cod_ppp) values ('Datos Inicio Procesos Pasantia',true,1,1,'PA',1);
 insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('seccion de carga y descarga de archivos (oficio y carta aceptacion)',false,4,'PA',1);
 insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('datos carta compromiso',false,6,'PA',1);
 insert into tb_detalle_pasantia (descripcion,estado,id_proceso,tipo_ppp,cod_ppp) values ('carga y descarga solicitud inicio pasantia',false,10,'PA',1);

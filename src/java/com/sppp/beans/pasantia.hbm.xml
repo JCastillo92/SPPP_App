@@ -15,6 +15,7 @@
         <property name="fechaFin" type="date"></property>
         <property name="tiempoEsperaEstado" type="integer"></property>
         <property name="estado" type="boolean"></property>
+        <property name="cod_resolucion_consejo" type="string"></property>        
         
         
         <!-- ENVIO LA CLAVE PRIMARIA-->

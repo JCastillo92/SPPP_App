@@ -20,6 +20,7 @@ public class Pasantia implements Serializable{
     private Date fechaFin;
     private int tiempoEsperaEstado;
     private boolean estado;
+    private String cod_resolucion_consejo;
     private Set<DetallePasantia> detallePasantias;
     private Encargado encargado;
     private Estudiante estudiante;
@@ -107,7 +108,13 @@ public class Pasantia implements Serializable{
         this.periodo = periodo;
     }
     
-    
+     public String getCod_resolucion_consejo() {
+        return cod_resolucion_consejo;
+    }
+
+    public void setCod_resolucion_consejo(String cod_resolucion_consejo) {
+        this.cod_resolucion_consejo = cod_resolucion_consejo;
+    }
     
     
 }

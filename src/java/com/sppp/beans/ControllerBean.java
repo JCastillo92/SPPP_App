@@ -347,13 +347,15 @@ private Usuario usuario = new Usuario();
                     return "agendar_cita_tut";
       }
      
-      public String deleteVisita(long id){
+       public String updateReporte(long id_visita2){
+          VisitaTutor newVisitaTutor = new VisitaTutor();
           VisitaDAO visitaDAO = new VisitaDAO();
-          visitaDAO.deleteVisita(id);
-                      
-          return "agendar_cita_tut";
+          visitaDAO.updateReporte(id_visita2, newVisitaTutor);
+                    System.out.println("jaaaaaaaaaaaaaaaaaaaaaaajeeeeeeee"+id_visita2);
+                    return "reporte_coordinador";
       }
       
+   
        public void deleteVisitaEst(long id,String tutor, String apellido,String correo,String est, String ap_est,String co_est,String tele_est){
            sendCancelacionEst(tutor,apellido,correo,est,ap_est,co_est,tele_est);
           VisitaDAO visitaDAO = new VisitaDAO();
@@ -378,14 +380,6 @@ private Usuario usuario = new Usuario();
       po.mensajes(5, correo, observaciones);
       System.out.println("probarrrr");  
   }
-  
- public void sendCancelacionTutor(String alumno, String apellido,String correo){
-     String observaciones="Estimado(a) alumno(a) "+alumno+" "+apellido+", la visita a la institución en la que realiza su pasantía se cancela por el siguiente motivo:"+"\n"+mensajeMail+"\n"+" Pronto se le enviara la proxima fecha de visita!";
-     
-      MailingMain por = new MailingMain();
-      por.mensajes(6, correo, observaciones);
-      System.out.println("beeee"+ alumno+apellido+correo+observaciones);
- }
  
 public void sendConfirmacion(String tutor, String apellido, String correo, String dia, String fecha_visita, String hora ,String est, String ap_est,String co_est,String tele_est){
      String observaciones="Estimado(a) Ing. "+tutor+" "+apellido+", acepto que la visita se lleve a cabo el dia "+dia+" con fecha "+fecha_visita+" en la siguiente hora: "+ hora +"."+"\n"+"Observacion para visita:"+"\n"+ mensajeMail2+"\n"+"\n"+"**DATOS DEL ESTUDIANTE**"+"\n"+ "Nombre: "+est

@@ -3,8 +3,7 @@
      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-     xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:b="http://bootsfaces.net/ui"
+     xmlns:h="http://xmlns.jcp.org/jsf/html" 
      template="/templates/main.xhtml">
     
     <ui:define name="title">
@@ -36,7 +35,7 @@
                      <div class="col-lg-10" >
                         <div class="table-responsive">
                              
-                            <p:dataTable  emptyMessage="Notificación: Ud aún no cuenta con una cita!!!!!!!!" style="width:100%; font-family:Arial; font-size: 16px;"  class="table  table-bordered table-hover" var="campo" value="#{confirmaCita.getVisitas(login.user)}">
+                            <p:dataTable emptyMessage="Notificación: Ud aún no cuenta con una cita!!!!!!!!" style="width:100%; font-family:Arial; font-size: 16px;"  class="table  table-bordered table-hover" var="campo" value="#{confirmaCita.getVisitas(login.user)}">
                                     <p:column  >
                                        
                                         <div class="col-lg-2" >
@@ -69,7 +68,7 @@
                                        <h:outputText value="#{campo.hora_visita}" />
                                        </div>
                                         
-                                         <h:column rendered="#{campo.estado_visita == 'Agendada' eq false}">
+                                         <h:column rendered="#{campo.estado_visita == 'Enviada' eq true}">
                                              <br/>  <br/> 
                                         <div class="col-lg-6" >
                                            
@@ -79,7 +78,7 @@
                                               </h:column>
                                         <br/>
                                        
-                                             <h:column rendered="#{campo.estado_visita == 'Agendada' eq false}">
+                                             <h:column rendered="#{campo.estado_visita == 'Enviada' eq true}">
                                                   <div class="col-lg-12" >
                                                       <h:inputTextarea  class="form-control" rows="3" value="#{controllerBean.mensajeMail2}" />
                                                   </div>
@@ -88,7 +87,7 @@
                                    
                                    
                                         
-                                        <h:column rendered="#{campo.estado_visita == 'Agendada' eq false}">
+                                        <h:column rendered="#{campo.estado_visita == 'Enviada' eq true}">
                                    <div class="col-lg-12" >
                                        
              <center> <button type="button" class="btn btn-primary"   data-toggle="modal" data-target="#myModal"  >Enviar</button> &#160; <button type="button" class="btn btn-danger"   data-toggle="modal" data-target="#myModal2"  >Cancelar</button></center>
@@ -96,7 +95,7 @@
                                         </h:column>
                                   
                                    <div class="col-lg-12" >
-                                       <h:column rendered="#{campo.estado_visita == 'Agendada' eq true}">
+                                       <h:column rendered="#{campo.estado_visita == 'Enviada' eq false}">
                                            <br/>   <br/>
                                            <h:outputLabel value=" Notificación: Ud ya cuanta con una cita!!!!!." />
             	                      </h:column>

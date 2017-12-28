@@ -26,7 +26,7 @@ insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direcci
 
 /*LLENAR TABLA ESTUDIANTES como si fuese llenado automaticamente con los datos del EXCEL cabe mencionar que dichos usuarios deben pasarse la ci como USUARIO Y CLAVE a la tabla usuarios (primero se debe crear en la tb_usuario)*/
 /*primero crearlos en tb_usuario*/
-insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('123','123@hotmail.com','123','Bryan','Torres','123','123 direcccion',1);
+insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('123','bryans@hotmail.com','123','Bryan','Torres','123','123 direcccion',1);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('1234','1234@hotmail.com','1234','Jairo','Flores','1234','1234 direcccion',1);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('321','321@hotmail.com','321','Karen','Achig','321','321 direcccion',1);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('1111','hotm','1111','nom','app','3060649','direcccion',1);

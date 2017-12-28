@@ -143,7 +143,9 @@ public class UploadFile {
             HttpServletRequest request = (HttpServletRequest) context.getRequest();
             HttpServletResponse response = (HttpServletResponse) context.getResponse();
 
+            //mando a crear el archivo pdf, para que sea lo mas actual posible.
             obj_crearpdf.guardado_archivo_pdf_creado(id, opcion);
+            //mando a llamar al mmismo archivo pdf en la aplicacion,  para que se pueda descargar
             response.sendRedirect(request.getContextPath() + "/faces/user/estudiantes/download/" + opcion + ".pdf");
             //response.sendRedirect("index.jsf");
 

@@ -130,5 +130,51 @@ public class DetallePasantiaDAO {
         return procesoEstado;
 
     }
+    
+  public List<DetallePasantia> findAllIngresoDatosBasicos(){
+        List<DetallePasantia> todosDetIngDatBas = new LinkedList<>();
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;    
+         try {
+            tx = sesion.beginTransaction();
+            Query query = sesion.createQuery("FROM DetallePasantia D WHERE D.descripcion = :descrip AND D.validacion = :num");
+            query.setString("descrip", "Dato Inicio Proesos Pasantia");
+            query.setInteger("num", 2);
+            todosDetIngDatBas= query.list();       
+            tx.commit();
+        }catch (Exception e) {
+            if (tx != null){
+                tx.rollback();
+            }
+        }finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+        return todosDetIngDatBas;
+    }
+
+      public List<DetallePasantia> findAllCartaCompromiso(){
+        List<DetallePasantia> todosDetPasCC = new LinkedList<>();
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;    
+         try {
+            tx = sesion.beginTransaction();
+            Query query = sesion.createQuery("FROM DetallePasantia D WHERE D.descripcion = :descrip AND D.validacion = :num");
+            query.setString("descrip", "Ingreso Datos Carta Compromiso");
+            query.setInteger("num", 2);
+            todosDetPasCC= query.list();       
+            tx.commit();
+        }catch (Exception e) {
+            if (tx != null){
+                tx.rollback();
+            }
+        }finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+        return todosDetPasCC;
+    }
 
 }

@@ -17,6 +17,15 @@ public class Datos {
     private String valor_datos;
     private DetallePasantia detallePasantias;
     private Respuesta respuesta;
+    private boolean estado;
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
 
     public Respuesta getRespuesta() {
         return respuesta;

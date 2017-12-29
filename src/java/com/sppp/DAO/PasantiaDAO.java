@@ -11,6 +11,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  *
@@ -41,4 +43,57 @@ public class PasantiaDAO {
         }
         return passp;
     }
+    
+    
+     public List<Pasantia> findAllPA(){
+        List<Pasantia> todosPasantiasPA = new LinkedList<>();
+        
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        
+        Transaction tx=null;    
+         try {
+            tx = sesion.beginTransaction();
+            Query query = sesion.createQuery("FROM Pasantia P WHERE P.tipo_ppp = :tipo AND P.estado = :verdad");
+            query.setString("tipo", "PA");
+            query.setBoolean("verdad", true); 
+            todosPasantiasPA= query.list();       
+            tx.commit();
+        }catch (Exception e) {
+            if (tx != null){
+                tx.rollback();
+            }
+        }finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+        return todosPasantiasPA;
+    }
+     
+     
+     public List<Pasantia> findAllPP(){
+        List<Pasantia> todosPasantiasPP = new LinkedList<>();
+        
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        
+        Transaction tx=null;    
+         try {
+            tx = sesion.beginTransaction();
+            Query query = sesion.createQuery("FROM Pasantia P WHERE P.tipo_ppp = :tipo AND P.estado = :verdad");
+            query.setString("tipo", "PP");
+            query.setBoolean("verdad", true); 
+            todosPasantiasPP= query.list();       
+            tx.commit();
+        }catch (Exception e) {
+            if (tx != null){
+                tx.rollback();
+            }
+        }finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+        return todosPasantiasPP;
+    }
+     
 }

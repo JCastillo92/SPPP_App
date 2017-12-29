@@ -9,6 +9,7 @@
             <generator class="identity" ></generator>
         </id>
         <property name="valor_datos" type="string"></property>
+        <property name="estado" type="boolean"></property>
                
                 <!--RECIBO LAS CLAVES FORANEAS -->        
         <many-to-one name="detallePasantias" class="DetallePasantia">

@@ -88,12 +88,30 @@ insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir Inicio Acti
 
 insert into tb_proceso(descripcion,estado) values ('Resolucion de Proceso',true);
 
+insert into tb_proceso(descripcion,estado) values ('Cita',true);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Confirmacion cita',true,18);
+
+insert into tb_proceso(descripcion,estado) values ('Solicitar Validación Pasantías',true);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Llenar solicitud de validacion final',true,20);
+
+insert into tb_proceso(descripcion,estado) values ('Ingreso Datos Autoevaluación',true);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Información General',true,22);
+
+
+insert into tb_proceso(descripcion,estado) values ('Descargar/Subir Autoevaluación',true);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Descargar Autoevaluación',true,24);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir Autoevaluación',true,24);
+
+insert into tb_proceso(descripcion,estado) values ('Descargar/Subir Otros Documentos',true);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir Certificado empresa',true,27);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir comprobante pasantía',true,27);
+
 
 
 /*
 insert into tb_proceso(descripcion,estado) values ('PROCESO Agendacion cita',true);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('creacion fecha tentiva',true,12);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('confirmacion cita',true,12);
+
 
 insert into tb_proceso(descripcion,estado) values ('PROCESO Llenar informes',true);
 insert into tb_proceso(descripcion,estado,proceso_de) values (' ingresar datos informe seguimiento',true,15);

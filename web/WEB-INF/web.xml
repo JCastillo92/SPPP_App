@@ -32,6 +32,10 @@
         <mime-type>application/bootstrap.min.css</mime-type>
     </mime-mapping>
     
+    <mime-mapping>
+        <extension>glyphicons</extension>
+        <mime-type>application/vendor/fonts/*</mime-type>
+    </mime-mapping>
     <!-- AQUI ABAJO SE AGREGO BOOTSFACES-->
     <context-param>
         <param-name>BootsFaces_USE_VIEWPORT</param-name>

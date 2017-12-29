@@ -1,8 +1,12 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition
      xmlns="http://www.w3.org/1999/xhtml"
      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-     template="/templates/main.xhtml">
+      template="/templates/main.xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
     
     <ui:define name="title">
         Estudiante
@@ -135,22 +139,107 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>#{controllerBean.console}</td>      
-                                            <td>#{controllerBean.console}</td>
-                                            <td>#{controllerBean.console}</td>
-                                            <td>#{controllerBean.console}</td>
-                                            <td>#{controllerBean.console}</td>                                 
-                                            <td>#{controllerBean.console}</td>
+                                      <tr>
+                                            <td> Asistencia y puntualidad durante la extensión universitaria.</td>      
+                                            <p:selectOneRadio id="customRadio" value="#{tablasFormatos.auto1}" layout="custom" required="true">
+                                        <f:selectItem itemValue="1" />
+                                        <f:selectItem itemValue="2" />
+                                        <f:selectItem itemValue="3" />
+                                        <f:selectItem itemValue="4" />
+                                        <f:selectItem itemValue="5" />
+                                    </p:selectOneRadio>
+                                            <td><p:radioButton id="opt1" for="customRadio" itemIndex="0" /></td>
+                                            <td><p:radioButton id="opt2" for="customRadio" itemIndex="1" /></td>
+                                            <td><p:radioButton id="opt3" for="customRadio" itemIndex="2" /></td>
+                                            <td><p:radioButton id="opt4" for="customRadio" itemIndex="3" /> </td>                                  
+                                            <td><p:radioButton id="opt5" for="customRadio" itemIndex="4" /></td>
                                         </tr>
+                                        <tr>
+                                            <td> Responsabilidad, disposición y cumplimiento en la ejecución de tareas.</td>      
+                                            <p:selectOneRadio id="customRadio1" value="#{tablasFormatos.auto2}" layout="custom" required="true">
+                                        <f:selectItem itemValue="1" />
+                                        <f:selectItem itemValue="2" />
+                                        <f:selectItem itemValue="3" />
+                                        <f:selectItem itemValue="4" />
+                                        <f:selectItem itemValue="5" />
+                                    </p:selectOneRadio>
+                                            <td><p:radioButton id="op1" for="customRadio1" itemIndex="0" /></td>
+                                            <td><p:radioButton id="op2" for="customRadio1" itemIndex="1" /></td>
+                                            <td><p:radioButton id="op3" for="customRadio1" itemIndex="2" /></td>
+                                            <td><p:radioButton id="op4" for="customRadio1" itemIndex="3" /> </td>                                  
+                                            <td><p:radioButton id="op5" for="customRadio1" itemIndex="4" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td> En las relaciones con el personal de la Institución ha predominado la cortesía, el buen trato y la amabilidad.</td>      
+                                            <p:selectOneRadio id="customRadio2" value="#{tablasFormatos.auto3}" layout="custom" required="true">
+                                        <f:selectItem itemValue="1" />
+                                        <f:selectItem itemValue="2" />
+                                        <f:selectItem itemValue="3" />
+                                        <f:selectItem itemValue="4" />
+                                        <f:selectItem itemValue="5" />
+                                    </p:selectOneRadio>
+                                            <td><p:radioButton id="pt1" for="customRadio2" itemIndex="0" /></td>
+                                            <td><p:radioButton id="pt2" for="customRadio2" itemIndex="1" /></td>
+                                            <td><p:radioButton id="pt3" for="customRadio2" itemIndex="2" /></td>
+                                            <td><p:radioButton id="pt4" for="customRadio2" itemIndex="3" /> </td>                                  
+                                            <td><p:radioButton id="pt5" for="customRadio2" itemIndex="4" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td> Utilización adecuada de procedimientos metodológicos. </td>      
+                                            <p:selectOneRadio id="customRadio3" value="#{tablasFormatos.auto4}" layout="custom" required="true">
+                                        <f:selectItem itemValue="1" />
+                                        <f:selectItem itemValue="2" />
+                                        <f:selectItem itemValue="3" />
+                                        <f:selectItem itemValue="4" />
+                                        <f:selectItem itemValue="5" />
+                                    </p:selectOneRadio>
+                                            <td><p:radioButton id="ot1" for="customRadio3" itemIndex="0" /></td>
+                                            <td><p:radioButton id="ot2" for="customRadio3" itemIndex="1" /></td>
+                                            <td><p:radioButton id="ot3" for="customRadio3" itemIndex="2" /></td>
+                                            <td><p:radioButton id="ot4" for="customRadio3" itemIndex="3" /> </td>                                  
+                                            <td><p:radioButton id="ot5" for="customRadio3" itemIndex="4" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td> Conocimientos teóricos y prácticos de la carrera.</td>      
+                                            <p:selectOneRadio  id="customRadio4" value="#{tablasFormatos.auto5}" layout="custom" required="true">
+                                        <f:selectItem itemValue="1"  />
+                                        <f:selectItem itemValue="2" />
+                                        <f:selectItem itemValue="3" />
+                                        <f:selectItem itemValue="4" />
+                                        <f:selectItem itemValue="5" />
+                                    </p:selectOneRadio>
+                                            <td><p:radioButton id="t1" for="customRadio4" itemIndex="0" /></td>
+                                            <td><p:radioButton id="t2" for="customRadio4" itemIndex="1" /></td>
+                                            <td><p:radioButton id="t3" for="customRadio4" itemIndex="2" /></td>
+                                            <td><p:radioButton id="t4" for="customRadio4" itemIndex="3" /> </td>                                  
+                                            <td><p:radioButton id="t5" for="customRadio4" itemIndex="4" /></td>
+                                        </tr>
+                                        
+                                        
+                                        
                                       
                                     </tbody>
                                 </table>
                                 
                             </div>
-                                <center> <h:commandButton class="btn btn-success"   value="Enviar#{citasAgendadas.pdf(login.user, 203)}"/> &#160; <h:commandButton class="btn btn-danger"  value="Cancelar"   /> </center>
-                                  
-                            <!-- /.table-responsive -->
+                          
+                                 <div class="col-lg-12">
+                                     <br/>
+                                     <br/>
+                                     <p class="text-success">     <h:outputLabel rendered="#{tablasFormatos.paso == false eq false}" value="Notificación: Formato llenado correctamente"/></p>
+                                           
+                                </div>  
+                                     
+                                        <div class="col-lg-12">
+                                      
+                                    
+                                            <center> <b:commandButton class="btn btn-success" rendered="#{tablasFormatos.paso == false eq true}"  value="Enviar" action="#{tablasFormatos.autoevaluacion(login.user)}"/> </center>
+                                      
+                                </div>
+                                
+                                
+                                
+                                
                         </div>
                         <!-- /.panel-body -->
                  

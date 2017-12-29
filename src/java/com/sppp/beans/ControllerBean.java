@@ -44,7 +44,7 @@ private Usuario usuario = new Usuario();
    private String mensajeMail2;
    private String mensajeMail_asunto;
    private boolean paso=false;
-   
+   private boolean cancel=false;
     java.util.Date data;
        java.util.Date time;
       
@@ -293,6 +293,14 @@ private Usuario usuario = new Usuario();
         this.mensajeMail2 = mensajeMail2;
     }
 
+    public boolean isCancel() {
+        return cancel;
+    }
+
+    public void setCancel(boolean cancel) {
+        this.cancel = cancel;
+    }
+
     
     
       public void guardarDatos(String id,String id2,String dia){
@@ -361,6 +369,17 @@ private Usuario usuario = new Usuario();
           VisitaDAO visitaDAO = new VisitaDAO();
           visitaDAO.deleteVisita(id);
           
+        
+      }
+       
+       public void deleteVisitaTut(long id,String tutor, String apellido,String correo){
+           sendCancelacionTut(tutor,apellido,correo);
+          VisitaDAO visitaDAO = new VisitaDAO();
+          visitaDAO.deleteVisita(id);
+          
+           cancel=true;
+          
+          
       }
       
   public void imprimirData(){
@@ -393,6 +412,14 @@ public void sendConfirmacion(String tutor, String apellido, String correo, Strin
 public void sendCancelacionEst(String tutor, String apellido,String correo,String est, String ap_est,String co_est,String tele_est){
      String observaciones="Estimado(a) Ing. "+tutor+" "+apellido+", la visita no puede darse por el siguiente motivo:"+"\n"+mensajeMail+"\n"+" Espero una nueva fecha!!"+"\n"+"\n"+"**DATOS DEL ESTUDIANTE**"+"\n"+ "Nombre: "+est
              +" "+ap_est+"\n"+"Correo: "+co_est+"\n"+"Telefono: "+tele_est;
+     
+      MailingMain por = new MailingMain();
+      por.mensajes(6, correo, observaciones);
+      
+ }
+
+public void sendCancelacionTut(String tutor, String apellido,String correo){
+     String observaciones="Estimado(a) "+tutor+" "+apellido+", la visita fue cancelada por el tutor. Pronto se le enviara una nueva fecha de visita.";
      
       MailingMain por = new MailingMain();
       por.mensajes(6, correo, observaciones);

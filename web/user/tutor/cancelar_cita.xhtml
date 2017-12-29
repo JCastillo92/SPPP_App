@@ -1,0 +1,119 @@
+<ui:composition
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+     template="/templates/main.xhtml"
+     xmlns:p="http://primefaces.org/ui"
+     xmlns:h="http://xmlns.jcp.org/jsf/html"
+     
+     xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <ui:define name="title">
+       Tutor
+    </ui:define>
+    
+    <ui:define name="barra-lateral">
+    </ui:define>
+    
+    <ui:define name="contenido">
+        <f:metadata>
+    <f:viewParam name="id" value="#{datosFormatos.id}" />
+</f:metadata>
+         <h:form>
+             
+
+             <br/><br/>
+          
+            <legend><center><h:outputLabel value="Cancelar cita"/></center></legend>
+            <br/><br/>
+            <div class="row" >
+                <div class="col-lg-12">
+                      
+             <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Información de la cita:
+                    </div>
+            <div class="panel-body">
+                
+                 <div class="row">
+                      <div class="col-lg-1" >
+                      </div>
+                     <div class="col-lg-10" >
+                        <div class="table-responsive">
+                             
+                            <h:dataTable  style="width:100%; font-family:Arial; font-size: 16px;"  class="table  table-bordered " var="campo" value="#{confirmaCita.getVisitas(datosFormatos.id)}">
+                                        
+                                <h:column>
+                                       
+                                        <div class="col-lg-2" >
+                                     <h:outputLabel value="Estudiante:" />
+                                        </div>
+                                        <div class="col-lg-10" >
+                                           
+                                            <h:outputText value="#{confirmaCita.getNombre_est(campo.estudiante.cedula)}" /> &#160;
+                                            <h:outputText value="#{confirmaCita.getApellido_est(campo.estudiante.cedula)}" />
+                                        </div>
+                                    <br/><br/>
+                                       <div class="col-lg-2" >
+                                      <h:outputLabel value="Día:" />
+                                      </div>
+                                    <div class="col-lg-10" >
+                                        <h:outputText value="#{campo.dia}" />
+                                      </div>
+                                       <br/><br/>
+                                      <div class="col-lg-2" >
+                                       <h:outputLabel value="Fecha:" /> 
+                                      </div>
+                                       <div class="col-lg-10" >
+                                      <h:outputText value="#{campo.fecha_visita}" />
+                                   </div>
+                                      <br/> <br/>          
+                                   <div class="col-lg-2" >
+                                     <h:outputLabel value="Hora:" />
+                                       </div>
+                                       <div class="col-lg-10" >
+                                       <h:outputText value="#{campo.hora_visita}" />
+                                       </div>
+                                        
+                                         
+                                        <br/>
+                                       
+                                        <h:column>
+                                   <div class="col-lg-12" >
+                                       
+                                       <center>
+                                         <h:button value="Cancelar Cita" class="btn btn-primary" outcome="agendar_cita_tut"  onclick="#{controllerBean.deleteVisitaTut(campo.id_visita,confirmaCita.getNombre_est(campo.estudiante.cedula),confirmaCita.getApellido_est(campo.estudiante.cedula),confirmaCita.getCorreo(campo.estudiante.cedula))}"  />
+                                 
+    			           </center>
+                                   </div>
+                                        </h:column>
+                                  
+                                    </h:column>
+                              
+                            </h:dataTable>
+ 
+                         </div>        
+                        </div>
+                     <div class="col-lg-1" >
+                         
+                      </div>
+                     </div> 
+                             
+          
+                
+                        <!-- /.table-responsive -->
+                    </div>
+            </div>
+                 </div>
+            </div>
+             
+            <br/>
+        
+            <h:link value="Regresar" outcome="agendar_cita_tut"/>
+                          
+              
+            
+     </h:form>
+        
+    </ui:define>
+    
+</ui:composition>

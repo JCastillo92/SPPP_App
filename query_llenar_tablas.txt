@@ -15,7 +15,7 @@ insert into tb_empresa (id_empresa,nombre_empresa,nombre_gerente,telefono_empres
 
 /*crear tb_usuario para cada perfil*/
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('1111111111','unoest@hotmail.com','1111','Jhon','Castillo','3060649','unodirecc',1);
-insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('2222222222','dos@hotmail.com','2222','2nombre','2apellido','222222','dos direcccion',2);
+insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('2222','dos@hotmail.com','2222','2nombre','2apellido','222222','dos direcccion',2);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('3333333333','tres@hotmail.com','3333','3nombre','3apellido','3333','tres direcccion',3);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('4444444444','cuatro@hotmail.com','4444','4nombre','4apellido','44444','cuatro direcccion',4);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('5555555555','cinco@hotmail.com','5555','5nombre','5apellido','55555','cinco direcccion',5);

@@ -42,7 +42,6 @@
                     <h:dataTable var="campo1" value="#{datosFormatos.getPasantia(datosFormatos.id)}" >
                             <div class="col-lg-12"> 
                             <h:column >
-                               
                                 <div class="col-lg-3">
                                     
                                 <label for="disabledSelect">Entidad colaboradora: </label>
@@ -53,7 +52,7 @@
                                       
                                     <h:inputText class="form-control"  value="#{campo1.encargado.empresa.nombre_empresa}" disabled="true"/>
                               </div>
-                                <div class="col-lg-3">
+                                <div class="col-lg-3"> 
                                 
                                 <label for="disabledSelect">Dirección empresa: </label> 
                                 </div>
@@ -103,7 +102,7 @@
                                         <tr>
                                             <td colspan="3" ><center><b>Visita</b></center></td>
                                    
-                                            <td rowspan="2"><center><b>Tutor asignado por la empresa</b></center></td>
+                                            <td rowspan="2"><center><b>Tutor </b></center></td>
                                             <td rowspan="2"><center><b>Firma</b></center></td>
                                             <td rowspan="2"><center><b>Sello</b></center></td>
                                         <td rowspan="2"><center><b>Observaciones</b></center></td>
@@ -125,11 +124,11 @@
                                             <td>#{dato.id_visita}</td>      
                                             <td>#{dato.fecha_visita}</td>
                                             <td>#{dato.hora_visita}</td>
-                                            <td>#{login.user}</td>
-                                            <td><h:inputText ></h:inputText></td> 
-                                            <td><h:inputText ></h:inputText></td> 
-                                            <td><h:inputText ></h:inputText></td> 
-                                            <td><h:inputText ></h:inputText></td> 
+                                            <td>#{citasAgendadas.getNombre(login.user)}</td>
+                                            <td></td> 
+                                            <td></td> 
+                                            <td><b:inputText class="form-control"  value="#{tablasFormatos.observacionvisita}" required="true" /></td> 
+                                            <td><b:inputText class="form-control"  value="#{tablasFormatos.movilizacionvisita}" required="true"/></td> 
                                         </tr>
                                     
                                         </h:column>
@@ -173,18 +172,20 @@
                       <br/>
                       <br/>
                        <p align="right">
-                           <b:button outcome="agendar_cita_tut.xhtml"  value="#{citasAgendadas.pdf(datosFormatos.id, 200)}#{citasAgendadas.pdf(datosFormatos.id, 201)}#{citasAgendadas.pdftut(login.user,datosFormatos.id, 202)}"
-                                     
-                                     class="btn btn-success" icon="ok"  >
-                                               
-                           </b:button> &#160;&#160;&#160; &#160; &#160;&#160;&#160;
-                   <b:button onclick="$('.abrirPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();"  class="btn btn-danger" icon="remove"  ></b:button> 
-                      &#160;
-                         <button type="button" class="btn btn-danger"   data-toggle="modal" data-target="#myModal2"  >Cancelar</button>
-                                              
-                       </p>                    
-                  <!-- <b:button outcome="agendar_cita_tut.xhtml"  class="btn btn-primary btn-xs" icon="remove"  ></b:button>--> 
+                   <b:button rendered="#{tablasFormatos.paso == false eq true}" onclick="$('.abrirPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();"  class="btn btn-danger" icon="remove"  ></b:button> 
+                  <b:commandButton  rendered="#{tablasFormatos.paso == false eq true}" class="btn btn-info" action="#{tablasFormatos.informeRuta(datosFormatos.id)}" icon="floppy-disk" ></b:commandButton>
+                     </p>                    
+                      
+                  <center>                  
+                  <h:dataTable var="campo" value="#{citasAgendadas.getVisitasRealizadas(datosFormatos.id)}" >
+                               <h:column>
+                           
+                                   <b:button outcome="agendar_cita_tut.xhtml" rendered="#{tablasFormatos.paso == false eq false}" class="btn btn-success btn-xl" ondblclick="#{controllerBean.updateVisitaAgendada(campo.id_visita)}" icon="ok"  >
                              
+                           </b:button> &#160;&#160;&#160; &#160; &#160;&#160;&#160;    </h:column>
+                       </h:dataTable>
+                      </center> 
+                           
                  
               </div>
                  </div>

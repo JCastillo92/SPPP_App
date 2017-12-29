@@ -692,7 +692,9 @@ try{
     
 
 
-  public boolean pdf_InformeTutor(long cedula,int numero_pdf){//200
+ 
+
+  public boolean pdf_InformeTutor(long cedula,int numero_pdf,int pre10,int pre1,int pre2,int pre3,int pre4,int pre5,int pre6,int pre7,int pre8,int pre9,String observaciones){//200
       exitoalguardar=false;
          //FORMATO CARTA COMPROMISO INTERINSTITUCIONAL
          try {
@@ -712,7 +714,6 @@ try{
            CitasDaoImp tut=new CitasDaoImp();
            tutor=tut.findTutor(cedula);
            TablasFormatos tabla1=new TablasFormatos();
-         
              //VARIABLES INICIALES DEL  P D F 
                  Document documento = new Document();
                  PdfPCell cell;
@@ -797,7 +798,38 @@ try{
 
        documento.add(salto_linea);
        documento.add(salto_linea);
-   
+       String q1=null,q2=null,q3=null,q4=null,q5=null;
+       if(pre1==1){q1="X";q2=" ";q3=" ";q4=" ";q5=" ";}if(pre1==2){q1=" ";q2="X";q3=" ";q4=" ";q5=" ";}if(pre1==3){q1=" ";q2=" ";q3="X";q4=" ";q5=" ";}
+        if(pre1==4){q1=" ";q2=" ";q3=" ";q4="X";q5=" ";}if(pre1==5){q1=" ";q2=" ";q3=" ";q4=" ";q5="X";}
+       String w1=null,w2=null,w3=null,w4=null,w5=null; 
+        if(pre2==1){w1="X";w2=" ";w3=" ";w4=" ";w5=" ";}if(pre2==2){w1=" ";w2="X";w3=" ";w4=" ";w5=" ";}if(pre2==3){w1=" ";w2=" ";w3="X";w4=" ";w5=" ";}
+        if(pre2==4){w1=" ";w2=" ";w3=" ";w4="X";w5=" ";}if(pre2==5){w1=" ";w2=" ";w3=" ";w4=" ";w5="X";}
+       String e1=null,e2=null,e3=null,e4=null,e5=null;
+       if(pre3==1){e1="X";e2=" ";e3=" ";e4=" ";e5=" ";}if(pre3==2){e1=" ";e2="X";e3=" ";e4=" ";e5=" ";}if(pre3==3){e1=" ";e2=" ";e3="X";e4=" ";e5=" ";}
+        if(pre3==4){e1=" ";e2=" ";e3=" ";e4="X";e5=" ";}if(pre3==5){e1=" ";e2=" ";e3=" ";e4=" ";e5="X";}
+       String r1=null,r2=null,r3=null,r4=null,r5=null; 
+        if(pre4==1){r1="X";r2=" ";r3=" ";r4=" ";r5=" ";}if(pre4==2){r1=" ";r2="X";r3=" ";r4=" ";r5=" ";}if(pre4==3){r1=" ";r2=" ";r3="X";r4=" ";r5=" ";}
+        if(pre4==4){r1=" ";r2=" ";r3=" ";r4="X";r5=" ";}if(pre4==5){r1=" ";r2=" ";r3=" ";r4=" ";r5="X";}
+       String t1=null,t2=null,t3=null,t4=null,t5=null;
+       if(pre5==1){t1="X";t2=" ";t3=" ";t4=" ";t5=" ";}if(pre5==2){t1=" ";t2="X";t3=" ";t4=" ";t5=" ";}if(pre5==3){t1=" ";t2=" ";t3="X";t4=" ";t5=" ";}
+        if(pre5==4){t1=" ";t2=" ";t3=" ";t4="X";t5=" ";}if(pre5==5){t1=" ";t2=" ";t3=" ";t4=" ";t5="X";}
+       String y1=null,y2=null,y3=null,y4=null,y5=null; 
+        if(pre6==1){y1="X";y2=" ";y3=" ";y4=" ";y5=" ";}if(pre6==2){y1=" ";y2="X";y3=" ";y4=" ";y5=" ";}if(pre6==3){y1=" ";y2=" ";y3="X";y4=" ";y5=" ";}
+        if(pre6==4){y1=" ";y2=" ";y3=" ";y4="X";y5=" ";}if(pre6==5){y1=" ";y2=" ";y3=" ";y4=" ";y5="X";}
+       String a1=null,a2=null,a3=null,a4=null,a5=null; 
+        if(pre7==1){a1="X";a2=" ";a3=" ";a4=" ";a5=" ";}if(pre7==2){a1=" ";a2="X";a3=" ";a4=" ";a5=" ";}if(pre7==3){a1=" ";a2=" ";a3="X";a4=" ";a5=" ";}
+        if(pre7==4){a1=" ";a2=" ";a3=" ";a4="X";a5=" ";}if(pre7==5){a1=" ";a2=" ";a3=" ";a4=" ";a5="X";}
+       String s1=null,s2=null,s3=null,s4=null,s5=null; 
+        if(pre8==1){s1="X";s2=" ";s3=" ";s4=" ";s5=" ";}if(pre8==2){s1=" ";s2="X";s3=" ";s4=" ";s5=" ";}if(pre8==3){s1=" ";s2=" ";s3="X";s4=" ";s5=" ";}
+        if(pre8==4){s1=" ";s2=" ";s3=" ";s4="X";s5=" ";}if(pre8==5){s1=" ";s2=" ";s3=" ";s4=" ";s5="X";}
+       String d1=null,d2=null,d3=null,d4=null,d5=null; 
+        if(pre9==1){d1="X";d2=" ";d3=" ";d4=" ";d5=" ";}if(pre9==2){d1=" ";d2="X";d3=" ";d4=" ";d5=" ";}if(pre9==3){d1=" ";d2=" ";d3="X";d4=" ";d5=" ";}
+        if(pre9==4){d1=" ";d2=" ";d3=" ";d4="X";d5=" ";}if(pre9==5){d1=" ";d2=" ";d3=" ";d4=" ";d5="X";}
+       String f1=null,f2=null,f3=null,f4=null,f5=null; 
+        if(pre10==1){f1="X";f2=" ";f3=" ";f4=" ";f5=" ";}if(pre10==2){f1=" ";f2="X";f3=" ";f4=" ";f5=" ";}if(pre10==3){f1=" ";f2=" ";f3="X";f4=" ";f5=" ";}
+        if(pre10==4){f1=" ";f2=" ";f3=" ";f4="X";f5=" ";}if(pre10==5){f1=" ";f2=" ";f3=" ";f4=" ";f5="X";}
+       
+        
 //tabla 2
    PdfPTable table2 = new PdfPTable(20);//# columns
   //1 row
@@ -815,88 +847,103 @@ try{
   table2.addCell(new Paragraph("5",estexto));
 
   //2row
+ cell = new PdfPCell(new Paragraph("¿Se cumplió con las actividades propuestas en la Carta Compromiso?",estexto));
+  cell.setColspan(15);//#columnas a merge para esta celda
+  table2.addCell(cell);
+  //int preg1=Integer.parseInt(pre1);
+  table2.addCell(new Paragraph(f1,estexto));
+   table2.addCell(new Paragraph(f2,estexto));
+   table2.addCell(new Paragraph(f3,estexto));
+   table2.addCell(new Paragraph(f4,estexto));
+   table2.addCell(new Paragraph(f5,estexto));
+
+  
+  
  cell = new PdfPCell(new Paragraph("¿Satisfacieron los resultados a la labor institucional?",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
-  table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
+  //int preg1=Integer.parseInt(pre1);
+  table2.addCell(new Paragraph(q1,estexto));
+   table2.addCell(new Paragraph(q2,estexto));
+   table2.addCell(new Paragraph(q3,estexto));
+   table2.addCell(new Paragraph(q4,estexto));
+   table2.addCell(new Paragraph(q5,estexto));
 
+  
+  
     //3row
  cell = new PdfPCell(new Paragraph("¿El estudiante tuvo la información necesaria del proceso de pasantías, prácticas pre profesionales ó extensiones?",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
-  table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
+  table2.addCell(new Paragraph(w1,estexto));
+   table2.addCell(new Paragraph(w2,estexto));
+   table2.addCell(new Paragraph(w3,estexto));
+   table2.addCell(new Paragraph(w4,estexto));
+   table2.addCell(new Paragraph(w5,estexto));
  //4row
  cell = new PdfPCell(new Paragraph("La calidad de los productos ofrecidos fueron:",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
-  table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
+  table2.addCell(new Paragraph(e1,estexto));
+   table2.addCell(new Paragraph(e2,estexto));
+   table2.addCell(new Paragraph(e3,estexto));
+   table2.addCell(new Paragraph(e4,estexto));
+   table2.addCell(new Paragraph(e5,estexto));
     //5row
  cell = new PdfPCell(new Paragraph("El comportamiento del estudiante en la institución externa fue:",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
-  table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
+  table2.addCell(new Paragraph(r1,estexto));
+   table2.addCell(new Paragraph(r2,estexto));
+   table2.addCell(new Paragraph(r3,estexto));
+   table2.addCell(new Paragraph(r4,estexto));
+   table2.addCell(new Paragraph(r5,estexto));
  //6row
  cell = new PdfPCell(new Paragraph("La destreza desmostrada del estudiante en sus actividades fue:",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
-  table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
+  table2.addCell(new Paragraph(t1,estexto));
+   table2.addCell(new Paragraph(t2,estexto));
+   table2.addCell(new Paragraph(t3,estexto));
+   table2.addCell(new Paragraph(t4,estexto));
+   table2.addCell(new Paragraph(t5,estexto));
  //7row
  cell = new PdfPCell(new Paragraph("El nivel de información proporcionada por la institución externa fue:",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
-  table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
+  table2.addCell(new Paragraph(y1,estexto));
+   table2.addCell(new Paragraph(y2,estexto));
+   table2.addCell(new Paragraph(y3,estexto));
+   table2.addCell(new Paragraph(y4,estexto));
+   table2.addCell(new Paragraph(y5,estexto));
  //8row
  cell = new PdfPCell(new Paragraph("La relación del estudiante con el tutor de la institución externa fue:",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
-  table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
+  table2.addCell(new Paragraph(a1,estexto));
+   table2.addCell(new Paragraph(a2,estexto));
+   table2.addCell(new Paragraph(a3,estexto));
+   table2.addCell(new Paragraph(a4,estexto));
+   table2.addCell(new Paragraph(a5,estexto));
  //9row
  cell = new PdfPCell(new Paragraph("La relación del estudiante con el tutor de la UPS fue:",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
-  table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
+  table2.addCell(new Paragraph(s1,estexto));
+   table2.addCell(new Paragraph(s2,estexto));
+   table2.addCell(new Paragraph(s3,estexto));
+   table2.addCell(new Paragraph(s4,estexto));
+   table2.addCell(new Paragraph(s5,estexto));
 
 //10row
  cell = new PdfPCell(new Paragraph("La destreza desmostrada del estudiante en sus actividades fue:",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
-  table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
+  table2.addCell(new Paragraph(d1,estexto));
+   table2.addCell(new Paragraph(d2,estexto));
+   table2.addCell(new Paragraph(d3,estexto));
+   table2.addCell(new Paragraph(d4,estexto));
+   table2.addCell(new Paragraph(d5,estexto));
 
   documento.add(table2);
   //FIN TABLA 2
@@ -911,7 +958,7 @@ try{
                     //TABLA 3 INICIO
                     PdfPTable table3 = new PdfPTable(1);//# columns
                     //1 row
-                    table3.addCell(new Paragraph("XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX", estexto));
+                    table3.addCell(new Paragraph("              " + "\n" +observaciones, estexto));
                     documento.add(table3);
                     //FIN TABLA 3
 //FIRMA ALUMNO
@@ -934,7 +981,7 @@ documento.add(salto_linea);
 
     }//fin metodo
     
-  public boolean pdf_InformeSeguimientoTutor(long cedula,int numero_pdf){//200
+  public boolean pdf_InformeSeguimientoTutor(long cedula,int numero_pdf,String des1,int hor1,int tec1,int per1,int cont1,String des2,int hor2,int tec2,int per2,int cont2,String des3,int hor3,int tec3,int per3,int cont3,String des4,int hor4,int tec4,int per4,int cont4,int totalhoras){//200
       exitoalguardar=false;
          //FORMATO CARTA COMPROMISO INTERINSTITUCIONAL
          
@@ -1038,71 +1085,50 @@ documento.add(salto_linea);
    cell = new PdfPCell(new Paragraph("Criterios de desempeño",estexto));
   cell.setColspan(3);//total de celdas que va MERGE a esta FILA
   table2.addCell(cell);
-  table2.addCell(new Paragraph("1",estexto));
-  table2.addCell(new Paragraph("2",estexto));
-  table2.addCell(new Paragraph("3",estexto));
+  table2.addCell(new Paragraph("Tècnico",estexto));
+  table2.addCell(new Paragraph("Personal",estexto));
+  table2.addCell(new Paragraph("Contextual",estexto));
 
   //2row
- cell = new PdfPCell(new Paragraph("pre1",estexto));
+ cell = new PdfPCell(new Paragraph(des1,estexto));
   cell.setColspan(13);//#columnas a merge para esta celda
   table2.addCell(cell);
-cell = new PdfPCell(new Paragraph("ho1",estexto));
+cell = new PdfPCell(new Paragraph(""+hor1,estexto));
   cell.setColspan(4);//#columnas a merge para esta celda
   table2.addCell(cell); 
-  table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
+  table2.addCell(new Paragraph(""+tec1,estexto));
+   table2.addCell(new Paragraph(""+per1,estexto));
+   table2.addCell(new Paragraph(""+cont1,estexto));
 
- cell = new PdfPCell(new Paragraph("pre1",estexto));
+ cell = new PdfPCell(new Paragraph(des2,estexto));
   cell.setColspan(13);//#columnas a merge para esta celda
   table2.addCell(cell);
-cell = new PdfPCell(new Paragraph("ho1",estexto));
+cell = new PdfPCell(new Paragraph(""+hor2,estexto));
   cell.setColspan(4);//#columnas a merge para esta celda
   table2.addCell(cell); 
-  table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
+  table2.addCell(new Paragraph(""+tec2,estexto));
+   table2.addCell(new Paragraph(""+per2,estexto));
+   table2.addCell(new Paragraph(""+cont2,estexto));
 
-   cell = new PdfPCell(new Paragraph("pre1",estexto));
+ cell = new PdfPCell(new Paragraph(des3,estexto));
   cell.setColspan(13);//#columnas a merge para esta celda
   table2.addCell(cell);
-cell = new PdfPCell(new Paragraph("ho1",estexto));
+cell = new PdfPCell(new Paragraph(""+hor3,estexto));
   cell.setColspan(4);//#columnas a merge para esta celda
   table2.addCell(cell); 
-  table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
+  table2.addCell(new Paragraph(""+tec3,estexto));
+   table2.addCell(new Paragraph(""+per3,estexto));
+   table2.addCell(new Paragraph(""+cont3,estexto));
 
-   cell = new PdfPCell(new Paragraph("pre1",estexto));
+ cell = new PdfPCell(new Paragraph(des4,estexto));
   cell.setColspan(13);//#columnas a merge para esta celda
   table2.addCell(cell);
-cell = new PdfPCell(new Paragraph("ho1",estexto));
+cell = new PdfPCell(new Paragraph(""+hor4,estexto));
   cell.setColspan(4);//#columnas a merge para esta celda
   table2.addCell(cell); 
-  table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-
-   cell = new PdfPCell(new Paragraph("pre1",estexto));
-  cell.setColspan(13);//#columnas a merge para esta celda
-  table2.addCell(cell);
-cell = new PdfPCell(new Paragraph("ho1",estexto));
-  cell.setColspan(4);//#columnas a merge para esta celda
-  table2.addCell(cell); 
-  table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-
-   cell = new PdfPCell(new Paragraph("pre1",estexto));
-  cell.setColspan(13);//#columnas a merge para esta celda
-  table2.addCell(cell);
-cell = new PdfPCell(new Paragraph("ho1",estexto));
-  cell.setColspan(4);//#columnas a merge para esta celda
-  table2.addCell(cell); 
-  table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-
+  table2.addCell(new Paragraph(""+tec4,estexto));
+   table2.addCell(new Paragraph(""+per4,estexto));
+   table2.addCell(new Paragraph(""+cont4,estexto));
    
   documento.add(table2);
   //FIN TABLA 2
@@ -1111,7 +1137,7 @@ cell = new PdfPCell(new Paragraph("ho1",estexto));
                     //SEC ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA: (SEÑALE AQUELLAS QUE PREVÉN RESULTADOS Y PRODUCTOS)
                     documento.add(salto_linea);
 
-  documento.add(new Paragraph("Total de horas:         ", estexto));
+  documento.add(new Paragraph("Total de horas:         "+totalhoras, estexto));
   documento.add(new Paragraph("Fecha visita:           "+tutor.getFecha_visita(), estexto));
                    
                     documento.add(salto_linea);
@@ -1142,7 +1168,7 @@ cell = new PdfPCell(new Paragraph("ho1",estexto));
 
     }//fin metodo
     
-   public boolean pdf_hojaRuta(long cedula,long cedulatut,int numero_pdf){//200
+   public boolean pdf_hojaRuta(long cedula,int numero_pdf,int observacionvisita,int movilizacionvisita){//200
       exitoalguardar=false;
          //FORMATO CARTA COMPROMISO INTERINSTITUCIONAL
          
@@ -1160,6 +1186,8 @@ cell = new PdfPCell(new Paragraph("ho1",estexto));
             empresa=empreDAO.findEmpresa(encargado.getEmpresa().getId_empresa());
             
            CitasDaoImp tut=new CitasDaoImp();
+        
+          
            tutor=tut.findTutor(cedula);
            CitasAgendadas coordinador= new CitasAgendadas();
            TablasFormatos tabla1=new TablasFormatos();
@@ -1175,7 +1203,7 @@ cell = new PdfPCell(new Paragraph("ho1",estexto));
                  Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL); 
                  
                 try {
-            FileOutputStream archivo = new FileOutputStream(local_path+cedulatut+"/"+numero_pdf+".pdf");//asi se guardara el archivo
+            FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
             PdfWriter.getInstance(documento, archivo);
       documento.open();
       
@@ -1270,6 +1298,36 @@ cell = new PdfPCell(new Paragraph("ho1",estexto));
    cell = new PdfPCell(new Paragraph("Hora",estexto));
  cell.setColspan(2);
   table2.addCell(cell);
+  
+     cell = new PdfPCell(new Paragraph(""+tutor.getId_visita(),estexto));
+ cell.setColspan(2);
+  table2.addCell(cell);
+   cell = new PdfPCell(new Paragraph(""+tutor.getFecha_visita(),estexto));
+ cell.setColspan(2);
+  table2.addCell(cell);
+  
+   cell = new PdfPCell(new Paragraph(""+tutor.getHora_visita(),estexto));
+ cell.setColspan(2);
+  table2.addCell(cell);
+  
+  cell = new PdfPCell(new Paragraph(""+tutor.getTutor().getUsuario2().getNombre(),estexto));
+  cell.setColspan(3);
+  table2.addCell(cell);
+  cell = new PdfPCell(new Paragraph(" ",estexto));
+  cell.setColspan(3);
+  table2.addCell(cell);
+   cell = new PdfPCell(new Paragraph(" ",estexto));
+  cell.setColspan(3);
+  table2.addCell(cell);
+   cell = new PdfPCell(new Paragraph(""+observacionvisita,estexto));
+  cell.setColspan(3);
+  table2.addCell(cell);
+  
+   cell = new PdfPCell(new Paragraph(""+movilizacionvisita,estexto));
+ cell.setColspan(3);
+  table2.addCell(cell);
+  
+  
   documento.add(table2);
   //FIN TABLA 2
  
@@ -1297,7 +1355,7 @@ cell = new PdfPCell(new Paragraph("ho1",estexto));
 
     }//fin metodo
  
-  public boolean pdf_autoevaluacion(long cedula,int numero_pdf){//200
+  public boolean pdf_autoevaluacion(long cedula,int numero_pdf,int auto1,int auto2,int auto3,int auto4,int auto5){//200
       exitoalguardar=false;
          //FORMATO CARTA COMPROMISO INTERINSTITUCIONAL
          
@@ -1405,7 +1463,25 @@ cell = new PdfPCell(new Paragraph("ho1",estexto));
 
        documento.add(salto_linea);
        documento.add(salto_linea);
-   
+       
+   String q1=null,q2=null,q3=null,q4=null,q5=null;
+       if(auto1==1){q1="X";q2=" ";q3=" ";q4=" ";q5=" ";}if(auto1==2){q1=" ";q2="X";q3=" ";q4=" ";q5=" ";}if(auto1==3){q1=" ";q2=" ";q3="X";q4=" ";q5=" ";}
+        if(auto1==4){q1=" ";q2=" ";q3=" ";q4="X";q5=" ";}if(auto1==5){q1=" ";q2=" ";q3=" ";q4=" ";q5="X";}
+       String w1=null,w2=null,w3=null,w4=null,w5=null; 
+        if(auto2==1){w1="X";w2=" ";w3=" ";w4=" ";w5=" ";}if(auto2==2){w1=" ";w2="X";w3=" ";w4=" ";w5=" ";}if(auto2==3){w1=" ";w2=" ";w3="X";w4=" ";w5=" ";}
+        if(auto2==4){w1=" ";w2=" ";w3=" ";w4="X";w5=" ";}if(auto2==5){w1=" ";w2=" ";w3=" ";w4=" ";w5="X";}
+       String e1=null,e2=null,e3=null,e4=null,e5=null;
+       if(auto3==1){e1="X";e2=" ";e3=" ";e4=" ";e5=" ";}if(auto3==2){e1=" ";e2="X";e3=" ";e4=" ";e5=" ";}if(auto3==3){e1=" ";e2=" ";e3="X";e4=" ";e5=" ";}
+        if(auto3==4){e1=" ";e2=" ";e3=" ";e4="X";e5=" ";}if(auto3==5){e1=" ";e2=" ";e3=" ";e4=" ";e5="X";}
+       String r1=null,r2=null,r3=null,r4=null,r5=null; 
+        if(auto4==1){r1="X";r2=" ";r3=" ";r4=" ";r5=" ";}if(auto4==2){r1=" ";r2="X";r3=" ";r4=" ";r5=" ";}if(auto4==3){r1=" ";r2=" ";r3="X";r4=" ";r5=" ";}
+        if(auto4==4){r1=" ";r2=" ";r3=" ";r4="X";r5=" ";}if(auto4==5){r1=" ";r2=" ";r3=" ";r4=" ";r5="X";}
+       String t1=null,t2=null,t3=null,t4=null,t5=null;
+       if(auto5==1){t1="X";t2=" ";t3=" ";t4=" ";t5=" ";}if(auto5==2){t1=" ";t2="X";t3=" ";t4=" ";t5=" ";}if(auto5==3){t1=" ";t2=" ";t3="X";t4=" ";t5=" ";}
+        if(auto5==4){t1=" ";t2=" ";t3=" ";t4="X";t5=" ";}if(auto5==5){t1=" ";t2=" ";t3=" ";t4=" ";t5="X";}
+       
+       
+       
 //tabla 2
    PdfPTable table2 = new PdfPTable(20);//# columns
   //1 row
@@ -1426,48 +1502,48 @@ cell = new PdfPCell(new Paragraph("ho1",estexto));
  cell = new PdfPCell(new Paragraph(" Asistencia y puntualidad durante la extensión universitaria.",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
-  table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
+  table2.addCell(new Paragraph(q1,estexto));
+   table2.addCell(new Paragraph(q2,estexto));
+   table2.addCell(new Paragraph(q3,estexto));
+   table2.addCell(new Paragraph(q4,estexto));
+   table2.addCell(new Paragraph(q5,estexto));
 
     //3row
  cell = new PdfPCell(new Paragraph("Responsabilidad, disposición y cumplimiento en la ejecución de tareas.",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
-  table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
+  table2.addCell(new Paragraph(w1,estexto));
+   table2.addCell(new Paragraph(w2,estexto));
+   table2.addCell(new Paragraph(w3,estexto));
+   table2.addCell(new Paragraph(w4,estexto));
+   table2.addCell(new Paragraph(w5,estexto));
  //4row
  cell = new PdfPCell(new Paragraph(" En las relaciones con el personal de la Institución ha predominado la cortesía, el buen trato y la amabilidad.",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
-  table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
+  table2.addCell(new Paragraph(e1,estexto));
+   table2.addCell(new Paragraph(e2,estexto));
+   table2.addCell(new Paragraph(e3,estexto));
+   table2.addCell(new Paragraph(e4,estexto));
+   table2.addCell(new Paragraph(e5,estexto));
     //5row
  cell = new PdfPCell(new Paragraph("Utilización adecuada de procedimientos metodológicos. ",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
-  table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
+  table2.addCell(new Paragraph(r1,estexto));
+   table2.addCell(new Paragraph(r2,estexto));
+   table2.addCell(new Paragraph(r3,estexto));
+   table2.addCell(new Paragraph(r4,estexto));
+   table2.addCell(new Paragraph(r5,estexto));
  //6row
  cell = new PdfPCell(new Paragraph("Conocimientos teóricos y prácticos de la carrera.",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
-  table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
-   table2.addCell(new Paragraph("x",estexto));
+  table2.addCell(new Paragraph(t1,estexto));
+   table2.addCell(new Paragraph(t2,estexto));
+   table2.addCell(new Paragraph(t3,estexto));
+   table2.addCell(new Paragraph(t4,estexto));
+   table2.addCell(new Paragraph(t5,estexto));
  
   documento.add(table2);
   //FIN TABLA 2
@@ -1721,6 +1797,10 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
         }
         return nameppp;
     }
+    
+    
+
+    
     
     
 

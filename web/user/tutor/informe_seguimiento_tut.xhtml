@@ -1,293 +1,383 @@
 <ui:composition
-     xmlns="http://www.w3.org/1999/xhtml"
-     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-     template="/templates/main.xhtml"
-     
-     xmlns:h="http://xmlns.jcp.org/jsf/html"
-     xmlns:b="http://bootsfaces.net/ui"
-     xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="/templates/main.xhtml"
+
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:b="http://bootsfaces.net/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
     <ui:define name="title">
-       Tutor
+        Tutor
     </ui:define>
-    
+
     <ui:define name="barra-lateral">
     </ui:define>
-    
+
     <ui:define name="contenido">
         <f:metadata>
-    <f:viewParam name="id" value="#{datosFormatos.id}" />
-</f:metadata>
-         <h:form>
-             
+            <f:viewParam name="id" value="#{datosFormatos.id}" />
+        </f:metadata>
+        <h:form>
 
-             <br/><br/>
-          
+
+            <br/><br/>
+
             <legend><center><h:outputLabel value="Informe seguimiento"/></center></legend>
-            
-        
-              <div class="row">
-                
+
+
+            <div class="row">
+
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Datos:
-                    
-                        </div>
-                    <br/>
-                    <br/>
-                      
-                    <h:dataTable var="campo1" value="#{datosFormatos.getPasantia(datosFormatos.id)}" >
-                            <div class="col-lg-12"> 
-                            <h:column >
-                               
-                                <div class="col-lg-3">
-                                    
-                                <label for="disabledSelect">Carta Compromiso: </label>
-                                
-                                </div>
-                                
-                                <div class="col-lg-3">
-                                      
-                                 <h:inputText class="form-control"  value="#{campo1.tipo_ppp}#{campo1.cod_ppp}" disabled="true"/>
-                                                           
-                                </div>
-                                 <div class="col-lg-3">
-                                    
-                                <label for="disabledSelect">Tipo de actividad: </label>
-                                <br/>
-                                </div>
-                                <div class="col-lg-3">
-                                    <h:inputText class="form-control"  value="#{campo1.estudiante.actividadRealizar}" disabled="true"/>
-                                    <br/>
-                                </div>
-                                
-                                
-                                 <div class="col-lg-3">
-                                <label for="disabledSelect">Estudiante </label>
-                                 </div>
-                                <div class="col-lg-3">
-                                           <h:inputText class="form-control"  value="#{citasAgendadas.getNombre(campo1.estudiante.cedula)}" disabled="true"/>
-                                 </div> 
-                                 <div class="col-lg-3">
-                                
-                                <label for="disabledSelect">Cédula estudiante: </label> 
-                                </div>
-                                <div class="col-lg-3">
-                                    <h:inputText class="form-control"  value="#{datosFormatos.id}" disabled="true"/>
-                          
-                                    <br/>
-                                </div>
-                                
-                                
-                                  
-                                <div class="col-lg-3">
-                                
-                                    <label for="disabledSelect">Tutor UPS:</label>
-                                
-                                </div>
-                                     <div class="col-lg-3">
-                                         
-                                          <h:inputText class="form-control"   value="#{citasAgendadas.getNombre(login.user)}" disabled="true"/>
-                                    
-                                     </div>
-                                 <div class="col-lg-3">
-                                
-                                    <label for="disabledSelect">Tutor de la institución:</label>
-                                
-                                </div>
-                                     <div class="col-lg-3">
-                                         
-                                         <h:inputText class="form-control"   value="#{campo1.encargado.nombre_encargado}" disabled="true"/>
-                           <br/>
-                                     </div>
-                                
-                                  <div class="col-lg-3">
-                                
-                                    <label for="disabledSelect">Responsable de la institucion:</label>
-                                
-                                </div>
-                                     <div class="col-lg-3">
-                                         
-                                         <h:inputText class="form-control"   value="#{campo1.encargado.empresa.nombre_gerente}" disabled="true"/>
-                           
-                                     </div>
-                                
-                            </h:column>
-                                    </div> 
-                                             
-                        </h:dataTable>
-                        
-                    
-                  
-                <br/>
-                <br/>
-                <center>
-                    
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <td rowspan="2"><center><b>Cuestionario</b></center></td>
-                                        
-                                            <td rowspan="2"><center><b>Horas asignadas</b></center></td>
-                                        
-                                            <td colspan="3"><center><b>Criterios de desempeño</b></center></td>
-                                            </tr>
-                                        <tr>
-                                            <td><center><b>Tecnico</b></center></td>
-                                            <td><center><b>Personal</b></center></td>
-                                            <td><center><b>Contextual</b></center></td>
-                                           
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><input class="form-control"  id="disabledInput" type="text" /></td>      
-                                            <td><input class="form-control" size="2" id="disabledInput" type="text" /></td>
-                                            <td><input class="form-control " size="1"  id="disabledInput" type="text" /></td>
-                                            <td><input class="form-control"  size="1" id="disabledInput" type="text" /></td>
-                                            <td><input class="form-control"  size="1" id="disabledInput" type="text" /></td> 
-                                        </tr>
-                                        <tr>
-                                            <td><input class="form-control"  id="disabledInput" type="text" /></td>      
-                                            <td><input class="form-control"  size="2" id="disabledInput" type="text" /></td>
-                                            <td><input class="form-control " size="1"  id="disabledInput" type="text" /></td>
-                                            <td><input class="form-control"  size="1" id="disabledInput" type="text" /></td>
-                                            <td><input class="form-control"  size="1" id="disabledInput" type="text" /></td> 
-                                        </tr>
-                                        <tr>
-                                            <td><input class="form-control"  id="disabledInput" type="text" /></td>      
-                                            <td><input class="form-control" size="2" id="disabledInput" type="text" /></td>
-                                            <td><input class="form-control " size="1"  id="disabledInput" type="text" /></td>
-                                            <td><input class="form-control"  size="1" id="disabledInput" type="text" /></td>
-                                            <td><input class="form-control"  size="1" id="disabledInput" type="text" /></td> 
-                                        </tr>
-                                        <tr>
-                                            <td><input class="form-control"  id="disabledInput" type="text" /></td>      
-                                            <td><input class="form-control"  size="2" id="disabledInput" type="text" /></td>
-                                            <td><input class="form-control " size="1"  id="disabledInput" type="text" /></td>
-                                            <td><input class="form-control"  size="1" id="disabledInput" type="text" /></td>
-                                            <td><input class="form-control"  size="1" id="disabledInput" type="text" /></td> 
-                                        </tr>
-                                        <tr>
-                                            <td><input class="form-control"  id="disabledInput" type="text" /></td>      
-                                            <td><input class="form-control"  size="2" id="disabledInput" type="text" /></td>
-                                            <td><input class="form-control " size="1"  id="disabledInput" type="text" /></td>
-                                            <td><input class="form-control"  size="1" id="disabledInput" type="text" /></td>
-                                            <td><input class="form-control"  size="1" id="disabledInput" type="text" /></td> 
-                                        </tr>
-                                        <tr>
-                                            <td><input class="form-control"  id="disabledInput" type="text" /></td>      
-                                            <td><input class="form-control"  size="2" id="disabledInput" type="text" /></td>
-                                            <td><input class="form-control " size="1"  id="disabledInput" type="text" /></td>
-                                            <td><input class="form-control"  size="1" id="disabledInput" type="text" /></td>
-                                            <td><input class="form-control"  size="1" id="disabledInput" type="text" /></td> 
-                                        </tr>
 
-                                      
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.table-responsive -->
                         </div>
-                        <!-- /.panel-body -->
-                 
-                
-                
-</center>
-                
-                
-                <div class="panel-body">
-     <table>
-                                <tr>
-                               <td>   <label for="disabledSelect">Total de horas:&#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;</label></td>
-                                
-                               <td>     <input class="form-control"  id="disabledInput" type="text"/>
-                                   <br/>
-                               </td>
-                                <td>  &#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;  <label for="disabledSelect">Total parcial:&#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;</label></td>
-                                
-                               <td>     <input class="form-control"  id="disabledInput" type="text"/>
-                                   <br/>
-                               </td>
-                               
-                                     </tr>   
-         <tr>
-                               <td>   <label for="disabledSelect">Fecha de visita: &#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;</label></td>
-                                
-                               <td>     <input class="form-control"  id="disabledInput" type="text" />
-                                   
-                               </td>
-         </tr>
-     </table>                                       
-                
-                                            <br/>
-                                            <br/>
-                                            <center>
-                                               
-                                            <table>
-                                                <tr> <td><center>  <hr color="blue" size="5" width="150"> </hr></center></td> 
-                                                    <td>&#160;&#160;&#160; &#160; &#160;&#160;&#160; &#160;  
-                                                    &#160;&#160;&#160; &#160; &#160;&#160;&#160; &#160;
-                                                    &#160;&#160;&#160; &#160; &#160;&#160;&#160; &#160;
-                                                    &#160;&#160;&#160; &#160; &#160;&#160;&#160; &#160;</td>
-                                                    <td><center>  <hr color="blue" size="5" width="150"></hr></center></td>
-                                                                        </tr>
-                                                <tr>
-                                                    <td><center>     <label for="disabledSelect">Firma tutor UPS</label></center></td>
-                                                   <td>&#160;&#160;&#160; &#160;  &#160;&#160;&#160; &#160;  
-                                                   &#160;&#160;&#160; &#160; &#160;&#160;&#160; &#160;
-                                                   &#160;&#160;&#160; &#160; &#160;&#160;&#160; &#160;
-                                                   &#160;&#160;&#160; &#160; &#160;&#160;&#160; &#160;</td>
-                                                <td><center>  <label for="disabledSelect">Firma tutor institucion</label></center></td>      
-                   
-                                                    </tr>
-                                                </table>
-                                                </center>
-                      <br/>
-                      <br/>
-            <p><label>Calificar sobre 5 el criterio personal y contextual. (5 - Muy Satisfactorio, 4 - Satisfactorio, 3 - Aceptable, 2 - Deficiente, 1 - Malo)</label></p>
-                    <p><label> Calificar sobre 5 cada actividad. (5 - Muy Satisfactorio, 4 - Satisfactorio, 3 - Aceptable, 2 - Deficiente, 1 - Malo)</label>   </p> 
-                    
-                              <p align="right">
-                                                <b:button outcome="hoja_ruta_tut.xhtml"  class="btn btn-success" icon="arrow-right"  >
-                                                    <f:param name="id" value="#{datosFormatos.id}"/>
-                                          
-                                                </b:button>  &#160;&#160;&#160; &#160; &#160;&#160;&#160;
-                                             <b:button onclick="$('.abrirPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();"  class="btn btn-danger" icon="remove"  >
-                                             </b:button> 
-                                            </p>
-                              
-                </div>                            
+                        <br/>
+                        <br/>
+
+                        <h:dataTable var="campo1" value="#{datosFormatos.getPasantia(datosFormatos.id)}" >
+                            <div class="col-lg-12"> 
+                                <h:column >
+
+                                    <div class="col-lg-3">
+
+                                        <label for="disabledSelect">Carta Compromiso: </label>
+
+                                    </div>
+
+                                    <div class="col-lg-3">
+
+                                        <h:inputText class="form-control"  value="#{campo1.tipo_ppp}#{campo1.cod_ppp}" disabled="true"/>
+
+                                    </div>
+                                    <div class="col-lg-3">
+
+                                        <label for="disabledSelect">Tipo de actividad: </label>
+                                        <br/>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <h:inputText class="form-control"  value="#{campo1.estudiante.actividadRealizar}" disabled="true"/>
+                                        <br/>
+                                    </div>
+
+
+                                    <div class="col-lg-3">
+                                        <label for="disabledSelect">Estudiante </label>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <h:inputText class="form-control"  value="#{citasAgendadas.getNombre(campo1.estudiante.cedula)}" disabled="true"/>
+                                    </div> 
+                                    <div class="col-lg-3">
+
+                                        <label for="disabledSelect">Cédula estudiante: </label> 
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <h:inputText class="form-control"  value="#{datosFormatos.id}" disabled="true"/>
+
+                                        <br/>
+                                    </div>
+
+
+
+                                    <div class="col-lg-3">
+
+                                        <label for="disabledSelect">Tutor UPS:</label>
+
+                                    </div>
+                                    <div class="col-lg-3">
+
+                                        <h:inputText class="form-control"   value="#{citasAgendadas.getNombre(login.user)}" disabled="true"/>
+
+                                    </div>
+                                    <div class="col-lg-3">
+
+                                        <label for="disabledSelect">Tutor de la institución:</label>
+
+                                    </div>
+                                    <div class="col-lg-3">
+
+                                        <h:inputText class="form-control"   value="#{campo1.encargado.nombre_encargado}" disabled="true"/>
+                                        <br/>
+                                    </div>
+
+                                    <div class="col-lg-3">
+
+                                        <label for="disabledSelect">Responsable de la institucion:</label>
+
+                                    </div>
+                                    <div class="col-lg-3">
+
+                                        <h:inputText class="form-control"   value="#{campo1.encargado.empresa.nombre_gerente}" disabled="true"/>
+
+                                    </div>
+
+                                </h:column>
+                            </div> 
+
+                        </h:dataTable>
+
+
+
+                        <br/>
+                        <br/>
+                        <center>
+
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <td rowspan="2"><center><b>Cuestionario</b></center></td>
+
+                                                <td rowspan="2"><center><b>Horas asignadas</b></center></td>
+
+                                                <td colspan="3"><center><b>Criterios de desempeño</b></center></td>
+                                            </tr>
+                                            <tr>
+                                                <td><center><b>Tecnico</b></center></td>
+                                                <td><center><b>Personal</b></center></td>
+                                                <td><center><b>Contextual</b></center></td>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><b:inputText class="form-control"  value="#{tablasFormatos.des1}" required="true" />
+                                                </td>      
+                                                
+                                               <td><b:inputText span="6" mask="numeric" class="form-control" value="#{tablasFormatos.hor1}" col-md="6" offset="2" /></td>
+                                         <td>
+                                                    <b:selectOneMenu id="consol1" value="#{tablasFormatos.tec1}" style="width:125px" col-md="6" offset="2">
+                                                        <f:selectItem itemLabel="1" itemValue="1" />
+                                                        <f:selectItem itemLabel="2" itemValue="2" />
+                                                        <f:selectItem itemLabel="3" itemValue="3" />
+                                                        <f:selectItem itemLabel="4" itemValue="4" />
+                                                        <f:selectItem itemLabel="5" itemValue="5" />
+                                                    </b:selectOneMenu></td>
+                                                <td>
+                                                     <b:selectOneMenu id="consol2" value="#{tablasFormatos.per1}" style="width:125px" col-md="6" offset="2">
+                                                        <f:selectItem itemLabel="1" itemValue="1" />
+                                                        <f:selectItem itemLabel="2" itemValue="2" />
+                                                        <f:selectItem itemLabel="3" itemValue="3" />
+                                                        <f:selectItem itemLabel="4" itemValue="4" />
+                                                        <f:selectItem itemLabel="5" itemValue="5" />
+                                                    </b:selectOneMenu>
+                                                   </td>
+                                                <td>
+                                                     <b:selectOneMenu id="consol3" value="#{tablasFormatos.cont1}" style="width:125px" col-md="6" offset="2">
+                                                        <f:selectItem itemLabel="1" itemValue="1" />
+                                                        <f:selectItem itemLabel="2" itemValue="2" />
+                                                        <f:selectItem itemLabel="3" itemValue="3" />
+                                                        <f:selectItem itemLabel="4" itemValue="4" />
+                                                        <f:selectItem itemLabel="5" itemValue="5" />
+                                                    </b:selectOneMenu>
+                                                    </td> 
                                             
-              </div>
-                 </div>
+                                            </tr>
+                                            <tr>
+                                                <td><b:inputText class="form-control"  value="#{tablasFormatos.des2}" required="true" /></td>      
+                                                <td><b:inputText span="6" mask="numeric" class="form-control" value="#{tablasFormatos.hor2}" col-md="6" offset="2" /></td>
+                                          <td>
+                                                    <b:selectOneMenu id="consoe1" value="#{tablasFormatos.tec2}" style="width:125px" col-md="6" offset="2">
+                                                        <f:selectItem itemLabel="1" itemValue="1" />
+                                                        <f:selectItem itemLabel="2" itemValue="2" />
+                                                        <f:selectItem itemLabel="3" itemValue="3" />
+                                                        <f:selectItem itemLabel="4" itemValue="4" />
+                                                        <f:selectItem itemLabel="5" itemValue="5" />
+                                                    </b:selectOneMenu></td>
+                                                <td>
+                                                     <b:selectOneMenu id="consoe2" value="#{tablasFormatos.per2}" style="width:125px" col-md="6" offset="2">
+                                                        <f:selectItem itemLabel="1" itemValue="1" />
+                                                        <f:selectItem itemLabel="2" itemValue="2" />
+                                                        <f:selectItem itemLabel="3" itemValue="3" />
+                                                        <f:selectItem itemLabel="4" itemValue="4" />
+                                                        <f:selectItem itemLabel="5" itemValue="5" />
+                                                    </b:selectOneMenu>
+                                                   </td>
+                                                <td>
+                                                     <b:selectOneMenu id="consoe3" value="#{tablasFormatos.cont2}" style="width:125px" col-md="6" offset="2">
+                                                        <f:selectItem itemLabel="1" itemValue="1" />
+                                                        <f:selectItem itemLabel="2" itemValue="2" />
+                                                        <f:selectItem itemLabel="3" itemValue="3" />
+                                                        <f:selectItem itemLabel="4" itemValue="4" />
+                                                        <f:selectItem itemLabel="5" itemValue="5" />
+                                                    </b:selectOneMenu>
+                                                    </td> 
+                                            
+                                            
+                                            </tr>
+                                            <tr>
+                                                <td><b:inputText class="form-control"  value="#{tablasFormatos.des3}"  required="true" /></td>      
+                                                <td><b:inputText span="6" mask="numeric" class="form-control" value="#{tablasFormatos.hor3}" col-md="6" offset="2"  /></td>
+                                        <td>
+                                                    <b:selectOneMenu id="consle1" value="#{tablasFormatos.tec3}" style="width:125px" col-md="6" offset="2">
+                                                        <f:selectItem itemLabel="1" itemValue="1" />
+                                                        <f:selectItem itemLabel="2" itemValue="2" />
+                                                        <f:selectItem itemLabel="3" itemValue="3" />
+                                                        <f:selectItem itemLabel="4" itemValue="4" />
+                                                        <f:selectItem itemLabel="5" itemValue="5" />
+                                                    </b:selectOneMenu></td>
+                                                <td>
+                                                     <b:selectOneMenu id="consle2" value="#{tablasFormatos.per3}" style="width:125px" col-md="6" offset="2">
+                                                        <f:selectItem itemLabel="1" itemValue="1" />
+                                                        <f:selectItem itemLabel="2" itemValue="2" />
+                                                        <f:selectItem itemLabel="3" itemValue="3" />
+                                                        <f:selectItem itemLabel="4" itemValue="4" />
+                                                        <f:selectItem itemLabel="5" itemValue="5" />
+                                                    </b:selectOneMenu>
+                                                   </td>
+                                                <td>
+                                                     <b:selectOneMenu id="consle3" value="#{tablasFormatos.cont3}" style="width:125px" col-md="6" offset="2">
+                                                        <f:selectItem itemLabel="1" itemValue="1" />
+                                                        <f:selectItem itemLabel="2" itemValue="2" />
+                                                        <f:selectItem itemLabel="3" itemValue="3" />
+                                                        <f:selectItem itemLabel="4" itemValue="4" />
+                                                        <f:selectItem itemLabel="5" itemValue="5" />
+                                                    </b:selectOneMenu>
+                                                    </td> 
+                                            
+                                            
+                                            
+                                            </tr>
+                                            <tr>
+                                                <td><b:inputText class="form-control"  value="#{tablasFormatos.des4}" required="true" />
+                                                </td>      
+                                                <td><b:inputText span="6" mask="numeric" class="form-control" value="#{tablasFormatos.hor4}" col-md="6" offset="2" /></td>
+                                                <td>
+                                                    <b:selectOneMenu id="console1" value="#{tablasFormatos.tec4}" style="width:125px" col-md="6" offset="2">
+                                                        <f:selectItem itemLabel="1" itemValue="1" />
+                                                        <f:selectItem itemLabel="2" itemValue="2" />
+                                                        <f:selectItem itemLabel="3" itemValue="3" />
+                                                        <f:selectItem itemLabel="4" itemValue="4" />
+                                                        <f:selectItem itemLabel="5" itemValue="5" />
+                                                    </b:selectOneMenu></td>
+                                                <td>
+                                                     <b:selectOneMenu id="console2" value="#{tablasFormatos.per4}" style="width:125px" col-md="6" offset="2">
+                                                        <f:selectItem itemLabel="1" itemValue="1" />
+                                                        <f:selectItem itemLabel="2" itemValue="2" />
+                                                        <f:selectItem itemLabel="3" itemValue="3" />
+                                                        <f:selectItem itemLabel="4" itemValue="4" />
+                                                        <f:selectItem itemLabel="5" itemValue="5" />
+                                                    </b:selectOneMenu>
+                                                   </td>
+                                                <td>
+                                                     <b:selectOneMenu id="console3" value="#{tablasFormatos.cont4}" style="width:125px" col-md="6" offset="2">
+                                                        <f:selectItem itemLabel="1" itemValue="1" />
+                                                        <f:selectItem itemLabel="2" itemValue="2" />
+                                                        <f:selectItem itemLabel="3" itemValue="3" />
+                                                        <f:selectItem itemLabel="4" itemValue="4" />
+                                                        <f:selectItem itemLabel="5" itemValue="5" />
+                                                    </b:selectOneMenu>
+                                                    </td> 
+                                            </tr>
+
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.panel-body -->
+
+
+
+                        </center>
+
+
+                        <div class="panel-body">
+                            <table>
+                                <tr>
+                                    <td>   <label for="disabledSelect">Total de horas:&#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;</label></td>
+
+                                    <td>   <b:inputText span="6" mask="numeric" class="form-control" value="#{tablasFormatos.total}" col-md="6" offset="2" />
+                                        <br/>
+                                    </td>
+                                </tr>
+                            </table>                                       
+
+                            <br/>
+                            <br/>
+                            <center>
+
+                                <table>
+                                    <tr> <td><center>  <hr color="blue" size="5" width="150"> </hr></center></td> 
+                                        <td>&#160;&#160;&#160; &#160; &#160;&#160;&#160; &#160;  
+                                            &#160;&#160;&#160; &#160; &#160;&#160;&#160; &#160;
+                                            &#160;&#160;&#160; &#160; &#160;&#160;&#160; &#160;
+                                            &#160;&#160;&#160; &#160; &#160;&#160;&#160; &#160;</td>
+                                        <td><center>  <hr color="blue" size="5" width="150"></hr></center></td>
+                                    </tr>
+                                    <tr>
+                                        <td><center>     <label for="disabledSelect">Firma tutor UPS</label></center></td>
+                                        <td>&#160;&#160;&#160; &#160;  &#160;&#160;&#160; &#160;  
+                                            &#160;&#160;&#160; &#160; &#160;&#160;&#160; &#160;
+                                            &#160;&#160;&#160; &#160; &#160;&#160;&#160; &#160;
+                                            &#160;&#160;&#160; &#160; &#160;&#160;&#160; &#160;</td>
+                                        <td><center>  <label for="disabledSelect">Firma tutor institucion</label></center></td>      
+
+                                    </tr>
+                                </table>
+                            </center>
+                            <br/>
+                            <br/>
+                            <p><label>Calificar sobre 5 el criterio personal y contextual. (5 - Muy Satisfactorio, 4 - Satisfactorio, 3 - Aceptable, 2 - Deficiente, 1 - Malo)</label></p>
+                            <p><label> Calificar sobre 5 cada actividad. (5 - Muy Satisfactorio, 4 - Satisfactorio, 3 - Aceptable, 2 - Deficiente, 1 - Malo)</label>   </p> 
+
+                            <div class="col-lg-12">
+                                <br/>
+                                <br/>
+                                <p class="text-success">     <h:outputLabel rendered="#{tablasFormatos.paso == false eq false}" value="Notificación: Formato llenado correctamente.Continue con el siguiente formato"/></p>
+
+                            </div>  
+
+                            <p align="right">
+                                <b:button onclick="$('.abrirPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();"  class="btn btn-danger" icon="remove"  >
+                                </b:button> 
+
+                                <b:commandButton  rendered="#{tablasFormatos.paso == false eq true}" class="btn btn-info" action="#{tablasFormatos.informeSeguimientoTu(datosFormatos.id)}" icon="floppy-disk" ></b:commandButton>
+
+                                <b:button  rendered="#{tablasFormatos.paso == false eq false}" outcome="hoja_ruta_tut.xhtml"  class="btn btn-success" icon="arrow-right">
+
+                                    <f:param name="id" value="#{datosFormatos.id}"/>
+
+                                </b:button> &#160;&#160;&#160; &#160; &#160;&#160;&#160;
+                            </p>
+
+
+
+
+                        </div>                            
+
+                    </div>
                 </div>
-  
+            </div>
+
             <br/><br/>
-            
-              
-             <b:modal title="Estudiante Visitado" styleClass="abrirPseudoClass"
-                         id="abrir">
-                                  
-                         <p>¿Esta seguro que desea salir?</p>   
-                         <p> Los cambios realizados se perderan</p>   
-                         
-                         <f:facet name="footer">
-                             <b:button outcome="agendar_cita_tut.xhtml" class="btn btn-success " value="Si">
-                                 
-                             </b:button>
-                             <b:button  dismiss="modal" class="btn btn-danger"  value="No">
-                             </b:button>
-                            
-                             
-                         </f:facet>
-                     </b:modal>   
-            
-     </h:form>
-        
+
+
+            <b:modal title="Estudiante Visitado" styleClass="abrirPseudoClass"
+                     id="abrir">
+
+                <p>¿Esta seguro que desea salir?</p>   
+                <p> Los cambios realizados se perderan</p>   
+
+                <f:facet name="footer">
+                    <b:button outcome="agendar_cita_tut.xhtml" class="btn btn-success " value="Si">
+
+                    </b:button>
+                    <b:button  dismiss="modal" class="btn btn-danger"  value="No">
+                    </b:button>
+
+
+                </f:facet>
+            </b:modal>   
+
+        </h:form>
+
     </ui:define>
-    
+
 </ui:composition>

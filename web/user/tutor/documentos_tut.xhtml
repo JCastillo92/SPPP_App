@@ -16,7 +16,6 @@
     </ui:define>
     
     <ui:define name="contenido">
-       <h:form>
             
             
              <br/><br/>
@@ -38,7 +37,7 @@
             
                         <div class="panel-body">
                                 <div class="table-responsive">
-                                    <b:dataTable  class="table table-striped table-bordered table-hover" var="campo" value="#{citasAgendadas.getVisitasRealizadas(login.user)}">
+                                    <b:dataTable  class="table table-striped table-bordered table-hover" var="campo" value="#{citasAgendadas.getVisitasTutor(login.user)}">
                                
                                 <b:dataTableColumn label="Nombre estudiante" >                   
 
@@ -48,10 +47,11 @@
                                 </b:dataTableColumn>
                                 <b:dataTableColumn label="Documentos para descargar">                   
                                     <b:column >
-                                      
-                                      
-                                        <h:outputText value="#{campo.dia}" />
-                                       
+                               <h:form enctype="multipart/form-data" role="form">
+               
+                             <label>Descargar el informe tutor</label><br/>
+                             <h:commandButton action="#{archivos.download_file(202)}" value="Descarga PDF"/>
+                               </h:form>
                                        <br/>
                                        <br/>
                                        <br/>
@@ -100,9 +100,7 @@
    
 
                 
-                    
-           
-        </h:form>
+   
       
     </ui:define>
     

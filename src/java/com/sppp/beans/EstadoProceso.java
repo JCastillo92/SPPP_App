@@ -8,6 +8,8 @@ package com.sppp.beans;
 import com.sppp.DAO.DetallePasantiaDAO;
 import com.sppp.DAO.ProcesoDAO;
 import com.sppp.utils.SessionUtils;
+import java.util.LinkedList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.servlet.http.HttpSession;
 
@@ -20,8 +22,42 @@ public class EstadoProceso {
 
     private int proceso;
     private String nombre_proceso;
+    private int estado;
+    private String color;
+
+    public String obtenerColorEstado(int procesoEstatico) {
+
+        if (procesoEstatico < proceso) {
+            color = "timeline-badge success";
+        } else {
+            //Si estamos en ese proceso
+            if (procesoEstatico == proceso) {
+                switch (estado) {
+                    case 0:
+                        color = "timeline-badge info";
+                        break;
+
+                    case 1:
+                        color = "timeline-badge warning";
+                        break;
+
+                    case 2:
+                        color = "timeline-badge success";
+                        break;
+                }
+            }else{
+                color = "timeline-badge";
+            }
+        }
+        return color;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
 
     public int getProceso() {
+
         DetallePasantiaDAO dpd = new DetallePasantiaDAO();
         HttpSession session = SessionUtils.getSession();
         long id;
@@ -50,6 +86,26 @@ public class EstadoProceso {
         }
 
         return nombre_proceso;
+
+    }
+
+    public EstadoProceso() {
+
+        //Encontrando el numero del proceso
+        List<Integer> datosProcesoEstado = new LinkedList<>();
+        DetallePasantiaDAO dpd = new DetallePasantiaDAO();
+        HttpSession session = SessionUtils.getSession();
+        long id;
+
+        try {
+            id = (long) session.getAttribute("id");
+            //proceso = dpd.findDetallePasantiaIdProcesoTrue(id);
+            datosProcesoEstado = dpd.findDetallePasantiaTrue(id);
+            proceso = datosProcesoEstado.get(0);
+            estado = datosProcesoEstado.get(1);
+        } catch (Exception e) {
+            proceso = 0;
+        }
 
     }
 

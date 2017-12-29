@@ -132,8 +132,8 @@
                                     <tbody>
                                         <tr>
                                             <td> ¿Se cumplió con las actividades propuestas en la Carta Compromiso?</td>      
-                                            <p:selectOneRadio id="customRadio" value="#{tablasFormatos.pregunta1}" layout="custom">
-                                        <f:selectItem itemValue="1" />
+                                            <p:selectOneRadio id="customRadio" value="#{tablasFormatos.pregunta10}" layout="custom" required="true">
+                                      <f:selectItem itemValue="1" />
                                         <f:selectItem itemValue="2" />
                                         <f:selectItem itemValue="3" />
                                         <f:selectItem itemValue="4" />
@@ -148,7 +148,7 @@
                                       
                                         <tr>
                                             <td>  ¿Satisfacieron los resultados a la labor institucional?</td>      
-                                            <p:selectOneRadio id="customRadio1" value="#{tablasFormatos.pregunta2}" layout="custom">
+                                            <p:selectOneRadio id="customRadio1" value="#{tablasFormatos.pregunta1}" layout="custom" required="true">
                                         <f:selectItem itemValue="1" />
                                         <f:selectItem itemValue="2" />
                                         <f:selectItem itemValue="3" />
@@ -163,7 +163,7 @@
                                         </tr>
                                         <tr>
                                             <td> ¿El estudiante tuvo la información necesaria del proceso de pasantías, prácticas pre profesionales ó extensiones?</td>      
-                                            <p:selectOneRadio id="customRadio2" value="#{tablasFormatos.pregunta3}" layout="custom">
+                                            <p:selectOneRadio id="customRadio2" value="#{tablasFormatos.pregunta2}" layout="custom" required="true">
                                         <f:selectItem itemValue="1" />
                                         <f:selectItem itemValue="2" />
                                         <f:selectItem itemValue="3" />
@@ -178,7 +178,7 @@
                                         </tr>
                                         <tr>
                                             <td> La calidad de los productos ofrecidos fueron:</td>      
-                                            <p:selectOneRadio id="customRadio3" value="#{tablasFormatos.pregunta4}" layout="custom">
+                                            <p:selectOneRadio  id="customRadio3" value="#{tablasFormatos.pregunta3}" layout="custom" required="true">
                                         <f:selectItem itemValue="1" />
                                         <f:selectItem itemValue="2" />
                                         <f:selectItem itemValue="3" />
@@ -193,7 +193,7 @@
                                         </tr>
                                         <tr>
                                             <td> El comportamiento del estudiante en la institución externa fue:</td>      
-                                            <p:selectOneRadio id="customRadio4" value="#{tablasFormatos.pregunta5}" layout="custom">
+                                            <p:selectOneRadio id="customRadio4" value="#{tablasFormatos.pregunta4}" layout="custom" required="true">
                                         <f:selectItem itemValue="1" />
                                         <f:selectItem itemValue="2" />
                                         <f:selectItem itemValue="3" />
@@ -204,11 +204,11 @@
                                             <td><p:radioButton id="a2" for="customRadio4" itemIndex="1" /></td>
                                             <td><p:radioButton id="a3" for="customRadio4" itemIndex="2" /></td>
                                             <td><p:radioButton id="a4" for="customRadio4" itemIndex="3" /> </td>                                  
-                                            <td><p:radioButton id="a" for="customRadio4" itemIndex="4" /></td>
+                                            <td><p:radioButton id="a5" for="customRadio4" itemIndex="4" /></td>
                                         </tr>
                                         <tr>
                                             <td> La destreza desmostrada del estudiante en sus actividades fue:</td>      
-                                            <p:selectOneRadio id="customRadio5" value="#{tablasFormatos.pregunta6}" layout="custom">
+                                            <p:selectOneRadio id="customRadio5" value="#{tablasFormatos.pregunta5}" layout="custom" required="true">
                                         <f:selectItem itemValue="1" />
                                         <f:selectItem itemValue="2" />
                                         <f:selectItem itemValue="3" />
@@ -224,7 +224,7 @@
                                         
                                         <tr>
                                             <td> El nivel de información proporcionada por la institución externa fue:</td>      
-                                            <p:selectOneRadio id="customRadio6" value="#{tablasFormatos.pregunta7}" layout="custom">
+                                            <p:selectOneRadio id="customRadio6" value="#{tablasFormatos.pregunta6}" layout="custom" required="true">
                                         <f:selectItem itemValue="1" />
                                         <f:selectItem itemValue="2" />
                                         <f:selectItem itemValue="3" />
@@ -239,7 +239,7 @@
                                         </tr>
                                         <tr>
                                             <td> La relación del estudiante con el tutor de la institución externa fue:</td>      
-                                            <p:selectOneRadio id="customRadio7" value="#{tablasFormatos.pregunta8}" layout="custom">
+                                            <p:selectOneRadio id="customRadio7" value="#{tablasFormatos.pregunta7}" layout="custom" required="true">
                                         <f:selectItem itemValue="1" />
                                         <f:selectItem itemValue="2" />
                                         <f:selectItem itemValue="3" />
@@ -254,7 +254,7 @@
                                         </tr>
                                         <tr>
                                             <td> La relación del estudiante con el tutor de la UPS fue:</td>      
-                                            <p:selectOneRadio id="customRadio8" value="#{tablasFormatos.pregunta9}" layout="custom">
+                                            <p:selectOneRadio id="customRadio8" value="#{tablasFormatos.pregunta8}" layout="custom" required="true">
                                         <f:selectItem itemValue="1" />
                                         <f:selectItem itemValue="2" />
                                         <f:selectItem itemValue="3" />
@@ -269,8 +269,9 @@
                                         </tr>
                                         <tr>
                                             <td> La destreza desmostrada del estudiante en sus actividades fue:</td>      
-                                            <p:selectOneRadio id="customRadio9" value="#{tablasFormatos.pregunta10}" layout="custom">
-                                        <f:selectItem itemValue="1" />
+                                            <p:selectOneRadio id="customRadio9" value="#{tablasFormatos.pregunta9}" layout="custom" required="true">
+                                        
+                                        <f:selectItem itemValue="1"  />
                                         <f:selectItem itemValue="2" />
                                         <f:selectItem itemValue="3" />
                                         <f:selectItem itemValue="4" />
@@ -297,7 +298,7 @@
                         <div class="panel-body">
                 
                             <label>En caso de tener observaciones, inquietudes y/o sugerencias, detallar a continuacion:</label>
-                                            <textarea class="form-control"  rows="3"></textarea>    
+                            <h:inputTextarea class="form-control" value="#{tablasFormatos.observaciones}" rows="3"></h:inputTextarea>    
                 
                                             <br/>
                                             <br/>
@@ -305,18 +306,26 @@
                                             <br/>
                                             <center>  <hr color="blue" size="5" width="150"></hr>
                                                 <label for="disabledSelect">Firma tutor</label>
-                </center>   
+                </center>   <div class="col-lg-12">
+                                     <br/>
+                                     <br/>
+                                     <p class="text-success">     <h:outputLabel rendered="#{tablasFormatos.paso == false eq false}" value="Notificación: Formato llenado correctamente.Continue con el siguiente formato"/></p>
+                                           
+                                </div>  
+                                 
                                             <p align="right">
-                                                
-                                                   
-                                                <b:button outcome="informe_seguimiento_tut.xhtml"  class="btn btn-success" icon="arrow-right">
-                                                
-                                                    <f:param name="id" value="#{datosFormatos.id}"/>
-                                          
-                                                </b:button> &#160;&#160;&#160; &#160; &#160;&#160;&#160;
-                                             <b:button onclick="$('.abrirPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();"  class="btn btn-danger" icon="remove"  >
+                                                 <b:button onclick="$('.abrirPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();"  class="btn btn-danger" icon="remove"  >
                                              </b:button> 
+                                            
+                                                <b:commandButton  rendered="#{tablasFormatos.paso == false eq true}" class="btn btn-info" action="#{tablasFormatos.informeTutor(datosFormatos.id)}" icon="floppy-disk" ></b:commandButton>
+                                            
+                                                <b:button  rendered="#{tablasFormatos.paso == false eq false}" outcome="informe_seguimiento_tut.xhtml"  class="btn btn-success" icon="arrow-right">
+                                                     
+                                                    <f:param name="id" value="#{datosFormatos.id}"/>
+                                              
+                                                </b:button> &#160;&#160;&#160; &#160; &#160;&#160;&#160;
                                             </p>
+                                          
                         </div> 
                     </div>
               </div>

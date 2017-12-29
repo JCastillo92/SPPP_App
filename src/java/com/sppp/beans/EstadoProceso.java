@@ -151,6 +151,24 @@ public class EstadoProceso {
             case 7:
                 ruta = "";
                 break;
+            case 20:
+                ruta = "confirma_cita_est";
+                break;
+            case 21:
+                ruta = "solicitud_vfinal";
+                break;    
+            case 22:
+                ruta = "autoEvaluacion";
+                break; 
+            case 23:
+                ruta = "";
+                break;
+            case 24:
+                ruta = "";
+                break; 
+            case 25:
+                ruta = "";
+                break;     
         }
 
         return ruta;

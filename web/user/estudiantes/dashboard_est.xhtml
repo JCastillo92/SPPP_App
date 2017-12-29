@@ -188,19 +188,65 @@
                                 </div>
                             </div>
                         </li>
-                         <!-- PROCESO 7 -->
+                        <!-- PROCESO 20 -->
                         <li class="timeline-inverted">
-                            <div class="#{ (estadoProceso.proceso + 1) &gt; 8 ? 'timeline-badge success' : 'timeline-badge' }"><i class="fa fa-check"></i></div>
+                            <div class="#{estadoProceso.obtenerColorEstado(18)}"><i class="fa fa-check"></i>
+                            </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4 class="timeline-title">8.- Visita completada</h4>
+                                    <h4 class="timeline-title">20.- Cita Confirmada</h4>
                                     <p></p>
                                 </div>
                                 <div class="timeline-body">
-                                    <p>Esperar por confirmación del tutor</p>
+                                    <p>Una vez que el tutor le envie la fecha el estudiante tendrá que confirmarla</p>
                                 </div>
                             </div>
                         </li>
+                        <!-- PROCESO 21 -->
+                        <li>
+                            <div class="#{estadoProceso.obtenerColorEstado(20)}"><i class="fa fa-check"></i></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">21.- Solicitar Validación Pasantías</h4>
+                                    <p></p>
+                                </div>
+                                <div class="timeline-body">
+                                     <p>Generar solicitud para validar las pasantias</p>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- PROCESO 22 -->
+                        <li class="timeline-inverted">
+                            <div class="#{estadoProceso.obtenerColorEstado(24)}"><i class="fa fa-check"></i>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">22.- Descargar/Subir Autoevaluación</h4>
+                                    <p></p>
+                                </div>
+                                <div class="timeline-body">
+                                <p>Descargar la autoevaluación para proceder a firmarla.
+                        Una vez firmada la autoevaluación deberá ser subida al sistema por el estudiante</p>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- PROCESO 23 -->
+                        <li>
+                            <div class="#{estadoProceso.obtenerColorEstado(27)}"><i class="fa fa-check"></i></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">23.- Descargar/Subir Otros Documentos</h4>
+                                    <p></p>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>Subir Documentos(Certificado Empresa, Comprobante)</p>
+                                    <p>Escanear el certificado de culminación de pasantía emitido por la empresa y subirlo al sistema</p>
+                                     <p>Escanear el comprobante de pago emitido por la Universidad y subirlo al sistema</p>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        
                     </ul>
                 </div>
                 

@@ -37,34 +37,35 @@
                         <b:carouselItem style="width:400px; height:auto">
                             <b:panel title="Datos Estudiante" look="default">
                                 <!-- AQUI ABAJO FORMULARIO DINAMICO ESTUDIANTE-->
-                                <b:inputText value="#{userWizard.usuario.nombre}" label="Nombre:" disabled="true"/>
-                                <b:inputText value="#{userWizard.usuario.apellido}" label="Apellido:" disabled="true"/>
-                                <b:inputText value="#{userWizard.usuario.telefono}" label="Tel&eacute;fono:"/>
-                                <b:inputText value="#{userWizard.usuario.correo}" label="Correo:" />
-                                <b:inputText value="#{userWizard.usuario.estudiante.ultimoNivel}" label="Nivel m&aacute;s bajo:" disabled="true"/>
-                                <b:inputTextarea value="#{userWizard.usuario.estudiante.actividadRealizar}" label="Actividad a Realizar:" />
-                                <h:outputText value="Tipo de Practica" style="font-weight:bold"/>
-                                <b:radiobutton value="#{userWizard.p.tipo_ppp}" required="true">
+                                <b:inputText value="#{userWizard.usuario.nombre}" label="Nombre:" disabled="true" tooltip="Nombres completos alumno"/>
+                                <b:inputText value="#{userWizard.usuario.apellido}" label="Apellido:" disabled="true" tooltip="Apellidos completos alumno"/>
+                                <b:inputText value="#{userWizard.usuario.telefono}" label="Tel&eacute;fono:" required="true" tooltip="N&uacute;mero celular"/>
+                                <b:inputText value="#{userWizard.usuario.correo}" label="Correo:" required="true" tooltip="Correo de preferencia"/>
+                                <b:inputText value="#{userWizard.usuario.estudiante.ultimoNivel}" label="Nivel m&aacute;s Bajo:" disabled="true"/>
+                                <b:inputTextarea value="#{userWizard.usuario.estudiante.actividadRealizar}" label="Actividad a Realizar:" required="true" tooltip="Describa aquellas a realizar"/>
+                                <h:outputText value="Tipo de Pr&aacute;ctica" style="font-weight:bold"/>
+                                <h:message for="msgRadio" style="color: red"></h:message>
+                                <b:radiobutton  value="#{userWizard.p.tipo_ppp}" required="true" id="msgRadio" requiredMessage=" Escoja un tipo de pr&aacute;ctica: *" tooltip="Seleecionar una">
                                     <f:selectItem itemLabel="Pasant&iacute;a" itemValue="PA"/>
                                     <f:selectItem itemLabel="Pr&aacute;ctica Pre Profesional" itemValue="PP"/>
                                 </b:radiobutton>
-                                <b:dateTimePicker value="#{userWizard.p.fechaInicio}" label="Fecha Tentativa Inicio:" show-time="false"/>
-                                <b:dateTimePicker value="#{userWizard.p.fechaFin}" label="Fecha Tentativa Fin" show-time="false"/>
+                                <b:dateTimePicker value="#{userWizard.p.fechaInicio}" label="Fecha Tentativa Inicio:" show-time="false" required="true"/>
+                                <b:dateTimePicker value="#{userWizard.p.fechaFin}" label="Fecha Tentativa Fin" show-time="false" required="true"/>
                                 
                             </b:panel>
                         </b:carouselItem>
                         <b:carouselItem style="width:400px;height:auto">
                             <b:panel title="Datos Empresa" look="default">
                                 <!-- AQUI ABAJO FORMULARIO DINAMICO EMPRESA-->
-                                <b:inputText value="#{userWizard.emp.id_empresa}" label="RUC:" />
-                                <b:inputText value="#{userWizard.emp.nombre_empresa}" label="Nombre Empresa:" />
-                                <b:inputText value="#{userWizard.emp.nombre_gerente}" label="Nombre Gerente Empresa:" />
-                                <b:inputText value="#{userWizard.emp.telefono_empresa}" label="Tel&eacute;fono:" />
-                                <b:inputText value="#{userWizard.emp.direccion_empresa}" label="Direcci&oacute;n:" />
-                                <b:inputText value="#{userWizard.emp.actividad_principal_empresa}" label="Actividad Principal que Ejerce Empresa:" />
-                                <b:inputText value="#{userWizard.enc.ci_encargado}" label="C&eacute;dula Encargado:" />
-                                <b:inputText value="#{userWizard.enc.nombre_encargado}" label="Nombre Encargado:" />
-                                <b:inputText value="#{userWizard.enc.cargo_encargado}" label="Cargo Encargado:" />
+                                <b:inputText value="#{userWizard.emp.id_empresa}" label="RUC:" required="true"/>
+                                <b:inputText value="#{userWizard.emp.nombre_empresa}" label="Nombre Empresa:" required="true"/>
+                                <b:inputText value="#{userWizard.emp.nombre_gerente}" label="Nombre Gerente Empresa:" required="true"/>
+                                <b:inputText value="#{userWizard.emp.telefono_empresa}" label="Tel&eacute;fono:" required="true"/>
+                                <b:inputText value="#{userWizard.emp.direccion_empresa}" label="Direcci&oacute;n:" required="true"/>
+                                <b:inputText value="#{userWizard.emp.actividad_principal_empresa}" label="Actividad Principal que Ejerce Empresa:" required="true"/>
+                                <b:inputText value="#{userWizard.enc.ci_encargado}" label="C&eacute;dula Encargado:" required="true"/>
+                                <b:inputText value="#{userWizard.enc.nombre_encargado}" label="Nombre Encargado:" required="true"/>
+                                <b:inputText value="#{userWizard.enc.cargo_encargado}" label="Cargo Encargado:" required="true"/>
                             </b:panel>
                         </b:carouselItem>
                         <b:carouselControl direction="right" >

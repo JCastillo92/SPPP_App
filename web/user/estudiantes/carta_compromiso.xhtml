@@ -4,7 +4,6 @@
      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
      template="/templates/main.xhtml"
      xmlns:h="http://xmlns.jcp.org/jsf/html"
-     xmlns:p="http://primefaces.org/ui"
      xmlns:f="http://xmlns.jcp.org/jsf/core"
      xmlns:b="http://bootsfaces.net/ui">
     
@@ -78,29 +77,16 @@
                         </b:carouselItem>
                         <!--FIN ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA-->
                         
-                        <b:carouselControl direction="right" >
-                            <b:button value="Anterior"
-                                      onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');"
-                                      look="info" />
+                        <b:carouselControl direction="right">
+                            <b:button value="Anterior" onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');" look="info"></b:button>
                         </b:carouselControl>
                         <b:carouselControl>
-                            
-                            <b:commandButton value="Enviar" style="position:absolute;right:0px" action="#{wizardCartaCompromiso.guardarDatos()}" 
-                                      look="success" />
+                            <b:commandButton value="Enviar" style="position:absolute;right:0px" action="#{wizardCartaCompromiso.guardarDatos()}" look="success"></b:commandButton>
                         </b:carouselControl>
                         <b:carouselControl direction="left">
-                            <b:button value="Siguiente" style="position:absolute;right:100px"
-                                      onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');"
-                                      look="info" />
+                            <b:button value="Siguiente" style="position:absolute;right:100px" onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');" look="info"></b:button>
                         </b:carouselControl>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    </b:carousel> <!-- FIN DE TODO EL CAROUSEL-->
+                    </b:carousel>
                 </b:form>
 
             </div>

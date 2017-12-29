@@ -53,7 +53,7 @@ public class MailingMain {
                 AddSubject="FECHA DE VISITA " + ponnombreAPP;
                 contentMessage= "Visita a realizar";
                 break;
-                 case 6:
+                case 6:
                 AddSubject="CANCELACIÓN DE VISITA " + ponnombreAPP;
                 contentMessage="Visita a cancelar";
                 break;
@@ -62,7 +62,7 @@ public class MailingMain {
                 contentMessage="Visita confirmada";
                 break;
                 case 8:
-                AddSubject="VALIDACIÓN DE PASANTÍAS/PRÁCTICAS PREPROFESIONALES" + ponnombreAPP;
+                AddSubject="VALIDACIÓN DE PASANTÍAS/PRÁCTICAS PREPROFESIONALES " + ponnombreAPP;
                 contentMessage="Validación final";
                 break;
                 

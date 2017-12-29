@@ -32,7 +32,7 @@ public class EstadoProceso {
         } catch (Exception e) {
             proceso = 0;
         }
-
+        System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"+proceso);
         return proceso;
     }
 

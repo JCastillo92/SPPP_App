@@ -17,8 +17,7 @@
     
     <ui:define name="contenido">
        <h:form>
-            
-             <br/><br/>
+<br/><br/>
           
             <legend><center><h:outputLabel value="Citas agendadas"/></center></legend>
             
@@ -74,7 +73,10 @@
                                           <center> 
                                               <b:button rendered="#{campo.estado_visita == 'Agendada' eq true}" outcome="informe_tut.xhtml"  class="btn btn-success btn-xs" icon="ok"  >
                                                   <f:param name="id" value="#{campo.estudiante.cedula}"/>
-                                              </b:button>
+                                              </b:button> &#160;
+                                              <h:button rendered="#{campo.estado_visita == 'Visitado' eq false}" outcome="cancelar_cita.xhtml"  class="btn btn-danger btn-xs" value="X"  >
+                                                  <f:param name="id" value="#{campo.estudiante.cedula}"/>
+                                              </h:button>
                                                     </center>
                                    
                                     </b:column>
@@ -91,7 +93,7 @@
                                 <table>
                                     <tr>
                                         <td>Estudiante asignado:&#160;&#160;&#160;&#160;&#160;</td>
-                                        <td>    <b:selectOneMenu required="true" colMd="60" value="#{confirmaCita.estudiantes.id_cedula}"  >
+                                        <td>    <b:selectOneMenu required="true" id="ci_est" requiredMessage="escoja un alumno" colMd="60" value="#{confirmaCita.estudiantes.id_cedula}"  >
                                         
                                                 <f:selectItem noSelectionOption="true" itemLabel="Seleccione:"/>
                                         <f:selectItems value="#{confirmaCita.listarEstudiantes}"/>
@@ -101,15 +103,16 @@
                                     <tr>
                                         <td>Fecha de cita:</td>
                                         <td>   
-                                    <p:calendar required="true" pattern="dd/MM/yyyy" style="date-input" beforeShowDay="fridaysDisabled"  locale="es"  mindate="today" value="#{controllerBean.data}"  > 
-                 
-                </p:calendar><br/><br/>
+                                            <p:calendar required="true" id="ci_fecha" pattern="dd/MM/yyyy" style="date-input" beforeShowDay="fridaysDisabled"  locale="es"  mindate="today" value="#{controllerBean.data}" requiredMessage="escoja una fecha" > 
+                                             
+                </p:calendar><h:message for="ci_fecha" style="color:red" /> 
+                                            <br/><br/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Hora de cita:</td>
-                                        <td> <p:calendar  required="true" value="#{controllerBean.time}" pattern="HH:mm" timeOnly="true" locale="es"  />
-              </td>
+                                        <td> <p:calendar  required="true" id="ci_hora" requiredMessage="escoja una hora" value="#{controllerBean.time}" pattern="HH:mm" timeOnly="true" locale="es"  /><h:message for="ci_hora" style="color:red" />
+              </td>                          
                                     </tr>
                                     </table>
                                 <br/>

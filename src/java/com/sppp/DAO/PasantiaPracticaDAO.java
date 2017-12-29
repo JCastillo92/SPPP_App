@@ -12,6 +12,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import com.sppp.beans.Pasantia;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  *
@@ -102,4 +104,31 @@ public class PasantiaPracticaDAO {
          return pasantia_practicapreprofesional;
       
     }//fin findPasantia   
+    
+    public List<Pasantia> findAll(){
+        List<Pasantia> todosProcesos = new LinkedList<>();
+        
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        
+        Transaction tx=null;    
+         try {
+            tx = sesion.beginTransaction();
+            Query query = sesion.createQuery("from Pasantia");
+            todosProcesos= query.list();       
+            tx.commit();
+        }catch (Exception e) {
+            if (tx != null){
+                tx.rollback();
+            }
+        }
+        finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+        
+        
+        return todosProcesos;
+    }
+    
 }//END OF CLASS

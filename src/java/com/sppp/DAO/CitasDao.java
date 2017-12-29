@@ -26,10 +26,11 @@ public interface CitasDao {
      public String obtenerCorreo(long id);
      public String obtenerTelefono(long id);
      public String obtenerCorreoDirector(int id);
-    public List<Pasantia> findUser(String id);
-     public String obtenerCoordinador(String id);
+    public List<Pasantia> findUser(long id);
+     public String obtenerCoordinador(long id);
         public List<VisitaTutor> listarVisitados(long id);
    public List<VisitaTutor> listarInformeCoor();
+ public List<VisitaTutor> visitadosTuto(long user);
  
     
 }

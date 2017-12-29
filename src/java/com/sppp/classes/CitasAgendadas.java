@@ -31,6 +31,8 @@ public class CitasAgendadas {
     private List<VisitaTutor> visitasRealizadas;
     
     private List<VisitaTutor> informeCoor;
+    
+    private List<VisitaTutor> visitasTutor;
     private Login login;
     private String nombre;
     private String apellido_est;
@@ -38,9 +40,19 @@ public class CitasAgendadas {
     private String coordinador;
     Tutor tutor=new Tutor();
     Estudiante estudiante=new Estudiante();
+    VisitaTutor visita=new VisitaTutor();
     
     Pasantia pasantia=new Pasantia();
 
+    public VisitaTutor getVisita() {
+        return visita;
+    }
+
+    public void setVisita(VisitaTutor visita) {
+        this.visita = visita;
+    }
+
+    
     public Pasantia getPasantia() {
         return pasantia;
     }
@@ -104,7 +116,7 @@ public class CitasAgendadas {
 
     public String getCoordinador() {
          CitasDao citasdao=new CitasDaoImp();
-        this.coordinador=citasdao.obtenerCoordinador("6");
+        this.coordinador=citasdao.obtenerCoordinador(6);
         return coordinador;
     }
 
@@ -120,50 +132,18 @@ public class CitasAgendadas {
       
         return informeCoor;
     }
+
+    public List<VisitaTutor> getVisitasTutor(long user) {
+         CitasDao citasdao=new CitasDaoImp();
+        this.visitasTutor=citasdao.visitadosTuto(user);
       
-    public void pdf(long cedula,int numero_pdf){
-   AlmacenamientoPDF crear=new AlmacenamientoPDF();
-  
-        switch(numero_pdf){
-                
-             case 200:
-               crear.pdf_InformeTutor(cedula, numero_pdf);
-               
-                break;
-                case 201:
-                crear.pdf_InformeSeguimientoTutor(cedula, numero_pdf);
-               
-                break;
-                 case 203:
-                crear.pdf_autoevaluacion(cedula, numero_pdf);
-               
-                break;
-                 case 204:
-                crear.pdf_solicitudFinal(cedula, numero_pdf);
-               
-                break;
-            case 205:
-                crear.pdf_InformeSeguimientoTutor(cedula, numero_pdf);
-               
-                break;
-            default:
-              System.out.println("No se ha encontrado dentro del case el numero para almacenar el .PDF");
-break;
-        }
-                
-  // crear.create_student_folder_first_time(123);
-  // crear.guardado_archivo_pdf_creado(123, 200);
-  // crear.guardado_archivo_pdf_creado(123, 201);
-   
- //  crear.guardado_archivo_pdf_creado(123, 202);
-   
-  // crear.guardado_archivo_pdf_creado(123, 203);
-   
-  // crear.guardado_archivo_pdf_creado(123, 204);
-   } 
-    public void pdftut(long cedula,long cedula1,int numero_pdf){
-   AlmacenamientoPDF crear=new AlmacenamientoPDF();
-   crear.create_student_folder_first_time(cedula);
-   crear.pdf_hojaRuta(cedula1,cedula,202);
+        return visitasTutor;
     }
+      
+             
+ 
+  
+    
+    
+    
 }

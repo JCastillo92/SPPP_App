@@ -103,7 +103,7 @@
                                         <h:dataTable class="table " var="campo" value="#{datosFormatos.getPasantia(login.user)}">
                                         <h:column>
                                     
-                                            <center> <b:commandButton class="btn btn-success" rendered="#{controllerBean.paso == false eq true}"  value="Enviar#{citasAgendadas.pdf(login.user, 204)}"  action="#{controllerBean.sendValidacion(confirmaCita.co_director,campo.estudiante.usuario.nombre,campo.estudiante.usuario.apellido,login.user,campo.estudiante.actividadRealizar,campo.encargado.empresa.nombre_empresa,campo.fechaInicio,campo.fechaFin)}" /> </center>
+                                            <center> <b:commandButton class="btn btn-success" rendered="#{controllerBean.paso == false eq true}"  value="Enviar#{tablasFormatos.solicitudFinal(login.user)}"  action="#{controllerBean.sendValidacion(confirmaCita.co_director,campo.estudiante.usuario.nombre,campo.estudiante.usuario.apellido,login.user,campo.estudiante.actividadRealizar,campo.encargado.empresa.nombre_empresa,campo.fechaInicio,campo.fechaFin)}" /> </center>
                                         </h:column>
                                         </h:dataTable>
                                 </div>

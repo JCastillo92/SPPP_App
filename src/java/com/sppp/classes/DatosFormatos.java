@@ -33,7 +33,7 @@ public class DatosFormatos implements Serializable {
     Encargado encargado=new Encargado();
     Empresa empresa=new Empresa();
     
-    private String id="";
+    private String id;
 
     public Encargado getEncargado() {
         return encargado;
@@ -79,7 +79,7 @@ public class DatosFormatos implements Serializable {
         
     }
    
-    public List<Pasantia> getPasantia(String id) {
+    public List<Pasantia> getPasantia(long id) {
          
         CitasDao citasdao=new CitasDaoImp();
         this.pasantia=citasdao.findUser(id);

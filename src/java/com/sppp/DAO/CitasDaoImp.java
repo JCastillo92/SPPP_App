@@ -256,19 +256,19 @@ public class CitasDaoImp implements CitasDao {
 
 
     @Override
-    public List<Pasantia> findUser(String id) {
+    public List<Pasantia> findUser(long id) {
     
         List<Pasantia> listado = null;
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;
-        Long user=Long.parseLong(id);
+       // Long user=Long.parseLong(id);
         
         try {
             tx = sesion.beginTransaction();
             
             String sql=" from Pasantia WHERE cedula = :id ";
-                     listado = sesion.createQuery(sql).setParameter("id", user).list();
+                     listado = sesion.createQuery(sql).setParameter("id", id).list();
 
             tx.commit();
 
@@ -288,7 +288,7 @@ public class CitasDaoImp implements CitasDao {
     }
 
     @Override
-    public String obtenerCoordinador(String id) {
+    public String obtenerCoordinador(long id) {
   String nombre;
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session sesion = sf.openSession();
@@ -296,11 +296,10 @@ public class CitasDaoImp implements CitasDao {
         Transaction tx = null;
         
         String sql = "SELECT nombre FROM Usuario WHERE id_perfil =:idUs";
-        int idUs;
-        idUs=Integer.parseInt(id);
+       
         try {
             tx = sesion.beginTransaction();
-        nombre =(String) sesion.createQuery(sql).setParameter("idUs", idUs).uniqueResult();
+        nombre =(String) sesion.createQuery(sql).setParameter("idUs", id).uniqueResult();
             tx.commit();
         } catch (RuntimeException e) {
             tx.rollback();
@@ -326,19 +325,19 @@ public class CitasDaoImp implements CitasDao {
         List<VisitaTutor> listado = null;
        
 
-        String sql = "FROM VisitaTutor  WHERE cedula_tut =:id and estado_visita =:visitado";
+        String sql = "FROM VisitaTutor  WHERE cedula_est =:id";
 
         try {
             tx = sesion.beginTransaction();
         //      Query query = sesion.createQuery(sql);
          // listado=query.list();
-         String estado="Visitado";
+       //  String estado="Visitado";
        //    Query query = sesion.createQuery(sql);
          //   query.setLong("id", id);
            // query.setString("visitado", estado);
            // listado = (VisitaTutor) query.uniqueResult();
           //  tx.commit();
-         listado = sesion.createQuery(sql).setParameter("id", id).setParameter("visitado",estado).list();
+         listado = sesion.createQuery(sql).setParameter("id", id).list();
 //query.setInteger("id", id);
             tx.commit();
         } catch (RuntimeException e) {
@@ -410,8 +409,37 @@ public class CitasDaoImp implements CitasDao {
     
     
     }
+@Override
+public List<VisitaTutor> visitadosTuto(long user) {
+    SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+            
+        Transaction tx = null;
+        List<VisitaTutor> listado = null;
+       
+        String sql = "FROM VisitaTutor  WHERE cedula_tut =:user and estado_visita =:visitado";
+        String estado="Visitado";
+        try {
+            tx = sesion.beginTransaction();
+        //      Query query = sesion.createQuery(sql);
+         // listado=query.list();
+         listado = sesion.createQuery(sql).setParameter("user", user).setParameter("visitado", estado).list();
+//query.setInteger("id", id);
+            tx.commit();
+        } catch (RuntimeException e) {
+            tx.rollback();
+            throw e;
+        }finally{
+            sesion.flush();
+            //sesion.close();
+        }
+        return listado;
+    
+    
+    
+    }
 
-
-  
+    
+    
 
 }

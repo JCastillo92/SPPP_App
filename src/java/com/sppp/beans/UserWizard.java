@@ -156,7 +156,7 @@ public class UserWizard implements Serializable{
         MailingMain primer_mensaje=new MailingMain();
         ListaDocentesAdministrativos corrreo_De=new ListaDocentesAdministrativos();
         primer_mensaje.mensajes(1001,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
-        return "dashboard_est";
+        return "revision_window";
         
     }
 

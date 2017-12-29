@@ -13,6 +13,7 @@ import com.sppp.beans.Pasantia;
 import com.sppp.beans.Respuesta;
 import com.sppp.beans.Usuario;
 import com.sppp.utils.HibernateUtil;
+import java.util.LinkedList;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -83,7 +84,7 @@ public class DatosDAO {
             sesion.saveOrUpdate(d11);
             idRespuesta.setId_tbrespuesta(12);
             Datos d12 = new Datos(resps.get(2), dp, idRespuesta);
-            sesion.saveOrUpdate(d2);
+            sesion.saveOrUpdate(d12);
             idRespuesta.setId_tbrespuesta(13);
             Datos d13 = new Datos(String.valueOf(user.getEstudiante().getHorasPasantia()), dp, idRespuesta);
             sesion.saveOrUpdate(d13);
@@ -157,6 +158,40 @@ public class DatosDAO {
             sesion.close();
         }
 
+    }
+    
+    //METODO PARA TRAER TODOS LOS DATOS DE 1 ESTUDIANTE
+    public List<Datos> datosPorDetallePasantia(int id){
+        List<Datos> datosCartaC = new LinkedList<>();
+        
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+
+        Transaction tx = null;
+        Usuario usuario = null;
+        try {
+            tx = sesion.beginTransaction();
+            
+            Query query = sesion.createQuery(" from Datos WHERE detallePasantias.idDetallePasantia = :id order by respuesta.id_tbrespuesta ");
+            query.setInteger("id", id);
+            
+            datosCartaC = query.list();
+            
+            tx.commit();
+
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            System.out.println("============== ERROR AL HACER LA LISTA =========");
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            //para cerrar seesion
+            sesion.close();
+        }
+        
+        
+        return datosCartaC;
     }
 
 }

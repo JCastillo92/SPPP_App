@@ -80,7 +80,8 @@
                                        
                                              <h:column rendered="#{campo.estado_visita == 'Enviada' eq true}">
                                                   <div class="col-lg-12" >
-                                                      <h:inputTextarea  class="form-control" rows="3" value="#{controllerBean.mensajeMail2}" />
+                                                      <h:inputTextarea   class="form-control" rows="3" value="#{controllerBean.mensajeMail2}"  title="campo requerido" />
+                                                
                                                   </div>
                                                  <br/>   <br/><br/>   <br/><br/>
                                    </h:column>
@@ -155,8 +156,8 @@
           Seguro desea cancelar la cita? <br/>
           --Se enviará un correo a su tutor---<br/><br/>
           <p> ¿Porqué se cancela la cita?</p>
-          <h:inputTextarea  class="form-control" rows="3" value="#{controllerBean.mensajeMail}" />
-              
+          <h:inputTextarea  class="form-control" rows="3" value="#{controllerBean.mensajeMail}"  title="campo requerido" />
+           
          </div>
       <div class="modal-footer">
           

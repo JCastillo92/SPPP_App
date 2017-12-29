@@ -1,0 +1,203 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="/templates/main.xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:define name="title">
+        Dashboard
+    </ui:define>
+
+    <ui:define name="barra-lateral">
+        <ui:include src="/snippets/menu_encargado.xhtml" />
+    </ui:define>
+
+    <ui:define name="contenido">
+
+        <h:form>
+            <h:link value="Ir a detalle" outcome="validar_carta">
+                <f:param name="id" value="123" />
+            </h:link>
+        </h:form>
+
+        <br/>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Dashboard</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-info-circle fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">12</div>
+                                <div>Pasantias</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 
+                    <a href="#">
+                        <div class="panel-footer">
+                            <span class="pull-left">Ver Detalles</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a> -->
+
+                    <!-- CODIGO PARA EJECUTAR ALGO EN EL BOTON VER DETALLES -->
+                    <h:form>
+                        <h:commandLink action="#{estadoProceso.getRuta(estadoProceso.proceso)}" >
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Detalles</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </h:commandLink>
+                    </h:form>
+                    <!-- FINAL CODIGO VER DETALLES -->
+
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-tasks fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">12</div>
+                                <div>Practicas</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CODIGO PARA EL VER DETALLES -->
+                    <h:form>
+                        <h:commandLink action="#{estadoProceso.getRuta(estadoProceso.proceso)}" >
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Detalles</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </h:commandLink>
+                    </h:form>
+                    <!-- CODIGO FINAL VER DETALLES -->
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-shopping-cart fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">124</div>
+                                <div>Validar Datos Basicos</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CODIGO PARA EL VER DETALLES -->
+                    <h:form>
+                        <h:commandLink action="#{estadoProceso.getRuta(estadoProceso.proceso)}" >
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Detalles</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </h:commandLink>
+                    </h:form>
+                    <!-- CODIGO FINAL VER DETALLES -->
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-red">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-support fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">13</div>
+                                <div>Validar Carta Compromiso</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CODIGO PARA EL VER DETALLES -->
+                    <h:form>
+                        <h:commandLink action="#{estadoProceso.getRuta(estadoProceso.proceso)}" >
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Detalles</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </h:commandLink>
+                    </h:form>
+                    <!-- CODIGO FINAL VER DETALLES -->
+                </div>
+            </div>
+
+        </div> <!-- FIN ROW -->
+
+        <!-- INICIO DE LA TABLA -->
+
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Listado de Procesos Activos
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+
+                        <h:form>
+                            <b:dataTable value="#{pasantiaPracticaBean.procesos}"
+                                         var="proceso" >
+                                <b:dataTableColumn value="#{proceso.tipo_ppp}" />
+                                <b:dataTableColumn value="#{proceso.cod_ppp}" />
+                                <b:dataTableColumn value="#{proceso.fechaInicio}" />
+                                <b:dataTableColumn value="#{proceso.fechaFin}"/>
+                                
+                                <b:dataTableColumn value="#{proceso.estudiante.cedula}" label="Cedula Estudiante" />
+                            </b:dataTable>
+                        </h:form>
+
+                        
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+
+        <!-- FIN DE LA TABLA -->
+
+        <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+        <script>
+            $(document).ready(function () {
+                $('#dataTables-example').DataTable({
+                    responsive: true
+                });
+            });
+        </script>
+
+    </ui:define>
+
+</ui:composition>

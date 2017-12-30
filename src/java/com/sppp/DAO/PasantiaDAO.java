@@ -103,7 +103,7 @@ public class PasantiaDAO {
         int numeroPA=0;
          try {
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("SELECT COUNT(*) from Pasantia P WHERE P.tipo_ppp = :tipo AND P.estado = est");
+            Query query = sesion.createQuery("SELECT COUNT(*) from Pasantia P WHERE P.tipo_ppp = :tipo AND P.estado = :est");
             query.setString("tipo", "PA");
             query.setBoolean("est", true);
             numeroPA=(int) query.uniqueResult();       
@@ -128,7 +128,7 @@ public class PasantiaDAO {
         int numeroPP=0;
          try {
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("SELECT COUNT(*) from Pasantia P WHERE P.tipo_ppp = :tipo AND P.estado = est");
+            Query query = sesion.createQuery("SELECT COUNT(*) from Pasantia P WHERE P.tipo_ppp = :tipo AND P.estado = :est");
             query.setString("tipo", "PP");
             query.setBoolean("est", true);
             numeroPP=(int) query.uniqueResult();       
@@ -153,7 +153,7 @@ public class PasantiaDAO {
         int numeroPPyPA=0;
          try {
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("SELECT COUNT(*) from Pasantia P WHERE P.estado = est");
+            Query query = sesion.createQuery("SELECT COUNT(*) from Pasantia P WHERE P.estado = :est");
             query.setBoolean("est", true);
             numeroPPyPA=(int) query.uniqueResult();       
             tx.commit();

@@ -80,6 +80,7 @@ public abstract class WizardCC {
                 private String tutorXXX;
 
     public String getTutorXXX() {
+        //obtener tutor aqui
         return tutorXXX;
     }
 

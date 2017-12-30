@@ -31,6 +31,11 @@ public class Datos {
         return respuesta;
     }
 
+    public Datos(Respuesta respuesta, boolean estado) {
+        this.respuesta = respuesta;
+        this.estado = estado;
+    }
+
     public Datos(String valor_datos, DetallePasantia detallePasantias, Respuesta respuesta) {
         this.valor_datos = valor_datos;
         this.detallePasantias = detallePasantias;

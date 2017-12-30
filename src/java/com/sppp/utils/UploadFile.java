@@ -15,6 +15,8 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import javax.servlet.http.HttpSession;
 import java.nio.file.StandardCopyOption;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -194,7 +196,7 @@ public class UploadFile {
             //mando a crear el archivo pdf, para que sea lo mas actual posible.
          //   obj_crearpdf.guardado_archivo_pdf_creado(id, opcion);
             //mando a llamar al mmismo archivo pdf en la aplicacion,  para que se pueda descargar
-            response.sendRedirect(request.getContextPath() + "/faces/user/tutor/download"+"/"+user+"/"+opcion + ".pdf");
+            response.sendRedirect(request.getContextPath() + "/faces/user/tutor/download2"+"/"+user+"/"+opcion + ".pdf");
             //response.sendRedirect("index.jsf");
 
         } catch (IOException e) {
@@ -236,15 +238,19 @@ public class UploadFile {
                     Files.copy(input, new File(local_path + user, "302" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
                     break;
                 case 4:
+                     //303 autoevaluacion 
+                    Files.copy(input, new File(local_path + user, "303" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
                     
                     break;
                 case 5:
-                    //5
-
+                     //304 certificado de culminacion 
+                    Files.copy(input, new File(local_path + user, "304" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                   
                     break;
                 case 6:
-                    //6
-
+                      //305 derecho 
+                    Files.copy(input, new File(local_path + user, "305" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                   
                     break;
                 case 7:
                     //7
@@ -261,9 +267,68 @@ public class UploadFile {
             System.out.println("Error Al Cargar: "+ex.getMessage());
         }
         //return "subida";
+       
+        
+        
         
     }
-
+  public void download_file_coor(int opcion,long user) {///aqui recibir nombre de archivo 103.pdf
+        try {
+            //AlmacenamientoPDF obj_crearpdf = new AlmacenamientoPDF();
+           // HttpSession session = SessionUtils.getSession();
+            //long id;
+            //id = (long) session.getAttribute("id");
         
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            ExternalContext context = facesContext.getExternalContext();
+            HttpServletRequest request = (HttpServletRequest) context.getRequest();
+            HttpServletResponse response = (HttpServletResponse) context.getResponse();
+
+            //mando a crear el archivo pdf, para que sea lo mas actual posible.
+         //   obj_crearpdf.guardado_archivo_pdf_creado(id, opcion);
+            //mando a llamar al mmismo archivo pdf en la aplicacion,  para que se pueda descargar
+            response.sendRedirect(request.getContextPath() + "/faces/user/coordinador/download1"+"/"+user+"/"+opcion + ".pdf");
+            //response.sendRedirect("index.jsf");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }//end of DOWNLOAD_FILE
+        
+       public void save_file_coor(long user){
+           AlmacenamientoPDF crear=new AlmacenamientoPDF();
+           crear.create_student_folder_first_time(user);
+         Paths directorio = new Paths();
+        String local_path = directorio.local_path();
+        String nombre;
+        String nombreSinExt, extension;
+        int punto;
+        
+        try {
+            InputStream input = file.getInputStream();
+            nombre = getFilename(file);
+            
+            //CODIGO PARA OBTENER LA EXTENSION DEL ARCHIVO
+            punto = nombre.indexOf(".");
+            nombreSinExt = nombre.substring(0, punto);
+            extension = nombre.substring(punto,nombre.length());
+            System.out.println(nombreSinExt+" "+extension);
+            
+            
+        SimpleDateFormat sdf_data = new SimpleDateFormat("dd-MM-yyyy"); 
+         java.util.Date fecha = new Date();
+         String fecha1=sdf_data.format(fecha);
+      
+
+                    //informe coordinador
+                    Files.copy(input, new File(local_path + user, fecha1 + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
+            
+            System.out.println(new File("/").getAbsolutePath());
+        } catch (IOException ex) {
+            System.out.println("Error Al Cargar: "+ex.getMessage());
+        }
+        //return "subida";
+       
+       }
         
 }//end of class

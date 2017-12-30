@@ -23,8 +23,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Jairo
  */
-@WebServlet(name = "Download", urlPatterns = {"/user/tutor/download/*"})
-public class DowloadRequest extends HttpServlet {
+@WebServlet(name = "Download1", urlPatterns = {"/user/coordinador/download1/*"})
+public class DownloadCoor extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -73,6 +73,7 @@ public class DowloadRequest extends HttpServlet {
         
       
         String filename = request.getPathInfo().substring(1);
+        System.out.println("sdffdgfdgcsd"+filename);
         Paths obtener_path= new Paths();
         File file = new File(obtener_path.local_path(), filename);
         response.setHeader("Content-Type", getServletContext().getMimeType(filename));

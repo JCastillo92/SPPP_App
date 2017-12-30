@@ -144,6 +144,7 @@ public class DetallePasantiaDAO {
             todosDetIngDatBas= query.list();       
             tx.commit();
         }catch (Exception e) {
+            e.printStackTrace();
             if (tx != null){
                 tx.rollback();
             }
@@ -167,6 +168,7 @@ public class DetallePasantiaDAO {
             todosDetPasCC= query.list();       
             tx.commit();
         }catch (Exception e) {
+            e.printStackTrace();
             if (tx != null){
                 tx.rollback();
             }
@@ -176,19 +178,21 @@ public class DetallePasantiaDAO {
         }
         return todosDetPasCC;
     }
-    public int countIngresoDatosBasicos(){
+
+   public long countIngresoDatosBasicos(){
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;
-        int numeroIngresoDatosBasicos=0;
+        long numeroIngresoDatosBasicos=0;
          try {
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("SELECT COUNT(*) from DetallePasantia D WHERE D.descripcion = :decrip AND D.validacion = vali");
-            query.setString("decrip", "Dato Inicio Proesos Pasantia");
+            Query query = sesion.createQuery("SELECT COUNT(*) FROM DetallePasantia D WHERE D.proceso.id_proceso = :id_pro AND D.validacion = :vali");
+            query.setLong("id_pro", 1);//fk de tb_proceso 1
             query.setInteger("vali", 1);
-            numeroIngresoDatosBasicos=(int) query.uniqueResult();       
+            numeroIngresoDatosBasicos=(long) query.uniqueResult();       
             tx.commit();
         }catch (Exception e) {
+            e.printStackTrace();
             numeroIngresoDatosBasicos=0;
             if (tx != null){
                 tx.rollback();
@@ -201,19 +205,20 @@ public class DetallePasantiaDAO {
          return numeroIngresoDatosBasicos;
     }
  
-    public int countIngresoCartaCompromiso(){
+    public long countIngresoCartaCompromiso(){
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;
-        int numeroCartasCompromiso=0;
+        long numeroCartasCompromiso=0;
          try {
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("SELECT COUNT(*) from DetallePasantia D WHERE D.descripcion = :decrip AND D.validacion = vali");
-            query.setString("decrip", "Ingreso Datos Carta Compromiso");
+            Query query = sesion.createQuery("SELECT COUNT(*) FROM DetallePasantia D WHERE D.proceso.id_proceso = :id_pro AND D.validacion = :vali");
+            query.setLong("id_pro", 7);//fk de tb_proceso 7
             query.setInteger("vali", 1);
-            numeroCartasCompromiso=(int) query.uniqueResult();       
+            numeroCartasCompromiso=(long) query.uniqueResult();       
             tx.commit();
         }catch (Exception e) {
+            e.printStackTrace();
             numeroCartasCompromiso=0;
             if (tx != null){
                 tx.rollback();
@@ -227,19 +232,20 @@ public class DetallePasantiaDAO {
     }
     
     
-             public int countIngresoInicioActividad(){
+        public long countIngresoInicioActividad(){
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;
-        int numeroInicioActividades=0;
+        long numeroInicioActividades=0;
          try {
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("SELECT COUNT(*) from DetallePasantia D WHERE D.descripcion = :decrip AND D.validacion = vali");
-            query.setString("decrip", "Solicitar Inicio Actividades");
+            Query query = sesion.createQuery("SELECT COUNT(*) FROM DetallePasantia D WHERE D.proceso.id_proceso = :id_pro AND D.validacion = :vali");
+            query.setLong("id_pro", 14);//fk de tb_proceso 14
             query.setInteger("vali", 1);
-            numeroInicioActividades=(int) query.uniqueResult();       
+            numeroInicioActividades=(long) query.uniqueResult();       
             tx.commit();
         }catch (Exception e) {
+            e.printStackTrace();
             numeroInicioActividades=0;
             if (tx != null){
                 tx.rollback();

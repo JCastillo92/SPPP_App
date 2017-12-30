@@ -60,6 +60,7 @@ public class PasantiaDAO {
             todosPasantiasPA= query.list();       
             tx.commit();
         }catch (Exception e) {
+            e.printStackTrace();
             if (tx != null){
                 tx.rollback();
             }
@@ -86,6 +87,7 @@ public class PasantiaDAO {
             todosPasantiasPP= query.list();       
             tx.commit();
         }catch (Exception e) {
+            e.printStackTrace();
             if (tx != null){
                 tx.rollback();
             }
@@ -96,19 +98,20 @@ public class PasantiaDAO {
         return todosPasantiasPP;
     }
      
-     public int countPA(){
+     public long countPA(){
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;
-        int numeroPA=0;
+        long numeroPA=0;
          try {
             tx = sesion.beginTransaction();
             Query query = sesion.createQuery("SELECT COUNT(*) from Pasantia P WHERE P.tipo_ppp = :tipo AND P.estado = :est");
             query.setString("tipo", "PA");
             query.setBoolean("est", true);
-            numeroPA=(int) query.uniqueResult();       
+            numeroPA=(long) query.uniqueResult();       
             tx.commit();
         }catch (Exception e) {
+            e.printStackTrace();
             numeroPA=0;
             if (tx != null){
                 tx.rollback();
@@ -121,19 +124,20 @@ public class PasantiaDAO {
          return numeroPA;
     }
      
-     public int countPP(){
+     public long countPP(){
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;
-        int numeroPP=0;
+        long numeroPP=0;
          try {
             tx = sesion.beginTransaction();
             Query query = sesion.createQuery("SELECT COUNT(*) from Pasantia P WHERE P.tipo_ppp = :tipo AND P.estado = :est");
             query.setString("tipo", "PP");
             query.setBoolean("est", true);
-            numeroPP=(int) query.uniqueResult();       
+            numeroPP=(long) query.uniqueResult();       
             tx.commit();
         }catch (Exception e) {
+            e.printStackTrace();
             numeroPP=0;
             if (tx != null){
                 tx.rollback();
@@ -146,18 +150,19 @@ public class PasantiaDAO {
          return numeroPP;
     }
      
-      public int countPPyPA(){
+      public long countPPyPA(){
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;
-        int numeroPPyPA=0;
+        long numeroPPyPA=0;
          try {
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("SELECT COUNT(*) from Pasantia P WHERE P.estado = :est");
+            Query query = sesion.createQuery("SELECT COUNT(*) FROM Pasantia P WHERE P.estado = :est");
             query.setBoolean("est", true);
-            numeroPPyPA=(int) query.uniqueResult();       
+            numeroPPyPA=(long) query.uniqueResult();       
             tx.commit();
         }catch (Exception e) {
+            e.printStackTrace();
             numeroPPyPA=0;
             if (tx != null){
                 tx.rollback();

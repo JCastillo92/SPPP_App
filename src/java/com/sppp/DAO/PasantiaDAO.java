@@ -96,4 +96,29 @@ public class PasantiaDAO {
         return todosPasantiasPP;
     }
      
+     public int countPA(){
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;
+        int numeroPA=0;
+         try {
+            tx = sesion.beginTransaction();
+            Query query = sesion.createQuery("SELECT COUNT(*) from Pasantia P WHERE P.tipo_ppp = :tipo AND D.validacion = vali");
+            query.setString("tipo", "PA");
+            query.setInteger("vali", 1);
+            numeroPA=(int) query.uniqueResult();       
+            tx.commit();
+        }catch (Exception e) {
+            numeroPA=0;
+            if (tx != null){
+                tx.rollback();
+            }
+        }
+        finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+         return numeroPA;
+    }
+     
 }

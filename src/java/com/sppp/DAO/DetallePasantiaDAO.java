@@ -180,16 +180,16 @@ public class DetallePasantiaDAO {
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;
-        int ultimo_valor=0;
+        int numeroIngresoDatosBasicos=0;
          try {
             tx = sesion.beginTransaction();
             Query query = sesion.createQuery("SELECT COUNT(*) from DetallePasantia D WHERE D.descripcion = :decrip AND D.validacion = vali");
             query.setString("decrip", "Dato Inicio Proesos Pasantia");
             query.setInteger("vali", 2);
-            ultimo_valor=(int) query.uniqueResult();       
+            numeroIngresoDatosBasicos=(int) query.uniqueResult();       
             tx.commit();
         }catch (Exception e) {
-            ultimo_valor=0;
+            numeroIngresoDatosBasicos=0;
             if (tx != null){
                 tx.rollback();
             }
@@ -199,6 +199,6 @@ public class DetallePasantiaDAO {
             sesion.close();
         }
          //en el retorno le sumo 1 para que el codigo de pasantia se setee en el NUEVO registro.
-         return ultimo_valor+1;
+         return numeroIngresoDatosBasicos;
     }
 }

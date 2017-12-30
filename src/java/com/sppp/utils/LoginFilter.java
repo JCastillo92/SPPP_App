@@ -7,9 +7,6 @@ package com.sppp.utils;
 
 import com.sppp.classes.Cls_PerfilNotation;
 import java.io.IOException;
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -82,7 +79,7 @@ public class LoginFilter implements Filter {
                 if(obj1.perfilChooser(perfil).equals("Gestor")){
                     
                     if(reqURI.indexOf("/user/administrador/") >= 1 || reqURI.indexOf("/user/consejo/") >= 1 || reqURI.indexOf("/user/coordinador/") >= 1 || reqURI.indexOf("/user/estudiantes/") >= 1 || reqURI.indexOf("/user/secretaria/") >= 1 || reqURI.indexOf("/user/tutor/") >= 1){
-                        resp.sendRedirect(reqt.getContextPath() + "/faces/user/gestores/attendant.xhtml");
+                        resp.sendRedirect(reqt.getContextPath() + "/faces/user/gestores/dashboard_gestor.xhtml");
                     }
                     
                     //Para acceder a paginas de gestores o publicas
@@ -90,7 +87,7 @@ public class LoginFilter implements Filter {
                         
                         //No debe volver al login
                         if (reqURI.indexOf("/public/login.xhtml") >= 0){
-                            resp.sendRedirect(reqt.getContextPath() + "/faces/user/gestores/attendant.xhtml");
+                            resp.sendRedirect(reqt.getContextPath() + "/faces/user/gestores/dashboard_gestor.xhtml");
                         }else{
                             chain.doFilter(request, response);
                         }

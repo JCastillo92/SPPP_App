@@ -79,7 +79,7 @@ public class Login implements Serializable{
             if (obj1.perfilChooser(perfil).equals("Estudiante")){
                 return "/user/estudiantes/dashboard_est.xhtml";
             }else if (obj1.perfilChooser(perfil).equals("Gestor")){
-                return "/user/gestores/attendant.xhtml";
+                return "/user/gestores/dashboard_gestor.xhtml";
             }else if(obj1.perfilChooser(perfil).equals("Tutor")){
                 return "/user/tutor/tutor.xhtml";
             }else if(obj1.perfilChooser(perfil).equals("Consejo")){

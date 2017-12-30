@@ -16,6 +16,13 @@ import javax.faces.bean.ManagedBean;
 public class DashboardGestBean {
     private int numeroPA;
     private int numeroPP;
+    private int numeroPPyPA;
+
+    public int getNumeroPPyPA() {
+        PasantiaDAO obj=new PasantiaDAO();
+        numeroPPyPA=obj.countPPyPA();
+        return numeroPPyPA;
+    }
 
     public int getNumeroPP() {
         PasantiaDAO obj=new PasantiaDAO();

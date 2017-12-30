@@ -23,11 +23,11 @@ public class DetallePasantiaDAO {
 
     public int findDetallePasantiaIdProcesoTrue(long id) {
 
-        int numeroProceso=0;
+        int numeroProceso = 0;
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session sesion = sf.openSession();
         Transaction tx = null;
-        
+
         try {
             tx = sesion.beginTransaction();
             SQLQuery query = sesion.createSQLQuery("select id_proceso, cedula from tb_pasantia, tb_detalle_pasantia\n"
@@ -42,7 +42,7 @@ public class DetallePasantiaDAO {
                 numeroProceso = Integer.parseInt(row[0].toString());
                 System.out.println(numeroProceso);
             }
-            
+
             tx.commit();
 
         } catch (Exception e) {
@@ -55,48 +55,46 @@ public class DetallePasantiaDAO {
             //para cerrar seesion
             sesion.close();
         }
-        
+
         return numeroProceso;
 
     }
-    
-    
-    public DetallePasantia findDetallePasantia(String tipo_ppp,int cod_ppp){
-      DetallePasantia detallePas=new DetallePasantia();
-        SessionFactory sf=HibernateUtil.getSessionFactory();
-        Session sesion=sf.openSession();
-        Transaction tx=null;
-        
-        try{
+
+    public DetallePasantia findDetallePasantia(String tipo_ppp, int cod_ppp) {
+        DetallePasantia detallePas = new DetallePasantia();
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction tx = null;
+
+        try {
             tx = sesion.beginTransaction();
             Query query = sesion.createQuery(" from DetallePasantia WHERE tipo_ppp = :tipo_ppp AND cod_ppp = :cod_ppp AND estado =  TRUE ");
             query.setString("tipo_ppp", tipo_ppp);//PA PP
             query.setInteger("cod_ppp", cod_ppp);//1 9
-            
+
             detallePas = (DetallePasantia) query.uniqueResult();
             tx.commit();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            if (tx != null){
+            if (tx != null) {
                 tx.rollback();
             }
-        }
-        finally{
+        } finally {
             //para cerrar seesion
             sesion.close();
         }
         return detallePas;
     }
-    
+
     public List<Integer> findDetallePasantiaTrue(long id) {
-        
+
         List<Integer> procesoEstado = new LinkedList<>();
-        int numeroProceso=0;
+        int numeroProceso = 0;
         int estado;
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session sesion = sf.openSession();
         Transaction tx = null;
-        
+
         try {
             tx = sesion.beginTransaction();
             SQLQuery query = sesion.createSQLQuery("select id_proceso, validacion from tb_pasantia, tb_detalle_pasantia\n"
@@ -113,7 +111,7 @@ public class DetallePasantiaDAO {
                 procesoEstado.add(Integer.parseInt(row[0].toString()));
                 procesoEstado.add(Integer.parseInt(row[1].toString()));
             }
-            
+
             tx.commit();
 
         } catch (Exception e) {
@@ -126,129 +124,170 @@ public class DetallePasantiaDAO {
             //para cerrar seesion
             sesion.close();
         }
-        
+
         return procesoEstado;
 
     }
-    
-  public List<DetallePasantia> findAllIngresoDatosBasicos(){
+
+    public List<DetallePasantia> findAllIngresoDatosBasicos() {
         List<DetallePasantia> todosDetIngDatBas = new LinkedList<>();
-        SessionFactory sf=HibernateUtil.getSessionFactory();
-        Session sesion=sf.openSession();
-        Transaction tx=null;    
-         try {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction tx = null;
+        try {
             tx = sesion.beginTransaction();
             Query query = sesion.createQuery("FROM DetallePasantia D WHERE D.descripcion = :descrip AND D.validacion = :num");
             query.setString("descrip", "Dato Inicio Proesos Pasantia");
             query.setInteger("num", 1);
-            todosDetIngDatBas= query.list();       
+            todosDetIngDatBas = query.list();
             tx.commit();
-        }catch (Exception e) {
-            if (tx != null){
+        } catch (Exception e) {
+            if (tx != null) {
                 tx.rollback();
             }
-        }finally{
+        } finally {
             //para cerrar seesion
             sesion.close();
         }
         return todosDetIngDatBas;
     }
 
-      public List<DetallePasantia> findAllCartaCompromiso(){
+    public List<DetallePasantia> findAllCartaCompromiso() {
         List<DetallePasantia> todosDetPasCC = new LinkedList<>();
-        SessionFactory sf=HibernateUtil.getSessionFactory();
-        Session sesion=sf.openSession();
-        Transaction tx=null;    
-         try {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction tx = null;
+        try {
             tx = sesion.beginTransaction();
             Query query = sesion.createQuery("FROM DetallePasantia D WHERE D.descripcion = :descrip AND D.validacion = :num");
             query.setString("descrip", "Ingreso Datos Carta Compromiso");
             query.setInteger("num", 1);
-            todosDetPasCC= query.list();       
+            todosDetPasCC = query.list();
             tx.commit();
-        }catch (Exception e) {
-            if (tx != null){
+        } catch (Exception e) {
+            if (tx != null) {
                 tx.rollback();
             }
-        }finally{
+        } finally {
             //para cerrar seesion
             sesion.close();
         }
         return todosDetPasCC;
     }
-    public int countIngresoDatosBasicos(){
-        SessionFactory sf=HibernateUtil.getSessionFactory();
-        Session sesion=sf.openSession();
-        Transaction tx=null;
-        int numeroIngresoDatosBasicos=0;
-         try {
+
+    public int countIngresoDatosBasicos() {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction tx = null;
+        int numeroIngresoDatosBasicos = 0;
+        try {
             tx = sesion.beginTransaction();
             Query query = sesion.createQuery("SELECT COUNT(*) from DetallePasantia D WHERE D.descripcion = :decrip AND D.validacion = vali");
             query.setString("decrip", "Dato Inicio Proesos Pasantia");
             query.setInteger("vali", 1);
-            numeroIngresoDatosBasicos=(int) query.uniqueResult();       
+            numeroIngresoDatosBasicos = (int) query.uniqueResult();
             tx.commit();
-        }catch (Exception e) {
-            numeroIngresoDatosBasicos=0;
-            if (tx != null){
+        } catch (Exception e) {
+            numeroIngresoDatosBasicos = 0;
+            if (tx != null) {
                 tx.rollback();
             }
-        }
-        finally{
+        } finally {
             //para cerrar seesion
             sesion.close();
         }
-         return numeroIngresoDatosBasicos;
+        return numeroIngresoDatosBasicos;
     }
- 
-    public int countIngresoCartaCompromiso(){
-        SessionFactory sf=HibernateUtil.getSessionFactory();
-        Session sesion=sf.openSession();
-        Transaction tx=null;
-        int numeroCartasCompromiso=0;
-         try {
+
+    public int countIngresoCartaCompromiso() {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction tx = null;
+        int numeroCartasCompromiso = 0;
+        try {
             tx = sesion.beginTransaction();
             Query query = sesion.createQuery("SELECT COUNT(*) from DetallePasantia D WHERE D.descripcion = :decrip AND D.validacion = vali");
             query.setString("decrip", "Ingreso Datos Carta Compromiso");
             query.setInteger("vali", 1);
-            numeroCartasCompromiso=(int) query.uniqueResult();       
+            numeroCartasCompromiso = (int) query.uniqueResult();
             tx.commit();
-        }catch (Exception e) {
-            numeroCartasCompromiso=0;
-            if (tx != null){
+        } catch (Exception e) {
+            numeroCartasCompromiso = 0;
+            if (tx != null) {
                 tx.rollback();
             }
-        }
-        finally{
+        } finally {
             //para cerrar seesion
             sesion.close();
         }
-         return numeroCartasCompromiso;
+        return numeroCartasCompromiso;
     }
-    
-    
-             public int countIngresoInicioActividad(){
-        SessionFactory sf=HibernateUtil.getSessionFactory();
-        Session sesion=sf.openSession();
-        Transaction tx=null;
-        int numeroInicioActividades=0;
-         try {
+
+    public int countIngresoInicioActividad() {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction tx = null;
+        int numeroInicioActividades = 0;
+        try {
             tx = sesion.beginTransaction();
             Query query = sesion.createQuery("SELECT COUNT(*) from DetallePasantia D WHERE D.descripcion = :decrip AND D.validacion = vali");
             query.setString("decrip", "Solicitar Inicio Actividades");
             query.setInteger("vali", 1);
-            numeroInicioActividades=(int) query.uniqueResult();       
+            numeroInicioActividades = (int) query.uniqueResult();
             tx.commit();
-        }catch (Exception e) {
-            numeroInicioActividades=0;
-            if (tx != null){
+        } catch (Exception e) {
+            numeroInicioActividades = 0;
+            if (tx != null) {
                 tx.rollback();
             }
-        }
-        finally{
+        } finally {
             //para cerrar seesion
             sesion.close();
         }
-         return numeroInicioActividades;
+        return numeroInicioActividades;
     }
+    
+    public void actualizarDetallePasantia(DetallePasantia dp){
+        
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction tx = null;
+        try {
+            tx = sesion.beginTransaction();
+            sesion.update(dp);
+            tx.commit();
+        } catch (Exception e) {
+            
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            //para cerrar seesion
+            sesion.close();
+        }
+   
+    }
+    
+    public void insertarNuevoDetalle(DetallePasantia dp){
+        
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction tx = null;
+        try {
+            tx = sesion.beginTransaction();
+            sesion.save(dp);
+            tx.commit();
+        } catch (Exception e) {
+            
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            //para cerrar seesion
+            sesion.close();
+        }
+        
+    }
+    
+
 }

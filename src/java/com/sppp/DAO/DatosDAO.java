@@ -13,6 +13,7 @@ import com.sppp.beans.Pasantia;
 import com.sppp.beans.Respuesta;
 import com.sppp.beans.Usuario;
 import com.sppp.utils.HibernateUtil;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import org.hibernate.Query;
@@ -193,5 +194,39 @@ public class DatosDAO {
         
         return datosCartaC;
     }
+    
+    //METODO PARA TRAER TODOS LOS DATOS DE 1 ESTUDIANTE
+    public void guardarValidacionCC(List<Datos> datosValidados){
+        
+        
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+
+        Transaction tx = null;
+        Usuario usuario = null;
+        try {
+            tx = sesion.beginTransaction();
+            
+            for (Iterator<Datos> iterator = datosValidados.iterator(); iterator.hasNext();) {
+                Datos next = iterator.next();
+                sesion.update(next);
+            }
+            
+            tx.commit();
+
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            System.out.println("============== ERROR AL GUARDAR DATOS VALIDADOS CC =========");
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            //para cerrar seesion
+            sesion.close();
+        }
+        
+        
+    }
+    
 
 }

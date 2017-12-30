@@ -22,13 +22,14 @@ import javax.faces.bean.ViewScoped;
  * @author KRUGER
  */
 @ManagedBean
-//@ViewScoped
+@ViewScoped
 public class WizardCCValidacion extends WizardCC {
 
-    @ManagedProperty(value = "#{param.id}")
+    //@ManagedProperty(value = "#{param.id}")
     int id_estudiante;
     
     List<Datos> datosCartaC = new LinkedList<>();
+    DetallePasantia dp2 = new DetallePasantia();
     
     private boolean validar1;
     private boolean validar2;
@@ -309,7 +310,7 @@ public class WizardCCValidacion extends WizardCC {
             EmpresaDAO empreDAO = new EmpresaDAO();
             empresa = empreDAO.findEmpresa(encargado.getEmpresa().getId_empresa());
             
-            DetallePasantia dp2 = new DetallePasantia();
+            
             DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
             dp2 = dpDAO.findDetallePasantia(pasantia.getTipo_ppp(), pasantia.getCod_ppp());
             
@@ -317,19 +318,49 @@ public class WizardCCValidacion extends WizardCC {
         
     }
     
-    public void guardarDatos(){
+    
+    
+    public String guardarDatos(){
         
         //Tomo los datos de la validacion
         //Son solo 7 , porque los demas datos ya llegan validados
+        //init();
         List<Datos> lDatos = new LinkedList<>();
-        lDatos.add(new Datos());
+        lDatos.add(new Datos(datosCartaC.get(11).getId_tbdatos(),datosCartaC.get(11).getValor_datos() ,datosCartaC.get(11).getDetallePasantias(),new Respuesta(12), validar11));
+        lDatos.add(new Datos(datosCartaC.get(15).getId_tbdatos(),datosCartaC.get(15).getValor_datos() ,datosCartaC.get(15).getDetallePasantias(),new Respuesta(16), validar15));
+        lDatos.add(new Datos(datosCartaC.get(16).getId_tbdatos(),datosCartaC.get(16).getValor_datos() ,datosCartaC.get(16).getDetallePasantias(),new Respuesta(17), validar16));
+        lDatos.add(new Datos(datosCartaC.get(17).getId_tbdatos(),datosCartaC.get(17).getValor_datos() ,datosCartaC.get(17).getDetallePasantias(),new Respuesta(18), validar17));
+        lDatos.add(new Datos(datosCartaC.get(19).getId_tbdatos(),datosCartaC.get(19).getValor_datos() ,datosCartaC.get(19).getDetallePasantias(),new Respuesta(20), validar19));
+        lDatos.add(new Datos(datosCartaC.get(20).getId_tbdatos(),datosCartaC.get(20).getValor_datos() ,datosCartaC.get(20).getDetallePasantias(),new Respuesta(21), validar20));
+        lDatos.add(new Datos(datosCartaC.get(21).getId_tbdatos(),datosCartaC.get(21).getValor_datos() ,datosCartaC.get(21).getDetallePasantias(),new Respuesta(22), validar21));
+
+        DatosDAO dDAO = new DatosDAO();
+        dDAO.guardarValidacionCC(lDatos);
         
+        //DESPUES DEL GUARDADO EN CASO DE APROBAR O NO VALIDAR
+        DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
+        if(validar11 && validar15 && validar16 && validar17 && validar19 && validar20 && validar21 ){
+            //Cambio el campo validacion y el estado en DetallePasantia
+            dp2.setValidacion(EnumEstado.aprobar);
+            dp2.setEstado(false);
+            dpDAO.actualizarDetallePasantia(dp2);
+            
+            //Paso a agregar el nuevo proceso 11
+            DetallePasantia dp3 = new DetallePasantia();
+            dp3.setDescripcion("Descargar/Subir Carta Compromiso");
+            dp3.setEstado(true);
+            dp3.setPasantia(pasantia);
+            dp3.setProceso(new Proceso(11));
+            dp3.setValidacion(EnumEstado.llenar);
+            dpDAO.insertarNuevoDetalle(dp3);
+            
+        }else{
+            //Cambio solo el campo Validacion
+            dp2.setValidacion(EnumEstado.llenar);
+            dpDAO.actualizarDetallePasantia(dp2);
+        }
         
-        //Validar si todos son TRUE cambiar a aprobado
-        
-        
-        
-        
+        return "dashboard_gestor";
         
     }
 

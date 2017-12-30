@@ -18,6 +18,13 @@ public class Proceso {
     
     private Formato formato;
 
+    public Proceso() {
+    }
+
+    public Proceso(long id_proceso) {
+        this.id_proceso = id_proceso;
+    }
+
     public Formato getFormato() {
         return formato;
     }

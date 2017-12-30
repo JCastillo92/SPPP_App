@@ -42,7 +42,7 @@
                                 <b:dataTableColumn label="Nombre estudiante" >                   
 
                                     <b:column >
-                                        <h:outputText value="#{citasAgendadas.getNombre(campo.estudiante.cedula)}" />
+                                        <h:outputText value="#{citasAgendadas.getNombre(campo.estudiante.cedula)}#{citasAgendadas.getApellido_est(campo.estudiante.cedula)}" />
                                     </b:column>
                                 </b:dataTableColumn>
                                 <b:dataTableColumn label="Documentos para descargar">                   
@@ -50,20 +50,20 @@
                                <h:form enctype="multipart/form-data" role="form">
                
                              <label>Descargar el informe tutor</label><br/>
-                             <h:commandButton action="#{archivos.download_file(202)}" value="Descarga PDF"/>
+                             <h:commandButton action="#{uploadFile.download_file_tut(200,campo.estudiante.cedula)}" value="Descarga PDF"/>
                                </h:form>
                                        <br/>
-                                       <br/>
-                                       <br/>
-                                       
-                                           <h:outputText value="#{campo.dia}" />
-                                      <br/>
-                                       <br/>
-                                       
-                                       <br/>
                                      
-                                           <h:outputText value="#{campo.dia}" />
-                                      
+                                   <label>Descargar el informe seguimiento tutor</label><br/>
+                                 
+                              <h:commandButton action="#{uploadFile.download_file_tut(201,campo.estudiante.cedula)}" value="Descarga PDF"/>
+                                     <br/>
+                                     <br/>
+                                       
+                                       <label>Descargar hoja de ruta</label><br/>
+                                 
+                                 <h:commandButton action="#{uploadFile.download_file_tut(202,campo.estudiante.cedula)}" value="Descarga PDF"/>
+                                  
                                     </b:column>
                                         
                                 </b:dataTableColumn>
@@ -72,12 +72,37 @@
                                     <b:column >
                                         <div class="form-group">
                                                 
-                                            Informe Tutor  &#160;&#160;&#160;&#160;&#160;  <h:inputFile style="form-group" label="Seleccionar Archivo"  />
-                                    
-                                       <br/>
-                                       Informe seguimiento &#160;<h:inputFile style="form-group" label="Seleccionar Archivo"  />
-                                       <br/>
-                                        Hoja de ruta &#160;&#160;&#160;&#160;&#160; <h:inputFile style="form-group" label="Seleccionar Archivo"  />
+                                            <label>Informe Tutor </label>    &#160;&#160;&#160;&#160;&#160;  
+                                     <h:form enctype="multipart/form-data" role="form">
+               
+                                
+                               <h:inputFile value="#{uploadFile.file}" required="true">
+                                   <f:ajax listener="#{uploadFile.save_file_tut(1,campo.estudiante.cedula )}"/>
+                                     
+                            </h:inputFile>      
+                                     </h:form>
+                                         <br/>
+                                       <label>   Informe seguimiento </label> 
+                                       <h:form enctype="multipart/form-data" role="form">
+               
+                                
+                               <h:inputFile value="#{uploadFile.file}" required="true">
+                                   <f:ajax listener="#{uploadFile.save_file_tut(2,campo.estudiante.cedula )}"/>
+                                     
+                            </h:inputFile>      
+                                     </h:form>
+                                       
+                                       
+                                      <label>     Hoja de ruta</label>  
+                                      <h:form enctype="multipart/form-data" role="form">
+               
+                                
+                               <h:inputFile value="#{uploadFile.file}" required="true">
+                                   <f:ajax listener="#{uploadFile.save_file_tut(3,campo.estudiante.cedula )}"/>
+                                     
+                            </h:inputFile>      
+                                     </h:form>
+                                      
                                         </div>
                                     </b:column>
                                 </b:dataTableColumn>

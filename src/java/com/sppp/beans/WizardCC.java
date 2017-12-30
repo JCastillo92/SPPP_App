@@ -5,6 +5,9 @@
  */
 package com.sppp.beans;
 
+import com.sppp.DAO.TutorDAO;
+import com.sppp.DAO.UsuarioDAO;
+
 /**
  *
  * @author KRUGER
@@ -80,7 +83,16 @@ public abstract class WizardCC {
                 private String tutorXXX;
 
     public String getTutorXXX() {
-        //obtener tutor aqui
+        long obten_ci_tutor=0;
+        try {
+             TutorDAO obj = new TutorDAO();
+            obten_ci_tutor=obj.findTutorVisita().getCedula();
+        UsuarioDAO obj2 = new UsuarioDAO();
+        obj2.findUsuario(obten_ci_tutor);
+        tutorXXX=obj2.findUsuario(obten_ci_tutor).getNombre()+" "+obj2.findUsuario(obten_ci_tutor).getApellido();
+        }catch (Exception e){
+            tutorXXX="TUTOR NO ASIGNADO";
+        }
         return tutorXXX;
     }
 

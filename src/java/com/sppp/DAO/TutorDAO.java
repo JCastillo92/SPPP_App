@@ -6,24 +6,28 @@
 package com.sppp.DAO;
 
 import com.sppp.beans.Tutor;
+import com.sppp.utils.HibernateUtil;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 /**
  *
  * @author Jairo
  */
 public class TutorDAO {
-        public Tutor findProceso(long id){
-        /*
-        Tutor proc = new Tutor();
+    //AQUI BUSCO LOS DOCENTES y la condicion es aquel que tenga menos visitas
+        public Tutor findTutorVisita(){
+        Tutor datoTutor = new Tutor();
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;
-        
         try{
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery(" from Proceso WHERE id_proceso = :id ");
-            query.setLong("id", id);
-            proc = (Proceso) query.uniqueResult();
+            Query query = sesion.createQuery("FROM Tutor ORDER BY cant_visitas DESC");
+            query.setMaxResults(1);//perimite hacer un LIMIT 1
+            datoTutor = (Tutor) query.uniqueResult();
             tx.commit();
         }catch (Exception e) {
             e.printStackTrace();
@@ -35,9 +39,8 @@ public class TutorDAO {
             //para cerrar seesion
             sesion.close();
         }
-        
-        return proc;
-*/
-        return null;
+        return datoTutor;
     }
+        
+
 }

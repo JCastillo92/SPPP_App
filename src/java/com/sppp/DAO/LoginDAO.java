@@ -31,6 +31,7 @@ public class LoginDAO {
         try {
             tx = sesion.beginTransaction();
             
+
             /*
             System.out.println("INICIO SECCION PRUEBAS");
             System.out.println("FIN SECCION DE PRUEBAS");

@@ -15,7 +15,7 @@ insert into tb_empresa (id_empresa,nombre_empresa,nombre_gerente,telefono_empres
 
 /*crear tb_usuario para cada perfil*/
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('1111111111','unoest@hotmail.com','1111','Jhon','Castillo','3060649','unodirecc',1);
-insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('2222','dos@hotmail.com','2222','2nombre','2apellido','222222','dos direcccion',2);
+insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('2222','dos@hotmail.com','2222','2Gestor 2nombre','2apellido gestor','222222','dos direcccion',2);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('3333333333','tres@hotmail.com','3333','3nombre','3apellido','3333','tres direcccion',3);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('4444444444','cuatro@hotmail.com','4444','4nombre','4apellido','44444','cuatro direcccion',4);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('5555555555','cinco@hotmail.com','5555','5nombre','5apellido','55555','cinco direcccion',5);
@@ -26,17 +26,16 @@ insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direcci
 
 /*LLENAR TABLA ESTUDIANTES como si fuese llenado automaticamente con los datos del EXCEL cabe mencionar que dichos usuarios deben pasarse la ci como USUARIO Y CLAVE a la tabla usuarios (primero se debe crear en la tb_usuario)*/
 /*primero crearlos en tb_usuario*/
-insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('123','bryans@hotmail.com','123','Bryan','Torres','123','123 direcccion',1);
-insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('1234','1234@hotmail.com','1234','Jairo','Flores','1234','1234 direcccion',1);
-insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('321','321@hotmail.com','321','Karen','Achig','321','321 direcccion',1);
-insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('1111','hotm','1111','nom','app','3060649','direcccion',1);
+insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('123','bryans@hotmail.com','123','Bryan Andres','Torres Lara','123','magdalena',1);
+insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('1234','jairdean@hotmail.com','1234','Jairo Daniel','Flores Gallegos','1234','solanda',1);
+insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('321','karenchis14@hotmail.com','321','Karen Vanessa','Achig Guachamin','321','ni idea',1);
+insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('1111','jhon_j92@hotmail.com','1111','Jhon Alexander','Castillo Reimundo','3060649','cinco esquinas',1);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('1112','hotm','1112','nom','app','3060649','direcccion',1);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('1113','hotm','1113','nom','app','3060649','direcccion',1);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('1114','hotm','1114','nom','app','3060649','direcccion',1);
 
 
-insert into tb_estudiante (cedula_est,ultimonivel,horaspasantia,porcentajemateriasaprobadas) values (1111111111,6,0,60);
-insert into tb_estudiante (cedula_est,ultimonivel,horaspasantia,porcentajemateriasaprobadas,actividadrealizar) values (123,6,0,60,'lavarhfhhjhjg kuhkyuky');
+insert into tb_estudiante (cedula_est,ultimonivel,horaspasantia,porcentajemateriasaprobadas) values (123,6,0,60);
 insert into tb_estudiante (cedula_est,ultimonivel,horaspasantia,porcentajemateriasaprobadas) values (1234,6,0,60);
 insert into tb_estudiante (cedula_est,ultimonivel,horaspasantia,porcentajemateriasaprobadas) values (321,6,0,60);
 insert into tb_estudiante (cedula_est,ultimonivel,horaspasantia,porcentajemateriasaprobadas) values (1111,6,0,60);
@@ -206,19 +205,6 @@ insert into tb_visitatutor (dia,fecha_visita,hora_visita,estado_visita,cedula_tu
 
 
 
-/*llenar tb_empresa*/
-insert into tb_empresa (id_empresa,
-nombre_empresa,nombre_gerente,
-telefono_empresa,
-direccion_empresa,actividad_principal_empresa) values (987654,'Vimework','Don Mauricio','30555555','mercado santo','desarrollo');
-
-
-/*llenar tb_empresa_encargado*/
-insert into tb_empresa_encargado(id_encargado,
-ci_encargado,nombre_encargado,cargo_encargado,id_empresa) values (1,1723434565,'Nombr enca','Cargo enc',987654);
-
-/*llenar tabla TB_PASANTIA*/
-insert into tb_pasantia (tipo_ppp,cod_ppp,fechainicio,fechafin,tiempoesperaestado,estado,id_encargado,cedula,id_periodo) values ('PA',1,'2017-11-28','2017-12-13',4,true,'1',123,3);
 
 
 /*tb_respuesta DATOS_QUEMADOS*/
@@ -252,6 +238,21 @@ insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values
 insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (28,'para_telefonoNombresDelegadoUPS',28);
 insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (29,'para_lugarFechaSuscripcion',29);
 
+
+
+/*llenar tb_empresa*/
+insert into tb_empresa (id_empresa,
+nombre_empresa,nombre_gerente,
+telefono_empresa,
+direccion_empresa,actividad_principal_empresa) values (987654,'Vimework','Don Mauricio','30555555','mercado santo','desarrollo');
+
+
+/*llenar tb_empresa_encargado*/
+insert into tb_empresa_encargado(id_encargado,
+ci_encargado,nombre_encargado,cargo_encargado,id_empresa) values (1,1723434565,'Nombr enca','Cargo enc',987654);
+
+/*llenar tabla TB_PASANTIA*/
+insert into tb_pasantia (tipo_ppp,cod_ppp,fechainicio,fechafin,tiempoesperaestado,estado,id_encargado,cedula,id_periodo) values ('PA',1,'2017-11-28','2017-12-13',4,true,'1',123,3);
 
 
 /*llenado de datos en tb_detalle_pasantia*/

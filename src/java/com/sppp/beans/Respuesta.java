@@ -49,5 +49,12 @@ public class Respuesta {
     public void setDatos(Set<Datos> datos) {
         this.datos = datos;
     }
+
+    public Respuesta(long id_tbrespuesta) {
+        this.id_tbrespuesta = id_tbrespuesta;
+    }
+
+    public Respuesta() {
+    }
     
 }

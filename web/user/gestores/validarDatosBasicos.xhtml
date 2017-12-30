@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+     template="/templates/main.xhtml"
+     xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:f="http://xmlns.jcp.org/jsf/core"
+     xmlns:b="http://bootsfaces.net/ui">
+    
+    <ui:define name="title">
+        Datos Basicos
+    </ui:define>
+    
+    <ui:define name="barra-lateral">
+        <ui:include src="/snippets/menu_estudiante.xhtml" />
+    </ui:define>
+    
+    <ui:define name="contenido">
+
+        <!-- ENCABEZADO -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Solicitud Inicio Proceso de Pasantia</h1>
+            </div>
+        </div>
+
+        <!-- FORMULARIO WIZZARD -->
+        <div class="row">
+            <div class="col-lg-12">
+
+                <b:form>
+                    <b:carousel id="wizard" styleClass="wizardPseudoClass"
+                                style="width:400px; padding-top:20px"
+                                startAnimation="false"
+                                showIndicators="false"
+                                wrap="false">
+                        <b:carouselItem style="width:400px; height:auto">
+                            <b:panel title="Datos Estudiante" look="default">
+                                <!-- AQUI ABAJO FORMULARIO DINAMICO ESTUDIANTE-->
+                                <b:inputText value="#{userWizard.usuario.nombre}" label="Nombre:" disabled="true" tooltip="Nombres completos alumno"/>
+                                <b:inputText value="#{userWizard.usuario.apellido}" label="Apellido:" disabled="true" tooltip="Apellidos completos alumno"/>
+                                <b:inputText value="#{userWizard.usuario.telefono}" label="Tel&eacute;fono:" required="true" tooltip="N&uacute;mero celular"/>
+                                <b:inputText value="#{userWizard.usuario.correo}" label="Correo:" required="true" tooltip="Correo de preferencia"/>
+                                <b:inputText value="#{userWizard.usuario.estudiante.ultimoNivel}" label="Nivel m&aacute;s Bajo:" disabled="true"/>
+                                <b:inputTextarea value="#{userWizard.usuario.estudiante.actividadRealizar}" label="Actividad a Realizar:" required="true" tooltip="Describa aquellas a realizar"/>
+                                <h:outputText value="Tipo de Pr&aacute;ctica" style="font-weight:bold"/>
+                                <h:message for="msgRadio" style="color: red"></h:message>
+                                <b:radiobutton  value="#{userWizard.p.tipo_ppp}" required="true" id="msgRadio" requiredMessage=" Escoja un tipo de pr&aacute;ctica: *" tooltip="Seleecionar una">
+                                    <f:selectItem itemLabel="Pasant&iacute;a" itemValue="PA"/>
+                                    <f:selectItem itemLabel="Pr&aacute;ctica Pre Profesional" itemValue="PP"/>
+                                </b:radiobutton>
+                                <b:dateTimePicker value="#{userWizard.p.fechaInicio}" label="Fecha Tentativa Inicio:" show-time="false" required="true"/>
+                                <b:dateTimePicker value="#{userWizard.p.fechaFin}" label="Fecha Tentativa Fin" show-time="false" required="true"/>
+                                
+                            </b:panel>
+                        </b:carouselItem>
+                        <b:carouselItem style="width:400px;height:auto">
+                            <b:panel title="Datos Empresa" look="default">
+                                <!-- AQUI ABAJO FORMULARIO DINAMICO EMPRESA-->
+                                <b:inputText value="#{userWizard.emp.id_empresa}" label="RUC:" required="true"/>
+                                <b:inputText value="#{userWizard.emp.nombre_empresa}" label="Nombre Empresa:" required="true"/>
+                                <b:inputText value="#{userWizard.emp.nombre_gerente}" label="Nombres y Apellidos Gerente Empresa:" required="true"/>
+                                <b:inputText value="#{userWizard.emp.telefono_empresa}" label="Tel&eacute;fono:" required="true"/>
+                                <b:inputText value="#{userWizard.emp.direccion_empresa}" label="Direcci&oacute;n:" required="true"/>
+                                <b:inputText value="#{userWizard.emp.actividad_principal_empresa}" label="Actividad Principal que Ejerce Empresa:" required="true"/>
+                                <b:inputText value="#{userWizard.enc.ci_encargado}" label="C&eacute;dula Encargado:" required="true"/>
+                                <b:inputText value="#{userWizard.enc.nombre_encargado}" label="Nombres y Apellidos Encargado:" required="true"/>
+                                <b:inputText value="#{userWizard.enc.cargo_encargado}" label="Cargo Encargado:" required="true"/>
+                            </b:panel>
+                        </b:carouselItem>
+                        <b:carouselControl direction="right" >
+                            <b:button value="Anterior"
+                                      onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');"
+                                      look="info" />
+                        </b:carouselControl>
+                        <b:carouselControl>
+                            
+                            <b:commandButton value="Enviar" style="position:absolute;right:0px" action="#{userWizard.guardarDatos()}" 
+                                      look="success" />
+                        </b:carouselControl>
+                        <b:carouselControl direction="left">
+                            <b:button value="Siguiente" style="position:absolute;right:100px"
+                                      onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');"
+                                      look="info" />
+                        </b:carouselControl>
+                        
+                    </b:carousel>
+                </b:form>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <br/>
+            <br/>
+        </div>
+
+
+        
+    </ui:define>
+    
+</ui:composition>

@@ -109,29 +109,32 @@ insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir comprobante
 
 
 /*
-insert into tb_proceso(descripcion,estado) values ('PROCESO Agendacion cita',true);
+Tutorrrrrrrrrrrrrrrrrrrrrr
+
+insert into tb_proceso(descripcion,estado) values ('Agendacion cita',true);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('creacion fecha tentiva',true,12);
 
 
-insert into tb_proceso(descripcion,estado) values ('PROCESO Llenar informes',true);
+insert into tb_proceso(descripcion,estado) values ('Llenar informes',true);
 insert into tb_proceso(descripcion,estado,proceso_de) values (' ingresar datos informe seguimiento',true,15);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('ingresar datos informe tutor',true,15);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('ingresar datos hoja de ruta',true,15);
 
 
-insert into tb_proceso(descripcion,estado) values ('PROCESO Carga y descarga archivos visita',true);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('descarga y carga informe seguimiento',true,18);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('descarga y carga informe tutor',true,18);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('descarga y carga hoja de ruta',true,18);
+insert into tb_proceso(descripcion,estado) values ('Descargar/Subir archivos visita',true);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('descargar y subir informe seguimiento',true,18);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('descargar y subir informe tutor',true,18);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('descargar y subir hoja de ruta',true,18);
 
-insert into tb_proceso(descripcion,estado) values ('PROCESO Validacion pasantia',true);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('llenar solicitud de validacion final',true,22);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('llenar formato autoevaluacion',true,22);
 
-insert into tb_proceso(descripcion,estado) values ('PROCESO Carga y descarga archivos validacion final',true);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('descarga y carga formato autoevaluacion',true,25);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('carga certificado empresa',true,25);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('carga derecho validacion',true,25);
+Coordinador
+
+insert into tb_proceso(descripcion,estado) values ('Descargar archivos tutor',true);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('descargar informe seguimiento',true,22);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('descargar informe tutor',true,22);
+
+
+
 */
 
 

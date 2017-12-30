@@ -161,10 +161,10 @@ public class EstadoProceso {
                 ruta = "autoEvaluacion";
                 break; 
             case 23:
-                ruta = "";
+                ruta = "";//Pasa subir Certificado empresa y comprobante
                 break;
             case 24:
-                ruta = "";
+                ruta = ""; 
                 break; 
             case 25:
                 ruta = "";

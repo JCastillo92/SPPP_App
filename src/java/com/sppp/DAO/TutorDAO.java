@@ -17,7 +17,7 @@ import org.hibernate.Transaction;
  * @author Jairo
  */
 public class TutorDAO {
-    /*
+    //AQUI BUSCO LOS DOCENTES y la condicion es aquel que tenga menos visitas
         public Tutor findTutorVisita(){
         Tutor datoTutor = new Tutor();
         SessionFactory sf=HibernateUtil.getSessionFactory();
@@ -25,7 +25,8 @@ public class TutorDAO {
         Transaction tx=null;
         try{
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery(" from Tutor WHERE id_proceso = :id ");
+            Query query = sesion.createQuery("FROM Tutor ORDER BY cant_visitas DESC");
+            query.setMaxResults(1);//perimite hacer un LIMIT 1
             datoTutor = (Tutor) query.uniqueResult();
             tx.commit();
         }catch (Exception e) {
@@ -39,7 +40,7 @@ public class TutorDAO {
             sesion.close();
         }
         return datoTutor;
-
     }
-*/
+        
+
 }

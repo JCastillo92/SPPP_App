@@ -18,6 +18,7 @@ import javax.faces.bean.ManagedBean;
 public class PasantiaPracticaBean {
     
     List<Pasantia> procesos = new LinkedList<>();
+  
     
     public List<Pasantia> findAll(){
         
@@ -30,5 +31,7 @@ public class PasantiaPracticaBean {
         procesos = ppDAO.findAll();
         return procesos;
     }
+    
+    
     
 }

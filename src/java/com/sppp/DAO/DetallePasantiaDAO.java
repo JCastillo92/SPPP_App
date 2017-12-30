@@ -138,8 +138,8 @@ public class DetallePasantiaDAO {
         Transaction tx=null;    
          try {
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("FROM DetallePasantia D WHERE D.descripcion = :descrip AND D.validacion = :num");
-            query.setString("descrip", "Dato Inicio Proesos Pasantia");
+            Query query = sesion.createQuery("FROM DetallePasantia D WHERE D.proceso.id_proceso = :proc AND D.validacion = :num");
+            query.setLong("proc", 1);
             query.setInteger("num", 1);
             todosDetIngDatBas= query.list();       
             tx.commit();
@@ -162,8 +162,8 @@ public class DetallePasantiaDAO {
         Transaction tx=null;    
          try {
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("FROM DetallePasantia D WHERE D.descripcion = :descrip AND D.validacion = :num");
-            query.setString("descrip", "Ingreso Datos Carta Compromiso");
+            Query query = sesion.createQuery("FROM DetallePasantia D WHERE D.proceso.id_proceso = :proc AND D.validacion = :num");
+            query.setLong("proc", 7);
             query.setInteger("num", 1);
             todosDetPasCC= query.list();       
             tx.commit();
@@ -179,6 +179,30 @@ public class DetallePasantiaDAO {
         return todosDetPasCC;
     }
 
+       public List<DetallePasantia> findAllInicioActividades(){
+        List<DetallePasantia> todosDetPasCC = new LinkedList<>();
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;    
+         try {
+            tx = sesion.beginTransaction();
+            Query query = sesion.createQuery("FROM DetallePasantia D WHERE D.proceso.id_proceso = :proc AND D.validacion = :num");
+            query.setLong("proc", 14);
+            query.setInteger("num", 1);
+            todosDetPasCC= query.list();       
+            tx.commit();
+        }catch (Exception e) {
+            e.printStackTrace();
+            if (tx != null){
+                tx.rollback();
+            }
+        }finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+        return todosDetPasCC;
+    }
+      
    public long countIngresoDatosBasicos(){
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
@@ -257,4 +281,29 @@ public class DetallePasantiaDAO {
         }
          return numeroInicioActividades;
     }
-}
+        
+        
+        
+        public List<DetallePasantia> findAllDetallePasantiaAllTrue(){
+        List<DetallePasantia> todosDetPasAllTrue = new LinkedList<>();
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;    
+         try {
+            tx = sesion.beginTransaction();
+            Query query = sesion.createQuery("FROM DetallePasantia D WHERE D.estado = :verdad ORDER BY D.idDetallePasantia DESC");
+            query.setBoolean("verdad", true);
+            todosDetPasAllTrue= query.list();       
+            tx.commit();
+        }catch (Exception e) {
+            e.printStackTrace();
+            if (tx != null){
+                tx.rollback();
+            }
+        }finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+        return todosDetPasAllTrue;
+    }
+}//end fo class

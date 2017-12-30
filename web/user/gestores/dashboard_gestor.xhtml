@@ -166,6 +166,7 @@
                     <!-- /.panel-heading -->
                     <div class="panel-body">
 
+                        <!--
                         <h:form>
                             <b:dataTable value="#{pasantiaPracticaBean.procesos}"
                                          var="proceso" >
@@ -177,8 +178,18 @@
                                 <b:dataTableColumn value="#{proceso.estudiante.cedula}" label="Cedula Estudiante" />
                             </b:dataTable>
                         </h:form>
-
-                        
+                        -->
+                        <h:form>
+                            <b:dataTable value="#{detallePasantiaBean.listaDetallePasantTodoTrue}"
+                                         var="dpalltrue" >
+                                <b:dataTableColumn value="#{dpalltrue.descripcion}" />
+                                <b:dataTableColumn value="#{dpalltrue.validacion}" />                               
+                                 <b:dataTableColumn value="#{dpalltrue.pasantia.tipo_ppp}" />
+                                 <b:dataTableColumn value="#{dpalltrue.pasantia.cod_ppp}" /> 
+                                 
+                                 
+                            </b:dataTable>
+                        </h:form>
                     </div>
                     <!-- /.panel-body -->
                 </div>

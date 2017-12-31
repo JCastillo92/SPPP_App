@@ -136,13 +136,15 @@ public class DetallePasantiaDAO {
         Transaction tx = null;
         try {
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("FROM DetallePasantia D WHERE D.descripcion = :descrip AND D.validacion = :num");
-            query.setString("descrip", "Dato Inicio Proesos Pasantia");
+            Query query = sesion.createQuery("FROM DetallePasantia D WHERE D.proceso.id_proceso = :proc AND D.validacion = :num");
+            query.setLong("proc", 1);
             query.setInteger("num", 1);
             todosDetIngDatBas = query.list();
             tx.commit();
-        } catch (Exception e) {
-            if (tx != null) {
+
+        }catch (Exception e) {
+            e.printStackTrace();
+            if (tx != null){
                 tx.rollback();
             }
         } finally {
@@ -159,13 +161,15 @@ public class DetallePasantiaDAO {
         Transaction tx = null;
         try {
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("FROM DetallePasantia D WHERE D.descripcion = :descrip AND D.validacion = :num");
-            query.setString("descrip", "Ingreso Datos Carta Compromiso");
+            Query query = sesion.createQuery("FROM DetallePasantia D WHERE D.proceso.id_proceso = :proc AND D.validacion = :num");
+            query.setLong("proc", 7);
             query.setInteger("num", 1);
             todosDetPasCC = query.list();
             tx.commit();
-        } catch (Exception e) {
-            if (tx != null) {
+        }catch (Exception e) {
+            e.printStackTrace();
+            if (tx != null){
+
                 tx.rollback();
             }
         } finally {
@@ -175,21 +179,47 @@ public class DetallePasantiaDAO {
         return todosDetPasCC;
     }
 
-    public int countIngresoDatosBasicos() {
-        SessionFactory sf = HibernateUtil.getSessionFactory();
-        Session sesion = sf.openSession();
-        Transaction tx = null;
-        int numeroIngresoDatosBasicos = 0;
-        try {
+       public List<DetallePasantia> findAllInicioActividades(){
+        List<DetallePasantia> todosDetPasCC = new LinkedList<>();
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;    
+         try {
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("SELECT COUNT(*) from DetallePasantia D WHERE D.descripcion = :decrip AND D.validacion = vali");
-            query.setString("decrip", "Dato Inicio Proesos Pasantia");
-            query.setInteger("vali", 1);
-            numeroIngresoDatosBasicos = (int) query.uniqueResult();
+            Query query = sesion.createQuery("FROM DetallePasantia D WHERE D.proceso.id_proceso = :proc AND D.validacion = :num");
+            query.setLong("proc", 14);
+            query.setInteger("num", 1);
+            todosDetPasCC= query.list();       
             tx.commit();
-        } catch (Exception e) {
-            numeroIngresoDatosBasicos = 0;
-            if (tx != null) {
+        }catch (Exception e) {
+            e.printStackTrace();
+            if (tx != null){
+                tx.rollback();
+            }
+        }finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+        return todosDetPasCC;
+    }
+      
+   public long countIngresoDatosBasicos(){
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;
+        long numeroIngresoDatosBasicos=0;
+         try {
+
+            tx = sesion.beginTransaction();
+            Query query = sesion.createQuery("SELECT COUNT(*) FROM DetallePasantia D WHERE D.proceso.id_proceso = :id_pro AND D.validacion = :vali");
+            query.setLong("id_pro", 1);//fk de tb_proceso 1
+            query.setInteger("vali", 1);
+            numeroIngresoDatosBasicos=(long) query.uniqueResult();       
+            tx.commit();
+        }catch (Exception e) {
+            e.printStackTrace();
+            numeroIngresoDatosBasicos=0;
+            if (tx != null){
                 tx.rollback();
             }
         } finally {
@@ -199,21 +229,25 @@ public class DetallePasantiaDAO {
         return numeroIngresoDatosBasicos;
     }
 
-    public int countIngresoCartaCompromiso() {
-        SessionFactory sf = HibernateUtil.getSessionFactory();
-        Session sesion = sf.openSession();
-        Transaction tx = null;
-        int numeroCartasCompromiso = 0;
-        try {
+ 
+    public long countIngresoCartaCompromiso(){
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;
+        long numeroCartasCompromiso=0;
+         try {
+
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("SELECT COUNT(*) from DetallePasantia D WHERE D.descripcion = :decrip AND D.validacion = vali");
-            query.setString("decrip", "Ingreso Datos Carta Compromiso");
+            Query query = sesion.createQuery("SELECT COUNT(*) FROM DetallePasantia D WHERE D.proceso.id_proceso = :id_pro AND D.validacion = :vali");
+            query.setLong("id_pro", 7);//fk de tb_proceso 7
             query.setInteger("vali", 1);
-            numeroCartasCompromiso = (int) query.uniqueResult();
+            numeroCartasCompromiso=(long) query.uniqueResult();    
             tx.commit();
-        } catch (Exception e) {
-            numeroCartasCompromiso = 0;
-            if (tx != null) {
+        }catch (Exception e) {
+            e.printStackTrace();
+            numeroCartasCompromiso=0;
+            if (tx != null){
+
                 tx.rollback();
             }
         } finally {
@@ -223,21 +257,24 @@ public class DetallePasantiaDAO {
         return numeroCartasCompromiso;
     }
 
-    public int countIngresoInicioActividad() {
-        SessionFactory sf = HibernateUtil.getSessionFactory();
-        Session sesion = sf.openSession();
-        Transaction tx = null;
-        int numeroInicioActividades = 0;
-        try {
+        public long countIngresoInicioActividad(){
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;
+        long numeroInicioActividades=0;
+         try {
+
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("SELECT COUNT(*) from DetallePasantia D WHERE D.descripcion = :decrip AND D.validacion = vali");
-            query.setString("decrip", "Solicitar Inicio Actividades");
+            Query query = sesion.createQuery("SELECT COUNT(*) FROM DetallePasantia D WHERE D.proceso.id_proceso = :id_pro AND D.validacion = :vali");
+            query.setLong("id_pro", 14);//fk de tb_proceso 14
             query.setInteger("vali", 1);
-            numeroInicioActividades = (int) query.uniqueResult();
+            numeroInicioActividades=(long) query.uniqueResult();       
+
             tx.commit();
-        } catch (Exception e) {
-            numeroInicioActividades = 0;
-            if (tx != null) {
+        }catch (Exception e) {
+            e.printStackTrace();
+            numeroInicioActividades=0;
+            if (tx != null){
                 tx.rollback();
             }
         } finally {
@@ -246,6 +283,7 @@ public class DetallePasantiaDAO {
         }
         return numeroInicioActividades;
     }
+
     
     public void actualizarDetallePasantia(DetallePasantia dp){
         
@@ -315,6 +353,28 @@ public class DetallePasantiaDAO {
         }
         return detallePas;
     }
-    
 
-}
+
+        public List<DetallePasantia> findAllDetallePasantiaAllTrue(){
+        List<DetallePasantia> todosDetPasAllTrue = new LinkedList<>();
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;    
+         try {
+            tx = sesion.beginTransaction();
+            Query query = sesion.createQuery("FROM DetallePasantia D WHERE D.estado = :verdad ORDER BY D.idDetallePasantia DESC");
+            query.setBoolean("verdad", true);
+            todosDetPasAllTrue= query.list();       
+            tx.commit();
+        }catch (Exception e) {
+            e.printStackTrace();
+            if (tx != null){
+                tx.rollback();
+            }
+        }finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+        return todosDetPasAllTrue;
+    }
+}//end fo class

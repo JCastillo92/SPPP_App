@@ -58,8 +58,9 @@ public class PasantiaDAO {
             query.setBoolean("verdad", true);
             todosPasantiasPA = query.list();
             tx.commit();
-        } catch (Exception e) {
-            if (tx != null) {
+        }catch (Exception e) {
+            e.printStackTrace();
+            if (tx != null){
                 tx.rollback();
             }
         } finally {
@@ -83,8 +84,9 @@ public class PasantiaDAO {
             query.setBoolean("verdad", true);
             todosPasantiasPP = query.list();
             tx.commit();
-        } catch (Exception e) {
-            if (tx != null) {
+        }catch (Exception e) {
+            e.printStackTrace();
+            if (tx != null){
                 tx.rollback();
             }
         } finally {
@@ -93,22 +95,23 @@ public class PasantiaDAO {
         }
         return todosPasantiasPP;
     }
-
-    public int countPA() {
-        SessionFactory sf = HibernateUtil.getSessionFactory();
-        Session sesion = sf.openSession();
-        Transaction tx = null;
-        int numeroPA = 0;
-        try {
+     
+     public long countPA(){
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;
+        long numeroPA=0;
+         try {
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("SELECT COUNT(*) from Pasantia P WHERE P.tipo_ppp = :tipo AND D.estado = est");
+            Query query = sesion.createQuery("SELECT COUNT(*) from Pasantia P WHERE P.tipo_ppp = :tipo AND P.estado = :est");
             query.setString("tipo", "PA");
             query.setBoolean("est", true);
-            numeroPA = (int) query.uniqueResult();
+            numeroPA=(long) query.uniqueResult();       
             tx.commit();
-        } catch (Exception e) {
-            numeroPA = 0;
-            if (tx != null) {
+        }catch (Exception e) {
+            e.printStackTrace();
+            numeroPA=0;
+            if (tx != null){
                 tx.rollback();
             }
         } finally {
@@ -117,22 +120,23 @@ public class PasantiaDAO {
         }
         return numeroPA;
     }
-
-    public int countPP() {
-        SessionFactory sf = HibernateUtil.getSessionFactory();
-        Session sesion = sf.openSession();
-        Transaction tx = null;
-        int numeroPP = 0;
-        try {
+     
+     public long countPP(){
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;
+        long numeroPP=0;
+         try {
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("SELECT COUNT(*) from Pasantia P WHERE P.tipo_ppp = :tipo AND D.estado = est");
+            Query query = sesion.createQuery("SELECT COUNT(*) from Pasantia P WHERE P.tipo_ppp = :tipo AND P.estado = :est");
             query.setString("tipo", "PP");
             query.setBoolean("est", true);
-            numeroPP = (int) query.uniqueResult();
+            numeroPP=(long) query.uniqueResult();       
             tx.commit();
-        } catch (Exception e) {
-            numeroPP = 0;
-            if (tx != null) {
+        }catch (Exception e) {
+            e.printStackTrace();
+            numeroPP=0;
+            if (tx != null){
                 tx.rollback();
             }
         } finally {
@@ -141,6 +145,33 @@ public class PasantiaDAO {
         }
         return numeroPP;
     }
+     
+      public long countPPyPA(){
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;
+        long numeroPPyPA=0;
+         try {
+            tx = sesion.beginTransaction();
+            Query query = sesion.createQuery("SELECT COUNT(*) FROM Pasantia P WHERE P.estado = :est");
+            query.setBoolean("est", true);
+            numeroPPyPA=(long) query.uniqueResult();       
+            tx.commit();
+        }catch (Exception e) {
+            e.printStackTrace();
+            numeroPPyPA=0;
+            if (tx != null){
+                tx.rollback();
+            }
+        }
+        finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+         return numeroPPyPA;
+    }
+     
+     
 
     public boolean existePasantia(long cedula) {
         boolean existe = false;

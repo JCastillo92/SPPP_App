@@ -100,10 +100,14 @@ public class PasantiaPracticaDAO {
             //para cerrar seesion
             sesion.close();
         }
-         //en el retorno le sumo 1 para que el codigo de practica pre profesional se setee en el NUEVO registro.
          return pasantia_practicapreprofesional;
       
     }//fin findPasantia   
+    
+    
+    
+    
+    
     
     public List<Pasantia> findAll(){
         List<Pasantia> todosProcesos = new LinkedList<>();

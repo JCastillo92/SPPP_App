@@ -25,13 +25,14 @@ import org.hibernate.Transaction;
  */
 public class WizardDAO {
     
-    public void guardarDatosBasicos(Usuario est, Pasantia pas, Encargado enc, Empresa emp){
+    public void guardarDatosBasicos(Usuario est, Pasantia pas, Encargado enc, Empresa emp, DetallePasantia dp){
         
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         
         Transaction tx=null;
         
+        /*
         //Datos adicionales de pasantia para agregarle el estudiante y el encargado
         pas.setEstudiante(est.getEstudiante());
         pas.setEncargado(enc);
@@ -40,14 +41,14 @@ public class WizardDAO {
         Proceso proceso = new Proceso();
         proceso.setId_proceso(1);
         DetallePasantia dp = new DetallePasantia();
-        dp.setDescripcion("Dato Inicio Proesos Pasantia");
+        dp.setDescripcion("Dato Inicio Procesos Pasantia");
         dp.setEstado(true);
         dp.setValidacion(EnumEstado.validar);
         dp.setProceso(proceso);
         
         //Asignando a pasantia
         dp.setPasantia(pas);
-        
+        */
         
         try {
             tx = sesion.beginTransaction();

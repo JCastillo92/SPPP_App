@@ -384,7 +384,7 @@ public class WizardDBValidacion extends WizardDB {
             
         }
         
-        return "dashboard_est";
+        return "dashboard_gestor";
     }
     
     

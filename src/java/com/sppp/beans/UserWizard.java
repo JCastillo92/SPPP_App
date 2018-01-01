@@ -136,7 +136,7 @@ public class UserWizard extends WizardDB implements Serializable {
             //DetallePasantia dpp = new DetallePasantia();
             dpp.setDescripcion("Dato Inicio Procesos Pasantia");
             dpp.setEstado(true);
-            dpp.setValidacion(EnumEstado.validar);
+            
             dpp.setProceso(proceso);
 
             //Asignando a pasantia
@@ -144,6 +144,8 @@ public class UserWizard extends WizardDB implements Serializable {
 
         }
 
+        //Siempre debe hacerse a validar EXISTA  O NO
+        dpp.setValidacion(EnumEstado.validar);
         //DATOS DE LA EMPRESA
         //enc.setEmpresa(emp);
         

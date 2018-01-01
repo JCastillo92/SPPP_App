@@ -355,15 +355,37 @@ public class DetallePasantiaDAO {
     }
 
 
-        public List<DetallePasantia> findAllDetallePasantiaAllTrue(){
-        List<DetallePasantia> todosDetPasAllTrue = new LinkedList<>();
+        public List<Object[]> findAllDetallePasantiaconCIAllTrue(){
+        List<Object> todosDetPasAllTrue = new LinkedList<>();
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;    
+        
+        //variables a pedir
+        long cedula_est=0;
+        int cod_ppp=0,iddetallepasantia=0;
+        String tipo_ppp="",descripcion="";
+        List<Object[]> empData=null;
          try {
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("FROM DetallePasantia D WHERE D.estado = :verdad ORDER BY D.idDetallePasantia DESC");
-            query.setBoolean("verdad", true);
+            //Query query = sesion.createQuery("SELECT estudiante.cedula,FROM DetallePasantia D WHERE D.estado = :verdad ORDER BY D.idDetallePasantia DESC");
+            SQLQuery query = sesion.createSQLQuery("select tb_pasantia.cedula, tb_detalle_pasantia.tipo_ppp, tb_detalle_pasantia.cod_ppp, tb_detalle_pasantia.iddetallepasantia, tb_detalle_pasantia.descripcion, tb_detalle_pasantia.id_proceso \n" +
+"from tb_pasantia, tb_detalle_pasantia \n" +
+"where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n" +
+"and tb_detalle_pasantia.estado=true \n"
++ "and tb_detalle_pasantia.validacion=1;");
+
+                empData = query.list();
+            for (Object[] row : empData) {
+                //variables que retorna la consulta
+                cedula_est = Long.parseLong(row[0].toString());
+                tipo_ppp=row[1].toString();
+                cod_ppp = Integer.parseInt(row[2].toString());
+                iddetallepasantia=Integer.parseInt(row[3].toString());
+                descripcion=row[4].toString();
+                System.out.println("333333333333333333333333333333333333333333333"+cedula_est);
+            }
+            
             todosDetPasAllTrue= query.list();       
             tx.commit();
         }catch (Exception e) {
@@ -375,6 +397,6 @@ public class DetallePasantiaDAO {
             //para cerrar seesion
             sesion.close();
         }
-        return todosDetPasAllTrue;
+        return empData;
     }
 }//end fo class

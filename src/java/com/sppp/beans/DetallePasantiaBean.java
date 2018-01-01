@@ -6,6 +6,7 @@
 package com.sppp.beans;
 
 import com.sppp.DAO.DetallePasantiaDAO;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -16,13 +17,12 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean
 public class DetallePasantiaBean {
-    List<DetallePasantia> listaDetallePasantTodoTrue = new LinkedList<>();
-
-    public List<DetallePasantia> getListaDetallePasantTodoTrue() {
+    List<Object[]> empData2=null;
+ 
+    public List<Object[]> getEmpData2() {
         DetallePasantiaDAO dpDAO =new DetallePasantiaDAO();
-        listaDetallePasantTodoTrue=dpDAO.findAllDetallePasantiaAllTrue();
-        return listaDetallePasantTodoTrue;
+        empData2=dpDAO.findAllDetallePasantiaconCIAllTrue();
+        return empData2;
     }
-    
     
 }

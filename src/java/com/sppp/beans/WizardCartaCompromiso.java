@@ -27,6 +27,12 @@ import javax.servlet.http.HttpSession;
 @ViewScoped
 public class WizardCartaCompromiso extends WizardCC {
     
+    List<Datos> datosCartaC = new LinkedList<>();
+    boolean existe;
+    
+    public List<Datos> getDatosCartaC() {
+        return datosCartaC;
+    }
     
     public WizardCartaCompromiso(){
         
@@ -58,6 +64,24 @@ public class WizardCartaCompromiso extends WizardCC {
             EmpresaDAO empreDAO = new EmpresaDAO();
             empresa=empreDAO.findEmpresa(encargado.getEmpresa().getId_empresa());
             
+            
+            //DEBO OBTENER EL DETALLE PASANTIA SOLO PARA BUSCAR LOS DATOS / EXISTE OTRA DETALLEPASANTIA MAS ABAJO
+            DetallePasantia dpCargaDatos = new DetallePasantia();
+            DetallePasantiaDAO dpDAOT = new DetallePasantiaDAO();
+            dpCargaDatos = dpDAOT.findDetallePasantia(pasantia.getTipo_ppp(), pasantia.getCod_ppp());
+            
+            //Mandar a cargar la info si esta disponible en la DataBase de Datos
+            
+            DatosDAO datosDAO = new DatosDAO();
+            existe = datosDAO.hayDatosDeDetallePasantia(dpCargaDatos.getIdDetallePasantia());
+            
+            //De acuerdo a si EXISTE se carga o NO Datos
+            if(existe){
+                obtenerDatosEstudiante(dpCargaDatos.getIdDetallePasantia());
+            }else{
+                
+            }
+            
         } catch (Exception e) {
             id = 0;
             System.out.println("========== ERROR AL TRAER INFO DE USUARIO ==============0");
@@ -69,7 +93,7 @@ public class WizardCartaCompromiso extends WizardCC {
     
     
     public String guardarDatos(){
-        String redireccion = "dashboard_est";
+        String redireccion = "revision_window";
         
         //Recolectando la informacion
         pasantia.getTipo_ppp();
@@ -136,7 +160,19 @@ public class WizardCartaCompromiso extends WizardCC {
         //Guardar en la tb_datos;
         System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"+dp2.getIdDetallePasantia());
         DatosDAO obj = new DatosDAO();
-        obj.datosGuardar(usuario, empresa, encargado, pasantia, dp2, resp);
+        
+        // SI EXISTE LA DETALLE PASANTIA HAY QUE GUARDARDATOS CASO CONTRARIO ACTUALIZARDATOS 
+        if(existe){
+           obj.actualizarDatosCartaCompromiso(usuario, empresa, encargado, pasantia, dp2, resp);
+        }else{
+            obj.datosGuardar(usuario, empresa, encargado, pasantia, dp2, resp);
+        }
+        
+        
+        
+        //Mando a estado validar el registro en la DB
+        dp2.setValidacion(EnumEstado.validar);
+        dpDAO.actualizarDetallePasantia(dp2);
         
         
         //Incrementar cargo en la BD;
@@ -145,5 +181,25 @@ public class WizardCartaCompromiso extends WizardCC {
         return redireccion;
     }
     
+    public void obtenerDatosEstudiante(int id) {
+        
+        DatosDAO dDAO = new DatosDAO();
+        datosCartaC = dDAO.datosPorDetallePasantia(id);
+        llenarDatosEstudiante();
+    }
+    
+    public void llenarDatosEstudiante(){
+        
+        lugarFecha = datosCartaC.get(28).getValor_datos();
+        
+        objetoDeLaActividad = datosCartaC.get(11).getValor_datos();
+        horarioPrevisto = datosCartaC.get(15).getValor_datos();
+        nombrePrograma = datosCartaC.get(16).getValor_datos();
+        areaAcademica = datosCartaC.get(17).getValor_datos();
+        actividadPrevista = datosCartaC.get(19).getValor_datos();
+        resultadosPrevistos = datosCartaC.get(20).getValor_datos();
+        productosEntregables = datosCartaC.get(21).getValor_datos();
+        
+    }
     
 }//fin de la clase

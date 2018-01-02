@@ -6,7 +6,6 @@
 package com.sppp.beans;
 
 import com.sppp.DAO.DetallePasantiaDAO;
-import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 
@@ -16,13 +15,50 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean
 public class DetallePasantiaBean {
-    List<DetallePasantia> listaDetallePasantTodoTrue = new LinkedList<>();
+    
+      List<Object[]> empData2=null;//lista table pasantias y practicas pre profesionales
+    List<Object[]> empData3=null;//tabla
 
-    public List<DetallePasantia> getListaDetallePasantTodoTrue() {
-        DetallePasantiaDAO dpDAO =new DetallePasantiaDAO();
-        listaDetallePasantTodoTrue=dpDAO.findAllDetallePasantiaAllTrue();
-        return listaDetallePasantTodoTrue;
+    public List<Object[]> getEmpData3() {
+        return empData3;
     }
+   int id_tabla;
+
+    public int getId_tabla() {
+        return id_tabla;
+    }
+
+    public void setId_tabla(int id_tabla) {
+        this.id_tabla = id_tabla;
+    }
+   
+    public List<Object[]> getEmpData2() {
+        DetallePasantiaDAO dpDAO =new DetallePasantiaDAO();
+        empData2=dpDAO.findAllDetallePasantiaconCIAllTrue();
+        return empData2;
+    }
+
+   
+
+   public void init(){
+       DetallePasantiaDAO dpDAO =new DetallePasantiaDAO();
+       switch(id_tabla){
+           case 1:
+               empData3=dpDAO.findAllDetallePasantiaconCIValidaInicioProceso();
+               break;
+           case 2:
+              empData3=dpDAO.findAllDetallePasantiaconCIValidaCartaCompromiso();
+               break;
+           default:
+               break;
+       }
+       
+       
+       
+   } 
+
+    
+    
     
     
 }

@@ -25,6 +25,8 @@ public class Pasantia implements Serializable{
     private Encargado encargado;
     private Estudiante estudiante;
     private Periodo periodo;
+    
+    
 
     public Estudiante getEstudiante() {
         return estudiante;

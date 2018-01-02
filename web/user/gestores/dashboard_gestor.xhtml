@@ -41,12 +41,12 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-xs-3">
+                            <div class="col-xs-2">
                                 <i class="fa fa-tags fa-5x"></i>
                             </div>
-                            <div class="col-xs-9 text-right">
+                            <div class="col-xs-10 text-right">
                                 <div class="huge">#{dashboardGestBean.numeroPPyPA}</div>
-                                <div>Pasant&iacute;as y Pr&aacute;cticas Pre - Profesionales</div>
+                                <div>Pasant&iacute;as y Pr&aacute;cticas</div>
                             </div>
                         </div>
                     </div>
@@ -64,12 +64,12 @@
                         <h:commandLink action="#{estadoProceso.getRuta(estadoProceso.proceso)}" >
                             <div class="panel-footer">
                                 <span class="pull-left">Ver Detalles</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <span class="pull-right"><i class="fa fa-hand-o-up"></i></span>
                                 <div class="clearfix"></div>
                             </div>
                         </h:commandLink>
                     </h:form>
-                    
+
                     <!-- FINAL CODIGO VER DETALLES -->
 
                 </div>
@@ -79,10 +79,10 @@
                 <div class="panel panel-green">
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-xs-3">
+                            <div class="col-xs-2">
                                 <i class="fa fa-volume-off fa-5x"></i>
                             </div>
-                            <div class="col-xs-9 text-right">
+                            <div class="col-xs-10 text-right">
                                 <div class="huge">#{dashboardGestBean.numeroIngresoDatosBasicos}</div>
                                 <div>Validar Inicio Proceso</div>
                             </div>
@@ -90,13 +90,14 @@
                     </div>
                     <!-- CODIGO PARA EL VER DETALLES -->
                     <h:form>
-                        <h:commandLink action="#{estadoProceso.getRuta(estadoProceso.proceso)}" >
+                        <h:link outcome="tablas_validacion" >
                             <div class="panel-footer">
                                 <span class="pull-left">Ver Detalles</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <span class="pull-right"><i class="fa fa-hand-o-up"></i></span>
                                 <div class="clearfix"></div>
                             </div>
-                        </h:commandLink>
+                            <f:param name="id" value="1" />
+                        </h:link>
                     </h:form>
                     <!-- CODIGO FINAL VER DETALLES -->
                 </div>
@@ -106,24 +107,25 @@
                 <div class="panel panel-yellow">
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-xs-3">
+                            <div class="col-xs-2">
                                 <i class="fa fa-volume-down  fa-5x"></i>
                             </div>
-                            <div class="col-xs-9 text-right">
+                            <div class="col-xs-10 text-right">
                                 <div class="huge">#{dashboardGestBean.numeroIngresoCartaCompromiso}</div>
                                 <div>Validar Carta Compromiso</div>
                             </div>
                         </div>
                     </div>
                     <!-- CODIGO PARA EL VER DETALLES -->
-                    <h:form>
-                        <h:commandLink action="#{estadoProceso.getRuta(estadoProceso.proceso)}" >
+                     <h:form>
+                        <h:link outcome="tablas_validacion" >
                             <div class="panel-footer">
                                 <span class="pull-left">Ver Detalles</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <span class="pull-right"><i class="fa fa-hand-o-up"></i></span>
                                 <div class="clearfix"></div>
                             </div>
-                        </h:commandLink>
+                            <f:param name="id" value="2" />
+                        </h:link>
                     </h:form>
                     <!-- CODIGO FINAL VER DETALLES -->
                 </div>
@@ -133,10 +135,10 @@
                 <div class="panel panel-red">
                     <div class="panel-heading">
                         <div class="row">
-                            <div class="col-xs-3">
+                            <div class="col-xs-2">
                                 <i class="fa fa-volume-up fa-5x"></i>
                             </div>
-                            <div class="col-xs-9 text-right">
+                            <div class="col-xs-10 text-right">
                                 <div class="huge">#{dashboardGestBean.numeroIngresoInicioActividad}</div>
                                 <div>Validar Inicio Actividades</div>
                             </div>
@@ -144,13 +146,14 @@
                     </div>
                     <!-- CODIGO PARA EL VER DETALLES -->
                     <h:form>
-                        <h:commandLink action="#{estadoProceso.getRuta(estadoProceso.proceso)}" >
+                        <h:link outcome="tablas_validacion" >
                             <div class="panel-footer">
                                 <span class="pull-left">Ver Detalles</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <span class="pull-right"><i class="fa fa-hand-o-up"></i></span>
                                 <div class="clearfix"></div>
                             </div>
-                        </h:commandLink>
+                            <f:param name="id" value="1" />
+                        </h:link>
                     </h:form>
                     <!-- CODIGO FINAL VER DETALLES -->
                 </div>
@@ -184,16 +187,25 @@
                         </h:form>
                         -->
                         <h:form>
-                            <b:dataTable value="#{detallePasantiaBean.listaDetallePasantTodoTrue}"
+                            <b:dataTable value="#{detallePasantiaBean.empData2}"
                                          var="dpalltrue" >
-                                <b:dataTableColumn value="#{dpalltrue.descripcion}" />
-                                <b:dataTableColumn value="#{dpalltrue.validacion}" />                               
-                                 <b:dataTableColumn value="#{dpalltrue.pasantia.tipo_ppp}" />
-                                 <b:dataTableColumn value="#{dpalltrue.pasantia.cod_ppp}" /> 
-                                 
-                                 
+                                <b:dataTableColumn value="#{dpalltrue[0].toString()}" label="Ci Est" />
+                                <b:dataTableColumn value="#{dpalltrue[1].toString()}" label="Tipo"/>
+                                <b:dataTableColumn value="#{dpalltrue[2].toString()}" label="C&oacute;digo"/>
+                                <b:dataTableColumn value="#{dpalltrue[4].toString()}" label="Descrpci&oacute;n"/>
+                                <b:dataTableColumn label="Acci&oacute;n">
+                                    <h:link value="Ir a detalle" outcome="validar_carta" rendered="#{dpalltrue[5].toString() eq 7 }">
+                                        <f:param name="id" value="#{dpalltrue[0].toString()}" />
+                                    </h:link>
+                                    <h:link value="Ir a detalle" outcome="validarDatosBasicos" rendered="#{dpalltrue[5].toString() eq 1}">
+                                        <f:param name="id" value="#{dpalltrue[0].toString()}" />
+                                    </h:link>
+                                </b:dataTableColumn>
+
+
                             </b:dataTable>
                         </h:form>
+
                     </div>
                     <!-- /.panel-body -->
                 </div>

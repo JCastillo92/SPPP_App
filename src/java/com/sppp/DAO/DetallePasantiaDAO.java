@@ -383,9 +383,7 @@ public class DetallePasantiaDAO {
                 cod_ppp = Integer.parseInt(row[2].toString());
                 iddetallepasantia=Integer.parseInt(row[3].toString());
                 descripcion=row[4].toString();
-                System.out.println("333333333333333333333333333333333333333333333"+cedula_est);
             }
-            
             todosDetPasAllTrue= query.list();       
             tx.commit();
         }catch (Exception e) {
@@ -429,9 +427,7 @@ public class DetallePasantiaDAO {
                 cod_ppp = Integer.parseInt(row[2].toString());
                 iddetallepasantia=Integer.parseInt(row[3].toString());
                 descripcion=row[4].toString();
-                System.out.println("333333333333333333333333333333333333333333333"+cedula_est);
             }
-            
             todosDetPasAllTrue= query.list();       
             tx.commit();
         }catch (Exception e) {
@@ -480,9 +476,7 @@ public class DetallePasantiaDAO {
                 cod_ppp = Integer.parseInt(row[2].toString());
                 iddetallepasantia=Integer.parseInt(row[3].toString());
                 descripcion=row[4].toString();
-                System.out.println("333333333333333333333333333333333333333333333"+cedula_est);
-            }
-            
+            }            
             todosDetPasAllTrue= query.list();       
             tx.commit();
         }catch (Exception e) {

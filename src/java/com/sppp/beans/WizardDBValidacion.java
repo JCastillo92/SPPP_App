@@ -364,6 +364,8 @@ public class WizardDBValidacion extends WizardDB {
         if(validar3 && validar4 && validar6 && validar8 && validar9 && validar10 && validar11
                 && validar12 && validar13 && validar14 && validar15 && validar16 && validar17 && validar18){
             
+            
+            /// ESTE CODIGO PERRY -------------------------
             dp.setValidacion(EnumEstado.aprobar);
             dp.setEstado(false);
             dpDAO.actualizarDetallePasantia(dp);

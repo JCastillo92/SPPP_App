@@ -29,7 +29,7 @@
     
     <mime-mapping>
         <extension>bootstrap</extension>
-        <mime-type>application/bootstrap.min.css</mime-type>
+        <mime-type>application/*</mime-type>
     </mime-mapping>
     
     <mime-mapping>

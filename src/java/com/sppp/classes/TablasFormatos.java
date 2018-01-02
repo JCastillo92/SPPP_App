@@ -28,7 +28,6 @@ public class TablasFormatos implements Serializable {
   int pregunta6;
   int pregunta7;
   int pregunta8;
-  int pregunta9;
   int pregunta10;
 String des1;
   int hor1;
@@ -356,13 +355,7 @@ private boolean paso=false;
         this.pregunta8 = pregunta8;
     }
 
-    public int getPregunta9() {
-        return pregunta9;
-    }
-
-    public void setPregunta9(int pregunta9) {
-        this.pregunta9 = pregunta9;
-    }
+ 
 
     public int getPregunta10() {
         return pregunta10;
@@ -393,10 +386,10 @@ private boolean paso=false;
 
     public void informeTutor(long user){
         AlmacenamientoPDF g=new AlmacenamientoPDF();
-       g.pdf_InformeTutor(user, 200, pregunta10,pregunta1,pregunta2,pregunta3,pregunta4,pregunta5,pregunta6,pregunta7,pregunta8,pregunta9,observaciones);
+       g.pdf_InformeTutor(user, 200, pregunta10,pregunta1,pregunta2,pregunta3,pregunta4,pregunta5,pregunta6,pregunta7,pregunta8,observaciones);
 paso=true;
-// g.pdf_InformeTutor(user, 200, pregunta1);
-        
+
+
     }
     
     public void informeSeguimientoTu(long user){

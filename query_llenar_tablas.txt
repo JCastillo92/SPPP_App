@@ -72,18 +72,18 @@ insert into tb_proceso(descripcion,estado,proceso_de) values ('Descargar Oficio'
 insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir Oficio',true,4);
 
 insert into tb_proceso(descripcion,estado) values ('Ingreso Datos Carta Compromiso',true);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('Información General',true,6);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('Descripción Estratégica de Intervención',true,6);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('Actividades Previstas a ser Desarrolladas en la Actividad Académica',true,6);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Información General',true,7);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Descripción Estratégica de Intervención',true,7);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Actividades Previstas a ser Desarrolladas en la Actividad Académica',true,7);
 
 
 insert into tb_proceso(descripcion,estado) values ('Descargar/Subir Carta Compromiso',true);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('Descargar Carta Compromiso',true,10);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir Carta Compromiso',true,10);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Descargar Carta Compromiso',true,11);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir Carta Compromiso',true,11);
 
 insert into tb_proceso(descripcion,estado) values ('Solicitar Inicio Actividades',true);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('Descargar Inicio Actividades',true,13);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir Inicio Actividades',true,13);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Descargar Inicio Actividades',true,14);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir Inicio Actividades',true,14);
 
 insert into tb_proceso(descripcion,estado) values ('Resolucion de Proceso',true);
 

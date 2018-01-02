@@ -694,7 +694,7 @@ try{
 
  
 
-  public boolean pdf_InformeTutor(long cedula,int numero_pdf,int pre10,int pre1,int pre2,int pre3,int pre4,int pre5,int pre6,int pre7,int pre8,int pre9,String observaciones){//200
+  public boolean pdf_InformeTutor(long cedula,int numero_pdf,int pre10,int pre1,int pre2,int pre3,int pre4,int pre5,int pre6,int pre7,int pre8,String observaciones){//200
       exitoalguardar=false;
          //FORMATO CARTA COMPROMISO INTERINSTITUCIONAL
          try {
@@ -822,9 +822,6 @@ try{
        String s1=null,s2=null,s3=null,s4=null,s5=null; 
         if(pre8==1){s1="X";s2=" ";s3=" ";s4=" ";s5=" ";}if(pre8==2){s1=" ";s2="X";s3=" ";s4=" ";s5=" ";}if(pre8==3){s1=" ";s2=" ";s3="X";s4=" ";s5=" ";}
         if(pre8==4){s1=" ";s2=" ";s3=" ";s4="X";s5=" ";}if(pre8==5){s1=" ";s2=" ";s3=" ";s4=" ";s5="X";}
-       String d1=null,d2=null,d3=null,d4=null,d5=null; 
-        if(pre9==1){d1="X";d2=" ";d3=" ";d4=" ";d5=" ";}if(pre9==2){d1=" ";d2="X";d3=" ";d4=" ";d5=" ";}if(pre9==3){d1=" ";d2=" ";d3="X";d4=" ";d5=" ";}
-        if(pre9==4){d1=" ";d2=" ";d3=" ";d4="X";d5=" ";}if(pre9==5){d1=" ";d2=" ";d3=" ";d4=" ";d5="X";}
        String f1=null,f2=null,f3=null,f4=null,f5=null; 
         if(pre10==1){f1="X";f2=" ";f3=" ";f4=" ";f5=" ";}if(pre10==2){f1=" ";f2="X";f3=" ";f4=" ";f5=" ";}if(pre10==3){f1=" ";f2=" ";f3="X";f4=" ";f5=" ";}
         if(pre10==4){f1=" ";f2=" ";f3=" ";f4="X";f5=" ";}if(pre10==5){f1=" ";f2=" ";f3=" ";f4=" ";f5="X";}
@@ -935,15 +932,6 @@ try{
    table2.addCell(new Paragraph(s4,estexto));
    table2.addCell(new Paragraph(s5,estexto));
 
-//10row
- cell = new PdfPCell(new Paragraph("La destreza desmostrada del estudiante en sus actividades fue:",estexto));
-  cell.setColspan(15);//#columnas a merge para esta celda
-  table2.addCell(cell);
-  table2.addCell(new Paragraph(d1,estexto));
-   table2.addCell(new Paragraph(d2,estexto));
-   table2.addCell(new Paragraph(d3,estexto));
-   table2.addCell(new Paragraph(d4,estexto));
-   table2.addCell(new Paragraph(d5,estexto));
 
   documento.add(table2);
   //FIN TABLA 2

@@ -18,6 +18,15 @@ public class DetallePasantiaBean {
     
       List<Object[]> empData2=null;//lista table pasantias y practicas pre profesionales
     List<Object[]> empData3=null;//tabla
+    String outcome_salida;
+
+    public String getOutcome_salida() {
+        return outcome_salida;
+    }
+
+    public void setOutcome_salida(String outcome_salida) {
+        this.outcome_salida = outcome_salida;
+    }
 
     public List<Object[]> getEmpData3() {
         return empData3;
@@ -45,10 +54,16 @@ public class DetallePasantiaBean {
        switch(id_tabla){
            case 1:
                empData3=dpDAO.findAllDetallePasantiaconCIValidaInicioProceso();
+               outcome_salida="validarDatosBasicos";
                break;
            case 2:
               empData3=dpDAO.findAllDetallePasantiaconCIValidaCartaCompromiso();
+              outcome_salida="validar_carta";
                break;
+           case 3:
+           empData3=dpDAO.findAllDetallePasantiaconCIValidaInicioActividades();
+           outcome_salida="validarInicioPasantia";
+           break;
            default:
                break;
        }

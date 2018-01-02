@@ -54,7 +54,7 @@
                                 <b:dataTableColumn value="#{dpalltrue2[2].toString()}" label="C&oacute;digo"/>
                                 <b:dataTableColumn value="#{dpalltrue2[4].toString()}" label="Descripci&oacute;n"/>
                                  <b:dataTableColumn label="Accion">
-                                     <h:link value="Ir a detalle" outcome="validarDatosBasicos">
+                                     <h:link value="Ir a detalle" outcome="#{detallePasantiaBean.outcome_salida}">
                 <f:param name="id" value="#{dpalltrue2[0].toString()}" />
             </h:link>
                                  </b:dataTableColumn>

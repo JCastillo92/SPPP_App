@@ -358,5 +358,85 @@ public class DatosDAO {
         
     }
     
+    public void actualizarDatosCartaCompromiso(Usuario user, Empresa emp, Encargado enc, Pasantia pa, DetallePasantia dp, List<String> resps){
+        
+        //Traigo los datos
+        List<Datos> datosCartaC = datosPorDetallePasantia(dp.getIdDetallePasantia());
+        
+        //Coloco los nuevos valores que el estudiante ingreso
+        datosCartaC.get(11).setValor_datos(resps.get(2));
+        datosCartaC.get(15).setValor_datos(resps.get(3));
+        datosCartaC.get(16).setValor_datos(resps.get(4));
+        datosCartaC.get(17).setValor_datos(resps.get(5));
+        datosCartaC.get(19).setValor_datos(resps.get(6));
+        datosCartaC.get(20).setValor_datos(resps.get(7));
+        datosCartaC.get(21).setValor_datos(resps.get(8));
+        
+        guardarValidacionCC(datosCartaC);
+        /*
+        datosCartaC.get(8).setValor_datos();
+        datosCartaC.get(9).setValor_datos();
+        datosCartaC.get(10).setValor_datos();
+        datosCartaC.get(11).setValor_datos();
+        datosCartaC.get(12).setValor_datos();
+        datosCartaC.get(13).setValor_datos();
+        datosCartaC.get(14).setValor_datos();
+        datosCartaC.get(15).setValor_datos();
+        datosCartaC.get(16).setValor_datos();
+        datosCartaC.get(17).setValor_datos();
+        datosCartaC.get(18).setValor_datos();
+        datosCartaC.get(19).setValor_datos();
+        datosCartaC.get(20).setValor_datos();
+        datosCartaC.get(21).setValor_datos();
+        datosCartaC.get(22).setValor_datos();
+        datosCartaC.get(23).setValor_datos();
+        datosCartaC.get(24).setValor_datos();
+        datosCartaC.get(25).setValor_datos();
+        datosCartaC.get(26).setValor_datos();
+        datosCartaC.get(27).setValor_datos();
+        datosCartaC.get(28).setValor_datos();
+        datosCartaC.get(29).setValor_datos();
+        */
+        
+        
+    }
+    
+    public boolean hayDatosDeDetallePasantia(long idDetallePasantia){
+        
+        boolean existe =  false;
+        long numeroDatos = 0;
+        
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+
+        Transaction tx = null;
+        Usuario usuario = null;
+        try {
+            tx = sesion.beginTransaction();
+            
+            Query query = sesion.createQuery("SELECT COUNT(*) FROM Datos D WHERE D.detallePasantias.idDetallePasantia = :id_pro");
+            query.setLong("id_pro", idDetallePasantia);//fk de tb_proceso 14
+            numeroDatos=(long) query.uniqueResult();  
+            
+            tx.commit();
+
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            System.out.println("============== ERROR AL GUARDAR DATOS VALIDADOS CC =========");
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            //para cerrar seesion
+            sesion.close();
+        }
+        
+        if(numeroDatos > 0){
+            existe = true;
+        }
+        
+        return existe;
+    }
+    
 
 }

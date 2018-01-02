@@ -15,7 +15,9 @@
         <property name="fechaFin" type="date"></property>
         <property name="tiempoEsperaEstado" type="integer"></property>
         <property name="estado" type="boolean"></property>
-        <property name="cod_resolucion_consejo" type="string"></property>        
+        <property name="cod_resolucion_consejo" type="string"></property>
+        <property name="ced_tutor_asignado" type="long"></property>
+                
         
         
         <!-- ENVIO LA CLAVE PRIMARIA-->

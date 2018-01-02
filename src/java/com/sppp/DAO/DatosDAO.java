@@ -13,6 +13,7 @@ import com.sppp.beans.Pasantia;
 import com.sppp.beans.Respuesta;
 import com.sppp.beans.Usuario;
 import com.sppp.utils.HibernateUtil;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import org.hibernate.Query;
@@ -193,5 +194,169 @@ public class DatosDAO {
         
         return datosCartaC;
     }
+    
+    //METODO PARA TRAER TODOS LOS DATOS DE 1 ESTUDIANTE
+    public void guardarValidacionCC(List<Datos> datosValidados){
+        
+        
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+
+        Transaction tx = null;
+        Usuario usuario = null;
+        try {
+            tx = sesion.beginTransaction();
+            
+            for (Iterator<Datos> iterator = datosValidados.iterator(); iterator.hasNext();) {
+                Datos next = iterator.next();
+                sesion.update(next);
+            }
+            
+            tx.commit();
+
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            System.out.println("============== ERROR AL GUARDAR DATOS VALIDADOS CC =========");
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            //para cerrar seesion
+            sesion.close();
+        }
+        
+        
+    }
+    
+    public void guardarDatosBasicos(Usuario user, Empresa emp, Encargado enc, Pasantia pa, DetallePasantia dp){
+        
+        Respuesta idRespuesta = new Respuesta();
+        
+        //GUARDO LA DATA EN TABLA DATOS
+        
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+
+        Transaction tx = null;
+        try {
+            tx = sesion.beginTransaction();
+            
+            idRespuesta.setId_tbrespuesta(30);
+            Datos d30 = new Datos(user.getNombre(), dp, idRespuesta,true);
+            sesion.saveOrUpdate(d30);
+            
+            idRespuesta.setId_tbrespuesta(31);
+            Datos d31 = new Datos(user.getApellido(), dp, idRespuesta,true);
+            sesion.saveOrUpdate(d31);
+            
+            idRespuesta.setId_tbrespuesta(32);
+            Datos d32 = new Datos(user.getTelefono(), dp, idRespuesta,true);
+            sesion.saveOrUpdate(d32);
+            
+            idRespuesta.setId_tbrespuesta(33);
+            Datos d33 = new Datos(user.getCorreo(), dp, idRespuesta,true);
+            sesion.saveOrUpdate(d33);
+            
+            idRespuesta.setId_tbrespuesta(34);
+            Datos d34 = new Datos(user.getEstudiante().getUltimoNivel()+"", dp, idRespuesta,true);
+            sesion.saveOrUpdate(d34);
+            
+            idRespuesta.setId_tbrespuesta(35);
+            Datos d35 = new Datos(user.getEstudiante().getActividadRealizar(), dp, idRespuesta,true);
+            sesion.saveOrUpdate(d35);
+            
+            idRespuesta.setId_tbrespuesta(36);
+            Datos d36 = new Datos(pa.getTipo_ppp(), dp, idRespuesta,true);
+            sesion.saveOrUpdate(d36);
+            
+            idRespuesta.setId_tbrespuesta(37);
+            Datos d37 = new Datos(pa.getFechaInicio().toString(), dp, idRespuesta,true);
+            sesion.saveOrUpdate(d37);
+            
+            idRespuesta.setId_tbrespuesta(38);
+            Datos d38 = new Datos(pa.getFechaFin().toString(), dp, idRespuesta,true);
+            sesion.saveOrUpdate(d38);
+            
+            idRespuesta.setId_tbrespuesta(39);
+            Datos d39 = new Datos(emp.getId_empresa()+"", dp, idRespuesta,true);
+            sesion.saveOrUpdate(d39);
+            
+            idRespuesta.setId_tbrespuesta(40);
+            Datos d40 = new Datos(emp.getNombre_empresa(), dp, idRespuesta,true);
+            sesion.saveOrUpdate(d40);
+            
+            idRespuesta.setId_tbrespuesta(41);
+            Datos d41 = new Datos(emp.getNombre_gerente(), dp, idRespuesta,true);
+            sesion.saveOrUpdate(d41);
+            
+            idRespuesta.setId_tbrespuesta(42);
+            Datos d42 = new Datos(emp.getTelefono_empresa(), dp, idRespuesta,true);
+            sesion.saveOrUpdate(d42);
+            
+            idRespuesta.setId_tbrespuesta(43);
+            Datos d43 = new Datos(emp.getDireccion_empresa(), dp, idRespuesta,true);
+            sesion.saveOrUpdate(d43);
+            
+            idRespuesta.setId_tbrespuesta(44);
+            Datos d44 = new Datos(emp.getActividad_principal_empresa(), dp, idRespuesta,true);
+            sesion.saveOrUpdate(d44);
+            System.out.println(""); // NO BORRAR ESTE SOUT !!!
+            idRespuesta.setId_tbrespuesta(45);
+            Datos d45 = new Datos(enc.getCi_encargado()+"", dp, idRespuesta,true);
+            sesion.saveOrUpdate(d45);
+            
+            idRespuesta.setId_tbrespuesta(46);
+            Datos d46 = new Datos(enc.getNombre_encargado(), dp, idRespuesta,true);
+            sesion.saveOrUpdate(d46);
+            
+            idRespuesta.setId_tbrespuesta(47);
+            Datos d47 = new Datos(enc.getCargo_encargado(), dp, idRespuesta,true);
+            sesion.saveOrUpdate(d47);
+            
+            tx.commit();
+
+        } catch (NumberFormatException e) {
+            System.out.println("================ ERROR ACA =====================");
+            e.printStackTrace();
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            //para cerrar seesion
+            sesion.close();
+        }
+        
+    }
+    
+    public void actualizarDatosBasicos(Usuario user, Empresa emp, Encargado enc, Pasantia pa, DetallePasantia dp){
+        
+        //Traigo los datos
+        List<Datos> datosBasics = datosPorDetallePasantia(dp.getIdDetallePasantia());
+        
+        //Coloco el nuevo valor que el estudiante ingreso
+       datosBasics.get(0).setValor_datos(user.getNombre());
+       datosBasics.get(1).setValor_datos(user.getApellido());
+       datosBasics.get(2).setValor_datos(user.getTelefono());
+       datosBasics.get(3).setValor_datos(user.getCorreo());
+       datosBasics.get(4).setValor_datos(user.getEstudiante().getUltimoNivel()+"");
+       datosBasics.get(5).setValor_datos(user.getEstudiante().getActividadRealizar());
+       datosBasics.get(6).setValor_datos(pa.getTipo_ppp());
+       datosBasics.get(7).setValor_datos(pa.getFechaInicio().toString());
+       datosBasics.get(8).setValor_datos(pa.getFechaFin().toString());
+       datosBasics.get(9).setValor_datos(emp.getId_empresa()+"");
+       datosBasics.get(10).setValor_datos(emp.getNombre_empresa());
+       datosBasics.get(11).setValor_datos(emp.getNombre_gerente());
+       datosBasics.get(12).setValor_datos(emp.getTelefono_empresa());
+       datosBasics.get(13).setValor_datos(emp.getDireccion_empresa());
+       datosBasics.get(14).setValor_datos(emp.getActividad_principal_empresa());
+       datosBasics.get(15).setValor_datos(enc.getCi_encargado()+"");
+       datosBasics.get(16).setValor_datos(enc.getNombre_encargado());
+       datosBasics.get(17).setValor_datos(enc.getCargo_encargado());
+       
+       //Mando a guardar la lista
+        guardarValidacionCC(datosBasics);
+        
+    }
+    
 
 }

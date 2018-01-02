@@ -26,6 +26,14 @@ public class DetallePasantia {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public DetallePasantia(int idDetallePasantia, String descripcion, Pasantia pasantia) {
+        this.idDetallePasantia = idDetallePasantia;
+        this.descripcion = descripcion;
+        this.pasantia = pasantia;
+    }
+    
+    
+
     public VisitaTutor getVisitaTutor() {
         return visitaTutor;
     }

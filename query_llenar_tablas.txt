@@ -141,6 +141,7 @@ insert into tb_proceso(descripcion,estado,proceso_de) values ('descargar informe
 
 /*llenar tb_formato*/
 insert into tb_formato (nombre_formato,estado_formato) values ('FORMATO_LLENADO_CARTA_COMPROMISO',true);
+INSERT INTO tb_formato (nombre_formato,estado_formato) values ('FORMATO_ALUMNO_EMPREA',TRUE);
 
 
 
@@ -175,7 +176,24 @@ insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopre
 insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (28,'TelefonoNombresDelegadoUPS',true,1,1);
 insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (29,'LugarFechaSuscripcion',true,1,1);
 
-
+insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (30,'NombreEst',true,1,2);
+insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (31,'ApellidoEst',true,1,2);
+insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (32,'TelefonoEst',true,1,2);
+insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (33,'CorreoEst',true,1,2);
+insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (34,'NivelMasBajo',true,1,2);
+insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (35,'ActividadRealizar',true,3,2);/*3 = text area*/
+insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (36,'TipoPracticaPAPP',true,1,2);
+insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (37,'FechaTentInicio',true,1,2);
+insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (38,'FechaTentFin',true,1,2);
+insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (39,'RUC',true,1,2);
+insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (40,'NombreEmp',true,1,2);
+insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (41,'NomAppGerente',true,1,2);
+insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (42,'TelefonoEmp',true,1,2);
+insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (43,'DirEmp',true,1,2);
+insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (44,'ActiviEmp',true,1,2);
+insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (45,'CiEncarEmp',true,1,2);
+insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (46,'NomAppEncargado',true,1,2);
+insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (47,'CargoEncarg',true,1,2);
 
 
 
@@ -238,6 +256,24 @@ insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values
 insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (28,'para_telefonoNombresDelegadoUPS',28);
 insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (29,'para_lugarFechaSuscripcion',29);
 
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (30,'para_nombreEst',30);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (31,'para_apellidoEst',31);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (32,'para_telefonoEst',32);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (33,'para_correoEst',33);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (34,'para_nivelMasBajo',34);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (35,'para_actividadRealizar',35);/*3 = text area*/
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (36,'para_tipoPracticaPAPP',36);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (37,'para_fechaTentInicio',37);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (38,'para_fechaTentFin',38);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (39,'para_RUC',39);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (40,'para_nombreEmp',40);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (41,'para_nomAppGerente',41);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (42,'para_telefonoEmp',42);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (43,'para_dirEmp',43);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (44,'para_activiEmp',44);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (45,'para_ciEncarEmp',45);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (46,'para_nomAppEncargado',46);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (47,'para_cargoEncarg',47);
 
 
 /*llenar tb_empresa*/

@@ -7,12 +7,19 @@
      xmlns:f="http://xmlns.jcp.org/jsf/core"
      xmlns:b="http://bootsfaces.net/ui">
     
+    <ui:define name="encabezado">
+        <f:metadata>
+            <f:viewParam name="id" value="#{wizardDBValidacion.id_estudiante}" />
+            <f:event type="preRenderView" listener="#{wizardDBValidacion.init()}" />
+        </f:metadata>
+    </ui:define>
+    
     <ui:define name="title">
         Datos Basicos
     </ui:define>
     
     <ui:define name="barra-lateral">
-        <ui:include src="/snippets/menu_estudiante.xhtml" />
+        <ui:include src="/snippets/menu_encargado.xhtml" />
     </ui:define>
     
     <ui:define name="contenido">
@@ -28,7 +35,7 @@
         <div class="row">
             <div class="col-lg-12">
 
-                <b:form>
+                <b:form horizontal="true">
                     <b:carousel id="wizard" styleClass="wizardPseudoClass"
                                 style="width:400px; padding-top:20px"
                                 startAnimation="false"
@@ -37,35 +44,106 @@
                         <b:carouselItem style="width:400px; height:auto">
                             <b:panel title="Datos Estudiante" look="default">
                                 <!-- AQUI ABAJO FORMULARIO DINAMICO ESTUDIANTE-->
-                                <b:inputText value="#{userWizard.usuario.nombre}" label="Nombre:" disabled="true" tooltip="Nombres completos alumno"/>
-                                <b:inputText value="#{userWizard.usuario.apellido}" label="Apellido:" disabled="true" tooltip="Apellidos completos alumno"/>
-                                <b:inputText value="#{userWizard.usuario.telefono}" label="Tel&eacute;fono:" required="true" tooltip="N&uacute;mero celular"/>
-                                <b:inputText value="#{userWizard.usuario.correo}" label="Correo:" required="true" tooltip="Correo de preferencia"/>
-                                <b:inputText value="#{userWizard.usuario.estudiante.ultimoNivel}" label="Nivel m&aacute;s Bajo:" disabled="true"/>
-                                <b:inputTextarea value="#{userWizard.usuario.estudiante.actividadRealizar}" label="Actividad a Realizar:" required="true" tooltip="Describa aquellas a realizar"/>
+                                <b:inputText value="#{wizardDBValidacion.usuario.nombre}" label="Nombre:" disabled="true" tooltip="Nombres completos alumno">
+                                    <f:facet name="append">
+                                        <h:selectBooleanCheckbox value="true"/>
+                                    </f:facet>
+                                </b:inputText>
+                                <b:inputText value="#{wizardDBValidacion.usuario.apellido}" label="Apellido:" disabled="true" tooltip="Apellidos completos alumno">
+                                    <f:facet name="append">
+                                        <h:selectBooleanCheckbox value="true"/>
+                                    </f:facet>
+                                </b:inputText>
+                                <b:inputText value="#{wizardDBValidacion.usuario.telefono}" label="Tel&eacute;fono:" required="true" tooltip="N&uacute;mero celular">
+                                    <f:facet name="append">
+                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar3}"/>
+                                    </f:facet>
+                                </b:inputText>
+                                <b:inputText value="#{wizardDBValidacion.usuario.correo}" label="Correo:" required="true" tooltip="Correo de preferencia">
+                                    <f:facet name="append">
+                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar4}"/>
+                                    </f:facet>
+                                </b:inputText>
+                                <b:inputText value="#{wizardDBValidacion.usuario.estudiante.ultimoNivel}" label="Nivel m&aacute;s Bajo:" disabled="true">
+                                    <f:facet name="append">
+                                        <h:selectBooleanCheckbox value="true"/>
+                                    </f:facet>
+                                </b:inputText>
+                                <b:inputTextarea value="#{wizardDBValidacion.usuario.estudiante.actividadRealizar}" label="Actividad a Realizar:" required="true" tooltip="Describa aquellas a realizar">
+                                    <f:facet name="append">
+                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar6}"/>
+                                    </f:facet>
+                                </b:inputTextarea>
                                 <h:outputText value="Tipo de Pr&aacute;ctica" style="font-weight:bold"/>
                                 <h:message for="msgRadio" style="color: red"></h:message>
-                                <b:radiobutton  value="#{userWizard.p.tipo_ppp}" required="true" id="msgRadio" requiredMessage=" Escoja un tipo de pr&aacute;ctica: *" tooltip="Seleecionar una">
+                                <b:radiobutton  value="#{wizardDBValidacion.p.tipo_ppp}" required="true" id="msgRadio" requiredMessage=" Escoja un tipo de pr&aacute;ctica: *" tooltip="Seleecionar una">
                                     <f:selectItem itemLabel="Pasant&iacute;a" itemValue="PA"/>
                                     <f:selectItem itemLabel="Pr&aacute;ctica Pre Profesional" itemValue="PP"/>
+                                    <f:facet name="append">
+                                        <h:selectBooleanCheckbox value="true"/>
+                                    </f:facet>
                                 </b:radiobutton>
-                                <b:dateTimePicker value="#{userWizard.p.fechaInicio}" label="Fecha Tentativa Inicio:" show-time="false" required="true"/>
-                                <b:dateTimePicker value="#{userWizard.p.fechaFin}" label="Fecha Tentativa Fin" show-time="false" required="true"/>
+                                <b:inputText value="#{wizardDBValidacion.fechaInicioHelper}" label="Fecha Tentativa Inicio:" required="true">
+                                    <f:facet name="append">
+                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar8}"/>
+                                    </f:facet>
+                                </b:inputText>
+                                <b:inputText value="#{wizardDBValidacion.fechaFinHelper}" label="Fecha Tentativa Fin" required="true">
+                                    <f:facet name="append">
+                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar9}"/>
+                                    </f:facet>
+                                </b:inputText>
                                 
                             </b:panel>
                         </b:carouselItem>
                         <b:carouselItem style="width:400px;height:auto">
                             <b:panel title="Datos Empresa" look="default">
                                 <!-- AQUI ABAJO FORMULARIO DINAMICO EMPRESA-->
-                                <b:inputText value="#{userWizard.emp.id_empresa}" label="RUC:" required="true"/>
-                                <b:inputText value="#{userWizard.emp.nombre_empresa}" label="Nombre Empresa:" required="true"/>
-                                <b:inputText value="#{userWizard.emp.nombre_gerente}" label="Nombres y Apellidos Gerente Empresa:" required="true"/>
-                                <b:inputText value="#{userWizard.emp.telefono_empresa}" label="Tel&eacute;fono:" required="true"/>
-                                <b:inputText value="#{userWizard.emp.direccion_empresa}" label="Direcci&oacute;n:" required="true"/>
-                                <b:inputText value="#{userWizard.emp.actividad_principal_empresa}" label="Actividad Principal que Ejerce Empresa:" required="true"/>
-                                <b:inputText value="#{userWizard.enc.ci_encargado}" label="C&eacute;dula Encargado:" required="true"/>
-                                <b:inputText value="#{userWizard.enc.nombre_encargado}" label="Nombres y Apellidos Encargado:" required="true"/>
-                                <b:inputText value="#{userWizard.enc.cargo_encargado}" label="Cargo Encargado:" required="true"/>
+                                <b:inputText value="#{wizardDBValidacion.emp.id_empresa}" label="RUC:" required="true">
+                                    <f:facet name="append">
+                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar10}"/>
+                                    </f:facet>
+                                </b:inputText>
+                                <b:inputText value="#{wizardDBValidacion.emp.nombre_empresa}" label="Nombre Empresa:" required="true">
+                                    <f:facet name="append">
+                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar11}"/>
+                                    </f:facet>
+                                </b:inputText>
+                                <b:inputText value="#{wizardDBValidacion.emp.nombre_gerente}" label="Nombres y Apellidos Gerente Empresa:" required="true">
+                                    <f:facet name="append">
+                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar12}"/>
+                                    </f:facet>
+                                </b:inputText>
+                                <b:inputText value="#{wizardDBValidacion.emp.telefono_empresa}" label="Tel&eacute;fono:" required="true">
+                                    <f:facet name="append">
+                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar13}"/>
+                                    </f:facet>
+                                </b:inputText>
+                                <b:inputText value="#{wizardDBValidacion.emp.direccion_empresa}" label="Direcci&oacute;n:" required="true">
+                                    <f:facet name="append">
+                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar14}"/>
+                                    </f:facet>
+                                </b:inputText>
+                                <b:inputText value="#{wizardDBValidacion.emp.actividad_principal_empresa}" label="Actividad Principal que Ejerce Empresa:" required="true">
+                                    <f:facet name="append">
+                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar15}"/>
+                                    </f:facet>
+                                </b:inputText>
+                                <b:inputText value="#{wizardDBValidacion.enc.ci_encargado}" label="C&eacute;dula Encargado:" required="true">
+                                    <f:facet name="append">
+                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar16}"/>
+                                    </f:facet>
+                                </b:inputText>
+                                <b:inputText value="#{wizardDBValidacion.enc.nombre_encargado}" label="Nombres y Apellidos Encargado:" required="true">
+                                    <f:facet name="append">
+                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar17}"/>
+                                    </f:facet>
+                                </b:inputText>
+                                <b:inputText value="#{wizardDBValidacion.enc.cargo_encargado}" label="Cargo Encargado:" required="true">
+                                    <f:facet name="append">
+                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar18}"/>
+                                    </f:facet>
+                                </b:inputText>
                             </b:panel>
                         </b:carouselItem>
                         <b:carouselControl direction="right" >
@@ -75,7 +153,7 @@
                         </b:carouselControl>
                         <b:carouselControl>
                             
-                            <b:commandButton value="Enviar" style="position:absolute;right:0px" action="#{userWizard.guardarDatos()}" 
+                            <b:commandButton value="Enviar" style="position:absolute;right:0px" action="#{wizardDBValidacion.guardarDatos()}" 
                                       look="success" />
                         </b:carouselControl>
                         <b:carouselControl direction="left">

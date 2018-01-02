@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="/templates/main.xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:define name="encabezado">
+        <f:metadata>
+            <f:viewParam name="id" value="#{detallePasantiaBean.id_tabla}" />
+            <f:event type="preRenderView" listener="#{detallePasantiaBean.init()}" />
+        </f:metadata>
+    </ui:define>
+    
+    
+    
+    <ui:define name="title">
+        Gestor. Listas
+    </ui:define>
+
+    <ui:define name="barra-lateral">
+        <ui:include src="/snippets/menu_encargado.xhtml" />
+    </ui:define>
+
+    <ui:define name="contenido">
+
+        <br/>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Listado de revisi&oacute;n</h1>
+            </div>
+        </div>
+
+    <!-- INICIO DE LA TABLA -->
+
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Listado de Procesos Activos
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+
+                        <h:form>
+                            <b:dataTable value="#{detallePasantiaBean.empData3}"
+                                         var="dpalltrue2" >
+                                <b:dataTableColumn value="#{dpalltrue2[0].toString()}" label="Ci Est" />
+                                <b:dataTableColumn value="#{dpalltrue2[1].toString()}" label="Tipo"/>
+                                <b:dataTableColumn value="#{dpalltrue2[2].toString()}" label="C&oacute;digo"/>
+                                <b:dataTableColumn value="#{dpalltrue2[4].toString()}" label="Descripci&oacute;n"/>
+                                 <b:dataTableColumn label="Accion">
+                                     <h:link value="Ir a detalle" outcome="validarDatosBasicos">
+                <f:param name="id" value="#{dpalltrue2[0].toString()}" />
+            </h:link>
+                                 </b:dataTableColumn>
+                            </b:dataTable>
+                        </h:form>
+                        
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+
+        <!-- FIN DE LA TABLA -->
+
+        <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+        <script>
+            $(document).ready(function () {
+                $('#dataTables-example').DataTable({
+                    responsive: true
+                });
+            });
+        </script>
+
+    </ui:define>
+
+</ui:composition>

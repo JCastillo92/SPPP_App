@@ -36,6 +36,29 @@ public class Datos {
         this.estado = estado;
     }
 
+    public Datos(long id_tbdatos, boolean estado) {
+        this.id_tbdatos = id_tbdatos;
+        this.estado = estado;
+    }
+    
+    
+
+    public Datos(long id_tbdatos, Respuesta respuesta, boolean estado) {
+        this.id_tbdatos = id_tbdatos;
+        this.respuesta = respuesta;
+        this.estado = estado;
+    }
+
+    public Datos(long id_tbdatos, DetallePasantia detallePasantias, Respuesta respuesta, boolean estado) {
+        this.id_tbdatos = id_tbdatos;
+        this.detallePasantias = detallePasantias;
+        this.respuesta = respuesta;
+        this.estado = estado;
+    }
+    
+    
+    
+
     public Datos(String valor_datos, DetallePasantia detallePasantias, Respuesta respuesta) {
         this.valor_datos = valor_datos;
         this.detallePasantias = detallePasantias;
@@ -78,6 +101,14 @@ public class Datos {
     }
 
     public Datos() {
+    }
+
+    public Datos(long id_tbdatos, String valor_datos, DetallePasantia detallePasantias, Respuesta respuesta, boolean estado) {
+        this.id_tbdatos = id_tbdatos;
+        this.valor_datos = valor_datos;
+        this.detallePasantias = detallePasantias;
+        this.respuesta = respuesta;
+        this.estado = estado;
     }
 
     

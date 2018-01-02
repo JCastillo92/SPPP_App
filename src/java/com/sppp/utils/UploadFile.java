@@ -205,12 +205,66 @@ public class UploadFile extends WizardDB{
                 }
         break;
             case 3:
+         try {
                 //envio mail a encargado mail para que revise scan de REVISIÓN DE CARTA COMPROMISO
-        primer_mensaje.mensajes(1003,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");        
+        primer_mensaje.mensajes(1003,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");  
+            
+                HttpSession session = SessionUtils.getSession();
+                long id;
+                id = (long) session.getAttribute("id");
+
+                p = ppDAO.findPasantia(id);
+
+                //Encontrar el detalle de esa pasantia cuyo proceso sea 11 (proceso actual, cursando, este va a ser actualizado)
+                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),11);
+
+                //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
+                dp.setValidacion(EnumEstado.validar);
+                dp.setEstado(false);
+                dpDAO.actualizarDetallePasantia(dp);
+
+            //Paso a agregar el nuevo proceso
+            DetallePasantia dp3 = new DetallePasantia();
+            dp3.setDescripcion("Solicitar Inicio Actividades");
+            dp3.setEstado(true);
+            dp3.setPasantia(p);
+            dp3.setProceso(new Proceso(14));
+            dp3.setValidacion(EnumEstado.llenar);
+            dpDAO.insertarNuevoDetalle(dp3);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 break;
             case 4:
+        try {
                 //envio mail a encargado mail para que revise scan de REVISIÓN DE INICIAR PASANTÍA
-        primer_mensaje.mensajes(1004,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");                
+        primer_mensaje.mensajes(1004,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
+            
+                HttpSession session = SessionUtils.getSession();
+                long id;
+                id = (long) session.getAttribute("id");
+
+                p = ppDAO.findPasantia(id);
+
+                //Encontrar el detalle de esa pasantia cuyo proceso sea 14 (proceso actual, cursando, este va a ser actualizado)
+                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),14);
+
+                //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
+                dp.setValidacion(EnumEstado.validar);
+                dp.setEstado(false);
+                dpDAO.actualizarDetallePasantia(dp);
+
+            //Paso a agregar el nuevo proceso
+            DetallePasantia dp3 = new DetallePasantia();
+            dp3.setDescripcion("Resolucion de Proceso");
+            dp3.setEstado(true);
+            dp3.setPasantia(p);
+            dp3.setProceso(new Proceso(17));
+            dp3.setValidacion(EnumEstado.llenar);
+            dpDAO.insertarNuevoDetalle(dp3);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 break;
             default:
                 break;

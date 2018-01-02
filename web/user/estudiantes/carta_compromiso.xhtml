@@ -41,8 +41,8 @@
                             <b:panel title="Informaci&oacute;n General" look="default">
                                 <b:inputText value="#{wizardCartaCompromiso.pasantia.tipo_ppp}" label="C&oacute;digo:" disabled="true" tooltip="Tipo pasant&iacute;a o pr&acirc;ctica pre profesional"/>
                                 <b:inputText value="#{wizardCartaCompromiso.pasantia.cod_ppp}" label="No.:" disabled="true" tooltip="N&uacute;merro relacionado al c&oacute;digo"/>
-                                <b:inputText value="#{wizardCartaCompromiso.empresa.nombre_empresa}" label="Nombre de la empresa o instituci&oacute;n:" disabled="true" tooltip="Nombre de la empresa o instituci&oacute;n"/>
-                                <b:inputTextarea value="#{wizardCartaCompromiso.objetoDeLaActividad}" label="Objeto de la Actividad Acad&eacute;mica:" placeholder="Describir todas las actividades." tooltip="Describir el objeto de actividad acad&eacute;mica" required="true"/>
+                                <b:inputText value="#{wizardCartaCompromiso.empresa.nombre_empresa}" label="Nombre de la empresa o instituci&oacute;n:" disabled="true" />
+                                <b:inputTextarea value="#{wizardCartaCompromiso.objetoDeLaActividad}" label="Objeto de la Actividad Acad&eacute;mica:" placeholder="Describir todas las actividades." tooltip="Listar" required="true"/>
                                 <b:inputText value="#{wizardCartaCompromiso.carrera_grado}" label="Carrera de Grado:" disabled="true" tooltip="Carrera a la que pertenece"/>
                                 <b:inputText value="#{wizardCartaCompromiso.usuario.estudiante.ultimoNivel}" label="Ciclo o Semestre que Cursa:" disabled="true" tooltip="Semestre en curso"/>
                             </b:panel>
@@ -53,7 +53,7 @@
                         <b:carouselItem style="width:400px;height:auto">
                             <b:panel title="Descripci&oacute;n Estrat&eacute;gica de Intervenci&oacute;n" look="default">
                                 <b:inputText value="#{wizardCartaCompromiso.tipo_actividad_academica}" label="Tipo Actividad Acad&eacute;mica:" disabled="true" tooltip="PA o PP"/>
-                                <b:inputText value="#{wizardCartaCompromiso.usuario.estudiante.horasPasantia}" label="Total Horas:" placeholder="Ejemplo: 200" tooltip="Horas" required="true"/>
+                                <b:inputText value="#{wizardCartaCompromiso.usuario.estudiante.horasPasantia}" label="Total Horas:" placeholder="Ejemplo: 200" tooltip="N&uacute;mero entero" required="true"/>
                                 
                                 <b:inputText value="#{wizardCartaCompromiso.pasantia.fechaInicio}" label="Fecha Inicio:" tooltip="Fecha inicio actividades" disabled="true"/>
                                 <b:inputText value="#{wizardCartaCompromiso.pasantia.fechaFin}" label="Fecha Fin:"  tooltip="Fecha fin actividades" disabled="true"/>

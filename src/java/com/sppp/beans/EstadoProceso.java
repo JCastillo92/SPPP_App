@@ -118,9 +118,7 @@ public class EstadoProceso {
 
             case 0:
                 ruta = "info_pasantia";
-
                 break;
-
             case 1:
                 ruta = "info_pasantia";
                 break;
@@ -129,16 +127,6 @@ public class EstadoProceso {
                 ruta = "subir_archivo";
 
                 break;
-
-            case 7:
-                ruta = "carta_compromiso";
-                break;
-
-            case 11:
-                ruta = "solicitud_vfinal";
-
-                break;
-
             case 5:
                 ruta = "subir_archivo_iniciopasantia";
                 break;
@@ -147,6 +135,16 @@ public class EstadoProceso {
                 ruta = "";
 
                 break;
+            case 7:
+                ruta = "carta_compromiso";
+                break;
+
+            case 11:
+                ruta = "subir_archivo_cartacompromiso";
+
+                break;
+
+        
             
             case 20:
                 ruta = "confirma_cita_est";

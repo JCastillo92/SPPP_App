@@ -334,6 +334,7 @@ private Usuario usuario = new Usuario();
         }
         
     }
+      
      public void updateVisita(long id_visita, String tutor, String apellido,String correo, String dia ,Date fecha, String hora,String est, String ap_est,String co_est,String tele_est ){
       
         fechaConFormato = sdf_data.format(fecha); 
@@ -346,12 +347,20 @@ private Usuario usuario = new Usuario();
      
                   System.out.println("jaaaaaaaaaaaaaaaaaaaaaaa"+id_visita);
       }
+     public void updateCantidadVisita(long id_visita2){
+          Tutor newTutor = new Tutor();
+          VisitaDAO visitaDAO = new VisitaDAO();
+          visitaDAO.updateCantidadTutor(id_visita2, newTutor);
+                    System.out.println("jaaaaaaaaaaaaaaaaaaaaaaajeeeeeeee"+id_visita2);
+      }
      
-      public String updateVisitaAgendada(long id_visita2){
+      public String updateVisitaAgendada(long id_visita2, String cedula){
+          long cedu= Long.parseLong(cedula);
           VisitaTutor newVisitaTutor = new VisitaTutor();
           VisitaDAO visitaDAO = new VisitaDAO();
           visitaDAO.updateVisitaAgendada(id_visita2, newVisitaTutor);
                     System.out.println("jaaaaaaaaaaaaaaaaaaaaaaajeeeeeeee"+id_visita2);
+                    updateCantidadVisita(cedu);
                     return "agendar_cita_tut";
       }
      

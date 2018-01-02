@@ -6,6 +6,7 @@
 package com.sppp.DAO;
 
 
+import com.sppp.beans.Tutor;
 import com.sppp.beans.VisitaTutor;
 import com.sppp.utils.HibernateUtil;
 import java.util.logging.Level;
@@ -73,6 +74,26 @@ Session session = HibernateUtil.getSessionFactory().openSession();
              trns= session.beginTransaction();
              VisitaTutor oldVisita =(VisitaTutor) session.load(VisitaTutor.class, new Long(cedula_tut));
              oldVisita.setEstado_visita("Visitado");
+             session.update(oldVisita);
+             trns.commit();
+         } catch (RuntimeException e) {
+         e.printStackTrace();
+         if(trns !=null){
+             trns.rollback();
+         }
+         e.printStackTrace();
+         }finally{
+             session.close();
+         }
+}
+       public void updateCantidadTutor(long cedula_tut,Tutor newVisita){
+Transaction trns= null;
+Session session = HibernateUtil.getSessionFactory().openSession();
+         try {
+             trns= session.beginTransaction();
+             Tutor oldVisita =(Tutor) session.load(Tutor.class, new Long(cedula_tut));
+             int cantidad = oldVisita.getCant_visitas();
+             oldVisita.setCant_visitas(cantidad +1);
              session.update(oldVisita);
              trns.commit();
          } catch (RuntimeException e) {

@@ -180,7 +180,7 @@
                   <h:dataTable var="campo" value="#{citasAgendadas.getVisitasRealizadas(datosFormatos.id)}" >
                                <h:column>
                            
-                                   <b:button outcome="agendar_cita_tut.xhtml" rendered="#{tablasFormatos.paso == false eq false}" class="btn btn-success btn-xl" ondblclick="#{controllerBean.updateVisitaAgendada(campo.id_visita)}" icon="ok"  >
+                                   <b:button outcome="agendar_cita_tut.xhtml" rendered="#{tablasFormatos.paso == false eq false}" class="btn btn-success btn-xl" ondblclick="#{controllerBean.updateVisitaAgendada(campo.id_visita,login.user)}" icon="ok"  >
                              
                            </b:button>    </h:column>
                        </h:dataTable>

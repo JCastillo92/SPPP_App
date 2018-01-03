@@ -344,6 +344,7 @@ private Usuario usuario = new Usuario();
           VisitaDAO visitaDAO = new VisitaDAO();
           visitaDAO.updateVisita(id_visita, newVisitaTutor);
           //agregar();
+          visitaDAO.confirmacion();
      
                   System.out.println("jaaaaaaaaaaaaaaaaaaaaaaa"+id_visita);
       }
@@ -415,6 +416,7 @@ public void sendConfirmacion(String tutor, String apellido, String correo, Strin
      
     MailingMain por = new MailingMain();
       por.mensajes(7, correo, observaciones);
+      
     
 }
 
@@ -449,6 +451,9 @@ public void sendValidacion(String correo,String nombre,String apellido,String ce
 
   
     public void enviarCita(String id, String id2,String alumno, String apellido,String correo ){
+        
+        
+        
         
         horaConFormato= sdf_time.format(time);
         fechaConFormato = sdf_data.format(data); 
@@ -496,7 +501,6 @@ public void sendValidacion(String correo,String nombre,String apellido,String ce
         
         guardarDatos(id, id2,dia1);
         
-     
     }
    
    

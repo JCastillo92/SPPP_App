@@ -29,6 +29,7 @@ public class Cls_OutOfSystem {
 				pass=resultSet.getString(1);
 			}
          } catch (Exception e) {
+             pass="NO SE HA PODIDO VALIDAR LOS DATOS PARA LA RECUPERACION DE CLAVE";
              e.getMessage();
          }
        try {

@@ -186,9 +186,12 @@ public class DetallePasantiaDAO {
         Transaction tx=null;    
          try {
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("FROM DetallePasantia D WHERE D.proceso.id_proceso = :proc AND D.validacion = :num");
+            Query query = sesion.createQuery("FROM DetallePasantia D WHERE D.proceso.id_proceso = :proc "
+                    + "AND D.validacion = :num "
+                    + "AND D.estado = :verdad");
             query.setLong("proc", 14);
             query.setInteger("num", 1);
+            query.setBoolean("verdad", true);
             todosDetPasCC= query.list();       
             tx.commit();
         }catch (Exception e) {
@@ -211,9 +214,12 @@ public class DetallePasantiaDAO {
          try {
 
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("SELECT COUNT(*) FROM DetallePasantia D WHERE D.proceso.id_proceso = :id_pro AND D.validacion = :vali");
+            Query query = sesion.createQuery("SELECT COUNT(*) FROM DetallePasantia D WHERE D.proceso.id_proceso = :id_pro "
+                    + "AND D.validacion = :vali "
+                    + "AND D.estado = :verdad");
             query.setLong("id_pro", 1);//fk de tb_proceso 1
             query.setInteger("vali", 1);
+            query.setBoolean("verdad", true);
             numeroIngresoDatosBasicos=(long) query.uniqueResult();       
             tx.commit();
         }catch (Exception e) {
@@ -238,9 +244,12 @@ public class DetallePasantiaDAO {
          try {
 
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("SELECT COUNT(*) FROM DetallePasantia D WHERE D.proceso.id_proceso = :id_pro AND D.validacion = :vali");
+            Query query = sesion.createQuery("SELECT COUNT(*) FROM DetallePasantia D WHERE D.proceso.id_proceso = :id_pro "
+                    + "AND D.validacion = :vali "
+                    + "AND D.estado = :verdad");
             query.setLong("id_pro", 7);//fk de tb_proceso 7
             query.setInteger("vali", 1);
+            query.setBoolean("verdad", true);
             numeroCartasCompromiso=(long) query.uniqueResult();    
             tx.commit();
         }catch (Exception e) {
@@ -265,9 +274,12 @@ public class DetallePasantiaDAO {
          try {
 
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("SELECT COUNT(*) FROM DetallePasantia D WHERE D.proceso.id_proceso = :id_pro AND D.validacion = :vali");
+            Query query = sesion.createQuery("SELECT COUNT(*) FROM DetallePasantia D WHERE D.proceso.id_proceso = :id_pro "
+                    + "AND D.validacion = :vali "
+                    + "AND D.estado = :verdad");
             query.setLong("id_pro", 14);//fk de tb_proceso 14
             query.setInteger("vali", 1);
+            query.setBoolean("verdad", true);
             numeroInicioActividades=(long) query.uniqueResult();       
 
             tx.commit();

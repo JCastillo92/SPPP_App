@@ -175,12 +175,7 @@ public class WizardCartaCompromiso extends WizardCC {
         dp2.setValidacion(EnumEstado.validar);
         dpDAO.actualizarDetallePasantia(dp2);
         
-        
-        //comienzo tutor
-       
-        VisitaDAO visitadao = new VisitaDAO();
-        visitadao.confirmacion();
-        //Incrementar cargo en la BD;
+                //Incrementar cargo en la BD;
         
         //aqui llamar a crear la carta de compromiso
         return redireccion;

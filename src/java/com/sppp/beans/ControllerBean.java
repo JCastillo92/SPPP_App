@@ -344,7 +344,7 @@ private Usuario usuario = new Usuario();
           VisitaDAO visitaDAO = new VisitaDAO();
           visitaDAO.updateVisita(id_visita, newVisitaTutor);
           //agregar();
-          visitaDAO.confirmacion();
+          
      
                   System.out.println("jaaaaaaaaaaaaaaaaaaaaaaa"+id_visita);
       }
@@ -355,13 +355,15 @@ private Usuario usuario = new Usuario();
                     System.out.println("jaaaaaaaaaaaaaaaaaaaaaaajeeeeeeee"+id_visita2);
       }
      
-      public String updateVisitaAgendada(long id_visita2, String cedula){
+      public String updateVisitaAgendada(long id_visita2, String cedula,String ced_est){
           long cedu= Long.parseLong(cedula);
           VisitaTutor newVisitaTutor = new VisitaTutor();
           VisitaDAO visitaDAO = new VisitaDAO();
           visitaDAO.updateVisitaAgendada(id_visita2, newVisitaTutor);
                     System.out.println("jaaaaaaaaaaaaaaaaaaaaaaajeeeeeeee"+id_visita2);
                     updateCantidadVisita(cedu);
+                    
+                    visitaDAO.visita_tut(cedula, id_visita2, ced_est);
                     return "agendar_cita_tut";
       }
      
@@ -416,7 +418,8 @@ public void sendConfirmacion(String tutor, String apellido, String correo, Strin
      
     MailingMain por = new MailingMain();
       por.mensajes(7, correo, observaciones);
-      
+       VisitaDAO vi = new VisitaDAO();
+       vi.solicitud();
     
 }
 
@@ -445,6 +448,9 @@ public void sendValidacion(String correo,String nombre,String apellido,String ce
   MailingMain por = new MailingMain();
       por.mensajes(8, correo, observación);
       paso=true;
+      
+      VisitaDAO vi = new VisitaDAO();
+      vi.autoevaluacion();
       
  }
 

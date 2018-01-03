@@ -16,6 +16,7 @@ import com.sppp.utils.HibernateUtil;
 import com.sppp.utils.SessionUtils;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.faces.bean.ManagedBean;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -25,9 +26,22 @@ import javax.servlet.http.HttpSession;
  *
  * @author DidiAndy
  */
+@ManagedBean
 public class VisitaDAO {
+    private Tutor tutor= new Tutor();
+   private VisitaTutor visita = new VisitaTutor();
       DetallePasantia dp = new DetallePasantia();
     Pasantia p = new Pasantia();
+
+    public Tutor getTutor() {
+        return tutor;
+    }
+
+    public VisitaTutor getVisita() {
+        return visita;
+    }
+    
+    
      public void guardarDatosVisita(VisitaTutor visita){
         
         SessionFactory sf=HibernateUtil.getSessionFactory();
@@ -221,6 +235,115 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                     e.printStackTrace();
                 }
 }
+     
+      public void autoevaluacion(){
+            DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
+        
+        PasantiaDAO ppDAO = new PasantiaDAO();
+          try {
+                    
+                HttpSession session = SessionUtils.getSession();
+                long id;
+                id = (long) session.getAttribute("id");
+
+                p = ppDAO.findPasantia(id);
+
+                //Encontrar el detalle de esa pasantia cuyo proceso sea 4 (proceso actual, cursando, este va a ser actualizado)
+                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),21);
+
+                //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
+                dp.setValidacion(EnumEstado.validar);
+                dp.setEstado(false);
+                dpDAO.actualizarDetallePasantia(dp);
+
+            //Paso a agregar el nuevo proceso
+            DetallePasantia dp3 = new DetallePasantia();
+            dp3.setDescripcion("Autoevaluación");
+            dp3.setEstado(true);
+            dp3.setPasantia(p);
+            dp3.setProceso(new Proceso(23));
+            dp3.setValidacion(EnumEstado.llenar);
+            dpDAO.insertarNuevoDetalle(dp3);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+}
+     
       
+      public void documentacion_est(){
+            DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
+        
+        PasantiaDAO ppDAO = new PasantiaDAO();
+          try {
+                    
+                HttpSession session = SessionUtils.getSession();
+                long id;
+                id = (long) session.getAttribute("id");
+
+                p = ppDAO.findPasantia(id);
+
+                //Encontrar el detalle de esa pasantia cuyo proceso sea 4 (proceso actual, cursando, este va a ser actualizado)
+                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),23);
+
+                //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
+                dp.setValidacion(EnumEstado.validar);
+                dp.setEstado(false);
+                dpDAO.actualizarDetallePasantia(dp);
+
+            //Paso a agregar el nuevo proceso
+            DetallePasantia dp3 = new DetallePasantia();
+            dp3.setDescripcion("Descargar/Subir documentos validación");
+            dp3.setEstado(true);
+            dp3.setPasantia(p);
+            dp3.setProceso(new Proceso(25));
+            dp3.setValidacion(EnumEstado.llenar);
+            dpDAO.insertarNuevoDetalle(dp3);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+}
+      
+    public void visita_tut(String ce_tutor,long id_visita,String id){
+            DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
+        
+        PasantiaDAO ppDAO = new PasantiaDAO();
+          try {
+                    
+               
+                long id3=Long.parseLong(id) ;
+                
+                p = ppDAO.findPasantia(id3);
+
+                //Encontrar el detalle de esa pasantia cuyo proceso sea 4 (proceso actual, cursando, este va a ser actualizado)
+                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),25);
+
+                //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
+                dp.setValidacion(EnumEstado.validar);
+                //dp.setEstado(false);
+                dpDAO.actualizarDetallePasantia(dp);
+
+            //Paso a agregar el nuevo proceso
+            DetallePasantia dp3 = new DetallePasantia();
+            
+             Long id1=Long.parseLong(ce_tutor);
+             
+            
+       tutor.setCedula(id1);
+            
+            
+            visita.setId_visita(id_visita);
+            
+            dp3.setDescripcion("Visita tut");
+            dp3.setEstado(false);
+            dp3.setPasantia(p);
+            dp3.setProceso(new Proceso(30));
+            dp3.setValidacion(EnumEstado.llenar);
+            dpDAO.insertarNuevoDetalle(dp3);
+            dp3.setTutor(tutor);
+            dp3.setVisitaTutor(visita);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+}  
       
 }

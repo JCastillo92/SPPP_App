@@ -113,7 +113,7 @@ public class LoginFilter implements Filter {
                  if(obj1.perfilChooser(perfil).equals("Consejo")){
                     
                     if(reqURI.indexOf("/user/administrador/") >= 1 || reqURI.indexOf("/user/coordinador/") >= 1 || reqURI.indexOf("/user/estudiantes/") >= 1 || reqURI.indexOf("/user/gestores/") >= 1 || reqURI.indexOf("/user/secretaria/") >= 1 || reqURI.indexOf("/user/tutor/") >= 1){
-                        resp.sendRedirect(reqt.getContextPath() + "/faces/user/consejo/councel.xhtml");
+                        resp.sendRedirect(reqt.getContextPath() + "/faces/user/consejo/dashboard_consejo.xhtml");
                     }
                     
                     //Para acceder a paginas de consejo o publicas
@@ -121,7 +121,7 @@ public class LoginFilter implements Filter {
                         
                         //No debe volver al login
                         if (reqURI.indexOf("/public/login.xhtml") >= 0){
-                            resp.sendRedirect(reqt.getContextPath() + "/faces/user/consejo/councel.xhtml");
+                            resp.sendRedirect(reqt.getContextPath() + "/faces/user/consejo/dashboard_consejo.xhtml");
                         }else{
                             chain.doFilter(request, response);
                         }
@@ -130,7 +130,7 @@ public class LoginFilter implements Filter {
                   if(obj1.perfilChooser(perfil).equals("Secretaria")){
                     
                     if(reqURI.indexOf("/user/administrador/") >= 1 || reqURI.indexOf("/user/consejo/") >= 1 || reqURI.indexOf("/user/coordinador/") >= 1 || reqURI.indexOf("/user/estudiantes/") >= 1 || reqURI.indexOf("/user/gestores/") >= 1 || reqURI.indexOf("/user/tutor/") >= 1){
-                        resp.sendRedirect(reqt.getContextPath() + "/faces/user/secretaria/secretary.xhtml");
+                        resp.sendRedirect(reqt.getContextPath() + "/faces/user/secretaria/dashboard_secretaria.xhtml");
                     }
                     
                     //Para acceder a paginas de secretaria o publicas
@@ -138,7 +138,7 @@ public class LoginFilter implements Filter {
                         
                         //No debe volver al login
                         if (reqURI.indexOf("/public/login.xhtml") >= 0){
-                            resp.sendRedirect(reqt.getContextPath() + "/faces/user/secretaria/secretary.xhtml");
+                            resp.sendRedirect(reqt.getContextPath() + "/faces/user/secretaria/dashboard_secretaria.xhtml");
                         }else{
                             chain.doFilter(request, response);
                         }

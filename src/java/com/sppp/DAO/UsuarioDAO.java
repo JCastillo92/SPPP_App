@@ -48,4 +48,23 @@ public class UsuarioDAO {
         return usu;
     }
     
+    
+    public void updateUserPassword(Usuario userNewPass){
+         SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction tx = null;
+        try {
+            tx = sesion.beginTransaction();
+            sesion.update(userNewPass);
+            tx.commit();
+        } catch (Exception e) {
+            
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            //para cerrar seesion
+            sesion.close();
+        }
+    }
 }

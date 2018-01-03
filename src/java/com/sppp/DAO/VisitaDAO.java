@@ -6,25 +6,33 @@
 package com.sppp.DAO;
 
 
+import com.sppp.beans.DetallePasantia;
+import com.sppp.beans.EnumEstado;
+import com.sppp.beans.Pasantia;
+import com.sppp.beans.Proceso;
 import com.sppp.beans.Tutor;
 import com.sppp.beans.VisitaTutor;
 import com.sppp.utils.HibernateUtil;
+import com.sppp.utils.SessionUtils;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author DidiAndy
  */
 public class VisitaDAO {
+      DetallePasantia dp = new DetallePasantia();
+    Pasantia p = new Pasantia();
      public void guardarDatosVisita(VisitaTutor visita){
         
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
-        
+       
         Transaction tx=null;
        
         try {
@@ -143,9 +151,39 @@ Session session = HibernateUtil.getSessionFactory().openSession();
          }finally{
              session.close();
          }
-
-          
-          
+   
       }
    
+      public void agendacion(){
+            DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
+        
+        PasantiaDAO ppDAO = new PasantiaDAO();
+          try {
+                    
+                HttpSession session = SessionUtils.getSession();
+                long id;
+                id = (long) session.getAttribute("id");
+
+                p = ppDAO.findPasantia(id);
+
+                //Encontrar el detalle de esa pasantia cuyo proceso sea 4 (proceso actual, cursando, este va a ser actualizado)
+                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),7);
+
+                //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
+                dp.setValidacion(EnumEstado.validar);
+                dp.setEstado(false);
+                dpDAO.actualizarDetallePasantia(dp);
+
+            //Paso a agregar el nuevo proceso
+            DetallePasantia dp3 = new DetallePasantia();
+            dp3.setDescripcion("Agendación cita");
+            dp3.setEstado(true);
+            dp3.setPasantia(p);
+            dp3.setProceso(new Proceso(29));
+            dp3.setValidacion(EnumEstado.aprobar);
+            dpDAO.insertarNuevoDetalle(dp3);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+      }
 }

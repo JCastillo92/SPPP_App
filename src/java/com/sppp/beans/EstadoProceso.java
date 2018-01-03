@@ -144,23 +144,26 @@ public class EstadoProceso {
             case 17:
                 ruta ="";
                 break;
+            case 18:
+                ruta ="confirma_cita_est";
+                break;
             case 20:
-                ruta = "confirma_cita_est";
+                ruta = "";
                 break;
             case 21:
                 ruta = "solicitud_vfinal";
                 break;    
             case 22:
-                ruta = "autoEvaluacion";
+                ruta = "";
                 break; 
             case 23:
-                ruta = "";//Pasa subir Certificado empresa y comprobante
+                ruta = "autoEvaluacion";
                 break;
             case 24:
                 ruta = ""; 
                 break; 
             case 25:
-                ruta = "";
+                ruta = "documentos_est";
                 break;     
         }
 

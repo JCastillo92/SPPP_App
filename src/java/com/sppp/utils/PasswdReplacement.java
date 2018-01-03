@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
  */
 @ManagedBean
 public class PasswdReplacement {
+
     private String passMain;
     private String pass1;
     private String pass2;
@@ -53,65 +54,59 @@ public class PasswdReplacement {
         this.pass2 = pass2;
     }
 
- 
-
-   
-    
-    
-    
-      public String cambiarPassword(){
-        long id=0;
-        int perfil=0;
-        String retorno="/public/login";
+    public String cambiarPassword() {
+        long id = 0;
+        int perfil = 0;
+        String retorno = "/public/login";
         try {
             HttpSession session = SessionUtils.getSession();
-                id = (long) session.getAttribute("id");
-                perfil= (int) session.getAttribute("perfil");
-                
-                if(id != 0){
-                    if(pass1.equals(pass2)){
-                        ChangePassword objPass=new ChangePassword();
-                        verdadPass=objPass.setNewPasswd(id,passMain,pass1);
-                        if(verdadPass){
-                            switch(perfil){
-                                case 1://estudiante
-                                        retorno="dashboard_est";
+            id = (long) session.getAttribute("id");
+            perfil = (int) session.getAttribute("perfil");
+
+            if (id != 0) {
+                if (pass1.equals(pass2)) {
+                    ChangePassword objPass = new ChangePassword();
+                    verdadPass = objPass.setNewPasswd(id, passMain, pass1);
+                    if (verdadPass) {
+                        switch (perfil) {
+                            case 1://estudiante
+                                retorno = "dashboard_est";
                                 break;
-                                case 2://gestor
-                                        retorno="dashboard_gestor";
+                            case 2://gestor
+                                retorno = "dashboard_gestor";
                                 break;
-                                case 4://consejo
-                                        retorno="dashboard_consejo";
+                            case 4://consejo
+                                retorno = "dashboard_consejo";
                                 break;
-                                case 5://secretaria
-                                    retorno="dashboard_secretaria";
-                                    break;
-                                default:
-                                    break;
-                            }
+                            case 5://secretaria
+                                retorno = "dashboard_secretaria";
+                                break;
+                            default:
+                                break;
                         }
-                    }else{
-                        verdadPass=false;
-                        switch(perfil){
-                                case 1://estudiante
-                                        retorno="estChPas";
-                                break;
-                                case 2://gestor
-                                        retorno="gestChPas";
-                                break;
-                                case 4://consejo
-                                        retorno="";
-                                break;
-                                case 5://secretaria
-                                    retorno="";
-                                    break;
-                                default:
-                                    break;
-                            }
                     }
-                }else{
-                    retorno="/public/login";
+                } else {
+                    verdadPass = false;
+                    switch (perfil) {
+                        case 1://estudiante
+                            retorno = "estChPas";
+                            break;
+                        case 2://gestor
+                            retorno = "gestChPas";
+                            break;
+                        case 4://consejo
+                            retorno = "conChPas";
+                            break;
+                        case 5://secretaria
+                            retorno = "secChPas";
+                            break;
+                        default:
+                            break;
+                    }
                 }
+            } else {
+                retorno = "/public/login";
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

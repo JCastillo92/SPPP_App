@@ -22,7 +22,7 @@ public class Pasantia implements Serializable{
     private boolean estado;
     private String cod_resolucion_consejo;
     private Long ced_tutor_asignado;
-
+    private Long estado_tut;
     private Set<DetallePasantia> detallePasantias;
     private Encargado encargado;
     private Estudiante estudiante;
@@ -127,6 +127,14 @@ public class Pasantia implements Serializable{
 
     public void setCed_tutor_asignado(Long ced_tutor_asignado) {
         this.ced_tutor_asignado = ced_tutor_asignado;
+    }
+
+    public Long getEstado_tut() {
+        return estado_tut;
+    }
+
+    public void setEstado_tut(Long estado_tut) {
+        this.estado_tut = estado_tut;
     }
     
 }

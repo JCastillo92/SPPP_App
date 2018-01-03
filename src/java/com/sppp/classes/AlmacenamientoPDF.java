@@ -1156,7 +1156,7 @@ cell = new PdfPCell(new Paragraph(""+hor4,estexto));
 
     }//fin metodo
     
-   public boolean pdf_hojaRuta(long cedula,int numero_pdf,int observacionvisita,int movilizacionvisita){//200
+   public boolean pdf_hojaRuta(long cedula,int numero_pdf,String observacionvisita,String movilizacionvisita){//200
       exitoalguardar=false;
          //FORMATO CARTA COMPROMISO INTERINSTITUCIONAL
          
@@ -1307,11 +1307,11 @@ cell = new PdfPCell(new Paragraph(""+hor4,estexto));
    cell = new PdfPCell(new Paragraph(" ",estexto));
   cell.setColspan(3);
   table2.addCell(cell);
-   cell = new PdfPCell(new Paragraph(""+observacionvisita,estexto));
+   cell = new PdfPCell(new Paragraph(observacionvisita,estexto));
   cell.setColspan(3);
   table2.addCell(cell);
   
-   cell = new PdfPCell(new Paragraph(""+movilizacionvisita,estexto));
+   cell = new PdfPCell(new Paragraph(movilizacionvisita,estexto));
  cell.setColspan(3);
   table2.addCell(cell);
   
@@ -1776,7 +1776,7 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
 
 
   
-    private String giveMeNamePPP(String nameppp){
+    public String giveMeNamePPP(String nameppp){
         if(nameppp.equals("PA")){
             nameppp="pasantía";
         }

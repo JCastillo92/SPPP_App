@@ -96,7 +96,7 @@
                                         <td>    <b:selectOneMenu required="true" id="ci_est" requiredMessage="escoja un alumno" colMd="60" value="#{confirmaCita.estudiantes.id_cedula}"  >
                                         
                                                 <f:selectItem noSelectionOption="true" itemLabel="Seleccione:"/>
-                                        <f:selectItems value="#{confirmaCita.listarEstudiantes}"/>
+                                                <f:selectItems value="#{confirmaCita.getListarEstudiantes(login.user)}"/>
                                        
                                             </b:selectOneMenu></td>
                                         </tr>

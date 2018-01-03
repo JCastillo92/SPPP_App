@@ -79,19 +79,19 @@ public class CitasDaoImp implements CitasDao {
     }
 
     @Override
-    public List<Usuario> listar() {
+    public List<Pasantia> listar(long user) {
          
-        List<Usuario>estudiante=null;
+        List<Pasantia>estudiante=null;
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session sesion = sf.openSession();
             
         Transaction tx = null;
         
-        String sql = "FROM Usuario WHERE id_perfil =:num";
-        int id=1;
+        String sql = "FROM Pasantia WHERE ced_tutor_asignado =:num";
+        
         try {
             tx = sesion.beginTransaction();
-         estudiante = sesion.createQuery(sql).setParameter("num", id).list();
+         estudiante = sesion.createQuery(sql).setParameter("num", user).list();
 
             //    Query query = sesion.createQuery(sql);
         // estudiante=query.list();
@@ -106,7 +106,7 @@ public class CitasDaoImp implements CitasDao {
             throw e;
         }finally{
             sesion.flush();
-            sesion.close();
+        //    sesion.close();
         }
         
         return estudiante;

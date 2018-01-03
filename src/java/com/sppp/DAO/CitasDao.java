@@ -19,7 +19,7 @@ public interface CitasDao {
     public List<VisitaTutor> findAll(String id);
      public List<VisitaTutor> confirma(String id);
      // public List<VisitaTutor> confirmaCita(String id);
-     public List<Usuario> listar();
+     public List<Pasantia> listar(long user);
      
      public String obtenerNombre(long id);
      public String obtenerApellido(long id);

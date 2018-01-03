@@ -9,6 +9,7 @@ import com.sppp.DAO.CitasDao;
 import com.sppp.DAO.CitasDaoImp;
 import com.sppp.beans.Estudiante;
 import com.sppp.beans.Login;
+import com.sppp.beans.Pasantia;
 import com.sppp.beans.Usuario;
 import com.sppp.beans.VisitaTutor;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class ConfirmaCita {
      private List<Usuario> usuarios;
     private List<VisitaTutor> confirmaVisitas;
     private List<SelectItem>listarEstudiantes;
+    
     private Usuario estudiantes;
      private String nombre_est;
      private String apellido_est;
@@ -33,13 +35,13 @@ public class ConfirmaCita {
      private String co_director;
      
      
-    public List<SelectItem> getListarEstudiantes() {
+    public List<SelectItem> getListarEstudiantes(long user) {
         this.listarEstudiantes=new ArrayList<SelectItem>();
         CitasDao citasDAO = new CitasDaoImp();
-        List <Usuario> est=citasDAO.listar();
+        List <Pasantia> est=citasDAO.listar(user);
         
-        for(Usuario est2: est){
-            SelectItem listar = new SelectItem(est2.getId_cedula(),est2.getNombre());
+        for(Pasantia est2: est){
+            SelectItem listar = new SelectItem(est2.getEstudiante().getCedula(),est2.getEstudiante().getUsuario().getNombre());
             this.listarEstudiantes.add(listar);
             
         }

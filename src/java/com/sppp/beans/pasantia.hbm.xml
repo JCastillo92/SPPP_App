@@ -17,6 +17,8 @@
         <property name="estado" type="boolean"></property>
         <property name="cod_resolucion_consejo" type="string"></property>
         <property name="ced_tutor_asignado" type="long"></property>
+        <property name="estado_tut" type="boolean"></property>
+                
                 
         
         

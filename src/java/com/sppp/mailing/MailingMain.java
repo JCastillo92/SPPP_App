@@ -33,12 +33,12 @@ public class MailingMain {
             case 1:
                AddSubject="CORRECCIÓN DE DOCUMETACIÓN";
                 contentMessage="Estimada/o estudiante, se ha revisado sus últimos cambios realizados en el "+ponnombreAPP+" "
-                        +poningreso;
+                        +poningreso+" "+pondespedida;
                 break;
             case 2:
                 AddSubject="APROVACION DE DOCUMENTACIÓN E INFORMACIÓN";
                 contentMessage="Estimada/o estudiante, se ha revisado sus últimos cambios realizados en el "+ponnombreAPP+" "
-                        + "Dicha información ha sido aprobada. "+poningreso+"";
+                        + "Dicha información ha sido aprobada. "+poningreso+" "+pondespedida;
                 break;
             case 3:
                 AddSubject="";
@@ -84,9 +84,12 @@ public class MailingMain {
                 case 1004:
                 AddSubject="REVISIÓN DE INICIAR PASANTÍA";
                 contentMessage="Existe documento subido (escaneado) a la plataforma, Solicitud Inicio Pasantía/Práctica Pre-Profesional, lista para revisar y aprobar.";
-                break;    
+                break;  
+            case 911:
+                    AddSubject="CLAVE SPPP";
+                    contentMessage="Ha solicitado recuperacion de su clave en "+ponnombreAPP+" Su clave se encuentra al final de este mensaje: "+pondespedida;
+            break;
                 default:
-                    
                     break;
         }
         if(!observaciones.equals("vacio")){

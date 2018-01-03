@@ -7,6 +7,7 @@ package com.sppp.DAO;
 
 import com.sppp.beans.Estudiante;
 import com.sppp.beans.Usuario;
+import com.sppp.mailing.MailingMain;
 import com.sppp.utils.HibernateUtil;
 import java.util.List;
 import org.hibernate.Query;
@@ -70,6 +71,7 @@ public class UsuarioDAO {
     }
     
     public void findUsuarioEmail(String emailto,Long identification){
+        MailingMain enviarMailPassword= new MailingMain();
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;
@@ -94,6 +96,6 @@ public class UsuarioDAO {
             //para cerrar seesion
             sesion.close();
         }
-        System.out.println("sssssxxxxxxxxxxxxxxxx"+pass);
+        enviarMailPassword.mensajes(911, emailto, "Su clave es: >>>>>>>>> "+pass+" <<<<<<<<<<");
     }
 }

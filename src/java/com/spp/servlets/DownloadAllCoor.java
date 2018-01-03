@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Jairo
  */
-@WebServlet(name = "Download3", urlPatterns = {"/user/coordinador/download/*"})
+@WebServlet(name = "Download3", urlPatterns = {"/user/coordinador/download3/*"})
 public class DownloadAllCoor extends HttpServlet {
 
     /**
@@ -72,8 +72,7 @@ public class DownloadAllCoor extends HttpServlet {
       
         String filename = request.getPathInfo().substring(1);
         Paths obtener_path= new Paths();
-        File file = new File(obtener_path.local_path()+"/"+id);
-        
+        File file = new File(obtener_path.local_path()+"/"+id, filename);
         response.setHeader("Content-Type", getServletContext().getMimeType(filename));
         response.setHeader("Content-Length", String.valueOf(file.length()));
         response.setHeader("Content-Disposition", "inline; filename=\"" + filename + "\"");

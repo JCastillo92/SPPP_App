@@ -16,7 +16,11 @@ import java.nio.file.Files;
 import javax.servlet.http.HttpSession;
 import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -33,6 +37,8 @@ public class UploadFile {
     
     
     private Part file;
+
+    
 
     public Part getFile() {
         return file;
@@ -330,5 +336,47 @@ public class UploadFile {
         //return "subida";
        
        }
+       
+   public List<String> listar(long user) throws IOException{
+         List<String> nombre = new ArrayList<String>();
+           Paths g=new Paths();     
+       File dir = new File(g.local_path()+"/"+user);
+       String[] ficheros = dir.list();
+   
+       if (ficheros == null)
+  System.out.println("No hay ficheros en el directorio especificado");
+else { 
+  for (int x=0;x<ficheros.length;x++){
+      System.out.println("dfkjnjngb"+ficheros[x]);
+           
+  nombre.add(ficheros[x]);
+  }
+} return nombre;
+       }
         
+   public void download_all_coor(String opcion) {///aqui recibir nombre de archivo 103.pdf
+        try {
+            //AlmacenamientoPDF obj_crearpdf = new AlmacenamientoPDF();
+         //   HttpSession session = SessionUtils.getSession();
+           // long id;
+            //id = (long) session.getAttribute("id");
+        
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            ExternalContext context = facesContext.getExternalContext();
+            HttpServletRequest request = (HttpServletRequest) context.getRequest();
+            HttpServletResponse response = (HttpServletResponse) context.getResponse();
+
+            //mando a crear el archivo pdf, para que sea lo mas actual posible.
+            //obj_crearpdf.guardado_archivo_pdf_creado(id, opcion);
+            //mando a llamar al mmismo archivo pdf en la aplicacion,  para que se pueda descargar
+            response.sendRedirect(request.getContextPath() + "/faces/user/coordinador/download3/" + opcion);
+            //response.sendRedirect("index.jsf");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }//end of DOWNLOAD_FILE
+        
+   
+   
 }//end of class

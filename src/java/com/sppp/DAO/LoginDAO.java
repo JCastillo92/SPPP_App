@@ -31,9 +31,7 @@ public class LoginDAO {
         try {
             tx = sesion.beginTransaction();
             
-            UsuarioDAO uDAO=new UsuarioDAO();
-            long kk=123;
-uDAO.findUsuarioEmail("jairdean@hotmail.com",kk);
+            
             /*
             System.out.println("INICIO SECCION PRUEBAS");
             System.out.println("FIN SECCION DE PRUEBAS");

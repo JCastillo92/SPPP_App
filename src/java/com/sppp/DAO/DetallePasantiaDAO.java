@@ -379,7 +379,6 @@ public class DetallePasantiaDAO {
         List<Object[]> empData=null;
          try {
             tx = sesion.beginTransaction();
-            //Query query = sesion.createQuery("SELECT estudiante.cedula,FROM DetallePasantia D WHERE D.estado = :verdad ORDER BY D.idDetallePasantia DESC");
             SQLQuery query = sesion.createSQLQuery("select tb_pasantia.cedula, tb_detalle_pasantia.tipo_ppp, tb_detalle_pasantia.cod_ppp, tb_detalle_pasantia.iddetallepasantia, tb_detalle_pasantia.descripcion, tb_detalle_pasantia.id_proceso \n" +
 "from tb_pasantia, tb_detalle_pasantia \n" +
 "where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n" +
@@ -419,7 +418,6 @@ public class DetallePasantiaDAO {
         List<Object[]> empData=null;
          try {
             tx = sesion.beginTransaction();
-            //Query query = sesion.createQuery("SELECT estudiante.cedula,FROM DetallePasantia D WHERE D.estado = :verdad ORDER BY D.idDetallePasantia DESC");
             SQLQuery query = sesion.createSQLQuery("select tb_pasantia.cedula, tb_detalle_pasantia.tipo_ppp, tb_detalle_pasantia.cod_ppp, tb_detalle_pasantia.iddetallepasantia, tb_detalle_pasantia.descripcion, tb_detalle_pasantia.id_proceso \n" +
 "from tb_pasantia, tb_detalle_pasantia \n" +
 "where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n" +
@@ -466,7 +464,6 @@ public class DetallePasantiaDAO {
         List<Object[]> empData=null;
          try {
             tx = sesion.beginTransaction();
-            //Query query = sesion.createQuery("SELECT estudiante.cedula,FROM DetallePasantia D WHERE D.estado = :verdad ORDER BY D.idDetallePasantia DESC");
             SQLQuery query = sesion.createSQLQuery("select tb_pasantia.cedula, tb_detalle_pasantia.tipo_ppp, tb_detalle_pasantia.cod_ppp, tb_detalle_pasantia.iddetallepasantia, tb_detalle_pasantia.descripcion, tb_detalle_pasantia.id_proceso \n" +
 "from tb_pasantia, tb_detalle_pasantia \n" +
 "where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n" +
@@ -509,7 +506,6 @@ public class DetallePasantiaDAO {
         List<Object[]> empData=null;
          try {
             tx = sesion.beginTransaction();
-            //Query query = sesion.createQuery("SELECT estudiante.cedula,FROM DetallePasantia D WHERE D.estado = :verdad ORDER BY D.idDetallePasantia DESC");
             SQLQuery query = sesion.createSQLQuery("select tb_pasantia.cedula, tb_detalle_pasantia.tipo_ppp, tb_detalle_pasantia.cod_ppp, tb_detalle_pasantia.iddetallepasantia, tb_detalle_pasantia.descripcion, tb_detalle_pasantia.id_proceso \n" +
 "from tb_pasantia, tb_detalle_pasantia \n" +
 "where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n" +

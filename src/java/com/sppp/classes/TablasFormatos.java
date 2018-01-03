@@ -50,8 +50,8 @@ String des1;
   int per4;
   int cont4;
 String observaciones;
-int observacionvisita;
-int movilizacionvisita;
+String observacionvisita;
+String movilizacionvisita;
 int auto1;
 int auto2;
 int auto3;
@@ -291,6 +291,23 @@ private boolean paso=false;
         this.observaciones = observaciones;
     }
 
+    public String getObservacionvisita() {
+        return observacionvisita;
+    }
+
+    public void setObservacionvisita(String observacionvisita) {
+        this.observacionvisita = observacionvisita;
+    }
+
+    public String getMovilizacionvisita() {
+        return movilizacionvisita;
+    }
+
+    public void setMovilizacionvisita(String movilizacionvisita) {
+        this.movilizacionvisita = movilizacionvisita;
+    }
+
+    
     public int getPregunta1() {
         return pregunta1;
     }
@@ -365,22 +382,6 @@ private boolean paso=false;
         this.pregunta10 = pregunta10;
     }
 
-    public int getObservacionvisita() {
-        return observacionvisita;
-    }
-
-    public void setObservacionvisita(int observacionvisita) {
-        this.observacionvisita = observacionvisita;
-    }
-
-    public int getMovilizacionvisita() {
-        return movilizacionvisita;
-    }
-
-    public void setMovilizacionvisita(int movilizacionvisita) {
-        this.movilizacionvisita = movilizacionvisita;
-    }
-  
   
    
 

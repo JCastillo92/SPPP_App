@@ -154,7 +154,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
    
       }
    
-      public void agendacion(){
+      public void confirmacion(){
             DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
         
         PasantiaDAO ppDAO = new PasantiaDAO();
@@ -176,14 +176,51 @@ Session session = HibernateUtil.getSessionFactory().openSession();
 
             //Paso a agregar el nuevo proceso
             DetallePasantia dp3 = new DetallePasantia();
-            dp3.setDescripcion("Agendación cita");
+            dp3.setDescripcion("Confirmar Cita");
             dp3.setEstado(true);
             dp3.setPasantia(p);
-            dp3.setProceso(new Proceso(29));
-            dp3.setValidacion(EnumEstado.aprobar);
+            dp3.setProceso(new Proceso(18));
+            dp3.setValidacion(EnumEstado.validar);
             dpDAO.insertarNuevoDetalle(dp3);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+          
       }
+      
+      
+      public void solicitud(){
+            DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
+        
+        PasantiaDAO ppDAO = new PasantiaDAO();
+          try {
+                    
+                HttpSession session = SessionUtils.getSession();
+                long id;
+                id = (long) session.getAttribute("id");
+
+                p = ppDAO.findPasantia(id);
+
+                //Encontrar el detalle de esa pasantia cuyo proceso sea 4 (proceso actual, cursando, este va a ser actualizado)
+                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),18);
+
+                //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
+                dp.setValidacion(EnumEstado.validar);
+                dp.setEstado(false);
+                dpDAO.actualizarDetallePasantia(dp);
+
+            //Paso a agregar el nuevo proceso
+            DetallePasantia dp3 = new DetallePasantia();
+            dp3.setDescripcion("Solicitud de validación");
+            dp3.setEstado(true);
+            dp3.setPasantia(p);
+            dp3.setProceso(new Proceso(21));
+            dp3.setValidacion(EnumEstado.llenar);
+            dpDAO.insertarNuevoDetalle(dp3);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+}
+      
+      
 }

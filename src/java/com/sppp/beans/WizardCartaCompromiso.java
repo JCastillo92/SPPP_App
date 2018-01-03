@@ -177,9 +177,9 @@ public class WizardCartaCompromiso extends WizardCC {
         
         
         //comienzo tutor
+       
         VisitaDAO visitadao = new VisitaDAO();
-        visitadao.agendacion();
-        
+        visitadao.confirmacion();
         //Incrementar cargo en la BD;
         
         //aqui llamar a crear la carta de compromiso

@@ -31,7 +31,7 @@
             <key>
                 <column name="cedula_tut" not-null="true"></column>
             </key>
-            <one-to-many class="Tutor"></one-to-many>
+            <one-to-many class="VisitaTutor"></one-to-many>
         </set>
       
 

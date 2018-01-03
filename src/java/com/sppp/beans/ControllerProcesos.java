@@ -5,9 +5,12 @@
  */
 package com.sppp.beans;
 
+import com.sppp.utils.UploadFile;
+import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 /**
@@ -17,6 +20,14 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean(name="controllerProcesos")
 public class ControllerProcesos implements Serializable {
 
-   
+    List<String> nombresAArchivos;
+
+    public List<String> getNombresAArchivos(long user) throws IOException {
+        UploadFile crear=new UploadFile();
+       nombresAArchivos=crear.listar(user);
+        return nombresAArchivos;
+    }
+
+    
     
 }

@@ -13,7 +13,7 @@ public class Paths {
     public String local_path(){
       String //local_path="/home/SPPP_PDF/";
                    local_path="E:/home/SPPP_PDF/";
-                    //local_path="D:/home/SPPP_PDF/";
+                   // local_path="D:/home/SPPP_PDF/";
                     return local_path;
 }
 

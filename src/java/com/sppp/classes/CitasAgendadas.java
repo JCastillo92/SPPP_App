@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import javax.faces.bean.ManagedBean;
 
+
 /**
  *
  * @author KarenVanessaAchigGua
@@ -38,6 +39,7 @@ public class CitasAgendadas {
     private String apellido_est;
     
     private String coordinador;
+    private String nombre_completo;
     Tutor tutor=new Tutor();
     Estudiante estudiante=new Estudiante();
     VisitaTutor visita=new VisitaTutor();
@@ -138,6 +140,12 @@ public class CitasAgendadas {
         this.visitasTutor=citasdao.visitadosTuto(user);
       
         return visitasTutor;
+    }
+
+    public String getNombre_completo(long user) {
+        CitasDaoImp llamar=new CitasDaoImp();
+        nombre_completo=llamar.obtenerNombre(user)+"  "+llamar.obtenerApellido(user);
+        return nombre_completo;
     }
       
              

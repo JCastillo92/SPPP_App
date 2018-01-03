@@ -75,12 +75,19 @@ public class PasswdReplacement {
                             case 2://gestor
                                 retorno = "dashboard_gestor";
                                 break;
+                            case 3://tutor
+                                retorno = "tutor";
+                                break;
                             case 4://consejo
                                 retorno = "dashboard_consejo";
                                 break;
                             case 5://secretaria
                                 retorno = "dashboard_secretaria";
                                 break;
+                            case 6://coordinador
+                                retorno = "coordinator";
+                                break;
+
                             default:
                                 break;
                         }
@@ -94,12 +101,19 @@ public class PasswdReplacement {
                         case 2://gestor
                             retorno = "gestChPas";
                             break;
+                        case 3://tutor
+                            retorno = "tutChPas";
+                            break;
                         case 4://consejo
                             retorno = "conChPas";
                             break;
                         case 5://secretaria
                             retorno = "secChPas";
                             break;
+                        case 6://coordindor
+                            retorno = "coorChPas";
+                            break;
+
                         default:
                             break;
                     }

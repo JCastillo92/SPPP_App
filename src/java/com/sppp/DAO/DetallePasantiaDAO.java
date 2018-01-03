@@ -356,7 +356,6 @@ public class DetallePasantiaDAO {
 
 
         public List<Object[]> findAllDetallePasantiaconCIAllTrue(){
-        List<Object> todosDetPasAllTrue = new LinkedList<>();
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;    
@@ -384,7 +383,6 @@ public class DetallePasantiaDAO {
                 iddetallepasantia=Integer.parseInt(row[3].toString());
                 descripcion=row[4].toString();
             }
-            todosDetPasAllTrue= query.list();       
             tx.commit();
         }catch (Exception e) {
             e.printStackTrace();

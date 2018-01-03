@@ -11,6 +11,7 @@ import com.sppp.DAO.EmpresaDAO;
 import com.sppp.DAO.EncargadoDAO;
 import com.sppp.DAO.PasantiaDAO;
 import com.sppp.DAO.UsuarioDAO;
+import com.sppp.mailing.MailingMain;
 import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -30,6 +31,7 @@ public class WizardCCValidacion extends WizardCC {
     
     List<Datos> datosCartaC = new LinkedList<>();
     DetallePasantia dp2 = new DetallePasantia();
+    MailingMain email_aprobado=new MailingMain();
     
     private boolean validar1;
     private boolean validar2;
@@ -321,7 +323,7 @@ public class WizardCCValidacion extends WizardCC {
     
     
     public String guardarDatos(){
-        
+        try {
         //Tomo los datos de la validacion
         //Son solo 7 , porque los demas datos ya llegan validados
         //init();
@@ -345,6 +347,9 @@ public class WizardCCValidacion extends WizardCC {
             dp2.setEstado(false);
             dpDAO.actualizarDetallePasantia(dp2);
             
+            //envio email al estudiante de aprobado
+            email_aprobado.mensajes(2, usuario.getCorreo(), "vacio");
+            
             //Paso a agregar el nuevo proceso 11
             DetallePasantia dp3 = new DetallePasantia();
             dp3.setDescripcion("Descargar/Subir Carta Compromiso");
@@ -358,6 +363,12 @@ public class WizardCCValidacion extends WizardCC {
             //Cambio solo el campo Validacion
             dp2.setValidacion(EnumEstado.llenar);
             dpDAO.actualizarDetallePasantia(dp2);
+            
+            //envio email al estudiante de correccion
+            email_aprobado.mensajes(1, usuario.getCorreo(), "vacio");
+        }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         
         return "dashboard_gestor";

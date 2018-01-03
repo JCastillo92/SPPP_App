@@ -12,6 +12,7 @@ import com.sppp.DAO.EncargadoDAO;
 import com.sppp.DAO.PasantiaDAO;
 import com.sppp.DAO.PasantiaPracticaDAO;
 import com.sppp.DAO.UsuarioDAO;
+import com.sppp.mailing.MailingMain;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -31,6 +32,7 @@ public class WizardDBValidacion extends WizardDB {
     
     List<Datos> datosBasicos = new LinkedList<>();
     DetallePasantia dp = new DetallePasantia();
+    MailingMain email_aprobado=new MailingMain();
     
     private boolean validar1;
     private boolean validar2;
@@ -331,7 +333,9 @@ public class WizardDBValidacion extends WizardDB {
     }
     
     public String guardarDatos(){
-        
+        try {
+            
+       
         //3 - 4 - 6 - 8 -9
         
         // 10 - 18
@@ -370,6 +374,10 @@ public class WizardDBValidacion extends WizardDB {
             dp.setEstado(false);
             dpDAO.actualizarDetallePasantia(dp);
             
+            //envio email al estudiante de aprobado
+            email_aprobado.mensajes(2, usuario.getCorreo(), "vacio");
+            
+            
             //Paso a agregar el nuevo proceso 11
             DetallePasantia dp3 = new DetallePasantia();
             dp3.setDescripcion("Descargar/Subir Oficio");
@@ -379,13 +387,17 @@ public class WizardDBValidacion extends WizardDB {
             dp3.setValidacion(EnumEstado.llenar);
             dpDAO.insertarNuevoDetalle(dp3);
         }else{
-            
             //Cambio solo el campo Validacion
             dp.setValidacion(EnumEstado.llenar);
             dpDAO.actualizarDetallePasantia(dp);
             
+            //envio email al estudiante de correccion
+            email_aprobado.mensajes(1, usuario.getCorreo(), "vacio");
+            
         }
-        
+         } catch (Exception e) {
+             e.printStackTrace();
+        }
         return "dashboard_gestor";
     }
     

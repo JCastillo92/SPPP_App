@@ -153,8 +153,14 @@ public class PasantiaDAO {
         long numeroPPyPA=0;
          try {
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("SELECT COUNT(*) FROM Pasantia P WHERE P.estado = :est");
-            query.setBoolean("est", true);
+            Query query = sesion.createQuery("SELECT COUNT(*) "
+                    + "FROM Pasantia P JOIN P.detallePasantias D "
+                    + "WHERE P.tipo_ppp = D.pasantia.tipo_ppp "
+                    + "AND P.cod_ppp = D.pasantia.cod_ppp "
+                    + "AND D.estado = :est "
+                    + "AND D.validacion = :num");
+           query.setBoolean("est", true);
+            query.setInteger("num", 1);
             numeroPPyPA=(long) query.uniqueResult();       
             tx.commit();
         }catch (Exception e) {
@@ -195,7 +201,6 @@ public class PasantiaDAO {
             //para cerrar seesion
             sesion.close();
         }
-        
         if(count == 1){
             existe = true;
         }

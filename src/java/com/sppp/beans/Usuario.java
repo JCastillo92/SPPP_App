@@ -5,8 +5,11 @@
  */
 package com.sppp.beans;
 
+import com.sppp.classes.ChangePassword;
+import com.sppp.utils.SessionUtils;
 import java.util.Set;
 import javax.faces.bean.ManagedBean;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -25,6 +28,7 @@ public class Usuario {
   private Perfil perfil;
   private Estudiante estudiante;
   private Tutor tutor;
+private boolean estado;
 
     public Tutor getTutor() {
         return tutor;
@@ -33,10 +37,7 @@ public class Usuario {
     public void setTutor(Tutor tutor) {
         this.tutor = tutor;
     }
-  
-
-  
-  
+    
     public Estudiante getEstudiante() {
         return estudiante;
     }
@@ -44,10 +45,6 @@ public class Usuario {
     public void setEstudiante(Estudiante estudiante) {
         this.estudiante = estudiante;
     }
-  
-  
-  
-  
 
     public Perfil getPerfil() {
         return perfil;
@@ -56,8 +53,7 @@ public class Usuario {
     public void setPerfil(Perfil perfil) {
         this.perfil = perfil;
     }
-  private boolean estado;
-
+  
     public long getId_cedula() {
         return id_cedula;
     }
@@ -120,7 +116,5 @@ public class Usuario {
 
     public void setEstado(boolean estado) {
         this.estado = estado;
-    }
-  
-  
+    }     
 }

@@ -1,20 +1,141 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <ui:composition
-     xmlns="http://www.w3.org/1999/xhtml"
-     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-     template="/templates/main.xhtml">
-    
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="/templates/main.xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:b="http://bootsfaces.net/ui">
+
     <ui:define name="title">
-       Coordinador
+        Coordinador
     </ui:define>
-    
+
     <ui:define name="barra-lateral">
         <ui:include src="/snippets/menu_coordinador.xhtml" />
     </ui:define>
-    
+
     <ui:define name="contenido">
        
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Dashboard</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+                
+        <div class="row">
+
+            <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-info-circle fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class=""><h4>Revision</h4></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <h:form>
+                            <b:navLink outcome="revision_coordinador.xhtml">
+                            
+                                <div class="panel-footer">
+                                    <span class="pull-left"><u>CLICK AQUI</u></span>
+                                    <span class="pull-right"><i class="fa fa-hand-o-up"></i></span>
+                                    <div class="clearfix"></div>
+                                </div></b:navLink>
+                        </h:form>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-info-circle fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                  <div class=""><h4>Reporte</h4></div>
+                                  
+                                </div>
+                            </div>
+                        </div>
+                       <h:form>
+                            <b:navLink outcome="reporte_coordinador.xhtml">
+                            
+                                <div class="panel-footer">
+                                    <span class="pull-left"><u>CLICK AQUI</u></span>
+                                    <span class="pull-right"><i class="fa fa-hand-o-up"></i></span>
+                                    <div class="clearfix"></div>
+                                </div></b:navLink>
+                        </h:form>
+                    </div>
+                </div>
+    <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-info-circle fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class=""><h4>Documentos</h4></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <h:form>
+                            <b:navLink outcome="documento_coordinador.xhtml">
+                            
+                                <div class="panel-footer">
+                                    <span class="pull-left"><u>CLICK AQUI</u></span>
+                                    <span class="pull-right"><i class="fa fa-hand-o-up"></i></span>
+                                    <div class="clearfix"></div>
+                                </div></b:navLink>
+                        </h:form>
+                    </div>
+                </div>
+        </div>   
+        
+<div class="row">
+          
+                <div class="col-lg-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Estudiantes dentro del proceso
+                    
+ <p:chart type="bar" model="#{graficasTut.barModel}" style="height:300px"/>
+ 
+</div>
+</div>
+  </div>
+
+         <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> Reportes
+                        </div>
+      
+        
+                 <h:form enctype="multipart/form-data" role="form">
+                         
+            <p:dataList value="#{controllerProcesos.getNombresAArchivos(login.user)}" var="car" type="ordered">
+                <f:facet name="description">
+                    Reportes por fechas 
+                </f:facet>
+                <table>
+                    
+                #{car} &#160;&#160;&#160; &#160; 
+                <h:commandLink action="#{uploadFile.download_all_coor(car)}" value="Ver"/>
+                       </table>      
+            </p:dataList>
+                               </h:form>
+                    </div></div></div>
     </ui:define>
-    
+
 </ui:composition>

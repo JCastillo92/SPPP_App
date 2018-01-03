@@ -34,7 +34,7 @@ public class DatosFormatos implements Serializable {
     Empresa empresa=new Empresa();
     
     private String id;
-
+    private String tipo_actividad;
     public Encargado getEncargado() {
         return encargado;
     }
@@ -85,6 +85,14 @@ public class DatosFormatos implements Serializable {
         this.pasantia=citasdao.findUser(id);
        
         return pasantia;
+    }
+
+    public String getTipo_actividad(long user) {
+        AlmacenamientoPDF crear=new AlmacenamientoPDF();
+        String user1=String.valueOf(user);
+        tipo_actividad=crear.giveMeNamePPP(user1);
+        
+        return tipo_actividad;
     }
     
     

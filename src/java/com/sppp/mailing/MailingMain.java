@@ -36,7 +36,7 @@ public class MailingMain {
                         +poningreso;
                 break;
             case 2:
-                AddSubject="APROVACION DE DOCUMENTACION E INFORMACION";
+                AddSubject="APROVACION DE DOCUMENTACIÓN E INFORMACIÓN";
                 contentMessage="Estimada/o estudiante, se ha revisado sus últimos cambios realizados en el "+ponnombreAPP+" "
                         + "Dicha información ha sido aprobada. "+poningreso+"";
                 break;

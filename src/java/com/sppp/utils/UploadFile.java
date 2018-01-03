@@ -9,8 +9,8 @@ import com.sppp.DAO.DetallePasantiaDAO;
 import com.sppp.DAO.PasantiaDAO;
 import com.sppp.beans.DetallePasantia;
 import com.sppp.beans.EnumEstado;
+import com.sppp.beans.Pasantia;
 import com.sppp.beans.Proceso;
-import com.sppp.beans.WizardDB;
 import com.sppp.classes.AlmacenamientoPDF;
 import com.sppp.classes.ListaDocentesAdministrativos;
 import com.sppp.classes.Paths;
@@ -35,8 +35,9 @@ import javax.servlet.http.Part;
  * @author EstJhonAlexanderCast
  */
 @ManagedBean
-public class UploadFile extends WizardDB{
+public class UploadFile{
     DetallePasantia dp = new DetallePasantia();
+    Pasantia p = new Pasantia();
     
     private Part file;
 
@@ -169,8 +170,9 @@ public class UploadFile extends WizardDB{
         MailingMain primer_mensaje=new MailingMain();
         ListaDocentesAdministrativos corrreo_De=new ListaDocentesAdministrativos();
         DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
-        //Recupero su pasantia
+        
         PasantiaDAO ppDAO = new PasantiaDAO();
+   
         
         switch(button_action){
             case 2:

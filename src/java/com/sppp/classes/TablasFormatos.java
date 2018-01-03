@@ -5,6 +5,7 @@
  */
 package com.sppp.classes;
 
+import com.sppp.DAO.VisitaDAO;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -402,6 +403,9 @@ paso=true;
       AlmacenamientoPDF g=new AlmacenamientoPDF();
     g.pdf_autoevaluacion(user, 203, auto1, auto2, auto3, auto4, auto5);
     paso=true;
+    
+    VisitaDAO vi = new VisitaDAO();
+    vi.documentacion_est();
     }
 
  public void solicitudFinal(long user){

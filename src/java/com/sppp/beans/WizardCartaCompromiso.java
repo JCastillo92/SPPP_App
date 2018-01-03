@@ -11,6 +11,7 @@ import com.sppp.DAO.EmpresaDAO;
 import com.sppp.DAO.EncargadoDAO;
 import com.sppp.DAO.PasantiaDAO;
 import com.sppp.DAO.UsuarioDAO;
+import com.sppp.DAO.VisitaDAO;
 import com.sppp.utils.SessionUtils;
 import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.util.LinkedList;
@@ -174,6 +175,10 @@ public class WizardCartaCompromiso extends WizardCC {
         dp2.setValidacion(EnumEstado.validar);
         dpDAO.actualizarDetallePasantia(dp2);
         
+        
+        //comienzo tutor
+        VisitaDAO visitadao = new VisitaDAO();
+        visitadao.agendacion();
         
         //Incrementar cargo en la BD;
         

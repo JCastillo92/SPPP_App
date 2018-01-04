@@ -29,6 +29,8 @@ import com.sppp.DAO.PeriodoDAO;
 import com.sppp.classes.AlmacenamientoPDF;
 import com.sppp.classes.ListaDocentesAdministrativos;
 import com.sppp.mailing.MailingMain;
+import java.util.Arrays;
+import java.util.LinkedList;
 import javax.annotation.PostConstruct;
 
 /**
@@ -43,7 +45,17 @@ public class UserWizard extends WizardDB implements Serializable {
     DetallePasantia dpp = new DetallePasantia();
     private String texto_alerta;
     private boolean existeTexto;
+    private List<Datos> dDbObtenidos = new LinkedList<>();
+    private boolean[] datosAPintar = new boolean[18];
 
+    public boolean[] getDatosAPintar() {
+        return datosAPintar;
+    }
+    
+    public List<Datos> getdDbObtenidos() {
+        return dDbObtenidos;
+    }
+    
     public String getTexto_alerta() {
         
         try {
@@ -104,15 +116,33 @@ public class UserWizard extends WizardDB implements Serializable {
                     existeTexto = false;
                 }
                 
+                //Traer el listado de los datos guardados
+                DatosDAO dDbDAO = new DatosDAO();
+                dDbObtenidos = dDbDAO.datosPorDetallePasantia(dpp.getIdDetallePasantia());
+                llenarDatosAPintar(dDbObtenidos);
+                System.out.println("");
+                //
+                
+            }else{
+                Arrays.fill(datosAPintar, true);
             }
-
+            
+            
         } catch (Exception e) {
             //p = null;
             System.out.println("========== ERROR AL TRAER INFO DE USUARIO ==============0");
         }
 
     }
-
+    
+    public void llenarDatosAPintar(List<Datos> dDbObtenidos2){
+        
+        for (int i = 0; i < dDbObtenidos2.size(); i++) {
+            datosAPintar[i] = dDbObtenidos2.get(i).isEstado();
+        }
+        
+    }
+    
     public String guardarDatos() {
 
         System.out.println("Punto de quiebre");

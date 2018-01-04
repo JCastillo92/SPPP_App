@@ -38,7 +38,13 @@ public class Cls_OutOfSystem {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-        enviarMailPassword.mensajes(911, emailto, "Su clave es: >>>>>>>>> "+pass+" <<<<<<<<<<");
+         try {
+             if(!pass.equals("") && !pass.equals("null"))
+            enviarMailPassword.mensajes(911, emailto, "Su clave es: >>>>>>>>> "+pass+" <<<<<<<<<<");
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
+        
     }
     
 }

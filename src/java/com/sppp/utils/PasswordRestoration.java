@@ -35,8 +35,13 @@ public class PasswordRestoration {
     
     public String sendMePasswd(){
         String retorno="/public/login";
-                   Cls_OutOfSystem llama=new Cls_OutOfSystem();
-llama.findUsuarioEmail(email,identification);
+        try {
+          Cls_OutOfSystem llama=new Cls_OutOfSystem();
+          llama.findUsuarioEmail(email,identification);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return retorno;
     }
 }

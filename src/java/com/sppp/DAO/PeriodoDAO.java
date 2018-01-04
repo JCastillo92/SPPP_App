@@ -40,4 +40,32 @@ public class PeriodoDAO {
         }
          return retorno_id_periodo;
     }//fin metodo
+    
+    public String encontrarPeriodoActual1(){
+        //ESTE METODO PERMITE SABER EL PERIODO EL CUAL ESTA HABILITADO
+       SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;
+      String retorno_id_periodo=null;
+         try {
+            tx = sesion.beginTransaction();
+            Query query = sesion.createQuery("SELECT P.periodo FROM Periodo P WHERE P.estado_periodo = :estado");
+            query.setBoolean("estado", true);      
+            retorno_id_periodo=(String) query.uniqueResult();       
+            tx.commit();
+        }catch (Exception e) {
+            e.printStackTrace();
+            if (tx != null){
+                tx.rollback();
+            }
+        }
+        finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+         return retorno_id_periodo;
+    }//fin metodo
+    
+    
+    
 }

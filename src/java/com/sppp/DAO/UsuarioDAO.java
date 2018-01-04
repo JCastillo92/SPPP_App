@@ -7,7 +7,9 @@ package com.sppp.DAO;
 
 import com.sppp.beans.Estudiante;
 import com.sppp.beans.Usuario;
+import com.sppp.mailing.MailingMain;
 import com.sppp.utils.HibernateUtil;
+import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -67,4 +69,6 @@ public class UsuarioDAO {
             sesion.close();
         }
     }
+    
+   
 }

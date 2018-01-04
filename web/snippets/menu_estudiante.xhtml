@@ -5,13 +5,10 @@
      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     
     <li>
-        <a href="#"><i class="fa fa-star fa-fw"></i> NOMBRE APELLIDO<span class="fa arrow"></span></a>
+        <a href="#"><i class="fa fa-star fa-fw"></i>#{citasAgendadas.getNombre_completo(login.user)}  <span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
                 <li>
-                    <a href="estChPas.xhtml"><i class="fa fa-cloud-upload fa-fw"></i>Cambiar Contrase&ntilde;a</a>
-                </li>
-                <li>
-                    <a href="subidos.html"><i class="fa fa-cloud fa-fw"></i>blabla 2</a>
+                    <h:link outcome="estChPas"><i class="fa fa-th-list fa-fw"></i>Cambiar Contrase&ntilde;a</h:link>
                 </li>
             </ul>
     </li>    

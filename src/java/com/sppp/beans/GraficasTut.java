@@ -86,7 +86,7 @@ public class GraficasTut implements Serializable {
         barModel.setLegendPosition("ne");
          PeriodoDAO q=new PeriodoDAO();
         Axis xAxis = barModel.getAxis(AxisType.X);
-        xAxis.setLabel("Periodo "+q.encontrarPeriodoActual());
+        xAxis.setLabel("Periodo "+q.encontrarPeriodoActual1());
          
         Axis yAxis = barModel.getAxis(AxisType.Y);
         yAxis.setLabel("Estudiantes");

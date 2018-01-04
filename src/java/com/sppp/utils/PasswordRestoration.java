@@ -5,7 +5,6 @@
  */
 package com.sppp.utils;
 
-import com.sppp.DAO.UsuarioDAO;
 import javax.faces.bean.ManagedBean;
 
 /**
@@ -36,8 +35,8 @@ public class PasswordRestoration {
     
     public String sendMePasswd(){
         String retorno="/public/login";
-                    UsuarioDAO uDAO=new UsuarioDAO();
-uDAO.findUsuarioEmail(email,identification);
+                   Cls_OutOfSystem llama=new Cls_OutOfSystem();
+llama.findUsuarioEmail(email,identification);
         return retorno;
     }
 }

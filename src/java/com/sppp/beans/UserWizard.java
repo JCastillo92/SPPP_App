@@ -29,9 +29,14 @@ import com.sppp.DAO.PeriodoDAO;
 import com.sppp.classes.AlmacenamientoPDF;
 import com.sppp.classes.ListaDocentesAdministrativos;
 import com.sppp.mailing.MailingMain;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -261,6 +266,21 @@ public class UserWizard extends WizardDB implements Serializable {
             return "confirm";
         } else {
             return event.getNewStep();
+        }
+    }
+    
+    public void estado(){
+        EstadoProceso ep = new EstadoProceso();
+        int estado = ep.getEstado();
+        if (estado == 1){
+            ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+            try {
+                ec.redirect(ec.getRequestContextPath() + "/faces/user/estudiantes/revision_window.xhtml");
+            } catch (IOException ex) {
+                
+            }
+        }else{
+            
         }
     }
 

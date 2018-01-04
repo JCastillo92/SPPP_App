@@ -14,6 +14,7 @@ import com.sppp.DAO.UsuarioDAO;
 import com.sppp.DAO.VisitaDAO;
 import com.sppp.utils.SessionUtils;
 import com.sun.javafx.scene.control.skin.VirtualFlow;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -32,7 +33,12 @@ public class WizardCartaCompromiso extends WizardCC {
     boolean existe;
     private String texto_alerta;
     private boolean existeTexto;
+    private boolean[] datosAPintar = new boolean[29];
 
+    public boolean[] getDatosAPintar() {
+        return datosAPintar;
+    }
+    
     public String getTexto_alerta() {
         
         try {
@@ -98,7 +104,7 @@ public class WizardCartaCompromiso extends WizardCC {
             if(existe){
                 obtenerDatosEstudiante(dpCargaDatos.getIdDetallePasantia());
             }else{
-                
+                 Arrays.fill(datosAPintar, true);
             }
             
             //PARA obtener la Observacion
@@ -118,6 +124,14 @@ public class WizardCartaCompromiso extends WizardCC {
            
             
             
+    }
+    
+    public void llenarDatosAPintar(List<Datos> dDbObtenidos2){
+        
+        for (int i = 0; i < dDbObtenidos2.size(); i++) {
+            datosAPintar[i] = dDbObtenidos2.get(i).isEstado();
+        }
+        
     }
     
     
@@ -214,6 +228,10 @@ public class WizardCartaCompromiso extends WizardCC {
         
         DatosDAO dDAO = new DatosDAO();
         datosCartaC = dDAO.datosPorDetallePasantia(id);
+        
+        //Lleno el vector auxiliar de Pintar
+        llenarDatosAPintar(datosCartaC);
+        
         llenarDatosEstudiante();
     }
     

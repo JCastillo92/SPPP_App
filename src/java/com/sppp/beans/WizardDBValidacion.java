@@ -33,6 +33,15 @@ public class WizardDBValidacion extends WizardDB {
     List<Datos> datosBasicos = new LinkedList<>();
     DetallePasantia dp = new DetallePasantia();
     MailingMain email_aprobado=new MailingMain();
+    String observacion;
+
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
     
     private boolean validar1;
     private boolean validar2;
@@ -266,6 +275,9 @@ public class WizardDBValidacion extends WizardDB {
         obtenerDatosEstudiante(dp.getIdDetallePasantia());
         //Asignar a los checkbox
         llenarDatosEstudiante();
+        
+        //Lleno la observacion
+        observacion = dp.getObservacion();
 
     }
     
@@ -372,6 +384,7 @@ public class WizardDBValidacion extends WizardDB {
             /// ESTE CODIGO PERRY -------------------------
             dp.setValidacion(EnumEstado.aprobar);
             dp.setEstado(false);
+            dp.setObservacion(null);
             dpDAO.actualizarDetallePasantia(dp);
             
             //envio email al estudiante de aprobado
@@ -389,6 +402,7 @@ public class WizardDBValidacion extends WizardDB {
         }else{
             //Cambio solo el campo Validacion
             dp.setValidacion(EnumEstado.llenar);
+            dp.setObservacion(observacion);
             dpDAO.actualizarDetallePasantia(dp);
             
             //envio email al estudiante de correccion

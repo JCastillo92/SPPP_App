@@ -32,6 +32,15 @@ public class WizardCCValidacion extends WizardCC {
     List<Datos> datosCartaC = new LinkedList<>();
     DetallePasantia dp2 = new DetallePasantia();
     MailingMain email_aprobado=new MailingMain();
+    String observacion;
+
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
     
     private boolean validar1;
     private boolean validar2;
@@ -317,6 +326,9 @@ public class WizardCCValidacion extends WizardCC {
             dp2 = dpDAO.findDetallePasantia(pasantia.getTipo_ppp(), pasantia.getCod_ppp());
             
             obtenerDatosEstudiante(dp2.getIdDetallePasantia());
+            
+            //obtengo la observacion
+            observacion = dp2.getObservacion();
         
     }
     
@@ -345,6 +357,7 @@ public class WizardCCValidacion extends WizardCC {
             //Cambio el campo validacion y el estado en DetallePasantia
             dp2.setValidacion(EnumEstado.aprobar);
             dp2.setEstado(false);
+            dp2.setObservacion(null);
             dpDAO.actualizarDetallePasantia(dp2);
             
             //envio email al estudiante de aprobado
@@ -362,6 +375,7 @@ public class WizardCCValidacion extends WizardCC {
         }else{
             //Cambio solo el campo Validacion
             dp2.setValidacion(EnumEstado.llenar);
+            dp2.setObservacion(observacion);
             dpDAO.actualizarDetallePasantia(dp2);
             
             //envio email al estudiante de correccion

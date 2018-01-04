@@ -41,7 +41,25 @@ public class UserWizard extends WizardDB implements Serializable {
 
     private boolean existe;
     DetallePasantia dpp = new DetallePasantia();
+    private String texto_alerta;
+    private boolean existeTexto;
 
+    public String getTexto_alerta() {
+        
+        try {
+              texto_alerta = texto_alerta.replace("\n", "<br />");
+        } catch (Exception e) {
+        }
+
+        return texto_alerta;
+    }
+
+    public boolean isExisteTexto() {
+        return existeTexto;
+    }
+    
+    
+    
     public UserWizard() {
 
     }
@@ -75,6 +93,17 @@ public class UserWizard extends WizardDB implements Serializable {
                 //Encuentro la pasantia PERO QUE SEA DE IDPROCESO = 1 OSEA DATOSBASICOS
                 DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
                 dpp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),1);
+                
+                //Obtengo la observacion hecha por el gestor
+                texto_alerta = dpp.getObservacion();
+                
+                //Compruebo que no sea null
+                if (texto_alerta != null && !texto_alerta.trim().equalsIgnoreCase("")){
+                    existeTexto = true;
+                }else{
+                    existeTexto = false;
+                }
+                
             }
 
         } catch (Exception e) {

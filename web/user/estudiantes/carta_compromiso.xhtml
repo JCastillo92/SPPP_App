@@ -26,6 +26,10 @@
 
         <!-- FORMULARIO WIZZARD -->
         <div class="row">
+            
+            <b:alert severity="danger" rendered="#{wizardCartaCompromiso.existeTexto}"><strong>Corregir:!</strong><br/><h:outputText value="#{wizardCartaCompromiso.texto_alerta}" escape="false"/> </b:alert>
+            
+            
             <div class="col-lg-12">
 
                 <b:form>

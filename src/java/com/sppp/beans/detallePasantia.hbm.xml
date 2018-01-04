@@ -47,7 +47,7 @@
             
         </many-to-one>
        
-        
+        <property name="observacion" column="observacion" type="string"></property>
 
 </class>
 

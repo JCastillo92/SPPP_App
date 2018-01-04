@@ -30,6 +30,24 @@ public class WizardCartaCompromiso extends WizardCC {
     
     List<Datos> datosCartaC = new LinkedList<>();
     boolean existe;
+    private String texto_alerta;
+    private boolean existeTexto;
+
+    public String getTexto_alerta() {
+        
+        try {
+              texto_alerta = texto_alerta.replace("\n", "<br />");
+        } catch (Exception e) {
+        }
+        
+        return texto_alerta;
+    }
+
+    public boolean isExisteTexto() {
+        return existeTexto;
+    }
+    
+    
     
     public List<Datos> getDatosCartaC() {
         return datosCartaC;
@@ -81,6 +99,16 @@ public class WizardCartaCompromiso extends WizardCC {
                 obtenerDatosEstudiante(dpCargaDatos.getIdDetallePasantia());
             }else{
                 
+            }
+            
+            //PARA obtener la Observacion
+            texto_alerta = dpCargaDatos.getObservacion();
+                
+            //Compruebo que no sea null
+            if (texto_alerta != null && !texto_alerta.trim().equalsIgnoreCase("")) {
+                existeTexto = true;
+            } else {
+                existeTexto = false;
             }
             
         } catch (Exception e) {

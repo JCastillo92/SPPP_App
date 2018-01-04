@@ -93,12 +93,20 @@ public class MailingMain {
                     break;
         }
         if(!observaciones.equals("vacio")){
+            try {
             //envio de mensaje CON observaciones
             contentMessage=contentMessage+"\n"+"\nObservaciones realizadas: \n"+observaciones;
-            deliverMail(AddRecipientDestination,AddSubject.toUpperCase(),contentMessage);
+            deliverMail(AddRecipientDestination,AddSubject.toUpperCase(),contentMessage);    
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }else{
+            try {
             //envio de mensaje SIN observaciones
-            deliverMail(AddRecipientDestination,AddSubject.toUpperCase(),contentMessage);
+            deliverMail(AddRecipientDestination,AddSubject.toUpperCase(),contentMessage);    
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         
     }//fin void mensajes

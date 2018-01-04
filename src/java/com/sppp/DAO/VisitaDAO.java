@@ -327,9 +327,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
             
              Long id1=Long.parseLong(ce_tutor);
              
-            
-       tutor.setCedula(id1);
-            
+               tutor.setCedula(id1);
             
             visita.setId_visita(id_visita);
             
@@ -338,9 +336,9 @@ Session session = HibernateUtil.getSessionFactory().openSession();
             dp3.setPasantia(p);
             dp3.setProceso(new Proceso(30));
             dp3.setValidacion(EnumEstado.llenar);
-            dpDAO.insertarNuevoDetalle(dp3);
             dp3.setTutor(tutor);
             dp3.setVisitaTutor(visita);
+            dpDAO.insertarNuevoDetalle(dp3);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

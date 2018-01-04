@@ -439,7 +439,32 @@ public List<VisitaTutor> visitadosTuto(long user) {
     
     }
 
+    public long id_secretaria(){
+    long nombre;
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+            
+        Transaction tx = null;
+        
+        String sql = "SELECT id_cedula FROM Usuario WHERE id_perfil =:idUs";
+       int id=5;
+        try {
+            tx = sesion.beginTransaction();
+        nombre =(long) sesion.createQuery(sql).setParameter("idUs", id).uniqueResult();
+            tx.commit();
+        } catch (RuntimeException e) {
+            tx.rollback();
+            throw e;
+        }finally{
+            sesion.flush();
+             sesion.close();
+         }
+        
+        return nombre;
+ 
+  
     
+    }
     
 
 }

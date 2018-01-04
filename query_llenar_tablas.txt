@@ -6,6 +6,7 @@ insert into tb_perfil (id_tbperfil,descripcion_perfil) values (4,'Consejo');
 insert into tb_perfil (id_tbperfil,descripcion_perfil) values (5,'Secretaria');
 insert into tb_perfil (id_tbperfil,descripcion_perfil) values (6,'Coordinador');
 insert into tb_perfil (id_tbperfil,descripcion_perfil) values (7,'Administrador');
+insert into tb_perfil (id_tbperfil,descripcion_perfil) values (8,'Director');
 
 /*creacion empresas ficticia de prueba para probar AUTOCOMPLETAR en timepo real*/
 /*
@@ -15,7 +16,7 @@ insert into tb_empresa (id_empresa,nombre_empresa,nombre_gerente,telefono_empres
 
 /*crear tb_usuario para cada perfil*/
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('1111111111','unoest@hotmail.com','1111','Jhon','Castillo','3060649','unodirecc',1);
-insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('2222','dos@hotmail.com','2222','2Gestor 2nombre','2apellido gestor','222222','dos direcccion',2);
+insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('2222','jairdean@hotmail.com','2222','2Gestor 2nombre','2apellido gestor','222222','dos direcccion',2);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('3333333333','tres@hotmail.com','3333','3nombre','3apellido','3333','tres direcccion',3);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('4444444444','cuatro@hotmail.com','4444','4nombre','4apellido','44444','cuatro direcccion',4);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('5555555555','cinco@hotmail.com','5555','5nombre','5apellido','55555','cinco direcccion',5);
@@ -26,13 +27,14 @@ insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direcci
 
 /*LLENAR TABLA ESTUDIANTES como si fuese llenado automaticamente con los datos del EXCEL cabe mencionar que dichos usuarios deben pasarse la ci como USUARIO Y CLAVE a la tabla usuarios (primero se debe crear en la tb_usuario)*/
 /*primero crearlos en tb_usuario*/
-insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('123','bryans@hotmail.com','123','Bryan Andres','Torres Lara','123','magdalena',1);
+insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('123','bryans71@live.com','123','Bryan Andres','Torres Lara','123','magdalena',1);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('1234','jairdean@hotmail.com','1234','Jairo Daniel','Flores Gallegos','1234','solanda',1);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('321','karenchis14@hotmail.com','321','Karen Vanessa','Achig Guachamin','321','ni idea',1);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('1111','jhon_j92@hotmail.com','1111','Jhon Alexander','Castillo Reimundo','3060649','cinco esquinas',1);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('1112','hotm','1112','nom','app','3060649','direcccion',1);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('1113','hotm','1113','nom','app','3060649','direcccion',1);
 insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('1114','hotm','1114','nom','app','3060649','direcccion',1);
+insert into tb_usuario (id_usuario,correo,clave,nombre,apellido,telefono,direccion,id_perfil) values ('8888','bryans71@live.com','8888','Patsy','Prieto','3060649','direcccion',8);
 
 
 insert into tb_estudiante (cedula_est,ultimonivel,horaspasantia,porcentajemateriasaprobadas) values (123,6,0,60);
@@ -45,8 +47,8 @@ insert into tb_estudiante (cedula_est,ultimonivel,horaspasantia,porcentajemateri
 
 /*crear tb_tutor para completar usuarios*/
 
-insert into tb_tutor (cedula_tut,cant_visitas,sector_preferencia) values (333,5,'sur');
-insert into tb_tutor (cedula_tut,cant_visitas,sector_preferencia) values (3333333333,5,'sur');
+insert into tb_tutor (cedula_tut,cant_visitas,sector_preferencia) values (333,0,'sur');
+insert into tb_tutor (cedula_tut,cant_visitas,sector_preferencia) values (3333333333,0,'sur');
 
 
 
@@ -62,7 +64,7 @@ insert into tb_tipopregunta (tipo) values ('CHECKONE');/*7*/
 insert into tb_tipopregunta (tipo) values ('CHECKMANY');/*8*/
 
 
-/*llenar tb_proceso ESTA TABLA TENDRA DATOS QUEMADOS*/
+/*llenar tb_proceso ESTA TABLA TENDRA DATOS QUEMADOS
 insert into tb_proceso(descripcion,estado) values ('Ingreso Datos Basicos',true);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('ingreso datos alumno',true,1);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('ingreso datos empresa',true,1);
@@ -104,7 +106,7 @@ insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir Autoevaluac
 insert into tb_proceso(descripcion,estado) values ('Descargar/Subir Otros Documentos',true);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir Certificado empresa',true,27);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir comprobante pasantía',true,27);
-
+*/
 
 
 /*
@@ -217,10 +219,10 @@ insert into tb_periodo_tutor (cantidad_visitas,cedula_tut,id_periodo) values (10
 insert into tb_horariotutor (hora,dia,id_tbpt) values ('07:00','Viernes',1);
 insert into tb_horariotutor (hora,dia,id_tbpt) values ('09:00','Lunes',1);
 
-/*llenado tb_visitatutor sera automatica*/
+/*llenado tb_visitatutor sera automatica
 insert into tb_visitatutor (dia, fecha_visita,hora_visita,estado_visita,cedula_tut,cedula_est)values('Lunes','2017-11-28','07:00','Enviada',333,123);
 insert into tb_visitatutor (dia,fecha_visita,hora_visita,estado_visita,cedula_tut,cedula_est)values('martes','2018-11-28','09:00','Enviada',3333333333,321);
-
+*/
 
 
 

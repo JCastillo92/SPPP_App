@@ -7,6 +7,12 @@
      xmlns:f="http://xmlns.jcp.org/jsf/core"
      xmlns:b="http://bootsfaces.net/ui">
     
+    <ui:define name="encabezado">
+        <f:metadata>
+            <f:event type="preRenderView" listener="#{wizardCartaCompromiso.estado()}" />
+        </f:metadata>
+    </ui:define>
+    
     <ui:define name="title">
         Carta Compromiso
     </ui:define>

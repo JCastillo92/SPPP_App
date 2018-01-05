@@ -14,11 +14,14 @@ import com.sppp.DAO.UsuarioDAO;
 import com.sppp.DAO.VisitaDAO;
 import com.sppp.utils.SessionUtils;
 import com.sun.javafx.scene.control.skin.VirtualFlow;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -247,6 +250,23 @@ public class WizardCartaCompromiso extends WizardCC {
         resultadosPrevistos = datosCartaC.get(20).getValor_datos();
         productosEntregables = datosCartaC.get(21).getValor_datos();
         
+    }
+    
+    //Chequear que sea del proceso 4, no de otro proceso
+    //Igualmente trabaja
+    public void estado(){
+        EstadoProceso ep = new EstadoProceso();
+        int estado = ep.getEstado();
+        if (estado == 1){
+            ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+            try {
+                ec.redirect(ec.getRequestContextPath() + "/faces/user/estudiantes/revision_window.xhtml");
+            } catch (IOException ex) {
+                
+            }
+        }else{
+            
+        }
     }
     
 }//fin de la clase

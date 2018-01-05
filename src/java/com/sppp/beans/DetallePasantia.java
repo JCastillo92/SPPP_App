@@ -21,6 +21,17 @@ public class DetallePasantia {
     private Tutor tutor;
     private VisitaTutor visitaTutor;
     private EnumEstado validacion;
+    private String observacion;
+
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
+    
+    
 
     DetallePasantia(EnumEstado enumEstado) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

@@ -29,7 +29,14 @@ import com.sppp.DAO.PeriodoDAO;
 import com.sppp.classes.AlmacenamientoPDF;
 import com.sppp.classes.ListaDocentesAdministrativos;
 import com.sppp.mailing.MailingMain;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -41,7 +48,35 @@ public class UserWizard extends WizardDB implements Serializable {
 
     private boolean existe;
     DetallePasantia dpp = new DetallePasantia();
+    private String texto_alerta;
+    private boolean existeTexto;
+    private List<Datos> dDbObtenidos = new LinkedList<>();
+    private boolean[] datosAPintar = new boolean[18];
 
+    public boolean[] getDatosAPintar() {
+        return datosAPintar;
+    }
+    
+    public List<Datos> getdDbObtenidos() {
+        return dDbObtenidos;
+    }
+    
+    public String getTexto_alerta() {
+        
+        try {
+              texto_alerta = texto_alerta.replace("\n", "<br />");
+        } catch (Exception e) {
+        }
+
+        return texto_alerta;
+    }
+
+    public boolean isExisteTexto() {
+        return existeTexto;
+    }
+    
+    
+    
     public UserWizard() {
 
     }
@@ -75,15 +110,44 @@ public class UserWizard extends WizardDB implements Serializable {
                 //Encuentro la pasantia PERO QUE SEA DE IDPROCESO = 1 OSEA DATOSBASICOS
                 DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
                 dpp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),1);
+                
+                //Obtengo la observacion hecha por el gestor
+                texto_alerta = dpp.getObservacion();
+                
+                //Compruebo que no sea null
+                if (texto_alerta != null && !texto_alerta.trim().equalsIgnoreCase("")){
+                    existeTexto = true;
+                }else{
+                    existeTexto = false;
+                }
+                
+                //Traer el listado de los datos guardados
+                DatosDAO dDbDAO = new DatosDAO();
+                dDbObtenidos = dDbDAO.datosPorDetallePasantia(dpp.getIdDetallePasantia());
+                llenarDatosAPintar(dDbObtenidos);
+                System.out.println("");
+                //
+                
+            }else{
+                Arrays.fill(datosAPintar, true);
             }
-
+            
+            
         } catch (Exception e) {
             //p = null;
             System.out.println("========== ERROR AL TRAER INFO DE USUARIO ==============0");
         }
 
     }
-
+    
+    public void llenarDatosAPintar(List<Datos> dDbObtenidos2){
+        
+        for (int i = 0; i < dDbObtenidos2.size(); i++) {
+            datosAPintar[i] = dDbObtenidos2.get(i).isEstado();
+        }
+        
+    }
+    
     public String guardarDatos() {
 
         System.out.println("Punto de quiebre");
@@ -202,6 +266,21 @@ public class UserWizard extends WizardDB implements Serializable {
             return "confirm";
         } else {
             return event.getNewStep();
+        }
+    }
+    
+    public void estado(){
+        EstadoProceso ep = new EstadoProceso();
+        int estado = ep.getEstado();
+        if (estado == 1){
+            ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+            try {
+                ec.redirect(ec.getRequestContextPath() + "/faces/user/estudiantes/revision_window.xhtml");
+            } catch (IOException ex) {
+                
+            }
+        }else{
+            
         }
     }
 

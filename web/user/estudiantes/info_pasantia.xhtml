@@ -7,6 +7,12 @@
      xmlns:f="http://xmlns.jcp.org/jsf/core"
      xmlns:b="http://bootsfaces.net/ui">
     
+    <ui:define name="encabezado">
+        <f:metadata>
+            <f:event type="preRenderView" listener="#{userWizard.estado()}" />
+        </f:metadata>
+    </ui:define>
+    
     <ui:define name="title">
         Datos Basicos
     </ui:define>
@@ -26,6 +32,9 @@
 
         <!-- FORMULARIO WIZZARD -->
         <div class="row">
+            
+            <b:alert severity="danger" rendered="#{userWizard.existeTexto}"><strong>Corregir:!</strong><br/><h:outputText value="#{userWizard.texto_alerta}" escape="false"/> </b:alert>
+            
             <div class="col-lg-12">
 
                 <b:form>
@@ -39,33 +48,33 @@
                                 <!-- AQUI ABAJO FORMULARIO DINAMICO ESTUDIANTE-->
                                 <b:inputText value="#{userWizard.usuario.nombre}" label="Nombre:" disabled="true" tooltip="Nombres completos alumno"/>
                                 <b:inputText value="#{userWizard.usuario.apellido}" label="Apellido:" disabled="true" tooltip="Apellidos completos alumno"/>
-                                <b:inputText value="#{userWizard.usuario.telefono}" label="Tel&eacute;fono:" required="true" tooltip="N&uacute;mero celular"/>
-                                <b:inputText value="#{userWizard.usuario.correo}" label="Correo:" required="true" tooltip="Correo de preferencia"/>
+                                <b:inputText value="#{userWizard.usuario.telefono}" class="#{userWizard.datosAPintar[2] ? 'hola':'rojo_error'}" label="Tel&eacute;fono:" required="true" tooltip="N&uacute;mero celular"/>
+                                <b:inputText value="#{userWizard.usuario.correo}" class="#{userWizard.datosAPintar[3] ? 'hola':'rojo_error'}" label="Correo:" required="true" tooltip="Correo de preferencia"/>
                                 <b:inputText value="#{userWizard.usuario.estudiante.ultimoNivel}" label="Nivel m&aacute;s Bajo:" disabled="true"/>
-                                <b:inputTextarea value="#{userWizard.usuario.estudiante.actividadRealizar}" label="Actividad a Realizar:" required="true" tooltip="Describa aquellas a realizar"/>
+                                <b:inputTextarea value="#{userWizard.usuario.estudiante.actividadRealizar}" class="#{userWizard.datosAPintar[5] ? 'hola':'rojo_error'}" label="Actividad a Realizar:" required="true" tooltip="Describa aquellas a realizar"/>
                                 <h:outputText value="Tipo de Pr&aacute;ctica" style="font-weight:bold"/>
                                 <h:message for="msgRadio" style="color: red"></h:message>
                                 <b:radiobutton  value="#{userWizard.p.tipo_ppp}" required="true" id="msgRadio" requiredMessage=" Escoja un tipo de pr&aacute;ctica: *" tooltip="Seleecionar una">
                                     <f:selectItem itemLabel="Pasant&iacute;a" itemValue="PA"/>
                                     <f:selectItem itemLabel="Pr&aacute;ctica Pre Profesional" itemValue="PP"/>
                                 </b:radiobutton>
-                                <b:dateTimePicker value="#{userWizard.p.fechaInicio}" label="Fecha Tentativa Inicio:" show-time="false" required="true"/>
-                                <b:dateTimePicker value="#{userWizard.p.fechaFin}" label="Fecha Tentativa Fin" show-time="false" required="true"/>
+                                <b:dateTimePicker value="#{userWizard.p.fechaInicio}" class="#{userWizard.datosAPintar[7] ? 'hola':'rojo_error'}" label="Fecha Tentativa Inicio:" show-time="false" required="true"/>
+                                <b:dateTimePicker value="#{userWizard.p.fechaFin}" class="#{userWizard.datosAPintar[8] ? 'hola':'rojo_error'}" label="Fecha Tentativa Fin" show-time="false" required="true"/>
                                 
                             </b:panel>
                         </b:carouselItem>
                         <b:carouselItem style="width:400px;height:auto">
                             <b:panel title="Datos Empresa" look="default">
                                 <!-- AQUI ABAJO FORMULARIO DINAMICO EMPRESA-->
-                                <b:inputText value="#{userWizard.emp.id_empresa}" label="RUC:" required="true"/>
-                                <b:inputText value="#{userWizard.emp.nombre_empresa}" label="Nombre Empresa:" required="true"/>
-                                <b:inputText value="#{userWizard.emp.nombre_gerente}" label="Nombres y Apellidos Gerente Empresa:" required="true"/>
-                                <b:inputText value="#{userWizard.emp.telefono_empresa}" label="Tel&eacute;fono:" required="true"/>
-                                <b:inputText value="#{userWizard.emp.direccion_empresa}" label="Direcci&oacute;n:" required="true"/>
-                                <b:inputText value="#{userWizard.emp.actividad_principal_empresa}" label="Actividad Principal que Ejerce Empresa:" required="true"/>
-                                <b:inputText value="#{userWizard.enc.ci_encargado}" label="C&eacute;dula Encargado:" required="true"/>
-                                <b:inputText value="#{userWizard.enc.nombre_encargado}" label="Nombres y Apellidos Encargado:" required="true"/>
-                                <b:inputText value="#{userWizard.enc.cargo_encargado}" label="Cargo Encargado:" required="true"/>
+                                <b:inputText value="#{userWizard.emp.id_empresa}" class="#{userWizard.datosAPintar[9] ? 'hola':'rojo_error'}" label="RUC:" required="true"/>
+                                <b:inputText value="#{userWizard.emp.nombre_empresa}" class="#{userWizard.datosAPintar[10] ? 'hola':'rojo_error'}" label="Nombre Empresa:" required="true"/>
+                                <b:inputText value="#{userWizard.emp.nombre_gerente}" class="#{userWizard.datosAPintar[11] ? 'hola':'rojo_error'}" label="Nombres y Apellidos Gerente Empresa:" required="true"/>
+                                <b:inputText value="#{userWizard.emp.telefono_empresa}" class="#{userWizard.datosAPintar[12] ? 'hola':'rojo_error'}" label="Tel&eacute;fono:" required="true"/>
+                                <b:inputText value="#{userWizard.emp.direccion_empresa}" class="#{userWizard.datosAPintar[13] ? 'hola':'rojo_error'}" label="Direcci&oacute;n:" required="true"/>
+                                <b:inputText value="#{userWizard.emp.actividad_principal_empresa}" class="#{userWizard.datosAPintar[14] ? 'hola':'rojo_error'}" label="Actividad Principal que Ejerce Empresa:" required="true"/>
+                                <b:inputText value="#{userWizard.enc.ci_encargado}" class="#{userWizard.datosAPintar[15] ? 'hola':'rojo_error'}" label="C&eacute;dula Encargado:" required="true"/>
+                                <b:inputText value="#{userWizard.enc.nombre_encargado}" class="#{userWizard.datosAPintar[16] ? 'hola':'rojo_error'}" label="Nombres y Apellidos Encargado:" required="true"/>
+                                <b:inputText value="#{userWizard.enc.cargo_encargado}" class="#{userWizard.datosAPintar[17] ? 'hola':'rojo_error'}" label="Cargo Encargado:" required="true"/>
                             </b:panel>
                         </b:carouselItem>
                         <b:carouselControl direction="right" >
@@ -85,6 +94,7 @@
                         </b:carouselControl>
                         
                     </b:carousel>
+                        
                 </b:form>
 
             </div>

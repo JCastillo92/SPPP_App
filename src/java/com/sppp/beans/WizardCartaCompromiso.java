@@ -14,10 +14,14 @@ import com.sppp.DAO.UsuarioDAO;
 import com.sppp.DAO.VisitaDAO;
 import com.sppp.utils.SessionUtils;
 import com.sun.javafx.scene.control.skin.VirtualFlow;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -30,6 +34,29 @@ public class WizardCartaCompromiso extends WizardCC {
     
     List<Datos> datosCartaC = new LinkedList<>();
     boolean existe;
+    private String texto_alerta;
+    private boolean existeTexto;
+    private boolean[] datosAPintar = new boolean[29];
+
+    public boolean[] getDatosAPintar() {
+        return datosAPintar;
+    }
+    
+    public String getTexto_alerta() {
+        
+        try {
+              texto_alerta = texto_alerta.replace("\n", "<br />");
+        } catch (Exception e) {
+        }
+        
+        return texto_alerta;
+    }
+
+    public boolean isExisteTexto() {
+        return existeTexto;
+    }
+    
+    
     
     public List<Datos> getDatosCartaC() {
         return datosCartaC;
@@ -80,7 +107,17 @@ public class WizardCartaCompromiso extends WizardCC {
             if(existe){
                 obtenerDatosEstudiante(dpCargaDatos.getIdDetallePasantia());
             }else{
+                 Arrays.fill(datosAPintar, true);
+            }
+            
+            //PARA obtener la Observacion
+            texto_alerta = dpCargaDatos.getObservacion();
                 
+            //Compruebo que no sea null
+            if (texto_alerta != null && !texto_alerta.trim().equalsIgnoreCase("")) {
+                existeTexto = true;
+            } else {
+                existeTexto = false;
             }
             
         } catch (Exception e) {
@@ -90,6 +127,14 @@ public class WizardCartaCompromiso extends WizardCC {
            
             
             
+    }
+    
+    public void llenarDatosAPintar(List<Datos> dDbObtenidos2){
+        
+        for (int i = 0; i < dDbObtenidos2.size(); i++) {
+            datosAPintar[i] = dDbObtenidos2.get(i).isEstado();
+        }
+        
     }
     
     
@@ -186,6 +231,10 @@ public class WizardCartaCompromiso extends WizardCC {
         
         DatosDAO dDAO = new DatosDAO();
         datosCartaC = dDAO.datosPorDetallePasantia(id);
+        
+        //Lleno el vector auxiliar de Pintar
+        llenarDatosAPintar(datosCartaC);
+        
         llenarDatosEstudiante();
     }
     
@@ -201,6 +250,23 @@ public class WizardCartaCompromiso extends WizardCC {
         resultadosPrevistos = datosCartaC.get(20).getValor_datos();
         productosEntregables = datosCartaC.get(21).getValor_datos();
         
+    }
+    
+    //Chequear que sea del proceso 4, no de otro proceso
+    //Igualmente trabaja
+    public void estado(){
+        EstadoProceso ep = new EstadoProceso();
+        int estado = ep.getEstado();
+        if (estado == 1){
+            ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+            try {
+                ec.redirect(ec.getRequestContextPath() + "/faces/user/estudiantes/revision_window.xhtml");
+            } catch (IOException ex) {
+                
+            }
+        }else{
+            
+        }
     }
     
 }//fin de la clase

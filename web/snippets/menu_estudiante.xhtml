@@ -15,10 +15,14 @@
     <li>
             <h:link outcome="dashboard_est"><i class="fa fa-th-list fa-fw"></i>&#160;Dashboard Estudiante</h:link>
         </li>
+    <!--
         <li>
-            <h:link  outcome="student" ><i class="fa fa-gears fa-fw"></i>&#160;Proceso Actual</h:link>
-            
-        </li>
+            <h:form>
+                <h:commandLink action="#{estadoProceso.getRuta(estadoProceso.proceso)}">
+                    <i class="fa fa-th-list fa-fw"></i> Proceso Actual
+                </h:commandLink>
+            </h:form>
+        </li>-->
        
   <!--  <li>
            

@@ -50,34 +50,34 @@
 
                                 <b:inputText value="#{wizardCCValidacion.pasantia.tipo_ppp}" label="C&oacute;digo:" disabled="true" tooltip="Tipo pasant&iacute;a o pr&acirc;ctica pre profesional">
                                     <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="true"/>
+                                        <h:selectBooleanCheckbox value="true" disabled="true"/>
                                     </f:facet>
                                 </b:inputText>
 
 
                                 <b:inputText value="#{wizardCCValidacion.pasantia.cod_ppp}" label="No.:" disabled="true" tooltip="N&uacute;merro relacionado al c&oacute;digo">
                                     <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="true"/>
+                                        <h:selectBooleanCheckbox value="true" disabled="true"/>
                                     </f:facet>
                                 </b:inputText>
                                 <b:inputText value="#{wizardCCValidacion.empresa.nombre_empresa}" label="Nombre de la empresa o instituci&oacute;n:" disabled="true" tooltip="Nombre de la empresa o instituci&oacute;n">
                                     <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="true"/>
+                                        <h:selectBooleanCheckbox value="true" disabled="true"/>
                                     </f:facet>
                                 </b:inputText>
-                                <b:inputTextarea value="#{wizardCCValidacion.objetoDeLaActividad}" label="Objeto de la Actividad Acad&eacute;mica:" placeholder="Describir todas las actividades." tooltip="Describir el objeto de actividad acad&eacute;mica">
+                                <b:inputTextarea value="#{wizardCCValidacion.objetoDeLaActividad}" disabled="true" label="Objeto de la Actividad Acad&eacute;mica:" placeholder="Describir todas las actividades." tooltip="Describir el objeto de actividad acad&eacute;mica">
                                     <f:facet name="append">
                                         <h:selectBooleanCheckbox value="#{wizardCCValidacion.validar11}"/>
                                     </f:facet>
                                 </b:inputTextarea>
                                 <b:inputText value="#{wizardCCValidacion.carrera_grado}" label="Carrera de Grado:" disabled="true" tooltip="Carrera a la que pertenece">
                                     <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="true"/>
+                                        <h:selectBooleanCheckbox value="true" disabled="true"/>
                                     </f:facet>
                                 </b:inputText>
                                 <b:inputText value="#{wizardCCValidacion.usuario.estudiante.ultimoNivel}" label="Ciclo o Semestre que Cursa:" disabled="true" tooltip="Semestre en curso">
                                     <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="true"/>
+                                        <h:selectBooleanCheckbox value="true" disabled="true"/>
                                     </f:facet>
                                 </b:inputText>
                             </b:panel>
@@ -89,43 +89,43 @@
                             <b:panel title="Descripci&oacute;n Estrat&eacute;gica de Intervenci&oacute;n" look="default">
                                 <b:inputText value="#{wizardCCValidacion.tipo_actividad_academica}" label="Tipo Actividad Acad&eacute;mica:" disabled="true" tooltip="PA o PP">
                                     <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="true"/>
+                                        <h:selectBooleanCheckbox value="true" disabled="true"/>
                                     </f:facet>
                                 </b:inputText>
-                                <b:inputText value="45" label="Total Horas:" placeholder="Ejemplo: 200" tooltip="Horas">
+                                <b:inputText value="45" disabled="true" label="Total Horas:" placeholder="Ejemplo: 200" tooltip="Horas">
                                     <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="true"/>
+                                        <h:selectBooleanCheckbox value="true" disabled="true"/>
                                     </f:facet>
                                 </b:inputText>
 
                                 <b:inputText value="#{wizardCCValidacion.pasantia.fechaInicio}" label="Fecha Inicio:" tooltip="Fecha inicio actividades" disabled="true">
                                     <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="true"/>
+                                        <h:selectBooleanCheckbox value="true" disabled="true"/>
                                     </f:facet>
                                 </b:inputText>
                                 <b:inputText value="#{wizardCCValidacion.pasantia.fechaFin}" label="Fecha Fin:"  tooltip="Fecha fin actividades" disabled="true">
                                     <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="true"/>
+                                        <h:selectBooleanCheckbox value="true" disabled="true"/>
                                     </f:facet>
                                 </b:inputText>
-                                <b:inputText value="#{wizardCCValidacion.horarioPrevisto}" label="Horario Previsto:" placeholder="Ejemplo: L - Mi - V de 7am a 10am">
+                                <b:inputText value="#{wizardCCValidacion.horarioPrevisto}" disabled="true" label="Horario Previsto:" placeholder="Ejemplo: L - Mi - V de 7am a 10am">
                                     <f:facet name="append">
                                         <h:selectBooleanCheckbox value="#{wizardCCValidacion.validar15}"/>
                                     </f:facet>
                                 </b:inputText>
-                                <b:inputText value="#{wizardCCValidacion.nombrePrograma}" label="Nombre del Programa:" placeholder="Nombre de la aplicaci&oacute;n o programa">
+                                <b:inputText value="#{wizardCCValidacion.nombrePrograma}" disabled="true" label="Nombre del Programa:" placeholder="Nombre de la aplicaci&oacute;n o programa">
                                     <f:facet name="append">
                                         <h:selectBooleanCheckbox value="#{wizardCCValidacion.validar16}"/>
                                     </f:facet>
                                 </b:inputText>
-                                <b:inputText value="#{wizardCCValidacion.areaAcademica}" label="&Aacute;rea que Requiere la Actividad Acad&eacute;mica:" placeholder="Ejemplo: Departamento de QA">
+                                <b:inputText value="#{wizardCCValidacion.areaAcademica}" disabled="true" label="&Aacute;rea que Requiere la Actividad Acad&eacute;mica:" placeholder="Ejemplo: Departamento de QA">
                                     <f:facet name="append">
                                         <h:selectBooleanCheckbox value="#{wizardCCValidacion.validar17}"/>
                                     </f:facet>
                                 </b:inputText>
                                 <b:inputText value="#{wizardCCValidacion.encargado.nombre_encargado}" label="Responsable del &Aacute;rea:" disabled="true">
                                     <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="true"/>
+                                        <h:selectBooleanCheckbox value="true" disabled="true"/>
                                     </f:facet>
                                 </b:inputText>
                             </b:panel>
@@ -136,24 +136,24 @@
                         <!--INICIO ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA-->
                         <b:carouselItem style="width:400px;height:auto">
                             <b:panel title="Actividades Previstas a ser Desarrolladas en la Actividad Acad&eacute;mica" look="default">
-                                <b:inputTextarea value="#{wizardCCValidacion.actividadPrevista}" label="Se&ntilde;ale Aquellas que Prev&eacute;n Resultados y Productos:" tooltip="Listar m&iacute;nimo 4">
+                                <b:inputTextarea value="#{wizardCCValidacion.actividadPrevista}" disabled="true" label="Se&ntilde;ale Aquellas que Prev&eacute;n Resultados y Productos:" tooltip="Listar m&iacute;nimo 4">
                                     <f:facet name="append">
                                         <h:selectBooleanCheckbox value="#{wizardCCValidacion.validar19}"/>
                                     </f:facet>
                                 </b:inputTextarea>
-                                <b:inputTextarea value="#{wizardCCValidacion.resultadosPrevistos}" label="Resultados Previstoa de la Actividad Acad&eacute;mica:" tooltip="Listar m&iacute;nimo 4">
+                                <b:inputTextarea value="#{wizardCCValidacion.resultadosPrevistos}" disabled="true" label="Resultados Previstoa de la Actividad Acad&eacute;mica:" tooltip="Listar m&iacute;nimo 4">
                                     <f:facet name="append">
                                         <h:selectBooleanCheckbox value="#{wizardCCValidacion.validar20}"/>
                                     </f:facet>
                                 </b:inputTextarea>
-                                <b:inputTextarea value="#{wizardCCValidacion.productosEntregables}" label="Incluya el Listado de todos los Materiales F&iacute;sicos que se Generan en la Intervenci&oacute;n:" >
+                                <b:inputTextarea value="#{wizardCCValidacion.productosEntregables}" disabled="true" label="Incluya el Listado de todos los Materiales F&iacute;sicos que se Generan en la Intervenci&oacute;n:" >
                                     <f:facet name="append">
                                         <h:selectBooleanCheckbox value="#{wizardCCValidacion.validar21}"/>
                                     </f:facet>
                                 </b:inputTextarea>
                                 <b:inputText value="#{wizardCCValidacion.tutorXXX}" label="Nombre del Tutor:" tooltip="Tutor asignado para visitas" disabled="true">
                                     <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="true"/>
+                                        <h:selectBooleanCheckbox value="true" disabled="true"/>
                                     </f:facet>
                                 </b:inputText>
                                 <b:inputTextarea value="#{wizardCCValidacion.observacion}" label="Observaciones al estudiante acerca de su proceso" >

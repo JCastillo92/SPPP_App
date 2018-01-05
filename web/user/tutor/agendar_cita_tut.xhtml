@@ -71,10 +71,10 @@
                                 <b:dataTableColumn label="Acciones">                   
                                     <b:column >
                                           <center> 
-                                              <b:button rendered="#{campo.estado_visita == 'Agendada' eq true}" outcome="informe_tut.xhtml"  class="btn btn-success btn-xs" icon="ok"  >
+                                              <b:button rendered="#{campo.estado_visita == 'Agendada' eq true}" outcome="informe_tut.xhtml"   value="Visitado" look="success" >
                                                   <f:param name="id" value="#{campo.estudiante.cedula}"/>
                                               </b:button> &#160;
-                                              <b:button rendered="#{campo.estado_visita == 'Visitado' eq false}" outcome="cancelar_cita.xhtml"  class="btn btn-danger btn-xs" icon="remove" >
+                                              <b:button rendered="#{campo.estado_visita == 'Visitado' eq false}" outcome="cancelar_cita.xhtml"   value="Cancelar visita" look="danger">
                                                   <f:param name="id" value="#{campo.estudiante.cedula}"/>
                                               </b:button>
                                                     </center>

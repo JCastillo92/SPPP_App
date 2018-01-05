@@ -172,15 +172,15 @@
                       <br/>
                       <br/>
                        <p align="right">
-                   <b:button rendered="#{tablasFormatos.paso == false eq true}" onclick="$('.abrirPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();"  class="btn btn-danger" icon="remove"  ></b:button> 
-                  <b:commandButton  rendered="#{tablasFormatos.paso == false eq true}" class="btn btn-info" action="#{tablasFormatos.informeRuta(datosFormatos.id)}" icon="floppy-disk" ></b:commandButton>
-                     </p>                    
+                   <b:button rendered="#{tablasFormatos.paso == false eq true}" onclick="$('.abrirPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();" style="position:absolute;right:115px" value="Cancelar" look="danger"  ></b:button> 
+                  <b:commandButton  rendered="#{tablasFormatos.paso == false eq true}"   action="#{tablasFormatos.informeRuta(datosFormatos.id)}"  value="Guardar" look="info"  ></b:commandButton>
+                    &#160;&#160; </p>                    
                       
                   <center>                  
                   <h:dataTable var="campo" value="#{citasAgendadas.getVisitasRealizadas(datosFormatos.id)}" >
                                <h:column>
                            
-                                   <b:button outcome="agendar_cita_tut.xhtml" rendered="#{tablasFormatos.paso == false eq false}" class="btn btn-success btn-xl" ondblclick="#{controllerBean.updateVisitaAgendada(campo.id_visita,login.user,datosFormatos.id)}" icon="ok"  >
+                                   <b:button outcome="agendar_cita_tut.xhtml" rendered="#{tablasFormatos.paso == false eq false}"  ondblclick="#{controllerBean.updateVisitaAgendada(campo.id_visita,login.user,datosFormatos.id)}" value="Finalizar" look="success"  >
                              
                            </b:button>    </h:column>
                        </h:dataTable>

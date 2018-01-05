@@ -335,12 +335,12 @@
                             </div>  
 
                             <p align="right">
-                                <b:button onclick="$('.abrirPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();"  class="btn btn-danger" icon="remove"  >
+                                <b:button onclick="$('.abrirPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();" style="position:absolute;right:115px"  value="Cancelar" look="danger"  >
                                 </b:button> 
 
-                                <b:commandButton  rendered="#{tablasFormatos.paso == false eq true}" class="btn btn-info" action="#{tablasFormatos.informeSeguimientoTu(datosFormatos.id)}" icon="floppy-disk" ></b:commandButton>
+                                <b:commandButton  rendered="#{tablasFormatos.paso == false eq true}" style="position:absolute;right:25px"  action="#{tablasFormatos.informeSeguimientoTu(datosFormatos.id)}" value="Guardar" look="info" ></b:commandButton>
 
-                                <b:button  rendered="#{tablasFormatos.paso == false eq false}" outcome="hoja_ruta_tut.xhtml"  class="btn btn-success" icon="arrow-right">
+                                <b:button  rendered="#{tablasFormatos.paso == false eq false}" style="position:absolute;right:25px" outcome="hoja_ruta_tut.xhtml"  value="Siguiente" look="success">
 
                                     <f:param name="id" value="#{datosFormatos.id}"/>
 

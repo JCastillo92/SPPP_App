@@ -64,7 +64,7 @@ insert into tb_tipopregunta (tipo) values ('CHECKONE');/*7*/
 insert into tb_tipopregunta (tipo) values ('CHECKMANY');/*8*/
 
 
-/*llenar tb_proceso ESTA TABLA TENDRA DATOS QUEMADOS
+/*llenar tb_proceso ESTA TABLA TENDRA DATOS QUEMADOS*/
 insert into tb_proceso(descripcion,estado) values ('Ingreso Datos Basicos',true);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('ingreso datos alumno',true,1);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('ingreso datos empresa',true,1);
@@ -106,7 +106,7 @@ insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir Autoevaluac
 insert into tb_proceso(descripcion,estado) values ('Descargar/Subir Otros Documentos',true);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir Certificado empresa',true,27);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir comprobante pasantía',true,27);
-*/
+
 
 
 /*

@@ -335,7 +335,7 @@ private Usuario usuario = new Usuario();
         
     }
       
-     public void updateVisita(long id_visita, String tutor, String apellido,String correo, String dia ,Date fecha, String hora,String est, String ap_est,String co_est,String tele_est ){
+     public void updateVisita(long id_visita, String tutor, String apellido,String correo, String dia ,Date fecha, String hora,String est, String ap_est,String co_est,String tele_est ,long cedula_tuto,String cedula_est){
       
         fechaConFormato = sdf_data.format(fecha); 
         
@@ -344,8 +344,8 @@ private Usuario usuario = new Usuario();
           VisitaDAO visitaDAO = new VisitaDAO();
           visitaDAO.updateVisita(id_visita, newVisitaTutor);
           //agregar();
-          
-     
+      VisitaDAO vi = new VisitaDAO();
+       vi.visita_tut(cedula_tuto, id_visita, cedula_est);
                   System.out.println("jaaaaaaaaaaaaaaaaaaaaaaa"+id_visita);
       }
      public void updateCantidadVisita(long id_visita2){
@@ -366,8 +366,8 @@ private Usuario usuario = new Usuario();
                     tutor.setCedula(cedu);
                     newVisitaTutor.setId_visita(id_visita2);
                     
-                    visitaDAO.visita_tut(cedula, id_visita2, ced_est);
-                    
+                    visitaDAO.validacion_visita(cedula, id_visita2, ced_est);
+                    visitaDAO.autoevaluacion();
                     System.out.println("bryant"+ tutor+""+newVisitaTutor+""+ced_est);
                     return "agendar_cita_tut";
       }
@@ -423,8 +423,7 @@ public void sendConfirmacion(String tutor, String apellido, String correo, Strin
      
     MailingMain por = new MailingMain();
       por.mensajes(7, correo, observaciones);
-       VisitaDAO vi = new VisitaDAO();
-       vi.solicitud();
+      
     
 }
 
@@ -454,8 +453,7 @@ public void sendValidacion(String correo,String nombre,String apellido,String ce
       por.mensajes(8, correo, observación);
       paso=true;
       
-      VisitaDAO vi = new VisitaDAO();
-      vi.autoevaluacion();
+      
       
  }
 

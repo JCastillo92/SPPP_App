@@ -71,10 +71,10 @@
                                 <b:dataTableColumn label="Acciones">                   
                                     <b:column >
                                           <center> 
-                                              <b:button rendered="#{campo.estado_visita == 'Agendada' eq true}" outcome="informe_tut.xhtml"   value="Visitado" look="success" >
+                                              <b:button rendered="#{campo.estado_visita == 'Agendada' eq true}" outcome="informe_tut.xhtml"   value="Visitado" look="success" size="sm" >
                                                   <f:param name="id" value="#{campo.estudiante.cedula}"/>
                                               </b:button> &#160;
-                                              <b:button rendered="#{campo.estado_visita == 'Visitado' eq false}" outcome="cancelar_cita.xhtml"   value="Cancelar visita" look="danger">
+                                              <b:button rendered="#{campo.estado_visita == 'Visitado' eq false}" outcome="cancelar_cita.xhtml"   value="Cancelar" look="danger" size="sm">
                                                   <f:param name="id" value="#{campo.estudiante.cedula}"/>
                                               </b:button>
                                                     </center>
@@ -93,7 +93,7 @@
                                 <table>
                                     <tr>
                                         <td>Estudiante asignado:&#160;&#160;&#160;&#160;&#160;</td>
-                                        <td>    <b:selectOneMenu required="true" id="ci_est" requiredMessage="escoja un alumno" colMd="60" value="#{confirmaCita.estudiantes.id_cedula}"  >
+                                        <td>    <b:selectOneMenu required="true" id="ci_est" requiredMessage="Escoja un alumno" colMd="60" value="#{confirmaCita.estudiantes.id_cedula}"  >
                                         
                                                 <f:selectItem noSelectionOption="true" itemLabel="Seleccione:"/>
                                                 <f:selectItems value="#{confirmaCita.getListarEstudiantes(login.user)}"/>
@@ -103,7 +103,7 @@
                                     <tr>
                                         <td>Fecha de cita:</td>
                                         <td>   
-                                            <p:calendar required="true" id="ci_fecha" pattern="dd/MM/yyyy" style="date-input" beforeShowDay="fridaysDisabled"  locale="es"  mindate="today" value="#{controllerBean.data}" requiredMessage="escoja una fecha" > 
+                                            <p:calendar  required="true" id="ci_fecha" pattern="dd/MM/yyyy" style="date-input" beforeShowDay="fridaysDisabled"  locale="es"  mindate="today" value="#{controllerBean.data}" requiredMessage="escoja una fecha" > 
                                              
                 </p:calendar><h:message for="ci_fecha" style="color:red" /> 
                                             <br/><br/>

@@ -33,7 +33,7 @@ public class ConfirmaCita {
      private String correo;
      private String telefono;
      private String co_director;
-     
+     private String co_coord;
      
     public List<SelectItem> getListarEstudiantes(long user) {
         this.listarEstudiantes=new ArrayList<SelectItem>();
@@ -107,6 +107,12 @@ public class ConfirmaCita {
     public String getCo_director() {
          CitasDao citasdao=new CitasDaoImp();
         this.co_director=citasdao.obtenerCorreoDirector(8);
+        return co_director;
+    }
+
+    public String getCo_coord() {
+         CitasDao citasdao=new CitasDaoImp();
+        this.co_director=citasdao.obtenerCorreoDirector(6);
         return co_director;
     }
     

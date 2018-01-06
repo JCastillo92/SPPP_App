@@ -29,7 +29,17 @@ public class Login implements Serializable{
     private String msg;
     private String user;
     private String perfil;
+    private String nombre="";
+    private String apellido="";
+    private String nombreCompleto="";
 
+    public String getNombreCompleto() {
+        nombreCompleto = nombre+" "+apellido;
+        return nombreCompleto;
+    }
+
+    
+    
     public String getPwd() {
         return pwd;
     }
@@ -66,7 +76,8 @@ public class Login implements Serializable{
     
     //Metodo Validacion
     public String validateUser(){
-    Usuario usuario = LoginDAO.validate(user, pwd);
+     
+        Usuario usuario = LoginDAO.validate(user, pwd);
         if (usuario != null){
             HttpSession session = SessionUtils.getSession();
             session.setAttribute("username", user);
@@ -76,6 +87,9 @@ public class Login implements Serializable{
             int perfil = (int) session.getAttribute("perfil");
             Cls_PerfilNotation obj1= new Cls_PerfilNotation();
             
+            //Capturo nombre y apellido
+            nombre = usuario.getNombre();
+            apellido = usuario.getApellido();
             if (obj1.perfilChooser(perfil).equals("Estudiante")){
                 return "/user/estudiantes/dashboard_est.xhtml";
             }else if (obj1.perfilChooser(perfil).equals("Gestor")){

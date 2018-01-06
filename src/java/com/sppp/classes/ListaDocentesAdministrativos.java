@@ -12,7 +12,7 @@ package com.sppp.classes;
 public class ListaDocentesAdministrativos {
     public String nombreDocenteAdministrativo(int codigo_cargo){
         String retorno="",
-                DireccionCarreraSistemas="\nING. PATSY MALENA PRIETO MSc. \nDirectora de la Carrera de Ingeniería de Sistemas",
+                DireccionCarreraSistemas="\nING. PATSY MALENA PRIETO MSc. \nDIRECTORA DE LA CARRERA DE INGENIERÍA DE SISTEMAS",
                 Secretaria="\nSecretaria de la UPS",
                 ConsejoCarreraSistemas="\nConsejo Carrera Sistemas",
                 DelegadoUPS="\nMgst. LOLA VASQUEZ. \nDirectora técnica de vinculación UPS. \n3962800 ext.2167"

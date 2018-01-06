@@ -138,7 +138,8 @@ public class AlmacenamientoPDF{
                  PdfPCell cell;
                  documento.setPageSize(PageSize.A4);
                  Font estitulo = FontFactory.getFont(FontFactory.TIMES_ROMAN, 14, Font.NORMAL);
-                 Font estexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
+                 Font estexto = FontFactory.getFont(FontFactory.COURIER, 8, Font.NORMAL);
+                 Font escuadro = FontFactory.getFont(FontFactory.TIMES_ROMAN, 10, Font.NORMAL);                 
                  Font esnota = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6, Font.NORMAL);
                  Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL); 
                  
@@ -182,45 +183,45 @@ public class AlmacenamientoPDF{
       //                            SEPARAR POR SECCIONES
       //SEC INFORMACION GENERAL
       //https://developers.itextpdf.com/examples/tables/colspan-and-rowspan
-       documento.add(new Paragraph("INFORMACIÓN GENERAL",estexto));
+       documento.add(new Paragraph("INFORMACIÓN GENERAL",escuadro));
   documento.add(salto_linea);
   
   //tabla 1
   PdfPTable table = new PdfPTable(4);//# columns
   //1 row
-  table.addCell(new Paragraph("CÓDIGO:",estexto));
+  table.addCell(new Paragraph("CÓDIGO:",escuadro));
   table.addCell(new Paragraph(pasantia.getTipo_ppp(),estexto));
-  table.addCell(new Paragraph("No.:",estexto));
+  table.addCell(new Paragraph("No.:",escuadro));
   table.addCell(new Paragraph(""+pasantia.getCod_ppp(),estexto));
   
   //2 row
-  table.addCell(new Paragraph("NOMBRE DE LA EMPRESA O INSTITUCIÓN:",estexto));
+  table.addCell(new Paragraph("NOMBRE DE LA EMPRESA O INSTITUCIÓN:",escuadro));
   cell = new PdfPCell(new Paragraph(empresa.getNombre_empresa(),estexto));
   cell.setColspan(3);//total de celdas que va MERGE a esta FILA
   table.addCell(cell);
    
   //3 row
-  table.addCell(new Paragraph("DIRECCIÓN:",estexto));
+  table.addCell(new Paragraph("DIRECCIÓN:",escuadro));
   table.addCell(new Paragraph(empresa.getDireccion_empresa(),estexto));
-  table.addCell(new Paragraph("TELÉFONO:",estexto));
+  table.addCell(new Paragraph("TELÉFONO:",escuadro));
   table.addCell(new Paragraph(empresa.getTelefono_empresa(),estexto));
   
   //4 row
-  table.addCell(new Paragraph("ACTIVIDAD PRINCIPAL DE LA EMPRESA O INSTITUCIÓN:",estexto));
+  table.addCell(new Paragraph("ACTIVIDAD PRINCIPAL DE LA EMPRESA O INSTITUCIÓN:",escuadro));
   cell = new PdfPCell(new Paragraph(empresa.getActividad_principal_empresa(),estexto));
   cell.setColspan(3);//total de celdas que va MERGE a esta FILA
   table.addCell(cell);
   
   //5 row
-  table.addCell(new Paragraph("APELLIDOS Y NOMBRES DEL ESTUDIANTE:",estexto));
+  table.addCell(new Paragraph("APELLIDOS Y NOMBRES DEL ESTUDIANTE:",escuadro));
    cell = new PdfPCell(new Paragraph(usuario.getApellido()+" "+usuario.getNombre(),estexto));
   cell.setColspan(3);//total de celdas que va MERGE a esta FILA
   table.addCell(cell);
   
   //6 row
-  table.addCell(new Paragraph("CARRERA DE GRADO:",estexto));
+  table.addCell(new Paragraph("CARRERA DE GRADO:",escuadro));
   table.addCell(new Paragraph("INGENIERÍA DE SISTEMAS",estexto));
-  table.addCell(new Paragraph("CICLO o SEMESTRE QUE CURSA:",estexto));
+  table.addCell(new Paragraph("CICLO / SEMESTRE QUE CURSA:",escuadro));
   table.addCell(new Paragraph(""+usuario.getEstudiante().getUltimoNivel(),estexto));
   documento.add(table);
   //FIN TABLA 1
@@ -229,48 +230,48 @@ public class AlmacenamientoPDF{
   documento.add(salto_linea);
   documento.add(salto_linea);
   
-   documento.add(new Paragraph("DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN",estexto));
+   documento.add(new Paragraph("DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN",escuadro));
   documento.add(salto_linea);
    
 //tabla 2
    PdfPTable table2 = new PdfPTable(6);//# columns
   //1 row
-  table2.addCell(new Paragraph("TIPO DE ACTIVIDAD ACADÉMICA:",estexto));
+  table2.addCell(new Paragraph("TIPO DE ACTIVIDAD ACADÉMICA:",escuadro));
   cell = new PdfPCell(new Paragraph(giveMeNamePPP(pasantia.getTipo_ppp()),estexto));
   cell.setColspan(3);//total de celdas que va MERGE a esta FILA
   table2.addCell(cell);
-  table2.addCell(new Paragraph("TOTAL HORAS:",estexto));
+  table2.addCell(new Paragraph("TOTAL HORAS:",escuadro));
   table2.addCell(new Paragraph(""+usuario.getEstudiante().getHorasPasantia(),estexto));
   
   //2 row
-  cell = new PdfPCell(new Paragraph("OBJETO DE LA ACTIVIDAD ACADÉMICA",estexto));
+  cell = new PdfPCell(new Paragraph("OBJETO DE LA ACTIVIDAD ACADÉMICA",escuadro));
   cell.setRowspan(2);//#columnas a merge para esta celda
   table2.addCell(cell);
   cell = new PdfPCell(new Paragraph("xxxxxxxxx",estexto));
   cell.setColspan(3);//total de celdas que va MERGE a esta FILA
   cell.setRowspan(2);//#columnas a merge para esta celda
   table2.addCell(cell);
-  table2.addCell(new Paragraph("FECHA INICIO:",estexto));
+  table2.addCell(new Paragraph("FECHA INICIO:",escuadro));
   table2.addCell(new Paragraph(""+pasantia.getFechaInicio(),estexto));
-  table2.addCell(new Paragraph("FECHA FINAL:",estexto));
+  table2.addCell(new Paragraph("FECHA FINAL:",escuadro));
   table2.addCell(new Paragraph(""+pasantia.getFechaFin(),estexto));
 
   //3 row
-  table2.addCell(new Paragraph("HORARIO PREVISTO:",estexto));
+  table2.addCell(new Paragraph("HORARIO PREVISTO:",escuadro));
   cell = new PdfPCell(new Paragraph("xxxxxxxxxxxxxxx",estexto));
   cell.setColspan(2);//total de celdas que va MERGE a esta FILA
   table2.addCell(cell);
-  table2.addCell(new Paragraph("NOMBRE PROGRAMA:",estexto));
+  table2.addCell(new Paragraph("NOMBRE PROGRAMA:",escuadro));
   cell = new PdfPCell(new Paragraph("xxxxxxxxxxxxxxx",estexto));
   cell.setColspan(2);//total de celdas que va MERGE a esta FILA
   table2.addCell(cell);
   
   //4 row
-  table2.addCell(new Paragraph("ÁREA QUE REQUIERE LA ACTIVIDAD ACADÉMICA:",estexto));
+  table2.addCell(new Paragraph("ÁREA QUE REQUIERE LA ACTIVIDAD ACADÉMICA:",escuadro));
   cell = new PdfPCell(new Paragraph("xxxxxxxxxxxxxxx",estexto));
   cell.setColspan(2);//total de celdas que va MERGE a esta FILA
   table2.addCell(cell);
-  table2.addCell(new Paragraph("RESPONSABLE DEL ÁREA:",estexto));
+  table2.addCell(new Paragraph("RESPONSABLE DEL ÁREA:",escuadro));
   cell = new PdfPCell(new Paragraph(encargado.getNombre_encargado(),estexto));
   cell.setColspan(2);//total de celdas que va MERGE a esta FILA
   table2.addCell(cell);
@@ -282,12 +283,12 @@ public class AlmacenamientoPDF{
                     documento.add(salto_linea);
                     documento.add(salto_linea);
 
-                    Paragraph p2 = new Paragraph("ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA", estexto);
+                    Paragraph p2 = new Paragraph("ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA", escuadro);
                     p2.setAlignment(Element.ALIGN_CENTER);
                     documento.add(p2);
                     
                    
-                    documento.add(new Paragraph("(SEÑALE AQUELLAS QUE PREVÉN RESULTADOS Y PRODUCTOS)", estexto));
+                    documento.add(new Paragraph("(SEÑALE AQUELLAS QUE PREVÉN RESULTADOS Y PRODUCTOS)", escuadro));
                     documento.add(salto_linea);
                     //TABLA 3 INICIO
                     PdfPTable table3 = new PdfPTable(1);//# columns
@@ -298,7 +299,7 @@ public class AlmacenamientoPDF{
 
                     documento.add(salto_linea);
                     documento.add(salto_linea);
-                    documento.add(new Paragraph("RESULTADOS PREVISTOS DE ACTIVIDAD ACADÉMICA", estexto));
+                    documento.add(new Paragraph("RESULTADOS PREVISTOS DE ACTIVIDAD ACADÉMICA", escuadro));
                     documento.add(salto_linea);
                     //TABLA 4 INICIO
                     PdfPTable table4 = new PdfPTable(1);//# columns
@@ -309,11 +310,11 @@ public class AlmacenamientoPDF{
                     
                     documento.add(salto_linea);
                     documento.add(salto_linea);
-                    Paragraph p3 = new Paragraph("PRODUCTOS ENTREGABLES PREVISTOS DE LA ACTIVIDAD ACADÉMICA", estexto);
+                    Paragraph p3 = new Paragraph("PRODUCTOS ENTREGABLES PREVISTOS DE LA ACTIVIDAD ACADÉMICA", escuadro);
                     p3.setAlignment(Element.ALIGN_CENTER);
                     documento.add(p3);
                     documento.add(salto_linea);
-                    documento.add(new Paragraph("(INCLUYA TODOS LOS MATERIALES FÍSICOS QUE SE GENERAN EN LA INTERVENCIÓN)", estexto));
+                    documento.add(new Paragraph("(INCLUYA TODOS LOS MATERIALES FÍSICOS QUE SE GENERAN EN LA INTERVENCIÓN)", escuadro));
                     documento.add(salto_linea);
                     
                     //TABLA 5 INICIO
@@ -328,7 +329,7 @@ public class AlmacenamientoPDF{
   PdfPTable table6 = new PdfPTable(4);//# columns
                  //1row
                  documento.add(salto_linea);
-  table6.addCell(new Paragraph("NOMBRE DEL TUTOR:",estexto));
+  table6.addCell(new Paragraph("NOMBRE DEL TUTOR:",escuadro));
           cell = new PdfPCell(new Paragraph("xxxxxxxxxxxxxx urgente aqui se asiigna el tutor",estexto));
   cell.setColspan(3);//total de celdas que va MERGE a esta FILA
   table6.addCell(cell);
@@ -338,30 +339,30 @@ public class AlmacenamientoPDF{
   
   //SEC ACEPTACIÓN Y LEGALIZACIÓN
   documento.add(salto_linea);
-    documento.add(new Paragraph("ACEPTACIÓN Y LEGALIZACIÓN",estexto));
+    documento.add(new Paragraph("ACEPTACIÓN Y LEGALIZACIÓN",escuadro));
   documento.add(salto_linea);
 
 
                     //tabla 7
                     PdfPTable table7 = new PdfPTable(6);//# columns
                     //1 row
-                    table7.addCell(new Paragraph("APELLIDOS Y NOMBRES DEL REPRESENTANTE LEGAL:", estexto));
+                    table7.addCell(new Paragraph("APELLIDOS Y NOMBRES DEL REPRESENTANTE LEGAL:", escuadro));
                     cell = new PdfPCell(new Paragraph(empresa.getNombre_gerente(),estexto));
                     cell.setColspan(2);//total de celdas que va MERGE a esta FILA
                     table7.addCell(cell);
-                    table7.addCell(new Paragraph("TELÉFONO:", estexto));
+                    table7.addCell(new Paragraph("TELÉFONO:", escuadro));
                     cell = new PdfPCell(new Paragraph(empresa.getTelefono_empresa(),estexto));
                     cell.setColspan(2);//total de celdas que va MERGE a esta FILA
                     table7.addCell(cell);
                     
                     //2 row
-                    table7.addCell(new Paragraph("APELLIDOS Y NOMBRES DELEGADO UPS:", estexto));
+                    table7.addCell(new Paragraph("APELLIDOS Y NOMBRES DELEGADO UPS:", escuadro));
                     cell = new PdfPCell(new Paragraph(buscar_docadmin.nombreDocenteAdministrativo(4),estexto));
                     cell.setColspan(5);//total de celdas que va MERGE a esta FILA
                     table7.addCell(cell);
                     
                     //3 row
-                    table7.addCell(new Paragraph("LUGAR Y FECHA SUSCRIPCIÓN:", estexto));
+                    table7.addCell(new Paragraph("LUGAR Y FECHA SUSCRIPCIÓN:", escuadro));
                     cell = new PdfPCell(new Paragraph("xxxxx",estexto));
                     cell.setColspan(5);//total de celdas que va MERGE a esta FILA
                     table7.addCell(cell);
@@ -371,12 +372,12 @@ public class AlmacenamientoPDF{
                     //tabla 8
                     PdfPTable table8 = new PdfPTable(3);//# columns
                     //1 row
-                    table8.addCell(new Paragraph("REPRESENTANTE LEGAL:", estexto));
+                    table8.addCell(new Paragraph("REPRESENTANTE LEGAL:", escuadro));
                     table8.addCell(new Paragraph("firma:", esnota));
                     table8.addCell(new Paragraph("sello:", esnota));
                     
                     //2 row
-                    table8.addCell(new Paragraph("DIRECCIÓN TÉCNICA DE VINCULACIÓN CON LA SOCIEDAD:", estexto));
+                    table8.addCell(new Paragraph("DIRECCIÓN TÉCNICA DE VINCULACIÓN CON LA SOCIEDAD:", escuadro));
                     table8.addCell(new Paragraph("firma:", esnota));
                     table8.addCell(new Paragraph("sello:", esnota));
                     documento.add(table8);                                    
@@ -415,6 +416,7 @@ public class AlmacenamientoPDF{
                  documento.setPageSize(PageSize.A4);
                  Font estitulo = FontFactory.getFont(FontFactory.TIMES_ROMAN, 14, Font.NORMAL);
                  Font estexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
+                 Font estextoBold = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLD);
                  Font esnota = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6, Font.NORMAL);
                  Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL); 
      
@@ -441,52 +443,86 @@ public class AlmacenamientoPDF{
         image3.scalePercent(6, 6);
         documento.add(image3);
         
-      documento.addAuthor("Universidad Politecnica Salesiana");
       Paragraph salto_linea=new Paragraph("\n");
       Paragraph linea_firma=new Paragraph("________________",estexto);
+        
+      
+      documento.add(salto_linea);
       documento.add(salto_linea);
       documento.add(salto_linea);
       documento.add(salto_linea);
       
+        //F E C H A  DEL  S I S T E M A  
+      LocalTimeDate obtenerfecha=new LocalTimeDate(); 
+      Paragraph la_fehca=new Paragraph("Quito D.M., "+obtenerfecha.fechaAnioMesDia(),estexto);
+      la_fehca.setAlignment(Element.ALIGN_LEFT);
+      documento.add(la_fehca);
+      
+        
+        documento.addAuthor("Universidad Politecnica Salesiana");
+      
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      
+      /*
       // T I T U L O
-      Paragraph p1=new Paragraph("OFICIO PARA LA EMPRESA",estitulo);
-      p1.setAlignment(Element.ALIGN_CENTER);
+      Paragraph p1=new Paragraph(encargado.getCargo_encargado(),estextoBold);
+      p1.setAlignment(Element.ALIGN_LEFT);
       documento.add(p1);
       documento.add(salto_linea);
-      
-      //F E C H A  DEL  S I S T E M A  
-      LocalTimeDate obtenerfecha=new LocalTimeDate(); 
-      Paragraph la_fehca=new Paragraph("Fecha: Quito, "+obtenerfecha.fechaAnioMesDia(),estexto);
-      la_fehca.setAlignment(Element.ALIGN_RIGHT);
-      documento.add(la_fehca);
-      documento.add(salto_linea);
+      */
       
       //D I R I G I D O AL GERENTE DE LA EMPRESA O INSTITUCION
-      documento.add(new Paragraph("Para: "+empresa.getNombre_gerente(),estexto));
+      documento.add(new Paragraph(encargado.getCargo_encargado(),estextoBold));
+      documento.add(new Paragraph(encargado.getNombre_encargado(),estextoBold));
+      documento.add(new Paragraph(empresa.getNombre_empresa(),estextoBold));
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      
+      
+      documento.add(new Paragraph("Presente. -",estexto));
+      documento.add(salto_linea);
       documento.add(salto_linea);
       
       // C U  E R  P O   DE  D O C U M E N T O 
-      Paragraph cuerpo=new Paragraph("La Universidad Politécnica Salesiana solicita de la forma mas comedida que "
-              + ""+usuario.getNombre()+" "+usuario.getApellido()+", con cédula de ciudadanía: "+usuario.getEstudiante().getCedula()+", "
-                      + " se le otorgue la oprtuninda de realizar la "+giveMeNamePPP(pasantia.getTipo_ppp())+" dentro de sus "
-                              + "instalaciones.",estexto);
+      Paragraph cuerpo=new Paragraph("Reciba un cordial saludo de quienes conformamos la "
+              + "Carrera de Ingeniería de Sistemas de la Universidad Politécnica Salesiana. "
+              + "El motivo de la presente tiene como finalidad solicitar a usted, se dé facilidad para efectuar "+giveMeNamePPP(pasantia.getTipo_ppp())+", "
+                      + "en el área de XXXXXXXXXX de la prestigiosa institución a su digno cargo; al señor: "+usuario.getNombre()+" "+usuario.getApellido()+" con "
+                              + "documento de identificación N° "+usuario.getEstudiante().getCedula()+", estudiante de "+usuario.getEstudiante().getUltimoNivel()+" "
+                                      + "semestre de la Carrera de Ingeniería de Sistemas.",estexto);
       cuerpo.setAlignment(Element.ALIGN_JUSTIFIED);
       documento.add(cuerpo);
+      documento.add(salto_linea);
       
       
+      Paragraph cuerpo2=new Paragraph("A la vez me permito solicitar la respuesta a esta petición por escrito, y en "
+              + "caso de ser aceptada, al concluir dicha actividad, se emita un informe indicando el desempeño del "
+              + "estudiante y el área al que fue asignado.",estexto);
+      cuerpo2.setAlignment(Element.ALIGN_JUSTIFIED);
+      documento.add(cuerpo2);
+      documento.add(salto_linea);
       
-      //nombre  DOCENTE, TUTOR, ADMINISTRATIVO
+       Paragraph cuerpo3=new Paragraph("Seguros de contar con su positiva respuesta, "
+               + "le anticipamos nuestros agradecimientos.",estexto);
+      cuerpo3.setAlignment(Element.ALIGN_JUSTIFIED);
+      documento.add(cuerpo3);
       documento.add(salto_linea);
       documento.add(salto_linea);
+      documento.add(salto_linea);
+      
       
       //FIRMA linea de firma
       documento.add(linea_firma);
       
       documento.add(new Paragraph("Atentamente: "+buscar_docadmin.nombreDocenteAdministrativo(1),estexto));
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
       
-      //ADICIONAL VA EL NOMBRE DE LA UNIVERSIDAD Y SEDE
-      documento.add(new Paragraph("Universidad Politécnica Salesiana, Sede Quito ",estexto));    
-      
+      documento.add(new Paragraph(""+buscar_docadmin.nombreDocenteAdministrativo(1),estexto));
+    
       //F I N  D O C U M E N T O 
       documento.close();
       exitoalguardar=true;

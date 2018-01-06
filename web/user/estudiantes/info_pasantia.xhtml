@@ -38,6 +38,7 @@
             <div class="col-lg-12">
 
                 <b:form>
+                    <b:messages />
                     <b:carousel id="wizard" styleClass="wizardPseudoClass"
                                 style="width:400px; padding-top:20px"
                                 startAnimation="false"
@@ -66,13 +67,18 @@
                         <b:carouselItem style="width:400px;height:auto">
                             <b:panel title="Datos Empresa - p&aacute;g 2 de 2" look="default">
                                 <!-- AQUI ABAJO FORMULARIO DINAMICO EMPRESA-->
-                                <b:inputText value="#{userWizard.emp.id_empresa}" class="#{userWizard.datosAPintar[9] ? 'hola':'rojo_error'}" label="RUC:" required="true"/>
+                                <b:inputText validator="#{userWizard.validarRuc}" value="#{userWizard.emp.id_empresa}" class="#{userWizard.datosAPintar[9] ? 'hola':'rojo_error'}" label="RUC:" required="true">
+                                    <f:validateLength minimum="12" maximum="13"/>
+                                </b:inputText>
                                 <b:inputText value="#{userWizard.emp.nombre_empresa}" class="#{userWizard.datosAPintar[10] ? 'hola':'rojo_error'}" label="Nombre Empresa:" required="true" style="text-transform:uppercase;"/>
                                 <b:inputText value="#{userWizard.emp.nombre_gerente}" class="#{userWizard.datosAPintar[11] ? 'hola':'rojo_error'}" label="Nombres y Apellidos Gerente Empresa:" required="true" style="text-transform:uppercase;"/>
                                 <b:inputText value="#{userWizard.emp.telefono_empresa}" class="#{userWizard.datosAPintar[12] ? 'hola':'rojo_error'}" label="Tel&eacute;fono:" required="true"/>
                                 <b:inputText value="#{userWizard.emp.direccion_empresa}" class="#{userWizard.datosAPintar[13] ? 'hola':'rojo_error'}" label="Direcci&oacute;n:" required="true" style="text-transform:uppercase;"/>
                                 <b:inputText value="#{userWizard.emp.actividad_principal_empresa}" class="#{userWizard.datosAPintar[14] ? 'hola':'rojo_error'}" label="Actividad Principal que Ejerce Empresa:" required="true" style="text-transform:uppercase;"/>
-                                <b:inputText value="#{userWizard.enc.ci_encargado}" class="#{userWizard.datosAPintar[15] ? 'hola':'rojo_error'}" label="C&eacute;dula Encargado:" required="true"/>
+                                <b:inputText validator="#{userWizard.validarCI}" value="#{userWizard.enc.ci_encargado}" class="#{userWizard.datosAPintar[15] ? 'hola':'rojo_error'}" 
+                                             label="C&eacute;dula Encargado:" required="true">
+                                    <f:validateLength minimum="9" maximum="10"/>
+                                </b:inputText>
                                 <b:inputText value="#{userWizard.enc.nombre_encargado}" class="#{userWizard.datosAPintar[16] ? 'hola':'rojo_error'}" label="Nombres y Apellidos Encargado:" required="true" style="text-transform:uppercase;"/>
                                 <b:inputText value="#{userWizard.enc.cargo_encargado}" class="#{userWizard.datosAPintar[17] ? 'hola':'rojo_error'}" label="Cargo / Profesi&oacute;n Encargado:" required="true" style="text-transform:uppercase;"/>
                             </b:panel>

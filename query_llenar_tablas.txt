@@ -83,9 +83,10 @@ insert into tb_proceso(descripcion,estado) values ('Descargar/Subir Carta Compro
 insert into tb_proceso(descripcion,estado,proceso_de) values ('Descargar Carta Compromiso',true,11);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir Carta Compromiso',true,11);
 
-insert into tb_proceso(descripcion,estado) values ('Solicitar Inicio Actividades',true);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('Descargar Inicio Actividades',true,14);
-insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir Inicio Actividades',true,14);
+insert into tb_proceso(descripcion,estado) values ('Validacion PDFs',true);
+insert into tb_proceso(descripcion,estado,proceso_de) values ('Encargado descarga y valida 4 pdfs',true,14);
+
+insert into tb_proceso(descripcion,estado) values ('Solicitud Inicio Actividades',true);
 
 insert into tb_proceso(descripcion,estado) values ('Resolucion de Proceso',true);
 

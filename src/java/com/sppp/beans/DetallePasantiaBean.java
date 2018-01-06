@@ -64,6 +64,7 @@ public class DetallePasantiaBean {
            empData3=dpDAO.findAllDetallePasantiaconCIValidaInicioActividades();
            outcome_salida="validarInicioPasantia";
            break;
+           
            default:
                break;
        }

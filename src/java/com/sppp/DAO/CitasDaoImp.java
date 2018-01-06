@@ -87,11 +87,11 @@ public class CitasDaoImp implements CitasDao {
             
         Transaction tx = null;
         
-        String sql = "FROM Pasantia WHERE ced_tutor_asignado =:num";
-        
+        String sql = "FROM Pasantia WHERE ced_tutor_asignado =:num and estado_tut =:true";
+        boolean estado=true;
         try {
             tx = sesion.beginTransaction();
-         estudiante = sesion.createQuery(sql).setParameter("num", user).list();
+         estudiante = sesion.createQuery(sql).setParameter("num", user).setParameter("true", estado).list();
 
             //    Query query = sesion.createQuery(sql);
         // estudiante=query.list();

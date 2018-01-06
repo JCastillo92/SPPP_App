@@ -365,7 +365,10 @@ public class DetallePasantiaDAO {
         }
         return detallePas;
     }
- public DetallePasantia findDetallePasantiaPorProcesoFalse(String tipo_ppp, int cod_ppp, int tipoProceso) {
+    
+    
+    
+public DetallePasantia findDetallePasantiaPorProcesoFalse(String tipo_ppp, int cod_ppp, int tipoProceso) {
         DetallePasantia detallePas = new DetallePasantia();
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session sesion = sf.openSession();
@@ -373,7 +376,7 @@ public class DetallePasantiaDAO {
 
         try {
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery(" from DetallePasantia WHERE tipo_ppp = :tipo_ppp AND cod_ppp = :cod_ppp AND proceso.id_proceso = :proc ");
+            Query query = sesion.createQuery(" from DetallePasantia WHERE tipo_ppp = :tipo_ppp AND cod_ppp = :cod_ppp AND proceso.id_proceso = :proc AND estado =  FALSE");
             query.setString("tipo_ppp", tipo_ppp);//PA PP
             query.setInteger("cod_ppp", cod_ppp);//1 9
             query.setLong("proc", tipoProceso);
@@ -391,6 +394,8 @@ public class DetallePasantiaDAO {
         }
         return detallePas;
     }
+
+
 
         public List<Object[]> findAllDetallePasantiaconCIAllTrue(){
         SessionFactory sf=HibernateUtil.getSessionFactory();

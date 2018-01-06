@@ -110,6 +110,26 @@ Session session = HibernateUtil.getSessionFactory().openSession();
              session.close();
          }
 }
+      
+      public void updateCompletado(long cedula_tut,VisitaTutor newVisita){
+Transaction trns= null;
+Session session = HibernateUtil.getSessionFactory().openSession();
+         try {
+             trns= session.beginTransaction();
+             VisitaTutor oldVisita =(VisitaTutor) session.load(VisitaTutor.class, new Long(cedula_tut));
+             oldVisita.setEstado_visita("Completado");
+             session.update(oldVisita);
+             trns.commit();
+         } catch (RuntimeException e) {
+         e.printStackTrace();
+         if(trns !=null){
+             trns.rollback();
+         }
+         e.printStackTrace();
+         }finally{
+             session.close();
+         }
+}
        public void updateCantidadTutor(long cedula_tut,Tutor newVisita){
 Transaction trns= null;
 Session session = HibernateUtil.getSessionFactory().openSession();
@@ -429,7 +449,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
              tutor.setCedula(tut);
             
             dp3.setDescripcion("Validación visita");
-            dp3.setEstado(false);
+            dp3.setEstado(true);
             dp3.setPasantia(p);
             dp3.setProceso(new Proceso(24));
             dp3.setValidacion(EnumEstado.validar);
@@ -502,7 +522,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                 p = ppDAO.findPasantia(id3);
 
                 //Encontrar el detalle de esa pasantia cuyo proceso sea 4 (proceso actual, cursando, este va a ser actualizado)
-                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),21);
+                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),24);
 
                 //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
                 dp.setValidacion(EnumEstado.aprobar);

@@ -24,14 +24,7 @@ public class WizardPDFValidacion {
     public void setId_estudiante(int id_estudiante) {
         this.id_estudiante = id_estudiante;
     }
-    
-    private DetallePasantia dp = new DetallePasantia();
-    private MailingMain email_aprobado=new MailingMain();
-    
-    
-    
-    
-    
+      
     public void init(){
         
     }

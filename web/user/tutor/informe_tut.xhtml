@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition
      xmlns="http://www.w3.org/1999/xhtml"
      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -12,6 +13,7 @@
     </ui:define>
     
     <ui:define name="barra-lateral">
+        
     </ui:define>
     
     <ui:define name="contenido">
@@ -302,13 +304,11 @@
                                                  <b:button onclick="$('.abrirPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();" style="position:absolute;right:115px"  value="Cancelar" look="danger"  >  
                                              </b:button> 
                                             
-                                                <b:commandButton  rendered="#{tablasFormatos.paso == false eq true}" style="position:absolute;right:25px"  action="#{tablasFormatos.informeTutor(datosFormatos.id)}" value="Guardar" look="bitbucket" ></b:commandButton>
-                                            
-                                                <b:button  rendered="#{tablasFormatos.paso == false eq false}" style="position:absolute;right:25px" outcome="subir_informeTutor.xhtml"  value="Siguiente" look="success">
-                                                     
-                                                    <f:param name="id" value="#{datosFormatos.id}"/>
+                                                <b:commandButton   style="position:absolute;right:25px"  action="#{tablasFormatos.informeTutor(datosFormatos.id)}" value="Guardar" look="bitbucket" >
+                                                     <f:param name="id" value="#{datosFormatos.id}"/>
                                               
-                                                </b:button> &#160;&#160;&#160; &#160; &#160;&#160;&#160;
+                                                </b:commandButton>
+                                            
                                             </p>
                                           
                         </div> 

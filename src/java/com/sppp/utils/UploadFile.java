@@ -13,8 +13,10 @@ import com.sppp.beans.EnumEstado;
 import com.sppp.beans.Pasantia;
 import com.sppp.beans.Proceso;
 import com.sppp.classes.AlmacenamientoPDF;
+import com.sppp.classes.DatosFormatos;
 import com.sppp.classes.ListaDocentesAdministrativos;
 import com.sppp.classes.Paths;
+import com.sppp.classes.TablasFormatos;
 import com.sppp.mailing.MailingMain;
 import java.io.File;
 import java.io.IOException;
@@ -501,6 +503,10 @@ else {
     }//end of DOWNLOAD_FILE
   
    
-   
+   public String documentosubidoTu(){
+       
+        
+       return "revision_windowFin";
+   }
    
 }//end of class

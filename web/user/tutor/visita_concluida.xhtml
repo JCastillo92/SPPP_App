@@ -1,0 +1,56 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="/templates/main.xhtml"
+
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:b="http://bootsfaces.net/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">
+        Tutor
+    </ui:define>
+
+    <ui:define name="barra-lateral">
+        <ui:include src="/snippets/menu_tutor.xhtml" />
+    </ui:define>
+
+    <ui:define name="contenido">
+  <f:metadata>
+    <f:viewParam name="id" value="#{datosFormatos.id}" />
+</f:metadata>
+        <h:form>       
+        <div class="row">
+            <h1 class="page-header">Validacón de visita concluida</h1>
+        </div>
+                <div class="panel-heading">
+                    Visita
+                </div>
+                <div class="panel-body">
+                    <div align="center">
+                                 <label>Se ha llenado correctamente los formatos de visita del estudiante
+                                     #{citasAgendadas.getNombre_completo(datosFormatos.id)}
+                                 </label>
+                             </div>
+                    <center>                  
+                  <h:dataTable var="campo" value="#{citasAgendadas.getVisitasRealizadas(datosFormatos.id)}" >
+                               <h:column>
+                           
+                                   <b:button outcome="agendar_cita_tut.xhtml"  ondblclick="#{controllerBean.updateVisitaAgendada(campo.id_visita,login.user,datosFormatos.id)}" value="Finalizar" look="success"  >
+                             
+                           </b:button>    </h:column>
+                       </h:dataTable>
+                      </center> 
+                    
+                </div>
+            
+            
+            
+        </h:form>
+
+
+    </ui:define>
+
+</ui:composition>
+

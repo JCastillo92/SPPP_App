@@ -369,6 +369,9 @@ private Usuario usuario = new Usuario();
                     visitaDAO.visita_tut(cedula, id_visita2, ced_est);
                     
                     System.out.println("bryant"+ tutor+""+newVisitaTutor+""+ced_est);
+                    
+                 //   visitaDAO.updateVisitado(id_visita2);
+                    
                     return "agendar_cita_tut";
       }
      

@@ -386,6 +386,7 @@ public class AlmacenamientoPDF{
       documento.close();
       exitoalguardar=true;
         } catch (DocumentException | IOException e) {
+            e.printStackTrace();
             exitoalguardar=false;
         }
                 return exitoalguardar;
@@ -490,6 +491,7 @@ public class AlmacenamientoPDF{
       documento.close();
       exitoalguardar=true;
         } catch (DocumentException | IOException e) {
+            e.printStackTrace();
             exitoalguardar=false;
         }
      return exitoalguardar;
@@ -684,6 +686,7 @@ try{
       documento.close();
       exitoalguardar=true;
         } catch (DocumentException | FileNotFoundException e) {
+            e.printStackTrace();
             exitoalguardar=false;
         }
                      return exitoalguardar;
@@ -963,6 +966,7 @@ documento.add(salto_linea);
       documento.close();
       exitoalguardar=true;
         } catch (DocumentException | IOException e) {
+            e.printStackTrace();
             exitoalguardar=false;
         }
                 return exitoalguardar;
@@ -1150,6 +1154,7 @@ cell = new PdfPCell(new Paragraph(""+hor4,estexto));
       documento.close();
       exitoalguardar=true;
         } catch (DocumentException | IOException e) {
+            e.printStackTrace();
             exitoalguardar=false;
         }
                 return exitoalguardar;
@@ -1337,6 +1342,7 @@ cell = new PdfPCell(new Paragraph(""+hor4,estexto));
       documento.close();
       exitoalguardar=true;
         } catch (DocumentException | IOException e) {
+            e.printStackTrace();
             exitoalguardar=false;
         }
                 return exitoalguardar;
@@ -1346,7 +1352,7 @@ cell = new PdfPCell(new Paragraph(""+hor4,estexto));
   public boolean pdf_autoevaluacion(long cedula,int numero_pdf,int auto1,int auto2,int auto3,int auto4,int auto5){//200
       exitoalguardar=false;
          //FORMATO CARTA COMPROMISO INTERINSTITUCIONAL
-         
+         try {
          //LLAMADO A informacion NECESERAIA PARA ingresar, crear AL P D F
             UsuarioDAO uDAO = new UsuarioDAO();
             usuario = uDAO.findUsuario(cedula);   
@@ -1373,7 +1379,7 @@ cell = new PdfPCell(new Paragraph(""+hor4,estexto));
                  Font esnota = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6, Font.NORMAL);
                  Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL); 
                  
-                try {
+                
             FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
             PdfWriter.getInstance(documento, archivo);
       documento.open();
@@ -1559,6 +1565,7 @@ documento.add(salto_linea);
       documento.close();
       exitoalguardar=true;
         } catch (DocumentException | IOException e) {
+            e.printStackTrace();
             exitoalguardar=false;
         }
                 return exitoalguardar;
@@ -1568,7 +1575,7 @@ documento.add(salto_linea);
   public boolean pdf_solicitudFinal(long cedula, int numero_pdf){//204
         exitoalguardar=false;
          //FORMATO CARTA COMPROMISO INTERINSTITUCIONAL
-         
+         try {
          //LLAMADO A informacion NECESERAIA PARA ingresar, crear AL P D F
             UsuarioDAO uDAO = new UsuarioDAO();
             usuario = uDAO.findUsuario(cedula);   
@@ -1595,7 +1602,7 @@ documento.add(salto_linea);
                  Font esnota = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6, Font.NORMAL);
                  Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL); 
                  
-                try {
+                
             FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
             PdfWriter.getInstance(documento, archivo);
       documento.open();
@@ -1690,6 +1697,7 @@ documento.add(salto_linea);
       documento.close();
       exitoalguardar=true;
         } catch (DocumentException | IOException e) {
+            e.printStackTrace();
             exitoalguardar=false;
         }
                return exitoalguardar;
@@ -1698,7 +1706,7 @@ documento.add(salto_linea);
 public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
         exitoalguardar=false;
          //FORMATO CARTA COMPROMISO INTERINSTITUCIONAL
-         
+         try {
          //LLAMADO A informacion NECESERAIA PARA ingresar, crear AL P D F
             UsuarioDAO uDAO = new UsuarioDAO();
             usuario = uDAO.findUsuario(cedula);   
@@ -1725,7 +1733,7 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
                  Font esnota = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6, Font.NORMAL);
                  Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL); 
                  
-                try {
+                
             FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
             PdfWriter.getInstance(documento, archivo);
       documento.open();
@@ -1768,6 +1776,7 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
       documento.close();
       exitoalguardar=true;
         } catch (DocumentException | IOException e) {
+            e.printStackTrace();
             exitoalguardar=false;
         }
                return exitoalguardar;

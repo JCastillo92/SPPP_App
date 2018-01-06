@@ -29,6 +29,7 @@ import com.sppp.DAO.PeriodoDAO;
 import com.sppp.classes.AlmacenamientoPDF;
 import com.sppp.classes.ListaDocentesAdministrativos;
 import com.sppp.mailing.MailingMain;
+import com.sppp.utils.Validaciones;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -283,5 +284,20 @@ public class UserWizard extends WizardDB implements Serializable {
             
         }
     }
+    
+    //Metodo para llenar o vaciar los campos de empresa
+    public void encontrarEmpresa(){
+        
+        String tipo_p = String.valueOf(emp.getId_empresa());
+        boolean t = Validaciones.validacionCedula(tipo_p);
+        if(t){
+            //Codigo para autocompletar una empresa
+            emp.setNombre_empresa("funciono");
+        }else{
+            
+        }
+    }
+    
+    
 
 }

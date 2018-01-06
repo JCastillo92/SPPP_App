@@ -10,6 +10,7 @@ import com.sppp.beans.DetallePasantia;
 import com.sppp.beans.Respuesta;
 import com.sppp.beans.Usuario;
 import com.sppp.utils.HibernateUtil;
+import com.sppp.utils.Validaciones;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -32,10 +33,14 @@ public class LoginDAO {
             tx = sesion.beginTransaction();
             
             
-            /*
+            
             System.out.println("INICIO SECCION PRUEBAS");
+            System.out.println(Validaciones.validacionCedula("1718900184"));
+            System.out.println(Validaciones.validacionCedula("1718900185"));
+            System.out.println(Validaciones.validacionCedula("1721397114"));
+            System.out.println(Validaciones.validacionCedula("1721397113"));
             System.out.println("FIN SECCION DE PRUEBAS");
-            */
+            
             
             System.out.println("U: " + user + " P: " + password);
             Query query = sesion.createQuery(" from Usuario WHERE id_cedula = :id and clave = :password");

@@ -18,7 +18,17 @@ public class Empresa {
     private String telefono_empresa;
     private String direccion_empresa;
     private String actividad_principal_empresa;
+    private Set<Encargado> encargado;
 
+    public Empresa() {
+    }
+
+    public Empresa(long id_empresa) {
+        this.id_empresa = id_empresa;
+    }
+
+    
+    
     public String getActividad_principal_empresa() {
         return actividad_principal_empresa;
     }
@@ -26,7 +36,7 @@ public class Empresa {
     public void setActividad_principal_empresa(String actividad_principal_empresa) {
         this.actividad_principal_empresa = actividad_principal_empresa;
     }
-    private Set<Encargado> encargado;
+    
 
     public long getId_empresa() {
         return id_empresa;

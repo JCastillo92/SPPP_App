@@ -30,7 +30,8 @@
                     <h:form enctype="multipart/form-data" role="form">
                          <div class="form-group">
                              <label>Descargar la carta compromiso </label><br/>
-                           <h:commandButton action="#{uploadFile.download_file(103)}" value="Descarga PDF"/>
+                             <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
+                             action="#{uploadFile.download_file(103)}" value="Descargar CC" ></h:commandLink>
                         </div>
                     </h:form>
                 </div>

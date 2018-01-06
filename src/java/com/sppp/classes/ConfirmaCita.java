@@ -41,7 +41,7 @@ public class ConfirmaCita {
         List <Pasantia> est=citasDAO.listar(user);
         
         for(Pasantia est2: est){
-            SelectItem listar = new SelectItem(est2.getEstudiante().getCedula(),est2.getEstudiante().getUsuario().getNombre());
+            SelectItem listar = new SelectItem(est2.getEstudiante().getCedula(),est2.getEstudiante().getUsuario().getNombre()+"  "+est2.getEstudiante().getUsuario().getApellido());
             this.listarEstudiantes.add(listar);
             
         }

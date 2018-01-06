@@ -416,6 +416,7 @@ public class AlmacenamientoPDF{
                  documento.setPageSize(PageSize.A4);
                  Font estitulo = FontFactory.getFont(FontFactory.TIMES_ROMAN, 14, Font.NORMAL);
                  Font estexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
+                 Font estextoBold = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.BOLD);
                  Font esnota = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6, Font.NORMAL);
                  Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL); 
      
@@ -442,52 +443,86 @@ public class AlmacenamientoPDF{
         image3.scalePercent(6, 6);
         documento.add(image3);
         
-      documento.addAuthor("Universidad Politecnica Salesiana");
       Paragraph salto_linea=new Paragraph("\n");
       Paragraph linea_firma=new Paragraph("________________",estexto);
+        
+      
+      documento.add(salto_linea);
       documento.add(salto_linea);
       documento.add(salto_linea);
       documento.add(salto_linea);
       
+        //F E C H A  DEL  S I S T E M A  
+      LocalTimeDate obtenerfecha=new LocalTimeDate(); 
+      Paragraph la_fehca=new Paragraph("Quito D.M., "+obtenerfecha.fechaAnioMesDia(),estexto);
+      la_fehca.setAlignment(Element.ALIGN_LEFT);
+      documento.add(la_fehca);
+      
+        
+        documento.addAuthor("Universidad Politecnica Salesiana");
+      
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      
+      /*
       // T I T U L O
-      Paragraph p1=new Paragraph("OFICIO PARA LA EMPRESA",estitulo);
-      p1.setAlignment(Element.ALIGN_CENTER);
+      Paragraph p1=new Paragraph(encargado.getCargo_encargado(),estextoBold);
+      p1.setAlignment(Element.ALIGN_LEFT);
       documento.add(p1);
       documento.add(salto_linea);
-      
-      //F E C H A  DEL  S I S T E M A  
-      LocalTimeDate obtenerfecha=new LocalTimeDate(); 
-      Paragraph la_fehca=new Paragraph("Fecha: Quito, "+obtenerfecha.fechaAnioMesDia(),estexto);
-      la_fehca.setAlignment(Element.ALIGN_RIGHT);
-      documento.add(la_fehca);
-      documento.add(salto_linea);
+      */
       
       //D I R I G I D O AL GERENTE DE LA EMPRESA O INSTITUCION
-      documento.add(new Paragraph("Para: "+empresa.getNombre_gerente(),estexto));
+      documento.add(new Paragraph(encargado.getCargo_encargado(),estextoBold));
+      documento.add(new Paragraph(encargado.getNombre_encargado(),estextoBold));
+      documento.add(new Paragraph(empresa.getNombre_empresa(),estextoBold));
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      
+      
+      documento.add(new Paragraph("Presente. -",estexto));
+      documento.add(salto_linea);
       documento.add(salto_linea);
       
       // C U  E R  P O   DE  D O C U M E N T O 
-      Paragraph cuerpo=new Paragraph("La Universidad Politécnica Salesiana solicita de la forma mas comedida que "
-              + ""+usuario.getNombre()+" "+usuario.getApellido()+", con cédula de ciudadanía: "+usuario.getEstudiante().getCedula()+", "
-                      + " se le otorgue la oprtuninda de realizar la "+giveMeNamePPP(pasantia.getTipo_ppp())+" dentro de sus "
-                              + "instalaciones.",estexto);
+      Paragraph cuerpo=new Paragraph("Reciba un cordial saludo de quienes conformamos la "
+              + "Carrera de Ingeniería de Sistemas de la Universidad Politécnica Salesiana. "
+              + "El motivo de la presente tiene como finalidad solicitar a usted, se dé facilidad para efectuar "+giveMeNamePPP(pasantia.getTipo_ppp())+", "
+                      + "en el área de XXXXXXXXXX de la prestigiosa institución a su digno cargo; al señor: "+usuario.getNombre()+" "+usuario.getApellido()+" con "
+                              + "documento de identificación N° "+usuario.getEstudiante().getCedula()+", estudiante de "+usuario.getEstudiante().getUltimoNivel()+" "
+                                      + "semestre de la Carrera de Ingeniería de Sistemas.",estexto);
       cuerpo.setAlignment(Element.ALIGN_JUSTIFIED);
       documento.add(cuerpo);
+      documento.add(salto_linea);
       
       
+      Paragraph cuerpo2=new Paragraph("A la vez me permito solicitar la respuesta a esta petición por escrito, y en "
+              + "caso de ser aceptada, al concluir dicha actividad, se emita un informe indicando el desempeño del "
+              + "estudiante y el área al que fue asignado.",estexto);
+      cuerpo2.setAlignment(Element.ALIGN_JUSTIFIED);
+      documento.add(cuerpo2);
+      documento.add(salto_linea);
       
-      //nombre  DOCENTE, TUTOR, ADMINISTRATIVO
+       Paragraph cuerpo3=new Paragraph("Seguros de contar con su positiva respuesta, "
+               + "le anticipamos nuestros agradecimientos.",estexto);
+      cuerpo3.setAlignment(Element.ALIGN_JUSTIFIED);
+      documento.add(cuerpo3);
       documento.add(salto_linea);
       documento.add(salto_linea);
+      documento.add(salto_linea);
+      
       
       //FIRMA linea de firma
       documento.add(linea_firma);
       
       documento.add(new Paragraph("Atentamente: "+buscar_docadmin.nombreDocenteAdministrativo(1),estexto));
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
       
-      //ADICIONAL VA EL NOMBRE DE LA UNIVERSIDAD Y SEDE
-      documento.add(new Paragraph("Universidad Politécnica Salesiana, Sede Quito ",estexto));    
-      
+      documento.add(new Paragraph(""+buscar_docadmin.nombreDocenteAdministrativo(1),estexto));
+    
       //F I N  D O C U M E N T O 
       documento.close();
       exitoalguardar=true;

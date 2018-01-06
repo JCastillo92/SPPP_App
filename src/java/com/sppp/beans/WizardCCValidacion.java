@@ -29,10 +29,30 @@ public class WizardCCValidacion extends WizardCC {
     //@ManagedProperty(value = "#{param.id}")
     int id_estudiante;
     
-    List<Datos> datosCartaC = new LinkedList<>();
+    private List<Datos> datosCartaC = new LinkedList<>();
     DetallePasantia dp2 = new DetallePasantia();
     MailingMain email_aprobado=new MailingMain();
-    String observacion;
+    private String observacion;
+    private String horasPasantia;
+    private String tutorPasantia;
+
+    public String getHorasPasantia() {
+        return horasPasantia;
+    }
+
+    public void setHorasPasantia(String horasPasantia) {
+        this.horasPasantia = horasPasantia;
+    }
+
+    public String getTutorPasantia() {
+        return tutorPasantia;
+    }
+
+    public void setTutorPasantia(String tutorPasantia) {
+        this.tutorPasantia = tutorPasantia;
+    }
+    
+    
 
     public String getObservacion() {
         return observacion;
@@ -293,6 +313,9 @@ public class WizardCCValidacion extends WizardCC {
         resultadosPrevistos = datosCartaC.get(20).getValor_datos();
         productosEntregables = datosCartaC.get(21).getValor_datos();
         
+        //campo horas
+        horasPasantia = datosCartaC.get(12).getValor_datos();;
+        tutorPasantia = datosCartaC.get(22).getValor_datos();;
         //Zona checkbox
         validar11  = datosCartaC.get(11).isEstado();
         

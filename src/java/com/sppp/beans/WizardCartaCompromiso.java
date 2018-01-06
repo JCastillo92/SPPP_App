@@ -206,12 +206,12 @@ public class WizardCartaCompromiso extends WizardCC {
         //Guardar en la tb_datos;
         System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"+dp2.getIdDetallePasantia());
         DatosDAO obj = new DatosDAO();
-        
+        pasantia.setCed_tutor_asignado(obten_ci_tutor);
         // SI EXISTE LA DETALLE PASANTIA HAY QUE GUARDARDATOS CASO CONTRARIO ACTUALIZARDATOS 
         if(existe){
            obj.actualizarDatosCartaCompromiso(usuario, empresa, encargado, pasantia, dp2, resp);
         }else{
-            obj.datosGuardar(usuario, empresa, encargado, pasantia, dp2, resp);
+            obj.datosGuardar(usuario, empresa, encargado, pasantia, dp2, resp,getTutorXXX() );
         }
         
         

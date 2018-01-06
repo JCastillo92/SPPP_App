@@ -34,6 +34,15 @@ public abstract class WizardCC {
     protected String cargoDelegado;
     protected String telefonoDelegado;
     protected String lugarFecha; //Quito, 30-10-1992;
+    protected long obten_ci_tutor;
+
+    public long getObten_ci_tutor() {
+        return obten_ci_tutor;
+    }
+
+    public void setObten_ci_tutor(long obten_ci_tutor) {
+        this.obten_ci_tutor = obten_ci_tutor;
+    }
     
     public String getLugarFecha() {
         return lugarFecha;
@@ -83,7 +92,7 @@ public abstract class WizardCC {
                 private String tutorXXX;
 
     public String getTutorXXX() {
-        long obten_ci_tutor=0;
+        obten_ci_tutor=0;
         try {
              TutorDAO obj = new TutorDAO();
             obten_ci_tutor=obj.findTutorVisita().getCedula();

@@ -17,10 +17,14 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.sppp.DAO.CitasDaoImp;
+import com.sppp.DAO.DatosDAO;
+import com.sppp.DAO.DetallePasantiaDAO;
 import com.sppp.DAO.EmpresaDAO;
 import com.sppp.DAO.EncargadoDAO;
 import com.sppp.DAO.PasantiaDAO;
 import com.sppp.DAO.UsuarioDAO;
+import com.sppp.beans.Datos;
+import com.sppp.beans.DetallePasantia;
 import com.sppp.beans.Empresa;
 import com.sppp.beans.Encargado;
 import com.sppp.beans.LocalTimeDate;
@@ -50,8 +54,9 @@ public class AlmacenamientoPDF{
                 private Pasantia pasantia=new Pasantia();//jairo
                 private Encargado encargado=new Encargado();//jairo
                 private Empresa empresa=new Empresa();//jairo
+                private DetallePasantia detallePass=new DetallePasantia();//jairo
                 private VisitaTutor tutor=new VisitaTutor();//karen
-
+                private List<Datos> datos= null;
 
         
     
@@ -132,7 +137,17 @@ public class AlmacenamientoPDF{
             empresa=empreDAO.findEmpresa(encargado.getEmpresa().getId_empresa());
             
             
-         
+            DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
+            detallePass=dpDAO.findDetallePasantiaPorProcesoFalse(pasantia.getTipo_ppp(), pasantia.getCod_ppp(),7);
+            //System.out.println("assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss000000000000000000"+detallePass.getIdDetallePasantia());
+                 
+            
+            DatosDAO datDAO = new DatosDAO();
+            datos=datDAO.datosPorDetallePasantia(detallePass.getIdDetallePasantia());
+          
+            //System.out.println("assssssss000000000000000000"+datos.get(0).getValor_datos());
+            
+            
              //VARIABLES INICIALES DEL  P D F 
                  Document documento = new Document();
                  PdfPCell cell;
@@ -247,7 +262,7 @@ public class AlmacenamientoPDF{
   cell = new PdfPCell(new Paragraph("OBJETO DE LA ACTIVIDAD ACADÉMICA",escuadro));
   cell.setRowspan(2);//#columnas a merge para esta celda
   table2.addCell(cell);
-  cell = new PdfPCell(new Paragraph("xxxxxxxxx",estexto));
+  cell = new PdfPCell(new Paragraph(""+datos.get(11).getValor_datos(),estexto));
   cell.setColspan(3);//total de celdas que va MERGE a esta FILA
   cell.setRowspan(2);//#columnas a merge para esta celda
   table2.addCell(cell);
@@ -258,17 +273,17 @@ public class AlmacenamientoPDF{
 
   //3 row
   table2.addCell(new Paragraph("HORARIO PREVISTO:",escuadro));
-  cell = new PdfPCell(new Paragraph("xxxxxxxxxxxxxxx",estexto));
+  cell = new PdfPCell(new Paragraph(""+datos.get(15).getValor_datos(),estexto));
   cell.setColspan(2);//total de celdas que va MERGE a esta FILA
   table2.addCell(cell);
   table2.addCell(new Paragraph("NOMBRE PROGRAMA:",escuadro));
-  cell = new PdfPCell(new Paragraph("xxxxxxxxxxxxxxx",estexto));
+  cell = new PdfPCell(new Paragraph(""+datos.get(16).getValor_datos(),estexto));
   cell.setColspan(2);//total de celdas que va MERGE a esta FILA
   table2.addCell(cell);
   
   //4 row
   table2.addCell(new Paragraph("ÁREA QUE REQUIERE LA ACTIVIDAD ACADÉMICA:",escuadro));
-  cell = new PdfPCell(new Paragraph("xxxxxxxxxxxxxxx",estexto));
+  cell = new PdfPCell(new Paragraph(""+datos.get(17).getValor_datos(),estexto));
   cell.setColspan(2);//total de celdas que va MERGE a esta FILA
   table2.addCell(cell);
   table2.addCell(new Paragraph("RESPONSABLE DEL ÁREA:",escuadro));
@@ -293,7 +308,7 @@ public class AlmacenamientoPDF{
                     //TABLA 3 INICIO
                     PdfPTable table3 = new PdfPTable(1);//# columns
                     //1 row
-                    table3.addCell(new Paragraph("XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX", estexto));
+                    table3.addCell(new Paragraph(""+datos.get(19).getValor_datos(), estexto));
                     documento.add(table3);
                     //FIN TABLA 3
 
@@ -304,7 +319,7 @@ public class AlmacenamientoPDF{
                     //TABLA 4 INICIO
                     PdfPTable table4 = new PdfPTable(1);//# columns
                     //1 row
-                    table4.addCell(new Paragraph("XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX", estexto));
+                    table4.addCell(new Paragraph(""+datos.get(20).getValor_datos(), estexto));
                     documento.add(table4);
                     //FIN TABLA 4
                     
@@ -320,8 +335,8 @@ public class AlmacenamientoPDF{
                     //TABLA 5 INICIO
                     PdfPTable table5 = new PdfPTable(1);//# columns
                     //1 row
-                    table5.addCell(new Paragraph("XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX" + "\n" + "XXXXXXXXXXXXX", estexto));
-                    documento.add(table4);
+                    table5.addCell(new Paragraph(""+datos.get(21).getValor_datos(), estexto));
+                    documento.add(table5);
                     //FIN TABLA 5
                     
                     
@@ -330,7 +345,7 @@ public class AlmacenamientoPDF{
                  //1row
                  documento.add(salto_linea);
   table6.addCell(new Paragraph("NOMBRE DEL TUTOR:",escuadro));
-          cell = new PdfPCell(new Paragraph("xxxxxxxxxxxxxx urgente aqui se asiigna el tutor",estexto));
+          cell = new PdfPCell(new Paragraph(""+datos.get(22).getValor_datos(),estexto));
   cell.setColspan(3);//total de celdas que va MERGE a esta FILA
   table6.addCell(cell);
   documento.add(table6);
@@ -363,7 +378,7 @@ public class AlmacenamientoPDF{
                     
                     //3 row
                     table7.addCell(new Paragraph("LUGAR Y FECHA SUSCRIPCIÓN:", escuadro));
-                    cell = new PdfPCell(new Paragraph("xxxxx",estexto));
+                    cell = new PdfPCell(new Paragraph("",estexto));
                     cell.setColspan(5);//total de celdas que va MERGE a esta FILA
                     table7.addCell(cell);
                     documento.add(table7);
@@ -410,6 +425,8 @@ public class AlmacenamientoPDF{
             
             EmpresaDAO empreDAO = new EmpresaDAO();
             empresa=empreDAO.findEmpresa(encargado.getEmpresa().getId_empresa());
+                   
+      
              //VARIABLES INICIALES DEL  P D F 
                  Document documento = new Document();
                  PdfPCell cell;
@@ -465,14 +482,7 @@ public class AlmacenamientoPDF{
       documento.add(salto_linea);
       documento.add(salto_linea);
       
-      /*
-      // T I T U L O
-      Paragraph p1=new Paragraph(encargado.getCargo_encargado(),estextoBold);
-      p1.setAlignment(Element.ALIGN_LEFT);
-      documento.add(p1);
-      documento.add(salto_linea);
-      */
-      
+       
       //D I R I G I D O AL GERENTE DE LA EMPRESA O INSTITUCION
       documento.add(new Paragraph(encargado.getCargo_encargado(),estextoBold));
       documento.add(new Paragraph(encargado.getNombre_encargado(),estextoBold));
@@ -489,7 +499,7 @@ public class AlmacenamientoPDF{
       Paragraph cuerpo=new Paragraph("Reciba un cordial saludo de quienes conformamos la "
               + "Carrera de Ingeniería de Sistemas de la Universidad Politécnica Salesiana. "
               + "El motivo de la presente tiene como finalidad solicitar a usted, se dé facilidad para efectuar "+giveMeNamePPP(pasantia.getTipo_ppp())+", "
-                      + "en el área de XXXXXXXXXX de la prestigiosa institución a su digno cargo; al señor: "+usuario.getNombre()+" "+usuario.getApellido()+" con "
+                      + "en el área de sistemas de la prestigiosa institución a su digno cargo; al señor: "+usuario.getNombre()+" "+usuario.getApellido()+" con "
                               + "documento de identificación N° "+usuario.getEstudiante().getCedula()+", estudiante de "+usuario.getEstudiante().getUltimoNivel()+" "
                                       + "semestre de la Carrera de Ingeniería de Sistemas.",estexto);
       cuerpo.setAlignment(Element.ALIGN_JUSTIFIED);
@@ -516,10 +526,10 @@ public class AlmacenamientoPDF{
       //FIRMA linea de firma
       documento.add(linea_firma);
       
-      documento.add(new Paragraph("Atentamente: "+buscar_docadmin.nombreDocenteAdministrativo(1),estexto));
+      documento.add(new Paragraph("Atentamente:",estexto));
       documento.add(salto_linea);
       documento.add(salto_linea);
-      documento.add(salto_linea);
+      
       
       documento.add(new Paragraph(""+buscar_docadmin.nombreDocenteAdministrativo(1),estexto));
     

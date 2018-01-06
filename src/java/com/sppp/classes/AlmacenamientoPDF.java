@@ -336,7 +336,7 @@ public class AlmacenamientoPDF{
                     PdfPTable table5 = new PdfPTable(1);//# columns
                     //1 row
                     table5.addCell(new Paragraph(""+datos.get(21).getValor_datos(), estexto));
-                    documento.add(table4);
+                    documento.add(table5);
                     //FIN TABLA 5
                     
                     

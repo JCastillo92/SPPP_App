@@ -397,21 +397,21 @@ private Usuario usuario = new Usuario();
       }
       
    
-       public void deleteVisitaEst(long id,String tutor, String apellido,String correo,String est, String ap_est,String co_est,String tele_est){
+       public void deleteVisitaEst(long id,String tutor, String apellido,String correo,String est, String ap_est,String co_est,String tele_est,long id2){
            sendCancelacionEst(tutor,apellido,correo,est,ap_est,co_est,tele_est);
           VisitaDAO visitaDAO = new VisitaDAO();
           visitaDAO.deleteVisita(id);
-          
+          visitaDAO.updateEstudianteAgendado1(id2);
         
       }
        
-       public void deleteVisitaTut(long id,String tutor, String apellido,String correo){
+       public void deleteVisitaTut(long id,String tutor, String apellido,String correo,long id2){
            sendCancelacionTut(tutor,apellido,correo);
           VisitaDAO visitaDAO = new VisitaDAO();
           visitaDAO.deleteVisita(id);
           
            cancel=true;
-          
+          visitaDAO.updateEstudianteAgendado1(id2);
           
       }
       
@@ -526,6 +526,12 @@ public String sendValidacion(String correo,String nombre,String apellido,String 
         sendTutor(alumno,apellido,correo,dia1,fechaConFormato,horaConFormato);
         
         guardarDatos(id, id2,dia1);
+        long rid2=Long.parseLong(id2);
+        VisitaDAO llamar=new VisitaDAO();
+        llamar.updateEstudianteAgendado(rid2);
+        
+        time=null;
+        data=null;
         
     }
    

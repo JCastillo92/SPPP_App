@@ -49,12 +49,20 @@ public class WizardDAO {
         //Asignando a pasantia
         dp.setPasantia(pas);
         */
-        
+        /*
+        Empresa e2 = new Empresa(emp.getId_empresa());
+        enc.setEmpresa(e2);*/
         try {
             tx = sesion.beginTransaction();
             sesion.saveOrUpdate(est);
             sesion.saveOrUpdate(emp);
             sesion.saveOrUpdate(enc);
+            
+            tx.commit();
+            //tx = sesion.beginTransaction();
+            
+            //tx.commit();
+            tx = sesion.beginTransaction();
             sesion.saveOrUpdate(pas);
             sesion.saveOrUpdate(dp);
             

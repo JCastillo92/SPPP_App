@@ -17,11 +17,11 @@
         
         
            <!-- ENVIO LA CLAVE PRIMARIA-->
-         <set name="encargado" table="tb_empresa_encargado" fetch="select">
+         <set name="encargado" table="tb_empresa_encargado" inverse="true" fetch="select">
             <key>
-                <column name="id_empresa" not-null="true"></column>
+                <column name="id_empresa" not-null="true" ></column>
             </key>
-            <one-to-many class="Empresa"></one-to-many>
+            <one-to-many class="Encargado"></one-to-many>
         </set>
                                             
         

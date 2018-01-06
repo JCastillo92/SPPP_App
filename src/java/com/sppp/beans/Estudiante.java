@@ -69,6 +69,7 @@ public class Estudiante{
     }
 
     public int getHorasPasantia() {
+        horasPasantia = 200;
         return horasPasantia;
     }
 

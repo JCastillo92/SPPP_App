@@ -2,6 +2,7 @@
 <ui:composition
      xmlns="http://www.w3.org/1999/xhtml"
      xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:f="http://xmlns.jcp.org/jsf/core"
      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     
     <li class="sidebar-search">
@@ -21,6 +22,13 @@
         <h:link outcome="dashboard_gestor"><i class="fa fa-th-list fa-fw"></i>General</h:link>
     </li>
 
+    <li>
+        <h:link outcome="tablas_validacion"><i class="fa fa-file-pdf-o fa-fw"></i> Validar PDFs.
+        <f:param name="id" value="4"/>
+        </h:link>
+    </li>
+    
+    
     <li>
         <a href="#"><i class="fa fa-files-o fa-fw"></i>Formatos<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">

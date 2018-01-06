@@ -13,8 +13,10 @@ import com.sppp.beans.EnumEstado;
 import com.sppp.beans.Pasantia;
 import com.sppp.beans.Proceso;
 import com.sppp.classes.AlmacenamientoPDF;
+import com.sppp.classes.DatosFormatos;
 import com.sppp.classes.ListaDocentesAdministrativos;
 import com.sppp.classes.Paths;
+import com.sppp.classes.TablasFormatos;
 import com.sppp.mailing.MailingMain;
 import java.io.File;
 import java.io.IOException;
@@ -229,17 +231,17 @@ public class UploadFile{
                 dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),11);
 
                 //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
-                dp.setValidacion(EnumEstado.validar);
+                dp.setValidacion(EnumEstado.aprobar);
                 dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
 
             //Paso a agregar el nuevo proceso
             DetallePasantia dp3 = new DetallePasantia();
-            dp3.setDescripcion("Solicitar Inicio Actividades");
+            dp3.setDescripcion("Validacion PDFs");
             dp3.setEstado(true);
             dp3.setPasantia(p);
             dp3.setProceso(new Proceso(14));
-            dp3.setValidacion(EnumEstado.llenar);
+            dp3.setValidacion(EnumEstado.validar);
             dpDAO.insertarNuevoDetalle(dp3);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -501,6 +503,10 @@ else {
     }//end of DOWNLOAD_FILE
   
    
-   
+   public String documentosubidoTu(){
+       
+        
+       return "revision_windowFin";
+   }
    
 }//end of class

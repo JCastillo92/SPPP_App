@@ -24,7 +24,7 @@
         <div class="row">
              <div class="panel panel-default">
                 <div class="panel-heading">
-                    Paso 1. Descargar documentos para la empresa.
+                    Paso 1. Descargar Documentos Para la Empresa.
                 </div>
                 <div class="panel-body">
                     <h:form enctype="multipart/form-data" role="form">
@@ -43,7 +43,7 @@
         <div class="row">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Paso 2. Subir documentos firmados y sellados .pdf.
+                    Paso 2. Subir Documentos Firmados y Sellados .pdf.
                 </div>
                 <div class="panel-body">
                     <h:form enctype="multipart/form-data" role="form">
@@ -57,15 +57,16 @@
                             
                         </div>
                         
-                        <div class="form-group">
+                        <div class="form-group">                           
                             <label>Subir la carta de aceptacion sellada por la empresa en formato .pdf hasta 2MB <i class="fa fa-file-pdf-o fa-2x"></i></label>
-                            <h:inputFile value="#{uploadFile.file}" required="true">
-                            <f:ajax listener="#{uploadFile.save_file(2)}"/>
+                            <h:inputFile value="#{uploadFile.file}" required="true" >
+                            <f:ajax listener="#{uploadFile.save_file(2)}" />
                             </h:inputFile>
                         </div>
-                    </h:form>
-                    <h:form> 
-                        <h:commandButton class="btn btn-success" action="#{uploadFile.enviar_arch_msj(2)}" value="Enviar" />
+                        
+                        <h:commandLink class="btn btn-success"  action="#{uploadFile.enviar_arch_msj(2)}" >
+                            Enviar <f:ajax execute="@form"></f:ajax>
+                        </h:commandLink>
                     </h:form>
                 </div>
             </div>

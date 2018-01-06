@@ -24,7 +24,7 @@
         <div class="row">
              <div class="panel panel-default">
                 <div class="panel-heading">
-                    Paso 1. Descarga de documento.
+                    Paso 1. Descarga de Documento.
                 </div>
                 <div class="panel-body">
                     <h:form enctype="multipart/form-data" role="form">
@@ -49,10 +49,11 @@
                                 <f:ajax listener="#{uploadFile.save_file(3)}"/>
                             </h:inputFile>
                         </div>
+                        
+                        <h:commandLink class="btn btn-success" action="#{uploadFile.enviar_arch_msj(3)}">
+                            Enviar <f:ajax execute="@form"></f:ajax>
+                        </h:commandLink>
                         </h:form>
-                    <h:form>
-                        <b:commandButton class="btn btn-success" action="#{uploadFile.enviar_arch_msj(3)}" value="Enviar" look="success" />
-                    </h:form>
                 </div>
             </div>
         </div>

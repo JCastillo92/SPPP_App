@@ -45,13 +45,13 @@
                     <h:form enctype="multipart/form-data" role="form">
                         <div class="form-group">
                             <label>Subir la solicitud resoluci&oacute;n en formato .pdf hasta 2MB <i class="fa fa-file-pdf-o fa-2x"></i></label>
-                            <h:inputFile value="#{uploadFile.file}" required="true">
+                            <h:inputFile value="#{uploadFile.file}" required="true" >
                                 <f:ajax listener="#{uploadFile.save_file(4)}"/>
                             </h:inputFile>
                         </div>
-                    </h:form>
-                    <h:form>
-                        <b:commandButton class="btn btn-success" action="#{uploadFile.enviar_arch_msj(4)}" value="Enviar" look="success"/>
+                        <h:commandLink class="btn btn-success" action="#{uploadFile.enviar_arch_msj(4)}">
+                            Enviar <f:ajax execute="@form"></f:ajax>
+                        </h:commandLink>
                     </h:form>
                 </div>
             </div>

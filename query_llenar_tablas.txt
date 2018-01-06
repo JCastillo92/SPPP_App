@@ -277,3 +277,24 @@ insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values
 insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (46,'para_nomAppEncargado',46);
 insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (47,'para_cargoEncarg',47);
 
+/*
+VACUUM FULL tb_datos;
+VACUUM FULL tb_detalle_pasantia;
+VACUUM FULL tb_empresa;
+VACUUM FULL tb_empresa_encargado;
+VACUUM FULL tb_estudiante;
+VACUUM FULL tb_formato;
+VACUUM FULL tb_horariotutor;
+VACUUM FULL tb_pasantia;
+VACUUM FULL tb_perfil;
+VACUUM FULL tb_periodo;
+VACUUM FULL tb_periodo_tutor;
+VACUUM FULL tb_preguntas;
+VACUUM FULL tb_proceso;
+VACUUM FULL tb_respuesta;
+VACUUM FULL tb_tipopregunta;
+VACUUM FULL tb_tutor;
+VACUUM FULL tb_usuario;
+VACUUM FULL tb_visitatutor;
+
+*/

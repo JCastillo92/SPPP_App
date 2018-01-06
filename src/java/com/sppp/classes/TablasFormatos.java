@@ -418,4 +418,9 @@ paso=true;
    crear.pdf_hojaRuta(cedula_est,202,observacionvisita,movilizacionvisita);
     paso=true;     
     }
+    
+    public void cambiarestado(){
+    paso=true;
+    }
+    
 }

@@ -14,6 +14,7 @@ import com.sppp.beans.Tutor;
 import com.sppp.beans.VisitaTutor;
 import com.sppp.utils.HibernateUtil;
 import com.sppp.utils.SessionUtils;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
@@ -21,6 +22,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import javax.servlet.http.HttpSession;
+import org.hibernate.Query;
 
 /**
  *
@@ -343,5 +345,53 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                     e.printStackTrace();
                 }
 }  
+    
+         public void updateEstudianteAgendado(long cedula_est){
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+            
+        Transaction tx = null;
+        boolean estado=false;
+        try {
+            tx = sesion.beginTransaction();
+              Query query = sesion.createQuery("update Pasantia set estado_tut =:false where cedula =:id");
+              query.setParameter("false", estado);
+              query.setParameter("id", cedula_est);
+
+            int result=query.executeUpdate();
+          //  System.out.println("karennnnnnnnnsdsdd"+result);
+            tx.commit();
+        } catch (RuntimeException e) {
+            tx.rollback();
+            throw e;
+        }finally{
+            sesion.flush();
+            sesion.close();
+        }
+   }
+    
+        public void updateEstudianteAgendado1(long cedula_est){
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+            
+        Transaction tx = null;
+        boolean estado=true;
+        try {
+            tx = sesion.beginTransaction();
+              Query query = sesion.createQuery("update Pasantia set estado_tut =:false where cedula =:id");
+              query.setParameter("false", estado);
+              query.setParameter("id", cedula_est);
+
+            int result=query.executeUpdate();
+            tx.commit();
+        } catch (RuntimeException e) {
+            tx.rollback();
+            throw e;
+        }finally{
+            sesion.flush();
+            sesion.close();
+        }
+   }
+    
       
 }

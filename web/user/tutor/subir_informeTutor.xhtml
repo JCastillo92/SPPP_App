@@ -8,7 +8,7 @@
      xmlns:b="http://bootsfaces.net/ui">
     
     <ui:define name="title">
-      Estudiante
+     Tutor
     </ui:define>
     
     <ui:define name="barra-lateral">
@@ -16,52 +16,71 @@
     </ui:define>
     
     <ui:define name="contenido">
-
+        <f:metadata>
+            <f:viewParam name="id" value="#{datosFormatos.id}" />
+        </f:metadata>
+       
         <div class="row">
-            <center><h1 class="page-header">Documentos</h1> </center>   
+            <center><h1 class="page-header">Informe seguimiento tutor</h1> </center>   
         </div>
-        
-        <div class="row">
-            
-             <div class="panel panel-default">
-                <div class="panel-heading">
-                     Descarga de Archivo
-                </div>
-                <div class="panel-body">
-                    <h:form enctype="multipart/form-data" role="form">
-                         <div class="form-group">
-                             <label>Formato autoevaluacion </label><br/>
-                           <h:commandButton action="#{uploadFile.download_file(203)}" value="Descarga PDF"/>
-                        </div>
-                    </h:form>
-                </div>
-            </div>
-            </div>
+
+
         <div class="row">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Subir archivos firmados y sellados.
+                    Subir archivo firmado y sellado.
                 </div>
                 <div class="panel-body">
                     <h:form enctype="multipart/form-data" role="form">
                         <div class="form-group">
-                            <label>Formato de autovaluacion<i class="fa fa-file-pdf-o fa-2x"></i></label>
+                            <label>Formato de autovaluación<i class="fa fa-file-pdf-o fa-2x"></i></label>
                             
                             <h:inputFile value="#{uploadFile.file}" required="true">
-                                <f:ajax listener="#{uploadFile.save_file(4)}"/>
+                                <f:ajax listener="#{uploadFile.save_file_tut(2,datosFormatos.id)}"/>
                                 
                             </h:inputFile>
-                            
-                        </div>
-                        
-                                       </h:form>
-                    <h:form> 
-                        <center> <h:commandButton class="btn btn-success" value="Enviar" /></center>
+                            </div>
                     </h:form>
+                    <h:form>
+                     <p align="right">
+                   <b:button rendered="#{tablasFormatos.paso == false eq true}" onclick="$('.abrirPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();" style="position:absolute;right:115px" value="Cancelar" look="danger"  ></b:button>  &#160;&#160;
+                   <b:commandButton  rendered="#{tablasFormatos.paso == false eq true}"   action="#{tablasFormatos.cambiarestado()}" style="position:absolute;right:25px" value="Guardar" look="info"  ></b:commandButton>
+                     </p>                    
+                      
+                  <center>                  
+                  <h:dataTable var="campo" value="#{citasAgendadas.getVisitasRealizadas(datosFormatos.id)}" >
+                               <h:column>
+                           
+                                   <b:button outcome="agendar_cita_tut.xhtml" rendered="#{tablasFormatos.paso == false eq false}"  ondblclick="#{controllerBean.updateVisitaAgendada(campo.id_visita,login.user,datosFormatos.id)}" value="Finalizar" look="success"  >
+                             
+                           </b:button>    </h:column>
+                       </h:dataTable>
+                      </center> 
+                 
+              </h:form>
                 </div>
-            </div>
+                </div>
         </div>
-        
+          
+
+        <b:modal title="Estudiante Visitado" styleClass="abrirPseudoClass"
+                         id="abrir">
+                                  
+                         <p>¿Esta seguro que desea salir?</p>   
+                         <p> Los cambios realizados se perderan</p>   
+                         
+                         <f:facet name="footer">
+                             <b:button outcome="agendar_cita_tut.xhtml" class="btn btn-success " value="Si">
+                                 
+                             </b:button>
+                             <b:button  dismiss="modal" class="btn btn-danger"  value="No">
+                             </b:button>
+                            
+                             
+                         </f:facet>
+                     </b:modal> 
+       
+                
     </ui:define>
     
 </ui:composition>

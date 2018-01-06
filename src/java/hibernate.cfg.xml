@@ -11,7 +11,11 @@
   <property name="hibernate.connection.password">1234</property>
   <property name="hibernate.connection.password">DeveloperAdministrador92</property>    
     -->
+<<<<<<< HEAD
   <property name="hibernate.connection.password">1234</property>  
+=======
+  <property name="hibernate.connection.password">jairo</property>  
+>>>>>>> origin/master
     
     <property name="hbm2ddl.auto">update</property>
     <property name="show_sql">true</property>

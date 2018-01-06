@@ -40,6 +40,8 @@ public class DatosDAO {
         //Seteo el id de la detallePasantia
         d1000.setDetallePasantias(dp);
         // ------ FIN INSERTAR 1 PREGUNTA ----------
+        
+        //Asigno el tutor a la pasantia
 
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session sesion = sf.openSession();
@@ -48,7 +50,11 @@ public class DatosDAO {
         Usuario usuario = null;
         try {
             tx = sesion.beginTransaction();
-
+            
+            //Paso a guardar las horas pasantia
+            sesion.update(user);
+            sesion.update(pa);
+            
             //Datos d1 = new Datos("valor" (String),"idpasantia"(int), "idRespuesta"(int));
             idRespuesta.setId_tbrespuesta(1);
             Datos d1 = new Datos(pa.getTipo_ppp(), dp, idRespuesta,true);
@@ -120,7 +126,7 @@ public class DatosDAO {
             sesion.saveOrUpdate(d22);
 
             idRespuesta.setId_tbrespuesta(23);//para_nombreTutorAsignado
-            Datos d23 = new Datos("DEFAUL VALUE JAJA", dp, idRespuesta,true);
+            Datos d23 = new Datos(pa.getCed_tutor_asignado(), dp, idRespuesta,true);
             sesion.saveOrUpdate(d23);
 
             idRespuesta.setId_tbrespuesta(24);//para_apellidosNombresGerenteEmpresa
@@ -371,6 +377,9 @@ public class DatosDAO {
         datosCartaC.get(19).setValor_datos(resps.get(6));
         datosCartaC.get(20).setValor_datos(resps.get(7));
         datosCartaC.get(21).setValor_datos(resps.get(8));
+        
+        //ojo al guardar el tutor
+        datosCartaC.get(22).setValor_datos(pa.getCed_tutor_asignado().toString());
         
         guardarValidacionCC(datosCartaC);
         /*

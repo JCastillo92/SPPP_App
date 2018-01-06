@@ -685,7 +685,7 @@ try{
       documento.add(salto_linea);
       
         // T I T U L O
-      Paragraph p1=new Paragraph("FORMATO SOLICITUD RESOLUCIÓN",estitulo);
+      Paragraph p1=new Paragraph("SOLICITUD RESOLUCIÓN",estitulo);
       p1.setAlignment(Element.ALIGN_CENTER);
       documento.add(p1);
       documento.add(salto_linea);

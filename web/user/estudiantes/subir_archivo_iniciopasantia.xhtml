@@ -30,7 +30,8 @@
                     <h:form enctype="multipart/form-data" role="form">
                          <div class="form-group">
                              <label>Descargar la solicitud resoluci&oacute;n </label><br/>
-                           <h:commandButton action="#{uploadFile.download_file(104)}" value="Descarga PDF"/>
+                             <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
+                             action="#{uploadFile.download_file(104)}" value="Descargar SR" ></h:commandLink>
                         </div>
                     </h:form>
                 </div>

@@ -62,7 +62,7 @@ public class MailingMain {
                 contentMessage="Visita confirmada";
                 break;
                 case 8:
-                AddSubject="VALIDACIÓN DE PASANTÍAS/PRÁCTICAS PREPROFESIONALES " + ponnombreAPP;
+                AddSubject="REVISION: VALIDACIÓN DE PASANTÍAS/PRÁCTICAS PREPROFESIONALES " + ponnombreAPP;
                 contentMessage="Validación final";
                 break;
                 
@@ -79,7 +79,7 @@ public class MailingMain {
                 break;
             case 1003:
                 AddSubject="REVISIÓN DE CARTA COMPROMISO";
-                contentMessage="Existe documento subido (escaneado) a la plataforma, Carta de Compromisolistos, lista para revisar y aprobar.";
+                contentMessage="Existe documento subido (escaneado) a la plataforma, Carta de Compromiso listos, lista para revisar y aprobar.";
                 break;    
                 case 1004:
                 AddSubject="REVISIÓN DE INICIAR PASANTÍA";
@@ -89,6 +89,15 @@ public class MailingMain {
                     AddSubject="CLAVE SPPP";
                     contentMessage="Ha solicitado recuperacion de su clave en "+ponnombreAPP+" Su clave se encuentra al final de este mensaje: "+pondespedida;
             break;
+            case 1005:
+                AddSubject="REVISIÓN DE AUTOEVALUACIÓN";
+                contentMessage="Existe documento subido (escaneado) a la plataforma, Autoevaluación, lista para revisar y aprobar.";
+                break;
+            case 1006:
+                AddSubject="REVISIÓN DE DOCUMENTOS DE VALIDACIÓN";
+                contentMessage="Existe documento subido (escaneado) a la plataforma, Documentación de validación pasantías, lista para revisar y aprobar.";
+                break; 
+            
                 default:
                     break;
         }

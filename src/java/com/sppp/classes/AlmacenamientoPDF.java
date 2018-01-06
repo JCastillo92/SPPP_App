@@ -1840,11 +1840,5 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
         }
         return nameppp;
     }
-    
-    
-
-    
-    
-    
-
+  
 }//end of class

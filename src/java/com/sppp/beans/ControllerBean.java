@@ -39,7 +39,8 @@ private Usuario usuario = new Usuario();
     private String estado_visita;
    private Tutor tutor= new Tutor();
    private String listaest;
-    
+  private long numerotutor;
+   
    private String mensajeMail;
    private String mensajeMail2;
    private String mensajeMail_asunto;
@@ -302,6 +303,8 @@ private Usuario usuario = new Usuario();
     }
 
     
+
+    
     
       public void guardarDatos(String id,String id2,String dia){
         
@@ -335,7 +338,7 @@ private Usuario usuario = new Usuario();
         
     }
       
-     public void updateVisita(long id_visita, String tutor, String apellido,String correo, String dia ,Date fecha, String hora,String est, String ap_est,String co_est,String tele_est ){
+     public void updateVisita(long id_visita, String tutor, String apellido,String correo, String dia ,Date fecha, String hora,String est, String ap_est,String co_est,String tele_est ,long cedula_tuto,String cedula_est){
       
         fechaConFormato = sdf_data.format(fecha); 
         
@@ -344,8 +347,10 @@ private Usuario usuario = new Usuario();
           VisitaDAO visitaDAO = new VisitaDAO();
           visitaDAO.updateVisita(id_visita, newVisitaTutor);
           //agregar();
-          
-     
+      VisitaDAO vi = new VisitaDAO();
+       vi.visita_tut(cedula_tuto, id_visita, cedula_est);
+       
+      
                   System.out.println("jaaaaaaaaaaaaaaaaaaaaaaa"+id_visita);
       }
      public void updateCantidadVisita(long id_visita2){
@@ -363,15 +368,26 @@ private Usuario usuario = new Usuario();
                     System.out.println("jaaaaaaaaaaaaaaaaaaaaaaajeeeeeeee"+id_visita2);
                     updateCantidadVisita(cedu);
                     
-                    tutor.setCedula(cedu);
-                    newVisitaTutor.setId_visita(id_visita2);
-                    
-                    visitaDAO.visita_tut(cedula, id_visita2, ced_est);
-                    
-                    System.out.println("bryant"+ tutor+""+newVisitaTutor+""+ced_est);
+                   
+                 visitaDAO.validacion_visita(ced_est,cedu);
+                  visitaDAO.autoevaluacion(ced_est);
+                    System.out.println("bryanttt"+ cedu+""+""+ced_est);
                     return "agendar_cita_tut";
       }
+       
+      public String cargarArchivos(String correo){
+          VisitaDAO visitaDAO = new VisitaDAO();
+          visitaDAO.solicitud();
+          MailingMain por = new MailingMain();
+      por.mensajes(1006, correo,"vacio");
+          return"revision_window";
+      }
      
+      public long getNumerotutor() {
+        VisitaDAO obj=new VisitaDAO();
+        numerotutor=obj.countTut();
+        return numerotutor;
+    }
        public String updateReporte(long id_visita2){
           VisitaTutor newVisitaTutor = new VisitaTutor();
           VisitaDAO visitaDAO = new VisitaDAO();
@@ -423,8 +439,7 @@ public void sendConfirmacion(String tutor, String apellido, String correo, Strin
      
     MailingMain por = new MailingMain();
       por.mensajes(7, correo, observaciones);
-       VisitaDAO vi = new VisitaDAO();
-       vi.solicitud();
+      
     
 }
 
@@ -445,7 +460,7 @@ public void sendCancelacionTut(String tutor, String apellido,String correo){
       
  }
 
-public void sendValidacion(String correo,String nombre,String apellido,String cedula,String actividad,String empresa,String fechaI,String fechaF){
+public String sendValidacion(String correo,String nombre,String apellido,String cedula,String actividad,String empresa,String fechaI,String fechaF){
     
   //  String observación= mensajeMail_asunto.toUpperCase(Locale.ENGLISH)+"\n"+"\n"+mensajeMail;
    String observación="Yo  "+nombre+"  " + apellido+" con cédula de ciudadanía: "+cedula+" , solicito a Ud. la autorización para la validaciòn de "+actividad+"  ,en "+empresa+" desde "+fechaI+" hasta "+fechaF;
@@ -454,9 +469,9 @@ public void sendValidacion(String correo,String nombre,String apellido,String ce
       por.mensajes(8, correo, observación);
       paso=true;
       
-      VisitaDAO vi = new VisitaDAO();
-      vi.autoevaluacion();
-      
+      VisitaDAO visitaDAO = new VisitaDAO();
+      visitaDAO.resolucion();
+     return"revision_window"; 
  }
 
 

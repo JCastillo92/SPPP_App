@@ -42,7 +42,7 @@
                                 <b:dataTableColumn label="Nombre estudiante" >                   
 
                                     <b:column >
-                                        <h:outputText value="#{citasAgendadas.getNombre(campo.estudiante.cedula)}#{citasAgendadas.getApellido_est(campo.estudiante.cedula)}" />
+                                        <h:outputText value="#{citasAgendadas.getNombre(campo.estudiante.cedula)}&#160;#{citasAgendadas.getApellido_est(campo.estudiante.cedula)}" />
                                     </b:column>
                                 </b:dataTableColumn>
                                 <b:dataTableColumn label="Documentos para descargar">                   
@@ -54,16 +54,16 @@
                                </h:form>
                                        <br/>
                                      
-                                   <label>Descargar el informe seguimiento tutor</label><br/>
+                                <!--   <label>Descargar el informe seguimiento tutor</label><br/>
                                  
-                              <h:commandButton action="#{uploadFile.download_file_tut(201,campo.estudiante.cedula)}" value="Descarga PDF"/>
+                              <h:commandButton action="{uploadFile.download_file_tut(201,campo.estudiante.cedula)}" value="Descarga PDF"/>
                                      <br/>
                                      <br/>
                                        
                                        <label>Descargar hoja de ruta</label><br/>
                                  
-                                 <h:commandButton action="#{uploadFile.download_file_tut(202,campo.estudiante.cedula)}" value="Descarga PDF"/>
-                                  
+                                 <h:commandButton action="{uploadFile.download_file_tut(202,campo.estudiante.cedula)}" value="Descarga PDF"/>
+                                  -->
                                     </b:column>
                                         
                                 </b:dataTableColumn>
@@ -92,17 +92,17 @@
                             </h:inputFile>      
                                      </h:form>
                                        
-                                       
+                                    <!--   
                                       <label>     Hoja de ruta <i class="fa fa-file-pdf-o fa-2x"></i></label>  
                                       <h:form enctype="multipart/form-data" role="form">
                
                                 
-                               <h:inputFile value="#{uploadFile.file}" required="true">
-                                   <f:ajax listener="#{uploadFile.save_file_tut(3,campo.estudiante.cedula )}"/>
+                               <h:inputFile value="{uploadFile.file}" required="true">
+                                   <f:ajax listener="{uploadFile.save_file_tut(3,campo.estudiante.cedula )}"/>
                                      
                             </h:inputFile>      
                                      </h:form>
-                                      
+                                      -->
                                         </div>
                                     </b:column>
                                 </b:dataTableColumn>

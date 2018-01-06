@@ -6,6 +6,7 @@
 package com.sppp.classes;
 
 import com.sppp.DAO.VisitaDAO;
+import com.sppp.mailing.MailingMain;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -386,11 +387,11 @@ private boolean paso=false;
   
    
 
-    public void informeTutor(long user){
+    public String informeTutor(long user){
         AlmacenamientoPDF g=new AlmacenamientoPDF();
        g.pdf_InformeTutor(user, 200, pregunta10,pregunta1,pregunta2,pregunta3,pregunta4,pregunta5,pregunta6,pregunta7,pregunta8,observaciones);
 paso=true;
-
+return "revision_window";
 
     }
     
@@ -399,13 +400,15 @@ paso=true;
       g.pdf_InformeSeguimientoTutor(user, 201, des1, hor1, tec1, per1, cont1, des2, hor2, tec2, per2, cont2, des3, hor3, tec3, per3, cont3, des4, hor4, tec4, per4, cont4,total);
     paso=true;
     }
-    public void autoevaluacion(long user){
+    public String autoevaluacion(long user, String correo){
       AlmacenamientoPDF g=new AlmacenamientoPDF();
     g.pdf_autoevaluacion(user, 203, auto1, auto2, auto3, auto4, auto5);
     paso=true;
-    
+    MailingMain por = new MailingMain();
+      por.mensajes(1005, correo,"vacio");
     VisitaDAO vi = new VisitaDAO();
     vi.documentacion_est();
+    return"revision_window";
     }
 
  public void solicitudFinal(long user){

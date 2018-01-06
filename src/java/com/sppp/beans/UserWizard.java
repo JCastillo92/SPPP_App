@@ -36,8 +36,11 @@ import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 /**
  *
@@ -285,16 +288,55 @@ public class UserWizard extends WizardDB implements Serializable {
         }
     }
     
-    //Metodo para llenar o vaciar los campos de empresa
-    public void encontrarEmpresa(){
+    //Metodo validar el RUC de la EMP
+    public void validarRuc(FacesContext context, UIComponent component, Object value) throws ValidatorException {
+        //921999488001
+        String ruc="";
+        boolean t;
+        ruc = value.toString();
         
-        String tipo_p = String.valueOf(emp.getId_empresa());
-        boolean t = Validaciones.validacionCedula(tipo_p);
-        if(t){
-            //Codigo para autocompletar una empresa
-            emp.setNombre_empresa("funciono");
-        }else{
+        if(ruc.length() == 12){
+            ruc = "0"+ruc;
+        }
+        
+        if(ruc.length() == 13){
             
+            t = Validaciones.validacionCedula(ruc);
+            if (t) {
+                //Codigo para autocompletar una empresa
+                //emp.setNombre_empresa("funciono");
+            } else {
+                FacesMessage msg = new FacesMessage("RUC no valido");
+                msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+
+                throw new ValidatorException(msg);
+            }
+        }
+    }
+    
+    //Metodo validar el RUC de la EMP
+    public void validarCI(FacesContext context, UIComponent component, Object value) throws ValidatorException {
+        //921999488001
+        String ci="";
+        boolean t;
+        ci = value.toString();
+        
+        if(ci.length() == 9){
+            ci = "0"+ci;
+        }
+        
+        if(ci.length() == 10){
+            
+            t = Validaciones.validacionCedula(ci);
+            if (t) {
+                //Codigo para autocompletar una empresa
+                //emp.setNombre_empresa("funciono");
+            } else {
+                FacesMessage msg = new FacesMessage("Cédula de Identidad no valida");
+                msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+
+                throw new ValidatorException(msg);
+            }
         }
     }
     

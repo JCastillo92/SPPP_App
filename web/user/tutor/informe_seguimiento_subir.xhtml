@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+     template="/templates/main.xhtml"
+     xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:f="http://xmlns.jcp.org/jsf/core"
+     xmlns:b="http://bootsfaces.net/ui">
+    
+    <ui:define name="title">
+       Tutor
+    </ui:define>
+    
+    <ui:define name="barra-lateral">
+    </ui:define>
+    
+    <ui:define name="contenido">
+<f:metadata>
+    <f:viewParam name="id" value="#{datosFormatos.id}" />
+</f:metadata>
+    
+        <div class="row">
+            <h1 class="page-header">Descargar y Subir Archivos .pdf</h1>
+        </div>
+        
+        
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Subir Documento Firmado y Sellado .pdf.
+                </div>
+                <div class="panel-body">
+                    <h:form enctype="multipart/form-data" role="form">
+                        <div class="form-group">
+                            <label>Subir el oficio sellado por la empresa en formato .pdf hasta 2MB <i class="fa fa-file-pdf-o fa-2x"></i></label>
+                            
+                            <h:inputFile value="#{uploadFile.file}" required="true">
+                                <f:ajax listener="#{uploadFile.save_file_tut(2,datosFormatos.id)}"/>
+                                
+                            </h:inputFile>
+                            
+                        </div>
+                        <center>
+                             
+                                         
+                               <b:button    outcome="revision_windowFin.xhtml"  value="Enviar" look="success">
+                                                     
+                                                    <f:param name="id" value="#{datosFormatos.id}"/>
+                                              
+                                                </b:button>           
+                           
+                                     </center>
+                        
+                      <!--  <h:commandLink class="btn btn-success"   action="#{uploadFile.documentosubidoTu()}">
+                            
+                                   <f:param name="id" value="#{datosFormatos.id}"/>
+                            Enviar <f:ajax execute="@form"></f:ajax>
+                                              
+                        </h:commandLink>-->
+                    </h:form>
+                </div>
+            </div>
+        </div>
+        
+    </ui:define>
+    
+</ui:composition>

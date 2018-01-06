@@ -8,29 +8,30 @@
      xmlns:b="http://bootsfaces.net/ui">
     
     <ui:define name="title">
-        Est. IP
+      Estudiante
     </ui:define>
     
     <ui:define name="barra-lateral">
-        <ui:include src="/snippets/menu_estudiante.xhtml" />
+        
     </ui:define>
     
     <ui:define name="contenido">
 
         <div class="row">
-            <h1 class="page-header">Descargar y Subir Archivo .pdf</h1>
+            <center><h1 class="page-header">Documentos</h1> </center>   
         </div>
         
         <div class="row">
+            
              <div class="panel panel-default">
                 <div class="panel-heading">
-                    Paso 1. Descargar Solicitud Inicio Actividades en Empresa o Instituci&oacute;n.
+                     Descarga de Archivo
                 </div>
                 <div class="panel-body">
                     <h:form enctype="multipart/form-data" role="form">
                          <div class="form-group">
-                             <label>Descargar la solicitud resoluci&oacute;n </label><br/>
-                           <h:commandButton action="#{uploadFile.download_file(104)}" value="Descarga PDF"/>
+                             <label>Formato autoevaluacion </label><br/>
+                           <h:commandButton action="#{uploadFile.download_file(203)}" value="Descarga PDF"/>
                         </div>
                     </h:form>
                 </div>
@@ -39,19 +40,23 @@
         <div class="row">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Paso 2. Subir Archivo Firmado y Sellado .pdf.
+                    Subir archivos firmados y sellados.
                 </div>
                 <div class="panel-body">
                     <h:form enctype="multipart/form-data" role="form">
                         <div class="form-group">
-                            <label>Subir la solicitud resoluci&oacute;n en formato .pdf hasta 2MB <i class="fa fa-file-pdf-o fa-2x"></i></label>
+                            <label>Formato de autovaluacion<i class="fa fa-file-pdf-o fa-2x"></i></label>
+                            
                             <h:inputFile value="#{uploadFile.file}" required="true">
                                 <f:ajax listener="#{uploadFile.save_file(4)}"/>
+                                
                             </h:inputFile>
+                            
                         </div>
-                    </h:form>
-                    <h:form>
-                        <b:commandButton class="btn btn-success" action="#{uploadFile.enviar_arch_msj(4)}" value="Enviar" look="success"/>
+                        
+                                       </h:form>
+                    <h:form> 
+                        <center> <h:commandButton class="btn btn-success" value="Enviar" /></center>
                     </h:form>
                 </div>
             </div>

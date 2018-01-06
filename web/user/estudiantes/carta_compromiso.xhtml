@@ -52,8 +52,8 @@
                                 <b:inputText value="#{wizardCartaCompromiso.pasantia.tipo_ppp}" label="C&oacute;digo:" disabled="true" tooltip="Tipo pasant&iacute;a o pr&acirc;ctica pre profesional"/>
                                 <b:inputText value="#{wizardCartaCompromiso.pasantia.cod_ppp}" label="No.:" disabled="true" tooltip="N&uacute;merro relacionado al c&oacute;digo"/>
                                 <b:inputText value="#{wizardCartaCompromiso.empresa.nombre_empresa}" label="Nombre de la empresa o instituci&oacute;n:" disabled="true" />
-                                <b:inputTextarea value="#{wizardCartaCompromiso.objetoDeLaActividad}" class="#{wizardCartaCompromiso.datosAPintar[11] ? 'hola':'rojo_error'}" label="Objeto de la Actividad Acad&eacute;mica:" placeholder="Describir todas las actividades." required="true"/>
-                                <b:inputText value="#{wizardCartaCompromiso.carrera_grado}" label="Carrera de Grado:" disabled="true" tooltip="Carrera a la que pertenece"/>
+                                <b:inputTextarea value="#{wizardCartaCompromiso.objetoDeLaActividad}" class="#{wizardCartaCompromiso.datosAPintar[11] ? 'hola':'rojo_error'}" label="Objeto de la Actividad Acad&eacute;mica:" placeholder="Describir todas las actividades." required="true" style="text-transform:uppercase;"/>
+                                <b:inputText value="#{wizardCartaCompromiso.carrera_grado}" label="Carrera de Grado:" disabled="true" tooltip="Carrera a la que pertenece" style="text-transform:uppercase;"/>
                                 <b:inputText value="#{wizardCartaCompromiso.usuario.estudiante.ultimoNivel}" label="Ciclo o Semestre que Cursa:" disabled="true" tooltip="Semestre en curso"/>
                             </b:panel>
                         </b:carouselItem>
@@ -67,9 +67,9 @@
                                 
                                 <b:inputText value="#{wizardCartaCompromiso.pasantia.fechaInicio}" label="Fecha Inicio:" tooltip="Fecha inicio actividades" disabled="true"/>
                                 <b:inputText value="#{wizardCartaCompromiso.pasantia.fechaFin}" label="Fecha Fin:"  tooltip="Fecha fin actividades" disabled="true"/>
-                                <b:inputText value="#{wizardCartaCompromiso.horarioPrevisto}" class="#{wizardCartaCompromiso.datosAPintar[15] ? 'hola':'rojo_error'}" label="Horario Previsto:" placeholder="Ejemplo: L - Mi - V de 7am a 10am" required="true"/>
-                                <b:inputText value="#{wizardCartaCompromiso.nombrePrograma}" class="#{wizardCartaCompromiso.datosAPintar[16] ? 'hola':'rojo_error'}" label="Nombre del Programa:" placeholder="Nombre de la aplicaci&oacute;n o programa" required="true"/>
-                                <b:inputText value="#{wizardCartaCompromiso.areaAcademica}" class="#{wizardCartaCompromiso.datosAPintar[17] ? 'hola':'rojo_error'}" label="&Aacute;rea que Requiere la Actividad Acad&eacute;mica:" placeholder="Ejemplo: Departamento de QA" required="true"/>
+                                <b:inputText value="#{wizardCartaCompromiso.horarioPrevisto}" class="#{wizardCartaCompromiso.datosAPintar[15] ? 'hola':'rojo_error'}" label="Horario Previsto:" placeholder="Ejemplo: L - MI - V de 7am a 10am" required="true" style="text-transform:uppercase;"/>
+                                <b:inputText value="#{wizardCartaCompromiso.nombrePrograma}" class="#{wizardCartaCompromiso.datosAPintar[16] ? 'hola':'rojo_error'}" label="Nombre del Programa:" placeholder="Nombre de la aplicaci&oacute;n o programa" required="true" style="text-transform:uppercase;"/>
+                                <b:inputText value="#{wizardCartaCompromiso.areaAcademica}" class="#{wizardCartaCompromiso.datosAPintar[17] ? 'hola':'rojo_error'}" label="&Aacute;rea que Requiere la Actividad Acad&eacute;mica:" placeholder="Ejemplo: Departamento de QA" required="true" style="text-transform:uppercase;"/>
                                 <b:inputText value="#{wizardCartaCompromiso.encargado.nombre_encargado}" label="Responsable del &Aacute;rea:" disabled="true"/>
                             </b:panel>
                         </b:carouselItem>
@@ -79,9 +79,9 @@
                         <!--INICIO ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA-->
                         <b:carouselItem style="width:400px;height:auto">
                             <b:panel title="Actividades Previstas a ser Desarrolladas en la Actividad Acad&eacute;mica p&aacute;g 3 de 3" look="default">
-                                <b:inputTextarea value="#{wizardCartaCompromiso.actividadPrevista}" class="#{wizardCartaCompromiso.datosAPintar[19] ? 'hola':'rojo_error'}" label="Se&ntilde;ale Aquellas que Prev&eacute;n Resultados y Productos:" tooltip="Listar m&iacute;nimo 4" required="true"/>
-                                <b:inputTextarea value="#{wizardCartaCompromiso.resultadosPrevistos}" class="#{wizardCartaCompromiso.datosAPintar[20] ? 'hola':'rojo_error'}" label="Resultados Previstoa de la Actividad Acad&eacute;mica:" tooltip="Listar m&iacute;nimo 4" required="true"/>
-                                <b:inputTextarea value="#{wizardCartaCompromiso.productosEntregables}" class="#{wizardCartaCompromiso.datosAPintar[21] ? 'hola':'rojo_error'}" label="Incluya el Listado de todos los Materiales F&iacute;sicos que se Generan en la Intervenci&oacute;n:" required="true"/>
+                                <b:inputTextarea value="#{wizardCartaCompromiso.actividadPrevista}" class="#{wizardCartaCompromiso.datosAPintar[19] ? 'hola':'rojo_error'}" label="Se&ntilde;ale Aquellas que Prev&eacute;n Resultados y Productos:" tooltip="Listar m&iacute;nimo 4" required="true" style="text-transform:uppercase;"/>
+                                <b:inputTextarea value="#{wizardCartaCompromiso.resultadosPrevistos}" class="#{wizardCartaCompromiso.datosAPintar[20] ? 'hola':'rojo_error'}" label="Resultados Previstoa de la Actividad Acad&eacute;mica:" tooltip="Listar m&iacute;nimo 4" required="true" style="text-transform:uppercase;"/>
+                                <b:inputTextarea value="#{wizardCartaCompromiso.productosEntregables}" class="#{wizardCartaCompromiso.datosAPintar[21] ? 'hola':'rojo_error'}" label="Incluya el Listado de todos los Materiales F&iacute;sicos que se Generan en la Intervenci&oacute;n:" required="true" style="text-transform:uppercase;"/>
                                 <b:inputText value="#{wizardCartaCompromiso.tutorXXX}" label="Nombre del Tutor:" tooltip="Tutor asignado para visitas" disabled="true"/>
                             </b:panel>  
                         </b:carouselItem>

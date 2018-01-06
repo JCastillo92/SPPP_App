@@ -76,17 +76,18 @@ public class UploadFile{
         String local_path = directorio.local_path();
         String nombre;
         String nombreSinExt, extension;
+        Long tamano;
         int punto;
         
         try {
             InputStream input = file.getInputStream();
             nombre = getFilename(file);
-            
+            tamano = getFile().getSize();
             //CODIGO PARA OBTENER LA EXTENSION DEL ARCHIVO
             punto = nombre.indexOf(".");
             nombreSinExt = nombre.substring(0, punto);
             extension = nombre.substring(punto,nombre.length());
-            System.out.println(nombreSinExt+" "+extension);
+            System.out.println(nombreSinExt+" "+extension+" "+tamano);
             
             
         //LO SIGUIENTE ME PERMITE SABER LA CEDULA DEL ALUMNO, CON ESO PUEDO SABER A QUE CARPETA MANDAR EL .PDF SUBIDO

@@ -44,7 +44,7 @@
                 <div class="panel-body">
                     <h:form enctype="multipart/form-data" role="form">
                         <div class="form-group">
-                            <label>Subir la solicitud resoluci&oacute;n en formato .pdf <i class="fa fa-file-pdf-o fa-2x"></i></label>
+                            <label>Subir la solicitud resoluci&oacute;n en formato .pdf hasta 2MB <i class="fa fa-file-pdf-o fa-2x"></i></label>
                             <h:inputFile value="#{uploadFile.file}" required="true">
                                 <f:ajax listener="#{uploadFile.save_file(4)}"/>
                             </h:inputFile>

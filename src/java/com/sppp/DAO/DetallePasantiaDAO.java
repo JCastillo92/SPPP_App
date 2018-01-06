@@ -307,7 +307,7 @@ public class DetallePasantiaDAO {
             sesion.update(dp);
             tx.commit();
         } catch (Exception e) {
-            
+            e.printStackTrace();
             if (tx != null) {
                 tx.rollback();
             }

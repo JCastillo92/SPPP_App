@@ -27,7 +27,7 @@ import org.hibernate.Transaction;
  */
 public class DatosDAO {
 
-    public void datosGuardar(Usuario user, Empresa emp, Encargado enc, Pasantia pa, DetallePasantia dp, List<String> resps) {
+    public void datosGuardar(Usuario user, Empresa emp, Encargado enc, Pasantia pa, DetallePasantia dp, List<String> resps, String tut) {
 
         Respuesta idRespuesta = new Respuesta();
 
@@ -54,8 +54,9 @@ public class DatosDAO {
             //Paso a guardar las horas pasantia
             sesion.update(user);
             sesion.update(pa);
-            
+            tx.commit();
             //Datos d1 = new Datos("valor" (String),"idpasantia"(int), "idRespuesta"(int));
+            tx = sesion.beginTransaction();
             idRespuesta.setId_tbrespuesta(1);
             Datos d1 = new Datos(pa.getTipo_ppp(), dp, idRespuesta,true);
             sesion.saveOrUpdate(d1);
@@ -126,7 +127,7 @@ public class DatosDAO {
             sesion.saveOrUpdate(d22);
 
             idRespuesta.setId_tbrespuesta(23);//para_nombreTutorAsignado
-            Datos d23 = new Datos(pa.getCed_tutor_asignado(), dp, idRespuesta,true);
+            Datos d23 = new Datos(tut, dp, idRespuesta,true);
             sesion.saveOrUpdate(d23);
 
             idRespuesta.setId_tbrespuesta(24);//para_apellidosNombresGerenteEmpresa

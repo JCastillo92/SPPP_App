@@ -211,7 +211,7 @@ public class WizardCartaCompromiso extends WizardCC {
         if(existe){
            obj.actualizarDatosCartaCompromiso(usuario, empresa, encargado, pasantia, dp2, resp);
         }else{
-            obj.datosGuardar(usuario, empresa, encargado, pasantia, dp2, resp);
+            obj.datosGuardar(usuario, empresa, encargado, pasantia, dp2, resp,getTutorXXX() );
         }
         
         

@@ -40,12 +40,12 @@
                                 
                             </h:inputFile>
                             </div>
-                         </h:form>
-                 <h:form>
+                    </h:form>
+                    <h:form>
                      <p align="right">
                    <b:button rendered="#{tablasFormatos.paso == false eq true}" onclick="$('.abrirPseudoClass').modal();tableWidgetVar.DataTable().responsive.recalc();" style="position:absolute;right:115px" value="Cancelar" look="danger"  ></b:button>  &#160;&#160;
-                  <b:commandButton  rendered="#{tablasFormatos.paso == false eq true}"   action="#{tablasFormatos.informeRuta(datosFormatos.id)}" style="position:absolute;right:25px" value="Guardar" look="info"  ></b:commandButton>
-                    </p>                    
+                   <b:commandButton  rendered="#{tablasFormatos.paso == false eq true}"   action="#{tablasFormatos.cambiarestado()}" style="position:absolute;right:25px" value="Guardar" look="info"  ></b:commandButton>
+                     </p>                    
                       
                   <center>                  
                   <h:dataTable var="campo" value="#{citasAgendadas.getVisitasRealizadas(datosFormatos.id)}" >

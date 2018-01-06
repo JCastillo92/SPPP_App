@@ -52,19 +52,22 @@ public class DetallePasantiaBean {
    public void init(){
        DetallePasantiaDAO dpDAO =new DetallePasantiaDAO();
        switch(id_tabla){
-           case 1:
+           case 1://buscar y crear tabla de todos inicio roceso pasantia
                empData3=dpDAO.findAllDetallePasantiaconCIValidaInicioProceso();
                outcome_salida="validarDatosBasicos";
                break;
-           case 2:
+           case 2://buscar y crear tabla de todos validar CC
               empData3=dpDAO.findAllDetallePasantiaconCIValidaCartaCompromiso();
               outcome_salida="validar_carta";
                break;
-           case 3:
+           case 3://buscar y crear tabla de todos Validar INICIO ACTIVIDADES EMPRESA (RESOLUCION)
            empData3=dpDAO.findAllDetallePasantiaconCIValidaInicioActividades();
            outcome_salida="validarInicioPasantia";
            break;
-           
+           case 4://buscar y crear tabla de todos Validar PDFs
+           empData3=dpDAO.findAllDetallePasantiaconCIValidaPDFs();
+           outcome_salida="validar_pdfs";
+               break;
            default:
                break;
        }

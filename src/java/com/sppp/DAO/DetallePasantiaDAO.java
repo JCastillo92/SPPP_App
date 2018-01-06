@@ -277,7 +277,7 @@ public class DetallePasantiaDAO {
             Query query = sesion.createQuery("SELECT COUNT(*) FROM DetallePasantia D WHERE D.proceso.id_proceso = :id_pro "
                     + "AND D.validacion = :vali "
                     + "AND D.estado = :verdad");
-            query.setLong("id_pro", 14);//fk de tb_proceso 14
+            query.setLong("id_pro", 16);//fk de tb_proceso 16
             query.setInteger("vali", 1);
             query.setBoolean("verdad", true);
             numeroInicioActividades=(long) query.uniqueResult();       
@@ -523,8 +523,7 @@ public DetallePasantia findDetallePasantiaPorProcesoFalse(String tipo_ppp, int c
         return empData;
     }
            
-           
-           public List<Object[]> findAllDetallePasantiaconCIValidaInicioActividades(){
+           public List<Object[]> findAllDetallePasantiaconCIValidaPDFs(){
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;    
@@ -564,4 +563,50 @@ public DetallePasantia findDetallePasantiaPorProcesoFalse(String tipo_ppp, int c
         }
         return empData;
     }
+           
+           public List<Object[]> findAllDetallePasantiaconCIValidaInicioActividades(){
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;    
+        
+        //variables a pedir
+        long cedula_est=0;
+        int cod_ppp=0,iddetallepasantia=0;
+        String tipo_ppp="",descripcion="";
+        List<Object[]> empData=null;
+         try {
+            tx = sesion.beginTransaction();
+            SQLQuery query = sesion.createSQLQuery("select tb_pasantia.cedula, tb_detalle_pasantia.tipo_ppp, tb_detalle_pasantia.cod_ppp, tb_detalle_pasantia.iddetallepasantia, tb_detalle_pasantia.descripcion, tb_detalle_pasantia.id_proceso \n" +
+"from tb_pasantia, tb_detalle_pasantia \n" +
+"where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n" +
+"and tb_detalle_pasantia.estado=true \n"
++ "and tb_detalle_pasantia.id_proceso=17 \n"
++ "and tb_detalle_pasantia.validacion=1;");
+
+                empData = query.list();
+            for (Object[] row : empData) {
+                //variables que retorna la consulta
+                cedula_est = Long.parseLong(row[0].toString());
+                tipo_ppp=row[1].toString();
+                cod_ppp = Integer.parseInt(row[2].toString());
+                iddetallepasantia=Integer.parseInt(row[3].toString());
+                descripcion=row[4].toString();
+            }               
+            tx.commit();
+        }catch (Exception e) {
+            e.printStackTrace();
+            if (tx != null){
+                tx.rollback();
+            }
+        }finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+        return empData;
+    }
+           
+     
+           
+           
+           
 }//end fo class

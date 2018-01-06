@@ -55,12 +55,8 @@ public class AlmacenamientoPDF{
                 private Encargado encargado=new Encargado();//jairo
                 private Empresa empresa=new Empresa();//jairo
                 private DetallePasantia detallePass=new DetallePasantia();//jairo
-                //private List<DatosDAO> datos=new DatosDAO();//jairo
-                List<Datos> datos= null;
-                
-                private DetallePasantiaDAO detallePassDAO=new DetallePasantiaDAO();//jairo
                 private VisitaTutor tutor=new VisitaTutor();//karen
-
+                private List<Datos> datos= null;
 
         
     

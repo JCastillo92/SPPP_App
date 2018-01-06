@@ -64,7 +64,7 @@ insert into tb_tipopregunta (tipo) values ('CHECKONE');/*7*/
 insert into tb_tipopregunta (tipo) values ('CHECKMANY');/*8*/
 
 
-/*llenar tb_proceso ESTA TABLA TENDRA DATOS QUEMADOS
+/*llenar tb_proceso ESTA TABLA TENDRA DATOS QUEMADOS*/
 insert into tb_proceso(descripcion,estado) values ('Ingreso Datos Basicos',true);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('ingreso datos alumno',true,1);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('ingreso datos empresa',true,1);
@@ -106,7 +106,7 @@ insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir Autoevaluac
 insert into tb_proceso(descripcion,estado) values ('Descargar/Subir Otros Documentos',true);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir Certificado empresa',true,27);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir comprobante pasantía',true,27);
-*/
+
 
 
 /*
@@ -277,3 +277,24 @@ insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values
 insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (46,'para_nomAppEncargado',46);
 insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (47,'para_cargoEncarg',47);
 
+/*
+VACUUM FULL tb_datos;
+VACUUM FULL tb_detalle_pasantia;
+VACUUM FULL tb_empresa;
+VACUUM FULL tb_empresa_encargado;
+VACUUM FULL tb_estudiante;
+VACUUM FULL tb_formato;
+VACUUM FULL tb_horariotutor;
+VACUUM FULL tb_pasantia;
+VACUUM FULL tb_perfil;
+VACUUM FULL tb_periodo;
+VACUUM FULL tb_periodo_tutor;
+VACUUM FULL tb_preguntas;
+VACUUM FULL tb_proceso;
+VACUUM FULL tb_respuesta;
+VACUUM FULL tb_tipopregunta;
+VACUUM FULL tb_tutor;
+VACUUM FULL tb_usuario;
+VACUUM FULL tb_visitatutor;
+
+*/

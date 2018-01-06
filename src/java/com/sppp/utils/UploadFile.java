@@ -147,7 +147,7 @@ public class UploadFile{
     
     
     
-    //METODO PARA GUARDAR/DESCARGAR ARCHIVOS CREADOR
+    //METODO PARA GUARDAR en sistema Y DESCARGAR ARCHIVOS CREADOS por alumno
         public void download_file(int opcion) {///aqui recibir nombre de archivo 103.pdf
         try {
             AlmacenamientoPDF obj_crearpdf = new AlmacenamientoPDF();
@@ -170,6 +170,9 @@ public class UploadFile{
             e.printStackTrace();
         }
     }//end of DOWNLOAD_FILE
+        
+        
+        
         
         
         
@@ -305,6 +308,30 @@ public class UploadFile{
         }
     }//end of DOWNLOAD_FILE
         
+         
+            public void download_file_gest(int opcion,long user) {///aqui recibir nombre de archivo 103.pdf
+        try {
+            //AlmacenamientoPDF obj_crearpdf = new AlmacenamientoPDF();
+           // HttpSession session = SessionUtils.getSession();
+            //long id;
+            //id = (long) session.getAttribute("id");
+        
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            ExternalContext context = facesContext.getExternalContext();
+            HttpServletRequest request = (HttpServletRequest) context.getRequest();
+            HttpServletResponse response = (HttpServletResponse) context.getResponse();
+
+            //mando a crear el archivo pdf, para que sea lo mas actual posible.
+         //   obj_crearpdf.guardado_archivo_pdf_creado(id, opcion);
+            //mando a llamar al mmismo archivo pdf en la aplicacion,  para que se pueda descargar
+            response.sendRedirect(request.getContextPath() + "/faces/user/gestores/downloadGestEst"+"/"+user+"/"+opcion + ".pdf");
+            //response.sendRedirect("index.jsf");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }//end of DOWNLOAD_FILE
+         
        public void save_file_tut(int opcion,long user){
          Paths directorio = new Paths();
         String local_path = directorio.local_path();

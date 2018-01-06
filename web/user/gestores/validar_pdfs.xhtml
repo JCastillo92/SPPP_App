@@ -10,12 +10,12 @@
     <ui:define name="encabezado">
         <f:metadata>
             <f:viewParam name="id" value="#{wizardPDFValidacion.id_estudiante}" />
-            <f:event type="preRenderView" listener="#{wizardDBValidacion.init()}" />
+            <f:event type="preRenderView" listener="#{wizardPDFValidacion.init()}" />
         </f:metadata>
     </ui:define>
     
     <ui:define name="title">
-        Val. Datos Basicos
+        Val. PDFs
     </ui:define>
     
     <ui:define name="barra-lateral">
@@ -23,160 +23,40 @@
     </ui:define>
     
     <ui:define name="contenido">
-
-        <!-- ENCABEZADO -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Solicitud Inicio Proceso de Pasantia</h1>
-            </div>
+     
+         <div class="row">
+            <h1 class="page-header">Validar Documentos .pdf Previos a Solicitud de Inicio PA / PP</h1>
         </div>
-
-        <!-- FORMULARIO WIZZARD -->
-        <div class="row">
-            <div class="col-lg-12">
-
-                <b:form horizontal="true">
-                    <b:carousel id="wizard" styleClass="wizardPseudoClass"
-                                style="width:400px; padding-top:20px"
-                                startAnimation="false"
-                                showIndicators="false"
-                                wrap="false">
-                        <b:carouselItem style="width:400px; height:auto">
-                            <b:panel title="Datos Estudiante - p&aacute;g. 1 de 2" look="default">
-                                <!-- AQUI ABAJO FORMULARIO DINAMICO ESTUDIANTE-->
-                                <b:inputText value="#{wizardDBValidacion.usuario.nombre}" label="Nombre:" disabled="true" tooltip="Nombres completos alumno">
-                                    <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="true" disabled="true"/>
-                                    </f:facet>
-                                </b:inputText>
-                                <b:inputText value="#{wizardDBValidacion.usuario.apellido}" label="Apellido:" disabled="true" tooltip="Apellidos completos alumno">
-                                    <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="true" disabled="true"/>
-                                    </f:facet>
-                                </b:inputText>
-                                <b:inputText value="#{wizardDBValidacion.usuario.telefono}" disabled="true" label="Tel&eacute;fono:" required="true" tooltip="N&uacute;mero celular">
-                                    <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar3}"/>
-                                    </f:facet>
-                                </b:inputText>
-                                <b:inputText value="#{wizardDBValidacion.usuario.correo}" disabled="true" label="Correo:" required="true" tooltip="Correo de preferencia">
-                                    <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar4}"/>
-                                    </f:facet>
-                                </b:inputText>
-                                <b:inputText value="#{wizardDBValidacion.usuario.estudiante.ultimoNivel}" label="Nivel m&aacute;s Bajo:" disabled="true">
-                                    <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="true" disabled="true"/>
-                                    </f:facet>
-                                </b:inputText>
-                                <b:inputTextarea value="#{wizardDBValidacion.usuario.estudiante.actividadRealizar}" disabled="true" label="Actividad a Realizar:" required="true" tooltip="Describa aquellas a realizar">
-                                    <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar6}"/>
-                                    </f:facet>
-                                </b:inputTextarea>
-                                <h:outputText value="Tipo de Pr&aacute;ctica" style="font-weight:bold"/>
-                                <h:message for="msgRadio" style="color: red"></h:message>
-                                <b:radiobutton disabled="true"  value="#{wizardDBValidacion.p.tipo_ppp}" required="true" id="msgRadio" requiredMessage=" Escoja un tipo de pr&aacute;ctica: *" tooltip="Seleecionar una">
-                                    <f:selectItem itemLabel="Pasant&iacute;a" itemValue="PA"/>
-                                    <f:selectItem itemLabel="Pr&aacute;ctica Pre Profesional" itemValue="PP"/>
-                                    <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="true"/>
-                                    </f:facet>
-                                </b:radiobutton>
-                                <b:inputText value="#{wizardDBValidacion.fechaInicioHelper}" disabled="true" label="Fecha Tentativa Inicio:" required="true">
-                                    <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar8}"/>
-                                    </f:facet>
-                                </b:inputText>
-                                <b:inputText value="#{wizardDBValidacion.fechaFinHelper}" disabled="true" label="Fecha Tentativa Fin" required="true">
-                                    <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar9}"/>
-                                    </f:facet>
-                                </b:inputText>
-                                
-                            </b:panel>
-                        </b:carouselItem>
-                        <b:carouselItem style="width:400px;height:auto">
-                            <b:panel title="Datos Empresa - p&aacute;g. 2 de 2" look="default">
-                                <!-- AQUI ABAJO FORMULARIO DINAMICO EMPRESA-->
-                                <b:inputText value="#{wizardDBValidacion.emp.id_empresa}" disabled="true" label="RUC:" required="true">
-                                    <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar10}" disabled="true"/>
-                                    </f:facet>
-                                </b:inputText>
-                                <b:inputText value="#{wizardDBValidacion.emp.nombre_empresa}" disabled="true" label="Nombre Empresa:" required="true">
-                                    <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar11}"/>
-                                    </f:facet>
-                                </b:inputText>
-                                <b:inputText value="#{wizardDBValidacion.emp.nombre_gerente}" disabled="true" label="Nombres y Apellidos Gerente Empresa:" required="true">
-                                    <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar12}"/>
-                                    </f:facet>
-                                </b:inputText>
-                                <b:inputText value="#{wizardDBValidacion.emp.telefono_empresa}" disabled="true" label="Tel&eacute;fono:" required="true">
-                                    <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar13}"/>
-                                    </f:facet>
-                                </b:inputText>
-                                <b:inputText value="#{wizardDBValidacion.emp.direccion_empresa}" disabled="true" label="Direcci&oacute;n:" required="true">
-                                    <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar14}"/>
-                                    </f:facet>
-                                </b:inputText>
-                                <b:inputText value="#{wizardDBValidacion.emp.actividad_principal_empresa}" disabled="true" label="Actividad Principal que Ejerce Empresa:" required="true">
-                                    <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar15}"/>
-                                    </f:facet>
-                                </b:inputText>
-                                <b:inputText value="#{wizardDBValidacion.enc.ci_encargado}" disabled="true" label="C&eacute;dula Encargado:" required="true">
-                                    <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar16}" disabled="true"/>
-                                    </f:facet>
-                                </b:inputText>
-                                <b:inputText value="#{wizardDBValidacion.enc.nombre_encargado}" disabled="true" label="Nombres y Apellidos Encargado:" required="true">
-                                    <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar17}"/>
-                                    </f:facet>
-                                </b:inputText>
-                                <b:inputText value="#{wizardDBValidacion.enc.cargo_encargado}" disabled="true" label="Cargo Encargado:" required="true">
-                                    <f:facet name="append">
-                                        <h:selectBooleanCheckbox value="#{wizardDBValidacion.validar18}"/>
-                                    </f:facet>
-                                </b:inputText>
-                                <b:inputTextarea value="#{wizardDBValidacion.observacion}" label="Observaciones al estudiante acerca de su proceso" >
-                                </b:inputTextarea>
-                            </b:panel>
-                        </b:carouselItem>
-                        <b:carouselControl direction="right" >
-                            <b:button value="Anterior"
-                                      onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');"
-                                      look="info" />
-                        </b:carouselControl>
-                        <b:carouselControl>
-                            
-                            <b:commandButton value="Enviar" style="position:absolute;right:0px" action="#{wizardDBValidacion.guardarDatos()}" 
-                                      look="success" />
-                        </b:carouselControl>
-                        <b:carouselControl direction="left">
-                            <b:button value="Siguiente" style="position:absolute;right:100px"
-                                      onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');"
-                                      look="info" />
-                        </b:carouselControl>
-                        
-                    </b:carousel>
-                </b:form>
-
-            </div>
-        </div>
-
-        <div class="row">
-            <br/>
-            <br/>
-        </div>
-
-
         
+        <div class="row">
+             <div class="panel panel-default">
+                <div class="panel-heading">
+                    Documentos Subidos por el Alumno.
+                </div>
+                <div class="panel-body">
+                    <h:form enctype="multipart/form-data" role="form">
+                         <div class="form-group">
+                             <label>Oficio de la Empresa </label><br/>
+                           <h:commandButton action="#{uploadFile.download_file(101)}" value="Descarga OF-E"/>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Carta de Aceptaci&oacute;n Empresa </label><br/>
+                           <h:commandButton action="#{uploadFile.download_file(102)}" value="Descargar CA-E"/>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Carta Compromiso Empresa </label><br/>
+                           <h:commandButton action="#{uploadFile.download_file(102)}" value="Descargar CC-E"/>
+                        </div>                    
+                        
+                    </h:form>
+                </div>
+            </div>
+            </div>
+        
+
+     
     </ui:define>
     
 </ui:composition>

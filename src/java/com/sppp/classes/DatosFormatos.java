@@ -87,10 +87,9 @@ public class DatosFormatos implements Serializable {
         return pasantia;
     }
 
-    public String getTipo_actividad(long user) {
+    public String getTipo_actividad(String user) {
         AlmacenamientoPDF crear=new AlmacenamientoPDF();
-        String user1=String.valueOf(user);
-        tipo_actividad=crear.giveMeNamePPP(user1);
+        tipo_actividad=crear.giveMeNamePPP(user);
         
         return tipo_actividad;
     }

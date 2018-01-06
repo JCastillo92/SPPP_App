@@ -279,7 +279,7 @@ public class CitasDaoImp implements CitasDao {
             }
         }finally{
             sesion.flush();
-            sesion.close();
+           // sesion.close();
         }
        
         return listado;

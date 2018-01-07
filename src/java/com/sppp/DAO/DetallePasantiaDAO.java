@@ -580,7 +580,7 @@ public DetallePasantia findDetallePasantiaPorProcesoFalse(String tipo_ppp, int c
 "from tb_pasantia, tb_detalle_pasantia \n" +
 "where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n" +
 "and tb_detalle_pasantia.estado=true \n"
-+ "and tb_detalle_pasantia.id_proceso=17 \n"
++ "and tb_detalle_pasantia.id_proceso=16 \n"
 + "and tb_detalle_pasantia.validacion=1;");
 
                 empData = query.list();

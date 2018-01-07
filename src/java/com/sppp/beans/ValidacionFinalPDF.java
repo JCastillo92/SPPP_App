@@ -61,13 +61,16 @@ public class ValidacionFinalPDF {
         this.archivo4 = archivo4;
     }
 
-    public String guardarDatos(long est){
+    public String guardarDatos(long est,long visita){
         System.out.println("bbbb"+archivo1+archivo2+archivo3+archivo4);
         //Compruebo si cumple todos los checks
         
           //  if(archivo1 && archivo2 && archivo3 && archivo4){
             VisitaDAO vi = new VisitaDAO();
             vi.resolucion(est);
+            
+            ControllerBean con = new ControllerBean();
+            con.updateListoVisita(visita);
             //}
         return "coordinator";
     }

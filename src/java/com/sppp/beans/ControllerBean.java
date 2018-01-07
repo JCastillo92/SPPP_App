@@ -392,6 +392,14 @@ private Usuario usuario = new Usuario();
                     return "revision_window";
       }
        
+        public void updateListoVisita(long id_visita2){
+         
+          VisitaTutor newVisitaTutor = new VisitaTutor();
+          VisitaDAO visitaDAO = new VisitaDAO();
+          visitaDAO.updateListoVisita(id_visita2, newVisitaTutor);
+                  
+      }
+       
       public String cargarArchivos(String correo){
           VisitaDAO visitaDAO = new VisitaDAO();
           visitaDAO.solicitud();

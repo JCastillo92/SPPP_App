@@ -235,6 +235,39 @@ public class DatosDAO {
         
     }
     
+    //Metodo alternativo
+    public void guardarValidacionDatosSU(List<Datos> datosValidados){
+        
+        
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+
+        Transaction tx = null;
+        Usuario usuario = null;
+        try {
+            tx = sesion.beginTransaction();
+            
+            for (Iterator<Datos> iterator = datosValidados.iterator(); iterator.hasNext();) {
+                Datos next = iterator.next();
+                sesion.saveOrUpdate(next);
+            }
+            
+            tx.commit();
+
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            System.out.println("============== ERROR AL GUARDAR DATOS VALIDADOS CC =========");
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            //para cerrar seesion
+            sesion.close();
+        }
+        
+        
+    }
+    
     public void guardarDatosBasicos(Usuario user, Empresa emp, Encargado enc, Pasantia pa, DetallePasantia dp){
         
         Respuesta idRespuesta = new Respuesta();

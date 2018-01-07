@@ -29,28 +29,26 @@
         </div>
         
         <div class="row">
-            <h:dataTable value="#{wizardSolResolValidacion.empData}" var="dpalltrue2">
-                <h:column>#{dpalltrue2.tipo_ppp}</h:column>
-                <h:column>#{dpalltrue2.cod_ppp}</h:column>
-                <h:column>#{dpalltrue2.fechaInicio}</h:column>
-                <h:column>#{dpalltrue2.fechaFin}</h:column>
-                <h:column>#{dpalltrue2.cod_resolucion_consejo}</h:column>
-                <h:column>#{dpalltrue2.ced_tutor_asignado}</h:column>
-                <h:column>#{dpalltrue2.estudiante.cedula}</h:column>
-                
-            </h:dataTable>
-            
-            
+              <b:dataTable value="#{wizardSolResolValidacion.empData}"
+                                         var="dpalltrue2" >
+                                <b:dataTableColumn value="#{dpalltrue2.tipo_ppp}" label="Tipo" />
+                                <b:dataTableColumn value="#{dpalltrue2.cod_ppp}" label="Cod" />
+                                <b:dataTableColumn value="#{dpalltrue2.fechaInicio}" label="F. Inicio" />
+                                <b:dataTableColumn value="#{dpalltrue2.fechaFin}" label="F. Fin" />
+                                <b:dataTableColumn value="#{dpalltrue2.cod_resolucion_consejo}" label="Resolucion" />
+                                <b:dataTableColumn value="#{dpalltrue2.ced_tutor_asignado}" label="Tutor Asignado" />
+                                <b:dataTableColumn value="#{dpalltrue2.estudiante.cedula}" label="Ci Est" />
+                            </b:dataTable>
             
         </div>
         
         <div class="row">
                    <b:panel title="Reasignar Tutor" look="default" style="width:400px; height:auto">
-                <h:selectOneMenu value = "#{wizardSolResolValidacion.ced_tutor_reasigna}" class="panel-default" style="width:300px; height:auto"> 
+                <h:form><h:selectOneMenu value = "#{wizardSolResolValidacion.ced_tutor_reasigna}" class="panel-default" style="width:300px; height:auto"> 
                     <f:selectItems value="#{wizardSolResolValidacion.hm_tutores}"></f:selectItems>
                         </h:selectOneMenu>
                        
-                <h:form>
+                
                     <br></br>
                     <b:commandButton class="btn btn-success" value="Reasignar" action="#{wizardSolResolValidacion.actualizarAlumnoTutor()}"></b:commandButton>
                 </h:form>

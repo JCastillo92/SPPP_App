@@ -370,9 +370,23 @@ private Usuario usuario = new Usuario();
                     
                    
                  visitaDAO.validacion_visita(ced_est,cedu);
-                  visitaDAO.autoevaluacion(ced_est);
+                 // visitaDAO.autoevaluacion(ced_est);
                     System.out.println("bryanttt"+ cedu+""+""+ced_est);
                     return "agendar_cita_tut";
+      }
+      
+       public String updateCompletado(long id_visita2, String cedula,long ced_est){
+          long cedu= Long.parseLong(cedula);
+          VisitaTutor newVisitaTutor = new VisitaTutor();
+          VisitaDAO visitaDAO = new VisitaDAO();
+          visitaDAO.updateCompletado(id_visita2, newVisitaTutor);
+                    System.out.println("jaaaaaaaaaaaaaaaaaaaaaaajeeeeeeee"+id_visita2);
+                    
+                    String ced_estu =""+ced_est;
+                // visitaDAO.validacion_visita(ced_est,cedu);
+                  visitaDAO.autoevaluacion(ced_estu);
+                    System.out.println("bryanttt"+ cedu+""+""+ced_est);
+                    return "revision_window";
       }
        
       public String cargarArchivos(String correo){

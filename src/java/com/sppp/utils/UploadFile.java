@@ -293,13 +293,13 @@ public class UploadFile{
             return "revision_window";
         }
         
-         public void download_file_tut(int opcion,long user) {///aqui recibir nombre de archivo 103.pdf
+         public void download_file_tut(int opcion,long user,long cedula_tut) {///aqui recibir nombre de archivo 103.pdf
         try {
-            //AlmacenamientoPDF obj_crearpdf = new AlmacenamientoPDF();
+            AlmacenamientoPDF obj_crearpdf = new AlmacenamientoPDF();
            // HttpSession session = SessionUtils.getSession();
             //long id;
             //id = (long) session.getAttribute("id");
-        
+        obj_crearpdf.pdf_InformeTutor(user, opcion,cedula_tut);
             FacesContext facesContext = FacesContext.getCurrentInstance();
             ExternalContext context = facesContext.getExternalContext();
             HttpServletRequest request = (HttpServletRequest) context.getRequest();

@@ -59,7 +59,7 @@ public class AlmacenamientoPDF{
                 private DetallePasantia detallePass=new DetallePasantia();//jairo
                 private VisitaTutor tutor=new VisitaTutor();//karen
                 private List<Datos> datos= null;
-
+                private Usuario tutores = new Usuario();
         
     
     public boolean create_student_folder_first_time(long cedula){
@@ -745,13 +745,14 @@ try{
 
  
 
-  public boolean pdf_InformeTutor(long cedula,int numero_pdf){//200
+  public boolean pdf_InformeTutor(long cedula,int numero_pdf,long cedula_tutor){//200
       exitoalguardar=false;
          //FORMATO CARTA COMPROMISO INTERINSTITUCIONAL
          try {
          //LLAMADO A informacion NECESERAIA PARA ingresar, crear AL P D F
             UsuarioDAO uDAO = new UsuarioDAO();
             usuario = uDAO.findUsuario(cedula);   
+            tutores=uDAO.findUsuario(cedula_tutor);
             
             PasantiaDAO passDAO=new PasantiaDAO();
             pasantia = passDAO.findPasantia(cedula);
@@ -827,32 +828,32 @@ try{
       documento.add(salto_linea);
  
       documento.add(salto_linea);
-  documento.add(new Paragraph( "Carta Compromiso:   "+pasantia.getTipo_ppp()+pasantia.getCod_ppp()+"                                              Tipo de actividad:            "+giveMeNamePPP(pasantia.getTipo_ppp()),estexto));
+  documento.add(new Paragraph( "CARTA COMPROMISO:   "+pasantia.getTipo_ppp()+pasantia.getCod_ppp()+"                                              Tipo de actividad:            "+giveMeNamePPP(pasantia.getTipo_ppp()),estexto));
   documento.add(salto_linea);
   
-  documento.add(new Paragraph("Tutor:                         "+tutor.getTutor().getUsuario2().getNombre(),estexto));
+  documento.add(new Paragraph("TUTOR:                         "+tutores.getNombre()+" "+tutores.getApellido(),estexto));
   documento.add(salto_linea);
   
   
-       documento.add(new Paragraph("Estudiante:                "+usuario.getNombre()+usuario.getApellido()+"                                    Cèdula estudiante:            "+usuario.getId_cedula(),estexto));
+       documento.add(new Paragraph("ESTUDIANTE:                "+usuario.getNombre()+usuario.getApellido()+"                                    Cèdula estudiante:            "+usuario.getId_cedula(),estexto));
      
       
        documento.add(salto_linea);
        
-  Paragraph p2=new Paragraph("Muy satisfactorio 5",estexto);
+  Paragraph p2=new Paragraph("MUY SATISFACTORIO 5",estexto);
       p2.setAlignment(Element.ALIGN_RIGHT);
       documento.add(p2);
-      Paragraph p4=new Paragraph("Satisfactorio 4",estexto);
+      Paragraph p4=new Paragraph("SATISFACTORIO 4",estexto);
       p4.setAlignment(Element.ALIGN_RIGHT);
       documento.add(p4);
-      Paragraph p5=new Paragraph("Aceptable 3",estexto);
+      Paragraph p5=new Paragraph("ACEPTABLE 3",estexto);
       p5.setAlignment(Element.ALIGN_RIGHT);
       documento.add(p5);
-      Paragraph p6=new Paragraph("Deficiente 2",estexto);
+      Paragraph p6=new Paragraph("DEFICIENTE 2",estexto);
       p6.setAlignment(Element.ALIGN_RIGHT);
       documento.add(p6);
   
-    Paragraph p3=new Paragraph("Malo 1",estexto);
+    Paragraph p3=new Paragraph("MALO 1",estexto);
       p3.setAlignment(Element.ALIGN_RIGHT);
       documento.add(p3);
       
@@ -901,11 +902,11 @@ try{
 //tabla 2
    PdfPTable table2 = new PdfPTable(20);//# columns
   //1 row
-  cell = new PdfPCell(new Paragraph("Cuestionario",estexto));
+  cell = new PdfPCell(new Paragraph("CUESTIONARIO",estexto));
   cell.setRowspan(2);
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
-  cell = new PdfPCell(new Paragraph("Escala",estexto));
+  cell = new PdfPCell(new Paragraph("ESCALA",estexto));
   cell.setColspan(5);//total de celdas que va MERGE a esta FILA
   table2.addCell(cell);
   table2.addCell(new Paragraph("1",estexto));
@@ -915,7 +916,7 @@ try{
   table2.addCell(new Paragraph("5",estexto));
 
   //2row
- cell = new PdfPCell(new Paragraph("¿Se cumplió con las actividades propuestas en la Carta Compromiso?",estexto));
+ cell = new PdfPCell(new Paragraph("¿SE CUMPLIÓ CON LAS ACTIVIDADES PROPUESTAS EN LA CARTA COMPROMISO?",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
   //int preg1=Integer.parseInt(pre1);
@@ -927,7 +928,7 @@ try{
 
   
   
- cell = new PdfPCell(new Paragraph("¿Satisfacieron los resultados a la labor institucional?",estexto));
+ cell = new PdfPCell(new Paragraph("¿SATISFICIERON LOS RESULTADOS A LA LABOR INSTITUCIONAL?",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
   //int preg1=Integer.parseInt(pre1);
@@ -940,7 +941,7 @@ try{
   
   
     //3row
- cell = new PdfPCell(new Paragraph("¿El estudiante tuvo la información necesaria del proceso de pasantías, prácticas pre profesionales ó extensiones?",estexto));
+ cell = new PdfPCell(new Paragraph("¿EL ESTUDIANTE TUVO LA INFORMACIÓN NECESARIA DEL PROCESO DE PASANTÍAS, PRÁCTICAS PRE PROFESIONALES?",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
   table2.addCell(new Paragraph(e1,estexto));
@@ -949,7 +950,7 @@ try{
    table2.addCell(new Paragraph(e4,estexto));
    table2.addCell(new Paragraph(e5,estexto));
  //4row
- cell = new PdfPCell(new Paragraph("La calidad de los productos ofrecidos fueron:",estexto));
+ cell = new PdfPCell(new Paragraph("LA CALIDAD DE LOS PRODUCTOS OFRECIDOS FUERON:",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
   table2.addCell(new Paragraph(r1,estexto));
@@ -958,7 +959,7 @@ try{
    table2.addCell(new Paragraph(r4,estexto));
    table2.addCell(new Paragraph(r5,estexto));
     //5row
- cell = new PdfPCell(new Paragraph("El comportamiento del estudiante en la institución externa fue:",estexto));
+ cell = new PdfPCell(new Paragraph("EL COMPORTAMIENTO DEL ESTUDIANTE EN LA INSTITUCIÓN EXTERNA FUE:",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
   table2.addCell(new Paragraph(t1,estexto));
@@ -967,7 +968,7 @@ try{
    table2.addCell(new Paragraph(t4,estexto));
    table2.addCell(new Paragraph(t5,estexto));
  //6row
- cell = new PdfPCell(new Paragraph("La destreza desmostrada del estudiante en sus actividades fue:",estexto));
+ cell = new PdfPCell(new Paragraph("LA DESTREZA DEMOSTRADA DEL ESTUDIANTE EN SUS ACTIVIDADES FUE:",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
   table2.addCell(new Paragraph(y1,estexto));
@@ -976,7 +977,7 @@ try{
    table2.addCell(new Paragraph(y4,estexto));
    table2.addCell(new Paragraph(y5,estexto));
  //7row
- cell = new PdfPCell(new Paragraph("El nivel de información proporcionada por la institución externa fue:",estexto));
+ cell = new PdfPCell(new Paragraph("EL NIVEL DE INFORMACIÓN PROPORCIONADA POR LA INSTITUCIÓN EXTERNA FUE:",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
   table2.addCell(new Paragraph(a1,estexto));
@@ -985,7 +986,7 @@ try{
    table2.addCell(new Paragraph(a4,estexto));
    table2.addCell(new Paragraph(a5,estexto));
  //8row
- cell = new PdfPCell(new Paragraph("La relación del estudiante con el tutor de la institución externa fue:",estexto));
+ cell = new PdfPCell(new Paragraph("LA RELACIÓN DEL ESTUDIANTE CON EL TUTOR DE LA INSTITUCIÓN EXTERNA FUE:",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
   table2.addCell(new Paragraph(s1,estexto));
@@ -994,7 +995,7 @@ try{
    table2.addCell(new Paragraph(s4,estexto));
    table2.addCell(new Paragraph(s5,estexto));
  //9row
- cell = new PdfPCell(new Paragraph("La relación del estudiante con el tutor de la UPS fue:",estexto));
+ cell = new PdfPCell(new Paragraph("LA RELACIÓN DEL ESTUDIANTE CON EL TUTOR DE LA UPS FUE:",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
   table2.addCell(new Paragraph(d1,estexto));
@@ -1011,7 +1012,7 @@ try{
                     //SEC ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA: (SEÑALE AQUELLAS QUE PREVÉN RESULTADOS Y PRODUCTOS)
                     documento.add(salto_linea);
 
-                    documento.add(new Paragraph("En caso de tener observaciones, inquietudes y/o sugerencias, detallar a continuacion: ", estexto));
+                    documento.add(new Paragraph("EN CASO DE TENER OBSERVACIONES, INQUIETUDES Y/O SUGERENCIAS, DETALLAR A CONTINUACIÓN: ", estexto));
                     documento.add(salto_linea);
 
                     //TABLA 3 INICIO
@@ -1026,7 +1027,7 @@ documento.add(salto_linea);
          Paragraph p7=new Paragraph(linea_firma);
       p7.setAlignment(Element.ALIGN_CENTER);
       documento.add(p7);
-       Paragraph p8=new Paragraph("Tutor",estexto);
+       Paragraph p8=new Paragraph(tutores.getNombre()+" "+tutores.getApellido(),estexto);
       p8.setAlignment(Element.ALIGN_CENTER);
       documento.add(p8);
       
@@ -1041,7 +1042,7 @@ documento.add(salto_linea);
 
     }//fin metodo
     
-  public boolean pdf_InformeSeguimientoTutor(long cedula,int numero_pdf,String des1,int hor1,int tec1,int per1,int cont1,String des2,int hor2,int tec2,int per2,int cont2,String des3,int hor3,int tec3,int per3,int cont3,String des4,int hor4,int tec4,int per4,int cont4,int totalhoras){//200
+  /*public boolean pdf_InformeSeguimientoTutor(long cedula,int numero_pdf,String des1,int hor1,int tec1,int per1,int cont1,String des2,int hor2,int tec2,int per2,int cont2,String des3,int hor3,int tec3,int per3,int cont3,String des4,int hor4,int tec4,int per4,int cont4,int totalhoras){//200
       exitoalguardar=false;
          //FORMATO CARTA COMPROMISO INTERINSTITUCIONAL
          
@@ -1415,7 +1416,7 @@ cell = new PdfPCell(new Paragraph(""+hor4,estexto));
         }
                 return exitoalguardar;
 
-    }//fin metodo
+    }//fin metodo*/
  
   public boolean pdf_autoevaluacion(long cedula,int numero_pdf,int auto1,int auto2,int auto3,int auto4,int auto5){//200
       exitoalguardar=false;

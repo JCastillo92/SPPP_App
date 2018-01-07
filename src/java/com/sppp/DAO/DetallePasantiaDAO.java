@@ -564,7 +564,7 @@ public DetallePasantia findDetallePasantiaPorProcesoFalse(String tipo_ppp, int c
         return empData;
     }
            
-           public List<Object[]> findAllDetallePasantiaconCIValidaInicioActividades(){
+           public List<Object[]> findAllDetallePasantiaconCIValidaSolicitudResolucion(){
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;    

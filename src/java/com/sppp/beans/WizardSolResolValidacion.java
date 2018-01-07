@@ -114,7 +114,7 @@ int id_estudiante;
         } catch (Exception e) {
                     e.printStackTrace();
             }
-           return "dashboard_est";
+           return "dashboard_gestor";
     }
     
     

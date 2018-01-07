@@ -17,7 +17,7 @@ import javax.mail.internet.MimeMessage;
 
 public class MailingMain {
     String username = "spppsistemasups@gmail.com";
-    String password = "@sistemasKJ2B";
+    String password = "@.//\\\\n\\t>KJ2B";
     
     //Texto quemado que puede REPETIRSE
     private String ponnombreAPP="SPPP (Sistema de Pasantías y Prácticas Pre Profesionales). ";
@@ -75,15 +75,15 @@ public class MailingMain {
                 break;
             case 1002:
                 AddSubject="REVISIÓN DE OFICIO Y CARTA DE ACEPTACIÓN";
-                contentMessage="Existe documentos subidos (escaneados) a la plataforma, Oficio para la Empresa y Carta de Aceptación, listos para revisar y aprobar.";
+                contentMessage="Existe documentos subidos a la plataforma, Oficio para la Empresa y Carta de Aceptación, listos para revisar y aprobar.";
                 break;
             case 1003:
-                AddSubject="REVISIÓN DE CARTA COMPROMISO";
-                contentMessage="Existe documento subido (escaneado) a la plataforma, Carta de Compromiso listos, lista para revisar y aprobar.";
+                AddSubject="REVISIÓN DE CARTA COMPROMISO Y SOLICITUD RESOLUCIÓN";
+                contentMessage="Existe documentos subido a la plataforma, Carta de Compromiso y Solicitud de Resolución, listos para revisar y aprobar.";
                 break;    
                 case 1004:
-                AddSubject="REVISIÓN DE INICIAR PASANTÍA";
-                contentMessage="Existe documento subido (escaneado) a la plataforma, Solicitud Inicio Pasantía/Práctica Pre-Profesional, lista para revisar y aprobar.";
+                AddSubject="";
+                contentMessage="";
                 break;  
             case 911:
                     AddSubject="CLAVE SPPP";
@@ -157,28 +157,3 @@ public class MailingMain {
 	    
     }//end of method deliverMail()
 }//end of CLASS
-
-
-
-
-
-
-
-/*
-Nombre 
-Ingenieria de sistemas UPS 
-Apellido
-Sede quito
-Nombre usuario
-spppsistemasups@gmail.com
-contraseña
-@sistemasKJ2B
-fecha 26 /08/1993
-telefono movil
-+593983466689
-direccion actual
-jairdean@hotmail.com
-ubicacion 
-ecuador
-
-*/

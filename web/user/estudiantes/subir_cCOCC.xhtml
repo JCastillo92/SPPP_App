@@ -50,6 +50,13 @@
                             </h:inputFile>
                         </div>
                         
+                          <div class="form-group">
+                            <label>Vuelva a subir la solicitud resoluci&oacute;n en formato .pdf hasta 2MB <i class="fa fa-file-pdf-o fa-2x"></i></label>
+                            <h:inputFile value="#{uploadFile.file}" required="true" class="btn btn-outline btn-default">
+                                <f:ajax listener="#{uploadFile.save_file(4)}"/>
+                            </h:inputFile>
+                        </div>
+                        
                         <h:commandLink class="btn btn-success"  action="#{uploadFile.enviar_arch_msj(5)}" >
                             Re-enviar <f:ajax execute="@form"></f:ajax>
                         </h:commandLink>

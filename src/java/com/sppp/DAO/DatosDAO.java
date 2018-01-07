@@ -481,5 +481,41 @@ public class DatosDAO {
         return existe;
     }
     
+    public void insertarFalsosValidacionPDF(DetallePasantia dp3){
+        
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+
+        Transaction tx = null;
+        Usuario usuario = null;
+        try {
+            tx = sesion.beginTransaction();
+            
+            //IdsPreguntas 48 - 51
+            Datos d1 = new Datos("archivo1", dp3, new Respuesta(48), false);
+            Datos d2 = new Datos("archivo2", dp3, new Respuesta(49), false);
+            Datos d3 = new Datos("archivo3", dp3, new Respuesta(50), false);
+            Datos d4 = new Datos("archivo4", dp3, new Respuesta(51), false);
+            
+            sesion.save(d1);
+            sesion.save(d2);
+            sesion.save(d3);
+            sesion.save(d4);
+            
+            tx.commit();
+
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            System.out.println("============== ERROR AL GUARDAR DATOS VALIDADOS CC =========");
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            //para cerrar seesion
+            sesion.close();
+        }
+        
+    }
+    
 
 }

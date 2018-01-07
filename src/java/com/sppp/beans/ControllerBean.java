@@ -40,9 +40,12 @@ private Usuario usuario = new Usuario();
    private Tutor tutor= new Tutor();
    private String listaest;
   private long numerotutor;
-   
+  private long numerotutor2; 
+  private long numerotutor3;
+  
    private String mensajeMail;
    private String mensajeMail2;
+   
    private String mensajeMail_asunto;
    private boolean paso=false;
    private boolean cancel=false;
@@ -397,11 +400,22 @@ private Usuario usuario = new Usuario();
           return"revision_window";
       }
      
-      public long getNumerotutor() {
+      public long getNumerotutor(String tutor) {
         VisitaDAO obj=new VisitaDAO();
-        numerotutor=obj.countTut();
+        numerotutor=obj.countTut(tutor);
         return numerotutor;
     }
+      public long getNumerotutor2(String tutor) {
+        VisitaDAO obj=new VisitaDAO();
+        numerotutor2=obj.countTut_visitados(tutor);
+        return numerotutor2;
+    }
+       public long getNumerotutor3(String tutor) {
+        VisitaDAO obj=new VisitaDAO();
+        numerotutor3=obj.countTut_documentacion(tutor);
+        return numerotutor3;
+    }
+       
        public String updateReporte(long id_visita2){
           VisitaTutor newVisitaTutor = new VisitaTutor();
           VisitaDAO visitaDAO = new VisitaDAO();

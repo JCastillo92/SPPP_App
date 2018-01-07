@@ -397,9 +397,9 @@ private Usuario usuario = new Usuario();
           return"revision_window";
       }
      
-      public long getNumerotutor() {
+      public long getNumerotutor(String tutor) {
         VisitaDAO obj=new VisitaDAO();
-        numerotutor=obj.countTut();
+        numerotutor=obj.countTut(tutor);
         return numerotutor;
     }
        public String updateReporte(long id_visita2){

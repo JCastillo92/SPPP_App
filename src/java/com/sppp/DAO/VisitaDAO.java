@@ -543,17 +543,18 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                 }
 }  
       
-     public long countTut(){
+     public long countTut( String tutor){
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;
         long numeroPPyPA=0;
+        int tut = Integer.parseInt(tutor);
          try {
             tx = sesion.beginTransaction();
             Query query = sesion.createQuery("SELECT COUNT(*) "
                     + "FROM VisitaTutor  "
                     + "WHERE cedula_tut = :num");
-            query.setInteger("num", 333);
+            query.setInteger("num", tut);
             numeroPPyPA=(long) query.uniqueResult();       
             tx.commit();
         }catch (Exception e) {

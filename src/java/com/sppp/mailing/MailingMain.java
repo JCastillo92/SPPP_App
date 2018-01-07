@@ -75,15 +75,15 @@ public class MailingMain {
                 break;
             case 1002:
                 AddSubject="REVISIÓN DE OFICIO Y CARTA DE ACEPTACIÓN";
-                contentMessage="Existe documentos subidos (escaneados) a la plataforma, Oficio para la Empresa y Carta de Aceptación, listos para revisar y aprobar.";
+                contentMessage="Existe documentos subidos a la plataforma, Oficio para la Empresa y Carta de Aceptación, listos para revisar y aprobar.";
                 break;
             case 1003:
-                AddSubject="REVISIÓN DE CARTA COMPROMISO";
-                contentMessage="Existe documento subido (escaneado) a la plataforma, Carta de Compromiso listos, lista para revisar y aprobar.";
+                AddSubject="REVISIÓN DE CARTA COMPROMISO Y SOLICITUD RESOLUCIÓN";
+                contentMessage="Existe documentos subido a la plataforma, Carta de Compromiso y Solicitud de Resolución, listos para revisar y aprobar.";
                 break;    
                 case 1004:
-                AddSubject="REVISIÓN DE INICIAR PASANTÍA";
-                contentMessage="Existe documento subido (escaneado) a la plataforma, Solicitud Inicio Pasantía/Práctica Pre-Profesional, lista para revisar y aprobar.";
+                AddSubject="";
+                contentMessage="";
                 break;  
             case 911:
                     AddSubject="CLAVE SPPP";

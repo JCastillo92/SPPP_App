@@ -29,6 +29,22 @@
         </div>
         
         <div class="row">
+            <h:dataTable value="#{wizardSolResolValidacion.empData}" var="dpalltrue2">
+                <h:column>#{dpalltrue2.tipo_ppp}</h:column>
+                <h:column>#{dpalltrue2.cod_ppp}</h:column>
+                <h:column>#{dpalltrue2.fechaInicio}</h:column>
+                <h:column>#{dpalltrue2.fechaFin}</h:column>
+                <h:column>#{dpalltrue2.cod_resolucion_consejo}</h:column>
+                <h:column>#{dpalltrue2.ced_tutor_asignado}</h:column>
+                <h:column>#{dpalltrue2.estudiante.cedula}</h:column>
+                
+            </h:dataTable>
+            
+            
+            
+        </div>
+        
+        <div class="row">
                    <b:panel title="Reasignar Tutor" look="default" style="width:400px; height:auto">
                 <h:selectOneMenu value = "#{wizardSolResolValidacion.ced_tutor_reasigna}" class="panel-default" style="width:300px; height:auto"> 
                     <f:selectItems value="#{wizardSolResolValidacion.hm_tutores}"></f:selectItems>

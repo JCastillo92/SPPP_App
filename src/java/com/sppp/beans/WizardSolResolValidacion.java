@@ -13,6 +13,7 @@ import com.sppp.DAO.UsuarioDAO;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -28,9 +29,26 @@ public class WizardSolResolValidacion {
      private Usuario usuario = new Usuario();//jairo
      private Usuario usuario_perfilTutor = new Usuario();//jairo
                 private Pasantia pasantia=new Pasantia();//jairo
+                List<Pasantia> empData=new LinkedList<>(); 
+
+    public List<Pasantia> getEmpData() {
+        return empData;
+    }
+
+    public Pasantia getPasantia() {
+        return pasantia;
+    }
+
+    public void setPasantia(Pasantia pasantia) {
+        this.pasantia = pasantia;
+    }
                 private Tutor tutor=new Tutor();
-     
-                Map<String,Long> hm_tutores=null;
+                
+Map<String,Long> hm_tutores=null;
+
+  
+                
+                
 int id_estudiante;
     String cod_resolucion;
     Long ced_tutor_reasigna;
@@ -73,10 +91,14 @@ int id_estudiante;
             
             PasantiaDAO passDAO=new PasantiaDAO();
             pasantia = passDAO.findPasantia(id_estudiante);
+            empData.add(pasantia);
+            
             
             //OBTENER EL map DE TUTORES o LISTA DE PERFIL 3
             UsuarioDAO uDAO_tut = new UsuarioDAO();
             hm_tutores = uDAO_tut.findAllUsuariosTutores();
+            
+            
             
             
             /*

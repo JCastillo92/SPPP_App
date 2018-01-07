@@ -146,7 +146,6 @@ insert into tb_proceso(descripcion,estado,proceso_de) values ('descargar informe
 insert into tb_formato (nombre_formato,estado_formato) values ('FORMATO_LLENADO_CARTA_COMPROMISO',true);
 INSERT INTO tb_formato (nombre_formato,estado_formato) values ('FORMATO_ALUMNO_EMPREA',TRUE);
 INSERT INTO tb_formato (nombre_formato,estado_formato) values ('FORMATO_ALUMNO_PDFS',TRUE);
-INSERT INTO tb_formato (nombre_formato,estado_formato) values ('FORMATO_ALUMNO_RESOLUCION',TRUE);
 
 
 /*llenar tb_preguntas BASARSE EN LA PRIMARYKEY DE tipo_pregunta y tb_formato (pencil 2.1 Alumno)*/
@@ -202,8 +201,7 @@ insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopre
 insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (48,'Pdf_oficioEmpresa',true,1,3);
 insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (49,'Pdf_cartaAceptacionEmpresa',true,1,3);
 insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (50,'Pdf_cartaCompromiso',true,1,3);
-
-insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (51,'Pdf_Resolucion',true,1,4);
+insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (51,'Pdf_Resolucion',true,1,3);
 
 
 
@@ -289,7 +287,6 @@ insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values
 insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (48,'para_pdf_oficioEmpresa',48);
 insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (49,'para_pdf_cartaAceptacionEmpresa',49);
 insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (50,'para_pdf_cartaCompromiso',50);
-
 insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (51,'para_df_Resolucion',51);
 
 /*

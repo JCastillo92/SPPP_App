@@ -218,9 +218,9 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                 p = ppDAO.findPasantia(cedula_est);
 
                 //Encontrar el detalle de esa pasantia cuyo proceso sea 16 (proceso actual, cursando, este va a ser actualizado)
-                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),16);
+                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),1);
 
-                dp.setValidacion(EnumEstado.llenar);
+                dp.setValidacion(EnumEstado.validar);
                 dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
 
@@ -255,7 +255,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                 dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),30);
 
                 //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
-                dp.setValidacion(EnumEstado.llenar);
+                dp.setValidacion(EnumEstado.validar);
                 dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
 
@@ -290,7 +290,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                 dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),28);
 
                 //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
-                dp.setValidacion(EnumEstado.llenar);
+                dp.setValidacion(EnumEstado.validar);
                 dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
 
@@ -322,7 +322,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                 dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),34);
 
                 //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
-                dp.setValidacion(EnumEstado.llenar);
+                dp.setValidacion(EnumEstado.validar);
                 dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
 
@@ -351,7 +351,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                 dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),36);
 
                 //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
-                dp.setValidacion(EnumEstado.llenar);
+                dp.setValidacion(EnumEstado.validar);
                 dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
 
@@ -410,7 +410,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                 dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),18);
 
                 //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
-                dp.setValidacion(EnumEstado.llenar);
+                dp.setValidacion(EnumEstado.validar);
                 dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
 
@@ -451,7 +451,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                 dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),21);
 
                 //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
-                dp.setValidacion(EnumEstado.llenar);
+                dp.setValidacion(EnumEstado.validar);
                 dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
 
@@ -537,7 +537,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                 dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),24);
 
                 //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
-                dp.setValidacion(EnumEstado.llenar);
+                dp.setValidacion(EnumEstado.validar);
                 dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
 

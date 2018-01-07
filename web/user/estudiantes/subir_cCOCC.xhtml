@@ -31,21 +31,21 @@
                     <h:form enctype="multipart/form-data" role="form">
                         <div class="form-group">
                             <label>Vuelva a subir el oficio sellado por la empresa en formato .pdf hasta 2MB <i class="fa fa-file-pdf-o fa-2x"></i></label>
-                            <h:inputFile value="#{uploadFile.file}" required="true">
+                            <h:inputFile value="#{uploadFile.file}" required="true" class="btn btn-outline btn-default">
                                 <f:ajax listener="#{uploadFile.save_file(1)}"/>
                             </h:inputFile>
                         </div>
                         
                         <div class="form-group">                           
                             <label>Vuelva a subir la carta de aceptacion sellada por la empresa en formato .pdf hasta 2MB <i class="fa fa-file-pdf-o fa-2x"></i></label>
-                            <h:inputFile value="#{uploadFile.file}" required="true" >
+                            <h:inputFile value="#{uploadFile.file}" required="true"  class="btn btn-outline btn-default">
                             <f:ajax listener="#{uploadFile.save_file(2)}" />
                             </h:inputFile>
                         </div>
                         
                          <div class="form-group">
                             <label>Vuelva a subir la carta compromiso en formato .pdf hasta 2MB <i class="fa fa-file-pdf-o fa-2x"></i></label>
-                            <h:inputFile value="#{uploadFile.file}" required="true">
+                            <h:inputFile value="#{uploadFile.file}" required="true" class="btn btn-outline btn-default">
                                 <f:ajax listener="#{uploadFile.save_file(3)}"/>
                             </h:inputFile>
                         </div>

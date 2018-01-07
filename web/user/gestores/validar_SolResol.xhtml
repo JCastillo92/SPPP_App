@@ -29,31 +29,39 @@
         </div>
         
         <div class="row">
-             <div class="panel panel-default">
-                <div class="panel-heading">
-                    Ingreso N&uacute;mero Resoluci&oacute;n
-                </div>
-                <div class="panel-body">
-                    <h:form>
-                         <div class="form-group">
-                             <b:inputText value="#{wizardSolResolValidacion.cod_resolucion}" label="C&oacute;digo de Resoluci&oacute;n" />
-                        </div>
-                        <div class="form-group">
-                             <h:commandLink class="btn btn-success" value="Aprobar"
-                                            action="#{wizardSolResolValidacion.actualizarAlumnoTutor()}" ></h:commandLink>
-                        </div>
-                        <div class="form-group">
-                            
-                            
-                        </div>
-                        
-                    </h:form>
-                </div>
-            </div>
-            </div>
+              <b:dataTable value="#{wizardSolResolValidacion.empData}"
+                                         var="dpalltrue2" >
+                                <b:dataTableColumn value="#{dpalltrue2.tipo_ppp}" label="Tipo" />
+                                <b:dataTableColumn value="#{dpalltrue2.cod_ppp}" label="Cod" />
+                                <b:dataTableColumn value="#{dpalltrue2.fechaInicio}" label="F. Inicio" />
+                                <b:dataTableColumn value="#{dpalltrue2.fechaFin}" label="F. Fin" />
+                                <b:dataTableColumn value="#{dpalltrue2.cod_resolucion_consejo}" label="Resolucion" />
+                                <b:dataTableColumn value="#{dpalltrue2.ced_tutor_asignado}" label="Tutor Asignado" />
+                                <b:dataTableColumn value="#{dpalltrue2.estudiante.cedula}" label="Ci Est" />
+                            </b:dataTable>
+            
+        </div>
         
+        <div class="row">
+                   <b:panel title="Reasignar Tutor" look="default" style="width:400px; height:auto">
+                <h:form><h:selectOneMenu value = "#{wizardSolResolValidacion.ced_tutor_reasigna}" class="panel-default" style="width:300px; height:auto"> 
+                    <f:selectItems value="#{wizardSolResolValidacion.hm_tutores}"></f:selectItems>
+                        </h:selectOneMenu>
+                       
+                
+                    <br></br>
+                    <b:commandButton class="btn btn-success" value="Reasignar" action="#{wizardSolResolValidacion.actualizarAlumnoTutor()}"></b:commandButton>
+                </h:form>
+                           
+                            </b:panel>
+            
+            <b:panel title="Ingreso N&uacute;mero Resoluci&oacute;n" look="default" style="width:400px; height:auto">
+                <h:form>
+                    <b:inputText value="#{wizardSolResolValidacion.cod_resolucion}" label="C&oacute;digo de Resoluci&oacute;n" required="true" placeholder="12345-678-9123-45-67"/>
+                    <b:commandButton class="btn btn-success" value="Aprobar" action="#{wizardSolResolValidacion.actualizarResolucion()}"></b:commandButton>
+                </h:form>
+                            </b:panel>
 
-     
+            </div>
     </ui:define>
-    
 </ui:composition>

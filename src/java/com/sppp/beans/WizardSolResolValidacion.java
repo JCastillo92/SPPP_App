@@ -7,6 +7,7 @@ package com.sppp.beans;
 
 import com.sppp.DAO.PasantiaDAO;
 import com.sppp.DAO.UsuarioDAO;
+import com.sppp.DAO.VisitaDAO;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -87,7 +88,8 @@ int id_estudiante;
             pasantia = passDAO.findPasantia(id_estudiante);
             empData.add(pasantia);
             
-            
+           
+
             //OBTENER EL map DE TUTORES o LISTA DE PERFIL 3
             UsuarioDAO uDAO_tut = new UsuarioDAO();
             hm_tutores = uDAO_tut.findAllUsuariosTutores();          
@@ -108,7 +110,8 @@ int id_estudiante;
     public String actualizarResolucion(){
            try {
         PasantiaDAO passDAO = new PasantiaDAO();
-        
+         VisitaDAO vi = new VisitaDAO();
+       vi.confirmacion(id_estudiante);
         pasantia.setCod_resolucion_consejo(cod_resolucion);
         passDAO.actualizarPasantia(pasantia);
         } catch (Exception e) {

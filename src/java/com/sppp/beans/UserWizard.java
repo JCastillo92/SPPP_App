@@ -239,10 +239,8 @@ public class UserWizard extends WizardDB implements Serializable {
         MailingMain primer_mensaje = new MailingMain();
         ListaDocentesAdministrativos corrreo_De = new ListaDocentesAdministrativos();
         primer_mensaje.mensajes(1001, corrreo_De.corrreoDocenteAdministrativo(6), "vacio");
-     /*   
-     VisitaDAO vi = new VisitaDAO();
-       vi.confirmacion();
-        */
+        
+             
         return "revision_window";
 
     }

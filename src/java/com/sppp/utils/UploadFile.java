@@ -13,10 +13,8 @@ import com.sppp.beans.EnumEstado;
 import com.sppp.beans.Pasantia;
 import com.sppp.beans.Proceso;
 import com.sppp.classes.AlmacenamientoPDF;
-import com.sppp.classes.DatosFormatos;
 import com.sppp.classes.ListaDocentesAdministrativos;
 import com.sppp.classes.Paths;
-import com.sppp.classes.TablasFormatos;
 import com.sppp.mailing.MailingMain;
 import java.io.File;
 import java.io.IOException;
@@ -26,9 +24,7 @@ import javax.servlet.http.HttpSession;
 import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.ExternalContext;
@@ -280,6 +276,10 @@ public class UploadFile{
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                break;
+                
+            case 5:
+               
                 break;
             default:
                 break;

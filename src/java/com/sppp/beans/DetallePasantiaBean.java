@@ -68,6 +68,9 @@ public class DetallePasantiaBean {
            empData3=dpDAO.findAllDetallePasantiaconCIValidaPDFs();
            outcome_salida="validar_pdfs";
                break;
+           case 5:
+               
+               break;
            default:
                break;
        }

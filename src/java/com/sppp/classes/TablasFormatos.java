@@ -391,7 +391,7 @@ private boolean paso=false;
         AlmacenamientoPDF g=new AlmacenamientoPDF();
        g.pdf_InformeTutor(user, 200, pregunta10,pregunta1,pregunta2,pregunta3,pregunta4,pregunta5,pregunta6,pregunta7,pregunta8,observaciones);
 paso=true;
-return "revision_window";
+return "revision_windowFin";
 
     }
     

@@ -13,10 +13,8 @@ import com.sppp.beans.EnumEstado;
 import com.sppp.beans.Pasantia;
 import com.sppp.beans.Proceso;
 import com.sppp.classes.AlmacenamientoPDF;
-import com.sppp.classes.DatosFormatos;
 import com.sppp.classes.ListaDocentesAdministrativos;
 import com.sppp.classes.Paths;
-import com.sppp.classes.TablasFormatos;
 import com.sppp.mailing.MailingMain;
 import java.io.File;
 import java.io.IOException;
@@ -26,9 +24,7 @@ import javax.servlet.http.HttpSession;
 import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.ExternalContext;
@@ -149,7 +145,7 @@ public class UploadFile{
     
     
     
-    //METODO PARA GUARDAR/DESCARGAR ARCHIVOS CREADOR
+    //METODO PARA GUARDAR en sistema Y DESCARGAR ARCHIVOS CREADOS por alumno
         public void download_file(int opcion) {///aqui recibir nombre de archivo 103.pdf
         try {
             AlmacenamientoPDF obj_crearpdf = new AlmacenamientoPDF();
@@ -172,6 +168,9 @@ public class UploadFile{
             e.printStackTrace();
         }
     }//end of DOWNLOAD_FILE
+        
+        
+        
         
         
         
@@ -278,6 +277,39 @@ public class UploadFile{
                     e.printStackTrace();
                 }
                 break;
+                
+            case 5:
+                try {
+                //envio mail a encargado mail para que revise scan de REVISIÓN DE INICIAR PASANTÍA
+        primer_mensaje.mensajes(1007,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
+            
+                HttpSession session = SessionUtils.getSession();
+                long id;
+                id = (long) session.getAttribute("id");
+
+                p = ppDAO.findPasantia(id);
+/*
+                //Encontrar el detalle de esa pasantia cuyo proceso sea 14 (proceso actual, cursando, este va a ser actualizado)
+                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),14);
+
+                //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
+                dp.setValidacion(EnumEstado.validar);
+                dp.setEstado(false);
+                dpDAO.actualizarDetallePasantia(dp);
+
+            //Paso a agregar el nuevo proceso
+            DetallePasantia dp3 = new DetallePasantia();
+            dp3.setDescripcion("Resolucion de Proceso");
+            dp3.setEstado(true);
+            dp3.setPasantia(p);
+            dp3.setProceso(new Proceso(17));
+            dp3.setValidacion(EnumEstado.llenar);
+            dpDAO.insertarNuevoDetalle(dp3);
+*/
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
             default:
                 break;
         }
@@ -307,6 +339,30 @@ public class UploadFile{
         }
     }//end of DOWNLOAD_FILE
         
+         
+            public void download_file_gest(int opcion,long user) {///aqui recibir nombre de archivo 103.pdf
+        try {
+            //AlmacenamientoPDF obj_crearpdf = new AlmacenamientoPDF();
+           // HttpSession session = SessionUtils.getSession();
+            //long id;
+            //id = (long) session.getAttribute("id");
+        
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            ExternalContext context = facesContext.getExternalContext();
+            HttpServletRequest request = (HttpServletRequest) context.getRequest();
+            HttpServletResponse response = (HttpServletResponse) context.getResponse();
+
+            //mando a crear el archivo pdf, para que sea lo mas actual posible.
+         //   obj_crearpdf.guardado_archivo_pdf_creado(id, opcion);
+            //mando a llamar al mmismo archivo pdf en la aplicacion,  para que se pueda descargar
+            response.sendRedirect(request.getContextPath() + "/faces/user/gestores/downloadGestEst"+"/"+user+"/"+opcion + ".pdf");
+            //response.sendRedirect("index.jsf");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }//end of DOWNLOAD_FILE
+         
        public void save_file_tut(int opcion,long user){
          Paths directorio = new Paths();
         String local_path = directorio.local_path();

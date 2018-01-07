@@ -37,17 +37,20 @@
                     <h:form enctype="multipart/form-data" role="form">
                          <div class="form-group">
                              <label>Oficio de la Empresa </label><br/>
-                           <h:commandButton action="#{uploadFile.download_file(101)}" value="Descarga OF-E"/>
+                             <h:commandLink class="btn btn-outline btn-primary" value="Descarga OF-E" target="_blank" 
+                             action="#{uploadFile.download_file_gest(1,wizardPDFValidacion.id_estudiante)}" ></h:commandLink>
                         </div>
                         
                         <div class="form-group">
                             <label>Carta de Aceptaci&oacute;n Empresa </label><br/>
-                           <h:commandButton action="#{uploadFile.download_file(102)}" value="Descargar CA-E"/>
+                           <h:commandLink class="btn btn-outline btn-primary" value="Descarga OF-E" target="_blank" 
+                             action="#{uploadFile.download_file_gest(2,wizardPDFValidacion.id_estudiante)}" ></h:commandLink>
                         </div>
                         
                         <div class="form-group">
                             <label>Carta Compromiso Empresa </label><br/>
-                           <h:commandButton action="#{uploadFile.download_file(102)}" value="Descargar CC-E"/>
+                           <h:commandLink class="btn btn-outline btn-primary" value="Descarga OF-E" target="_blank" 
+                             action="#{uploadFile.download_file_gest(3,wizardPDFValidacion.id_estudiante)}" ></h:commandLink>
                         </div>                    
                         
                     </h:form>

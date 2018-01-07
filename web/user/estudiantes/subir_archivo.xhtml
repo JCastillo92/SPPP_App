@@ -30,11 +30,13 @@
                     <h:form enctype="multipart/form-data" role="form">
                          <div class="form-group">
                              <label>Descargar el oficio para la empresa </label><br/>
-                           <h:commandButton action="#{uploadFile.download_file(101)}" value="Descarga PDF"/>
+                             <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
+                             action="#{uploadFile.download_file(101)}" value="Descarga OF" ></h:commandLink>
                         </div>
                         <div class="form-group">
-                            <label>Descargar la carta de aceptacion para la empresa </label><br/>
-                           <h:commandButton action="#{uploadFile.download_file(102)}" value="Descargar PDF"/>
+                            <label>Descargar la carta de aceptaci&oacute;n para la empresa </label><br/>
+                            <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
+                             action="#{uploadFile.download_file(102)}" value="Descargar CA" ></h:commandLink>
                         </div>                        
                     </h:form>
                 </div>
@@ -50,7 +52,7 @@
                         <div class="form-group">
                             <label>Subir el oficio sellado por la empresa en formato .pdf hasta 2MB <i class="fa fa-file-pdf-o fa-2x"></i></label>
                             
-                            <h:inputFile value="#{uploadFile.file}" required="true">
+                            <h:inputFile value="#{uploadFile.file}" required="true" class="btn btn-outline btn-default">
                                 <f:ajax listener="#{uploadFile.save_file(1)}"/>
                                 
                             </h:inputFile>
@@ -59,7 +61,7 @@
                         
                         <div class="form-group">                           
                             <label>Subir la carta de aceptacion sellada por la empresa en formato .pdf hasta 2MB <i class="fa fa-file-pdf-o fa-2x"></i></label>
-                            <h:inputFile value="#{uploadFile.file}" required="true" >
+                            <h:inputFile value="#{uploadFile.file}" required="true" class="btn btn-outline btn-default">
                             <f:ajax listener="#{uploadFile.save_file(2)}" />
                             </h:inputFile>
                         </div>

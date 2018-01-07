@@ -1865,6 +1865,58 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
     
     
     public void listar(){
+         exitoalguardar=false;
+         
+         try {
+             //VARIABLES INICIALES DEL  P D F 
+                 Document documento = new Document();
+                 PdfPCell cell;
+                 documento.setPageSize(PageSize.A4);
+                 Font estitulo = FontFactory.getFont(FontFactory.TIMES_ROMAN, 14, Font.NORMAL);
+                 Font estexto = FontFactory.getFont(FontFactory.COURIER, 8, Font.NORMAL);
+                 Font escuadro = FontFactory.getFont(FontFactory.TIMES_ROMAN, 10, Font.NORMAL);                 
+                 Font esnota = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6, Font.NORMAL);
+                 Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL);
+        
+                  FileOutputStream archivo = new FileOutputStream(local_path+123+"/"+69+".pdf");//asi se guardara el archivo
+            PdfWriter.getInstance(documento, archivo);
+      documento.open();
+         
+      //logo de la UPS
+        Image image = Image.getInstance(local_path_images+"logo-ups-home.png");
+        image.setAlignment(Image.ALIGN_LEFT);
+        image.setAbsolutePosition(10, 780);
+        image.scalePercent(60, 55);
+        documento.add(image);
+        
+         Image image2 = Image.getInstance(local_path_images+"bkj2.png");
+        image2.setAlignment(Image.ALIGN_RIGHT);
+        image2.setAbsolutePosition(562, 458);
+        image2.scalePercent(60, 75);
+        documento.add(image2);
+        
+        Image image3 = Image.getInstance(local_path_images+"batl.png");
+        image3.setAlignment(Image.ALIGN_RIGHT);
+        image3.setAbsolutePosition(445, 775);
+        image3.scalePercent(6, 6);
+        documento.add(image3);
+             
+      documento.addAuthor("Universidad Politecnica Salesiana");
+      Paragraph salto_linea=new Paragraph("\n");
+      Paragraph linea_firma=new Paragraph("________________",estexto);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      
+      // T I T U L O
+      Paragraph p1=new Paragraph("REPORTE ESTUDIANTES",estitulo);
+      p1.setAlignment(Element.ALIGN_CENTER);
+      documento.add(p1);
+      documento.add(salto_linea);
+      
+       //tabla 1
+  PdfPTable table = new PdfPTable(7);//# columns
+        
     List<Object[]> estudiantes;
         DetallesDashboardTut llamar=new DetallesDashboardTut();
         CitasAgendadas nombre=new CitasAgendadas();
@@ -1872,7 +1924,16 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
         PeriodoDAO periodo= new PeriodoDAO();
         CitasDaoImp horas=new CitasDaoImp();
         String nombreEst,periodoac;
-        
+  
+        //TITULO DE ROW = HEADER
+        table.addCell(new Paragraph("Cedula Estudiante",escuadro));
+  table.addCell(new Paragraph("Nombre",escuadro));
+  table.addCell(new Paragraph("Actividad",escuadro));
+  table.addCell(new Paragraph("Fecha Inicio",escuadro));
+  table.addCell(new Paragraph("Fecha Fin",escuadro));
+  table.addCell(new Paragraph("Periodo",escuadro));
+  table.addCell(new Paragraph("Horas Totales",escuadro));
+  
         for (Object[] row : estudiantes) {
              long id=Long.parseLong(row[0].toString());
              long horase=Long.parseLong(row[0].toString());
@@ -1886,9 +1947,24 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
             System.out.println("Fecha fin"+row[4].toString());
             System.out.println("Periodo"+periodoac);
             System.out.println("Horas totales"+horastotales);
+            // row CON LAZO for
+            
+                  table.addCell(new Paragraph(""+row[0],estexto));
+                  table.addCell(new Paragraph(""+nombreEst,estexto));
+                  table.addCell(new Paragraph(""+giveMeNamePPP(row[1].toString()),estexto));
+                  table.addCell(new Paragraph(""+row[3].toString(),estexto));
+                  table.addCell(new Paragraph(""+row[4].toString(),estexto));
+                  table.addCell(new Paragraph(""+periodoac,estexto));
+                  table.addCell(new Paragraph(""+horastotales,estexto)); 
+        }//end of for
+          documento.add(table);
+         //F I N  D O C U M E N T O 
+      documento.close();
+      exitoalguardar=true;
+        } catch (DocumentException | IOException e) {
+            e.printStackTrace();
+            exitoalguardar=false;
         }
-        
-        
     }
   
 }//end of class

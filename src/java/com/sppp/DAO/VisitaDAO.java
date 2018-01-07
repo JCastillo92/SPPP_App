@@ -195,15 +195,11 @@ Session session = HibernateUtil.getSessionFactory().openSession();
         
         PasantiaDAO ppDAO = new PasantiaDAO();
           try {
-                    
-              
-
                 p = ppDAO.findPasantia(cedula_est);
 
-                //Encontrar el detalle de esa pasantia cuyo proceso sea 4 (proceso actual, cursando, este va a ser actualizado)
+                //Encontrar el detalle de esa pasantia cuyo proceso sea 17 (proceso actual, cursando, este va a ser actualizado)
                 dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),17);
 
-                //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
                 dp.setValidacion(EnumEstado.aprobar);
                 dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);

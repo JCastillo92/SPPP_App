@@ -60,16 +60,13 @@ public class DetallePasantiaBean {
               empData3=dpDAO.findAllDetallePasantiaconCIValidaCartaCompromiso();
               outcome_salida="validar_carta";
                break;
-           case 3://buscar y crear tabla de todos Validar INICIO ACTIVIDADES EMPRESA (RESOLUCION)
-           empData3=dpDAO.findAllDetallePasantiaconCIValidaInicioActividades();
-           outcome_salida="validarInicioPasantia";
-           break;
            case 4://buscar y crear tabla de todos Validar PDFs
            empData3=dpDAO.findAllDetallePasantiaconCIValidaPDFs();
            outcome_salida="validar_pdfs";
                break;
-           case 5:
-               
+           case 5://buscar y crear tabla de cod resolucion
+           empData3=dpDAO.findAllDetallePasantiaconCIValidaSolicitudResolucion();
+           outcome_salida="validar_pdfs";
                break;
            default:
                break;

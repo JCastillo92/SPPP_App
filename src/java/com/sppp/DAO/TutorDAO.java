@@ -7,6 +7,7 @@ package com.sppp.DAO;
 
 import com.sppp.beans.Tutor;
 import com.sppp.utils.HibernateUtil;
+import java.util.HashMap;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -25,7 +26,7 @@ public class TutorDAO {
         Transaction tx=null;
         try{
             tx = sesion.beginTransaction();
-            Query query = sesion.createQuery("FROM Tutor ORDER BY cant_visitas DESC");
+            Query query = sesion.createQuery("FROM Tutor ORDER BY cant_visitas ASC");
             query.setMaxResults(1);//perimite hacer un LIMIT 1
             datoTutor = (Tutor) query.uniqueResult();
             tx.commit();
@@ -41,6 +42,4 @@ public class TutorDAO {
         }
         return datoTutor;
     }
-        
-
 }

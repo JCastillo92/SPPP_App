@@ -139,10 +139,15 @@ public class EstadoProceso {
                 ruta = "subir_archivo_cartacompromiso";
                 break;
             case 14:
-                ruta = "subir_archivo_iniciopasantia";
+                ruta = "subir_cCOCC";
                 break;
+                            
+            case 16:
+                ruta = null;
+                break;
+                
             case 17:
-                ruta ="";
+                ruta =null;
                 break;
             case 18:
                 ruta ="confirma_cita_est";

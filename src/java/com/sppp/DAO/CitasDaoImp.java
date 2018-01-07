@@ -389,7 +389,7 @@ public class CitasDaoImp implements CitasDao {
         List<VisitaTutor> listado = null;
        
         String sql = "FROM VisitaTutor  WHERE estado_visita =:visitado";
-        String estado="Visitado";
+        String estado="Validacion";
         try {
             tx = sesion.beginTransaction();
         //      Query query = sesion.createQuery(sql);

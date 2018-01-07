@@ -25,7 +25,7 @@ import org.primefaces.event.SelectEvent;
 
 /**
  *
- * @author
+ * @author DidiAndy
  */
 @ManagedBean(name="controllerBean")
 @SessionScoped
@@ -392,6 +392,14 @@ private Usuario usuario = new Usuario();
                     return "revision_window";
       }
        
+        public void updateListoVisita(long id_visita2){
+         
+          VisitaTutor newVisitaTutor = new VisitaTutor();
+          VisitaDAO visitaDAO = new VisitaDAO();
+          visitaDAO.updateListoVisita(id_visita2, newVisitaTutor);
+                  
+      }
+       
       public String cargarArchivos(String correo){
           VisitaDAO visitaDAO = new VisitaDAO();
           visitaDAO.solicitud();
@@ -498,7 +506,7 @@ public String sendValidacion(String correo,String nombre,String apellido,String 
       paso=true;
       
       VisitaDAO visitaDAO = new VisitaDAO();
-      visitaDAO.resolucion();
+      visitaDAO.validacionDocs();
      return"revision_window"; 
  }
 

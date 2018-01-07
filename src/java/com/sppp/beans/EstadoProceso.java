@@ -160,6 +160,9 @@ public class EstadoProceso {
                 break;
             case 34:
                 ruta = "solicitud_vfinal";
+                break;
+            case 36:
+                ruta = "revision_window";
                 break;    
         }
 

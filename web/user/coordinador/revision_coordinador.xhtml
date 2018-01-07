@@ -21,7 +21,7 @@
             
              <br/><br/>
           
-            <legend><center><h:outputLabel value="Revisiòn documentos"/></center></legend>
+            <legend><center><h:outputLabel value="Revisión documentos"/></center></legend>
             
         
             
@@ -51,53 +51,61 @@
                                     <b:column >
                                
                                    <table><tr><td>
-                                               <label>Descargar el informe tutor</label></td>
+                                               
+                                               <label>Informe tutor</label></td>
                                                    <td> 
                                                   
                              <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
                              action="#{uploadFile.download_file_coor(300,campo.estudiante.cedula)}" value="Descargar" ></h:commandLink>
+                             &nbsp;<h:selectBooleanCheckbox disabled="true" />
                                                        <br/><br/></td></tr>
                                        
                                             <tr>
-                                                <td> <label>Descargar el informe seguimiento tutor</label></td>
+                                                <td> <label>Informe seguimiento tutor</label></td>
                                  
                                                 <td>  
                                                <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
                              action="#{uploadFile.download_file_coor(301,campo.estudiante.cedula)}" value="Descargar" ></h:commandLink>
+                             &nbsp;<h:selectBooleanCheckbox disabled="true" />
                             
                                                     <br/><br/>  </td></tr>
                                     
                                        
                                               
                                                <tr>
-                                                <td>  <label>Descargar solicitud final</label></td>
+                                                <td>  <label>Solicitud final</label></td>
                                  
                                                 <td> 
                                                  <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
                              action="#{uploadFile.download_file_coor(204,campo.estudiante.cedula)}" value="Descargar" ></h:commandLink>
+                             &nbsp;<h:selectBooleanCheckbox value="#{validacionFinalPDF.archivo1}"/>
                             
                                                 <br/><br/></td></tr><tr>
-                                                <td> <label>Descargar autoevaluaciòn estudiante</label></td>
+                                                <td> <label>Autoevaluación estudiante</label></td>
                                  
                                                 <td>  
                                                     <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
                              action="#{uploadFile.download_file_coor(303,campo.estudiante.cedula)}" value="Descargar" ></h:commandLink>
+                             &nbsp;<h:selectBooleanCheckbox value="#{validacionFinalPDF.archivo2}" />
                             
                                                     <br/><br/></td></tr><tr>
-                                                <td> <label>Descargar certificado de actividad</label></td>
+                                                <td> <label>Certificado de actividad</label></td>
                                  
                                                 <td>  
                                                  <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
                              action="#{uploadFile.download_file_coor(304,campo.estudiante.cedula)}" value="Descargar" ></h:commandLink>
+                             &nbsp;<h:selectBooleanCheckbox value="#{validacionFinalPDF.archivo3}" />
                             
                                                 <br/><br/></td></tr>
                                                 <tr>
                                                 <td>
-                                                    <label>Descargar derecho de validaciòn</label></td>
+                                                    <label>Derecho de validaciòn</label></td>
                                  
                                                 <td> 
                                                  <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
                              action="#{uploadFile.download_file_coor(305,campo.estudiante.cedula)}" value="Descargar" ></h:commandLink>
+                             &nbsp;<h:selectBooleanCheckbox value="#{validacionFinalPDF.archivo4}" />
+                             
                             
                                                     <br/><br/></td></tr>
                                  </table>
@@ -106,14 +114,22 @@
                                         </h:form> 
                                 </b:dataTableColumn>
                                 
-                                <b:dataTableColumn label="Estado">                   
+                                <b:dataTableColumn label="Acciones">      
+                                    <h:form>
                                     <b:column>
                                         <br/><br/><br/>
                                             <br/>
                                         <center> 
-                                         <b:button   class="btn btn-success btn-sm" icon="ok"  >
-                                         </b:button></center>
-                                    </b:column>    
+                                             <h:outputLabel value="Observación:" /><br/>
+                                             <h:inputTextarea style="width: 106%"  class="form-control" rows="3"  title="campo requerido" />
+                                               <br/> <br/> <br/> 
+                                               <b:commandButton   class="btn btn-success btn-sm" action="#{validacionFinalPDF.guardarDatos(campo.estudiante.cedula,campo.id_visita)}" value="Enviar" />
+                                              
+                                               <!--<b:commandButton action="{validacionFinalPDF.guardarDatos()}" value="Enviar" look="success"/></center>
+
+                                         </b:button>--></center>
+                                    </b:column> 
+                                        </h:form>
                                 </b:dataTableColumn>
                                 
                             </b:dataTable>

@@ -20,15 +20,47 @@ import javax.faces.bean.ManagedBean;
 public class DetallesDashboardTut {
 
       List<Object[]> listarcita=null;
+      List<Object[]> vista=null;
+      List<Object[]> documento=null;
 
     public List<Object[]> getListarcita() {
-        DashboardTutDAO llamar=new DashboardTutDAO();
-       listarcita= llamar.findAllDetallePasantiaconcita();
         return listarcita;
     }
-    public DetallesDashboardTut() {
-        this.listarcita=listarcita;
+
+    public List<Object[]> getVista() {
+        return vista;
     }
+
+    public List<Object[]> getDocumento() {
+        return documento;
+    }
+  
+
+    public List<Object[]> getListarcita(long user) {
+        DashboardTutDAO llamar=new DashboardTutDAO();
+       listarcita= llamar.findAllDetallePasantiaconcita(user);
+        return listarcita;
+    }
+
+    public List<Object[]> getVista(long user) {
+           DashboardTutDAO llamar=new DashboardTutDAO();
+     vista=llamar.findAllDetalleVisita(user);
+        return vista;
+    }
+
+    public List<Object[]> getDocumento(long user) {
+                DashboardTutDAO llamar=new DashboardTutDAO();
+   documento=llamar.findAllDetalleDocumentos(user);
+        return documento;
+    }
+    
+    
+
+    public DetallesDashboardTut() {
+    }
+    
+    
+   
     
     
 }

@@ -64,7 +64,7 @@ public class GraficasTut implements Serializable {
         
           ChartSeries validacion = new ChartSeries();
         validacion.setLabel("Validaciòn");
-        validacion.set(" ", p.countVisitaConcluida());
+        validacion.set(" ", p.countProcesoValidacion());
         
         model.addSeries(basico);
         model.addSeries(inicio);

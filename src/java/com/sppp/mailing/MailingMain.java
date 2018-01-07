@@ -17,7 +17,7 @@ import javax.mail.internet.MimeMessage;
 
 public class MailingMain {
     String username = "spppsistemasups@gmail.com";
-    String password = "@sistemasKJ2B";
+    String password = "@.//\\\\n\\t>KJ2B";
     
     //Texto quemado que puede REPETIRSE
     private String ponnombreAPP="SPPP (Sistema de Pasantías y Prácticas Pre Profesionales). ";

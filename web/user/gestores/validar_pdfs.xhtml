@@ -1,71 +1,73 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition
-     xmlns="http://www.w3.org/1999/xhtml"
-     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-     template="/templates/main.xhtml"
-     xmlns:h="http://xmlns.jcp.org/jsf/html"
-     xmlns:f="http://xmlns.jcp.org/jsf/core"
-     xmlns:b="http://bootsfaces.net/ui">
-    
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="/templates/main.xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:b="http://bootsfaces.net/ui">
+
     <ui:define name="encabezado">
         <f:metadata>
-            <f:viewParam name="id" value="#{wizardPDFValidacion.id_estudiante}" />
-            <f:event type="preRenderView" listener="#{wizardPDFValidacion.init()}" />
+            <f:viewParam name="id" value="#{pdfValidacion.id_estudiante}" />
+            <f:event type="preRenderView" listener="#{pdfValidacion.init()}" />
         </f:metadata>
     </ui:define>
-    
+
     <ui:define name="title">
         Val. PDFs
     </ui:define>
-    
+
     <ui:define name="barra-lateral">
         <ui:include src="/snippets/menu_encargado.xhtml" />
     </ui:define>
-    
+
     <ui:define name="contenido">
-     
-         <div class="row">
+
+        <div class="row">
             <h1 class="page-header">Validar Documentos .pdf Previos a Solicitud de Inicio PA / PP</h1>
         </div>
-        
+
         <div class="row">
-             <div class="panel panel-default">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     Documentos Subidos por el Alumno.
                 </div>
                 <div class="panel-body">
                     <h:form enctype="multipart/form-data" role="form">
-                         <div class="form-group">
-                             <label>Oficio de la Empresa </label><br/>
-                             <h:commandLink class="btn btn-outline btn-primary" value="Descarga OF-E" target="_blank" 
-                             action="#{uploadFile.download_file_gest(1,wizardPDFValidacion.id_estudiante)}" ></h:commandLink>
-                        </div>
+
+                        <h:panelGrid columns="4">
+                            <label>Oficio de la Empresa </label>
+                            &nbsp; <h:commandLink class="btn btn-outline btn-primary" value="Descarga OF-E" target="_blank" 
+                                                  action="#{uploadFile.download_file_gest(1,wizardPDFValidacion.id_estudiante)}" >
+                            </h:commandLink>
+                            &nbsp;<h:selectBooleanCheckbox value="#{pdfValidacion.archivo1}" />
+
+                            <label>Carta de Aceptaci&oacute;n Empresa </label>
+                            &nbsp; <h:commandLink class="btn btn-outline btn-primary" value="Descarga CA-E" target="_blank" 
+                                                  action="#{uploadFile.download_file_gest(2,wizardPDFValidacion.id_estudiante)}" ></h:commandLink>
+                            &nbsp;<h:selectBooleanCheckbox value="#{pdfValidacion.archivo2}" />
+                            <label>Carta Compromiso Empresa </label>
+                            <h:commandLink class="btn btn-outline btn-primary" value="Descarga CO-E" target="_blank" 
+                                           action="#{uploadFile.download_file_gest(3,wizardPDFValidacion.id_estudiante)}" ></h:commandLink>
+                            &nbsp;<h:selectBooleanCheckbox value="#{pdfValidacion.archivo3}" />
+                            <label>Solitud Inicio / Resoluci&oacute;n </label>
+                            <h:commandLink class="btn btn-outline btn-primary" value="Descarga SR-E" target="_blank" 
+                                           action="#{uploadFile.download_file_gest(4,wizardPDFValidacion.id_estudiante)}" ></h:commandLink>
+                            &nbsp;<h:selectBooleanCheckbox value="#{pdfValidacion.archivo4}" />
+                        </h:panelGrid>
+                        <b:inputTextarea label="Observaci&oacute;n" value="#{pdfValidacion.observacion}"/>
                         
-                        <div class="form-group">
-                            <label>Carta de Aceptaci&oacute;n Empresa </label><br/>
-                           <h:commandLink class="btn btn-outline btn-primary" value="Descarga OF-E" target="_blank" 
-                             action="#{uploadFile.download_file_gest(2,wizardPDFValidacion.id_estudiante)}" ></h:commandLink>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Carta Compromiso Empresa </label><br/>
-                           <h:commandLink class="btn btn-outline btn-primary" value="Descarga OF-E" target="_blank" 
-                             action="#{uploadFile.download_file_gest(3,wizardPDFValidacion.id_estudiante)}" ></h:commandLink>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Solitud Inicio / Resoluci&oacute;n </label><br/>
-                           <h:commandLink class="btn btn-outline btn-primary" value="Descarga SR" target="_blank" 
-                             action="#{uploadFile.download_file_gest(4,wizardPDFValidacion.id_estudiante)}" ></h:commandLink>
-                        </div>
-                        
+                        <center><b:commandButton action="#{pdfValidacion.guardarDatos()}" value="Guardar" look="success"/></center>
+
+
                     </h:form>
                 </div>
             </div>
-            </div>
-        
+        </div>
 
-     
+
+
     </ui:define>
-    
+
 </ui:composition>

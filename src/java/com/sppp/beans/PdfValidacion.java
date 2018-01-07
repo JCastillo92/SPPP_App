@@ -12,12 +12,14 @@ import com.sppp.DAO.UsuarioDAO;
 import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 /**
  *
  * @author EstJhonAlexanderCast
  */
 @ManagedBean
+@ViewScoped
 public class PdfValidacion {
 
     int id_estudiante;
@@ -125,7 +127,7 @@ public class PdfValidacion {
         
         //Mando a guardar los datos
         DatosDAO dDAO = new DatosDAO();
-        dDAO.guardarValidacionDatosSU(lDatos);
+        dDAO.guardarValidacionCC(lDatos);
         
         DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
         //Compruebo si cumple todos los checks

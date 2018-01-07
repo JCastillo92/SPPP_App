@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="/templates/main.xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:define name="title">
+        Est. Help
+    </ui:define>
+
+    <ui:define name="barra-lateral">
+        <ui:include src="/snippets/menu_estudiante.xhtml" />
+    </ui:define>
+
+    <ui:define name="contenido">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Puntos a Tomar en Cuenta</h1> 
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        
+        
+<div class="row">
+           <b:panel class="panel-default" title="Color Estados:" look="default" style="width:auto; height:auto">
+                <ul class="timeline">
+                      <li>
+                            <div class="timeline-badge"></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">Por Realizar</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>Acciones que el alumno aún no ha iniciado.</p>
+                                </div>
+                            </div>
+                        </li>
+                    
+                    <li class="">
+                            <div class="timeline-badge info"></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">Enviado a Validaci&oacute;n</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>En espera de aprobación. A un gestor se le notificara automáticamente que tiene procesos pendientes por revisar. Al alumno le llegara un email.</p>
+                                </div>
+                            </div>
+                        </li> 
+                    
+                    <li>
+                            <div class="timeline-badge warning"></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">Por Corregir</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>Cuando la información ingresada ha sido rechazada por el gestor que la revisó. Un email será enviado al alumno, el cual debe corregir y reenviar dichos datos.</p>
+                                </div>
+                            </div>
+                        </li>
+                    
+                    <li class="">
+                            <div class="timeline-badge success"></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">Aprobado</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>Cuando un proceso ha sido aprobado por el gestor que lo revisó. El alumno puede continuar con la siguiente etapa del proceso. Al alumno le llegara un email.</p>
+                                </div>
+                            </div>
+                        </li> 
+                </ul>
+            </b:panel>
+    </div>
+     </ui:define>
+</ui:composition>

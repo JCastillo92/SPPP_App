@@ -39,14 +39,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- 
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">Ver Detalles</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a> -->
+                        
                         <h:form>
                             <h:commandLink action="#{estadoProceso.getRuta(estadoProceso.proceso)}" >
                                 <div class="panel-footer">
@@ -66,18 +59,20 @@
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">12</div>
-                                    <div>Estado!</div>
+                                    <div><h4>AYUDA DEL APLICATIVO:</h4></div>
+                                    <div class="">Informaci&oacute;n General</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <h:form>
+                            <h:commandLink action="help_estDash" >
                             <div class="panel-footer">
-                                <span class="pull-left">Ver Detalles</span>
+                                <span class="pull-left">Saber m&aacute;s</span>
                                 <span class="pull-right"><i class="fa fa-hand-o-up"></i></span>
                                 <div class="clearfix"></div>
                             </div>
-                        </a>
+                                </h:commandLink>
+                            </h:form>
                     </div>
                 </div>
 
@@ -263,50 +258,7 @@
                     </ul>
                 </div>   
             </b:panel>
-            <b:panel class="panel-default" title="Color Estados:" look="default" style="width:auto; height:auto">
-                <ul class="timeline">
-                      <li>
-                            <div class="timeline-badge"></div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4 class="timeline-title">Por Realizar</h4>
-                                </div>
-                            </div>
-                        </li>
-                    
-                    <li class="">
-                            <div class="timeline-badge info"></div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4 class="timeline-title">Enviado a Validaci&oacute;n</h4>
-                                </div>
-                            </div>
-                        </li> 
-                    
-                    <li>
-                            <div class="timeline-badge warning"></div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4 class="timeline-title">Por Corregir</h4>
-                                </div>
-                            </div>
-                        </li>
-                    
-                    <li class="">
-                            <div class="timeline-badge success"></div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4 class="timeline-title">Aprobado</h4>
-                                </div>
-                            </div>
-                        </li> 
-                    
-                    
-                    
-                    
-                    
-                </ul>
-            </b:panel>
+            
         </div>
 
     </ui:define>

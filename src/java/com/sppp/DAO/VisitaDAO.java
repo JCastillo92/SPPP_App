@@ -314,7 +314,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
 
             //Paso a agregar el nuevo proceso
             DetallePasantia dp3 = new DetallePasantia();
-            dp3.setDescripcion("Resolución final");
+            dp3.setDescripcion("Validación Documentos finales");
             dp3.setEstado(true);
             dp3.setPasantia(p);
             dp3.setProceso(new Proceso(36));
@@ -324,20 +324,17 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                     e.printStackTrace();
                 }
 }
-       public void resolucion(){
+       public void resolucion(long id3){
             DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
         
         PasantiaDAO ppDAO = new PasantiaDAO();
           try {
                     
-                HttpSession session = SessionUtils.getSession();
-                long id;
-                id = (long) session.getAttribute("id");
-
-                p = ppDAO.findPasantia(id);
+                             
+                p = ppDAO.findPasantia(id3);
 
                 //Encontrar el detalle de esa pasantia cuyo proceso sea 4 (proceso actual, cursando, este va a ser actualizado)
-                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),34);
+                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),36);
 
                 //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
                 dp.setValidacion(EnumEstado.aprobar);
@@ -346,7 +343,9 @@ Session session = HibernateUtil.getSessionFactory().openSession();
 
             //Paso a agregar el nuevo proceso
             DetallePasantia dp3 = new DetallePasantia();
-            dp3.setDescripcion("Resolución final");
+            
+            
+            dp3.setDescripcion("Resolución Final");
             dp3.setEstado(true);
             dp3.setPasantia(p);
             dp3.setProceso(new Proceso(38));

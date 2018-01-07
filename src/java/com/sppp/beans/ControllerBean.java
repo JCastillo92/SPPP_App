@@ -25,7 +25,7 @@ import org.primefaces.event.SelectEvent;
 
 /**
  *
- * @author
+ * @author DidiAndy
  */
 @ManagedBean(name="controllerBean")
 @SessionScoped
@@ -498,7 +498,7 @@ public String sendValidacion(String correo,String nombre,String apellido,String 
       paso=true;
       
       VisitaDAO visitaDAO = new VisitaDAO();
-      visitaDAO.resolucion();
+      visitaDAO.validacionDocs();
      return"revision_window"; 
  }
 

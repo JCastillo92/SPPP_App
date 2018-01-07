@@ -22,6 +22,8 @@ public class DetallesDashboardTut {
       List<Object[]> listarcita=null;
       List<Object[]> vista=null;
       List<Object[]> documento=null;
+      List<Object[]> listarCoordinador=null;
+      
 
     public List<Object[]> getListarcita() {
         return listarcita;
@@ -53,11 +55,14 @@ public class DetallesDashboardTut {
    documento=llamar.findAllDetalleDocumentos(user);
         return documento;
     }
-    
-    
 
-    public DetallesDashboardTut() {
+    public List<Object[]> getListarCoordinador() {
+                     DashboardTutDAO llamar=new DashboardTutDAO();
+   listarCoordinador=llamar.ListarCoordinador();
+        
+        return listarCoordinador;
     }
+    
     
     
    

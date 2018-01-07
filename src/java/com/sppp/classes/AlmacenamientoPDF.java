@@ -22,9 +22,11 @@ import com.sppp.DAO.DetallePasantiaDAO;
 import com.sppp.DAO.EmpresaDAO;
 import com.sppp.DAO.EncargadoDAO;
 import com.sppp.DAO.PasantiaDAO;
+import com.sppp.DAO.PeriodoDAO;
 import com.sppp.DAO.UsuarioDAO;
 import com.sppp.beans.Datos;
 import com.sppp.beans.DetallePasantia;
+import com.sppp.beans.DetallesDashboardTut;
 import com.sppp.beans.Empresa;
 import com.sppp.beans.Encargado;
 import com.sppp.beans.LocalTimeDate;
@@ -743,7 +745,7 @@ try{
 
  
 
-  public boolean pdf_InformeTutor(long cedula,int numero_pdf,int pre10,int pre1,int pre2,int pre3,int pre4,int pre5,int pre6,int pre7,int pre8,String observaciones){//200
+  public boolean pdf_InformeTutor(long cedula,int numero_pdf){//200
       exitoalguardar=false;
          //FORMATO CARTA COMPROMISO INTERINSTITUCIONAL
          try {
@@ -762,6 +764,16 @@ try{
             
            CitasDaoImp tut=new CitasDaoImp();
            tutor=tut.findTutor(cedula);
+           
+             DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
+            detallePass=dpDAO.findDetallePasantiaPorProcesoFalse(pasantia.getTipo_ppp(), pasantia.getCod_ppp(),21);
+            //System.out.println("assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss000000000000000000"+detallePass.getIdDetallePasantia());
+                 
+            
+            DatosDAO datDAO = new DatosDAO();
+            datos=datDAO.datosPorDetallePasantia(detallePass.getIdDetallePasantia());
+          
+           
            TablasFormatos tabla1=new TablasFormatos();
              //VARIABLES INICIALES DEL  P D F 
                  Document documento = new Document();
@@ -847,6 +859,16 @@ try{
 
        documento.add(salto_linea);
        documento.add(salto_linea);
+       int pre1=Integer.valueOf(datos.get(57).getValor_datos());
+       int pre2=Integer.valueOf(datos.get(58).getValor_datos());
+       int pre3=Integer.valueOf(datos.get(59).getValor_datos());
+       int pre4=Integer.valueOf(datos.get(60).getValor_datos());
+       int pre5=Integer.valueOf(datos.get(61).getValor_datos());
+       int pre6=Integer.valueOf(datos.get(62).getValor_datos());
+       int pre7=Integer.valueOf(datos.get(63).getValor_datos());
+       int pre8=Integer.valueOf(datos.get(64).getValor_datos());
+       int pre9=Integer.valueOf(datos.get(65).getValor_datos());
+       
        String q1=null,q2=null,q3=null,q4=null,q5=null;
        if(pre1==1){q1="X";q2=" ";q3=" ";q4=" ";q5=" ";}if(pre1==2){q1=" ";q2="X";q3=" ";q4=" ";q5=" ";}if(pre1==3){q1=" ";q2=" ";q3="X";q4=" ";q5=" ";}
         if(pre1==4){q1=" ";q2=" ";q3=" ";q4="X";q5=" ";}if(pre1==5){q1=" ";q2=" ";q3=" ";q4=" ";q5="X";}
@@ -871,9 +893,9 @@ try{
        String s1=null,s2=null,s3=null,s4=null,s5=null; 
         if(pre8==1){s1="X";s2=" ";s3=" ";s4=" ";s5=" ";}if(pre8==2){s1=" ";s2="X";s3=" ";s4=" ";s5=" ";}if(pre8==3){s1=" ";s2=" ";s3="X";s4=" ";s5=" ";}
         if(pre8==4){s1=" ";s2=" ";s3=" ";s4="X";s5=" ";}if(pre8==5){s1=" ";s2=" ";s3=" ";s4=" ";s5="X";}
-       String f1=null,f2=null,f3=null,f4=null,f5=null; 
-        if(pre10==1){f1="X";f2=" ";f3=" ";f4=" ";f5=" ";}if(pre10==2){f1=" ";f2="X";f3=" ";f4=" ";f5=" ";}if(pre10==3){f1=" ";f2=" ";f3="X";f4=" ";f5=" ";}
-        if(pre10==4){f1=" ";f2=" ";f3=" ";f4="X";f5=" ";}if(pre10==5){f1=" ";f2=" ";f3=" ";f4=" ";f5="X";}
+       String d1=null,d2=null,d3=null,d4=null,d5=null; 
+        if(pre9==1){d1="X";d2=" ";d3=" ";d4=" ";d5=" ";}if(pre9==2){d1=" ";d2="X";d3=" ";d4=" ";d5=" ";}if(pre9==3){d1=" ";d2=" ";d3="X";d4=" ";d5=" ";}
+        if(pre9==4){d1=" ";d2=" ";d3=" ";d4="X";d5=" ";}if(pre9==5){d1=" ";d2=" ";d3=" ";d4=" ";d5="X";}
        
         
 //tabla 2
@@ -897,18 +919,6 @@ try{
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
   //int preg1=Integer.parseInt(pre1);
-  table2.addCell(new Paragraph(f1,estexto));
-   table2.addCell(new Paragraph(f2,estexto));
-   table2.addCell(new Paragraph(f3,estexto));
-   table2.addCell(new Paragraph(f4,estexto));
-   table2.addCell(new Paragraph(f5,estexto));
-
-  
-  
- cell = new PdfPCell(new Paragraph("¿Satisfacieron los resultados a la labor institucional?",estexto));
-  cell.setColspan(15);//#columnas a merge para esta celda
-  table2.addCell(cell);
-  //int preg1=Integer.parseInt(pre1);
   table2.addCell(new Paragraph(q1,estexto));
    table2.addCell(new Paragraph(q2,estexto));
    table2.addCell(new Paragraph(q3,estexto));
@@ -917,17 +927,20 @@ try{
 
   
   
-    //3row
- cell = new PdfPCell(new Paragraph("¿El estudiante tuvo la información necesaria del proceso de pasantías, prácticas pre profesionales ó extensiones?",estexto));
+ cell = new PdfPCell(new Paragraph("¿Satisfacieron los resultados a la labor institucional?",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
+  //int preg1=Integer.parseInt(pre1);
   table2.addCell(new Paragraph(w1,estexto));
    table2.addCell(new Paragraph(w2,estexto));
    table2.addCell(new Paragraph(w3,estexto));
    table2.addCell(new Paragraph(w4,estexto));
    table2.addCell(new Paragraph(w5,estexto));
- //4row
- cell = new PdfPCell(new Paragraph("La calidad de los productos ofrecidos fueron:",estexto));
+
+  
+  
+    //3row
+ cell = new PdfPCell(new Paragraph("¿El estudiante tuvo la información necesaria del proceso de pasantías, prácticas pre profesionales ó extensiones?",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
   table2.addCell(new Paragraph(e1,estexto));
@@ -935,8 +948,8 @@ try{
    table2.addCell(new Paragraph(e3,estexto));
    table2.addCell(new Paragraph(e4,estexto));
    table2.addCell(new Paragraph(e5,estexto));
-    //5row
- cell = new PdfPCell(new Paragraph("El comportamiento del estudiante en la institución externa fue:",estexto));
+ //4row
+ cell = new PdfPCell(new Paragraph("La calidad de los productos ofrecidos fueron:",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
   table2.addCell(new Paragraph(r1,estexto));
@@ -944,8 +957,8 @@ try{
    table2.addCell(new Paragraph(r3,estexto));
    table2.addCell(new Paragraph(r4,estexto));
    table2.addCell(new Paragraph(r5,estexto));
- //6row
- cell = new PdfPCell(new Paragraph("La destreza desmostrada del estudiante en sus actividades fue:",estexto));
+    //5row
+ cell = new PdfPCell(new Paragraph("El comportamiento del estudiante en la institución externa fue:",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
   table2.addCell(new Paragraph(t1,estexto));
@@ -953,8 +966,8 @@ try{
    table2.addCell(new Paragraph(t3,estexto));
    table2.addCell(new Paragraph(t4,estexto));
    table2.addCell(new Paragraph(t5,estexto));
- //7row
- cell = new PdfPCell(new Paragraph("El nivel de información proporcionada por la institución externa fue:",estexto));
+ //6row
+ cell = new PdfPCell(new Paragraph("La destreza desmostrada del estudiante en sus actividades fue:",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
   table2.addCell(new Paragraph(y1,estexto));
@@ -962,8 +975,8 @@ try{
    table2.addCell(new Paragraph(y3,estexto));
    table2.addCell(new Paragraph(y4,estexto));
    table2.addCell(new Paragraph(y5,estexto));
- //8row
- cell = new PdfPCell(new Paragraph("La relación del estudiante con el tutor de la institución externa fue:",estexto));
+ //7row
+ cell = new PdfPCell(new Paragraph("El nivel de información proporcionada por la institución externa fue:",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
   table2.addCell(new Paragraph(a1,estexto));
@@ -971,8 +984,8 @@ try{
    table2.addCell(new Paragraph(a3,estexto));
    table2.addCell(new Paragraph(a4,estexto));
    table2.addCell(new Paragraph(a5,estexto));
- //9row
- cell = new PdfPCell(new Paragraph("La relación del estudiante con el tutor de la UPS fue:",estexto));
+ //8row
+ cell = new PdfPCell(new Paragraph("La relación del estudiante con el tutor de la institución externa fue:",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
   table2.addCell(new Paragraph(s1,estexto));
@@ -980,6 +993,15 @@ try{
    table2.addCell(new Paragraph(s3,estexto));
    table2.addCell(new Paragraph(s4,estexto));
    table2.addCell(new Paragraph(s5,estexto));
+ //9row
+ cell = new PdfPCell(new Paragraph("La relación del estudiante con el tutor de la UPS fue:",estexto));
+  cell.setColspan(15);//#columnas a merge para esta celda
+  table2.addCell(cell);
+  table2.addCell(new Paragraph(d1,estexto));
+   table2.addCell(new Paragraph(d2,estexto));
+   table2.addCell(new Paragraph(d3,estexto));
+   table2.addCell(new Paragraph(d4,estexto));
+   table2.addCell(new Paragraph(d5,estexto));
 
 
   documento.add(table2);
@@ -995,7 +1017,7 @@ try{
                     //TABLA 3 INICIO
                     PdfPTable table3 = new PdfPTable(1);//# columns
                     //1 row
-                    table3.addCell(new Paragraph("              " + "\n" +observaciones, estexto));
+                    table3.addCell(new Paragraph("              " + "\n" + datos.get(66).getValor_datos(), estexto));
                     documento.add(table3);
                     //FIN TABLA 3
 //FIRMA ALUMNO
@@ -1839,6 +1861,110 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
             nameppp="práctica pre profesional";
         }
         return nameppp;
+    }
+    
+    
+    public void listar(){
+         exitoalguardar=false;
+         
+         try {
+             //VARIABLES INICIALES DEL  P D F 
+                 Document documento = new Document();
+                 PdfPCell cell;
+                 documento.setPageSize(PageSize.A4);
+                 Font estitulo = FontFactory.getFont(FontFactory.TIMES_ROMAN, 14, Font.NORMAL);
+                 Font estexto = FontFactory.getFont(FontFactory.COURIER, 8, Font.NORMAL);
+                 Font escuadro = FontFactory.getFont(FontFactory.TIMES_ROMAN, 10, Font.NORMAL);                 
+                 Font esnota = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6, Font.NORMAL);
+                 Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL);
+        
+                  FileOutputStream archivo = new FileOutputStream(local_path+123+"/"+69+".pdf");//asi se guardara el archivo
+            PdfWriter.getInstance(documento, archivo);
+      documento.open();
+         
+      //logo de la UPS
+        Image image = Image.getInstance(local_path_images+"logo-ups-home.png");
+        image.setAlignment(Image.ALIGN_LEFT);
+        image.setAbsolutePosition(10, 780);
+        image.scalePercent(60, 55);
+        documento.add(image);
+        
+         Image image2 = Image.getInstance(local_path_images+"bkj2.png");
+        image2.setAlignment(Image.ALIGN_RIGHT);
+        image2.setAbsolutePosition(562, 458);
+        image2.scalePercent(60, 75);
+        documento.add(image2);
+        
+        Image image3 = Image.getInstance(local_path_images+"batl.png");
+        image3.setAlignment(Image.ALIGN_RIGHT);
+        image3.setAbsolutePosition(445, 775);
+        image3.scalePercent(6, 6);
+        documento.add(image3);
+             
+      documento.addAuthor("Universidad Politecnica Salesiana");
+      Paragraph salto_linea=new Paragraph("\n");
+      Paragraph linea_firma=new Paragraph("________________",estexto);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      
+      // T I T U L O
+      Paragraph p1=new Paragraph("REPORTE ESTUDIANTES",estitulo);
+      p1.setAlignment(Element.ALIGN_CENTER);
+      documento.add(p1);
+      documento.add(salto_linea);
+      
+       //tabla 1
+  PdfPTable table = new PdfPTable(7);//# columns
+        
+    List<Object[]> estudiantes;
+        DetallesDashboardTut llamar=new DetallesDashboardTut();
+        CitasAgendadas nombre=new CitasAgendadas();
+        estudiantes=llamar.getListarCoordinador();
+        PeriodoDAO periodo= new PeriodoDAO();
+        CitasDaoImp horas=new CitasDaoImp();
+        String nombreEst,periodoac;
+  
+        //TITULO DE ROW = HEADER
+        table.addCell(new Paragraph("Cedula Estudiante",escuadro));
+  table.addCell(new Paragraph("Nombre",escuadro));
+  table.addCell(new Paragraph("Actividad",escuadro));
+  table.addCell(new Paragraph("Fecha Inicio",escuadro));
+  table.addCell(new Paragraph("Fecha Fin",escuadro));
+  table.addCell(new Paragraph("Periodo",escuadro));
+  table.addCell(new Paragraph("Horas Totales",escuadro));
+  
+        for (Object[] row : estudiantes) {
+             long id=Long.parseLong(row[0].toString());
+             long horase=Long.parseLong(row[0].toString());
+            nombreEst=nombre.getNombre_completo(id);
+            periodoac=periodo.encontrarPeriodoActual1();
+            int horastotales=horas.horas(horase);
+            System.out.println("Cedula estudiante"+row[0]);
+            System.out.println("Nombre"+nombreEst);
+            System.out.println("Actividad"+giveMeNamePPP(row[1].toString()));
+            System.out.println("Fecha inicio"+row[3].toString());
+            System.out.println("Fecha fin"+row[4].toString());
+            System.out.println("Periodo"+periodoac);
+            System.out.println("Horas totales"+horastotales);
+            // row CON LAZO for
+            
+                  table.addCell(new Paragraph(""+row[0],estexto));
+                  table.addCell(new Paragraph(""+nombreEst,estexto));
+                  table.addCell(new Paragraph(""+giveMeNamePPP(row[1].toString()),estexto));
+                  table.addCell(new Paragraph(""+row[3].toString(),estexto));
+                  table.addCell(new Paragraph(""+row[4].toString(),estexto));
+                  table.addCell(new Paragraph(""+periodoac,estexto));
+                  table.addCell(new Paragraph(""+horastotales,estexto)); 
+        }//end of for
+          documento.add(table);
+         //F I N  D O C U M E N T O 
+      documento.close();
+      exitoalguardar=true;
+        } catch (DocumentException | IOException e) {
+            e.printStackTrace();
+            exitoalguardar=false;
+        }
     }
   
 }//end of class

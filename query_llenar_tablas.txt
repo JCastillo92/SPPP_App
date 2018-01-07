@@ -86,9 +86,9 @@ insert into tb_proceso(descripcion,estado,proceso_de) values ('Subir Carta Compr
 insert into tb_proceso(descripcion,estado) values ('Validacion PDFs',true);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('Encargado descarga y valida 4 pdfs',true,14);
 
-insert into tb_proceso(descripcion,estado) values ('Solicitud Inicio Actividades',true);
-
 insert into tb_proceso(descripcion,estado) values ('Resolucion de Proceso',true);
+
+insert into tb_proceso(descripcion,estado) values ('bla bla 1',true);
 
 insert into tb_proceso(descripcion,estado) values ('Cita',true);
 insert into tb_proceso(descripcion,estado,proceso_de) values ('Confirmacion cita',true,18);

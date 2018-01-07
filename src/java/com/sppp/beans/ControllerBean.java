@@ -402,12 +402,12 @@ private Usuario usuario = new Usuario();
      
       public long getNumerotutor(String tutor) {
         VisitaDAO obj=new VisitaDAO();
-        numerotutor=obj.countTut(tutor);
+        numerotutor=obj.countTut_agendacion(tutor);
         return numerotutor;
     }
       public long getNumerotutor2(String tutor) {
         VisitaDAO obj=new VisitaDAO();
-        numerotutor2=obj.countTut_visitados(tutor);
+        numerotutor2=obj.countTut_cita(tutor);
         return numerotutor2;
     }
        public long getNumerotutor3(String tutor) {

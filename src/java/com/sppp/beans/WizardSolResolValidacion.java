@@ -30,20 +30,26 @@ public class WizardSolResolValidacion {
                 private Pasantia pasantia=new Pasantia();//jairo
                 private Tutor tutor=new Tutor();
      
-                Map<Long,String> hm_tutores=null;
-
-    public Map<Long, String> getHm_tutores() {
+                Map<String,Long> hm_tutores=null;
+int id_estudiante;
+    String cod_resolucion;
+    Long ced_tutor_reasigna;
+    
+    public Map<String, Long> getHm_tutores() {
         return hm_tutores;
     }
 
-    public void setHm_tutores(Map<Long, String> hm_tutores) {
+    public void setHm_tutores(Map<String, Long> hm_tutores) {
         this.hm_tutores = hm_tutores;
     }
 
- 
-                
-    int id_estudiante;
-    String cod_resolucion;
+    public Long getCed_tutor_reasigna() {
+        return ced_tutor_reasigna;
+    }
+
+    public void setCed_tutor_reasigna(Long ced_tutor_reasigna) {
+        this.ced_tutor_reasigna = ced_tutor_reasigna;
+    }
 
     public String getCod_resolucion() {
         return cod_resolucion;
@@ -85,15 +91,29 @@ public class WizardSolResolValidacion {
             
         
     }
-    public String actualizarAlumnoTutor(Long ced_tut_asig){
+    public String actualizarAlumnoTutor(){
         try {
         PasantiaDAO passDAO = new PasantiaDAO();
         
-        pasantia.setCed_tutor_asignado(ced_tut_asig);
+        pasantia.setCed_tutor_asignado(ced_tutor_reasigna);
         passDAO.actualizarPasantia(pasantia);
         } catch (Exception e) {
                     e.printStackTrace();
             }
-         return "dashboard_gestor";
+        return null;
     }
+    
+    public String actualizarResolucion(){
+           try {
+        PasantiaDAO passDAO = new PasantiaDAO();
+        
+        pasantia.setCod_resolucion_consejo(cod_resolucion);
+        passDAO.actualizarPasantia(pasantia);
+        } catch (Exception e) {
+                    e.printStackTrace();
+            }
+           return "dashboard_est";
+    }
+    
+    
 }

@@ -68,8 +68,6 @@ public class WizardSolResolValidacion {
             PasantiaDAO passDAO=new PasantiaDAO();
             pasantia = passDAO.findPasantia(id_estudiante);
             
-            
-            
             //OBTENER EL map DE TUTORES o LISTA DE PERFIL 3
             UsuarioDAO uDAO_tut = new UsuarioDAO();
             hm_tutores = uDAO_tut.findAllUsuariosTutores();
@@ -86,5 +84,16 @@ public class WizardSolResolValidacion {
             
             
         
+    }
+    public String actualizarAlumnoTutor(Long ced_tut_asig){
+        try {
+        PasantiaDAO passDAO = new PasantiaDAO();
+        
+        pasantia.setCed_tutor_asignado(ced_tut_asig);
+        passDAO.actualizarPasantia(pasantia);
+        } catch (Exception e) {
+                    e.printStackTrace();
+            }
+         return "dashboard_gestor";
     }
 }

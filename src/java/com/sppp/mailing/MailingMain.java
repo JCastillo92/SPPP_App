@@ -157,28 +157,3 @@ public class MailingMain {
 	    
     }//end of method deliverMail()
 }//end of CLASS
-
-
-
-
-
-
-
-/*
-Nombre 
-Ingenieria de sistemas UPS 
-Apellido
-Sede quito
-Nombre usuario
-spppsistemasups@gmail.com
-contraseña
-@sistemasKJ2B
-fecha 26 /08/1993
-telefono movil
-+593983466689
-direccion actual
-jairdean@hotmail.com
-ubicacion 
-ecuador
-
-*/

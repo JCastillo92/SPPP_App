@@ -103,8 +103,8 @@
                                     </b:column>
                                 </b:dataTableColumn>
                                  <b:dataTableColumn label="Acciones">                   
-                                     <b:column >
-                                              <h:commandLink class="btn btn-success"  action="#{uploadFile.enviar_arch_msj(2)}" >
+                                     <b:column>
+                                         <h:commandLink class="btn btn-success"  action="#{controllerBean.updateCompletado(campo.id_visita,login.user,campo.estudiante.cedula)}" >
                             Enviar <f:ajax execute="@form"></f:ajax>
                         </h:commandLink>
                                      </b:column>

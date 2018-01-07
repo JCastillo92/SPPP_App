@@ -8,63 +8,56 @@
      xmlns:b="http://bootsfaces.net/ui">
     
     <ui:define name="title">
-        Est. Checking Status
+       Tutor estatus
     </ui:define>
     
     <ui:define name="barra-lateral">
-        <ui:include src="/snippets/menu_estudiante.xhtml" />
+        
     </ui:define>
     
     <ui:define name="contenido">
-
+    
+<f:metadata>
+    <f:viewParam name="id" value="#{datosFormatos.id}" />
+</f:metadata>
         <div class="row">
-            <h1 class="page-header">Datos y Documentos en Etapa de Revisi&oacute;n</h1>
+            <h1 class="page-header">Datos enviados correctamente</h1>
         </div>
         
         <div class="row">
              <div class="panel panel-default">
                 <div class="panel-heading">
-                    Revisi&oacute;n de informaci&oacute;n enviada.
+                    Formato tutor
                 </div>
                 <div class="panel-body">
                          <div class="form-group">
                              <div align="center">
-                                 <label>Al momento el gestor tiene que revisar lo que usted ha enviado. Una notificaci&oacute;n
-                                 llegar&aacute; a su correo cuando &eacute;sta sea revisada.
+                                 <label>Se ha llenado correctamente los formatos de visita del estudiante
+                                 #{citasAgendadas.getNombre_completo(datosFormatos.id)}
                                  </label>
                              </div>
                              <div align="center">
-                                 <i class="fa  fa-gear fa-5x" ></i>
+                                 <i class="fa  fa-check fa-5x" ></i>
                              </div>
                              
                         </div>
                 </div>
-            </div>
-             <div class="panel panel-default">
-                <div class="panel-heading">
-                    Notificaci&oacute;n Email
-                </div>
-                <div class="panel-body">
-                         <div class="form-group">
-                             <div align="left">
-                                 <i class="fa  fa-times-circle fa-2x" style="color: red" ></i>
-                                 Si la informaci&oacute;n ingresada contiene alg&uacute;n error, 
-                                 se le notificar&aacute;. Tiene que ingresar a esta plataforma para corregir y volver a enviar. 
-                             </div>
-                             <div align="left">
-                                 <i class="fa  fa-check-circle fa-2x" style="color: green" ></i>
-                                 Si la informaci&oacute;n ingresada es correcta, ingrese a esta plataforma para ver 
-                                 el nuevo estado de su proceso.
-                             </div>                           
+                                 <h:form> 
                              
-                             <h:form> <center>
-                                 <h:commandButton class="btn btn-success" action="dashboard_est" value="Ir a Dashboard" />
-                                 </center>
-                            </h:form>
-                        </div>
-                </div>
+                                         
+                                <center>                  
+                  <h:dataTable var="campo" value="#{citasAgendadas.getVisitasRealizadas(datosFormatos.id)}" >
+                               <h:column>
+                           
+                                   <b:button outcome="agendar_cita_tut.xhtml"  ondblclick="#{controllerBean.updateVisitaAgendada(campo.id_visita,login.user,datosFormatos.id)}" value="Finalizar" look="success"  >
+                             
+                           </b:button>    </h:column>
+                       </h:dataTable>
+                      </center> 
+                                 </h:form>
+                 
             </div>
-            </div>       
+                        </div>
+                     
     </ui:define>
 </ui:composition>
-

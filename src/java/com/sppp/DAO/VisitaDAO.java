@@ -203,7 +203,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                 p = ppDAO.findPasantia(id);
 
                 //Encontrar el detalle de esa pasantia cuyo proceso sea 4 (proceso actual, cursando, este va a ser actualizado)
-                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),7);
+                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),1);
 
                 //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
                 dp.setValidacion(EnumEstado.aprobar);
@@ -356,24 +356,23 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                     e.printStackTrace();
                 }
 }
-        public void finalizacion(){
-            DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
+        public void finalizacion(String id){
+           DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
         
         PasantiaDAO ppDAO = new PasantiaDAO();
           try {
                     
-                HttpSession session = SessionUtils.getSession();
-                long id;
-                id = (long) session.getAttribute("id");
-
-                p = ppDAO.findPasantia(id);
+               
+                long id3=Long.parseLong(id) ;
+                
+                p = ppDAO.findPasantia(id3);
 
                 //Encontrar el detalle de esa pasantia cuyo proceso sea 4 (proceso actual, cursando, este va a ser actualizado)
-                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),38);
+                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),24);
 
                 //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
                 dp.setValidacion(EnumEstado.aprobar);
-                dp.setEstado(true);
+                dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
 
             //Paso a agregar el nuevo proceso
@@ -440,7 +439,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
 
                 //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
                 dp.setValidacion(EnumEstado.aprobar);
-                //dp.setEstado(false);
+                dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
 
             //Paso a agregar el nuevo proceso

@@ -50,10 +50,10 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-info-circle fa-5x"></i>
+                                    <i class="fa fa-car fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">#{controllerBean.getNumerotutor(login.user)}</div>
+                                    <div class="huge">#{controllerBean.getNumerotutor2(login.user)}</div>
                                   <div class=""><h4>Visita</h4></div>
                                   
                                 </div>
@@ -75,10 +75,10 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-info-circle fa-5x"></i>
+                                    <i class="fa fa-check fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                     <div class="huge">#{controllerBean.getNumerotutor2(login.user)}</div>
+                                       <div class="huge">#{controllerBean.getNumerotutor(login.user)}</div>
                                     <div class=""><h4>Validación visita</h4></div>
                                     <div></div>
                                 </div>
@@ -100,7 +100,7 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-info-circle fa-5x"></i>
+                                    <i class="fa fa-file-text-o fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                      <div class="huge">#{controllerBean.getNumerotutor3(login.user)}</div>
@@ -139,24 +139,12 @@
       <div class="panel-heading">
                             <i class="fa fa-bar-chart-o fa-fw"></i> Estudiantes dentro del proceso de citas
        <div class="table-responsive">
-          <b:dataTable class="table table-striped table-bordered table-hover" value="#{detallesDashboardTut.listarcita}"
+           <b:dataTable class="table table-striped table-bordered table-hover" value="#{detallesDashboardTut.getListarcita(login.user)}"
                                          var="dpalltrue" >
                                 <b:dataTableColumn value="#{dpalltrue[0].toString()}" label="CI" />
                                 <b:dataTableColumn value="#{citasAgendadas.getNombre_completo(dpalltrue[0].toString())}" label="Nombre"/>
                                 <b:dataTableColumn value="#{dpalltrue[4].toString()}" label="Descripci&oacute;n"/>
-                                <b:dataTableColumn label="Acci&oacute;n">
-                                    <h:link value="Ir a detalle" outcome="validar_carta" rendered="#{dpalltrue[5].toString() eq 7 }">
-                                        <f:param name="id" value="#{dpalltrue[0].toString()}" />
-                                    </h:link>
-                                    <h:link value="Ir a detalle" outcome="validarDatosBasicos" rendered="#{dpalltrue[5].toString() eq 1}">
-                                        <f:param name="id" value="#{dpalltrue[0].toString()}" />
-                                    </h:link>
-                                    <h:link value="Ir a detalle" outcome="validar_pdfs" rendered="#{dpalltrue[5].toString() eq 14}">
-                                        <f:param name="id" value="#{dpalltrue[0].toString()}" />
-                                    </h:link>
-                                </b:dataTableColumn>
-
-
+                               
                             </b:dataTable>
               </div>
       </div>
@@ -165,11 +153,39 @@
   <!-- The next tab shows tabs aren't limited to text. You can put anything in a tab. -->
   <b:tab title="Proceso Validación Visita">
    <f:facet name="anchor"><b:iconAwesome name="cog" /></f:facet>   
+      <br/>
+      <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Estudiantes dentro del proceso de validación
+       <div class="table-responsive">
+           <b:dataTable class="table table-striped table-bordered table-hover" value="#{detallesDashboardTut.getVista(login.user)}"
+                                         var="dpalltrue" >
+                                <b:dataTableColumn value="#{dpalltrue[0].toString()}" label="CI" />
+                                <b:dataTableColumn value="#{citasAgendadas.getNombre_completo(dpalltrue[0].toString())}" label="Nombre"/>
+                                <b:dataTableColumn value="#{dpalltrue[4].toString()}" label="Descripci&oacute;n"/>
+                               
+                            </b:dataTable>
+              </div>
+      </div>
       
   </b:tab>
   <b:tab title="Documentos">
   <f:facet name="anchor"><b:iconAwesome name="cog" /></f:facet>
-    <p>This is fancy tab with a spinning image.</p>
+  <br/>
+      <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Estudiantes dentro del proceso de carga de documentos
+       <div class="table-responsive">
+           <b:dataTable class="table table-striped table-bordered table-hover" value="#{detallesDashboardTut.getDocumento(login.user)}"
+                                         var="dpalltrue" >
+                                <b:dataTableColumn value="#{dpalltrue[0].toString()}" label="CI" />
+                                <b:dataTableColumn value="#{citasAgendadas.getNombre_completo(dpalltrue[0].toString())}" label="Nombre"/>
+                                <b:dataTableColumn value="#{dpalltrue[4].toString()}" label="Descripci&oacute;n"/>
+                               
+                            </b:dataTable>
+              </div>
+      </div>
+      
+  
+  
   </b:tab>
  
 </b:tabView>

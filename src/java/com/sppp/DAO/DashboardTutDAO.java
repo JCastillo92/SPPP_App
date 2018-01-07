@@ -59,7 +59,7 @@ public List<Object[]> findAllDetallePasantiaconCIAllTrue(){
         return empData;
     }
 
-    public List<Object[]> findAllDetallePasantiaconcita(){
+    public List<Object[]> findAllDetallePasantiaconcita(long user){
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;    
@@ -76,9 +76,10 @@ public List<Object[]> findAllDetallePasantiaconCIAllTrue(){
 "where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n" +
 "and tb_detalle_pasantia.estado=true \n"
 + "and tb_detalle_pasantia.id_proceso=18 \n"
-+ "and tb_detalle_pasantia.validacion=1;");
++ "and tb_detalle_pasantia.validacion=1 \n"
+ + "and tb_detalle_pasantia.cedula_tut = ? ;");
 
-                empData = query.list();
+                empData = query.setLong(0, user).list();
             for (Object[] row : empData) {
                 //variables que retorna la consulta
                 cedula_est = Long.parseLong(row[0].toString());
@@ -100,7 +101,7 @@ public List<Object[]> findAllDetallePasantiaconCIAllTrue(){
         return empData;
     }
 
-     public List<Object[]> findAllDetalleVisita(){
+     public List<Object[]> findAllDetalleVisita(long user){
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;    
@@ -117,9 +118,10 @@ public List<Object[]> findAllDetallePasantiaconCIAllTrue(){
 "where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n" +
 "and tb_detalle_pasantia.estado=true \n"
 + "and tb_detalle_pasantia.id_proceso=21 \n"
-+ "and tb_detalle_pasantia.validacion=1;");
++ "and tb_detalle_pasantia.validacion=1 \n"
+ + "and tb_detalle_pasantia.cedula_tut = ? ;");
 
-                empData = query.list();
+                empData = query.setLong(0, user).list();
             for (Object[] row : empData) {
                 //variables que retorna la consulta
                 cedula_est = Long.parseLong(row[0].toString());
@@ -141,7 +143,7 @@ public List<Object[]> findAllDetallePasantiaconCIAllTrue(){
         return empData;
     }
 
-      public List<Object[]> findAllDetalleDocumentos(){
+      public List<Object[]> findAllDetalleDocumentos(long user){
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
         Transaction tx=null;    
@@ -158,9 +160,10 @@ public List<Object[]> findAllDetallePasantiaconCIAllTrue(){
 "where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n" +
 "and tb_detalle_pasantia.estado=true \n"
 + "and tb_detalle_pasantia.id_proceso=24 \n"
-+ "and tb_detalle_pasantia.validacion=1;");
++ "and tb_detalle_pasantia.validacion=1 \n"
+ + "and tb_detalle_pasantia.cedula_tut = ? ;");
 
-                empData = query.list();
+                empData = query.setLong(0, user).list();
             for (Object[] row : empData) {
                 //variables que retorna la consulta
                 cedula_est = Long.parseLong(row[0].toString());

@@ -106,7 +106,7 @@ public class ProcesoTutDao {
 
             tx = sesion.beginTransaction();
             Query query = sesion.createQuery("SELECT COUNT(*) FROM DetallePasantia D WHERE D.proceso.id_proceso = :id_pro ");
-            query.setLong("id_pro", 36);//fk de tb_proceso 1
+            query.setLong("id_pro", 21);//fk de tb_proceso 1
            // query.setInteger("vali", 1);
             numeroIngresoDatosBasicos=(long) query.uniqueResult();       
             tx.commit();

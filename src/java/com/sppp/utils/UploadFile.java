@@ -6,6 +6,7 @@
 package com.sppp.utils;
 
 import com.sppp.DAO.CitasDaoImp;
+import com.sppp.DAO.DatosDAO;
 import com.sppp.DAO.DetallePasantiaDAO;
 import com.sppp.DAO.PasantiaDAO;
 import com.sppp.beans.DetallePasantia;
@@ -199,7 +200,7 @@ public class UploadFile{
                 dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),4);
 
                 //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
-                dp.setValidacion(EnumEstado.validar);
+                dp.setValidacion(EnumEstado.aprobar);
                 dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
 
@@ -242,6 +243,11 @@ public class UploadFile{
             dp3.setProceso(new Proceso(14));
             dp3.setValidacion(EnumEstado.validar);
             dpDAO.insertarNuevoDetalle(dp3);
+            
+            //Se setea datos a falso de los 4 documentos a validar
+            DatosDAO dDAO = new DatosDAO();
+            dDAO.insertarFalsosValidacionPDF(dp3);
+            
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

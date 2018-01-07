@@ -42,6 +42,7 @@ private Usuario usuario = new Usuario();
   private long numerotutor;
   private long numerotutor2; 
   private long numerotutor3;
+  private long numerotutor4;
   
    private String mensajeMail;
    private String mensajeMail2;
@@ -422,6 +423,11 @@ private Usuario usuario = new Usuario();
         VisitaDAO obj=new VisitaDAO();
         numerotutor3=obj.countTut_documentacion(tutor);
         return numerotutor3;
+    }
+        public long getNumerotutor4() {
+        VisitaDAO obj=new VisitaDAO();
+        numerotutor4=obj.countRevision();
+        return numerotutor4;
     }
        
        public String updateReporte(long id_visita2){

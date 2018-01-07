@@ -30,7 +30,8 @@
                     <h:form enctype="multipart/form-data" role="form">
                          <div class="form-group">
                              <label>Descargar la carta compromiso </label><br/>
-                           <h:commandButton action="#{uploadFile.download_file(103)}" value="Descarga PDF"/>
+                             <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
+                             action="#{uploadFile.download_file(103)}" value="Descargar CC" ></h:commandLink>
                         </div>
                     </h:form>
                 </div>
@@ -45,7 +46,7 @@
                     <h:form enctype="multipart/form-data" role="form">
                         <div class="form-group">
                             <label>Subir la carta compromiso en formato .pdf hasta 2MB <i class="fa fa-file-pdf-o fa-2x"></i></label>
-                            <h:inputFile value="#{uploadFile.file}" required="true">
+                            <h:inputFile value="#{uploadFile.file}" required="true" class="btn btn-outline btn-default">
                                 <f:ajax listener="#{uploadFile.save_file(3)}"/>
                             </h:inputFile>
                         </div>

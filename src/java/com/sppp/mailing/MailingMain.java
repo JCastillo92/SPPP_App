@@ -97,7 +97,10 @@ public class MailingMain {
                 AddSubject="REVISIÓN DE DOCUMENTOS DE VALIDACIÓN";
                 contentMessage="Existe documento subido (escaneado) a la plataforma, Documentación de validación pasantías, lista para revisar y aprobar.";
                 break; 
-            
+            case 1007:
+                AddSubject="REVISIÓN CORRECCIÓN OF-CA-CC";
+                contentMessage="Existe documentos subidos a la plataforma, los cuales se enviaron a corregir al alumno, Carta de Aceptación, Oficio Empresa y Carta Compromiso, listos para revisar y aprobar.";
+                break;
                 default:
                     break;
         }

@@ -13,10 +13,8 @@ import com.sppp.beans.EnumEstado;
 import com.sppp.beans.Pasantia;
 import com.sppp.beans.Proceso;
 import com.sppp.classes.AlmacenamientoPDF;
-import com.sppp.classes.DatosFormatos;
 import com.sppp.classes.ListaDocentesAdministrativos;
 import com.sppp.classes.Paths;
-import com.sppp.classes.TablasFormatos;
 import com.sppp.mailing.MailingMain;
 import java.io.File;
 import java.io.IOException;
@@ -26,9 +24,7 @@ import javax.servlet.http.HttpSession;
 import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.ExternalContext;
@@ -277,6 +273,39 @@ public class UploadFile{
             dp3.setProceso(new Proceso(17));
             dp3.setValidacion(EnumEstado.llenar);
             dpDAO.insertarNuevoDetalle(dp3);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+                
+            case 5:
+                try {
+                //envio mail a encargado mail para que revise scan de REVISIÓN DE INICIAR PASANTÍA
+        primer_mensaje.mensajes(1007,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
+            
+                HttpSession session = SessionUtils.getSession();
+                long id;
+                id = (long) session.getAttribute("id");
+
+                p = ppDAO.findPasantia(id);
+/*
+                //Encontrar el detalle de esa pasantia cuyo proceso sea 14 (proceso actual, cursando, este va a ser actualizado)
+                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),14);
+
+                //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
+                dp.setValidacion(EnumEstado.validar);
+                dp.setEstado(false);
+                dpDAO.actualizarDetallePasantia(dp);
+
+            //Paso a agregar el nuevo proceso
+            DetallePasantia dp3 = new DetallePasantia();
+            dp3.setDescripcion("Resolucion de Proceso");
+            dp3.setEstado(true);
+            dp3.setPasantia(p);
+            dp3.setProceso(new Proceso(17));
+            dp3.setValidacion(EnumEstado.llenar);
+            dpDAO.insertarNuevoDetalle(dp3);
+*/
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

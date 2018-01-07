@@ -303,28 +303,34 @@ public class WizardDBValidacion extends WizardDB {
         productosEntregables = datosBasicos.get(21).getValor_datos();
         */
         //Zona checkbox ---- RECORDAR QUE LOS ARRAYS COMIENZAN EN CERO ----
+        
         fechaInicioHelper = datosBasicos.get(7).getValor_datos();
-        
-        /*
-        INTENTO DE CONVERTIR LA FECHA
-        try {
-
-            //DateFormat formatter = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
-            DateFormat formatter = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy");
-            System.out.println("");
-            Date date = (Date)formatter.parse(fechaInicioHelper);
-            System.out.println(date);        
-
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(date);
-            fechaInicioHelper = cal.get(Calendar.DATE) + "/" + (cal.get(Calendar.MONTH) + 1) + "/" +         cal.get(Calendar.YEAR);
-            
-        } catch (Exception e) {
-        }*/
-        
-        
         fechaFinHelper = datosBasicos.get(8).getValor_datos();
+        /*INTENTO DE CONVERTIR LA FECHA*/
+        int day;
+        int month;
+        int year;
         
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(p.getFechaInicio());
+        year = cal.get(Calendar.YEAR);
+        month = cal.get(Calendar.MONTH) + 1;
+        day = cal.get(Calendar.DAY_OF_MONTH);
+
+        //Formateo si la fecha me regresa solo 1 para que quede 01
+        String formatted = String.format("%02d", month);
+        String formatted2 = String.format("%02d", day);
+        fechaInicioHelper = year + "/" + formatted + "/" + formatted2;
+        
+        cal.setTime(p.getFechaFin());
+        year = cal.get(Calendar.YEAR);
+        month = cal.get(Calendar.MONTH) + 1;
+        day = cal.get(Calendar.DAY_OF_MONTH);
+        //Formateo si la fecha me regresa solo 1 para que quede 01
+        formatted = String.format("%02d", month);
+        formatted2 = String.format("%02d", day);
+        fechaFinHelper = year + "/" + formatted + "/" + formatted2;
+
         validar3 = datosBasicos.get(2).isEstado();
         validar4 = datosBasicos.get(3).isEstado();
         validar6 = datosBasicos.get(5).isEstado();

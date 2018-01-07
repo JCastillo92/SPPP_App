@@ -75,10 +75,10 @@ public class UsuarioDAO {
     
    
     
-    public Map<Long,String> findAllUsuariosTutores(){
+    public Map<String,Long> findAllUsuariosTutores(){
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();
-        Map<Long,String> map=new HashMap<>();
+        Map<String,Long> map=new HashMap<>();
         Transaction tx=null;    
         
         //variables a pedir
@@ -97,7 +97,7 @@ public class UsuarioDAO {
                 //variables que retorna la consulta
                 cedula_tut = Long.parseLong(row[0].toString());
                 nomapp=row[1].toString()+" "+row[2].toString();
-                map.put(cedula_tut, nomapp);
+                map.put(nomapp,cedula_tut);
             }
             tx.commit();
         }catch (Exception e) {

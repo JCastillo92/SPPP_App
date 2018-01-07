@@ -5,7 +5,6 @@
  */
 package com.sppp.beans;
 
-import com.sppp.mailing.MailingMain;
 import javax.faces.bean.ManagedBean;
 
 /**

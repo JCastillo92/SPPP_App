@@ -22,9 +22,11 @@ import com.sppp.DAO.DetallePasantiaDAO;
 import com.sppp.DAO.EmpresaDAO;
 import com.sppp.DAO.EncargadoDAO;
 import com.sppp.DAO.PasantiaDAO;
+import com.sppp.DAO.PeriodoDAO;
 import com.sppp.DAO.UsuarioDAO;
 import com.sppp.beans.Datos;
 import com.sppp.beans.DetallePasantia;
+import com.sppp.beans.DetallesDashboardTut;
 import com.sppp.beans.Empresa;
 import com.sppp.beans.Encargado;
 import com.sppp.beans.LocalTimeDate;
@@ -762,6 +764,11 @@ try{
             
            CitasDaoImp tut=new CitasDaoImp();
            tutor=tut.findTutor(cedula);
+           
+           DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
+           detallePass=dpDAO.findDetallePasantiaPorProcesoFalse(pasantia.getTipo_ppp(), pasantia.getCod_ppp(),7);
+            
+           
            TablasFormatos tabla1=new TablasFormatos();
              //VARIABLES INICIALES DEL  P D F 
                  Document documento = new Document();
@@ -1839,6 +1846,34 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
             nameppp="práctica pre profesional";
         }
         return nameppp;
+    }
+    
+    
+    public void listar(){
+    List<Object[]> estudiantes;
+        DetallesDashboardTut llamar=new DetallesDashboardTut();
+        CitasAgendadas nombre=new CitasAgendadas();
+        estudiantes=llamar.getListarCoordinador();
+        PeriodoDAO periodo= new PeriodoDAO();
+        CitasDaoImp horas=new CitasDaoImp();
+        String nombreEst,periodoac;
+        
+        for (Object[] row : estudiantes) {
+             long id=Long.parseLong(row[0].toString());
+             long horase=Long.parseLong(row[0].toString());
+            nombreEst=nombre.getNombre_completo(id);
+            periodoac=periodo.encontrarPeriodoActual1();
+            int horastotales=horas.horas(horase);
+            System.out.println("Cedula estudiante"+row[0]);
+            System.out.println("Nombre"+nombreEst);
+            System.out.println("Actividad"+giveMeNamePPP(row[1].toString()));
+            System.out.println("Fecha inicio"+row[3].toString());
+            System.out.println("Fecha fin"+row[4].toString());
+            System.out.println("Periodo"+periodoac);
+            System.out.println("Horas totales"+horastotales);
+        }
+        
+        
     }
   
 }//end of class

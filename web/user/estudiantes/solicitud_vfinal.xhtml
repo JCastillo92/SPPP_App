@@ -94,16 +94,14 @@
                                         
                                      
                                         
-                                 <div class="col-lg-12">
-                                            <h:outputLabel rendered="#{controllerBean.paso == false eq false}" value="Notificación: Correo enviado correctamente"/>
-                                           
+                                     
                                 </div>  
                                      
                                         <div class="col-lg-12">
                                         <h:dataTable class="table " var="campo" value="#{datosFormatos.getPasantia(login.user)}">
                                         <h:column>
                                     
-                                            <center> <b:commandButton class="btn btn-success" rendered="#{controllerBean.paso == false eq true}"  value="Enviar#{tablasFormatos.solicitudFinal(login.user)}"  action="#{controllerBean.sendValidacion(confirmaCita.co_coord,campo.estudiante.usuario.nombre,campo.estudiante.usuario.apellido,login.user,campo.estudiante.actividadRealizar,campo.encargado.empresa.nombre_empresa,campo.fechaInicio,campo.fechaFin)}" /> </center>
+                                            <center> <b:commandButton class="btn btn-success"   value="Enviar#{tablasFormatos.solicitudFinal(login.user)}"  action="#{controllerBean.sendValidacion(confirmaCita.co_coord,campo.estudiante.usuario.nombre,campo.estudiante.usuario.apellido,login.user,campo.estudiante.actividadRealizar,campo.encargado.empresa.nombre_empresa,campo.fechaInicio,campo.fechaFin)}" /> </center>
                                         </h:column>
                                         </h:dataTable>
                                 </div>

@@ -31,6 +31,6 @@ public interface CitasDao {
         public List<VisitaTutor> listarVisitados(long id);
    public List<VisitaTutor> listarInformeCoor();
  public List<VisitaTutor> visitadosTuto(long user);
- 
+ public int horas(long user);
     
 }

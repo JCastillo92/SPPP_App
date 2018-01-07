@@ -149,7 +149,11 @@ public class CitasAgendadas {
     }
       
              
- 
+    public void crear(){
+    AlmacenamientoPDF llamar=new AlmacenamientoPDF();
+    llamar.listar();
+    
+    }
   
     
     

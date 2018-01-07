@@ -466,5 +466,33 @@ public List<VisitaTutor> visitadosTuto(long user) {
     
     }
     
-
+public int horas(long user){
+    int horas;
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+            
+        Transaction tx = null;
+        
+        String sql = "SELECT horasPasantia FROM Estudiante WHERE cedula =:idUs";
+       int id=5;
+        try {
+            tx = sesion.beginTransaction();
+        horas =(int) sesion.createQuery(sql).setParameter("idUs", user).uniqueResult();
+            tx.commit();
+        } catch (RuntimeException e) {
+            tx.rollback();
+            throw e;
+        }finally{
+            sesion.flush();
+             sesion.close();
+         }
+        
+        return horas;
+ 
+  
+    
+    }
+    
+    
+    
 }

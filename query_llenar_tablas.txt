@@ -200,6 +200,7 @@ insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopre
 insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (63,'El nivel de información proporcionada por la institución externa fue:',true,1,6);
 insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (64,'La relación del estudiante con el tutor de la institución externa fue:',true,1,6);
 insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (65,'La relación del estudiante con el tutor de la UPS fue:',true,1,6);
+insert into tb_preguntas (id_tbpreguntas,descripcion,estado_preguntas,id_tipopregunta,id_tbformato) values (66,'observaciones',true,1,6);
 
 
 
@@ -302,6 +303,7 @@ insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values
 insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (63,'para_informeTutor7',63);
 insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (64,'para_informeTutor8',64);
 insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (65,'para_informeTutor9',65);
+insert into tb_respuesta (id_tbrespuesta,descripcion_resp,id_tbpreguntas) values (66,'para_informeTutor10',66);
 
 /*
 VACUUM FULL tb_datos;

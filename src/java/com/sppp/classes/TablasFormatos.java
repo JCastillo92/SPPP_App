@@ -5,7 +5,12 @@
  */
 package com.sppp.classes;
 
+import com.sppp.DAO.DatosTutDAO;
+import com.sppp.DAO.DetallePasantiaDAO;
+import com.sppp.DAO.PasantiaDAO;
 import com.sppp.DAO.VisitaDAO;
+import com.sppp.beans.DetallePasantia;
+import com.sppp.beans.Pasantia;
 import com.sppp.mailing.MailingMain;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -21,16 +26,15 @@ import javax.validation.constraints.NotNull;
 public class TablasFormatos implements Serializable {
 
   
-    @NotNull(message="Campo obligatorio")
-  int pregunta1;
-  int pregunta2;
-  int pregunta3;
-  int pregunta4;
-  int pregunta5;
-  int pregunta6;
-  int pregunta7;
-  int pregunta8;
-  int pregunta10;
+  String pregunta1;
+  String pregunta2;
+  String pregunta3;
+ String pregunta4;
+  String pregunta5;
+  String pregunta6;
+  String pregunta7;
+  String pregunta8;
+  String pregunta10;
 String des1;
   int hor1;
   int tec1;
@@ -54,12 +58,13 @@ String des1;
 String observaciones;
 String observacionvisita;
 String movilizacionvisita;
-int auto1;
-int auto2;
-int auto3;
-int auto4;
-int auto5;
+String auto1;
+String auto2;
+String auto3;
+String auto4;
+String auto5;
 int total;
+public Pasantia pasantia;
 
 private boolean paso=false;
 
@@ -80,49 +85,48 @@ private boolean paso=false;
     public void setPaso(boolean paso) {
         this.paso = paso;
     }
-   
-    public int getAuto1() {
+
+    public String getAuto1() {
         return auto1;
     }
 
-    public void setAuto1(int auto1) {
+    public void setAuto1(String auto1) {
         this.auto1 = auto1;
     }
 
-    public int getAuto2() {
+    public String getAuto2() {
         return auto2;
     }
 
-    public void setAuto2(int auto2) {
+    public void setAuto2(String auto2) {
         this.auto2 = auto2;
     }
 
-    public int getAuto3() {
+    public String getAuto3() {
         return auto3;
     }
 
-    public void setAuto3(int auto3) {
+    public void setAuto3(String auto3) {
         this.auto3 = auto3;
     }
 
-    public int getAuto4() {
+    public String getAuto4() {
         return auto4;
     }
 
-    public void setAuto4(int auto4) {
+    public void setAuto4(String auto4) {
         this.auto4 = auto4;
     }
 
-    public int getAuto5() {
+    public String getAuto5() {
         return auto5;
     }
 
-    public void setAuto5(int auto5) {
+    public void setAuto5(String auto5) {
         this.auto5 = auto5;
     }
-
-
-
+   
+  
 
         public String getDes2() {
         return des2;
@@ -309,88 +313,97 @@ private boolean paso=false;
         this.movilizacionvisita = movilizacionvisita;
     }
 
-    
-    public int getPregunta1() {
+    public String getPregunta1() {
         return pregunta1;
     }
 
-    public void setPregunta1(int pregunta1) {
+    public void setPregunta1(String pregunta1) {
         this.pregunta1 = pregunta1;
     }
 
-    public int getPregunta2() {
+    public String getPregunta2() {
         return pregunta2;
     }
 
-    public void setPregunta2(int pregunta2) {
+    public void setPregunta2(String pregunta2) {
         this.pregunta2 = pregunta2;
     }
 
-    public int getPregunta3() {
+    public String getPregunta3() {
         return pregunta3;
     }
 
-    public void setPregunta3(int pregunta3) {
+    public void setPregunta3(String pregunta3) {
         this.pregunta3 = pregunta3;
     }
 
-    public int getPregunta4() {
+    public String getPregunta4() {
         return pregunta4;
     }
 
-    public void setPregunta4(int pregunta4) {
+    public void setPregunta4(String pregunta4) {
         this.pregunta4 = pregunta4;
     }
 
-    public int getPregunta5() {
+    public String getPregunta5() {
         return pregunta5;
     }
 
-    public void setPregunta5(int pregunta5) {
+    public void setPregunta5(String pregunta5) {
         this.pregunta5 = pregunta5;
     }
 
-    public int getPregunta6() {
+    public String getPregunta6() {
         return pregunta6;
     }
 
-    public void setPregunta6(int pregunta6) {
+    public void setPregunta6(String pregunta6) {
         this.pregunta6 = pregunta6;
     }
 
-    public int getPregunta7() {
+    public String getPregunta7() {
         return pregunta7;
     }
 
-    public void setPregunta7(int pregunta7) {
+    public void setPregunta7(String pregunta7) {
         this.pregunta7 = pregunta7;
     }
 
-    public int getPregunta8() {
+    public String getPregunta8() {
         return pregunta8;
     }
 
-    public void setPregunta8(int pregunta8) {
+    public void setPregunta8(String pregunta8) {
         this.pregunta8 = pregunta8;
     }
 
- 
-
-    public int getPregunta10() {
+    public String getPregunta10() {
         return pregunta10;
     }
 
-    public void setPregunta10(int pregunta10) {
+    public void setPregunta10(String pregunta10) {
         this.pregunta10 = pregunta10;
     }
 
+    
+  
   
    
 
     public String informeTutor(long user){
         AlmacenamientoPDF g=new AlmacenamientoPDF();
-       g.pdf_InformeTutor(user, 200, pregunta10,pregunta1,pregunta2,pregunta3,pregunta4,pregunta5,pregunta6,pregunta7,pregunta8,observaciones);
-paso=true;
+       //g.pdf_InformeTutor(user, 200, pregunta10,pregunta1,pregunta2,pregunta3,pregunta4,pregunta5,pregunta6,pregunta7,pregunta8,observaciones);
+ PasantiaDAO passDAO=new PasantiaDAO();
+            pasantia = passDAO.findPasantia(user);
+          
+            DetallePasantia dpCargaDatos = new DetallePasantia();
+            DetallePasantiaDAO dpDAOT = new DetallePasantiaDAO();
+            dpCargaDatos = dpDAOT.findDetallePasantia(pasantia.getTipo_ppp(), pasantia.getCod_ppp());
+            
+            DatosTutDAO datos=new DatosTutDAO();
+           datos.guardarDatosInformeTut(pregunta10, pregunta1,pregunta2,pregunta3,pregunta4,pregunta5,pregunta6,pregunta7, pregunta8,observaciones ,dpCargaDatos);
+       
+       
 return "revision_windowFin";
 
     }
@@ -402,18 +415,30 @@ return "revision_windowFin";
     }
     public String autoevaluacion(long user, String correo){
       AlmacenamientoPDF g=new AlmacenamientoPDF();
-    g.pdf_autoevaluacion(user, 203, auto1, auto2, auto3, auto4, auto5);
-    paso=true;
+   // g.pdf_autoevaluacion(user, 203, auto1, auto2, auto3, auto4, auto5);
+    
+    
     MailingMain por = new MailingMain();
       por.mensajes(1005, correo,"vacio");
     VisitaDAO vi = new VisitaDAO();
     vi.documentacion_est();
-    return"revision_window";
+    
+            PasantiaDAO passDAO=new PasantiaDAO();
+            pasantia = passDAO.findPasantia(user);
+          
+            DetallePasantia dpCargaDatos = new DetallePasantia();
+            DetallePasantiaDAO dpDAOT = new DetallePasantiaDAO();
+            dpCargaDatos = dpDAOT.findDetallePasantia(pasantia.getTipo_ppp(), pasantia.getCod_ppp());
+            
+            DatosTutDAO datos=new DatosTutDAO();
+            datos.guardarDatosAutoevaluacion(auto1, auto2, auto3,auto4, auto5, dpCargaDatos);
+    return"revision_window_est";
     }
 
- public void solicitudFinal(long user){
+ public String solicitudFinal(long user){
       AlmacenamientoPDF g=new AlmacenamientoPDF();
     g.pdf_solicitudFinal(user, 204);
+    return "revision_window_est";
     }    
     public void informeRuta(long cedula_est){
       AlmacenamientoPDF crear=new AlmacenamientoPDF();
@@ -422,8 +447,6 @@ return "revision_windowFin";
     paso=true;     
     }
     
-    public void cambiarestado(){
-    paso=true;
-    }
+  
     
 }

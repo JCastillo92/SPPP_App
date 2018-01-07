@@ -37,21 +37,12 @@
                                     <i class="fa fa-info-circle fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"></div>
+                                    <div class="huge">#{controllerBean.getNumerotutor(login.user)+controllerBean.getNumerotutor2(login.user)+controllerBean.getNumerotutor3(login.user)}</div>
                                     <div class=""><h4>Procesos pendientes</h4></div>
                                     <div></div>
                                 </div>
                             </div>
                         </div>
-                        <h:form>
-                            <b:navLink outcome="agendar_cita_tut.xhtml">
-                            
-                                <div class="panel-footer">
-                                    <span class="pull-left"><u>CLICK AQUI</u></span>
-                                    <span class="pull-right"><i class="fa fa-hand-o-up"></i></span>
-                                    <div class="clearfix"></div>
-                                </div></b:navLink>
-                        </h:form>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -62,7 +53,8 @@
                                     <i class="fa fa-info-circle fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                  <div class=""><h4>Cita</h4></div>
+                                    <div class="huge">#{controllerBean.getNumerotutor(login.user)}</div>
+                                  <div class=""><h4>Visita</h4></div>
                                   
                                 </div>
                             </div>
@@ -86,13 +78,39 @@
                                     <i class="fa fa-info-circle fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class=""><h4>Validación</h4></div>
+                                     <div class="huge">#{controllerBean.getNumerotutor2(login.user)}</div>
+                                    <div class=""><h4>Validación visita</h4></div>
                                     <div></div>
                                 </div>
                             </div>
                         </div>
-                        <h:form>
-                            <b:navLink outcome="documento_tut.xhtml">
+                       <h:form>
+                            <b:navLink outcome="agendar_cita_tut.xhtml">
+                            
+                                <div class="panel-footer">
+                                    <span class="pull-left"><u>CLICK AQUI</u></span>
+                                    <span class="pull-right"><i class="fa fa-hand-o-up"></i></span>
+                                    <div class="clearfix"></div>
+                                </div></b:navLink>
+                        </h:form>
+                    </div>
+                </div>
+             <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-info-circle fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                     <div class="huge">#{controllerBean.getNumerotutor3(login.user)}</div>
+                                    <div class=""><h4>Documentación</h4></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                       <h:form>
+                            <b:navLink outcome="documentos_tut.xhtml">
                             
                                 <div class="panel-footer">
                                     <span class="pull-left"><u>CLICK AQUI</u></span>
@@ -103,6 +121,8 @@
                     </div>
                 </div>
         </div> 
+    
+        
         
         <b:tabView activeIndex="0">
             <b:tab title="Gráficas">

@@ -548,13 +548,76 @@ Session session = HibernateUtil.getSessionFactory().openSession();
         Session sesion=sf.openSession();
         Transaction tx=null;
         long numeroPPyPA=0;
-        int tut = Integer.parseInt(tutor);
+        String valor ="Agendada";
+        long tut = Long.parseLong(tutor);
          try {
             tx = sesion.beginTransaction();
             Query query = sesion.createQuery("SELECT COUNT(*) "
                     + "FROM VisitaTutor  "
-                    + "WHERE cedula_tut = :num");
-            query.setInteger("num", tut);
+                    + "WHERE estado_visita = :enviada and cedula_tut = :num" );
+            query.setParameter("num", tut);
+            query.setParameter("enviada", valor);
+            numeroPPyPA=(long) query.uniqueResult();       
+            tx.commit();
+        }catch (Exception e) {
+            e.printStackTrace();
+            numeroPPyPA=0;
+            if (tx != null){
+                tx.rollback();
+            }
+        }
+        finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+         return numeroPPyPA;
+    }
+     
+     public long countTut_visitados( String tutor){
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;
+        long numeroPPyPA=0;
+        String valor ="Visitado";
+        long tut = Long.parseLong(tutor);
+         try {
+            tx = sesion.beginTransaction();
+            Query query = sesion.createQuery("SELECT COUNT(*) "
+                    + "FROM VisitaTutor  "
+                    + "WHERE estado_visita = :enviada and cedula_tut = :num" );
+            query.setParameter("num", tut);
+            query.setParameter("enviada", valor);
+            numeroPPyPA=(long) query.uniqueResult();       
+            tx.commit();
+        }catch (Exception e) {
+            e.printStackTrace();
+            numeroPPyPA=0;
+            if (tx != null){
+                tx.rollback();
+            }
+        }
+        finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+         return numeroPPyPA;
+    }
+     public long countTut_documentacion( String tutor){
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;
+        long numeroPPyPA=0;
+        int proce =24;
+        boolean est= true;
+        long tut = Long.parseLong(tutor);
+         try {
+            tx = sesion.beginTransaction();
+            Query query = sesion.createQuery("SELECT COUNT(*) "
+                    + "FROM DetallePasantia "
+                    + "WHERE estado= :esta and id_proceso = :process and cedula_tut = :num" );
+             query.setParameter("esta", est);
+            query.setParameter("num", tut);
+            query.setParameter("process", proce);
             numeroPPyPA=(long) query.uniqueResult();       
             tx.commit();
         }catch (Exception e) {

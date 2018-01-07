@@ -408,11 +408,11 @@ return "revision_windowFin";
 
     }
     
-    public void informeSeguimientoTu(long user){
+  /*  public void informeSeguimientoTu(long user){
       AlmacenamientoPDF g=new AlmacenamientoPDF();
       g.pdf_InformeSeguimientoTutor(user, 201, des1, hor1, tec1, per1, cont1, des2, hor2, tec2, per2, cont2, des3, hor3, tec3, per3, cont3, des4, hor4, tec4, per4, cont4,total);
     paso=true;
-    }
+    }*/
     public String autoevaluacion(long user, String correo){
       AlmacenamientoPDF g=new AlmacenamientoPDF();
    // g.pdf_autoevaluacion(user, 203, auto1, auto2, auto3, auto4, auto5);
@@ -440,12 +440,12 @@ return "revision_windowFin";
     g.pdf_solicitudFinal(user, 204);
     return "revision_window_est";
     }    
-    public void informeRuta(long cedula_est){
+  /*  public void informeRuta(long cedula_est){
       AlmacenamientoPDF crear=new AlmacenamientoPDF();
    
    crear.pdf_hojaRuta(cedula_est,202,observacionvisita,movilizacionvisita);
     paso=true;     
-    }
+    }*/
     
   
     

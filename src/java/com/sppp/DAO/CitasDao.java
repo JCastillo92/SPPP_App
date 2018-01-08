@@ -22,6 +22,7 @@ public interface CitasDao {
      public List<Pasantia> listar(long user);
      
      public String obtenerNombre(long id);
+     public long obtenercedulaTut(long id);
      public String obtenerApellido(long id);
      public String obtenerCorreo(long id);
      public String obtenerTelefono(long id);

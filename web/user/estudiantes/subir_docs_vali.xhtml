@@ -33,7 +33,7 @@
                         <div class="form-group">
                             <label>Vuelva a subir el formato de autovaluacion en formato .pdf hasta 2MB<i class="fa fa-file-pdf-o fa-2x"></i></label>
                             
-                            <h:inputFile value="#{uploadFile.file}" required="true">
+                            <h:inputFile value="#{uploadFile.file}" required="true" class="btn btn-outline btn-default">
                                 <f:ajax listener="#{uploadFile.save_file_tut(4,login.user)}"/>
                                 
                             </h:inputFile>
@@ -42,14 +42,14 @@
                         
                         <div class="form-group">                           
                            <label>Vuelva a subir el certificado de culminaciòn la actividad en formato .pdf hasta 2MB <i class="fa fa-file-pdf-o fa-2x"></i></label>
-                            <h:inputFile value="#{uploadFile.file}" required="true">
+                           <h:inputFile value="#{uploadFile.file}" required="true" class="btn btn-outline btn-default">
                             <f:ajax listener="#{uploadFile.save_file_tut(5,login.user)}"/>
                             </h:inputFile>
                         </div>
                         
                          <div class="form-group">
                             <label>Vuelva a subir el derecho de validación en formato .pdf hasta 2MB<i class="fa fa-file-pdf-o fa-2x"></i></label>
-                            <h:inputFile value="#{uploadFile.file}" required="true">
+                            <h:inputFile value="#{uploadFile.file}" required="true" class="btn btn-outline btn-default">
                             <f:ajax listener="#{uploadFile.save_file_tut(6,login.user)}"/>
                             </h:inputFile>
                         </div>

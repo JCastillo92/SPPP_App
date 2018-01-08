@@ -45,15 +45,15 @@
 
                             <label>Carta de Aceptaci&oacute;n Empresa </label>
                             &nbsp; <h:commandLink class="btn btn-outline btn-primary" value="Descarga CA-E" target="_blank" 
-                            action="#{uploadFile.download_file_gest(2,wizardPDFValidacion.id_estudiante)}" ></h:commandLink>
+                            action="#{uploadFile.download_file_gest(2,pdfValidacion.id_estudiante)}" ></h:commandLink>
                             &nbsp;<h:selectBooleanCheckbox value="#{pdfValidacion.archivo2}" />
                             <label>Carta Compromiso Empresa </label>
                             <h:commandLink class="btn btn-outline btn-primary" value="Descarga CO-E" target="_blank" 
-                                           action="#{uploadFile.download_file_gest(3,wizardPDFValidacion.id_estudiante)}" ></h:commandLink>
+                                           action="#{uploadFile.download_file_gest(3,pdfValidacion.id_estudiante)}" ></h:commandLink>
                             &nbsp;<h:selectBooleanCheckbox value="#{pdfValidacion.archivo3}" />
                             <label>Solitud Inicio / Resoluci&oacute;n </label>
                             <h:commandLink class="btn btn-outline btn-primary" value="Descarga SR-E" target="_blank" 
-                                           action="#{uploadFile.download_file_gest(4,wizardPDFValidacion.id_estudiante)}" ></h:commandLink>
+                                           action="#{uploadFile.download_file_gest(4,pdfValidacion.id_estudiante)}" ></h:commandLink>
                             &nbsp;<h:selectBooleanCheckbox value="#{pdfValidacion.archivo4}" />
                         </h:panelGrid>
                         <b:inputTextarea label="Observaci&oacute;n" value="#{pdfValidacion.observacion}"/>

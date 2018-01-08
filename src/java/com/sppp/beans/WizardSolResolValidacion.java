@@ -116,7 +116,7 @@ int id_estudiante;
            try {
         PasantiaDAO passDAO = new PasantiaDAO();
          VisitaDAO vi = new VisitaDAO();
-      
+
        
          String agregaUnaObservacion="vacio";
          if(!cod_resolucion.equals("")){
@@ -126,6 +126,7 @@ int id_estudiante;
          }
         pasantia.setCod_resolucion_consejo(cod_resolucion);
         passDAO.actualizarPasantia(pasantia);
+
          vi.confirmacion(est,tutor);//llamada de JJ a BK (union de tesis)
         } catch (Exception e) {
                     e.printStackTrace();

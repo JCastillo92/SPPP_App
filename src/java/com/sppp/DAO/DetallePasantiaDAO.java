@@ -142,9 +142,9 @@ public class DetallePasantiaDAO {
             todosDetIngDatBas = query.list();
             tx.commit();
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            if (tx != null){
+            if (tx != null) {
                 tx.rollback();
             }
         } finally {
@@ -166,9 +166,9 @@ public class DetallePasantiaDAO {
             query.setInteger("num", 1);
             todosDetPasCC = query.list();
             tx.commit();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            if (tx != null){
+            if (tx != null) {
 
                 tx.rollback();
             }
@@ -179,12 +179,12 @@ public class DetallePasantiaDAO {
         return todosDetPasCC;
     }
 
-       public List<DetallePasantia> findAllInicioActividades(){
+    public List<DetallePasantia> findAllInicioActividades() {
         List<DetallePasantia> todosDetPasCC = new LinkedList<>();
-        SessionFactory sf=HibernateUtil.getSessionFactory();
-        Session sesion=sf.openSession();
-        Transaction tx=null;    
-         try {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction tx = null;
+        try {
             tx = sesion.beginTransaction();
             Query query = sesion.createQuery("FROM DetallePasantia D WHERE D.proceso.id_proceso = :proc "
                     + "AND D.validacion = :num "
@@ -192,26 +192,26 @@ public class DetallePasantiaDAO {
             query.setLong("proc", 14);
             query.setInteger("num", 1);
             query.setBoolean("verdad", true);
-            todosDetPasCC= query.list();       
+            todosDetPasCC = query.list();
             tx.commit();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            if (tx != null){
+            if (tx != null) {
                 tx.rollback();
             }
-        }finally{
+        } finally {
             //para cerrar seesion
             sesion.close();
         }
         return todosDetPasCC;
     }
-      
-   public long countIngresoDatosBasicos(){
-        SessionFactory sf=HibernateUtil.getSessionFactory();
-        Session sesion=sf.openSession();
-        Transaction tx=null;
-        long numeroIngresoDatosBasicos=0;
-         try {
+
+    public long countIngresoDatosBasicos() {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction tx = null;
+        long numeroIngresoDatosBasicos = 0;
+        try {
 
             tx = sesion.beginTransaction();
             Query query = sesion.createQuery("SELECT COUNT(*) FROM DetallePasantia D WHERE D.proceso.id_proceso = :id_pro "
@@ -220,12 +220,12 @@ public class DetallePasantiaDAO {
             query.setLong("id_pro", 1);//fk de tb_proceso 1
             query.setInteger("vali", 1);
             query.setBoolean("verdad", true);
-            numeroIngresoDatosBasicos=(long) query.uniqueResult();       
+            numeroIngresoDatosBasicos = (long) query.uniqueResult();
             tx.commit();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            numeroIngresoDatosBasicos=0;
-            if (tx != null){
+            numeroIngresoDatosBasicos = 0;
+            if (tx != null) {
                 tx.rollback();
             }
         } finally {
@@ -235,13 +235,12 @@ public class DetallePasantiaDAO {
         return numeroIngresoDatosBasicos;
     }
 
- 
-    public long countIngresoCartaCompromiso(){
-        SessionFactory sf=HibernateUtil.getSessionFactory();
-        Session sesion=sf.openSession();
-        Transaction tx=null;
-        long numeroCartasCompromiso=0;
-         try {
+    public long countIngresoCartaCompromiso() {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction tx = null;
+        long numeroCartasCompromiso = 0;
+        try {
 
             tx = sesion.beginTransaction();
             Query query = sesion.createQuery("SELECT COUNT(*) FROM DetallePasantia D WHERE D.proceso.id_proceso = :id_pro "
@@ -250,12 +249,12 @@ public class DetallePasantiaDAO {
             query.setLong("id_pro", 7);//fk de tb_proceso 7
             query.setInteger("vali", 1);
             query.setBoolean("verdad", true);
-            numeroCartasCompromiso=(long) query.uniqueResult();    
+            numeroCartasCompromiso = (long) query.uniqueResult();
             tx.commit();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            numeroCartasCompromiso=0;
-            if (tx != null){
+            numeroCartasCompromiso = 0;
+            if (tx != null) {
 
                 tx.rollback();
             }
@@ -266,12 +265,12 @@ public class DetallePasantiaDAO {
         return numeroCartasCompromiso;
     }
 
-        public long countIngresoInicioActividad(){
-        SessionFactory sf=HibernateUtil.getSessionFactory();
-        Session sesion=sf.openSession();
-        Transaction tx=null;
-        long numeroInicioActividades=0;
-         try {
+    public long countIngresoInicioActividad() {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction tx = null;
+        long numeroInicioActividades = 0;
+        try {
 
             tx = sesion.beginTransaction();
             Query query = sesion.createQuery("SELECT COUNT(*) FROM DetallePasantia D WHERE D.proceso.id_proceso = :id_pro "
@@ -280,13 +279,13 @@ public class DetallePasantiaDAO {
             query.setLong("id_pro", 16);//fk de tb_proceso 16
             query.setInteger("vali", 1);
             query.setBoolean("verdad", true);
-            numeroInicioActividades=(long) query.uniqueResult();       
+            numeroInicioActividades = (long) query.uniqueResult();
 
             tx.commit();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            numeroInicioActividades=0;
-            if (tx != null){
+            numeroInicioActividades = 0;
+            if (tx != null) {
                 tx.rollback();
             }
         } finally {
@@ -296,9 +295,8 @@ public class DetallePasantiaDAO {
         return numeroInicioActividades;
     }
 
-    
-    public void actualizarDetallePasantia(DetallePasantia dp){
-        
+    public void actualizarDetallePasantia(DetallePasantia dp) {
+
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session sesion = sf.openSession();
         Transaction tx = null;
@@ -315,11 +313,11 @@ public class DetallePasantiaDAO {
             //para cerrar seesion
             sesion.close();
         }
-   
+
     }
-    
-    public void insertarNuevoDetalle(DetallePasantia dp){
-        
+
+    public void insertarNuevoDetalle(DetallePasantia dp) {
+
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session sesion = sf.openSession();
         Transaction tx = null;
@@ -328,7 +326,7 @@ public class DetallePasantiaDAO {
             sesion.save(dp);
             tx.commit();
         } catch (Exception e) {
-            
+
             if (tx != null) {
                 tx.rollback();
             }
@@ -336,9 +334,9 @@ public class DetallePasantiaDAO {
             //para cerrar seesion
             sesion.close();
         }
-        
+
     }
-    
+
     public DetallePasantia findDetallePasantiaPorProceso(String tipo_ppp, int cod_ppp, int tipoProceso) {
         DetallePasantia detallePas = new DetallePasantia();
         SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -365,10 +363,8 @@ public class DetallePasantiaDAO {
         }
         return detallePas;
     }
-    
-    
-    
-public DetallePasantia findDetallePasantiaPorProcesoFalse(String tipo_ppp, int cod_ppp, int tipoProceso) {
+
+    public DetallePasantia findDetallePasantiaPorProcesoFalse(String tipo_ppp, int cod_ppp, int tipoProceso) {
         DetallePasantia detallePas = new DetallePasantia();
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session sesion = sf.openSession();
@@ -395,210 +391,203 @@ public DetallePasantia findDetallePasantiaPorProcesoFalse(String tipo_ppp, int c
         return detallePas;
     }
 
+    public List<Object[]> findAllDetallePasantiaconCIAllTrue() {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction tx = null;
 
-
-        public List<Object[]> findAllDetallePasantiaconCIAllTrue(){
-        SessionFactory sf=HibernateUtil.getSessionFactory();
-        Session sesion=sf.openSession();
-        Transaction tx=null;    
-        
         //variables a pedir
-        long cedula_est=0;
-        int cod_ppp=0,iddetallepasantia=0;
-        String tipo_ppp="",descripcion="";
-        List<Object[]> empData=null;
-         try {
+        long cedula_est = 0;
+        int cod_ppp = 0, iddetallepasantia = 0;
+        String tipo_ppp = "", descripcion = "";
+        List<Object[]> empData = null;
+        try {
             tx = sesion.beginTransaction();
-            SQLQuery query = sesion.createSQLQuery("select tb_pasantia.cedula, tb_detalle_pasantia.tipo_ppp, tb_detalle_pasantia.cod_ppp, tb_detalle_pasantia.iddetallepasantia, tb_detalle_pasantia.descripcion, tb_detalle_pasantia.id_proceso \n" +
-"from tb_pasantia, tb_detalle_pasantia \n" +
-"where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n" +
-"and tb_detalle_pasantia.estado=true \n"
-+ "and tb_detalle_pasantia.validacion=1;");
+            SQLQuery query = sesion.createSQLQuery("select tb_pasantia.cedula, tb_detalle_pasantia.tipo_ppp, tb_detalle_pasantia.cod_ppp, tb_detalle_pasantia.iddetallepasantia, tb_detalle_pasantia.descripcion, tb_detalle_pasantia.id_proceso \n"
+                    + "from tb_pasantia, tb_detalle_pasantia \n"
+                    + "where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n"
+                    + "and tb_detalle_pasantia.estado=true \n"
+                    + "and tb_detalle_pasantia.validacion=1;");
 
-                empData = query.list();
+            empData = query.list();
             for (Object[] row : empData) {
                 //variables que retorna la consulta
                 cedula_est = Long.parseLong(row[0].toString());
-                tipo_ppp=row[1].toString();
+                tipo_ppp = row[1].toString();
                 cod_ppp = Integer.parseInt(row[2].toString());
-                iddetallepasantia=Integer.parseInt(row[3].toString());
-                descripcion=row[4].toString();
+                iddetallepasantia = Integer.parseInt(row[3].toString());
+                descripcion = row[4].toString();
             }
             tx.commit();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            if (tx != null){
+            if (tx != null) {
                 tx.rollback();
             }
-        }finally{
+        } finally {
             //para cerrar seesion
             sesion.close();
         }
         return empData;
     }
-        
-        public List<Object[]> findAllDetallePasantiaconCIValidaInicioProceso(){
-        SessionFactory sf=HibernateUtil.getSessionFactory();
-        Session sesion=sf.openSession();
-        Transaction tx=null;    
-        //variables a pedir
-        long cedula_est=0;
-        int cod_ppp=0,iddetallepasantia=0;
-        String tipo_ppp="",descripcion="";
-        List<Object[]> empData=null;
-         try {
-            tx = sesion.beginTransaction();
-            SQLQuery query = sesion.createSQLQuery("select tb_pasantia.cedula, tb_detalle_pasantia.tipo_ppp, tb_detalle_pasantia.cod_ppp, tb_detalle_pasantia.iddetallepasantia, tb_detalle_pasantia.descripcion, tb_detalle_pasantia.id_proceso \n" +
-"from tb_pasantia, tb_detalle_pasantia \n" +
-"where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n" +
-"and tb_detalle_pasantia.estado=true \n"
-+ "and tb_detalle_pasantia.id_proceso=1 \n"
-+ "and tb_detalle_pasantia.validacion=1;");
 
-                empData = query.list();
+    public List<Object[]> findAllDetallePasantiaconCIValidaInicioProceso() {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction tx = null;
+        //variables a pedir
+        long cedula_est = 0;
+        int cod_ppp = 0, iddetallepasantia = 0;
+        String tipo_ppp = "", descripcion = "";
+        List<Object[]> empData = null;
+        try {
+            tx = sesion.beginTransaction();
+            SQLQuery query = sesion.createSQLQuery("select tb_pasantia.cedula, tb_detalle_pasantia.tipo_ppp, tb_detalle_pasantia.cod_ppp, tb_detalle_pasantia.iddetallepasantia, tb_detalle_pasantia.descripcion, tb_detalle_pasantia.id_proceso \n"
+                    + "from tb_pasantia, tb_detalle_pasantia \n"
+                    + "where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n"
+                    + "and tb_detalle_pasantia.estado=true \n"
+                    + "and tb_detalle_pasantia.id_proceso=1 \n"
+                    + "and tb_detalle_pasantia.validacion=1;");
+
+            empData = query.list();
             for (Object[] row : empData) {
                 //variables que retorna la consulta
                 cedula_est = Long.parseLong(row[0].toString());
-                tipo_ppp=row[1].toString();
+                tipo_ppp = row[1].toString();
                 cod_ppp = Integer.parseInt(row[2].toString());
-                iddetallepasantia=Integer.parseInt(row[3].toString());
-                descripcion=row[4].toString();
-            }     
+                iddetallepasantia = Integer.parseInt(row[3].toString());
+                descripcion = row[4].toString();
+            }
             tx.commit();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            if (tx != null){
+            if (tx != null) {
                 tx.rollback();
             }
-        }finally{
+        } finally {
             //para cerrar seesion
             sesion.close();
         }
         return empData;
     }
-        
-        
-        
-        
-        
-        
-           public List<Object[]> findAllDetallePasantiaconCIValidaCartaCompromiso(){
-        SessionFactory sf=HibernateUtil.getSessionFactory();
-        Session sesion=sf.openSession();
-        Transaction tx=null;    
-        
-        //variables a pedir
-        long cedula_est=0;
-        int cod_ppp=0,iddetallepasantia=0;
-        String tipo_ppp="",descripcion="";
-        List<Object[]> empData=null;
-         try {
-            tx = sesion.beginTransaction();
-            SQLQuery query = sesion.createSQLQuery("select tb_pasantia.cedula, tb_detalle_pasantia.tipo_ppp, tb_detalle_pasantia.cod_ppp, tb_detalle_pasantia.iddetallepasantia, tb_detalle_pasantia.descripcion, tb_detalle_pasantia.id_proceso \n" +
-"from tb_pasantia, tb_detalle_pasantia \n" +
-"where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n" +
-"and tb_detalle_pasantia.estado=true \n"
-+ "and tb_detalle_pasantia.id_proceso=7 \n"
-+ "and tb_detalle_pasantia.validacion=1;");
 
-                empData = query.list();
+    public List<Object[]> findAllDetallePasantiaconCIValidaCartaCompromiso() {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction tx = null;
+
+        //variables a pedir
+        long cedula_est = 0;
+        int cod_ppp = 0, iddetallepasantia = 0;
+        String tipo_ppp = "", descripcion = "";
+        List<Object[]> empData = null;
+        try {
+            tx = sesion.beginTransaction();
+            SQLQuery query = sesion.createSQLQuery("select tb_pasantia.cedula, tb_detalle_pasantia.tipo_ppp, tb_detalle_pasantia.cod_ppp, tb_detalle_pasantia.iddetallepasantia, tb_detalle_pasantia.descripcion, tb_detalle_pasantia.id_proceso \n"
+                    + "from tb_pasantia, tb_detalle_pasantia \n"
+                    + "where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n"
+                    + "and tb_detalle_pasantia.estado=true \n"
+                    + "and tb_detalle_pasantia.id_proceso=7 \n"
+                    + "and tb_detalle_pasantia.validacion=1;");
+
+            empData = query.list();
             for (Object[] row : empData) {
                 //variables que retorna la consulta
                 cedula_est = Long.parseLong(row[0].toString());
-                tipo_ppp=row[1].toString();
+                tipo_ppp = row[1].toString();
                 cod_ppp = Integer.parseInt(row[2].toString());
-                iddetallepasantia=Integer.parseInt(row[3].toString());
-                descripcion=row[4].toString();
-            }               
+                iddetallepasantia = Integer.parseInt(row[3].toString());
+                descripcion = row[4].toString();
+            }
             tx.commit();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            if (tx != null){
+            if (tx != null) {
                 tx.rollback();
             }
-        }finally{
+        } finally {
             //para cerrar seesion
             sesion.close();
         }
         return empData;
     }
-           
-           public List<Object[]> findAllDetallePasantiaconCIValidaPDFs(){
-        SessionFactory sf=HibernateUtil.getSessionFactory();
-        Session sesion=sf.openSession();
-        Transaction tx=null;    
-        
-        //variables a pedir
-        long cedula_est=0;
-        int cod_ppp=0,iddetallepasantia=0;
-        String tipo_ppp="",descripcion="";
-        List<Object[]> empData=null;
-         try {
-            tx = sesion.beginTransaction();
-            SQLQuery query = sesion.createSQLQuery("select tb_pasantia.cedula, tb_detalle_pasantia.tipo_ppp, tb_detalle_pasantia.cod_ppp, tb_detalle_pasantia.iddetallepasantia, tb_detalle_pasantia.descripcion, tb_detalle_pasantia.id_proceso \n" +
-"from tb_pasantia, tb_detalle_pasantia \n" +
-"where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n" +
-"and tb_detalle_pasantia.estado=true \n"
-+ "and tb_detalle_pasantia.id_proceso=14 \n"
-+ "and tb_detalle_pasantia.validacion=1;");
 
-                empData = query.list();
+    public List<Object[]> findAllDetallePasantiaconCIValidaPDFs() {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction tx = null;
+
+        //variables a pedir
+        long cedula_est = 0;
+        int cod_ppp = 0, iddetallepasantia = 0;
+        String tipo_ppp = "", descripcion = "";
+        List<Object[]> empData = null;
+        try {
+            tx = sesion.beginTransaction();
+            SQLQuery query = sesion.createSQLQuery("select tb_pasantia.cedula, tb_detalle_pasantia.tipo_ppp, tb_detalle_pasantia.cod_ppp, tb_detalle_pasantia.iddetallepasantia, tb_detalle_pasantia.descripcion, tb_detalle_pasantia.id_proceso \n"
+                    + "from tb_pasantia, tb_detalle_pasantia \n"
+                    + "where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n"
+                    + "and tb_detalle_pasantia.estado=true \n"
+                    + "and tb_detalle_pasantia.id_proceso=14 \n"
+                    + "and tb_detalle_pasantia.validacion=1;");
+
+            empData = query.list();
             for (Object[] row : empData) {
                 //variables que retorna la consulta
                 cedula_est = Long.parseLong(row[0].toString());
-                tipo_ppp=row[1].toString();
+                tipo_ppp = row[1].toString();
                 cod_ppp = Integer.parseInt(row[2].toString());
-                iddetallepasantia=Integer.parseInt(row[3].toString());
-                descripcion=row[4].toString();
-            }               
+                iddetallepasantia = Integer.parseInt(row[3].toString());
+                descripcion = row[4].toString();
+            }
             tx.commit();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            if (tx != null){
+            if (tx != null) {
                 tx.rollback();
             }
-        }finally{
+        } finally {
             //para cerrar seesion
             sesion.close();
         }
         return empData;
     }
-           
-           public List<Object[]> findAllDetallePasantiaconCIValidaSolicitudResolucion(){
-        SessionFactory sf=HibernateUtil.getSessionFactory();
-        Session sesion=sf.openSession();
-        Transaction tx=null;    
-        
-        //variables a pedir
-        long cedula_est=0;
-        int cod_ppp=0,iddetallepasantia=0;
-        String tipo_ppp="",descripcion="";
-        List<Object[]> empData=null;
-         try {
-            tx = sesion.beginTransaction();
-            SQLQuery query = sesion.createSQLQuery("select tb_pasantia.cedula, tb_detalle_pasantia.tipo_ppp, tb_detalle_pasantia.cod_ppp, tb_detalle_pasantia.iddetallepasantia, tb_detalle_pasantia.descripcion, tb_detalle_pasantia.id_proceso \n" +
-"from tb_pasantia, tb_detalle_pasantia \n" +
-"where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n" +
-"and tb_detalle_pasantia.estado=true \n"
-+ "and tb_detalle_pasantia.id_proceso=16 \n"
-+ "and tb_detalle_pasantia.validacion=1;");
 
-                empData = query.list();
+    public List<Object[]> findAllDetallePasantiaconCIValidaSolicitudResolucion() {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction tx = null;
+
+        //variables a pedir
+        long cedula_est = 0;
+        int cod_ppp = 0, iddetallepasantia = 0;
+        String tipo_ppp = "", descripcion = "";
+        List<Object[]> empData = null;
+        try {
+            tx = sesion.beginTransaction();
+            SQLQuery query = sesion.createSQLQuery("select tb_pasantia.cedula, tb_detalle_pasantia.tipo_ppp, tb_detalle_pasantia.cod_ppp, tb_detalle_pasantia.iddetallepasantia, tb_detalle_pasantia.descripcion, tb_detalle_pasantia.id_proceso \n"
+                    + "from tb_pasantia, tb_detalle_pasantia \n"
+                    + "where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n"
+                    + "and tb_detalle_pasantia.estado=true \n"
+                    + "and tb_detalle_pasantia.id_proceso=16 \n"
+                    + "and tb_detalle_pasantia.validacion=1;");
+
+            empData = query.list();
             for (Object[] row : empData) {
                 //variables que retorna la consulta
                 cedula_est = Long.parseLong(row[0].toString());
-                tipo_ppp=row[1].toString();
+                tipo_ppp = row[1].toString();
                 cod_ppp = Integer.parseInt(row[2].toString());
-                iddetallepasantia=Integer.parseInt(row[3].toString());
-                descripcion=row[4].toString();
-            }               
+                iddetallepasantia = Integer.parseInt(row[3].toString());
+                descripcion = row[4].toString();
+            }
             tx.commit();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            if (tx != null){
+            if (tx != null) {
                 tx.rollback();
             }
-        }finally{
+        } finally {
             //para cerrar seesion
             sesion.close();
         }
@@ -641,4 +630,30 @@ public DetallePasantia findDetallePasantiaPorProcesoFalse(String tipo_ppp, int c
         }
         return numeroValidaPDFs;
     }      
+    
+    public List<DetallePasantia> findAll(String tipo_ppp, int cod_ppp) {
+        List<DetallePasantia> lista = new LinkedList<>();
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = sesion.beginTransaction();
+            Query query = sesion.createQuery(" from DetallePasantia WHERE tipo_ppp = :tipo_ppp AND cod_ppp = :cod_ppp");
+            query.setString("tipo_ppp", tipo_ppp);//PA PP
+            query.setInteger("cod_ppp", cod_ppp);//1 9
+            lista = query.list();
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            //para cerrar seesion
+            sesion.close();
+        }
+        return lista;
+    }
+
 }//end fo class

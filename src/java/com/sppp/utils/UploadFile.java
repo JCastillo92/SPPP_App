@@ -177,6 +177,7 @@ public class UploadFile{
         
         
         public String enviar_arch_msj(int button_action){
+            String retorno="revision_window";
           //aqui envio el email al docente encargado de acorde a la accion dada.
         MailingMain primer_mensaje=new MailingMain();
         ListaDocentesAdministrativos corrreo_De=new ListaDocentesAdministrativos();
@@ -189,7 +190,7 @@ public class UploadFile{
             case 2:
                 try {
                     //envio mail a encargado mail para que revise scan de REVISIÓN DE OFICIO Y CARTA DE ACEPTACIÓN 
-        primer_mensaje.mensajes(1002,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
+        //primer_mensaje.mensajes(1002,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
             
                 HttpSession session = SessionUtils.getSession();
                 long id;
@@ -213,6 +214,7 @@ public class UploadFile{
             dp3.setProceso(new Proceso(7));
             dp3.setValidacion(EnumEstado.llenar);
             dpDAO.insertarNuevoDetalle(dp3);
+            retorno="dashboard_est";
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -291,7 +293,7 @@ public class UploadFile{
             default:
                 break;
         }
-            return "revision_window";
+            return retorno;
         }
         
          public void download_file_tut(int opcion,long user,long cedula_tut) {///aqui recibir nombre de archivo 103.pdf

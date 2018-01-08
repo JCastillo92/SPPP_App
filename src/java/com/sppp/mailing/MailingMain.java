@@ -38,11 +38,12 @@ public class MailingMain {
             case 2:
                 AddSubject="APROBACIÓN DE DOCUMENTACIÓN E INFORMACIÓN";
                 contentMessage="Estimada/o estudiante, se ha revisado sus últimos cambios realizados en el "+ponnombreAPP+" "
-                        + "Dicha información ha sido aprobada. "+poningreso+" "+pondespedida;
+                        + "Dicha información ha sido APROBADA. "+poningreso+" "+pondespedida;
                 break;
             case 3:
-                AddSubject="";
-                contentMessage="";
+                AddSubject="APROBACIÓN INICIO PASANTÍA / PRÁCTICA";
+                contentMessage="Estimada/o estudiante, en Consejo de Carrera se ha revisado sus últimos cambios realizados en el "+ponnombreAPP+" "
+                        + "Dicha información ha sido APROBADA. "+poningreso+" "+pondespedida;
                 break;
             case 4:
                 AddSubject="";

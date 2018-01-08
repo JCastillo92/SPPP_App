@@ -511,7 +511,7 @@ public class AlmacenamientoPDF{
       // C U  E R  P O   DE  D O C U M E N T O 
       Paragraph cuerpo=new Paragraph("Reciba un cordial saludo de quienes conformamos la "
               + "Carrera de Ingeniería de Sistemas de la Universidad Politécnica Salesiana. "
-              + "El motivo de la presente tiene como finalidad solicitar a usted, se dé facilidad para efectuar "+giveMeNamePPP(pasantia.getTipo_ppp())+", "
+              + "El motivo de la presente tiene como finalidad solicitar a usted, se dé facilidad para efectuar la "+giveMeNamePPP(pasantia.getTipo_ppp())+", "
                       + "en el área de sistemas de la prestigiosa institución a su digno cargo; al señor: "+usuario.getNombre()+" "+usuario.getApellido()+" con "
                               + "documento de identificación N° "+usuario.getEstudiante().getCedula()+", estudiante de "+usuario.getEstudiante().getUltimoNivel()+" "
                                       + "semestre de la Carrera de Ingeniería de Sistemas.",estexto);

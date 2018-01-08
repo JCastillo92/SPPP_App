@@ -222,7 +222,7 @@ public class UploadFile{
             case 3:
          try {
                 //envio mail a encargado mail para que revise scan de 4 PDFs
-        //primer_mensaje.mensajes(1004,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");  
+        primer_mensaje.mensajes(1004,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
             
                 HttpSession session = SessionUtils.getSession();
                 long id;
@@ -257,8 +257,8 @@ public class UploadFile{
                 break;
             case 4:
         try {
-                //envio mail a encargado mail para que revise scan de REVISIÓN DE INICIAR PASANTÍA
-        primer_mensaje.mensajes(1004,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
+                //envio mail a encargado mail para que revise scan de SOLICITUD DE RESOLUCION
+        
             
                 HttpSession session = SessionUtils.getSession();
                 long id;

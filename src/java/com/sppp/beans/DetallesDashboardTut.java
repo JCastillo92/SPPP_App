@@ -27,7 +27,8 @@ public class DetallesDashboardTut {
       List<Object[]> vista=null;
       List<Object[]> documento=null;
       List<Object[]> listarCoordinador=null;
-      
+      String periodo;
+      int horas;
 
     public List<Object[]> getListarcita() {
         return listarcita;
@@ -74,17 +75,27 @@ public class DetallesDashboardTut {
         nombre=llamar.giveMeNamePPP(n);
         return nombre;
     }
-   public String periodo(){
-String periodo;
-       PeriodoDAO llamar=new PeriodoDAO();
+
+ 
+
+    public String getPeriodo() {
+               PeriodoDAO llamar=new PeriodoDAO();
   periodo= llamar.encontrarPeriodoActual1();
-   return periodo;
-   }
-    public int hors(long user){
-        int horas;
-        CitasDaoImp llamar=new CitasDaoImp();
+
+        return periodo;
+    }
+
+    public int getHoras(long user) {
+            CitasDaoImp llamar=new CitasDaoImp();
         horas=llamar.horas(user);
+    
         return horas;
     }
+
+    public DetallesDashboardTut() {
+        this.periodo = periodo;
+        this.horas = horas;
+    }
+
     
 }

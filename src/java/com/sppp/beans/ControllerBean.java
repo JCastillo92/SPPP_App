@@ -519,7 +519,7 @@ public String sendValidacion(String correo,String nombre,String apellido,String 
       
       VisitaDAO visitaDAO = new VisitaDAO();
       visitaDAO.validacionDocs();
-     return"revision_window"; 
+     return"revision_window_est"; 
  }
 
 
@@ -640,5 +640,15 @@ public String sendValidacion(String correo,String nombre,String apellido,String 
         
         }
   
+  public String reporte_coor(){
   
+  
+  return "review_window";
+  }
+  
+  public String doc_coor(){
+  
+  
+  return "review_window";
+  } 
 }

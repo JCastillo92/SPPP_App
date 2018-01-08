@@ -20,6 +20,13 @@ public class DashboardGestBean {
     private long numeroPPyPA;
     private long numeroIngresoDatosBasicos;
     private long numeroIngresoCartaCompromiso;
+    private long numeroDetallePasantiaconCIValidaPDFs;
+
+    public long getNumeroDetallePasantiaconCIValidaPDFs() {
+        DetallePasantiaDAO obj=new DetallePasantiaDAO();
+        numeroDetallePasantiaconCIValidaPDFs=obj.countAllDetallePasantiaconCIValidaPDFs();
+        return numeroDetallePasantiaconCIValidaPDFs;
+    }
 
     public long getNumeroIngresoCartaCompromiso() {
         DetallePasantiaDAO obj=new DetallePasantiaDAO();

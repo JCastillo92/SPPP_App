@@ -32,7 +32,7 @@
                          <div class="form-group">
                              <label>Formato autoevaluacion </label><br/>
                               <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
-                             action="#{uploadFile.download_file(203)}" value="Descarga" ></h:commandLink>
+                             action="#{uploadFile.download_file_est(203)}" value="Descarga" ></h:commandLink>
                         </div>
                     </h:form>
                 </div>
@@ -48,7 +48,7 @@
                         <div class="form-group">
                             <label>Formato de autovaluación<i class="fa fa-file-pdf-o fa-2x"></i></label>
                             
-                            <h:inputFile value="#{uploadFile.file}" required="true">
+                            <h:inputFile value="#{uploadFile.file}" required="true" class="btn btn-outline btn-default">
                                 <f:ajax listener="#{uploadFile.save_file_tut(4,login.user)}"/>
                                 
                             </h:inputFile>
@@ -57,19 +57,23 @@
                         
                         <div class="form-group">
                             <label>Certificado de culminación la actividad <i class="fa fa-file-pdf-o fa-2x"></i></label>
-                            <h:inputFile value="#{uploadFile.file}" required="true">
+                            <h:inputFile value="#{uploadFile.file}" required="true" class="btn btn-outline btn-default">
                             <f:ajax listener="#{uploadFile.save_file_tut(5,login.user)}"/>
                             </h:inputFile>
                         </div>
                         <div class="form-group">
+
                             <label>Derecho de validación<i class="fa fa-file-pdf-o fa-2x"></i></label>
-                            <h:inputFile value="#{uploadFile.file}" required="true">
+                             <h:inputFile value="#{uploadFile.file}" required="true" class="btn btn-outline btn-default">
                             <f:ajax listener="#{uploadFile.save_file_tut(6,login.user)}"/>
                             </h:inputFile>
                         </div>
-                    </h:form>
-                    <h:form> 
-                        <center> <h:commandButton class="btn btn-success" action="#{controllerBean.cargarArchivos(confirmaCita.co_coord)}" value="Enviar" /></center>
+                   
+                        <center> 
+                         <h:commandLink class="btn btn-success"  action="#{controllerBean.cargarArchivos(confirmaCita.co_coord)}" >
+                            Enviar <f:ajax execute="@form"></f:ajax>
+                        </h:commandLink>
+                        </center>
                     </h:form>
                 </div>
             </div>

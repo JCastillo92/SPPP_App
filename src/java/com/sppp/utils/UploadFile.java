@@ -221,8 +221,8 @@ public class UploadFile{
         break;
             case 3:
          try {
-                //envio mail a encargado mail para que revise scan de REVISIÓN DE CARTA COMPROMISO
-        primer_mensaje.mensajes(1003,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");  
+                //envio mail a encargado mail para que revise scan de 4 PDFs
+        //primer_mensaje.mensajes(1004,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");  
             
                 HttpSession session = SessionUtils.getSession();
                 long id;

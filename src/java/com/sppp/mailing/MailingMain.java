@@ -79,12 +79,12 @@ public class MailingMain {
                 contentMessage="Existe documentos subidos a la plataforma, Oficio para la Empresa y Carta de Aceptación, listos para revisar y aprobar.";
                 break;
             case 1003:
-                AddSubject="REVISIÓN DE OF-EMP, C-A-EMP, CC, SR";
-                contentMessage="Existe documentos subidoS a la plataforma, Oficio para la Empresa, Carta de Aceptación, Carta de Compromiso, Solicitud de Resolucón listos para revisar y aprobar.";
+                AddSubject="REVISIÓN DE CARTA COMPROMISO";
+                contentMessage="Existe datos de Carta de Compromiso listo, el cual requiere revisar y aprobar.";
                 break;    
                 case 1004:
-                AddSubject="";
-                contentMessage="";
+                AddSubject="REVISIÓN DE OF-EMP, C-A-EMP, CC, SR";
+                contentMessage="Existe documentos subidos a la plataforma, Oficio para la Empresa, Carta de Aceptación, Carta de Compromiso, Solicitud de Resolucón listos para revisar y aprobar.";
                 break;  
             case 911:
                     AddSubject="CLAVE SPPP";

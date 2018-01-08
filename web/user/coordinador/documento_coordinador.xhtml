@@ -20,6 +20,25 @@
         <div class="row">
             <center><h1 class="page-header">Documentos</h1> </center>   
         </div>
+        
+         
+        <div class="row">
+             <div class="panel panel-default">
+                <div class="panel-heading">
+                   Descargar reporte
+                </div>
+                <div class="panel-body">
+                    <h:form enctype="multipart/form-data" role="form">
+                         <div class="form-group">
+                             <label>Descargar reporte </label><br/>
+                             <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
+                                            action="#{uploadFile.download_file_coor_1(login.user)}" value="Descargar" ></h:commandLink>
+                        </div>
+                                                
+                    </h:form>
+                </div>
+            </div>
+            </div>
       
         <div class="row">
             <div class="panel panel-default">
@@ -40,7 +59,7 @@
                     
                     </h:form>
                     <h:form> 
-                        <center> <h:commandButton class="btn btn-success" value="Enviar" /></center>
+                        <center> <h:commandButton class="btn btn-success" value="Enviar" action="#{controllerBean.doc_coor()}" /></center>
                     </h:form>
                 </div>
             </div>

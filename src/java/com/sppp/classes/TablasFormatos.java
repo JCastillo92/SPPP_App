@@ -435,10 +435,10 @@ return "revision_windowFin";
     return"revision_window_est";
     }
 
- public String solicitudFinal(long user){
+ public void solicitudFinal(long user){
       AlmacenamientoPDF g=new AlmacenamientoPDF();
     g.pdf_solicitudFinal(user, 204);
-    return "revision_window_est";
+  //  return "revision_window_est";
     }    
   /*  public void informeRuta(long cedula_est){
       AlmacenamientoPDF crear=new AlmacenamientoPDF();

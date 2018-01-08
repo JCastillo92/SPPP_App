@@ -471,6 +471,37 @@ public class UploadFile{
         //return "subida";
        
        }
+  
+       public void download_file_coor_1(long user) {///aqui recibir nombre de archivo 103.pdf
+        try {
+            SimpleDateFormat sdf_data = new SimpleDateFormat("dd-MM-yyyy"); 
+         java.util.Date fecha = new Date();
+         String fecha1=sdf_data.format(fecha);
+      
+            AlmacenamientoPDF obj_crearpdf = new AlmacenamientoPDF();
+            
+           obj_crearpdf.create_student_folder_first_time(user);
+           // HttpSession session = SessionUtils.getSession();
+            //long id;
+            //id = (long) session.getAttribute("id");
+        
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            ExternalContext context = facesContext.getExternalContext();
+            HttpServletRequest request = (HttpServletRequest) context.getRequest();
+            HttpServletResponse response = (HttpServletResponse) context.getResponse();
+
+            //mando a crear el archivo pdf, para que sea lo mas actual posible.
+         obj_crearpdf.listar(user,fecha1);
+            //mando a llamar al mmismo archivo pdf en la aplicacion,  para que se pueda descargar
+            response.sendRedirect(request.getContextPath() + "/faces/user/coordinador/download1"+"/"+user+"/"+fecha1 + ".pdf");
+            //response.sendRedirect("index.jsf");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }//end of DOWNLOAD_FILE
+        
+  
        
    public List<String> listar(long user) throws IOException{
          List<String> nombre = new ArrayList<String>();

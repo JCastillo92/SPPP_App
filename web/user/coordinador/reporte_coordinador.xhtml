@@ -43,17 +43,16 @@
                                 
                                 <b:dataTableColumn value="#{dpalltrue[3].toString()}" label="Fecha inicio"/>
                                 <b:dataTableColumn value="#{dpalltrue[4].toString()}" label="Fecha fin"/>
-                                <b:dataTableColumn value="#{dpalltrue[4].toString()}" label="Fecha fin"/>
                                 
-                                <b:dataTableColumn value="#{detallesDashboardTut.periodo}" label="Periodo"/>
+                                <b:dataTableColumn value="#{detallesDashboardTut.getPeriodo()}" label="Periodo"/>
                                 
-                                <b:dataTableColumn value="#{detallesDashboardTut.hors(dpalltrue[0].toString())}" label="Horas"/>
+                                <b:dataTableColumn value="#{detallesDashboardTut.getHoras(dpalltrue[0].toString())}" label="Horas"/>
                             </b:dataTable>
  
-                                 
+                                 <br/>
+                                 <br/><br/>
                             <center>
-                                                    <button type="button" class="btn btn-primary"   data-toggle="modal" data-target="#myModal2"  >Enviar</button>
-                                              
+                                <h:commandButton class="btn btn-outline btn-bitbucket" action="#{controllerBean.reporte_coor()}" value="Generar reporte"></h:commandButton>       
                              </center>                 
                         </div>
                   

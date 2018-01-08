@@ -203,7 +203,7 @@ public List<Object[]> findAllDetallePasantiaconCIAllTrue(){
 "where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n" +
 "and tb_detalle_pasantia.estado=true \n"
 + "and tb_detalle_pasantia.id_proceso=38 \n"
-+ "and tb_detalle_pasantia.validacion=2 ;");
++ "and tb_detalle_pasantia.validacion=0 ;");
 
                 empData = query.list();
             for (Object[] row : empData) {

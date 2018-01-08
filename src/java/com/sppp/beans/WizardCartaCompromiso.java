@@ -12,6 +12,8 @@ import com.sppp.DAO.EncargadoDAO;
 import com.sppp.DAO.PasantiaDAO;
 import com.sppp.DAO.UsuarioDAO;
 import com.sppp.DAO.VisitaDAO;
+import com.sppp.classes.ListaDocentesAdministrativos;
+import com.sppp.mailing.MailingMain;
 import com.sppp.utils.SessionUtils;
 import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.io.IOException;
@@ -31,7 +33,7 @@ import javax.servlet.http.HttpSession;
 @ManagedBean
 @ViewScoped
 public class WizardCartaCompromiso extends WizardCC {
-    
+    private MailingMain email_cc=new MailingMain();
     List<Datos> datosCartaC = new LinkedList<>();
     boolean existe;
     private String texto_alerta;
@@ -214,6 +216,10 @@ public class WizardCartaCompromiso extends WizardCC {
             obj.datosGuardar(usuario, empresa, encargado, pasantia, dp2, resp,getTutorXXX() );
         }
         
+        
+        ListaDocentesAdministrativos corrreo_De = new ListaDocentesAdministrativos();
+        //aqui abajo envio mensaje de que un estudiante envio datos de CC a validar.
+        email_cc.mensajes(1003, corrreo_De.corrreoDocenteAdministrativo(6), "vacio");
         
         
         //Mando a estado validar el registro en la DB

@@ -75,7 +75,6 @@ public class ValidacionFinalPDF {
     }
     
     
-
     public String guardarDatos(long est,long visita,String correo){
         System.out.println("bbbb"+archivo1+archivo2+archivo3);
         //Compruebo si cumple todos los checks

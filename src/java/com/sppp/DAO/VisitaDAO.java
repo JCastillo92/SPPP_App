@@ -318,7 +318,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
 
                 p = ppDAO.findPasantia(id);
 
-                //Encontrar el detalle de esa pasantia cuyo proceso sea 4 (proceso actual, cursando, este va a ser actualizado)
+                //Encontrar el detalle de esa pasantia cuyo proceso sea 34 (proceso actual, cursando, este va a ser actualizado)
                 dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),34);
 
                 //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
@@ -355,6 +355,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                 dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
 
+                
             //Paso a agregar el nuevo proceso
             DetallePasantia dp3 = new DetallePasantia();
             
@@ -365,6 +366,17 @@ Session session = HibernateUtil.getSessionFactory().openSession();
             dp3.setProceso(new Proceso(38));
             dp3.setValidacion(EnumEstado.llenar);
             dpDAO.insertarNuevoDetalle(dp3);
+            
+            if(dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),37).toString().length() > 1){
+               
+                    dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),37);
+
+                //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
+                dp.setValidacion(EnumEstado.aprobar);
+                dp.setEstado(false);
+                dpDAO.actualizarDetallePasantia(dp);
+                
+                }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -646,7 +658,36 @@ Session session = HibernateUtil.getSessionFactory().openSession();
         }
          return numeroPPyPA;
     }
-     
+     public long countReporte( ){
+       SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;
+        long numeroPPyPA=0;
+        int proce =38;
+        boolean est= true;
+       
+         try {
+            tx = sesion.beginTransaction();
+            Query query = sesion.createQuery("SELECT COUNT(*) "
+                    + "FROM DetallePasantia "
+                    + "WHERE estado= :esta and id_proceso = :process " );
+             query.setParameter("esta", est);
+            query.setParameter("process", proce);
+            numeroPPyPA=(long) query.uniqueResult();       
+            tx.commit();
+        }catch (Exception e) {
+            e.printStackTrace();
+            numeroPPyPA=0;
+            if (tx != null){
+                tx.rollback();
+            }
+        }
+        finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+         return numeroPPyPA;
+    }
      public long countTut_documentacion( String tutor){
         SessionFactory sf=HibernateUtil.getSessionFactory();
         Session sesion=sf.openSession();

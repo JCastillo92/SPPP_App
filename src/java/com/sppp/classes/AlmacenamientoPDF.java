@@ -190,17 +190,22 @@ public class AlmacenamientoPDF{
       documento.add(salto_linea);
       documento.add(salto_linea);
       documento.add(salto_linea);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
       
       // T I T U L O
       Paragraph p1=new Paragraph("CARTA COMPROMISO INTERINSTITUCIONAL",estitulo);
       p1.setAlignment(Element.ALIGN_CENTER);
       documento.add(p1);
       documento.add(salto_linea);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
       
       //                            SEPARAR POR SECCIONES
       //SEC INFORMACION GENERAL
       //https://developers.itextpdf.com/examples/tables/colspan-and-rowspan
        documento.add(new Paragraph("INFORMACIÓN GENERAL",escuadro));
+  documento.add(salto_linea);
   documento.add(salto_linea);
   
   //tabla 1
@@ -246,8 +251,10 @@ public class AlmacenamientoPDF{
   //SEC DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN
   documento.add(salto_linea);
   documento.add(salto_linea);
+  documento.add(salto_linea);
   
    documento.add(new Paragraph("DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN",escuadro));
+  documento.add(salto_linea);
   documento.add(salto_linea);
    
 //tabla 2
@@ -299,11 +306,13 @@ public class AlmacenamientoPDF{
                     //SEC ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA: (SEÑALE AQUELLAS QUE PREVÉN RESULTADOS Y PRODUCTOS)
                     documento.add(salto_linea);
                     documento.add(salto_linea);
+                    documento.add(salto_linea);
 
                     Paragraph p2 = new Paragraph("ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA", escuadro);
                     p2.setAlignment(Element.ALIGN_CENTER);
                     documento.add(p2);
-                    
+                    documento.add(salto_linea);
+                    documento.add(salto_linea);
                    
                     documento.add(new Paragraph("(SEÑALE AQUELLAS QUE PREVÉN RESULTADOS Y PRODUCTOS)", escuadro));
                     documento.add(salto_linea);
@@ -316,6 +325,7 @@ public class AlmacenamientoPDF{
 
                     documento.add(salto_linea);
                     documento.add(salto_linea);
+                    documento.add(salto_linea);
                     documento.add(new Paragraph("RESULTADOS PREVISTOS DE ACTIVIDAD ACADÉMICA", escuadro));
                     documento.add(salto_linea);
                     //TABLA 4 INICIO
@@ -325,6 +335,7 @@ public class AlmacenamientoPDF{
                     documento.add(table4);
                     //FIN TABLA 4
                     
+                    documento.add(salto_linea);
                     documento.add(salto_linea);
                     documento.add(salto_linea);
                     Paragraph p3 = new Paragraph("PRODUCTOS ENTREGABLES PREVISTOS DE LA ACTIVIDAD ACADÉMICA", escuadro);

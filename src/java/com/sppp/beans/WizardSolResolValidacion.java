@@ -8,6 +8,7 @@ package com.sppp.beans;
 import com.sppp.DAO.PasantiaDAO;
 import com.sppp.DAO.UsuarioDAO;
 import com.sppp.DAO.VisitaDAO;
+import com.sppp.mailing.MailingMain;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +23,7 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class WizardSolResolValidacion {
      private Usuario usuario = new Usuario();//jairo
+     private MailingMain email_aprobado=new MailingMain();
                 private Pasantia pasantia=new Pasantia();//jairo
                 List<Pasantia> empData=new LinkedList<>(); 
 
@@ -107,17 +109,30 @@ int id_estudiante;
         return null;
     }
     
-    public String actualizarResolucion(){
+    public String actualizarResolucion(int tut){
+        
+        long est = Long.valueOf(id_estudiante);
+        long tutor = Long.valueOf(tut);
            try {
         PasantiaDAO passDAO = new PasantiaDAO();
          VisitaDAO vi = new VisitaDAO();
-       vi.confirmacion(id_estudiante);
+
+       
+         String agregaUnaObservacion="vacio";
+         if(!cod_resolucion.equals("")){
+         //envio email al estudiante de aprobado
+         agregaUnaObservacion="La Resolución de Inicio de Actividades es favorable. El código es: "+cod_resolucion;
+            email_aprobado.mensajes(3, usuario.getCorreo(), agregaUnaObservacion);
+         }
         pasantia.setCod_resolucion_consejo(cod_resolucion);
         passDAO.actualizarPasantia(pasantia);
+
+         vi.confirmacion(est,tutor);//llamada de JJ a BK (union de tesis)
         } catch (Exception e) {
                     e.printStackTrace();
             }
-           return "dashboard_gestor";
+           
+           return null;//null allows you to refresh the page like an F5.
     }
     
     

@@ -412,7 +412,7 @@ public class WizardDBValidacion extends WizardDB {
             dpDAO.actualizarDetallePasantia(dp);
             
             //envio email al estudiante de correccion
-            email_aprobado.mensajes(1, usuario.getCorreo(), "vacio");
+            email_aprobado.mensajes(1, usuario.getCorreo(), observacion);
             
         }
          } catch (Exception e) {

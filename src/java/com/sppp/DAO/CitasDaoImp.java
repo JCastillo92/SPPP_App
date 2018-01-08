@@ -146,6 +146,33 @@ public class CitasDaoImp implements CitasDao {
     
     }
     
+     @Override
+    public long obtenercedulaTut(long id) {
+        long cedula;
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+            
+        Transaction tx = null;
+        
+        String sql = "Select ced_tutor_asignado from Pasantia where cedula =:id";
+       
+        try {
+            tx = sesion.beginTransaction();
+        cedula =(Long) sesion.createQuery(sql).setParameter("id", id).uniqueResult();
+
+            tx.commit();
+        } catch (RuntimeException e) {
+            tx.rollback();
+            throw e;
+        }finally{
+            sesion.flush();
+             sesion.close();
+         }
+        
+        return cedula;
+    
+    }
+    
     @Override
     public String obtenerApellido(long id) {
         String apellido;

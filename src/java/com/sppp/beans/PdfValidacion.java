@@ -9,6 +9,7 @@ import com.sppp.DAO.DatosDAO;
 import com.sppp.DAO.DetallePasantiaDAO;
 import com.sppp.DAO.PasantiaDAO;
 import com.sppp.DAO.UsuarioDAO;
+import com.sppp.mailing.MailingMain;
 import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -21,7 +22,7 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class PdfValidacion {
-
+private MailingMain email_aprobado=new MailingMain();
     int id_estudiante;
     private String observacion;
 
@@ -138,6 +139,9 @@ public class PdfValidacion {
             dp2.setObservacion(null);
             dpDAO.actualizarDetallePasantia(dp2);
             
+            //envio email al estudiante de aprobado
+            email_aprobado.mensajes(2, usuario.getCorreo(), "vacio");
+            
             DetallePasantia dp3 = new DetallePasantia();
             dp3.setDescripcion("Resolucion de Proceso");
             dp3.setEstado(true);
@@ -152,6 +156,8 @@ public class PdfValidacion {
             dp2.setObservacion(observacion);
             dpDAO.actualizarDetallePasantia(dp2);
             
+            //envio email al estudiante de correccion
+            email_aprobado.mensajes(1, usuario.getCorreo(), observacion);
         }
         
         return "dashboard_gestor";

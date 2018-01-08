@@ -85,7 +85,7 @@
                                         <h:column>
                                             
                                             <h:inputTextarea class="form-control" rows="6" required="true" disabled="true"
-                                                     value="Yo  #{campo.estudiante.usuario.nombre} #{campo.estudiante.usuario.apellido}   con cédula de ciudadanía:  #{login.user}, solicito a Ud. la autorización para la validaciòn de #{datosFormatos.getTipo_actividad(datosFormatos.id)}, en #{campo.encargado.empresa.nombre_empresa} desde #{campo.fechaInicio} hasta #{campo.fechaFin}" />
+                                                     value="Yo  #{campo.estudiante.usuario.nombre} #{campo.estudiante.usuario.apellido}   con cédula de ciudadanía:  #{login.user}, solicito a Ud. la autorización para la validaciòn de #{datosFormatos.getTipo_actividad(campo.tipo_ppp)}, en #{campo.encargado.empresa.nombre_empresa} desde #{campo.fechaInicio} hasta #{campo.fechaFin}" />
                                  
                                         </h:column>
                                     </h:dataTable>  

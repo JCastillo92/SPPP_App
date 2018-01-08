@@ -28,9 +28,10 @@ public class ValidacionFinalPDF {
     private boolean archivo1;
     private boolean archivo2;
     private boolean archivo3;
-    private boolean archivo4;
+    
     
     private String obs;
+    private String errores;
 
     public boolean isArchivo1() {
         return archivo1;
@@ -56,13 +57,14 @@ public class ValidacionFinalPDF {
         this.archivo3 = archivo3;
     }
 
-    public boolean isArchivo4() {
-        return archivo4;
+    public String getErrores() {
+        return errores;
     }
 
-    public void setArchivo4(boolean archivo4) {
-        this.archivo4 = archivo4;
+    public void setErrores(String errores) {
+        this.errores = errores;
     }
+
 
     public String getObs() {
         return obs;
@@ -73,12 +75,32 @@ public class ValidacionFinalPDF {
     }
     
     
-
     public String guardarDatos(long est,long visita,String correo){
-        System.out.println("bbbb"+archivo1+archivo2+archivo3+archivo4);
+        System.out.println("bbbb"+archivo1+archivo2+archivo3);
         //Compruebo si cumple todos los checks
         
-          //  if(archivo1 && archivo2 && archivo3 && archivo4){
+        if(archivo1 == false && archivo2 && archivo3){
+            errores="Error: Autoevaluación";
+        }else 
+         if(archivo2 == false && archivo1 && archivo3){
+             errores="Error: Certificado de culminación la actividad";
+        }else 
+         if(archivo3 == false && archivo2 && archivo1){
+             errores="Error: Derecho de validación";
+        }else 
+         if(archivo1 == false && archivo2 == false && archivo3){
+             errores="Error: Autoevaluación y Certificado de culminación la actividad";
+        }else 
+         if(archivo1 == false && archivo3 == false && archivo2){
+             errores="Error: Autoevaluación y Derecho de validación";
+        }else 
+         if(archivo2 == false && archivo3 == false && archivo1){
+             errores="Error: Certificado de culminación la actividad y Derecho de validación";
+        }else
+         if(archivo1 == false && archivo2 == false && archivo3 == false){errores="Error: Cuenta con error en los 3 documentos";}
+        
+        
+           if(archivo1 && archivo2 && archivo3 ){
             VisitaDAO vi = new VisitaDAO();
             vi.resolucion(est);
             
@@ -87,8 +109,14 @@ public class ValidacionFinalPDF {
             
             ControllerBean con = new ControllerBean();
             con.updateListoVisita(visita);
-            //}
-        return "coordinator";
+            }else {
+               String msg=obs +"\n"+errores;
+               MailingMain por = new MailingMain();
+      por.mensajes(1, correo, msg);
+         VisitaDAO vi = new VisitaDAO();
+            vi.resolucion2(est);
+           }
+        return "coordinator.xhtml";
     }
 
 }

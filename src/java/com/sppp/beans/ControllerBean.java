@@ -43,6 +43,7 @@ private Usuario usuario = new Usuario();
   private long numerotutor2; 
   private long numerotutor3;
   private long numerotutor4;
+  private long numerotutor5;
   
    private String mensajeMail;
    private String mensajeMail2;
@@ -408,6 +409,12 @@ private Usuario usuario = new Usuario();
       por.mensajes(1006, correo,"vacio");
           return"revision_window";
       }
+      
+       public String cargarArchivos2(String correo){
+          MailingMain por = new MailingMain();
+      por.mensajes(1006, correo,"vacio");
+          return"revision_window";
+      }
      
       public long getNumerotutor(String tutor) {
         VisitaDAO obj=new VisitaDAO();
@@ -429,7 +436,12 @@ private Usuario usuario = new Usuario();
         numerotutor4=obj.countRevision();
         return numerotutor4;
     }
-       
+    
+    public long getNumerotutor5() {
+        VisitaDAO obj=new VisitaDAO();
+        numerotutor5=obj.countReporte();
+        return numerotutor5;
+    }
        public String updateReporte(long id_visita2){
           VisitaTutor newVisitaTutor = new VisitaTutor();
           VisitaDAO visitaDAO = new VisitaDAO();
@@ -513,7 +525,7 @@ public String sendValidacion(String correo,String nombre,String apellido,String 
       
       VisitaDAO visitaDAO = new VisitaDAO();
       visitaDAO.validacionDocs();
-     return"revision_window"; 
+     return"revision_window_est"; 
  }
 
 
@@ -571,6 +583,9 @@ public String sendValidacion(String correo,String nombre,String apellido,String 
         long rid2=Long.parseLong(id2);
         VisitaDAO llamar=new VisitaDAO();
         llamar.updateEstudianteAgendado(rid2);
+        
+       /* VisitaDAO visi = new VisitaDAO();
+        visi.confirmacion2(rid2, id);*/
         
         time=null;
         data=null;
@@ -634,5 +649,16 @@ public String sendValidacion(String correo,String nombre,String apellido,String 
         
         }
   
+  public String reporte_coor(long id){
   
+  VisitaDAO vi = new VisitaDAO();
+  vi.resUltimo(id);
+  return "review_window";
+  }
+  
+  public String doc_coor(){
+  
+  
+  return "review_window";
+  } 
 }

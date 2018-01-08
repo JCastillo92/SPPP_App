@@ -38,6 +38,7 @@
             
                         <div class="panel-body">
                                 <div class="table-responsive">
+                                    <h:form enctype="multipart/form-data" role="form">
                                     <b:dataTable  class="table table-striped table-bordered table-hover" var="campo" value="#{citasAgendadas.getInformeCoor()}">
                                
                                 <b:dataTableColumn label="Nombre estudiante" >                   
@@ -47,7 +48,7 @@
                                     </b:column>
                                 </b:dataTableColumn>
                                 <b:dataTableColumn label="Documentos para descargar">                   
-                               <h:form enctype="multipart/form-data" role="form">
+                               
                                     <b:column >
                                
                                    <table><tr><td>
@@ -57,7 +58,7 @@
                                                   
                              <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
                              action="#{uploadFile.download_file_coor(300,campo.estudiante.cedula)}" value="Descargar" ></h:commandLink>
-                             &nbsp;<h:selectBooleanCheckbox disabled="true" />
+                            
                                                        <br/><br/></td></tr>
                                        
                                             <tr>
@@ -66,7 +67,7 @@
                                                 <td>  
                                                <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
                              action="#{uploadFile.download_file_coor(301,campo.estudiante.cedula)}" value="Descargar" ></h:commandLink>
-                             &nbsp;<h:selectBooleanCheckbox disabled="true" />
+                             
                             
                                                     <br/><br/>  </td></tr>
                                     
@@ -78,7 +79,7 @@
                                                 <td> 
                                                  <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
                              action="#{uploadFile.download_file_coor(204,campo.estudiante.cedula)}" value="Descargar" ></h:commandLink>
-                             &nbsp;<h:selectBooleanCheckbox value="#{validacionFinalPDF.archivo1}"/>
+                             
                             
                                                 <br/><br/></td></tr><tr>
                                                 <td> <label>Autoevaluación estudiante</label></td>
@@ -86,7 +87,7 @@
                                                 <td>  
                                                     <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
                              action="#{uploadFile.download_file_coor(303,campo.estudiante.cedula)}" value="Descargar" ></h:commandLink>
-                             &nbsp;<h:selectBooleanCheckbox value="#{validacionFinalPDF.archivo2}" />
+                             &nbsp;<h:selectBooleanCheckbox value="#{validacionFinalPDF.archivo1}" />
                             
                                                     <br/><br/></td></tr><tr>
                                                 <td> <label>Certificado de actividad</label></td>
@@ -94,24 +95,24 @@
                                                 <td>  
                                                  <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
                              action="#{uploadFile.download_file_coor(304,campo.estudiante.cedula)}" value="Descargar" ></h:commandLink>
-                             &nbsp;<h:selectBooleanCheckbox value="#{validacionFinalPDF.archivo3}" />
+                             &nbsp;<h:selectBooleanCheckbox value="#{validacionFinalPDF.archivo2}" />
                             
                                                 <br/><br/></td></tr>
                                                 <tr>
                                                 <td>
-                                                    <label>Derecho de validaciòn</label></td>
+                                                    <label>Derecho de validación</label></td>
                                  
                                                 <td> 
                                                  <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
                              action="#{uploadFile.download_file_coor(305,campo.estudiante.cedula)}" value="Descargar" ></h:commandLink>
-                             &nbsp;<h:selectBooleanCheckbox value="#{validacionFinalPDF.archivo4}" />
+                             &nbsp;<h:selectBooleanCheckbox value="#{validacionFinalPDF.archivo3}" />
                              
                             
                                                     <br/><br/></td></tr>
                                  </table>
                                          
                                     </b:column>
-                                        </h:form> 
+                                        
                                 </b:dataTableColumn>
                                 
                                 <b:dataTableColumn label="Acciones">      
@@ -133,7 +134,7 @@
                                 </b:dataTableColumn>
                                 
                             </b:dataTable>
-
+                            </h:form> 
                         </div>
 
                             

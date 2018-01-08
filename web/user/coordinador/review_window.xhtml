@@ -13,7 +13,7 @@
     
     <ui:define name="barra-lateral">
         
-        <ui:include src="/snippets/menu_estudiante.xhtml" />
+        <ui:include src="/snippets/menu_coordinador.xhtml" />
     </ui:define>
     
     <ui:define name="contenido">
@@ -21,7 +21,7 @@
 
        
         <div class="row">
-            <h1 class="page-header">Datos enviados correctamente</h1>
+            <h1 class="page-header">Reporte generado correctamente</h1>
         </div>
         
         <div class="row">
@@ -32,7 +32,7 @@
                 <div class="panel-body">
                          <div class="form-group">
                              <div align="center">
-                                 <label>#{citasAgendadas.getNombre_completo(login.user)} Ha llenado correctamente el formato
+                                 <label>#{citasAgendadas.getNombre_completo(login.user)} Ha generado correctamente el reporte.
                                  
                                  </label>
                              </div>
@@ -48,7 +48,7 @@
                                 <center>                  
                               
                            
-                                   <b:button outcome="dashboard_est.xhtml" value="Finalizar" look="success"  >
+                                   <b:button outcome="coordinator.xhtml" value="Finalizar" look="success"  >
                              
                            </b:button> 
                       </center> 

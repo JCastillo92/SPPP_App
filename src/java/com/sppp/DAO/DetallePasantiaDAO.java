@@ -593,6 +593,43 @@ public class DetallePasantiaDAO {
         }
         return empData;
     }
+           
+     
+           
+           
+           public long countAllDetallePasantiaconCIValidaPDFs(){
+      SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;
+        long numeroValidaPDFs=0; 
+        
+      
+         try {
+             tx = sesion.beginTransaction();
+                        Query query = sesion.createQuery("SELECT COUNT(*) "
+                                + "FROM DetallePasantia D JOIN D.pasantia P "
+                                + "WHERE D.pasantia.tipo_ppp = P.tipo_ppp "
+                                + "AND D.pasantia.cod_ppp = P.cod_ppp "
+                                + "AND D.estado = :verdad "
+                                + "AND D.proceso.id_proceso = :id_pro "
+                                + "AND D.validacion = :estad");
+                        query.setBoolean("verdad", true);
+                        query.setLong("id_pro", 14);
+                        query.setInteger("estad", 1);
+        numeroValidaPDFs=(long) query.uniqueResult();             
+            tx.commit();
+        }catch (Exception e) {
+            e.printStackTrace();
+            numeroValidaPDFs=0;
+            if (tx != null){
+                tx.rollback();
+            }
+        }finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+        return numeroValidaPDFs;
+    }      
     
     public List<DetallePasantia> findAll(String tipo_ppp, int cod_ppp) {
         List<DetallePasantia> lista = new LinkedList<>();

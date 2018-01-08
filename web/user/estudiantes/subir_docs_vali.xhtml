@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+     template="/templates/main.xhtml"
+     xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:f="http://xmlns.jcp.org/jsf/core"
+     xmlns:b="http://bootsfaces.net/ui">
+    
+    <ui:define name="title">
+        Est. Docs vali
+    </ui:define>
+    
+    <ui:define name="barra-lateral">
+        <ui:include src="/snippets/menu_estudiante.xhtml" />
+    </ui:define>
+    
+    <ui:define name="contenido">
+
+        <div class="row">
+            <h1 class="page-header">Correcci&oacute;n: Subir Documentos Requeridos</h1>
+        </div>
+        
+     
+        <div class="row">
+            
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Subir &Uacute;nicamente los Documentos que han sido reprobados.
+                </div>
+                <div class="panel-body">
+                    <h:form enctype="multipart/form-data" role="form">
+                        <div class="form-group">
+                            <label>Vuelva a subir el formato de autovaluacion en formato .pdf hasta 2MB<i class="fa fa-file-pdf-o fa-2x"></i></label>
+                            
+                            <h:inputFile value="#{uploadFile.file}" required="true" class="btn btn-outline btn-default">
+                                <f:ajax listener="#{uploadFile.save_file_tut(4,login.user)}"/>
+                                
+                            </h:inputFile>
+                           
+                        </div>
+                        
+                        <div class="form-group">                           
+                           <label>Vuelva a subir el certificado de culminaciòn la actividad en formato .pdf hasta 2MB <i class="fa fa-file-pdf-o fa-2x"></i></label>
+                           <h:inputFile value="#{uploadFile.file}" required="true" class="btn btn-outline btn-default">
+                            <f:ajax listener="#{uploadFile.save_file_tut(5,login.user)}"/>
+                            </h:inputFile>
+                        </div>
+                        
+                         <div class="form-group">
+                            <label>Vuelva a subir el derecho de validación en formato .pdf hasta 2MB<i class="fa fa-file-pdf-o fa-2x"></i></label>
+                            <h:inputFile value="#{uploadFile.file}" required="true" class="btn btn-outline btn-default">
+                            <f:ajax listener="#{uploadFile.save_file_tut(6,login.user)}"/>
+                            </h:inputFile>
+                        </div>
+                        
+                    </h:form>
+                    <h:form>
+                         <center> <h:commandButton class="btn btn-success" action="#{controllerBean.cargarArchivos2(confirmaCita.co_coord)}" value="Enviar" /></center>
+                      
+                    </h:form>
+                </div>
+            </div>
+        </div>
+        
+    </ui:define>
+    
+</ui:composition>

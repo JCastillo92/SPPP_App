@@ -36,22 +36,13 @@
                                     <i class="fa fa-info-circle fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    
-                                    <div class="huge"></div>
-                                    <div class=""><h4>Revision</h4></div>
+                                     <div class="huge">#{controllerBean.getNumerotutor4()}</div>
+                                    <div class=""><h4>Procesos pendientes</h4></div>
                                     <div></div>
                                 </div>
                             </div>
                         </div>
-                        <h:form>
-                            <b:navLink outcome="revision_coordinador.xhtml">
-                            
-                                <div class="panel-footer">
-                                    <span class="pull-left"><u>CLICK AQUI</u></span>
-                                    <span class="pull-right"><i class="fa fa-hand-o-up"></i></span>
-                                    <div class="clearfix"></div>
-                                </div></b:navLink>
-                        </h:form>
+                        
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -59,17 +50,18 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-info-circle fa-5x"></i>
+                                    <i class="fa fa-check fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                  <div class=""><h4>Reporte</h4></div>
+                                    <div class="huge">#{controllerBean.getNumerotutor4()}</div>
+                                  <div class=""><h4>Revisión</h4></div>
                                   
                                 </div>
                             </div>
                         </div>
                        <h:form>
-                            <b:navLink outcome="reporte_coordinador.xhtml">
-                            
+                           <b:navLink outcome="revision_coordinador.xhtml">
+                                                        
                                 <div class="panel-footer">
                                     <span class="pull-left"><u>CLICK AQUI</u></span>
                                     <span class="pull-right"><i class="fa fa-hand-o-up"></i></span>
@@ -83,16 +75,17 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-info-circle fa-5x"></i>
+                                    <i class="fa fa-share fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class=""><h4>Documentos</h4></div>
+                                    <div class=""><h4>Reporte</h4></div>
                                     <div></div>
                                 </div>
                             </div>
                         </div>
                         <h:form>
-                            <b:navLink outcome="documento_coordinador.xhtml">
+                           <!-- <b:navLink outcome="documento_coordinador.xhtml">-->
+                                <b:navLink outcome="reporte_coordinador.xhtml">
                             
                                 <div class="panel-footer">
                                     <span class="pull-left"><u>CLICK AQUI</u></span>

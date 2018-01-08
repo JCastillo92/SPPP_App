@@ -586,6 +586,34 @@ Session session = HibernateUtil.getSessionFactory().openSession();
          return numeroPPyPA;
     }
      
+     public long countRevision( ){
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;
+        long numeroPPyPA=0;
+        String valor ="Validacion";
+      
+         try {
+            tx = sesion.beginTransaction();
+            Query query = sesion.createQuery("SELECT COUNT(*) "
+                    + "FROM VisitaTutor  "
+                    + "WHERE estado_visita = :enviada" );
+            query.setParameter("enviada", valor);
+            numeroPPyPA=(long) query.uniqueResult();       
+            tx.commit();
+        }catch (Exception e) {
+            e.printStackTrace();
+            numeroPPyPA=0;
+            if (tx != null){
+                tx.rollback();
+            }
+        }
+        finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+         return numeroPPyPA;
+    }
      
      public long countTut_documentacion( String tutor){
         SessionFactory sf=HibernateUtil.getSessionFactory();

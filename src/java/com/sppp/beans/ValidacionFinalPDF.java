@@ -10,6 +10,7 @@ import com.sppp.DAO.DetallePasantiaDAO;
 import com.sppp.DAO.PasantiaDAO;
 import com.sppp.DAO.UsuarioDAO;
 import com.sppp.DAO.VisitaDAO;
+import com.sppp.mailing.MailingMain;
 import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -28,6 +29,8 @@ public class ValidacionFinalPDF {
     private boolean archivo2;
     private boolean archivo3;
     private boolean archivo4;
+    
+    private String obs;
 
     public boolean isArchivo1() {
         return archivo1;
@@ -61,13 +64,26 @@ public class ValidacionFinalPDF {
         this.archivo4 = archivo4;
     }
 
-    public String guardarDatos(long est,long visita){
+    public String getObs() {
+        return obs;
+    }
+
+    public void setObs(String obs) {
+        this.obs = obs;
+    }
+    
+    
+
+    public String guardarDatos(long est,long visita,String correo){
         System.out.println("bbbb"+archivo1+archivo2+archivo3+archivo4);
         //Compruebo si cumple todos los checks
         
           //  if(archivo1 && archivo2 && archivo3 && archivo4){
             VisitaDAO vi = new VisitaDAO();
             vi.resolucion(est);
+            
+            MailingMain por = new MailingMain();
+      por.mensajes(2, correo, obs);
             
             ControllerBean con = new ControllerBean();
             con.updateListoVisita(visita);

@@ -157,7 +157,7 @@ private MailingMain email_aprobado=new MailingMain();
             dpDAO.actualizarDetallePasantia(dp2);
             
             //envio email al estudiante de correccion
-            email_aprobado.mensajes(1, usuario.getCorreo(), "vacio");
+            email_aprobado.mensajes(1, usuario.getCorreo(), observacion);
         }
         
         return "dashboard_gestor";

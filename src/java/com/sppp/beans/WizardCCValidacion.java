@@ -401,7 +401,7 @@ public class WizardCCValidacion extends WizardCC {
             dpDAO.actualizarDetallePasantia(dp2);
             
             //envio email al estudiante de correccion
-            email_aprobado.mensajes(1, usuario.getCorreo(), "vacio");
+            email_aprobado.mensajes(1, usuario.getCorreo(), observacion);
         }
         } catch (Exception e) {
             e.printStackTrace();

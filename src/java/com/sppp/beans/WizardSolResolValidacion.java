@@ -111,9 +111,12 @@ int id_estudiante;
            try {
         PasantiaDAO passDAO = new PasantiaDAO();
          VisitaDAO vi = new VisitaDAO();
-       vi.confirmacion(id_estudiante);
+       
+         
+         
         pasantia.setCod_resolucion_consejo(cod_resolucion);
         passDAO.actualizarPasantia(pasantia);
+        vi.confirmacion(id_estudiante);//llamada de JJ a BK (union de tesis)
         } catch (Exception e) {
                     e.printStackTrace();
             }

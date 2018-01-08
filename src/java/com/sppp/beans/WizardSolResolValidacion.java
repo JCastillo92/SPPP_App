@@ -117,7 +117,8 @@ int id_estudiante;
         } catch (Exception e) {
                     e.printStackTrace();
             }
-           return "dashboard_gestor";
+           
+           return null;//null allows you to refresh the page like an F5.
     }
     
     

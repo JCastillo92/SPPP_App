@@ -55,13 +55,18 @@
                                 
                             </h:inputFile>
                             
-                        </div>
+                     
+                        <center> 
+                          <h:commandLink class="btn btn-success"  action="#{controllerBean.doc_coor()}" >
+                            Enviar <f:ajax execute="@form"></f:ajax>
+                        </h:commandLink>
+                        </center>
+                            </div>
+                    </h:form>
+                
+                            </div>
                     
-                    </h:form>
-                    <h:form> 
-                        <center> <h:commandButton class="btn btn-success" value="Enviar" action="#{controllerBean.doc_coor()}" /></center>
-                    </h:form>
-                </div>
+                    
             </div>
         </div>
         

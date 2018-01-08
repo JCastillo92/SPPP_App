@@ -10,7 +10,9 @@ import com.sppp.DAO.CitasDaoImp;
 import com.sppp.DAO.DashboardTutDAO;
 import com.sppp.DAO.PeriodoDAO;
 import com.sppp.classes.AlmacenamientoPDF;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
@@ -27,8 +29,29 @@ public class DetallesDashboardTut {
       List<Object[]> vista=null;
       List<Object[]> documento=null;
       List<Object[]> listarCoordinador=null;
+      
+      List<Object[]> listarCoordinadorResolicion=null;
       String periodo;
       int horas;
+      String id;
+      String codigo_resolucion_final;
+
+    public String getCodigo_resolucion_final() {
+        return codigo_resolucion_final;
+    }
+
+    public void setCodigo_resolucion_final(String codigo_resolucion_final) {
+        this.codigo_resolucion_final = codigo_resolucion_final;
+    }
+      
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public List<Object[]> getListarcita() {
         return listarcita;
@@ -67,6 +90,13 @@ public class DetallesDashboardTut {
         
         return listarCoordinador;
     }
+
+    public List<Object[]> getListarCoordinadorResolicion() {
+     DashboardTutDAO llamar=new DashboardTutDAO();
+     listarCoordinadorResolicion=llamar.ListarCoordinador_Resolucion();
+        return listarCoordinadorResolicion;
+    }
+    
     
     
     public String actividad(String n){
@@ -90,6 +120,15 @@ public class DetallesDashboardTut {
         horas=llamar.horas(user);
     
         return horas;
+    }
+    
+    public String resolucion(long user){
+        
+       DashboardTutDAO llamar=new DashboardTutDAO();
+     llamar.resolucion(user, codigo_resolucion_final);
+     
+    
+    return "review_window";
     }
 
     public DetallesDashboardTut() {

@@ -34,6 +34,7 @@ public class ConfirmaCita {
      private String telefono;
      private String co_director;
      private String co_coord;
+     private long ce_tutor;
      
     public List<SelectItem> getListarEstudiantes(long user) {
         this.listarEstudiantes=new ArrayList<SelectItem>();
@@ -102,6 +103,13 @@ public class ConfirmaCita {
         return telefono;
     }
 
+    public long getCe_tutor(long id) {
+         CitasDao citasdao=new CitasDaoImp();
+        this.ce_tutor=citasdao.obtenercedulaTut(id);
+        return ce_tutor;
+    }
+
+    
     
 
     public String getCo_director() {

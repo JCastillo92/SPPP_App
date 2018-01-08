@@ -107,11 +107,14 @@ int id_estudiante;
         return null;
     }
     
-    public String actualizarResolucion(){
+    public String actualizarResolucion(int tut){
+        
+        long est = Long.valueOf(id_estudiante);
+        long tutor = Long.valueOf(tut);
            try {
         PasantiaDAO passDAO = new PasantiaDAO();
          VisitaDAO vi = new VisitaDAO();
-       vi.confirmacion(id_estudiante);
+       vi.confirmacion(est,tutor);
         pasantia.setCod_resolucion_consejo(cod_resolucion);
         passDAO.actualizarPasantia(pasantia);
         } catch (Exception e) {

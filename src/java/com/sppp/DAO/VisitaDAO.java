@@ -210,7 +210,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
    
       }
    
-      public void confirmacion(long cedula_est){
+       public void confirmacion(long cedula_est, long ce_tu){
             DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
         
         PasantiaDAO ppDAO = new PasantiaDAO();
@@ -218,12 +218,13 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                 p = ppDAO.findPasantia(cedula_est);
 
                 //Encontrar el detalle de esa pasantia cuyo proceso sea 16 (proceso actual, cursando, este va a ser actualizado)
-                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),1);
+                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),16);
 
                 dp.setValidacion(EnumEstado.validar);
                 dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
 
+                tutor.setCedula(ce_tu);
             //Paso a agregar el nuevo proceso
             DetallePasantia dp3 = new DetallePasantia();
             dp3.setDescripcion("Confirmar Cita");
@@ -231,6 +232,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
             dp3.setPasantia(p);
             dp3.setProceso(new Proceso(18));
             dp3.setValidacion(EnumEstado.llenar);
+            dp3.setTutor(tutor);
             dpDAO.insertarNuevoDetalle(dp3);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -238,6 +240,35 @@ Session session = HibernateUtil.getSessionFactory().openSession();
           
       }
       
+     /* public void confirmacion2(long cedula_est,String tut){
+            DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
+        
+        PasantiaDAO ppDAO = new PasantiaDAO();
+          try {
+                    
+              p = ppDAO.findPasantia(cedula_est);
+                
+              long id1 = Long.parseLong(tut);
+              
+                tutor.setCedula(id1);
+           
+
+                //Encontrar el detalle de esa pasantia cuyo proceso sea 30 (proceso actual, cursando, este va a ser actualizado)
+                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),18);
+
+                //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
+                dp.setValidacion(EnumEstado.validar);
+                 dp.setTutor(tutor);
+                dpDAO.actualizarDetallePasantia(dp);
+
+            //Paso a agregar el nuevo proceso
+           
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+          
+      }
+      */
       
       public void solicitud(){
             DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
@@ -454,7 +485,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                 dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),18);
 
                 //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
-                dp.setValidacion(EnumEstado.validar);
+                dp.setValidacion(EnumEstado.aprobar);
                 dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
 

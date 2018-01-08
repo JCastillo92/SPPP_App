@@ -584,6 +584,9 @@ public String sendValidacion(String correo,String nombre,String apellido,String 
         VisitaDAO llamar=new VisitaDAO();
         llamar.updateEstudianteAgendado(rid2);
         
+       /* VisitaDAO visi = new VisitaDAO();
+        visi.confirmacion2(rid2, id);*/
+        
         time=null;
         data=null;
         

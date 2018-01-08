@@ -649,9 +649,10 @@ public String sendValidacion(String correo,String nombre,String apellido,String 
         
         }
   
-  public String reporte_coor(){
+  public String reporte_coor(long id){
   
-  
+  VisitaDAO vi = new VisitaDAO();
+  vi.resUltimo(id);
   return "review_window";
   }
   

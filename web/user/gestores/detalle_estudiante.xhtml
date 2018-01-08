@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="/templates/main.xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:define name="encabezado">
+        <f:metadata>
+            <f:viewParam name="id" value="#{detalleEstudianteBean.id_est}" />
+            <f:event type="preRenderView" listener="#{detalleEstudianteBean.init()}" />
+        </f:metadata>
+    </ui:define>
+
+    <ui:define name="title">
+        Detalle Estudiante
+    </ui:define>
+
+    <ui:define name="barra-lateral">
+        <ui:include src="/snippets/menu_encargado.xhtml" />
+    </ui:define>
+
+    <ui:define name="contenido">
+
+        <!-- ENCABEZADO -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Detalles Estudiante</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bell fa-fw"></i> Pasantia General
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-comment fa-fw"></i> Nombre Estudiante:
+                                <span class="pull-right text-muted small"><em>#{detalleEstudianteBean.usuario.nombre}</em>
+                                </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-twitter fa-fw"></i> Apellido Estudiante:
+                                <span class="pull-right text-muted small"><em>#{detalleEstudianteBean.usuario.apellido}</em>
+                                </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-envelope fa-fw"></i> Tipo:
+                                <span class="pull-right text-muted small"><em>#{detalleEstudianteBean.tipo}</em>
+                                </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-tasks fa-fw"></i> Fecha Inicio:
+                                <span class="pull-right text-muted small"><em>#{detalleEstudianteBean.pasantia.fechaInicio}</em>
+                                </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-upload fa-fw"></i> Fecha Fin:
+                                <span class="pull-right text-muted small"><em>#{detalleEstudianteBean.pasantia.fechaFin}</em>
+                                </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-bolt fa-fw"></i> Estado Actual:
+                                <span class="pull-right text-muted small"><em>#{detalleEstudianteBean.pasantia.estado}</em>
+                                </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-warning fa-fw"></i> Encargado:
+                                <span class="pull-right text-muted small"><em>#{detalleEstudianteBean.encargado.nombre_encargado}</em>
+                                </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-shopping-cart fa-fw"></i> C&oacute;digo Resoluci&oacute;n Consejo:
+                                <span class="pull-right text-muted small"><em>#{detalleEstudianteBean.pasantia.cod_resolucion_consejo}</em>
+                                </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-money fa-fw"></i> C&oacute;digo Resoluci&oacute;n Final:
+                                <span class="pull-right text-muted small"><em>#{detalleEstudianteBean.pasantia.cod_resolucion_final}</em>
+                                </span>
+                            </a>
+                        </div>
+                        <!-- /.list-group -->
+                        
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bell fa-fw"></i> Detalles Pasantia
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+
+                        <b:dataTable value="#{detalleEstudianteBean.listaDetalles}" var="detalle">
+                            
+                            <b:dataTableColumn value="#{detalle.descripcion}"/>
+                            <b:dataTableColumn value="#{detalle.estado}"/>
+                            <b:dataTableColumn value="#{detalle.validacion}"/>
+                            <b:dataTableColumn value="#{detalleEstudianteBean.nombreProceso(detalle.proceso.id_proceso)}" label="Proceso"/>
+                            <b:dataTableColumn value="#{detalle.observacion}"/>
+                            
+                            
+                        </b:dataTable>
+                        
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </ui:define>
+
+</ui:composition>

@@ -267,9 +267,10 @@ public class CitasDaoImp implements CitasDao {
         try {
             tx = sesion.beginTransaction();
             
-            String sql=" from Pasantia WHERE cedula = :id ";
+            String sql=" from Pasantia  WHERE cedula = :id ";
                      listado = sesion.createQuery(sql).setParameter("id", id).list();
 
+                     
             tx.commit();
 
         } catch (Exception e) {
@@ -277,10 +278,10 @@ public class CitasDaoImp implements CitasDao {
             if (tx != null){
                 tx.rollback();
             }
-        }finally{
-            sesion.flush();
-           // sesion.close();
         }
+            sesion.flush();
+          // sesion.close();
+        
        
         return listado;
     
@@ -402,7 +403,7 @@ public class CitasDaoImp implements CitasDao {
             throw e;
         }finally{
             sesion.flush();
-            //sesion.close();
+            sesion.close();
         }
         return listado;
     

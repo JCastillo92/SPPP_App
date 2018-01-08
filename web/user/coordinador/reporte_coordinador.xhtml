@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -34,20 +35,21 @@
                     <div class="panel-body">
                         <div class="table-responsive">
                             
-                            <b:dataTable var="campo" value="#{citasAgendadas.getInformeCoor()}" pdf="true">
-                               
-                            <b:dataTableColumn label="Cèdula">
-                                <h:outputText value="#{campo.estudiante.cedula}"/>
-                                </b:dataTableColumn>
-                            <b:dataTableColumn label="Nombre">
-                                <h:outputText value="#{citasAgendadas.getNombre(campo.estudiante.cedula)}"/>
-                                </b:dataTableColumn>
-                            <b:dataTableColumn label="Horas pasantia">
-                                <h:outputText value="#{campo.estudiante.horasPasantia}"/>
-                                </b:dataTableColumn>
-                            
+                            <b:dataTable value="#{detallesDashboardTut.getListarCoordinador()}"
+                                         var="dpalltrue" >
+                                <b:dataTableColumn value="#{dpalltrue[0].toString()}" label="Cèdula" />
+                                <b:dataTableColumn value="#{citasAgendadas.getNombre_completo(dpalltrue[0].toString())}" label="Nombre"/>
+                                <b:dataTableColumn value="#{detallesDashboardTut.actividad(dpalltrue[1].toString())}" label="Actividad"/>
                                 
-                            </b:dataTable>  
+                                <b:dataTableColumn value="#{dpalltrue[3].toString()}" label="Fecha inicio"/>
+                                <b:dataTableColumn value="#{dpalltrue[4].toString()}" label="Fecha fin"/>
+                                <b:dataTableColumn value="#{dpalltrue[4].toString()}" label="Fecha fin"/>
+                                
+                                <b:dataTableColumn value="#{detallesDashboardTut.periodo}" label="Periodo"/>
+                                
+                                <b:dataTableColumn value="#{detallesDashboardTut.hors(dpalltrue[0].toString())}" label="Horas"/>
+                            </b:dataTable>
+ 
                                  
                             <center>
                                                     <button type="button" class="btn btn-primary"   data-toggle="modal" data-target="#myModal2"  >Enviar</button>

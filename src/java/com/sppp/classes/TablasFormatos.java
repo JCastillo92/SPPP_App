@@ -416,13 +416,6 @@ return "revision_windowFin";
     public String autoevaluacion(long user, String correo){
       AlmacenamientoPDF g=new AlmacenamientoPDF();
    // g.pdf_autoevaluacion(user, 203, auto1, auto2, auto3, auto4, auto5);
-    
-    
-    MailingMain por = new MailingMain();
-      por.mensajes(1005, correo,"vacio");
-    VisitaDAO vi = new VisitaDAO();
-    vi.documentacion_est();
-    
             PasantiaDAO passDAO=new PasantiaDAO();
             pasantia = passDAO.findPasantia(user);
           
@@ -432,6 +425,13 @@ return "revision_windowFin";
             
             DatosTutDAO datos=new DatosTutDAO();
             datos.guardarDatosAutoevaluacion(auto1, auto2, auto3,auto4, auto5, dpCargaDatos);
+    
+    
+    MailingMain por = new MailingMain();
+      por.mensajes(1005, correo,"vacio");
+    VisitaDAO vi = new VisitaDAO();
+    vi.documentacion_est();
+    
     return"revision_window_est";
     }
 

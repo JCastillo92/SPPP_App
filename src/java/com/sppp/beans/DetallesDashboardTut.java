@@ -5,7 +5,11 @@
  */
 package com.sppp.beans;
 
+import com.sppp.DAO.CitasDao;
+import com.sppp.DAO.CitasDaoImp;
 import com.sppp.DAO.DashboardTutDAO;
+import com.sppp.DAO.PeriodoDAO;
+import com.sppp.classes.AlmacenamientoPDF;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
@@ -64,8 +68,23 @@ public class DetallesDashboardTut {
     }
     
     
-    
-   
-    
+    public String actividad(String n){
+        String nombre;
+        AlmacenamientoPDF llamar= new AlmacenamientoPDF();
+        nombre=llamar.giveMeNamePPP(n);
+        return nombre;
+    }
+   public String periodo(){
+String periodo;
+       PeriodoDAO llamar=new PeriodoDAO();
+  periodo= llamar.encontrarPeriodoActual1();
+   return periodo;
+   }
+    public int hors(long user){
+        int horas;
+        CitasDaoImp llamar=new CitasDaoImp();
+        horas=llamar.horas(user);
+        return horas;
+    }
     
 }

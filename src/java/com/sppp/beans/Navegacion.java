@@ -17,6 +17,17 @@ import javax.servlet.http.HttpSession;
 public class Navegacion {
     
     private int perfil;
+    private long busqueda_est;
+
+    public long getBusqueda_est() {
+        return busqueda_est;
+    }
+
+    public void setBusqueda_est(long busqueda_est) {
+        this.busqueda_est = busqueda_est;
+    }
+    
+    
     
     public Navegacion() {
         
@@ -59,6 +70,12 @@ public class Navegacion {
         }
         
         return null;
+        
+    }
+    
+    public String redireccionBusquedaEst(){
+        
+        return "detalle_estudiante?faces-redirect=true&id="+busqueda_est;
         
     }
     

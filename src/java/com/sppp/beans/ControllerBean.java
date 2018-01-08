@@ -408,6 +408,12 @@ private Usuario usuario = new Usuario();
       por.mensajes(1006, correo,"vacio");
           return"revision_window";
       }
+      
+       public String cargarArchivos2(String correo){
+          MailingMain por = new MailingMain();
+      por.mensajes(1006, correo,"vacio");
+          return"revision_window";
+      }
      
       public long getNumerotutor(String tutor) {
         VisitaDAO obj=new VisitaDAO();

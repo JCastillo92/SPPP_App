@@ -163,7 +163,10 @@ public class EstadoProceso {
                 break;
             case 36:
                 ruta = "revision_window";
-                break;    
+                break;  
+            case 37:
+                ruta = "subir_docs_vali";
+                break;     
         }
 
         return ruta;

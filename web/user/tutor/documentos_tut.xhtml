@@ -37,7 +37,6 @@
             
                         <div class="panel-body">
                                 <div class="table-responsive">
-                  <h:form enctype="multipart/form-data" role="form">
                
                                     <b:dataTable  class="table table-striped table-bordered table-hover" var="campo" value="#{citasAgendadas.getVisitasTutor(login.user)}">
                                
@@ -50,9 +49,10 @@
                                 <b:dataTableColumn label="Documentos para descargar">                   
                                     <b:column >
                
+                                        <h:form enctype="multipart/form-data" >
                              <label>Descargar el informe tutor</label><br/>
-                             <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
-                             action="#{uploadFile.download_file_tut(200,campo.estudiante.cedula,login.user)}" value="Descargar" ></h:commandLink>
+                             
+                             <h:commandLink class="btn btn-outline btn-primary" target="_blank" action="#{uploadFile.download_file_tut(200,campo.estudiante.cedula,login.user)}" value="Descargar" ></h:commandLink>
                              
                                      <br/>
                                      
@@ -65,19 +65,22 @@
                                        <label>Descargar hoja de ruta</label><br/>
                                  
                                  <h:commandButton action="{uploadFile.download_file_tut(202,campo.estudiante.cedula)}" value="Descarga PDF"/>
-                                  -->
+                                  --> </h:form>
                                     </b:column>
                                         
                                 </b:dataTableColumn>
                                 
-                                <b:dataTableColumn label="Cargar documentos">                   
+                                <b:dataTableColumn label="Cargar documentos">     
+                                    
                                     <b:column >
+                                     
+                                        <h:form enctype="multipart/form-data" role="form">
                                         <div class="form-group">
                                                 
                                             <label>Informe Tutor <i class="fa fa-file-pdf-o fa-2x"></i></label>    &#160;&#160;&#160;&#160;&#160;  
                
                                 
-                               <h:inputFile value="#{uploadFile.file}" required="true">
+                               <h:inputFile value="#{uploadFile.file}" class="btn btn-outline btn-default" required="true">
                                    <f:ajax listener="#{uploadFile.save_file_tut(1,campo.estudiante.cedula )}"/>
                                      
                             </h:inputFile>      
@@ -85,38 +88,24 @@
                                        <label>   Informe seguimiento <i class="fa fa-file-pdf-o fa-2x"></i> </label> 
                
                                 
-                               <h:inputFile value="#{uploadFile.file}" required="true">
+                               <h:inputFile value="#{uploadFile.file}" class="btn btn-outline btn-default" required="true">
                                    <f:ajax listener="#{uploadFile.save_file_tut(2,campo.estudiante.cedula )}"/>
                                      
                             </h:inputFile>     
-                                       
-                                    <!--   
-                                      <label>     Hoja de ruta <i class="fa fa-file-pdf-o fa-2x"></i></label>  
-                                      <h:form enctype="multipart/form-data" role="form">
-               
-                                
-                               <h:inputFile value="{uploadFile.file}" required="true">
-                                   <f:ajax listener="{uploadFile.save_file_tut(3,campo.estudiante.cedula )}"/>
-                                     
-                            </h:inputFile>      
-                                     </h:form>
-                                      -->
-                                        </div>
-                                    </b:column>
-                                </b:dataTableColumn>
-                                 <b:dataTableColumn label="Acciones">                   
-                                     <b:column>
-                                         <h:commandLink class="btn btn-success"  action="#{controllerBean.updateCompletado(campo.id_visita,login.user,campo.estudiante.cedula)}" >
+                                       <br/>
+                                       <center>   <h:commandLink class="btn btn-success"  action="#{controllerBean.updateCompletado(campo.id_visita,login.user,campo.estudiante.cedula)}" >
                             Enviar <f:ajax execute="@form"></f:ajax>
-                        </h:commandLink>
+                        </h:commandLink> </center>
+                                        </div>
+                                         </h:form>
                                      </b:column>
                                  </b:dataTableColumn>
                             </b:dataTable>
-               </h:form>
+               
                       
-                        </div>
+                        
 
-                            
+                                            </div>
                             </div>
                           
                         </div>

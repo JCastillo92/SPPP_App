@@ -161,6 +161,7 @@ public class UploadFile{
 
             //mando a crear el archivo pdf, para que sea lo mas actual posible.
             obj_crearpdf.guardado_archivo_pdf_creado(id, opcion);
+            
             //mando a llamar al mmismo archivo pdf en la aplicacion,  para que se pueda descargar
             response.sendRedirect(request.getContextPath() + "/faces/user/estudiantes/download/" + opcion + ".pdf");
             //response.sendRedirect("index.jsf");
@@ -299,7 +300,6 @@ public class UploadFile{
            // HttpSession session = SessionUtils.getSession();
             //long id;
             //id = (long) session.getAttribute("id");
-        obj_crearpdf.pdf_InformeTutor(user, opcion,cedula_tut);
             FacesContext facesContext = FacesContext.getCurrentInstance();
             ExternalContext context = facesContext.getExternalContext();
             HttpServletRequest request = (HttpServletRequest) context.getRequest();
@@ -307,6 +307,8 @@ public class UploadFile{
 
             //mando a crear el archivo pdf, para que sea lo mas actual posible.
          //   obj_crearpdf.guardado_archivo_pdf_creado(id, opcion);
+         
+        obj_crearpdf.pdf_InformeTutor(user, opcion,cedula_tut);
             //mando a llamar al mmismo archivo pdf en la aplicacion,  para que se pueda descargar
             response.sendRedirect(request.getContextPath() + "/faces/user/tutor/download2"+"/"+user+"/"+opcion + ".pdf");
             //response.sendRedirect("index.jsf");
@@ -544,6 +546,30 @@ else {
    
    /* --------------------  CODIGO JHON NO TOCAR ------------------------------ */
    
+     public void download_file_est(int opcion) {///aqui recibir nombre de archivo 103.pdf
+        try {
+            AlmacenamientoPDF obj_crearpdf = new AlmacenamientoPDF();
+            HttpSession session = SessionUtils.getSession();
+            long id;
+            id = (long) session.getAttribute("id");
+        
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            ExternalContext context = facesContext.getExternalContext();
+            HttpServletRequest request = (HttpServletRequest) context.getRequest();
+            HttpServletResponse response = (HttpServletResponse) context.getResponse();
+
+            //mando a crear el archivo pdf, para que sea lo mas actual posible.
+            obj_crearpdf.pdf_autoevaluacion(id, opcion);
+            
+            //mando a llamar al mmismo archivo pdf en la aplicacion,  para que se pueda descargar
+            response.sendRedirect(request.getContextPath() + "/faces/user/estudiantes/download/" + opcion + ".pdf");
+            //response.sendRedirect("index.jsf");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }//end of DOWNLOAD_FILE
+      
    
    
 }//end of class

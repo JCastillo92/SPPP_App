@@ -15,7 +15,6 @@ import com.sppp.mailing.MailingMain;
 import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
 /**
@@ -31,7 +30,7 @@ public class WizardCCValidacion extends WizardCC {
     
     private List<Datos> datosCartaC = new LinkedList<>();
     DetallePasantia dp2 = new DetallePasantia();
-    MailingMain email_aprobado=new MailingMain();
+    private MailingMain email_aprobado=new MailingMain();
     private String observacion;
     private String horasPasantia;
     private String tutorPasantia;

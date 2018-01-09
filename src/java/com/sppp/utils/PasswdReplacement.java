@@ -58,17 +58,21 @@ public class PasswdReplacement {
         long id = 0;
         int perfil = 0;
         String retorno = "/public/login";
+        
         try {
-            HttpSession session = SessionUtils.getSession();
+        HttpSession session = SessionUtils.getSession();    
             id = (long) session.getAttribute("id");
             perfil = (int) session.getAttribute("perfil");
-
+            
             if (id != 0) {
                 if (pass1.equals(pass2)) {
                     ChangePassword objPass = new ChangePassword();
                     verdadPass = objPass.setNewPasswd(id, passMain, pass1);
                     if (verdadPass) {
-                        switch (perfil) {
+                        session.invalidate();
+                        retorno = "/public/valid_chPass";
+                        /*
+                        switch (perfil) {  
                             case 1://estudiante
                                 retorno = "dashboard_est";
                                 break;
@@ -91,6 +95,7 @@ public class PasswdReplacement {
                             default:
                                 break;
                         }
+                        */
                     }
                 } else {
                     verdadPass = false;
@@ -119,6 +124,7 @@ public class PasswdReplacement {
                     }
                 }
             } else {
+                session.invalidate();
                 retorno = "/public/login";
             }
         } catch (Exception e) {

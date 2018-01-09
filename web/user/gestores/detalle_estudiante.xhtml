@@ -35,20 +35,17 @@
         <div class="row">
 
             <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <i class="fa fa-credit-card fa-fw"></i> Datos Generales
-                    </div>
+                <b:panel class="panel-default" title="Datos Generales:" look="default" style="width:auto; height:auto">
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <div class="list-group">
                             <a href="#" class="list-group-item">
-                                <i class="fa fa-user fa-fw"></i> Nombre Estudiante:
+                                <i class="fa fa-user fa-fw"></i> Nombres:
                                 <span class="pull-right text-muted small"><em>#{detalleEstudianteBean.usuario.nombre}</em>
                                 </span>
                             </a>
                             <a href="#" class="list-group-item">
-                                <i class="fa fa-user fa-fw"></i> Apellido Estudiante:
+                                <i class="fa fa-user fa-fw"></i> Apellidos:
                                 <span class="pull-right text-muted small"><em>#{detalleEstudianteBean.usuario.apellido}</em>
                                 </span>
                             </a>
@@ -83,17 +80,28 @@
                                 </span>
                             </a>
                             <a href="#" class="list-group-item">
+                                <i class="fa fa-building fa-fw"></i> Empresa:
+                                <span class="pull-right text-muted small"><em>#{detalleEstudianteBean.encargado.empresa.nombre_empresa}</em>
+                                </span>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <i class="fa fa-phone fa-fw"></i> Contacto:
+                                <span class="pull-right text-muted small"><em>#{detalleEstudianteBean.encargado.empresa.telefono_empresa}</em>
+                                </span>
+                            </a>
+                            
+                            <a href="#" class="list-group-item">
                                 <i class="fa fa-user-md fa-fw"></i> Encargado:
                                 <span class="pull-right text-muted small"><em>#{detalleEstudianteBean.encargado.nombre_encargado}</em>
                                 </span>
                             </a>
                             <a href="#" class="list-group-item">
-                                <i class="fa fa-legal fa-fw"></i> C&oacute;digo Resoluci&oacute;n Consejo:
+                                <i class="fa fa-legal fa-fw"></i> Resoluci&oacute;n Inicial:
                                 <span class="pull-right text-muted small"><em>#{detalleEstudianteBean.pasantia.cod_resolucion_consejo}</em>
                                 </span>
                             </a>
                             <a href="#" class="list-group-item">
-                                <i class="fa fa-legal fa-fw"></i> C&oacute;digo Resoluci&oacute;n Final:
+                                <i class="fa fa-legal fa-fw"></i> Resoluci&oacute;n Final:
                                 <span class="pull-right text-muted small"><em>#{detalleEstudianteBean.pasantia.cod_resolucion_final}</em>
                                 </span>
                             </a>
@@ -102,31 +110,26 @@
                         
                     </div>
                     <!-- /.panel-body -->
-                </div>
+                </b:panel>
             </div>
 
             <div class="col-md-8">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <i class="fa fa-tree fa-fw"></i> Detalles Pasantia
-                    </div>
+                <b:panel class="panel-default" title="Detalles PP / PA:" look="default" style="width:auto; height:auto">
+                
                     <!-- /.panel-heading -->
                     <div class="panel-body">
 
                         <b:dataTable value="#{detalleEstudianteBean.listaDetalles}" var="detalle">
-                            
                             <b:dataTableColumn value="#{detalle.descripcion}"/>
                             <b:dataTableColumn value="#{detalle.estado}"/>
                             <b:dataTableColumn value="#{detalle.validacion}"/>
                             <b:dataTableColumn value="#{detalleEstudianteBean.nombreProceso(detalle.proceso.id_proceso)}" label="Proceso"/>
                             <b:dataTableColumn value="#{detalle.observacion}"/>
-                            
-                            
                         </b:dataTable>
                         
                     </div>
                     <!-- /.panel-body -->
-                </div>
+                </b:panel>
             </div>
 
         </div>

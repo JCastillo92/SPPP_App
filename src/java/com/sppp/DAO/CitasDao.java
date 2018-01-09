@@ -31,6 +31,7 @@ public interface CitasDao {
      public String obtenerCoordinador(long id);
         public List<VisitaTutor> listarVisitados(long id);
    public List<VisitaTutor> listarInformeCoor();
+   public List<VisitaTutor> listarInformeCoor2(long id);
  public List<VisitaTutor> visitadosTuto(long user);
  public int horas(long user);
     

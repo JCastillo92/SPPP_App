@@ -31,6 +31,7 @@ public class DetallesDashboardTut {
       List<Object[]> documento=null;
       List<Object[]> listarCoordinador=null;
       
+      List<Object[]> listarInforEst=null;
       List<Object[]> listarCoordinadorResolicion=null;
       String periodo;
       int horas;
@@ -85,6 +86,14 @@ public class DetallesDashboardTut {
         return documento;
     }
 
+    public List<Object[]> getListarInforEst(long user) {
+                      DashboardTutDAO llamar=new DashboardTutDAO();
+  listarInforEst=llamar.listarInforEst(user);
+        return listarInforEst;
+    }
+
+    
+    
     public List<Object[]> getListarCoordinador() {
                      DashboardTutDAO llamar=new DashboardTutDAO();
    listarCoordinador=llamar.ListarCoordinador();

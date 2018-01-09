@@ -427,7 +427,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                 dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),38);
 
                 //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
-                dp.setValidacion(EnumEstado.llenar);
+                dp.setValidacion(EnumEstado.validar);
                 //dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
 

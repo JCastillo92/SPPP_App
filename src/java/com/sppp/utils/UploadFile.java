@@ -23,6 +23,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import javax.servlet.http.HttpSession;
 import java.nio.file.StandardCopyOption;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -177,7 +178,7 @@ public class UploadFile{
         
         
         public String enviar_arch_msj(int button_action){
-            String retorno="revision_window";
+            String retorno="dashboard_est";
           //aqui envio el email al docente encargado de acorde a la accion dada.
         MailingMain primer_mensaje=new MailingMain();
         ListaDocentesAdministrativos corrreo_De=new ListaDocentesAdministrativos();
@@ -214,15 +215,15 @@ public class UploadFile{
             dp3.setProceso(new Proceso(7));
             dp3.setValidacion(EnumEstado.llenar);
             dpDAO.insertarNuevoDetalle(dp3);
-            retorno="dashboard_est";
+            retorno="revision_window_fillcc";
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
         break;
             case 3:
          try {
-                //envio mail a encargado mail para que revise scan de REVISIÓN DE CARTA COMPROMISO
-        primer_mensaje.mensajes(1003,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");  
+                //envio mail a encargado mail para que revise scan de 4 PDFs
+        primer_mensaje.mensajes(1004,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
             
                 HttpSession session = SessionUtils.getSession();
                 long id;
@@ -257,8 +258,8 @@ public class UploadFile{
                 break;
             case 4:
         try {
-                //envio mail a encargado mail para que revise scan de REVISIÓN DE INICIAR PASANTÍA
-        primer_mensaje.mensajes(1004,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
+                //envio mail a encargado mail para que revise scan de SOLICITUD DE RESOLUCION
+        
             
                 HttpSession session = SessionUtils.getSession();
                 long id;
@@ -456,17 +457,18 @@ public class UploadFile{
             extension = nombre.substring(punto,nombre.length());
             System.out.println(nombreSinExt+" "+extension);
             
-            
+            DateFormat formatoHora = new SimpleDateFormat("HH-mm-ss");
+        
         SimpleDateFormat sdf_data = new SimpleDateFormat("dd-MM-yyyy"); 
          java.util.Date fecha = new Date();
          String fecha1=sdf_data.format(fecha);
+         String hora=formatoHora.format(fecha);
       
 
                     //informe coordinador
-                    Files.copy(input, new File(local_path + user, fecha1 + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
-                    Files.copy(input, new File(local_path + llamar.id_secretaria(), fecha1 + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    Files.copy(input, new File(local_path + user+"/"+"Subidos",fecha1+"_"+hora + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    Files.copy(input, new File(local_path + llamar.id_secretaria(), fecha1+"_"+hora + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
             
-            System.out.println(new File("/").getAbsolutePath());
         } catch (IOException ex) {
             System.out.println("Error Al Cargar: "+ex.getMessage());
         }
@@ -477,12 +479,15 @@ public class UploadFile{
        public void download_file_coor_1(long user) {///aqui recibir nombre de archivo 103.pdf
         try {
             SimpleDateFormat sdf_data = new SimpleDateFormat("dd-MM-yyyy"); 
+        DateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
          java.util.Date fecha = new Date();
          String fecha1=sdf_data.format(fecha);
-      
+      String hora=formatoHora.format(fecha);
             AlmacenamientoPDF obj_crearpdf = new AlmacenamientoPDF();
             
            obj_crearpdf.create_student_folder_first_time(user);
+             obj_crearpdf.listar(user,fecha1,hora);
+       
            // HttpSession session = SessionUtils.getSession();
             //long id;
             //id = (long) session.getAttribute("id");
@@ -493,7 +498,7 @@ public class UploadFile{
             HttpServletResponse response = (HttpServletResponse) context.getResponse();
 
             //mando a crear el archivo pdf, para que sea lo mas actual posible.
-         obj_crearpdf.listar(user,fecha1);
+         obj_crearpdf.listar(user,fecha1,hora);
             //mando a llamar al mmismo archivo pdf en la aplicacion,  para que se pueda descargar
             response.sendRedirect(request.getContextPath() + "/faces/user/coordinador/download1"+"/"+user+"/"+fecha1 + ".pdf");
             //response.sendRedirect("index.jsf");
@@ -515,13 +520,34 @@ public class UploadFile{
   System.out.println("No hay ficheros en el directorio especificado");
 else { 
   for (int x=0;x<ficheros.length;x++){
-      System.out.println("dfkjnjngb"+ficheros[x]);
-           
-  nombre.add(ficheros[x]);
+       if(ficheros[x].equals("Subidos")){    
+  }
+       else{
+       nombre.add(ficheros[x]);
+       }
   }
 } return nombre;
        }
-        
+ 
+     public List<String> listarSellados(long user) throws IOException{
+         List<String> nombre = new ArrayList<String>();
+           Paths g=new Paths();     
+       File dir = new File(g.local_path()+"/"+user+"/"+"Subidos");
+       String[] ficheros = dir.list();
+   
+       if (ficheros == null)
+  System.out.println("No hay ficheros en el directorio especificado");
+else { 
+  for (int x=0;x<ficheros.length;x++){
+   
+       nombre.add(ficheros[x]);
+       
+  }
+} return nombre;
+       }
+ 
+   
+   
    public void download_all_coor(String opcion) {///aqui recibir nombre de archivo 103.pdf
         try {
             //AlmacenamientoPDF obj_crearpdf = new AlmacenamientoPDF();

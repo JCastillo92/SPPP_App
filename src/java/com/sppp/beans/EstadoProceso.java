@@ -143,7 +143,7 @@ public class EstadoProceso {
                 break;
                             
             case 16:
-                ruta = null;
+                ruta = "revision_window";//otra ventana de consejo de carrera
                 break;
                 
             case 17:

@@ -139,7 +139,7 @@
          <div class="col-lg-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> Reportes
+                            <i class="fa fa-bell fa-fw"></i> Reportes generados por fechas
                         </div>
       
         
@@ -156,7 +156,29 @@
                        </table>      
             </p:dataList>
                                </h:form>
-                    </div></div></div>
+                    </div></div>
+      <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> Reportes firmados y sellados por fechas
+                        </div>
+      
+        
+                 <h:form enctype="multipart/form-data" role="form">
+                         
+            <p:dataList value="#{controllerProcesos.getNombresArchivosSellados(login.user)}" var="car" type="ordered">
+                <f:facet name="description">
+                    Reportes por fechas 
+                </f:facet>
+                <table>
+                    
+                #{car} &#160;&#160;&#160; &#160; 
+                <h:commandLink target="_blank"  action="#{uploadFile.download_all_coor(car)}" value="Ver"/>
+                       </table>      
+            </p:dataList>
+                               </h:form>
+                    </div></div>
+</div>
     </ui:define>
 
 </ui:composition>

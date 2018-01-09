@@ -9,6 +9,7 @@ import com.sppp.DAO.CitasDao;
 import com.sppp.DAO.CitasDaoImp;
 import com.sppp.DAO.DashboardTutDAO;
 import com.sppp.DAO.PeriodoDAO;
+import com.sppp.DAO.VisitaDAO;
 import com.sppp.classes.AlmacenamientoPDF;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -127,6 +128,8 @@ public class DetallesDashboardTut {
        DashboardTutDAO llamar=new DashboardTutDAO();
      llamar.resolucion(user, codigo_resolucion_final);
      
+     VisitaDAO visita = new VisitaDAO();
+     visita.resUltimo2(user);
     
     return "review_window";
     }

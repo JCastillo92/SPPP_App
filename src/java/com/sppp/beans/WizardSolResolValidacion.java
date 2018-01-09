@@ -109,14 +109,15 @@ int id_estudiante;
         return null;
     }
     
-    public String actualizarResolucion(int tut){
+    public String actualizarResolucion(long tut){
         
         long est = Long.valueOf(id_estudiante);
-        long tutor = Long.valueOf(tut);
+        
+          System.out.println("bryansi"+ "est"+est+"tutor"+tutor+"lolo"+tut);
            try {
         PasantiaDAO passDAO = new PasantiaDAO();
          VisitaDAO vi = new VisitaDAO();
-
+         
        
          String agregaUnaObservacion="vacio";
          if(!cod_resolucion.equals("")){
@@ -127,7 +128,8 @@ int id_estudiante;
         pasantia.setCod_resolucion_consejo(cod_resolucion);
         passDAO.actualizarPasantia(pasantia);
 
-         vi.confirmacion(est,tutor);//llamada de JJ a BK (union de tesis)
+        vi.confirmacion(est,tut); //llamada de JJ a BK (union de tesis)
+               System.out.println("bryansi"+ "est"+est+"tutor"+tutor);
         } catch (Exception e) {
                     e.printStackTrace();
             }

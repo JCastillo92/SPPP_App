@@ -35,10 +35,7 @@
         <div class="row">
 
             <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <i class="fa fa-credit-card fa-fw"></i> Datos Generales
-                    </div>
+                <b:panel class="panel-default" title="Datos Generales:" look="default" style="width:auto; height:auto">
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <div class="list-group">
@@ -102,31 +99,26 @@
                         
                     </div>
                     <!-- /.panel-body -->
-                </div>
+                </b:panel>
             </div>
 
             <div class="col-md-8">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <i class="fa fa-tree fa-fw"></i> Detalles Pasantia
-                    </div>
+                <b:panel class="panel-default" title="Detalles PP / PA:" look="default" style="width:auto; height:auto">
+                
                     <!-- /.panel-heading -->
                     <div class="panel-body">
 
                         <b:dataTable value="#{detalleEstudianteBean.listaDetalles}" var="detalle">
-                            
                             <b:dataTableColumn value="#{detalle.descripcion}"/>
                             <b:dataTableColumn value="#{detalle.estado}"/>
                             <b:dataTableColumn value="#{detalle.validacion}"/>
                             <b:dataTableColumn value="#{detalleEstudianteBean.nombreProceso(detalle.proceso.id_proceso)}" label="Proceso"/>
                             <b:dataTableColumn value="#{detalle.observacion}"/>
-                            
-                            
                         </b:dataTable>
                         
                     </div>
                     <!-- /.panel-body -->
-                </div>
+                </b:panel>
             </div>
 
         </div>

@@ -34,14 +34,16 @@ public class PasswordRestoration {
     
     
     public String sendMePasswd(){
-        String retorno="/public/login";
+        String retorno="/public/not_valid";
+        boolean verdad=false;
         try {
           Cls_OutOfSystem llama=new Cls_OutOfSystem();
-          llama.findUsuarioEmail(email,identification);
+          verdad=llama.findUsuarioEmail(email,identification);
         } catch (Exception e) {
-            e.printStackTrace();
         }
-
+        if(verdad==true){
+            retorno="/public/login";
+        }
         return retorno;
     }
 }

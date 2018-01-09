@@ -111,14 +111,14 @@ public class MailingMain {
             contentMessage=contentMessage+"\n"+"\nObservaciones realizadas: \n"+observaciones;
             deliverMail(AddRecipientDestination,AddSubject.toUpperCase(),contentMessage);    
             } catch (Exception e) {
-                e.printStackTrace();
+               // e.printStackTrace();
             }
         }else{
             try {
             //envio de mensaje SIN observaciones
             deliverMail(AddRecipientDestination,AddSubject.toUpperCase(),contentMessage);    
             } catch (Exception e) {
-                e.printStackTrace();
+               // e.printStackTrace();
             }
         }
         
@@ -153,7 +153,7 @@ public class MailingMain {
 	        transport.connect("smtp.gmail.com", username, password);
 	        transport.sendMessage(message, message.getAllRecipients());
 	       } catch (MessagingException e) {
-	    	  e.getMessage();
+	    	  //e.getMessage();
 	       }
 	    
     }//end of method deliverMail()

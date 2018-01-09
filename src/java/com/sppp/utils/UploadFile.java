@@ -177,7 +177,7 @@ public class UploadFile{
         
         
         public String enviar_arch_msj(int button_action){
-            String retorno="revision_window";
+            String retorno="dashboard_est";
           //aqui envio el email al docente encargado de acorde a la accion dada.
         MailingMain primer_mensaje=new MailingMain();
         ListaDocentesAdministrativos corrreo_De=new ListaDocentesAdministrativos();
@@ -214,7 +214,7 @@ public class UploadFile{
             dp3.setProceso(new Proceso(7));
             dp3.setValidacion(EnumEstado.llenar);
             dpDAO.insertarNuevoDetalle(dp3);
-            retorno="dashboard_est";
+            retorno="revision_window_fillcc";
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

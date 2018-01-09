@@ -21,8 +21,8 @@ public class MailingMain {
     
     //Texto quemado que puede REPETIRSE
     private String ponnombreAPP="SPPP (Sistema de Pasantías y Prácticas Pre Profesionales). ";
-    private String pondespedida="No usar este medio para realizar preguntas o envio de información. ";
-    private String poningreso="Se requiere que ingrese al sistema con sus creadenciales y revise el estado de sus datos o documentos. ";
+    private String pondespedida="No usar este medio para realizar preguntas o envío de información. ";
+    private String poningreso="Se requiere que ingrese al sistema con sus credenciales y revise el estado de sus datos o documentos. ";
     
     
     public void mensajes(int tipo_mensaje, String AddRecipientDestination, String observaciones){
@@ -71,7 +71,7 @@ public class MailingMain {
                 //CASE P A R A  D O C E N T E , A D I M I N S T R A T I V O S , T U T O R E S, SE C RE T A R I A
             case 1001:
                 AddSubject="REVISIÓN DATOS INICIO PROCESO PASANTÍA";
-                contentMessage="Existe nuevos alumnos que han inrgesado datos personales y de la empresa, los cuales "
+                contentMessage="Existe nuevos alumnos que han ingresado datos personales y de la empresa, los cuales "
                         + "se requiere revisar, validar y aprobar.";
                 break;
             case 1002:
@@ -84,11 +84,11 @@ public class MailingMain {
                 break;    
                 case 1004:
                 AddSubject="REVISIÓN DE OF-EMP, C-A-EMP, CC, SR";
-                contentMessage="Existe documentos subidos a la plataforma, Oficio para la Empresa, Carta de Aceptación, Carta de Compromiso, Solicitud de Resolucón listos para revisar y aprobar.";
+                contentMessage="Existe documentos subidos a la plataforma, Oficio para la Empresa, Carta de Aceptación, Carta de Compromiso, Solicitud de Resolución listos para revisar y aprobar.";
                 break;  
             case 911:
                     AddSubject="CLAVE SPPP";
-                    contentMessage="Ha solicitado recuperacion de su clave en "+ponnombreAPP+" Su clave se encuentra al final de este mensaje: "+pondespedida;
+                    contentMessage="Ha solicitado recuperación de su clave en "+ponnombreAPP+" Su clave se encuentra al final de este mensaje: "+pondespedida;
             break;
             case 1005:
                 AddSubject="REVISIÓN DE AUTOEVALUACIÓN";

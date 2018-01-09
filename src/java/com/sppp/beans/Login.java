@@ -74,7 +74,6 @@ public class Login implements Serializable{
     }
     
     
-    
     //Metodo Validacion
     public String validateUser(){
      

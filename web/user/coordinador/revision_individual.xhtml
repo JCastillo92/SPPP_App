@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+     xmlns:p="http://primefaces.org/ui"
+     xmlns:h="http://xmlns.jcp.org/jsf/html"
+     template="/templates/main.xhtml"
+     xmlns:b="http://bootsfaces.net/ui"
+     xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <ui:define name="title">
+       Coordinador
+    </ui:define>
+    
+    <ui:define name="barra-lateral">
+        <ui:include src="/snippets/menu_coordinador.xhtml" />
+    </ui:define>
+    
+    <ui:define name="contenido">
+            <f:metadata>
+                <f:viewParam name="id" value="#{citasAgendadas.cedula_est}" />
+</f:metadata>
+            
+             <br/><br/>
+          
+            <legend><center><h:outputLabel value="Revisión documentos"/></center></legend>
+            
+        
+            
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+   
+           
+                        </div>
+                        
+                        
+                        <div class="panel-body">
+                                <div class="table-responsive">
+                                    <h:form enctype="multipart/form-data" role="form">
+                                    <b:dataTable  class="table table-striped table-bordered table-hover" var="campo" value="#{citasAgendadas.getInformeCoor2(citasAgendadas.cedula_est)}">
+                               
+                                <b:dataTableColumn  label="Nombre estudiante" >                   
+
+                                    <b:column >
+                                        <h:outputText value="#{citasAgendadas.getNombre(citasAgendadas.cedula_est)}#{citasAgendadas.getApellido_est(citasAgendadas.cedula_est)}" />
+                                    </b:column>
+                                </b:dataTableColumn>
+                                <b:dataTableColumn label="Documentos para descargar">                   
+                               
+                                    <b:column >
+                               
+                                   <table><tr><td>
+                                               
+                                               <label>Informe tutor</label></td>
+                                                   <td> 
+                                                  
+                             <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
+                             action="#{uploadFile.download_file_coor(300,citasAgendadas.cedula_est)}" value="Descargar" ></h:commandLink>
+                            
+                                                       <br/><br/></td></tr>
+                                       
+                                            <tr>
+                                                <td> <label>Informe seguimiento tutor</label></td>
+                                 
+                                                <td>  
+                                               <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
+                             action="#{uploadFile.download_file_coor(301,citasAgendadas.cedula_est)}" value="Descargar" ></h:commandLink>
+                             
+                            
+                                                    <br/><br/>  </td></tr>
+                                    
+                                       
+                                              
+                                               <tr>
+                                                <td>  <label>Solicitud final</label></td>
+                                 
+                                                <td> 
+                                                 <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
+                             action="#{uploadFile.download_file_coor(204,citasAgendadas.cedula_est)}" value="Descargar" ></h:commandLink>
+                             
+                            
+                                                <br/><br/></td></tr><tr>
+                                                <td> <label>Autoevaluación estudiante</label></td>
+                                 
+                                                <td>  
+                                                    <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
+                             action="#{uploadFile.download_file_coor(303,citasAgendadas.cedula_est)}" value="Descargar" ></h:commandLink>
+                             &nbsp;<h:selectBooleanCheckbox value="#{validacionFinalPDF.archivo1}" />
+                            
+                                                    <br/><br/></td></tr><tr>
+                                                <td> <label>Certificado de actividad</label></td>
+                                 
+                                                <td>  
+                                                 <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
+                             action="#{uploadFile.download_file_coor(304,citasAgendadas.cedula_est)}" value="Descargar" ></h:commandLink>
+                             &nbsp;<h:selectBooleanCheckbox value="#{validacionFinalPDF.archivo2}" />
+                            
+                                                <br/><br/></td></tr>
+                                                <tr>
+                                                <td>
+                                                    <label>Derecho de validación</label></td>
+                                 
+                                                <td> 
+                                                 <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
+                             action="#{uploadFile.download_file_coor(305,citasAgendadas.cedula_est)}" value="Descargar" ></h:commandLink>
+                             &nbsp;<h:selectBooleanCheckbox value="#{validacionFinalPDF.archivo3}" />
+                             
+                            
+                                                    <br/><br/></td></tr>
+                                 </table>
+                                         
+                                    </b:column>
+                                        
+                                </b:dataTableColumn>
+                                
+                                <b:dataTableColumn label="Acciones">      
+                                    <h:form>
+                                    <b:column>
+                                        <br/><br/><br/>
+                                            <br/>
+                                        <center> 
+                                             <h:outputLabel value="Observación:" /><br/>
+                                             <h:inputTextarea style="width: 106%"  class="form-control" rows="3" value="#{validacionFinalPDF.obs}" title="campo requerido" />
+                                               <br/> <br/> <br/> 
+                                               <b:commandButton   class="btn btn-success btn-sm" action="#{validacionFinalPDF.guardarDatos(citasAgendadas.cedula_est,campo.id_visita,confirmaCita.getCorreo(citasAgendadas.cedula_est))}" value="Enviar" />
+                                              
+                                               <!--<b:commandButton action="{validacionFinalPDF.guardarDatos()}" value="Enviar" look="success"/></center>
+
+                                         </b:button>--></center>
+                                    </b:column> 
+                                        </h:form>
+                                </b:dataTableColumn>
+                                
+                            </b:dataTable>
+                            </h:form> 
+                        </div>
+
+                            
+                            </div>
+                          
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+        
+            
+   
+
+                
+   
+      
+    </ui:define>
+    
+</ui:composition>

@@ -34,6 +34,7 @@ public class DatosFormatos implements Serializable {
     Empresa empresa=new Empresa();
     
     private String id;
+    private long cedu_est;
     private String tipo_actividad;
     public Encargado getEncargado() {
         return encargado;
@@ -67,6 +68,14 @@ public class DatosFormatos implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public long getCedu_est() {
+        return cedu_est;
+    }
+
+    public void setCedu_est(long cedu_est) {
+        this.cedu_est = cedu_est;
     }
 
     

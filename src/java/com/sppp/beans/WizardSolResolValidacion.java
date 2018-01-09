@@ -127,7 +127,8 @@ int id_estudiante;
          }
         pasantia.setCod_resolucion_consejo(cod_resolucion);//seteo el codigo de resolucion PART 1
         passDAO.actualizarPasantia(pasantia);//guardo/actualizo  el codigo de resolucion de PART 1
-
+        
+        vi.updateEstudianteAgendado2(est);
         vi.confirmacion(est,tut); //llamada de JJ a BK (union de tesis)
                System.out.println("bryansi"+ "est"+est+"tutor"+tutor);
         } catch (Exception e) {

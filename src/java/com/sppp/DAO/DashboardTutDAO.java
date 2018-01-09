@@ -80,7 +80,7 @@ public List<Object[]> findAllDetallePasantiaconCIAllTrue(){
 "where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n" +
 "and tb_detalle_pasantia.estado=true \n"
 + "and tb_detalle_pasantia.id_proceso=18 \n"
-+ "and tb_detalle_pasantia.validacion=0 \n"
++ "and tb_detalle_pasantia.validacion=1 \n"
  + "and tb_detalle_pasantia.cedula_tut = ? ;");
 
                 empData = query.setLong(0, user).list();
@@ -164,7 +164,7 @@ public List<Object[]> findAllDetallePasantiaconCIAllTrue(){
 "where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n" +
 "and tb_detalle_pasantia.estado=true \n"
 + "and tb_detalle_pasantia.id_proceso=24 \n"
-+ "and tb_detalle_pasantia.validacion=0 \n"
++ "and tb_detalle_pasantia.validacion=1 \n"
  + "and tb_detalle_pasantia.cedula_tut = ? ;");
 
                 empData = query.setLong(0, user).list();

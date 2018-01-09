@@ -152,6 +152,12 @@ public class EstadoProceso {
             case 18:
                 ruta ="confirma_cita_est";
                 break;
+                case 21:
+                ruta ="revision_window_visita";
+                break;
+                case 24:
+                ruta ="revision_window_visita";
+                break;
             case 28:
                 ruta = "autoEvaluacion"; 
                 break;

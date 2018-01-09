@@ -60,6 +60,9 @@ public class DetallePasantiaBean {
               empData3=dpDAO.findAllDetallePasantiaconCIValidaCartaCompromiso();
               outcome_salida="validar_carta";
                break;
+           case 3:
+               //nada aqui ya que SOL_RESOL es el codigo 5
+               break;
            case 4://buscar y crear tabla de todos Validar PDFs
            empData3=dpDAO.findAllDetallePasantiaconCIValidaPDFs();
            outcome_salida="validar_pdfs";

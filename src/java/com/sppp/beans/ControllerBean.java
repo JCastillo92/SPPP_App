@@ -5,14 +5,18 @@
  */
 package com.sppp.beans;
 
+import com.sppp.DAO.DashboardTutDAO;
 import com.sppp.DAO.VisitaDAO;
+import com.sppp.classes.AlmacenamientoPDF;
 import com.sppp.classes.CitasAgendadas;
 import com.sppp.mailing.MailingMain;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Locale;
 
 import java.util.Set;
@@ -649,10 +653,30 @@ public String sendValidacion(String correo,String nombre,String apellido,String 
         
         }
   
-  public String reporte_coor(long id){
+  public String reporte_coor(long user){
   
+      SimpleDateFormat sdf_data = new SimpleDateFormat("dd-MM-yyyy"); 
+        DateFormat formatoHora = new SimpleDateFormat("HH-mm-ss");
+         java.util.Date fecha = new Date();
+         String fecha1=sdf_data.format(fecha);
+      String hora=formatoHora.format(fecha);
+            AlmacenamientoPDF obj_crearpdf = new AlmacenamientoPDF();
+            
+           obj_crearpdf.create_coordinador_folder_first_time(user);
+             obj_crearpdf.listar(user,fecha1,hora);
+       
+      List<Object[]> estudiantes;
+DashboardTutDAO llamar=new DashboardTutDAO();
+      
+  estudiantes=llamar.ListarCoordinador();
   VisitaDAO vi = new VisitaDAO();
+   for (Object[] row : estudiantes) {
+             long id=Long.parseLong(row[0].toString());
   vi.resUltimo(id);
+   }
+   
+        
+   
   return "review_window";
   }
   

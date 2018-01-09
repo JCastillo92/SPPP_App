@@ -85,6 +85,32 @@ public class AlmacenamientoPDF{
     return exitoalguardar;
     }
     
+    public boolean create_coordinador_folder_first_time(long cedula){
+        //NOTA el path /home/SPPP_PDF/ ya debe estar creado, para que lueg se proceda a crear cada carpeta con la ci
+   File dir = new File(local_path+cedula+"/"+"Subidos");
+         exitoalguardar=false;
+    if(!dir.exists()){
+        System.out.println("intentando crear nuevo directorio por primera y unica vez"+dir.getName());
+         try{
+        dir.mkdir();// attempt to create the directory here
+        
+        exitoalguardar=true;
+        } 
+        catch(SecurityException se){
+        exitoalguardar=false;
+        }
+    }else{
+        exitoalguardar=true;
+    }
+    
+    //comprobacion local
+    if(exitoalguardar){System.out.println("directory was created successfully");
+        }else{System.out.println("failed trying to create the directory");}
+    return exitoalguardar;
+    }
+   
+    
+    
     public boolean guardado_archivo_pdf_creado(long cedula,int numero_pdf){
         exitoalguardar=false;     
         switch(numero_pdf){
@@ -1538,7 +1564,7 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
     }
     
     
-    public void listar(long user,String fecha){
+    public void listar(long user,String fecha,String hora){
          exitoalguardar=false;
          
          try {
@@ -1552,7 +1578,7 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
                  Font esnota = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6, Font.NORMAL);
                  Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL);
         
-                  FileOutputStream archivo = new FileOutputStream(local_path+user+"/"+fecha+".pdf");//asi se guardara el archivo
+                  FileOutputStream archivo = new FileOutputStream(local_path+user+"/"+fecha+"_"+hora+".pdf");//asi se guardara el archivo
             PdfWriter.getInstance(documento, archivo);
       documento.open();
          

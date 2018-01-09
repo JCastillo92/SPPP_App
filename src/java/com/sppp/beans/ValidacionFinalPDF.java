@@ -116,7 +116,7 @@ public class ValidacionFinalPDF {
          VisitaDAO vi = new VisitaDAO();
             vi.resolucion2(est);
            }
-        return "coordinator.xhtml";
+        return "review_window";
     }
 
 }

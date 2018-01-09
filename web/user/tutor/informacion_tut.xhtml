@@ -10,11 +10,11 @@
     xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="title">
-        Informe de estudiantes que culminaron las pasantias
+        Informe de estudiantes asignados
     </ui:define>
 
     <ui:define name="barra-lateral">
-        <ui:include src="/snippets/menu_coordinador.xhtml" />
+        <ui:include src="/snippets/menu_tutor.xhtml" />
     </ui:define>
 
     <ui:define name="contenido">
@@ -35,7 +35,7 @@
                     <div class="panel-body">
                         <div class="table-responsive">
                             
-                            <b:dataTable value="#{detallesDashboardTut.getListarCoordinador()}"
+                            <b:dataTable value="#{detallesDashboardTut.getListarInforEst(login.user)}"
                                          var="dpalltrue" >
                                 <b:dataTableColumn value="#{dpalltrue[0].toString()}" label="Cédula" />
                                 <b:dataTableColumn value="#{citasAgendadas.getNombre_completo(dpalltrue[0].toString())}" label="Nombre"/>
@@ -46,7 +46,13 @@
                                 
                                 <b:dataTableColumn value="#{detallesDashboardTut.getPeriodo()}" label="Periodo"/>
                                 
-                                <b:dataTableColumn value="#{detallesDashboardTut.getHoras(dpalltrue[0].toString())}" label="Horas"/>
+                                <b:dataTableColumn label="Acciones">
+                                    <center>
+                                    <b:button   outcome="agendar_cita_tut.xhtml"  value="Ir" class="btn btn-outline btn-bitbucket"/> 
+                                    </center>
+                                    
+                                </b:dataTableColumn>
+                                
                             </b:dataTable>
  
                                  <br/>

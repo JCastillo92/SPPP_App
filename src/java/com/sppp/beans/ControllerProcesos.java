@@ -21,6 +21,8 @@ import javax.faces.bean.ManagedBean;
 public class ControllerProcesos implements Serializable {
 
     List<String> nombresAArchivos;
+    
+    List<String> nombresArchivosSellados;
 
     public List<String> getNombresAArchivos(long user) throws IOException {
         UploadFile crear=new UploadFile();
@@ -28,6 +30,10 @@ public class ControllerProcesos implements Serializable {
         return nombresAArchivos;
     }
 
-    
+    public List<String> getNombresArchivosSellados(long user) throws IOException {
+        UploadFile crear=new UploadFile();
+       nombresArchivosSellados=crear.listarSellados(user);
+        return nombresArchivosSellados;
+    }
     
 }

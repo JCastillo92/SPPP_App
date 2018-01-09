@@ -66,7 +66,7 @@ public class DetallePasantiaBean {
                break;
            case 5://buscar y crear tabla de cod resolucion
            empData3=dpDAO.findAllDetallePasantiaconCIValidaSolicitudResolucion();
-           outcome_salida="validar_pdfs";
+           outcome_salida="validar_SolResol";
                break;
            default:
                break;

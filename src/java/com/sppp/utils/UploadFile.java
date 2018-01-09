@@ -178,7 +178,7 @@ public class UploadFile{
         
         
         public String enviar_arch_msj(int button_action){
-            String retorno="revision_window";
+            String retorno="dashboard_est";
           //aqui envio el email al docente encargado de acorde a la accion dada.
         MailingMain primer_mensaje=new MailingMain();
         ListaDocentesAdministrativos corrreo_De=new ListaDocentesAdministrativos();
@@ -215,15 +215,15 @@ public class UploadFile{
             dp3.setProceso(new Proceso(7));
             dp3.setValidacion(EnumEstado.llenar);
             dpDAO.insertarNuevoDetalle(dp3);
-            retorno="dashboard_est";
+            retorno="revision_window_fillcc";
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
         break;
             case 3:
          try {
-                //envio mail a encargado mail para que revise scan de REVISIÓN DE CARTA COMPROMISO
-        primer_mensaje.mensajes(1003,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");  
+                //envio mail a encargado mail para que revise scan de 4 PDFs
+        primer_mensaje.mensajes(1004,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
             
                 HttpSession session = SessionUtils.getSession();
                 long id;
@@ -258,8 +258,8 @@ public class UploadFile{
                 break;
             case 4:
         try {
-                //envio mail a encargado mail para que revise scan de REVISIÓN DE INICIAR PASANTÍA
-        primer_mensaje.mensajes(1004,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
+                //envio mail a encargado mail para que revise scan de SOLICITUD DE RESOLUCION
+        
             
                 HttpSession session = SessionUtils.getSession();
                 long id;

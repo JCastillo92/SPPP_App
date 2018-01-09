@@ -70,7 +70,7 @@ public class MailingMain {
                 
                 //CASE P A R A  D O C E N T E , A D I M I N S T R A T I V O S , T U T O R E S, SE C RE T A R I A
             case 1001:
-                AddSubject="REVISIÓN INICIO PROCESO PASANTÍA";
+                AddSubject="REVISIÓN DATOS INICIO PROCESO PASANTÍA";
                 contentMessage="Existe nuevos alumnos que han inrgesado datos personales y de la empresa, los cuales "
                         + "se requiere revisar, validar y aprobar.";
                 break;
@@ -79,12 +79,12 @@ public class MailingMain {
                 contentMessage="Existe documentos subidos a la plataforma, Oficio para la Empresa y Carta de Aceptación, listos para revisar y aprobar.";
                 break;
             case 1003:
-                AddSubject="REVISIÓN DE OF-EMP, C-A-EMP, CC, SR";
-                contentMessage="Existe documentos subidoS a la plataforma, Oficio para la Empresa, Carta de Aceptación, Carta de Compromiso, Solicitud de Resolucón listos para revisar y aprobar.";
+                AddSubject="REVISIÓN DATOS CARTA COMPROMISO";
+                contentMessage="Existe datos de Carta de Compromiso, la cual se requiere revisar y aprobar.";
                 break;    
                 case 1004:
-                AddSubject="";
-                contentMessage="";
+                AddSubject="REVISIÓN DE OF-EMP, C-A-EMP, CC, SR";
+                contentMessage="Existe documentos subidos a la plataforma, Oficio para la Empresa, Carta de Aceptación, Carta de Compromiso, Solicitud de Resolucón listos para revisar y aprobar.";
                 break;  
             case 911:
                     AddSubject="CLAVE SPPP";

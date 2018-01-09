@@ -124,8 +124,8 @@ int id_estudiante;
          agregaUnaObservacion="La Resolución de Inicio de Actividades es favorable. El código es: "+cod_resolucion;
             email_aprobado.mensajes(3, usuario.getCorreo(), agregaUnaObservacion);
          }
-        pasantia.setCod_resolucion_consejo(cod_resolucion);
-        passDAO.actualizarPasantia(pasantia);
+        pasantia.setCod_resolucion_consejo(cod_resolucion);//seteo el codigo de resolucion PART 1
+        passDAO.actualizarPasantia(pasantia);//guardo/actualizo  el codigo de resolucion de PART 1
 
          vi.confirmacion(est,tutor);//llamada de JJ a BK (union de tesis)
         } catch (Exception e) {

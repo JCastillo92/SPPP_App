@@ -80,6 +80,17 @@ private Usuario usuario = new Usuario();
       
       
      private String boton="btn btn-success btn-circle";
+     private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+     
+     
 
     public String getBoton() {
         return boton;
@@ -482,9 +493,14 @@ private Usuario usuario = new Usuario();
           
            cancel=true;
           visitaDAO.updateEstudianteAgendado1(id2);
-          
-      }
+    // return "review_window_Cancelar"; 
+     
+       }
       
+       public String abrirCancelar(){
+     return "revision_window.xhtml"; 
+       
+       }
   public void imprimirData(){
       
         FacesContext facesContext = FacesContext.getCurrentInstance();

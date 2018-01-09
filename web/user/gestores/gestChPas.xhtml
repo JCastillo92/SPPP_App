@@ -18,15 +18,12 @@
     <ui:define name="contenido">
 
         <div class="row">
-            <h1 class="page-header">Cambio de contrase&ntilde;a</h1>
+            <h1 class="page-header">Cambio de Contrase&ntilde;a</h1>
         </div>
         
      
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Ingresae Clave Actual y Nueva Clave
-                </div>
+            <b:panel class="panel-default" title="Ingresae Clave Actual y Nueva Clave:" look="default" style="width:auto; height:auto">
                 <div class="panel-body">
                     <h:form>
                         <div class="form-group">
@@ -59,7 +56,7 @@
                         <b:commandButton class="btn btn-success" action="#{passwdReplacement.cambiarPassword()}" value="Enviar" look="success" />
                     </h:form>
                 </div>
-            </div>
+            </b:panel>
         </div>
         
     </ui:define>

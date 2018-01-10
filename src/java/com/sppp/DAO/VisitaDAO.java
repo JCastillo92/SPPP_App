@@ -333,7 +333,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
             dp3.setEstado(true);
             dp3.setPasantia(p);
             dp3.setProceso(new Proceso(30));
-            dp3.setValidacion(EnumEstado.validar);
+            dp3.setValidacion(EnumEstado.llenar);
             dpDAO.insertarNuevoDetalle(dp3);
                 } catch (Exception e) {
                     e.printStackTrace();

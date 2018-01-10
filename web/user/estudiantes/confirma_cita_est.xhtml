@@ -69,26 +69,8 @@
                                        <h:outputText value="#{campo.hora_visita}" />
                                        </div>
                                         
-                                         <h:column rendered="#{campo.estado_visita == 'Enviada' eq true}">
-                                             <br/>  <br/> 
-                                        <div class="col-lg-6" >
-                                           
-                                            <h:outputLabel value="Observación:" />
-                                           
-                                         </div>
-                                              </h:column>
                                         <br/>
                                        
-                                             <h:column rendered="#{campo.estado_visita == 'Enviada' eq true}">
-                                                  <div class="col-lg-12" >
-                                                      <h:inputTextarea   class="form-control" rows="3" value="#{controllerBean.mensajeMail2}"  title="campo requerido" />
-                                                
-                                                  </div>
-                                                 <br/>   <br/><br/>   <br/><br/>
-                                   </h:column>
-                                   
-                                   
-                                        
                                         <h:column rendered="#{campo.estado_visita == 'Enviada' eq true}">
                                    <div class="col-lg-12" >
                                        

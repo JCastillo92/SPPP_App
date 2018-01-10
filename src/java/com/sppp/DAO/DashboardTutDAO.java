@@ -305,11 +305,11 @@ public String resolucion(long cedula_est,String numero){
         //variables a pedir
         long cedula_est=0;
         int cod_ppp=0,iddetallepasantia=0;
-        String tipo_ppp="",descripcion="";
+        String tipo_ppp="",descripcion="",fechaInicio="",fechaFin="";
         List<Object[]> empData=null;
          try {
             tx = sesion.beginTransaction();
-            SQLQuery query = sesion.createSQLQuery("select tb_pasantia.cedula, tb_detalle_pasantia.tipo_ppp, tb_detalle_pasantia.cod_ppp, tb_detalle_pasantia.iddetallepasantia, tb_detalle_pasantia.descripcion, tb_detalle_pasantia.id_proceso \n" +
+            SQLQuery query = sesion.createSQLQuery("select tb_pasantia.cedula, tb_detalle_pasantia.tipo_ppp, tb_detalle_pasantia.cod_ppp,  tb_pasantia.fechafin, tb_pasantia.fechainicio \n" +
 "from tb_pasantia, tb_detalle_pasantia \n" +
 "where tb_detalle_pasantia.tipo_ppp=tb_pasantia.tipo_ppp and tb_detalle_pasantia.cod_ppp=tb_pasantia.cod_ppp\n" +
 "and tb_detalle_pasantia.estado=true \n"
@@ -323,8 +323,8 @@ public String resolucion(long cedula_est,String numero){
                 cedula_est = Long.parseLong(row[0].toString());
                 tipo_ppp=row[1].toString();
                 cod_ppp = Integer.parseInt(row[2].toString());
-                iddetallepasantia=Integer.parseInt(row[3].toString());
-                descripcion=row[4].toString();
+                fechaInicio=row[3].toString();
+                fechaFin=row[4].toString();
             }               
             tx.commit();
         }catch (Exception e) {

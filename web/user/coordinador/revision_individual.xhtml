@@ -38,9 +38,9 @@
                         
                         <div class="panel-body">
                                 <div class="table-responsive">
-                                    
+                                     <h:form enctype="multipart/form-data" role="form">
                                     <b:dataTable  class="table table-striped table-bordered table-hover" var="campo" value="#{citasAgendadas.getInformeCoor2(citasAgendadas.cedula_est)}">
-                               
+                              
                                 <b:dataTableColumn  label="Nombre estudiante" >                   
 
                                     <b:column >
@@ -48,7 +48,7 @@
                                     </b:column>
                                 </b:dataTableColumn>
                                 <b:dataTableColumn label="Documentos para descargar">                   
-                               <h:form enctype="multipart/form-data" role="form">
+                               
                                     <b:column >
                                
                                    <table><tr><td>
@@ -112,7 +112,7 @@
                                  </table>
                                          
                                     </b:column>
-                            </h:form>                 
+                                           
                                 </b:dataTableColumn>
                             
                                 <b:dataTableColumn label="Acciones">      
@@ -130,9 +130,9 @@
                                     </b:column> 
                                         
                                 </b:dataTableColumn>
-                                
+                               
                             </b:dataTable>
-                            
+                             </h:form>  
                         </div>
 
                             

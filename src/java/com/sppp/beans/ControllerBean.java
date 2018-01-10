@@ -685,8 +685,10 @@ public String sendValidacion(String correo,String nombre,String apellido,String 
         }
   
   
-  public String doc_coor(){
+  public String doc_coor(String correo){
   
+       MailingMain por = new MailingMain();
+      por.mensajes(1008, correo, "vacio");
   
   return "review_window";
   } 

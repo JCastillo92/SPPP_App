@@ -57,12 +57,12 @@
                                 <b:inputTextarea value="#{userWizard.usuario.estudiante.actividadRealizar}" class="#{userWizard.datosAPintar[5] ? 'hola':'rojo_error'}" label="Actividad a Realizar:" required="true" tooltip="Describa aquellas a realizar" style="text-transform:uppercase;"/>
                                 <h:outputText value="Tipo de Pr&aacute;ctica" style="font-weight:bold"/>
                                 <h:message for="msgRadio" style="color: red"></h:message>
-                                <b:radiobutton  value="#{userWizard.p.tipo_ppp}" required="true" id="msgRadio" requiredMessage=" Escoja un tipo de pr&aacute;ctica: *" tooltip="Seleecionar una">
-                                    <f:selectItem itemLabel="Pasant&iacute;a" itemValue="PA"/>
-                                    <f:selectItem itemLabel="Pr&aacute;ctica Pre Profesional" itemValue="PP"/>
+                                <b:radiobutton  value="#{userWizard.p.tipo_ppp}" required="true" id="msgRadio" requiredMessage=" Escoja un tipo de pr&aacute;ctica: *" tooltip="Seleccionar una">
+                                    <f:selectItem itemLabel="Pasant&iacute;a: es remunerada" itemValue="PA"/>
+                                    <f:selectItem itemLabel="Pr&aacute;ctica Pre Profesional: NO es remunerada" itemValue="PP"/>
                                 </b:radiobutton>
-                                <b:dateTimePicker value="#{userWizard.p.fechaInicio}" class="#{userWizard.datosAPintar[7] ? 'hola':'rojo_error'}" label="Fecha Tentativa Inicio:" show-time="false" required="true"/>
-                                <b:dateTimePicker value="#{userWizard.p.fechaFin}" class="#{userWizard.datosAPintar[8] ? 'hola':'rojo_error'}" label="Fecha Tentativa Fin" show-time="false" required="true"/>
+                                <b:dateTimePicker value="#{userWizard.p.fechaInicio}" class="#{userWizard.datosAPintar[7] ? 'hola':'rojo_error'}" label="Fecha Tentativa Inicio:" show-time="false" required="true" tooltip="máximo 6 horas diarias"/>
+                                <b:dateTimePicker value="#{userWizard.p.fechaFin}" class="#{userWizard.datosAPintar[8] ? 'hola':'rojo_error'}" label="Fecha Tentativa Fin" show-time="false" required="true" tooltip="máximo 6 horas diarias"/>
                                 
                                 <p align="right">p&aacute;g 1/3</p>
                             </b:panel>
@@ -78,7 +78,7 @@
                                 <b:inputText value="#{userWizard.emp.nombre_empresa}" class="#{userWizard.datosAPintar[10] ? 'hola':'rojo_error'}" label="Nombre Empresa:" required="true" style="text-transform:uppercase;"/>
                                 <b:inputText value="#{userWizard.emp.nombre_gerente}" class="#{userWizard.datosAPintar[11] ? 'hola':'rojo_error'}" label="Nombres y Apellidos Gerente Empresa:" required="true" style="text-transform:uppercase;"/>
                                 <b:inputText value="#{userWizard.emp.telefono_empresa}" class="#{userWizard.datosAPintar[12] ? 'hola':'rojo_error'}" 
-                                             label="Tel&eacute;fono:" required="true"
+                                             label="Tel&eacute;fono Empresa:" required="true"
                                              onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;"/>
                                 <b:inputText value="#{userWizard.emp.direccion_empresa}" class="#{userWizard.datosAPintar[13] ? 'hola':'rojo_error'}" label="Direcci&oacute;n:" required="true" style="text-transform:uppercase;"/>
                                 <b:inputText value="#{userWizard.emp.actividad_principal_empresa}" class="#{userWizard.datosAPintar[14] ? 'hola':'rojo_error'}" label="Giro del Negocio o Actividad:" required="true" style="text-transform:uppercase;"/>
@@ -97,7 +97,7 @@
                                 <center>
                                 <div class="row">
                                     <p>Nota:</p>
-                                    <b:label text="Si est&aacute; seguro de los datos y las fechas ingresadas, proceda con el env&iacute;o"></b:label>
+                                    <p>Si est&aacute; seguro de los datos y las fechas ingresadas, proceda con el env&iacute;o</p>
                                     <br></br>
                                     <br></br>
                                 </div>

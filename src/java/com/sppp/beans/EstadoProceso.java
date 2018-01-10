@@ -156,7 +156,7 @@ public class EstadoProceso {
                 ruta ="revision_window_visita";
                 break;
                 case 24:
-                ruta ="revision_window_visita";
+                ruta ="revision_window_visita2";
                 break;
             case 28:
                 ruta = "autoEvaluacion"; 

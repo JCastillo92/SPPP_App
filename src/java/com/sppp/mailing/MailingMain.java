@@ -66,7 +66,11 @@ public class MailingMain {
                 AddSubject="REVISION: VALIDACIÓN DE PASANTÍAS/PRÁCTICAS PREPROFESIONALES " + ponnombreAPP;
                 contentMessage="Validación final";
                 break;
-                
+                 case 9:
+                AddSubject="RESOLUCIÓN APROBADA " + ponnombreAPP;
+                contentMessage="Estimada/o estudiante, en Consejo de Carrera se ha revisado la información proporcionada en "+ponnombreAPP+"  "
+                        + "Su resolución ha sido APROBADA. "+poningreso+" "+pondespedida;
+                break;
                 
                 //CASE P A R A  D O C E N T E , A D I M I N S T R A T I V O S , T U T O R E S, SE C RE T A R I A
             case 1001:

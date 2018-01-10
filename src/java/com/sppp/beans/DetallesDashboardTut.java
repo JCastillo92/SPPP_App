@@ -11,6 +11,7 @@ import com.sppp.DAO.DashboardTutDAO;
 import com.sppp.DAO.PeriodoDAO;
 import com.sppp.DAO.VisitaDAO;
 import com.sppp.classes.AlmacenamientoPDF;
+import com.sppp.mailing.MailingMain;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -132,13 +133,18 @@ public class DetallesDashboardTut {
         return horas;
     }
     
-    public String resolucion(long user){
+    public String resolucion(long user,String correo){
         
        DashboardTutDAO llamar=new DashboardTutDAO();
      llamar.resolucion(user, codigo_resolucion_final);
      
+     
+     
      VisitaDAO visita = new VisitaDAO();
      visita.resUltimo2(user);
+     
+        MailingMain mail  = new MailingMain();
+        mail.mensajes(9, correo, "vacio");
     
     return "review_window";
     }

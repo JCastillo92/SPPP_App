@@ -38,7 +38,7 @@
                         
                         <div class="panel-body">
                                 <div class="table-responsive">
-                                    <h:form enctype="multipart/form-data" role="form">
+                                    
                                     <b:dataTable  class="table table-striped table-bordered table-hover" var="campo" value="#{citasAgendadas.getInformeCoor2(citasAgendadas.cedula_est)}">
                                
                                 <b:dataTableColumn  label="Nombre estudiante" >                   
@@ -48,7 +48,7 @@
                                     </b:column>
                                 </b:dataTableColumn>
                                 <b:dataTableColumn label="Documentos para descargar">                   
-                               
+                               <h:form enctype="multipart/form-data" role="form">
                                     <b:column >
                                
                                    <table><tr><td>
@@ -87,7 +87,7 @@
                                                 <td>  
                                                     <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
                              action="#{uploadFile.download_file_coor(303,citasAgendadas.cedula_est)}" value="Descargar" ></h:commandLink>
-                             &nbsp;<h:selectBooleanCheckbox value="#{validacionFinalPDF.archivo1}" />
+                             &nbsp;<h:selectBooleanCheckbox value="#{citasAgendadas.archivo1}" />
                             
                                                     <br/><br/></td></tr><tr>
                                                 <td> <label>Certificado de actividad</label></td>
@@ -95,7 +95,7 @@
                                                 <td>  
                                                  <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
                              action="#{uploadFile.download_file_coor(304,citasAgendadas.cedula_est)}" value="Descargar" ></h:commandLink>
-                             &nbsp;<h:selectBooleanCheckbox value="#{validacionFinalPDF.archivo2}" />
+                             &nbsp;<h:selectBooleanCheckbox value="#{citasAgendadas.archivo2}" />
                             
                                                 <br/><br/></td></tr>
                                                 <tr>
@@ -105,36 +105,34 @@
                                                 <td> 
                                                  <h:commandLink class="btn btn-outline btn-primary" target="_blank" 
                              action="#{uploadFile.download_file_coor(305,citasAgendadas.cedula_est)}" value="Descargar" ></h:commandLink>
-                             &nbsp;<h:selectBooleanCheckbox value="#{validacionFinalPDF.archivo3}" />
+                             &nbsp;<h:selectBooleanCheckbox value="#{citasAgendadas.archivo3}" />
                              
                             
                                                     <br/><br/></td></tr>
                                  </table>
                                          
                                     </b:column>
-                                        
+                            </h:form>                 
                                 </b:dataTableColumn>
-                                
+                            
                                 <b:dataTableColumn label="Acciones">      
-                                    <h:form>
+                                    
                                     <b:column>
                                         <br/><br/><br/>
                                             <br/>
                                         <center> 
                                              <h:outputLabel value="Observación:" /><br/>
-                                             <h:inputTextarea style="width: 106%"  class="form-control" rows="3" value="#{validacionFinalPDF.obs}" title="campo requerido" />
+                                             <h:form>
+                                             <h:inputTextarea style="width: 106%"  class="form-control" rows="3" value="#{citasAgendadas.obs}" title="campo requerido" />
                                                <br/> <br/> <br/> 
-                                               <b:commandButton   class="btn btn-success btn-sm" action="#{validacionFinalPDF.guardarDatos(citasAgendadas.cedula_est,campo.id_visita,confirmaCita.getCorreo(citasAgendadas.cedula_est))}" value="Enviar" />
-                                              
-                                               <!--<b:commandButton action="{validacionFinalPDF.guardarDatos()}" value="Enviar" look="success"/></center>
-
-                                         </b:button>--></center>
+                                               <b:commandButton   class="btn btn-success btn-sm" action="#{citasAgendadas.guardarDatos(citasAgendadas.cedula_est,campo.id_visita,confirmaCita.getCorreo(citasAgendadas.cedula_est))}" value="Enviar" />
+                                              </h:form></center>
                                     </b:column> 
-                                        </h:form>
+                                        
                                 </b:dataTableColumn>
                                 
                             </b:dataTable>
-                            </h:form> 
+                            
                         </div>
 
                             

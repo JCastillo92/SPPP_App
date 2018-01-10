@@ -34,6 +34,7 @@ public class VisitaDAO {
     private Tutor tutor= new Tutor();
    private VisitaTutor visita = new VisitaTutor();
       DetallePasantia dp = new DetallePasantia();
+      DetallePasantia ml = new DetallePasantia();
     Pasantia p = new Pasantia();
 
     public Tutor getTutor() {
@@ -387,6 +388,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                 dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
 
+                 
                 
             //Paso a agregar el nuevo proceso
             DetallePasantia dp3 = new DetallePasantia();
@@ -399,7 +401,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
             dp3.setValidacion(EnumEstado.llenar);
             dpDAO.insertarNuevoDetalle(dp3);
             
-            if(dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),37).toString().length() > 1){
+           /* if(dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),37).toString().length() >= 1){
                
                     dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),37);
 
@@ -408,7 +410,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                 dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
                 
-                }
+                }*/
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -430,6 +432,8 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                 dp.setValidacion(EnumEstado.validar);
                 //dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
+                
+                
 
             //Paso a agregar el nuevo proceso
             DetallePasantia dp3 = new DetallePasantia();
@@ -439,7 +443,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
             dp3.setEstado(true);
             dp3.setPasantia(p);
             dp3.setProceso(new Proceso(37));
-            dp3.setValidacion(EnumEstado.llenar);
+            dp3.setValidacion(EnumEstado.aprobar);
             dpDAO.insertarNuevoDetalle(dp3);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -461,7 +465,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                 dp.setValidacion(EnumEstado.validar);
                 //dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
-
+                
             //Paso a agregar el nuevo proceso
             
                 } catch (Exception e) {
@@ -484,6 +488,34 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                 //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
                 dp.setValidacion(EnumEstado.aprobar);
                 //dp.setEstado(false);
+                dpDAO.actualizarDetallePasantia(dp);
+
+            //Paso a agregar el nuevo proceso
+            
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+}
+       
+       
+        public void nuevosArchivos(){
+            DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
+        
+        PasantiaDAO ppDAO = new PasantiaDAO();
+          try {
+                    
+                             
+              HttpSession session = SessionUtils.getSession();
+                long id;
+                id = (long) session.getAttribute("id");
+
+                p = ppDAO.findPasantia(id);
+                //Encontrar el detalle de esa pasantia cuyo proceso sea 4 (proceso actual, cursando, este va a ser actualizado)
+                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),37);
+
+                //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
+                dp.setValidacion(EnumEstado.aprobar);
+                dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
 
             //Paso a agregar el nuevo proceso

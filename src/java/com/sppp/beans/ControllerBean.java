@@ -427,12 +427,15 @@ private Usuario usuario = new Usuario();
           visitaDAO.solicitud();
           MailingMain por = new MailingMain();
       por.mensajes(1006, correo,"vacio");
-          return"revision_window";
+      return "revision_window_est";
       }
       
        public String cargarArchivos2(String correo){
           MailingMain por = new MailingMain();
       por.mensajes(1006, correo,"vacio");
+      VisitaDAO visita = new VisitaDAO();
+         visita.nuevosArchivos();
+      
           return"revision_window";
       }
      
@@ -560,7 +563,7 @@ public String sendValidacion(String correo,String nombre,String apellido,String 
       long ced = Long.parseLong(cedula);
       
       visitaDAO.validacion_docs(ced);
-     return"revision_window_est"; 
+     return"revision_window"; 
  }
 
 

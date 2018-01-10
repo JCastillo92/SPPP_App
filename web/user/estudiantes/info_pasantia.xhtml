@@ -64,7 +64,7 @@
                                 <b:dateTimePicker value="#{userWizard.p.fechaInicio}" class="#{userWizard.datosAPintar[7] ? 'hola':'rojo_error'}" label="Fecha Tentativa Inicio:" show-time="false" required="true"/>
                                 <b:dateTimePicker value="#{userWizard.p.fechaFin}" class="#{userWizard.datosAPintar[8] ? 'hola':'rojo_error'}" label="Fecha Tentativa Fin" show-time="false" required="true"/>
                                 
-                                <p align="right">p&aacute;g 1/2</p>
+                                <p align="right">p&aacute;g 1/3</p>
                             </b:panel>
                         </b:carouselItem>
                         <b:carouselItem style="width:400px;height:auto">
@@ -89,15 +89,30 @@
                                 </b:inputText>
                                 <b:inputText value="#{userWizard.enc.nombre_encargado}" class="#{userWizard.datosAPintar[16] ? 'hola':'rojo_error'}" label="Nombres y Apellidos Encargado:" required="true" style="text-transform:uppercase;"/>
                                 <b:inputText value="#{userWizard.enc.cargo_encargado}" class="#{userWizard.datosAPintar[17] ? 'hola':'rojo_error'}" label="Cargo / Profesi&oacute;n Encargado:" required="true" style="text-transform:uppercase;"/>
-                            <p align="right">p&aacute;g 2/2</p>
+                            <p align="right">p&aacute;g 2/3</p>
                             </b:panel>
                         </b:carouselItem>
+                        <b:carouselItem style="width:400px;height:auto">
+                            <b:panel title="Guardar Datos Inicio Proceso" look="default">
+                                <center>
+                                <div class="row">
+                                    <p>Nota:</p>
+                                    <b:label text="Si est&aacute; seguro de los datos y las fechas ingresadas, proceda con el env&iacute;o"></b:label>
+                                    <br></br>
+                                    <br></br>
+                                </div>
+                                <div class="row">
+                            <b:commandButton value="Enviar" action="#{userWizard.guardarDatos()}" look="success" />
+                                </div>
+                            </center>
+                                    <p align="right">p&aacute;g 3/3</p>
+                            </b:panel>
+                        </b:carouselItem>
+                        
                         <b:carouselControl direction="right" >
 <b:button value="Anterior" onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');" look="info" />
                         </b:carouselControl>
-                        <b:carouselControl>    
-<b:commandButton value="Enviar" style="position:absolute;right:0px" action="#{userWizard.guardarDatos()}" look="success" />
-                        </b:carouselControl>
+   
                         <b:carouselControl direction="left">
 <b:button value="Siguiente" style="position:absolute;right:100px" onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');" look="info" />
                         </b:carouselControl>

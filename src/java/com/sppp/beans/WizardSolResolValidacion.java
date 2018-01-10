@@ -122,7 +122,7 @@ int id_estudiante;
          String agregaUnaObservacion="vacio";
          if(!cod_resolucion.equals("")){
          //envio email al estudiante de aprobado
-         agregaUnaObservacion="La Resolución de Inicio de Actividades es favorable. El código es: "+cod_resolucion;
+         agregaUnaObservacion="La Resolución de Inicio de Actividades es favorable. El código es: "+cod_resolucion+". Para la visita a las empresas por parte de los tutores es necesario que presenten a los tutores la resolución de consejo donde se autoriza el inicio de las actividades en las empresas. si no existe dicha resolución no se podrá realizar las visitas";
             email_aprobado.mensajes(3, usuario.getCorreo(), agregaUnaObservacion);
          }
         pasantia.setCod_resolucion_consejo(cod_resolucion);//seteo el codigo de resolucion PART 1

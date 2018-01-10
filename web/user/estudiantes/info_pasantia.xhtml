@@ -81,7 +81,7 @@
                                              label="Tel&eacute;fono:" required="true"
                                              onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;"/>
                                 <b:inputText value="#{userWizard.emp.direccion_empresa}" class="#{userWizard.datosAPintar[13] ? 'hola':'rojo_error'}" label="Direcci&oacute;n:" required="true" style="text-transform:uppercase;"/>
-                                <b:inputText value="#{userWizard.emp.actividad_principal_empresa}" class="#{userWizard.datosAPintar[14] ? 'hola':'rojo_error'}" label="Actividad Principal que Ejerce Empresa:" required="true" style="text-transform:uppercase;"/>
+                                <b:inputText value="#{userWizard.emp.actividad_principal_empresa}" class="#{userWizard.datosAPintar[14] ? 'hola':'rojo_error'}" label="Giro del Negocio o Actividad:" required="true" style="text-transform:uppercase;"/>
                                 <b:inputText validator="#{userWizard.validarCI}" value="#{userWizard.enc.ci_encargado}" class="#{userWizard.datosAPintar[15] ? 'hola':'rojo_error'}" 
                                              label="C&eacute;dula Encargado:" required="true"
                                              onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;">
@@ -93,19 +93,13 @@
                             </b:panel>
                         </b:carouselItem>
                         <b:carouselControl direction="right" >
-                            <b:button value="Anterior"
-                                      onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');"
-                                      look="info" />
+<b:button value="Anterior" onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');" look="info" />
                         </b:carouselControl>
-                        <b:carouselControl>
-                            
-                            <b:commandButton value="Enviar" style="position:absolute;right:0px" action="#{userWizard.guardarDatos()}" 
-                                      look="success" />
+                        <b:carouselControl>    
+<b:commandButton value="Enviar" style="position:absolute;right:0px" action="#{userWizard.guardarDatos()}" look="success" />
                         </b:carouselControl>
                         <b:carouselControl direction="left">
-                            <b:button value="Siguiente" style="position:absolute;right:100px"
-                                      onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');"
-                                      look="info" />
+<b:button value="Siguiente" style="position:absolute;right:100px" onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');" look="info" />
                         </b:carouselControl>
                         
                     </b:carousel>

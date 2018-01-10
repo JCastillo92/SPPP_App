@@ -427,8 +427,7 @@ return "revision_windowFin";
             datos.guardarDatosAutoevaluacion(auto1, auto2, auto3,auto4, auto5, dpCargaDatos);
     
     
-    MailingMain por = new MailingMain();
-      por.mensajes(1005, correo,"vacio");
+    
     VisitaDAO vi = new VisitaDAO();
     vi.documentacion_est();
     

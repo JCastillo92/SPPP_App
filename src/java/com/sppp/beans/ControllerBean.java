@@ -509,7 +509,6 @@ private Usuario usuario = new Usuario();
       
   }
   
- 
   
   public void sendTutor(String alumno, String apellido,String correo , String dia, String fecha_visita, String hora ){
      String observaciones="Estimado(a) alumno(a) "+alumno+" "+apellido+", la visita a la institución en la que realiza su pasantía se llevará a cabo el dia "+dia+" con fecha "+fecha_visita+" en la siguiente hora: "+ hora +"."+"\n"+" Porfavor confirmar la visita en el Sistema (SPPP).";

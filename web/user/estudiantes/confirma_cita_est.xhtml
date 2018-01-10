@@ -69,30 +69,12 @@
                                        <h:outputText value="#{campo.hora_visita}" />
                                        </div>
                                         
-                                         <h:column rendered="#{campo.estado_visita == 'Enviada' eq true}">
-                                             <br/>  <br/> 
-                                        <div class="col-lg-6" >
-                                           
-                                            <h:outputLabel value="Observación:" />
-                                           
-                                         </div>
-                                              </h:column>
                                         <br/>
                                        
-                                             <h:column rendered="#{campo.estado_visita == 'Enviada' eq true}">
-                                                  <div class="col-lg-12" >
-                                                      <h:inputTextarea   class="form-control" rows="3" value="#{controllerBean.mensajeMail2}"  title="campo requerido" />
-                                                
-                                                  </div>
-                                                 <br/>   <br/><br/>   <br/><br/>
-                                   </h:column>
-                                   
-                                   
-                                        
                                         <h:column rendered="#{campo.estado_visita == 'Enviada' eq true}">
                                    <div class="col-lg-12" >
                                        
-             <center> <button type="button" class="btn btn-primary"   data-toggle="modal" data-target="#myModal"  >Enviar</button> &#160; <button type="button" class="btn btn-danger"   data-toggle="modal" data-target="#myModal2"  >Cancelar cita</button></center>
+             <center> <button type="button" class="btn btn-success"   data-toggle="modal" data-target="#myModal"  >Enviar</button> &#160; <button type="button" class="btn btn-danger"   data-toggle="modal" data-target="#myModal2"  >Cancelar cita</button></center>
     			           </div>
                                         </h:column>
                                   
@@ -157,8 +139,8 @@
           Seguro desea cancelar la cita? <br/>
           --Se enviará un correo a su tutor---<br/><br/>
           <p> ¿Porqué se cancela la cita?</p>
-          <h:inputTextarea  class="form-control" rows="3" value="#{controllerBean.mensajeMail}"  title="campo requerido" />
-           
+          <h:inputTextarea  class="form-control" id="ci_hora" rows="3" value="#{controllerBean.mensajeMail}" rendered="true" requiredMessage="falta la observación" title="campo requerido" />
+           <h:message for="ci_hora" style="color:red" />
          </div>
       <div class="modal-footer">
           

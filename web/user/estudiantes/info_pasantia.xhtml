@@ -61,8 +61,8 @@
                                     <f:selectItem itemLabel="Pasant&iacute;a: es remunerada" itemValue="PA"/>
                                     <f:selectItem itemLabel="Pr&aacute;ctica Pre Profesional: NO es remunerada" itemValue="PP"/>
                                 </b:radiobutton>
-                                <b:dateTimePicker value="#{userWizard.p.fechaInicio}" class="#{userWizard.datosAPintar[7] ? 'hola':'rojo_error'}" label="Fecha Tentativa Inicio:" show-time="false" required="true"/>
-                                <b:dateTimePicker value="#{userWizard.p.fechaFin}" class="#{userWizard.datosAPintar[8] ? 'hola':'rojo_error'}" label="Fecha Tentativa Fin" show-time="false" required="true"/>
+                                <b:dateTimePicker value="#{userWizard.p.fechaInicio}" class="#{userWizard.datosAPintar[7] ? 'hola':'rojo_error'}" label="Fecha Tentativa Inicio:" show-time="false" required="true" tooltip="máximo 6 horas diarias"/>
+                                <b:dateTimePicker value="#{userWizard.p.fechaFin}" class="#{userWizard.datosAPintar[8] ? 'hola':'rojo_error'}" label="Fecha Tentativa Fin" show-time="false" required="true" tooltip="máximo 6 horas diarias"/>
                                 
                                 <p align="right">p&aacute;g 1/3</p>
                             </b:panel>

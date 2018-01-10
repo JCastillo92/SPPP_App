@@ -31,9 +31,11 @@ public class ConfirmaCita {
      private String nombre_est;
      private String apellido_est;
      private String correo;
+     private String correo2;
      private String telefono;
      private String co_director;
      private String co_coord;
+     private String co_secretaria;
      private long ce_tutor;
      private String id;
      
@@ -97,6 +99,13 @@ public class ConfirmaCita {
         this.correo=citasdao.obtenerCorreo(id);
         return correo;
     }
+    
+     public String getCorreo2(String id) {
+         long id1 =Long.parseLong(id);
+        CitasDao citasdao=new CitasDaoImp();
+        this.correo=citasdao.obtenerCorreo(id1);
+        return correo;
+    }
 
     public String getTelefono(long id) {
          CitasDao citasdao=new CitasDaoImp();
@@ -123,6 +132,12 @@ public class ConfirmaCita {
          CitasDao citasdao=new CitasDaoImp();
         this.co_director=citasdao.obtenerCorreoDirector(6);
         return co_director;
+    }
+    
+     public String getCo_secretaria() {
+         CitasDao citasdao=new CitasDaoImp();
+        this.co_secretaria=citasdao.obtenerCorreoDirector(5);
+        return co_secretaria;
     }
 
     public String getId() {

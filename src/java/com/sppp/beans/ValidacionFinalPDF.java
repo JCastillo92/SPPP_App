@@ -75,7 +75,7 @@ public class ValidacionFinalPDF {
     }
     
     
-    public String guardarDatos(long est,long visita,String correo){
+    public void guardarDatos(long est,long visita,String correo){
         System.out.println("bbbb"+archivo1+archivo2+archivo3);
         //Compruebo si cumple todos los checks
         
@@ -116,7 +116,7 @@ public class ValidacionFinalPDF {
          VisitaDAO vi = new VisitaDAO();
             vi.resolucion2(est);
            }
-        return "review_window";
+     //   return "review_window";
     }
 
 }

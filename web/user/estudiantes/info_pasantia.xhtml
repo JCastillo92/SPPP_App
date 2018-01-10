@@ -57,9 +57,9 @@
                                 <b:inputTextarea value="#{userWizard.usuario.estudiante.actividadRealizar}" class="#{userWizard.datosAPintar[5] ? 'hola':'rojo_error'}" label="Actividad a Realizar:" required="true" tooltip="Describa aquellas a realizar" style="text-transform:uppercase;"/>
                                 <h:outputText value="Tipo de Pr&aacute;ctica" style="font-weight:bold"/>
                                 <h:message for="msgRadio" style="color: red"></h:message>
-                                <b:radiobutton  value="#{userWizard.p.tipo_ppp}" required="true" id="msgRadio" requiredMessage=" Escoja un tipo de pr&aacute;ctica: *" tooltip="Seleecionar una">
-                                    <f:selectItem itemLabel="Pasant&iacute;a" itemValue="PA"/>
-                                    <f:selectItem itemLabel="Pr&aacute;ctica Pre Profesional" itemValue="PP"/>
+                                <b:radiobutton  value="#{userWizard.p.tipo_ppp}" required="true" id="msgRadio" requiredMessage=" Escoja un tipo de pr&aacute;ctica: *" tooltip="Seleccionar una">
+                                    <f:selectItem itemLabel="Pasant&iacute;a: es remunerada" itemValue="PA"/>
+                                    <f:selectItem itemLabel="Pr&aacute;ctica Pre Profesional: NO es remunerada" itemValue="PP"/>
                                 </b:radiobutton>
                                 <b:dateTimePicker value="#{userWizard.p.fechaInicio}" class="#{userWizard.datosAPintar[7] ? 'hola':'rojo_error'}" label="Fecha Tentativa Inicio:" show-time="false" required="true"/>
                                 <b:dateTimePicker value="#{userWizard.p.fechaFin}" class="#{userWizard.datosAPintar[8] ? 'hola':'rojo_error'}" label="Fecha Tentativa Fin" show-time="false" required="true"/>
@@ -97,7 +97,7 @@
                                 <center>
                                 <div class="row">
                                     <p>Nota:</p>
-                                    <b:label text="Si est&aacute; seguro de los datos y las fechas ingresadas, proceda con el env&iacute;o"></b:label>
+                                    <p>Si est&aacute; seguro de los datos y las fechas ingresadas, proceda con el env&iacute;o</p>
                                     <br></br>
                                     <br></br>
                                 </div>

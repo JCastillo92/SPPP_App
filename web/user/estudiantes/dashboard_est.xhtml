@@ -78,16 +78,15 @@
 
         </div>
         
-        <div class="row">
-            
+        
+        <div class="row">        
             <b:panel class="panel-default" title="Mi estado actual"  look="default" style="width:auto; height:auto">
-              
-                
-                <div class="panel-body">
                     <ul class="timeline">
                         <!-- PROCESO 1 -->
                         <li>
+                            
                             <div class="#{estadoProceso.obtenerColorEstado(1)}"><i class="fa fa-check"></i></div>
+                            
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4 class="timeline-title">1 Ingreso Datos B&aacute;sicos</h4>
@@ -97,6 +96,7 @@
                                     <p>Ingresar datos del estudiante y la empresa en el Wizard</p>
                                 </div>
                             </div>
+
                         </li>
                         <!-- PROCESO 2 -->
                         <li class="timeline-inverted">
@@ -291,10 +291,11 @@
                             </div>
                         </li>
                     </ul>
-                </div>   
+
+                
             </b:panel>
-            
-        </div>
+            </div>
+        
 
     </ui:define>
 

@@ -15,6 +15,7 @@ import com.sppp.beans.Pasantia;
 import com.sppp.beans.Tutor;
 import com.sppp.beans.VisitaTutor;
 import com.sppp.mailing.MailingMain;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -28,7 +29,7 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean(name = "citasAgendadas")
 @ViewScoped
-public class CitasAgendadas {
+public class CitasAgendadas implements Serializable{
 
     private List<VisitaTutor> visitas;
     

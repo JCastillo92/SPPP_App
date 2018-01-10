@@ -6,6 +6,7 @@
 package com.sppp.beans;
 
 import com.sppp.DAO.LoginDAO;
+import com.sppp.DAO.VisitaDAO;
 import com.sppp.utils.SessionUtils;
 import com.sppp.classes.Cls_PerfilNotation;
 import java.io.Serializable;
@@ -73,7 +74,6 @@ public class Login implements Serializable{
     }
     
     
-    
     //Metodo Validacion
     public String validateUser(){
      
@@ -87,6 +87,7 @@ public class Login implements Serializable{
             int perfil = (int) session.getAttribute("perfil");
             Cls_PerfilNotation obj1= new Cls_PerfilNotation();
             
+                        
             //Capturo nombre y apellido
             nombre = usuario.getNombre();
             apellido = usuario.getApellido();

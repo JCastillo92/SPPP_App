@@ -137,7 +137,9 @@
    
       <br/>
       <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Estudiantes dentro del proceso de citas
+                            <i class="fa fa-user fa-fw"></i> Estudiantes dentro del proceso de citas
+                            <br/>
+      <br/>
        <div class="table-responsive">
            <b:dataTable class="table table-striped table-bordered table-hover" value="#{detallesDashboardTut.getListarcita(login.user)}"
                                          var="dpalltrue" >
@@ -155,7 +157,9 @@
    <f:facet name="anchor"><b:iconAwesome name="cog" /></f:facet>   
       <br/>
       <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Estudiantes dentro del proceso de validación
+                            <i class="fa fa-user fa-fw"></i> Estudiantes dentro del proceso de validación
+                            <br/>
+      <br/>
        <div class="table-responsive">
            <b:dataTable class="table table-striped table-bordered table-hover" value="#{detallesDashboardTut.getVista(login.user)}"
                                          var="dpalltrue" >
@@ -172,8 +176,10 @@
   <f:facet name="anchor"><b:iconAwesome name="cog" /></f:facet>
   <br/>
       <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Estudiantes dentro del proceso de carga de documentos
-       <div class="table-responsive">
+                            <i class="fa fa-user fa-fw"></i> Estudiantes dentro del proceso de carga de documentos
+      <br/>
+      <br/>
+                            <div class="table-responsive">
            <b:dataTable class="table table-striped table-bordered table-hover" value="#{detallesDashboardTut.getDocumento(login.user)}"
                                          var="dpalltrue" >
                                 <b:dataTableColumn value="#{dpalltrue[0].toString()}" label="CI" />

@@ -17,7 +17,7 @@ import java.util.List;
  */
 public interface CitasDao {
     public List<VisitaTutor> findAll(String id);
-     public List<VisitaTutor> confirma(String id);
+     public List<VisitaTutor> confirma(long id);
      // public List<VisitaTutor> confirmaCita(String id);
      public List<Pasantia> listar(long user);
      
@@ -31,6 +31,7 @@ public interface CitasDao {
      public String obtenerCoordinador(long id);
         public List<VisitaTutor> listarVisitados(long id);
    public List<VisitaTutor> listarInformeCoor();
+   public List<VisitaTutor> listarInformeCoor2(long id);
  public List<VisitaTutor> visitadosTuto(long user);
  public int horas(long user);
     

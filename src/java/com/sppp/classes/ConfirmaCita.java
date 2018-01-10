@@ -35,6 +35,7 @@ public class ConfirmaCita {
      private String co_director;
      private String co_coord;
      private long ce_tutor;
+     private String id;
      
     public List<SelectItem> getListarEstudiantes(long user) {
         this.listarEstudiantes=new ArrayList<SelectItem>();
@@ -67,7 +68,7 @@ public class ConfirmaCita {
         
     }
 
-    public List<VisitaTutor> getVisitas(String id) {
+    public List<VisitaTutor> getVisitas(long id) {
         
         CitasDao citasdao=new CitasDaoImp();
         this.visitas=citasdao.confirma(id);
@@ -122,6 +123,14 @@ public class ConfirmaCita {
          CitasDao citasdao=new CitasDaoImp();
         this.co_director=citasdao.obtenerCorreoDirector(6);
         return co_director;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
     
     

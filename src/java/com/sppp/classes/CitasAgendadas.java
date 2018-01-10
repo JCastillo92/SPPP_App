@@ -32,12 +32,15 @@ public class CitasAgendadas {
     private List<VisitaTutor> visitasRealizadas;
     
     private List<VisitaTutor> informeCoor;
-    
+     private List<VisitaTutor> informeCoor2;
+     
     private List<VisitaTutor> visitasTutor;
     private Login login;
     private String nombre;
     private String apellido_est;
+    private long cedula_est;
     
+    private String visitados;
     private String coordinador;
     private String nombre_completo;
     Tutor tutor=new Tutor();
@@ -78,6 +81,14 @@ public class CitasAgendadas {
 
     public void setTutor(Tutor tutor) {
         this.tutor = tutor;
+    }
+
+    public long getCedula_est() {
+        return cedula_est;
+    }
+
+    public void setCedula_est(long cedula_est) {
+        this.cedula_est = cedula_est;
     }
     
     
@@ -134,6 +145,15 @@ public class CitasAgendadas {
       
         return informeCoor;
     }
+
+    public List<VisitaTutor> getInformeCoor2(long id) {
+        CitasDao citasdao=new CitasDaoImp();
+        this.informeCoor2=citasdao.listarInformeCoor2(id);
+        return informeCoor2;
+    }
+
+   
+      
 
     public List<VisitaTutor> getVisitasTutor(long user) {
          CitasDao citasdao=new CitasDaoImp();

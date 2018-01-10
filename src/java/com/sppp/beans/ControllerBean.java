@@ -48,6 +48,7 @@ private Usuario usuario = new Usuario();
   private long numerotutor3;
   private long numerotutor4;
   private long numerotutor5;
+  private long numerotutor6;
   
    private String mensajeMail;
    private String mensajeMail2;
@@ -79,6 +80,17 @@ private Usuario usuario = new Usuario();
       
       
      private String boton="btn btn-success btn-circle";
+     private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+     
+     
 
     public String getBoton() {
         return boton;
@@ -384,16 +396,21 @@ private Usuario usuario = new Usuario();
                     return "agendar_cita_tut";
       }
       
-       public String updateCompletado(long id_visita2, String cedula,long ced_est){
-          long cedu= Long.parseLong(cedula);
+    /*   public String updateCompletado(long id_visita2){
+          
           VisitaTutor newVisitaTutor = new VisitaTutor();
           VisitaDAO visitaDAO = new VisitaDAO();
           visitaDAO.updateCompletado(id_visita2, newVisitaTutor);
-                    System.out.println("jaaaaaaaaaaaaaaaaaaaaaaajeeeeeeee"+id_visita2);
                   
-                // visitaDAO.validacion_visita(ced_est,cedu);
+                   return "revision_window";
+      }*/
+       
+       public String docs_tut(long ced_est){
+          
+          VisitaDAO visitaDAO = new VisitaDAO();
+         
                   visitaDAO.autoevaluacion(ced_est);
-                    System.out.println("bryanttt"+ cedu+""+""+ced_est);
+                   
                     return "revision_window";
       }
        
@@ -445,7 +462,14 @@ private Usuario usuario = new Usuario();
         numerotutor5=obj.countReporte();
         return numerotutor5;
     }
-       public String updateReporte(long id_visita2){
+    
+    public long getNumerotutor6() {
+        VisitaDAO obj=new VisitaDAO();
+        numerotutor6=obj.countEstResol();
+        return numerotutor6;
+    }
+    
+    public String updateReporte(long id_visita2){
           VisitaTutor newVisitaTutor = new VisitaTutor();
           VisitaDAO visitaDAO = new VisitaDAO();
           visitaDAO.updateReporte(id_visita2, newVisitaTutor);
@@ -469,9 +493,14 @@ private Usuario usuario = new Usuario();
           
            cancel=true;
           visitaDAO.updateEstudianteAgendado1(id2);
-          
-      }
+    // return "review_window_Cancelar"; 
+     
+       }
       
+       public String abrirCancelar(){
+     return "revision_window.xhtml"; 
+       
+       }
   public void imprimirData(){
       
         FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -526,8 +555,12 @@ public String sendValidacion(String correo,String nombre,String apellido,String 
       por.mensajes(8, correo, observación);
       paso=true;
       
+      
       VisitaDAO visitaDAO = new VisitaDAO();
       visitaDAO.validacionDocs();
+      long ced = Long.parseLong(cedula);
+      
+      visitaDAO.validacion_docs(ced);
      return"revision_window_est"; 
  }
 

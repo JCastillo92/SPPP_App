@@ -41,13 +41,14 @@
                                 <b:dataTableColumn value="#{citasAgendadas.getNombre_completo(dpalltrue[0].toString())}" label="Nombre"/>
                                 <b:dataTableColumn value="#{detallesDashboardTut.actividad(dpalltrue[1].toString())}" label="Actividad"/>
                                 
-                                <b:dataTableColumn value="#{dpalltrue[3].toString()}" label="Fecha inicio"/>
-                                <b:dataTableColumn value="#{dpalltrue[4].toString()}" label="Fecha fin"/>
+                                <b:dataTableColumn value="#{dpalltrue[4].toString()}" label="Fecha inicio"/>
+                                <b:dataTableColumn value="#{dpalltrue[3].toString()}" label="Fecha fin"/>
                                 
                                 <b:dataTableColumn value="#{detallesDashboardTut.getPeriodo()}" label="Periodo"/>
                                 <b:dataTableColumn label="Acciones">
-                                    <b:button outcome="agendar_cita_tut.xhtml" look="success"/>
-                                    
+                                    <center>
+                                        <b:button outcome="agendar_cita_tut.xhtml"  value="Agendar" look="success" size="sm" />
+                                    </center>
                                 </b:dataTableColumn>
                                 
                             </b:dataTable>

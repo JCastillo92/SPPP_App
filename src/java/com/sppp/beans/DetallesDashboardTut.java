@@ -165,7 +165,7 @@ public class DetallesDashboardTut {
          String fecha1=sdf_data.format(fecha);
       String hora=formatoHora.format(fecha);
             AlmacenamientoPDF obj_crearpdf = new AlmacenamientoPDF();
-            
+            obj_crearpdf.create_student_folder_first_time(user);
            obj_crearpdf.create_coordinador_folder_first_time(user);
              obj_crearpdf.listar(user,fecha1,hora);
        

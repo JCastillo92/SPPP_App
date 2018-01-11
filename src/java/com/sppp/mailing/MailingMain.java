@@ -31,7 +31,7 @@ public class MailingMain {
         switch(tipo_mensaje){
             //case para alumnos del 1 al 1000
             case 1:
-               AddSubject="CORRECCIÓN DE DOCUMETACIÓN";
+               AddSubject="CORRECCIÓN DE DOCUMENTACIÓN";
                 contentMessage="Estimada/o estudiante, se ha revisado sus últimos cambios realizados en el "+ponnombreAPP+" "
                         +poningreso+" "+pondespedida;
                 break;
@@ -109,7 +109,11 @@ public class MailingMain {
             case 1008:
                 AddSubject="REVISIÓN INFORME COORDINADOR PASANTÍAS";
                 contentMessage="Existe documentos subidos a la plataforma, los cuales se enviaron por el coordinador, listos para revisar.";
-                break;    
+                break;
+            case 1009:
+                AddSubject="ASIGNACIÓN DE ESTUDIANTE";
+                contentMessage="Estimada/o Ing. se le ha asignado un estudiante para la visita, por favor ingresar al sistema.";
+                break;
                 default:
                     break;
         }

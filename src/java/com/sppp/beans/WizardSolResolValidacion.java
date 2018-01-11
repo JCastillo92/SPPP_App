@@ -8,6 +8,7 @@ package com.sppp.beans;
 import com.sppp.DAO.PasantiaDAO;
 import com.sppp.DAO.UsuarioDAO;
 import com.sppp.DAO.VisitaDAO;
+import com.sppp.classes.ConfirmaCita;
 import com.sppp.mailing.MailingMain;
 import java.util.LinkedList;
 import java.util.List;
@@ -124,6 +125,11 @@ int id_estudiante;
          //envio email al estudiante de aprobado
          agregaUnaObservacion="La Resolución de Inicio de Actividades es favorable. El código es: "+cod_resolucion+". Para la visita a las empresas por parte de los tutores es necesario que presenten a los tutores la resolución de consejo donde se autoriza el inicio de las actividades en las empresas. si no existe dicha resolución no se podrá realizar las visitas";
             email_aprobado.mensajes(3, usuario.getCorreo(), agregaUnaObservacion);
+            
+            //este mensaje le llegara al tutor asignado.
+             ConfirmaCita confirma = new ConfirmaCita();
+            
+            email_aprobado.mensajes(1009,confirma.getCorreo(tut) , "vacio");
          }
         pasantia.setCod_resolucion_consejo(cod_resolucion);//seteo el codigo de resolucion PART 1
         passDAO.actualizarPasantia(pasantia);//guardo/actualizo  el codigo de resolucion de PART 1

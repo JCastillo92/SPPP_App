@@ -70,7 +70,9 @@
                         <b:carouselItem style="width:400px;height:auto">
                             <b:panel title="Datos Empresa - p&aacute;g 2 de 2" look="default">
                                 <!-- AQUI ABAJO FORMULARIO DINAMICO EMPRESA-->
-                                <b:inputText id="idSearchEmp" class="" value="#{userWizard.buscarIdEmpresa}" label="Buscar Empresa x RUC (Opcional):" >
+                                <b:inputText id="idSearchEmp" class="" 
+                                             onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;"
+                                             value="#{userWizard.buscarIdEmpresa}" label="Buscar Empresa Por RUC (Opcional):" >
 
                                     <f:facet name="append">
                                         <b:commandButton look="primary" value="" ajax="true" 

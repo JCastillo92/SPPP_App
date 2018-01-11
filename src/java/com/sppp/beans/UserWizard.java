@@ -361,6 +361,7 @@ public class UserWizard extends WizardDB implements Serializable {
         EmpresaDAO empDAO = new EmpresaDAO();
         emp = empDAO.findEmpresa(buscarIdEmpresa);
         return null;
+        
     }
 
 }

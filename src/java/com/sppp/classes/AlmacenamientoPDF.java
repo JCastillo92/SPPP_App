@@ -879,14 +879,14 @@ try{
       //https://developers.itextpdf.com/examples/tables/colspan-and-rowspan
       documento.add(salto_linea);
      
-  documento.add(new Paragraph( "CARTA COMPROMISO:   "+pasantia.getTipo_ppp().toUpperCase()+pasantia.getCod_ppp()+"                                                               TIPO ACTIVIDAD:            "+giveMeNamePPP(pasantia.getTipo_ppp()).toUpperCase(),escuadro));
+  documento.add(new Paragraph( "CARTA COMPROMISO:   "+pasantia.getTipo_ppp().toUpperCase()+pasantia.getCod_ppp()+"                                          TIPO ACTIVIDAD:            "+giveMeNamePPP(pasantia.getTipo_ppp()).toUpperCase(),escuadro));
   documento.add(salto_linea);
   
   documento.add(new Paragraph("TUTOR:                         "+tutores.getNombre().toUpperCase()+" "+tutores.getApellido().toUpperCase(),escuadro));
   documento.add(salto_linea);
   
   
-       documento.add(new Paragraph("ESTUDIANTE:                "+usuario.getNombre().toUpperCase()+usuario.getApellido().toUpperCase()+"                                     CÈDULA ESTUDIANTE:            "+usuario.getId_cedula(),escuadro));
+       documento.add(new Paragraph("ESTUDIANTE:                "+usuario.getNombre().toUpperCase()+" "+usuario.getApellido().toUpperCase()+"                                     CÉDULA ESTUDIANTE:            "+usuario.getId_cedula(),escuadro));
      
       
        documento.add(salto_linea);
@@ -1170,7 +1170,7 @@ documento.add(salto_linea);
       documento.add(salto_linea);
       
       // T I T U L O
-      Paragraph p1=new Paragraph("FORMATO AUTOEVALUACIÒN",estitulo);
+      Paragraph p1=new Paragraph("FORMATO AUTOEVALUACIÓN",estitulo);
       p1.setAlignment(Element.ALIGN_CENTER);
       documento.add(p1);
       documento.add(salto_linea);
@@ -1181,14 +1181,14 @@ documento.add(salto_linea);
       documento.add(salto_linea);
  
       documento.add(salto_linea);
-  documento.add(new Paragraph( "CARTA COMPROMISO:   "+pasantia.getTipo_ppp().toUpperCase()+pasantia.getCod_ppp()+"                                              TIPO DE ACTIVIDAD:            "+giveMeNamePPP(pasantia.getTipo_ppp()),escuadro));
+  documento.add(new Paragraph( "CARTA COMPROMISO:   "+pasantia.getTipo_ppp().toUpperCase()+pasantia.getCod_ppp()+"                                              TIPO DE ACTIVIDAD:            "+giveMeNamePPP(pasantia.getTipo_ppp()).toUpperCase(),escuadro));
   documento.add(salto_linea);
   
   documento.add(new Paragraph("RESOLUCIÓN DE CONSEJO DE INICIO DE ACTIVIDAD:                         "+pasantia.getCod_resolucion_consejo(),escuadro));
   documento.add(salto_linea);
   
   
-       documento.add(new Paragraph("ESTUDIANTE:                "+usuario.getNombre().toUpperCase()+usuario.getApellido().toUpperCase()+"                                    CÈDULA ESTUDIANTE:            "+usuario.getId_cedula(),escuadro));
+       documento.add(new Paragraph("ESTUDIANTE:                "+usuario.getNombre().toUpperCase()+" "+usuario.getApellido().toUpperCase()+"                                    CÉDULA ESTUDIANTE:            "+usuario.getId_cedula(),escuadro));
      
       
        documento.add(salto_linea);
@@ -1278,7 +1278,7 @@ documento.add(salto_linea);
    table2.addCell(new Paragraph(w4,estexto));
    table2.addCell(new Paragraph(w5,estexto));
  //4row
- cell = new PdfPCell(new Paragraph("EN LAS RELACIONES CON EL PERSONAL DE LA INSTITUCIÓN HA PREDOMINADO LA CORTESÍA, EL BUEN TRATO Y LA AMABILIDAD.",escuadro));
+ cell = new PdfPCell(new Paragraph("EN LAS RELACIONES CON EL PERSONAL DE LA INSTITUCIÓN HA PREDOMINADO LA CORTESÍA, EL BUEN TRATO Y LA AMABILIDAD.",estexto));
   cell.setColspan(15);//#columnas a merge para esta celda
   table2.addCell(cell);
   table2.addCell(new Paragraph(e1,estexto));
@@ -1326,6 +1326,10 @@ documento.add(salto_linea);
        Paragraph p8=new Paragraph(usuario.getNombre()+"  "+usuario.getApellido(),estexto);
       p8.setAlignment(Element.ALIGN_CENTER);
       documento.add(p8);
+      
+       Paragraph p9=new Paragraph(""+usuario.getId_cedula(),estexto);
+      p9.setAlignment(Element.ALIGN_CENTER);
+      documento.add(p9);
       
       //F I N  D O C U M E N T O 
       documento.close();
@@ -1429,7 +1433,7 @@ documento.add(salto_linea);
       Paragraph cuerpo=new Paragraph("Yo,"+usuario.getNombre()+" "+usuario.getApellido()+", con cédula de ciudadanía: "+usuario.getEstudiante().getCedula()+", "
                       + " solicito a Ud. la autorización para la validaciòn de  "+giveMeNamePPP(pasantia.getTipo_ppp())+", en "+empresa.getNombre_empresa()+" "
                               + "desde "+pasantia.getFechaInicio()+" hasta  "+pasantia.getFechaFin()+", cumpliendo"
-                                      + "un total de"+horas+".",estexto);
+                                      + " un total de "+horas+".",estexto);
       cuerpo.setAlignment(Element.ALIGN_JUSTIFIED);
       documento.add(cuerpo);
       documento.add(salto_linea);

@@ -18,9 +18,9 @@ public class Paths {
 }
 
     public String local_path_images(){
-                String local_path_images="/home/sppp_pdf/images/";
-                 //local_path_images="E:/home/SPPP_PDF/images/";
-                // local_path_images="D:/home/SPPP_PDF/images/";
+                String //local_path_images="/home/sppp_pdf/images/";
+                 local_path_images="E:/home/SPPP_PDF/images/";
+                 //local_path_images="D:/home/SPPP_PDF/images/";
         return local_path_images;
     }
 }

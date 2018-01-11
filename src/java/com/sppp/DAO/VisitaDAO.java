@@ -487,8 +487,18 @@ Session session = HibernateUtil.getSessionFactory().openSession();
 
                 //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
                 dp.setValidacion(EnumEstado.aprobar);
-                //dp.setEstado(false);
+                dp.setEstado(false);
                 dpDAO.actualizarDetallePasantia(dp);
+                
+                 DetallePasantia dp3 = new DetallePasantia();
+            
+            
+            dp3.setDescripcion("Fin Proceso");
+            dp3.setEstado(true);
+            dp3.setPasantia(p);
+            dp3.setProceso(new Proceso(40));
+            dp3.setValidacion(EnumEstado.aprobar);
+            dpDAO.insertarNuevoDetalle(dp3);
 
             //Paso a agregar el nuevo proceso
             

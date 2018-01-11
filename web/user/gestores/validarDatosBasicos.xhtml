@@ -35,7 +35,7 @@
         <div class="row">
             <div class="col-lg-12">
 
-                <b:form horizontal="true">
+                <b:form horizontal="true" id="formWizardDB">
                     <b:carousel id="wizard" styleClass="wizardPseudoClass"
                                 style="width:400px; padding-top:20px"
                                 startAnimation="false"
@@ -149,20 +149,30 @@
                                 <p align="right">p&aacute;g 2/2</p>
                             </b:panel>
                         </b:carouselItem>
+                        <b:carouselItem style="width:400px;height:auto">
+                            <b:panel title="Guardar Datos Inicio Proceso" look="default">
+                                <center>
+                                <div class="row">
+                                    <fieldset>
+                                        <legend>NOTA</legend>
+                                    <p>Si est&aacute; seguro de los datos validados/negados, proceda con el env&iacute;o</p>
+                                    <br></br></fieldset>
+                                </div>
+                                <div class="row">
+                            <b:commandButton value="Enviar" action="#{wizardDBValidacion.guardarDatos()}" look="success" />
+                                </div>
+                            </center>
+                                    <p align="right">p&aacute;g 3/3</p>
+                            </b:panel>
+                        </b:carouselItem>
                         <b:carouselControl direction="right" >
-                            <b:button value="Anterior"
-                                      onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');"
-                                      look="info" />
+                            <b:button value="Anterior" id="botonAtras"
+                                  onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');atrasCarousel();" look="info" />
                         </b:carouselControl>
-                        <b:carouselControl>
-                            
-                            <b:commandButton value="Enviar" style="position:absolute;right:0px" action="#{wizardDBValidacion.guardarDatos()}" 
-                                      look="success" />
-                        </b:carouselControl>
+   
                         <b:carouselControl direction="left">
-                            <b:button value="Siguiente" style="position:absolute;right:100px"
-                                      onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');"
-                                      look="info" />
+                            <b:button value="Siguiente" id="botonAdelante" style="position:absolute;right:0px" 
+                                      onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');adelanteCarousel();" look="info" />
                         </b:carouselControl>
                         
                     </b:carousel>
@@ -175,7 +185,50 @@
             <br/>
             <br/>
         </div>
-
+        
+        
+        <!-- ZONA SCRIPTS -->
+        <script>
+            var posicion;
+            
+            function atrasCarousel(){
+                posicion = posicion - 1;
+  
+                if(posicion === 1) {
+                    document.getElementById("formWizardDB:botonAtras").style.visibility = "hidden";
+                    document.getElementById("formWizardDB:botonAdelante").style.visibility = "visible";
+                }
+                
+                if(posicion === 2) {
+                    document.getElementById("formWizardDB:botonAtras").style.visibility = "visible";
+                    document.getElementById("formWizardDB:botonAdelante").style.visibility = "visible";
+                }
+                
+            }
+            
+            function adelanteCarousel(){
+                posicion = posicion + 1;
+               
+                if(posicion === 2 ) {
+                    document.getElementById("formWizardDB:botonAtras").style.visibility = "visible";
+                    document.getElementById("formWizardDB:botonAdelante").style.visibility = "visible";
+                }
+                
+                if(posicion === 3 ) {
+                    document.getElementById("formWizardDB:botonAtras").style.visibility = "visible";
+                    document.getElementById("formWizardDB:botonAdelante").style.visibility = "hidden";
+                }
+ 
+            }
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                // your code here
+                posicion = 1;
+                document.getElementById("formWizardDB:botonAtras").style.visibility = "hidden";
+                document.getElementById("formWizardDB:botonAdelante").style.visibility = "visible";
+            }, false);
+            
+        </script>
 
         
     </ui:define>

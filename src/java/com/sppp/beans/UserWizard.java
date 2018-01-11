@@ -57,6 +57,15 @@ public class UserWizard extends WizardDB implements Serializable {
     private boolean existeTexto;
     private List<Datos> dDbObtenidos = new LinkedList<>();
     private boolean[] datosAPintar = new boolean[18];
+    private long buscarIdEmpresa;
+
+    public long getBuscarIdEmpresa() {
+        return buscarIdEmpresa;
+    }
+
+    public void setBuscarIdEmpresa(long buscarIdEmpresa) {
+        this.buscarIdEmpresa = buscarIdEmpresa;
+    }
 
     public boolean[] getDatosAPintar() {
         return datosAPintar;
@@ -346,6 +355,12 @@ public class UserWizard extends WizardDB implements Serializable {
         }
     }
     
-    
+    public String buscarEmpresa(){
+        
+        System.out.println("=========="+buscarIdEmpresa);
+        EmpresaDAO empDAO = new EmpresaDAO();
+        emp = empDAO.findEmpresa(buscarIdEmpresa);
+        return null;
+    }
 
 }

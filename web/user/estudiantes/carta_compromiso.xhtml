@@ -38,7 +38,7 @@
             
             <div class="col-lg-12">
 
-                <b:form>
+                <b:form id="formWizardDB">
                     <b:messages/>
                     <!-- inicio CAROUSEL-->
                     <b:carousel id="wizard" styleClass="wizardPseudoClass"
@@ -69,7 +69,9 @@
                                 
                                 <b:inputText value="#{wizardCartaCompromiso.pasantia.fechaInicio}" label="Fecha Inicio:" tooltip="Fecha inicio actividades" disabled="true"/>
                                 <b:inputText value="#{wizardCartaCompromiso.pasantia.fechaFin}" label="Fecha Fin:"  tooltip="Fecha fin actividades" disabled="true"/>
-                                <b:inputText value="#{wizardCartaCompromiso.horarioPrevisto}" class="#{wizardCartaCompromiso.datosAPintar[15] ? 'hola':'rojo_error'}" label="Horario Previsto:" placeholder="Máximo 6 horas diarias" required="true" style="text-transform:uppercase;" tooltip="Ejemplo: L - MI - V de 7am a 10am"/>
+                                <b:inputText value="#{wizardCartaCompromiso.horarioPrevisto}" class="#{wizardCartaCompromiso.datosAPintar[15] ? 'hola':'rojo_error'}" 
+                                             label="Horario Previsto:" placeholder="LUN - MIE 07:00 - 09:00" required="true" style="text-transform:uppercase;" 
+                                             tooltip="LUN - MIE 07:00 - 09:00" mask="aaa-aaa 99:99 - 99:99"/>
                                 <b:inputText value="#{wizardCartaCompromiso.nombrePrograma}" class="#{wizardCartaCompromiso.datosAPintar[16] ? 'hola':'rojo_error'}" label="Nombre del Programa:" placeholder="Nombre de la aplicaci&oacute;n o programa" required="true" style="text-transform:uppercase;"/>
                                 <b:inputText value="#{wizardCartaCompromiso.areaAcademica}" class="#{wizardCartaCompromiso.datosAPintar[17] ? 'hola':'rojo_error'}" label="&Aacute;rea que Requiere la Actividad Acad&eacute;mica:" placeholder="Ejemplo: Departamento de QA" required="true" style="text-transform:uppercase;"/>
                                 <b:inputText value="#{wizardCartaCompromiso.encargado.nombre_encargado}" label="Responsable del &Aacute;rea:" disabled="true"/>
@@ -94,10 +96,10 @@
                             <b:panel title="Guardar Datos Carta Compromiso" look="default">
                                 <center>
                                     <div class="row">
-                                    <p>Nota:</p>
+                                    <fieldset>
+                                        <legend>NOTA</legend>
                                     <p>Si est&aacute; seguro de los datos ingresados, proceda con el env&iacute;o</p>
-                                    <br></br>
-                                    <br></br>
+                                    <br></br></fieldset>
                                 </div>
                                 <div class="row">   
                              <b:commandButton value="Enviar" action="#{wizardCartaCompromiso.guardarDatos()}" look="success"></b:commandButton>
@@ -108,13 +110,13 @@
                         </b:carouselItem>
                         
                         <b:carouselControl direction="right">
-                            <b:button value="Anterior" onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');" look="info"></b:button>
+                            <b:button value="Anterior" id="botonAtras" 
+                                      onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');atrasCarousel();" look="info"></b:button>
                         </b:carouselControl>
                         
-                           
-                        
                         <b:carouselControl direction="left">
-                            <b:button value="Siguiente" style="position:absolute;right:100px" onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');" look="info"></b:button>
+                            <b:button value="Siguiente" id="botonAdelante"
+                                      style="position:absolute;right:0px" onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');adelanteCarousel();" look="info"></b:button>
                         </b:carouselControl>
                     </b:carousel>
                 </b:form>
@@ -123,10 +125,52 @@
         </div>
 
         <div class="row">
-            
+            <br/>
+            <br/>
         </div>
 
-
+        <!-- ZONA SCRIPTS -->
+        <script>
+            var posicion;
+            
+            function atrasCarousel(){
+                posicion = posicion - 1;
+  
+                if(posicion === 1) {
+                    document.getElementById("formWizardDB:botonAtras").style.visibility = "hidden";
+                    document.getElementById("formWizardDB:botonAdelante").style.visibility = "visible";
+                }
+                
+                if(posicion === 2 || posicion === 3) {
+                    document.getElementById("formWizardDB:botonAtras").style.visibility = "visible";
+                    document.getElementById("formWizardDB:botonAdelante").style.visibility = "visible";
+                }
+                
+            }
+            
+            function adelanteCarousel(){
+                posicion = posicion + 1;
+               
+                if(posicion === 2 || posicion === 3) {
+                    document.getElementById("formWizardDB:botonAtras").style.visibility = "visible";
+                    document.getElementById("formWizardDB:botonAdelante").style.visibility = "visible";
+                }
+                
+                if(posicion === 4 ) {
+                    document.getElementById("formWizardDB:botonAtras").style.visibility = "visible";
+                    document.getElementById("formWizardDB:botonAdelante").style.visibility = "hidden";
+                }
+ 
+            }
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                // your code here
+                posicion = 1;
+                document.getElementById("formWizardDB:botonAtras").style.visibility = "hidden";
+                document.getElementById("formWizardDB:botonAdelante").style.visibility = "visible";
+            }, false);
+            
+        </script>
         
     </ui:define>
     

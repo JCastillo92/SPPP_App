@@ -37,7 +37,7 @@
             
             <div class="col-lg-12">
 
-                <b:form>
+                <b:form id="formWizardDB">
                     <b:messages />
                     <b:carousel id="wizard" styleClass="wizardPseudoClass"
                                 style="width:400px; padding-top:20px"
@@ -70,18 +70,28 @@
                         <b:carouselItem style="width:400px;height:auto">
                             <b:panel title="Datos Empresa - p&aacute;g 2 de 2" look="default">
                                 <!-- AQUI ABAJO FORMULARIO DINAMICO EMPRESA-->
+                                <b:inputText id="idSearchEmp" class="" value="#{userWizard.buscarIdEmpresa}" label="Buscar Empresa x RUC (Opcional):" >
+
+                                    <f:facet name="append">
+                                        <b:commandButton look="primary" value="" ajax="true" 
+                                                         update="idEmp nomEmp nomGerEmp telEmp dirEmp actEmp" 
+                                                         iconAwesome="search" icon-align="right"
+                                                         actionListener="#{userWizard.buscarEmpresa()}" process="idSearchEmp"/>
+                                    </f:facet>
+                                </b:inputText>
+                                <hr/>
                                 <b:inputText validator="#{userWizard.validarRuc}" value="#{userWizard.emp.id_empresa}" class="#{userWizard.datosAPintar[9] ? 'hola':'rojo_error'}" 
-                                             label="RUC:" required="true"
+                                             label="RUC:" required="true" id="idEmp"
                                              onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;">
                                     <f:validateLength minimum="12" maximum="13"/>
                                 </b:inputText>
-                                <b:inputText value="#{userWizard.emp.nombre_empresa}" class="#{userWizard.datosAPintar[10] ? 'hola':'rojo_error'}" label="Nombre Empresa:" required="true" style="text-transform:uppercase;"/>
-                                <b:inputText value="#{userWizard.emp.nombre_gerente}" class="#{userWizard.datosAPintar[11] ? 'hola':'rojo_error'}" label="Nombres y Apellidos Gerente Empresa:" required="true" style="text-transform:uppercase;"/>
-                                <b:inputText value="#{userWizard.emp.telefono_empresa}" class="#{userWizard.datosAPintar[12] ? 'hola':'rojo_error'}" 
+                                <b:inputText id="nomEmp" value="#{userWizard.emp.nombre_empresa}" class="#{userWizard.datosAPintar[10] ? 'hola':'rojo_error'}" label="Nombre Empresa:" required="true" style="text-transform:uppercase;"/>
+                                <b:inputText id="nomGerEmp" value="#{userWizard.emp.nombre_gerente}" class="#{userWizard.datosAPintar[11] ? 'hola':'rojo_error'}" label="Nombres y Apellidos Gerente Empresa:" required="true" style="text-transform:uppercase;"/>
+                                <b:inputText id="telEmp" value="#{userWizard.emp.telefono_empresa}" class="#{userWizard.datosAPintar[12] ? 'hola':'rojo_error'}" 
                                              label="Tel&eacute;fono Empresa:" required="true"
                                              onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;"/>
-                                <b:inputText value="#{userWizard.emp.direccion_empresa}" class="#{userWizard.datosAPintar[13] ? 'hola':'rojo_error'}" label="Direcci&oacute;n:" required="true" style="text-transform:uppercase;"/>
-                                <b:inputText value="#{userWizard.emp.actividad_principal_empresa}" class="#{userWizard.datosAPintar[14] ? 'hola':'rojo_error'}" label="Giro del Negocio o Actividad:" required="true" style="text-transform:uppercase;"/>
+                                <b:inputText id="dirEmp" value="#{userWizard.emp.direccion_empresa}" class="#{userWizard.datosAPintar[13] ? 'hola':'rojo_error'}" label="Direcci&oacute;n:" required="true" style="text-transform:uppercase;"/>
+                                <b:inputText id="actEmp" value="#{userWizard.emp.actividad_principal_empresa}" class="#{userWizard.datosAPintar[14] ? 'hola':'rojo_error'}" label="Actividad Principal que Ejerce Empresa:" required="true" style="text-transform:uppercase;"/>
                                 <b:inputText validator="#{userWizard.validarCI}" value="#{userWizard.enc.ci_encargado}" class="#{userWizard.datosAPintar[15] ? 'hola':'rojo_error'}" 
                                              label="C&eacute;dula Encargado:" required="true"
                                              onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;">
@@ -96,10 +106,10 @@
                             <b:panel title="Guardar Datos Inicio Proceso" look="default">
                                 <center>
                                 <div class="row">
-                                    <p>Nota:</p>
-                                    <p>Si est&aacute; seguro de los datos y las fechas ingresadas, proceda con el env&iacute;o</p>
-                                    <br></br>
-                                    <br></br>
+                                    <fieldset>
+                                        <legend>NOTA</legend>
+                                    <p>Si est&aacute; seguro de los datos ingresados, proceda con el env&iacute;o</p>
+                                    <br></br></fieldset>
                                 </div>
                                 <div class="row">
                             <b:commandButton value="Enviar" action="#{userWizard.guardarDatos()}" look="success" />
@@ -110,11 +120,13 @@
                         </b:carouselItem>
                         
                         <b:carouselControl direction="right" >
-<b:button value="Anterior" onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');" look="info" />
+                            <b:button value="Anterior" id="botonAtras"
+                                  onclick="$('.wizardPseudoClass').carousel('prev');$('.wizardPseudoClass').carousel('pause');atrasCarousel();" look="info" />
                         </b:carouselControl>
    
                         <b:carouselControl direction="left">
-<b:button value="Siguiente" style="position:absolute;right:100px" onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');" look="info" />
+                            <b:button value="Siguiente" id="botonAdelante" style="position:absolute;right:0px" 
+                                      onclick="$('.wizardPseudoClass').carousel('next');$('.wizardPseudoClass').carousel('pause');adelanteCarousel();" look="info" />
                         </b:carouselControl>
                         
                     </b:carousel>
@@ -128,6 +140,50 @@
             <br/>
             <br/>
         </div>
+        
+        
+        <!-- ZONA SCRIPTS -->
+        <script>
+            var posicion;
+            
+            function atrasCarousel(){
+                posicion = posicion - 1;
+  
+                if(posicion === 1) {
+                    document.getElementById("formWizardDB:botonAtras").style.visibility = "hidden";
+                    document.getElementById("formWizardDB:botonAdelante").style.visibility = "visible";
+                }
+                
+                if(posicion === 2) {
+                    document.getElementById("formWizardDB:botonAtras").style.visibility = "visible";
+                    document.getElementById("formWizardDB:botonAdelante").style.visibility = "visible";
+                }
+                
+            }
+            
+            function adelanteCarousel(){
+                posicion = posicion + 1;
+               
+                if(posicion === 2 ) {
+                    document.getElementById("formWizardDB:botonAtras").style.visibility = "visible";
+                    document.getElementById("formWizardDB:botonAdelante").style.visibility = "visible";
+                }
+                
+                if(posicion === 3 ) {
+                    document.getElementById("formWizardDB:botonAtras").style.visibility = "visible";
+                    document.getElementById("formWizardDB:botonAdelante").style.visibility = "hidden";
+                }
+ 
+            }
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                // your code here
+                posicion = 1;
+                document.getElementById("formWizardDB:botonAtras").style.visibility = "hidden";
+                document.getElementById("formWizardDB:botonAdelante").style.visibility = "visible";
+            }, false);
+            
+        </script>
 
 
         

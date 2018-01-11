@@ -26,15 +26,15 @@ import javax.validation.constraints.NotNull;
 public class TablasFormatos implements Serializable {
 
   
-  String pregunta1;
-  String pregunta2;
-  String pregunta3;
- String pregunta4;
-  String pregunta5;
-  String pregunta6;
-  String pregunta7;
-  String pregunta8;
-  String pregunta10;
+  String pregunta1="5";
+  String pregunta2="5";
+  String pregunta3="5";
+ String pregunta4="5";
+  String pregunta5="5";
+  String pregunta6="5";
+  String pregunta7="5";
+  String pregunta8="5";
+  String pregunta10="5";
 String des1;
   int hor1;
   int tec1;

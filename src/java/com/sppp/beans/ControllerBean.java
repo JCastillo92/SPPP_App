@@ -551,7 +551,7 @@ public void sendCancelacionTut(String tutor, String apellido,String correo){
 public String sendValidacion(String correo,String nombre,String apellido,String cedula,String actividad,String empresa,String fechaI,String fechaF){
     
   //  String observación= mensajeMail_asunto.toUpperCase(Locale.ENGLISH)+"\n"+"\n"+mensajeMail;
-   String observación="Yo  "+nombre+"  " + apellido+" con cédula de ciudadanía: "+cedula+" , solicito a Ud. la autorización para la validaciòn de "+actividad+"  ,en "+empresa+" desde "+fechaI+" hasta "+fechaF;
+   String observación="Existe una solicitud de validación de pasantías de el/la estudiante"+" "+nombre+" " + apellido+". Porfavor revisar el Sistema.";
         
   MailingMain por = new MailingMain();
       por.mensajes(8, correo, observación);
@@ -569,9 +569,6 @@ public String sendValidacion(String correo,String nombre,String apellido,String 
 
   
     public void enviarCita(String id, String id2,String alumno, String apellido,String correo ){
-        
-        
-        
         
         horaConFormato= sdf_time.format(time);
         fechaConFormato = sdf_data.format(data); 

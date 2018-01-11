@@ -69,7 +69,9 @@
                                 
                                 <b:inputText value="#{wizardCartaCompromiso.pasantia.fechaInicio}" label="Fecha Inicio:" tooltip="Fecha inicio actividades" disabled="true"/>
                                 <b:inputText value="#{wizardCartaCompromiso.pasantia.fechaFin}" label="Fecha Fin:"  tooltip="Fecha fin actividades" disabled="true"/>
-                                <b:inputText value="#{wizardCartaCompromiso.horarioPrevisto}" class="#{wizardCartaCompromiso.datosAPintar[15] ? 'hola':'rojo_error'}" label="Horario Previsto:" placeholder="Máximo 6 horas diarias" required="true" style="text-transform:uppercase;" tooltip="Ejemplo: L - MI - V de 7am a 10am"/>
+                                <b:inputText value="#{wizardCartaCompromiso.horarioPrevisto}" class="#{wizardCartaCompromiso.datosAPintar[15] ? 'hola':'rojo_error'}" 
+                                             label="Horario Previsto:" placeholder="LUN - MIE 07:00 - 09:00" required="true" style="text-transform:uppercase;" 
+                                             tooltip="LUN - MIE 07:00 - 09:00" mask="aaa-aaa 99:99 - 99:99"/>
                                 <b:inputText value="#{wizardCartaCompromiso.nombrePrograma}" class="#{wizardCartaCompromiso.datosAPintar[16] ? 'hola':'rojo_error'}" label="Nombre del Programa:" placeholder="Nombre de la aplicaci&oacute;n o programa" required="true" style="text-transform:uppercase;"/>
                                 <b:inputText value="#{wizardCartaCompromiso.areaAcademica}" class="#{wizardCartaCompromiso.datosAPintar[17] ? 'hola':'rojo_error'}" label="&Aacute;rea que Requiere la Actividad Acad&eacute;mica:" placeholder="Ejemplo: Departamento de QA" required="true" style="text-transform:uppercase;"/>
                                 <b:inputText value="#{wizardCartaCompromiso.encargado.nombre_encargado}" label="Responsable del &Aacute;rea:" disabled="true"/>

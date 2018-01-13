@@ -11,9 +11,9 @@ package com.sppp.classes;
  */
 public class Paths {
     public String local_path(){
-      String //local_path="/home/sppp_pdf/";
-                 local_path="E:/home/SPPP_PDF/";
-                 //local_path="D:/home/SPPP_PDF/";
+      String local_path="/home/sppp_pdf/";
+                 //local_path="E:/home/SPPP_PDF/";
+               //  local_path="D:/home/SPPP_PDF/";
                     return local_path;
 }
 

@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
 https://www.youtube.com/watch?v=D-NYmDWiFjU
+http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-eeplat-419426.html#javamail-1.4-oth-JPR
  */
 package com.sppp.mailing;
 import java.util.Properties;

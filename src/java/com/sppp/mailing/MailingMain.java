@@ -152,7 +152,7 @@ public class MailingMain {
 	        props.put("mail.smtp.socketFactory.fallback", "false");
 	 
 	        Session emailSession = Session.getInstance(props,new javax.mail.Authenticator() {
-	        protected PasswordAuthentication getPasswordAuthentication() {return new PasswordAuthentication("spppsistemasups@gmail.com","@sistemasKJ2B");
+	        protected PasswordAuthentication getPasswordAuthentication() {return new PasswordAuthentication("spppsistemasups@gmail.com","@.//\\\\n\\t>KJ2B");
 	        }});
 	 
 	        emailSession.setDebug(true);

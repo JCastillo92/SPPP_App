@@ -28,7 +28,7 @@
         </div>
             <b:panel title="Ingreso N&uacute;mero Resoluci&oacute;n" look="default" style="width:400px; height:auto">
                 <h:form>
-                    <b:inputText value="#{detallesDashboardTut.id}" label="Cédula Estudiante" />
+                    <b:inputText value="#{detallesDashboardTut.id}" label="Cédula Estudiante" disabled="true" />
                     
                     <b:inputText value="#{detallesDashboardTut.codigo_resolucion_final}" label="C&oacute;digo de Resoluci&oacute;n" required="true" placeholder="12345-678-9123-45-67"/>
                     <b:commandButton class="btn btn-success" value="Aprobar" action="#{detallesDashboardTut.resolucion(detallesDashboardTut.id,confirmaCita.getCorreo2(detallesDashboardTut.id))}"></b:commandButton>

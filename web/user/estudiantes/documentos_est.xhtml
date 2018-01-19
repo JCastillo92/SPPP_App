@@ -70,7 +70,7 @@
                         </div>
                    
                         <center> 
-                         <h:commandLink class="btn btn-success"  action="#{controllerBean.cargarArchivos(confirmaCita.co_coord)}" >
+                            <h:commandLink class="btn btn-success"  action="#{controllerBean.cargarArchivos(confirmaCita.co_coord,login.user)}" >
                             Enviar <f:ajax execute="@form"></f:ajax>
                         </h:commandLink>
                         </center>

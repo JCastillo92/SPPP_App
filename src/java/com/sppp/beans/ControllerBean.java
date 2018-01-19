@@ -422,11 +422,13 @@ private Usuario usuario = new Usuario();
                   
       }
        
-      public String cargarArchivos(String correo){
+      public String cargarArchivos(String correo, String cedula){
           VisitaDAO visitaDAO = new VisitaDAO();
           visitaDAO.solicitud();
           MailingMain por = new MailingMain();
       por.mensajes(1006, correo,"vacio");
+     long ced = Long.parseLong(cedula);
+ visitaDAO.validacion_docs(ced);
       return "revision_window_est";
       }
       
@@ -548,7 +550,7 @@ public void sendCancelacionTut(String tutor, String apellido,String correo){
       
  }
 
-public String sendValidacion(String correo,String nombre,String apellido,String cedula,String actividad,String empresa,String fechaI,String fechaF){
+/*public String sendValidacion(String correo,String nombre,String apellido,String cedula,String actividad,String empresa,String fechaI,String fechaF){
     
   //  String observación= mensajeMail_asunto.toUpperCase(Locale.ENGLISH)+"\n"+"\n"+mensajeMail;
    String observación="Existe una solicitud de validación de pasantías de el/la estudiante"+" "+nombre+" " + apellido+". Porfavor revisar el Sistema.";
@@ -564,7 +566,7 @@ public String sendValidacion(String correo,String nombre,String apellido,String 
       
       visitaDAO.validacion_docs(ced);
      return"revision_window"; 
- }
+ }*/
 
 
   

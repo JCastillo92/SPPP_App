@@ -295,11 +295,11 @@ Session session = HibernateUtil.getSessionFactory().openSession();
 
             //Paso a agregar el nuevo proceso
             DetallePasantia dp3 = new DetallePasantia();
-            dp3.setDescripcion("Solicitud de validación");
+            dp3.setDescripcion("Validación");
             dp3.setEstado(true);
             dp3.setPasantia(p);
-            dp3.setProceso(new Proceso(34));
-            dp3.setValidacion(EnumEstado.llenar);
+            dp3.setProceso(new Proceso(36));
+            dp3.setValidacion(EnumEstado.validar);
             dpDAO.insertarNuevoDetalle(dp3);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -340,7 +340,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                     e.printStackTrace();
                 }
 }
-      public void validacionDocs(){
+     /* public void validacionDocs(){
             DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
         
         PasantiaDAO ppDAO = new PasantiaDAO();
@@ -371,7 +371,8 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-}
+}*/
+      
        public void resolucion(long id3){
             DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
         

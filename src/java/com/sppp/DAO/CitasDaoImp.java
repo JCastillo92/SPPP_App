@@ -264,11 +264,12 @@ public class CitasDaoImp implements CitasDao {
             
         Transaction tx = null;
         
-        String sql = "SELECT correo FROM Usuario WHERE id_perfil =:id";
+        String sql = "SELECT correo FROM Usuario WHERE id_perfil =:id ";
      
         try {
             tx = sesion.beginTransaction();
-        correo_dir =(String) sesion.createQuery(sql).setParameter("id", id).uniqueResult();
+            
+        correo_dir =(String) sesion.createQuery(sql).setParameter("id", id).setMaxResults(1).uniqueResult();
 
             tx.commit();
         } catch (RuntimeException e) {

@@ -955,9 +955,10 @@ Session session = HibernateUtil.getSessionFactory().openSession();
             
             Query query = sesion.createQuery("SELECT COUNT(*) "
                     + "FROM DetallePasantia "
-                    + "WHERE estado= :esta and id_proceso = :process ");
+                    + "WHERE estado= :esta and id_proceso = :process and cedula_tut = :cedula");
              query.setParameter("esta", est);
             query.setParameter("process", proce);
+            query.setParameter("cedula", tut);
             numeroPPyPA=(long) query.uniqueResult();       
             tx.commit();
         }catch (Exception e) {

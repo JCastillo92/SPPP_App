@@ -192,6 +192,7 @@ public class AlmacenamientoPDF{
             PdfWriter.getInstance(documento, archivo);
       documento.open();
       
+      /*
         //logo de la UPS
         Image image = Image.getInstance(local_path_images+"logo-ups-home.png");
         image.setAlignment(Image.ALIGN_LEFT);
@@ -210,7 +211,7 @@ public class AlmacenamientoPDF{
         image3.setAbsolutePosition(445, 775);
         image3.scalePercent(6, 6);
         documento.add(image3);
-             
+        */     
       documento.addAuthor("Universidad Politecnica Salesiana");
       Paragraph salto_linea=new Paragraph("\n");
       Paragraph linea_firma=new Paragraph("________________",estexto);

@@ -5,6 +5,7 @@
  */
 package com.sppp.classes;
 
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
@@ -701,14 +702,14 @@ try{
                  Font estitulo = FontFactory.getFont(FontFactory.TIMES_ROMAN, 14, Font.NORMAL);
                  Font estexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
                  Font esnota = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6, Font.NORMAL);
-                 Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL);
+                 Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL, BaseColor.YELLOW);
                      
             FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
             //FileOutputStream archivo = new FileOutputStream("E:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
             PdfWriter.getInstance(documento, archivo);
       documento.open();
  
-      
+      /*
       //logo de la UPS
         Image image = Image.getInstance(local_path_images+"logo-ups-home.png");
         image.setAlignment(Image.ALIGN_LEFT);
@@ -727,7 +728,7 @@ try{
         image3.setAbsolutePosition(445, 775);
         image3.scalePercent(6, 6);
         documento.add(image3);
-      
+      */
       documento.addAuthor("Universidad Politecnica Salesiana");
       Paragraph salto_linea=new Paragraph("\n");
       Paragraph linea_firma=new Paragraph("________________",estexto);
@@ -735,6 +736,7 @@ try{
       documento.add(salto_linea);
       documento.add(salto_linea);
       
+      /*
         //F E C H A  DEL  S I S T E M A  
       LocalTimeDate obtenerfecha=new LocalTimeDate(); 
       Paragraph poner_fecha=new Paragraph("Fecha: Quito, "+obtenerfecha.fechaAnioMesDia(),estexto);
@@ -742,10 +744,14 @@ try{
       documento.add(poner_fecha);
       documento.add(salto_linea);
       documento.add(salto_linea);
+      */
       
         // T I T U L O
+      Paragraph nonOfficial=new Paragraph("Este es un FORMATO, el cual debe llenar en el sistema de la "
+              + "Universidad en SOLICITUDES",estextoespecial);
       Paragraph p1=new Paragraph("SOLICITUD RESOLUCIÓN",estitulo);
       p1.setAlignment(Element.ALIGN_CENTER);
+      documento.add(nonOfficial);
       documento.add(p1);
       documento.add(salto_linea);
       

@@ -54,7 +54,7 @@
                                              onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;"/>
                                 <b:inputText value="#{userWizard.usuario.correo}" class="#{userWizard.datosAPintar[3] ? 'hola':'rojo_error'}" label="Correo:" required="true" tooltip="Correo de preferencia"/>
                                 <b:inputText value="#{userWizard.usuario.estudiante.ultimoNivel}" label="Nivel m&aacute;s Bajo:" disabled="true"/>
-                                <b:inputTextarea value="#{userWizard.usuario.estudiante.actividadRealizar}" class="#{userWizard.datosAPintar[5] ? 'hola':'rojo_error'}" label="Actividad a Realizar:" required="true" tooltip="Describa aquellas a realizar" style="text-transform:uppercase;"/>
+                                <b:inputTextarea value="#{userWizard.usuario.estudiante.actividadRealizar}" class="#{userWizard.datosAPintar[5] ? 'hola':'rojo_error'}" label="Actividad a Realizar:" required="true" tooltip="Describa aquellas a realizar"/>
                                 <h:outputText value="Tipo de Pr&aacute;ctica" style="font-weight:bold"/>
                                 <h:message for="msgRadio" style="color: red"></h:message>
                                 <b:radiobutton  value="#{userWizard.p.tipo_ppp}" required="true" id="msgRadio" requiredMessage=" Escoja un tipo de pr&aacute;ctica: *" tooltip="Seleccionar una">
@@ -87,20 +87,20 @@
                                              onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;">
                                     <f:validateLength minimum="12" maximum="13"/>
                                 </b:inputText>
-                                <b:inputText id="nomEmp" value="#{userWizard.emp.nombre_empresa}" class="#{userWizard.datosAPintar[10] ? 'hola':'rojo_error'}" label="Nombre Empresa:" required="true" style="text-transform:uppercase;"/>
-                                <b:inputText id="nomGerEmp" value="#{userWizard.emp.nombre_gerente}" class="#{userWizard.datosAPintar[11] ? 'hola':'rojo_error'}" label="Nombres y Apellidos Gerente Empresa:" required="true" style="text-transform:uppercase;"/>
+                                <b:inputText id="nomEmp" value="#{userWizard.emp.nombre_empresa}" class="#{userWizard.datosAPintar[10] ? 'hola':'rojo_error'}" label="Nombre Empresa:" required="true"/>
+                                <b:inputText id="nomGerEmp" value="#{userWizard.emp.nombre_gerente}" class="#{userWizard.datosAPintar[11] ? 'hola':'rojo_error'}" label="Nombres y Apellidos Gerente Empresa:" required="true"/>
                                 <b:inputText id="telEmp" value="#{userWizard.emp.telefono_empresa}" class="#{userWizard.datosAPintar[12] ? 'hola':'rojo_error'}" 
                                              label="Tel&eacute;fono Empresa:" required="true"
                                              onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;"/>
-                                <b:inputText id="dirEmp" value="#{userWizard.emp.direccion_empresa}" class="#{userWizard.datosAPintar[13] ? 'hola':'rojo_error'}" label="Direcci&oacute;n:" required="true" style="text-transform:uppercase;"/>
-                                <b:inputText id="actEmp" value="#{userWizard.emp.actividad_principal_empresa}" class="#{userWizard.datosAPintar[14] ? 'hola':'rojo_error'}" label="Actividad Principal que Ejerce Empresa:" required="true" style="text-transform:uppercase;"/>
+                                <b:inputText id="dirEmp" value="#{userWizard.emp.direccion_empresa}" class="#{userWizard.datosAPintar[13] ? 'hola':'rojo_error'}" label="Direcci&oacute;n:" required="true"/>
+                                <b:inputText id="actEmp" value="#{userWizard.emp.actividad_principal_empresa}" class="#{userWizard.datosAPintar[14] ? 'hola':'rojo_error'}" label="Actividad Principal que Ejerce Empresa:" required="true"/>
                                 <b:inputText validator="#{userWizard.validarCI}" value="#{userWizard.enc.ci_encargado}" class="#{userWizard.datosAPintar[15] ? 'hola':'rojo_error'}" 
                                              label="C&eacute;dula Encargado:" required="true"
                                              onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;">
                                     <f:validateLength minimum="9" maximum="10"/>
                                 </b:inputText>
-                                <b:inputText value="#{userWizard.enc.nombre_encargado}" class="#{userWizard.datosAPintar[16] ? 'hola':'rojo_error'}" label="Nombres y Apellidos Encargado:" required="true" style="text-transform:uppercase;"/>
-                                <b:inputText value="#{userWizard.enc.cargo_encargado}" class="#{userWizard.datosAPintar[17] ? 'hola':'rojo_error'}" label="Cargo / Profesi&oacute;n Encargado:" required="true" style="text-transform:uppercase;"/>
+                                <b:inputText value="#{userWizard.enc.nombre_encargado}" class="#{userWizard.datosAPintar[16] ? 'hola':'rojo_error'}" label="Nombres y Apellidos Encargado:" required="true" />
+                                <b:inputText value="#{userWizard.enc.cargo_encargado}" class="#{userWizard.datosAPintar[17] ? 'hola':'rojo_error'}" label="Cargo / Profesi&oacute;n Encargado:" required="true"/>
                             <p align="right">p&aacute;g 2/3</p>
                             </b:panel>
                         </b:carouselItem>

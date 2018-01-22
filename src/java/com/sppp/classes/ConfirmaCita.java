@@ -36,6 +36,7 @@ public class ConfirmaCita {
      private String co_director;
      private String co_coord;
      private String co_secretaria;
+     private String msj;
      private long ce_tutor;
      private String id;
      
@@ -59,6 +60,14 @@ public class ConfirmaCita {
 
     public void setEstudiantes(Usuario estudiantes) {
         this.estudiantes = estudiantes;
+    }
+
+    public String getMsj() {
+        return msj;
+    }
+
+    public void setMsj(String msj) {
+        this.msj = msj;
     }
     
     

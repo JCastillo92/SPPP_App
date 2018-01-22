@@ -491,11 +491,23 @@ private Usuario usuario = new Usuario();
         
       }
        
-       public void deleteVisitaTut(long id,String tutor, String apellido,String correo,long id2){
-           sendCancelacionTut(tutor,apellido,correo);
+       public void deleteVisitaTut(long id,String tutor, String apellido,String correo,long id2,String mensaje){
+           sendCancelacionTut(tutor,apellido,correo,mensaje);
           VisitaDAO visitaDAO = new VisitaDAO();
           visitaDAO.deleteVisita(id);
           
+           cancel=true;
+          visitaDAO.updateEstudianteAgendado1(id2);
+    // return "review_window_Cancelar"; 
+     
+       }
+       
+       public void deleteVisitaTut2(long id,String tutor, String apellido,String correo,long id2,String mensaje){
+           sendCancelacionTut(tutor,apellido,correo,mensaje);
+          VisitaDAO visitaDAO = new VisitaDAO();
+          visitaDAO.updateCancelacion(id2);
+          visitaDAO.visita_tut2(id2);
+          visitaDAO.deleteVisita(id);
            cancel=true;
           visitaDAO.updateEstudianteAgendado1(id2);
     // return "review_window_Cancelar"; 
@@ -542,8 +554,8 @@ public void sendCancelacionEst(String tutor, String apellido,String correo,Strin
       
  }
 
-public void sendCancelacionTut(String tutor, String apellido,String correo){
-     String observaciones="Estimado(a) "+tutor+" "+apellido+", la visita fue cancelada por el tutor. Pronto se le enviara una nueva fecha de visita.";
+public void sendCancelacionTut(String tutor, String apellido,String correo,String mensaje){
+     String observaciones="Estimado(a) "+tutor+" "+apellido+", la visita fue cancelada por el tutor. Pronto se le enviara una nueva fecha de visita." +"\n"+ mensaje;
      
       MailingMain por = new MailingMain();
       por.mensajes(6, correo, observaciones);

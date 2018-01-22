@@ -74,7 +74,10 @@
                                               <b:button rendered="#{campo.estado_visita == 'Agendada' eq true}" outcome="informe_tut.xhtml"   value="Visitado" look="success" size="sm" >
                                                   <f:param name="id" value="#{campo.estudiante.cedula}"/>
                                               </b:button> &#160;
-                                              <b:button rendered="#{campo.estado_visita == 'Visitado' eq false and campo.estado_visita == 'Enviada' eq true}" outcome="cancelar_cita.xhtml"   value="Cancelar" look="danger" size="sm">
+                                              <b:button rendered="#{campo.estado_visita == 'Enviada' eq true }" outcome="cancelar_cita.xhtml"   value="Cancelar" look="danger" size="sm">
+                                                  <f:param name="id" value="#{campo.estudiante.cedula}"/>
+                                              </b:button>
+                                              <b:button rendered="#{campo.estado_visita == 'Agendada' eq true}" outcome="cancelar_cita_1.xhtml"   value="Cancelar" look="danger" size="sm">
                                                   <f:param name="id" value="#{campo.estudiante.cedula}"/>
                                               </b:button>
                                                     </center>

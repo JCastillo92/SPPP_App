@@ -24,6 +24,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import javax.servlet.http.HttpSession;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 
 /**
  *
@@ -34,6 +35,7 @@ public class VisitaDAO {
     private Tutor tutor= new Tutor();
    private VisitaTutor visita = new VisitaTutor();
       DetallePasantia dp = new DetallePasantia();
+       DetallePasantia dp2 = new DetallePasantia();
       DetallePasantia ml = new DetallePasantia();
     Pasantia p = new Pasantia();
 
@@ -560,7 +562,28 @@ Session session = HibernateUtil.getSessionFactory().openSession();
                     e.printStackTrace();
                 }
 }
-     
+    public void visita_tut2(long id3){
+            DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
+        
+        PasantiaDAO ppDAO = new PasantiaDAO();
+          try {
+                 System.out.println("eliminalo"+ id3);
+                p = ppDAO.findPasantia(id3);
+
+                //Encontrar el detalle de esa pasantia cuyo proceso sea 4 (proceso actual, cursando, este va a ser actualizado)
+                dp = dpDAO.findDetallePasantiaPorProceso(p.getTipo_ppp(), p.getCod_ppp(),21);
+
+                //el estudiante puede usar EnumEstado.validar o llenar. ninguno mas.
+                dp.setValidacion(EnumEstado.validar);
+                dp.setEstado(false);
+                dpDAO.actualizarDetallePasantia(dp);
+               
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+}  
+        
     public void visita_tut(long ce_tutor,long id_visita,String id){
             DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
         
@@ -594,7 +617,7 @@ Session session = HibernateUtil.getSessionFactory().openSession();
             dp3.setProceso(new Proceso(21));
             dp3.setValidacion(EnumEstado.validar);
             dp3.setTutor(tutor);
-            dp3.setVisitaTutor(visita);
+           // dp3.setVisitaTutor(visita);
             dpDAO.insertarNuevoDetalle(dp3);
               
                 } catch (Exception e) {
@@ -710,8 +733,39 @@ Session session = HibernateUtil.getSessionFactory().openSession();
         }
    }
     
+    
+         public void updateCancelacion(long cedula_est){
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+             //DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
         
+        PasantiaDAO ppDAO = new PasantiaDAO();
+        Transaction tx = null;
         
+        p = ppDAO.findPasantia(cedula_est);
+       
+        try {
+            tx = sesion.beginTransaction();
+              SQLQuery query = sesion.createSQLQuery("UPDATE tb_detalle_pasantia "
+                      + "SET estado = true, validacion = 1 "
+                      + "WHERE id_proceso = 18 "
+                      + "AND tipo_ppp = '"+p.getTipo_ppp()+"' "
+                      + "AND cod_ppp = "+p.getCod_ppp()+";");
+              //query.setInteger("valor", ent);
+              //query.setParameter("pro", process);
+              //query.setParameter("id", p.getTipo_ppp());
+              //query.setParameter("id2", p.getCod_ppp());
+
+            query.executeUpdate();
+            tx.commit();
+        } catch (RuntimeException e) {
+            tx.rollback();
+            throw e;
+        }finally{
+            sesion.flush();
+            sesion.close();
+        }
+   } 
         
      public void autoevaluacion(long id){
             DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();

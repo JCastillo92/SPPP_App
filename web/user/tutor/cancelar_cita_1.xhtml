@@ -23,7 +23,7 @@
 
              <br/><br/>
           
-            <legend><center><h:outputLabel value="Cancelar cita"/></center></legend>
+            <legend><center><h:outputLabel value="Cancelar cita2"/></center></legend>
             <br/><br/>
             <div class="row" >
                 <div class="col-lg-12">
@@ -79,8 +79,8 @@
                                      <h:outputLabel value="Observación:" />
                                        </div>
                                        <div class="col-lg-12" >
-                                           <h:inputTextarea  class="form-control" id="ci_cancel3" rows="3" value="#{confirmaCita.msj}" rendered="true" requiredMessage="falta la observación" title="campo requerido" />
-                                        <h:message for="ci_cancel3" style="color:red" />
+                                           <h:inputTextarea  class="form-control" id="ci_cancel2" rows="3" value="#{confirmaCita.msj}" rendered="true" requiredMessage="falta la observación" title="campo requerido" />
+                                        <h:message for="ci_cancel2" style="color:red" />
                                        </div>
                                         <br/><br/>
                                        
@@ -88,7 +88,7 @@
                                    <div class="col-lg-12" >
                                        
                                        <center>
-                                         <h:button value="Cancelar Cita" class="btn btn-primary" outcome="review_window_Cancelar"  onclick="#{controllerBean.deleteVisitaTut(campo.id_visita,confirmaCita.getNombre_est(campo.estudiante.cedula),confirmaCita.getApellido_est(campo.estudiante.cedula),confirmaCita.getCorreo(campo.estudiante.cedula),campo.estudiante.cedula,confirmaCita.msj)}"  />
+                                           <h:button value="Cancelar Cita" class="btn btn-primary" outcome="review_window_Cancelar"  onclick="#{controllerBean.deleteVisitaTut2(campo.id_visita,confirmaCita.getNombre_est(campo.estudiante.cedula),confirmaCita.getApellido_est(campo.estudiante.cedula),confirmaCita.getCorreo(campo.estudiante.cedula),campo.estudiante.cedula,confirmaCita.msj)}"  />
                                  
     			           </center>
                                    </div>

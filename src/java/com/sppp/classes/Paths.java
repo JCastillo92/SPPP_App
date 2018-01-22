@@ -11,16 +11,16 @@ package com.sppp.classes;
  */
 public class Paths {
     public String local_path(){
-      String local_path="/home/sppp_pdf/";
+      String local_path=//"/home/sppp_pdf/";
                  //local_path="E:/home/SPPP_PDF/";
-               //  local_path="D:/home/SPPP_PDF/";
+                local_path="D:/home/SPPP_PDF/";
                     return local_path;
 }
 
     public String local_path_images(){
                 String //local_path_images="/home/sppp_pdf/images/";
-                 local_path_images="E:/home/SPPP_PDF/images/";
-                 //local_path_images="D:/home/SPPP_PDF/images/";
+                // local_path_images="E:/home/SPPP_PDF/images/";
+                 local_path_images="D:/home/SPPP_PDF/images/";
         return local_path_images;
     }
 }

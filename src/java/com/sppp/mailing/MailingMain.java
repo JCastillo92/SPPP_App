@@ -47,8 +47,9 @@ public class MailingMain {
                         + "Dicha información ha sido APROBADA. "+poningreso+" "+pondespedida;
                 break;
             case 4:
-                AddSubject="";
-                contentMessage="";
+                AddSubject="LLEVAR DOCUMENTOS";
+                contentMessage="Estimada/o estudiante, llevar a SECRETARÍA los documentos físicos subidos al "+ponnombreAPP+" "
+                        + "Dichos documentos han sido APROBADOS. "+poningreso+" "+pondespedida;
                 break;
                 //Didiershito
                  case 5:

@@ -34,6 +34,7 @@ import com.sppp.beans.LocalTimeDate;
 import com.sppp.beans.Pasantia;
 import com.sppp.beans.Usuario;
 import com.sppp.beans.VisitaTutor;
+import java.awt.PageAttributes;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -181,9 +182,9 @@ public class AlmacenamientoPDF{
                  Document documento = new Document();
                  PdfPCell cell;
                  documento.setPageSize(PageSize.A4);
-                 Font estitulo = FontFactory.getFont(FontFactory.TIMES_ROMAN, 14, Font.NORMAL);
+                 Font estitulo = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
                  Font estexto = FontFactory.getFont(FontFactory.COURIER, 8, Font.NORMAL);
-                 Font escuadro = FontFactory.getFont(FontFactory.TIMES_ROMAN, 10, Font.NORMAL);                 
+                 Font escuadro = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6, Font.BOLD);                 
                  Font esnota = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6, Font.NORMAL);
                  Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL); 
                  
@@ -215,26 +216,22 @@ public class AlmacenamientoPDF{
       documento.addAuthor("Universidad Politecnica Salesiana");
       Paragraph salto_linea=new Paragraph("\n");
       Paragraph linea_firma=new Paragraph("________________",estexto);
-      documento.add(salto_linea);
-      documento.add(salto_linea);
-      documento.add(salto_linea);
-      documento.add(salto_linea);
-      documento.add(salto_linea);
-      
+            
       // T I T U L O
       Paragraph p1=new Paragraph("CARTA COMPROMISO INTERINSTITUCIONAL",estitulo);
       p1.setAlignment(Element.ALIGN_CENTER);
       documento.add(p1);
+      /*
       documento.add(salto_linea);
       documento.add(salto_linea);
       documento.add(salto_linea);
-      
+      */
       //                            SEPARAR POR SECCIONES
       //SEC INFORMACION GENERAL
       //https://developers.itextpdf.com/examples/tables/colspan-and-rowspan
        documento.add(new Paragraph("INFORMACIÓN GENERAL",escuadro));
   documento.add(salto_linea);
-  documento.add(salto_linea);
+  /*documento.add(salto_linea);*/
   
   //tabla 1
   PdfPTable table = new PdfPTable(4);//# columns
@@ -277,13 +274,14 @@ public class AlmacenamientoPDF{
   //FIN TABLA 1
   
   //SEC DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN
+  /*
   documento.add(salto_linea);
   documento.add(salto_linea);
   documento.add(salto_linea);
-  
+  */
    documento.add(new Paragraph("DESCRIPCIÓN ESTRATÉGICA DE INTERVENCIÓN",escuadro));
   documento.add(salto_linea);
-  documento.add(salto_linea);
+  //documento.add(salto_linea);
    
 //tabla 2
    PdfPTable table2 = new PdfPTable(6);//# columns
@@ -332,16 +330,17 @@ public class AlmacenamientoPDF{
   
   
                     //SEC ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA: (SEÑALE AQUELLAS QUE PREVÉN RESULTADOS Y PRODUCTOS)
+                   /* documento.add(salto_linea);
                     documento.add(salto_linea);
                     documento.add(salto_linea);
-                    documento.add(salto_linea);
-
+*/
                     Paragraph p2 = new Paragraph("ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA", escuadro);
                     p2.setAlignment(Element.ALIGN_CENTER);
                     documento.add(p2);
+                    /*
                     documento.add(salto_linea);
                     documento.add(salto_linea);
-                   
+                   */
                     documento.add(new Paragraph("(SEÑALE AQUELLAS QUE PREVÉN RESULTADOS Y PRODUCTOS)", escuadro));
                     documento.add(salto_linea);
                     //TABLA 3 INICIO
@@ -351,9 +350,9 @@ public class AlmacenamientoPDF{
                     documento.add(table3);
                     //FIN TABLA 3
 
+                    /*documento.add(salto_linea);
                     documento.add(salto_linea);
-                    documento.add(salto_linea);
-                    documento.add(salto_linea);
+                    documento.add(salto_linea);*/
                     documento.add(new Paragraph("RESULTADOS PREVISTOS DE ACTIVIDAD ACADÉMICA", escuadro));
                     documento.add(salto_linea);
                     //TABLA 4 INICIO
@@ -363,13 +362,12 @@ public class AlmacenamientoPDF{
                     documento.add(table4);
                     //FIN TABLA 4
                     
-                    documento.add(salto_linea);
-                    documento.add(salto_linea);
-                    documento.add(salto_linea);
+                    
+                    //documento.add(salto_linea);
                     Paragraph p3 = new Paragraph("PRODUCTOS ENTREGABLES PREVISTOS DE LA ACTIVIDAD ACADÉMICA", escuadro);
                     p3.setAlignment(Element.ALIGN_CENTER);
                     documento.add(p3);
-                    documento.add(salto_linea);
+                    //documento.add(salto_linea);
                     documento.add(new Paragraph("(INCLUYA TODOS LOS MATERIALES FÍSICOS QUE SE GENERAN EN LA INTERVENCIÓN)", escuadro));
                     documento.add(salto_linea);
                     
@@ -394,7 +392,7 @@ public class AlmacenamientoPDF{
                     
   
   //SEC ACEPTACIÓN Y LEGALIZACIÓN
-  documento.add(salto_linea);
+  //documento.add(salto_linea);
     documento.add(new Paragraph("ACEPTACIÓN Y LEGALIZACIÓN",escuadro));
   documento.add(salto_linea);
 
@@ -604,7 +602,7 @@ public class AlmacenamientoPDF{
                  documento.setPageSize(PageSize.A4);
                  Font estitulo = FontFactory.getFont(FontFactory.TIMES_ROMAN, 14, Font.NORMAL);
                  Font estexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
-                 Font esnota = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6, Font.NORMAL);
+                 Font esnota = FontFactory.getFont(FontFactory.TIMES_ROMAN, 8, Font.NORMAL);
                  Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL); 
                  
      
@@ -703,7 +701,7 @@ try{
                  Font estitulo = FontFactory.getFont(FontFactory.TIMES_ROMAN, 14, Font.NORMAL);
                  Font estexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
                  Font esnota = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6, Font.NORMAL);
-                 Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL, BaseColor.YELLOW);
+                 Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL, BaseColor.RED);
                      
             FileOutputStream archivo = new FileOutputStream(local_path+cedula+"/"+numero_pdf+".pdf");//asi se guardara el archivo
             //FileOutputStream archivo = new FileOutputStream("E:\\"+cedula+"\\"+numero_pdf+".pdf");//asi se guardara el archivo
@@ -748,11 +746,8 @@ try{
       */
       
         // T I T U L O
-      Paragraph nonOfficial=new Paragraph("Este es un FORMATO, el cual debe llenar en el sistema de la "
-              + "Universidad en SOLICITUDES",estextoespecial);
       Paragraph p1=new Paragraph("SOLICITUD RESOLUCIÓN",estitulo);
       p1.setAlignment(Element.ALIGN_CENTER);
-      documento.add(nonOfficial);
       documento.add(p1);
       documento.add(salto_linea);
       
@@ -775,6 +770,9 @@ try{
       documento.add(salto_linea);
       
       // C U  E R  P O   DE  D O C U M E N T O 
+      Paragraph nonOfficial=new Paragraph("Este es un FORMATO, el cual debe llenar en el sistema de la "
+              + "Universidad en SOLICITUDES",estextoespecial);
+      documento.add(nonOfficial);
       Paragraph cuerpo=new Paragraph("Yo, "+usuario.getNombre()+" "+usuario.getApellido()+", con cédula de ciudadanía: "+usuario.getEstudiante().getCedula()+", "
                       + " solicito a Ud. la autorización del inicio de la actividad de "+giveMeNamePPP(pasantia.getTipo_ppp())+", "
                               + "desde "+pasantia.getFechaInicio()+" hasta "+pasantia.getFechaFin()+".",estexto);

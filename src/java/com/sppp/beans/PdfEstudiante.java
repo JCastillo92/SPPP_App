@@ -11,6 +11,8 @@ import com.sppp.DAO.EmpresaDAO;
 import com.sppp.DAO.EncargadoDAO;
 import com.sppp.DAO.PasantiaDAO;
 import com.sppp.DAO.UsuarioDAO;
+import com.sppp.classes.ListaDocentesAdministrativos;
+import com.sppp.mailing.MailingMain;
 import com.sppp.utils.SessionUtils;
 import java.io.IOException;
 import java.util.Arrays;
@@ -127,8 +129,10 @@ public class PdfEstudiante {
     //METODO PARA GUARDAR LOS TRUE
     public String guardarDatos(){
         String redireccion = "revision_window";
-
-        //Obtener idDetallePasantia
+        MailingMain enviar_mail=new MailingMain();
+        ListaDocentesAdministrativos corrreo_De=new ListaDocentesAdministrativos();
+        try {
+         //Obtener idDetallePasantia
         DetallePasantia dp2 = new DetallePasantia();
         DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
         dp2 = dpDAO.findDetallePasantia(pasantia.getTipo_ppp(), pasantia.getCod_ppp());
@@ -137,8 +141,13 @@ public class PdfEstudiante {
         //Porque no necesito guardar mas cosas
         //Solo mandar a validar de nuevo
         dp2.setValidacion(EnumEstado.validar);
-        dpDAO.actualizarDetallePasantia(dp2);
-        
+        dpDAO.actualizarDetallePasantia(dp2);   
+            
+                    //envio mail a encargado mail para que revise scan de 4 PDFs
+        enviar_mail.mensajes(1004,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return redireccion;
     }
     

@@ -139,8 +139,8 @@ private MailingMain email_aprobado=new MailingMain();
             dp2.setObservacion(null);
             dpDAO.actualizarDetallePasantia(dp2);
             
-            //envio email al estudiante de aprobado
-            email_aprobado.mensajes(2, usuario.getCorreo(), "vacio");
+            //envio email al estudiante de aprobado y acercarse a SECRETARIA
+            email_aprobado.mensajes(4, usuario.getCorreo(), "vacio");
             
             DetallePasantia dp3 = new DetallePasantia();
             dp3.setDescripcion("Resolucion de Proceso");

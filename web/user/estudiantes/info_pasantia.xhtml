@@ -93,7 +93,7 @@
                                              label="Tel&eacute;fono Empresa:" required="true"
                                              onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;"/>
                                 <b:inputText id="dirEmp" value="#{userWizard.emp.direccion_empresa}" class="#{userWizard.datosAPintar[13] ? 'hola':'rojo_error'}" label="Direcci&oacute;n:" required="true"/>
-                                <b:inputText id="actEmp" value="#{userWizard.emp.actividad_principal_empresa}" class="#{userWizard.datosAPintar[14] ? 'hola':'rojo_error'}" label="Actividad Principal que Ejerce Empresa:" required="true"/>
+                                <b:inputText id="actEmp" value="#{userWizard.emp.actividad_principal_empresa}" class="#{userWizard.datosAPintar[14] ? 'hola':'rojo_error'}" label="Actividad Principal que Ejerce Empresa:" tooltip="Griro del negocio" required="true"/>
                                 <b:inputText validator="#{userWizard.validarCI}" value="#{userWizard.enc.ci_encargado}" class="#{userWizard.datosAPintar[15] ? 'hola':'rojo_error'}" 
                                              label="C&eacute;dula Encargado:" required="true"
                                              onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;">

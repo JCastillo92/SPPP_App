@@ -339,5 +339,50 @@ public String resolucion(long cedula_est,String numero){
         return empData;
     }
 
+          public List<Object[]> listartutore(){
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;    
+        
+        //variables a pedir
+        long cedula_est=0;
+        int visitas=0;
+        List<Object[]> empData=null;
+         try {
+            tx = sesion.beginTransaction();
+            SQLQuery query = sesion.createSQLQuery("select cedula_tut,cant_visitas from tb_tutor;");
+
+                empData = query.list();
+            for (Object[] row : empData) {
+                //variables que retorna la consulta
+                cedula_est = Long.parseLong(row[0].toString());
+                visitas = Integer.parseInt(row[1].toString());
+            }               
+            tx.commit();
+        }catch (Exception e) {
+            e.printStackTrace();
+            if (tx != null){
+                tx.rollback();
+            }
+        }finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+        return empData;
+    }
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
  
 }

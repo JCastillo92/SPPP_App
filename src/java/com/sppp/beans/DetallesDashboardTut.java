@@ -8,6 +8,9 @@ package com.sppp.beans;
 import com.sppp.DAO.CitasDao;
 import com.sppp.DAO.CitasDaoImp;
 import com.sppp.DAO.DashboardTutDAO;
+import com.sppp.DAO.DatosTutDAO;
+import com.sppp.DAO.DetallePasantiaDAO;
+import com.sppp.DAO.PasantiaDAO;
 import com.sppp.DAO.PeriodoDAO;
 import com.sppp.DAO.VisitaDAO;
 import com.sppp.classes.AlmacenamientoPDF;
@@ -41,6 +44,22 @@ public class DetallesDashboardTut {
       int horas;
       String id;
       String codigo_resolucion_final;
+      String telefono;
+      String direccion;
+      String observaciones_finales;
+      
+      
+public Pasantia pasantia;
+
+    public String getObservaciones_finales() {
+        return observaciones_finales;
+    }
+
+    public void setObservaciones_finales(String observaciones_finales) {
+        this.observaciones_finales = observaciones_finales;
+    }
+
+
 
     public String getCodigo_resolucion_final() {
         return codigo_resolucion_final;
@@ -129,6 +148,25 @@ public class DetallesDashboardTut {
         return periodo;
     }
 
+    public String getDireccion(long cedula) {
+         AlmacenamientoPDF llamar=new AlmacenamientoPDF();
+        direccion=llamar.direccion_est(cedula);
+       
+        return direccion;
+    }
+
+    
+    
+    
+    public String getTelefono(long cedula) {
+        
+        AlmacenamientoPDF llamar=new AlmacenamientoPDF();
+        telefono=llamar.telefono_est(cedula);
+        return telefono;
+    }
+
+    
+    
     public int getHoras(long user) {
             CitasDaoImp llamar=new CitasDaoImp();
         horas=llamar.horas(user);
@@ -158,7 +196,7 @@ public class DetallesDashboardTut {
     }
 
     public String reporte_coor(long user){
-  
+        
       SimpleDateFormat sdf_data = new SimpleDateFormat("dd-MM-yyyy"); 
         DateFormat formatoHora = new SimpleDateFormat("HH-mm-ss");
          java.util.Date fecha = new Date();
@@ -167,7 +205,7 @@ public class DetallesDashboardTut {
             AlmacenamientoPDF obj_crearpdf = new AlmacenamientoPDF();
             obj_crearpdf.create_student_folder_first_time(user);
            obj_crearpdf.create_coordinador_folder_first_time(user);
-             obj_crearpdf.listar(user,fecha1,hora);
+             obj_crearpdf.listar(user,fecha1,hora,observaciones_finales);
        
       List<Object[]> estudiantes;
 DashboardTutDAO llamar=new DashboardTutDAO();

@@ -18,6 +18,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.sppp.DAO.CitasDaoImp;
+import com.sppp.DAO.DashboardTutDAO;
 import com.sppp.DAO.DatosDAO;
 import com.sppp.DAO.DetallePasantiaDAO;
 import com.sppp.DAO.EmpresaDAO;
@@ -892,8 +893,11 @@ try{
   
   
        documento.add(new Paragraph("ESTUDIANTE:                "+usuario.getNombre().toUpperCase()+" "+usuario.getApellido().toUpperCase()+"                                     CÉDULA ESTUDIANTE:            "+usuario.getId_cedula(),escuadro));
+     documento.add(salto_linea);
+  
+  
+       documento.add(new Paragraph("RESOLUCIÓN:                "+pasantia.getCod_resolucion_consejo(),escuadro));
      
-      
        documento.add(salto_linea);
        
   Paragraph p2=new Paragraph("MUY SATISFACTORIO 5",estexto);
@@ -1573,9 +1577,9 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
     }
     
     
-    public void listar(long user,String fecha,String hora){
+    public void listar(long user,String fecha,String hora,String observaciones){
          exitoalguardar=false;
-         
+
          try {
              //VARIABLES INICIALES DEL  P D F 
                  Document documento = new Document();
@@ -1666,6 +1670,17 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
                   table.addCell(new Paragraph(""+periodoac,estexto));
                   table.addCell(new Paragraph(""+horastotales,estexto)); 
         }//end of for
+          documento.add(salto_linea);
+
+                    //TABLA 3 INICIO
+                    PdfPTable table3 = new PdfPTable(1);//# columns
+                    //1 row
+                    table3.addCell(new Paragraph("              " + "\n" + observaciones.toUpperCase(), estexto));
+                    documento.add(table3);
+       
+                   
+        
+        
           documento.add(table);
          //F I N  D O C U M E N T O 
       documento.close();
@@ -1675,8 +1690,122 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
             exitoalguardar=false;
         }
     }
+  public String direccion_est(long cedula){
+  String telefono;
+  PasantiaDAO passDAO=new PasantiaDAO();
+  pasantia = passDAO.findPasantia(cedula);
+  DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
+         detallePass=dpDAO.findDetallePasantiaPorProcesoFalse(pasantia.getTipo_ppp(), pasantia.getCod_ppp(),1);
+                 
+            
+            DatosDAO datDAO = new DatosDAO();
+            datos=datDAO.datosPorDetallePasantia(detallePass.getIdDetallePasantia());
+          
+  telefono=datos.get(13).getValor_datos();
+  return telefono;
   
-    
+  }
+  public String telefono_est(long cedula){
+  String telefono;
+  PasantiaDAO passDAO=new PasantiaDAO();
+  pasantia = passDAO.findPasantia(cedula);
+  DetallePasantiaDAO dpDAO = new DetallePasantiaDAO();
+         detallePass=dpDAO.findDetallePasantiaPorProcesoFalse(pasantia.getTipo_ppp(), pasantia.getCod_ppp(),1);
+                 
+            
+            DatosDAO datDAO = new DatosDAO();
+            datos=datDAO.datosPorDetallePasantia(detallePass.getIdDetallePasantia());
+          
+  telefono=datos.get(12).getValor_datos();
+  return telefono;
+  
+  }  
+  
+  public void listar_tutores(long user,String nombre){
+         exitoalguardar=false;
+
+         try {
+             //VARIABLES INICIALES DEL  P D F 
+                 Document documento = new Document();
+                 PdfPCell cell;
+                 documento.setPageSize(PageSize.A4);
+                 Font estitulo = FontFactory.getFont(FontFactory.TIMES_ROMAN, 14, Font.NORMAL);
+                 Font estexto = FontFactory.getFont(FontFactory.COURIER, 8, Font.NORMAL);
+                 Font escuadro = FontFactory.getFont(FontFactory.TIMES_ROMAN, 10, Font.NORMAL);                 
+                 Font esnota = FontFactory.getFont(FontFactory.TIMES_ROMAN, 6, Font.NORMAL);
+                 Font estextoespecial = FontFactory.getFont(FontFactory.COURIER, 12, Font.NORMAL);
+        
+                  FileOutputStream archivo = new FileOutputStream(local_path+user+"/"+nombre+".pdf");//asi se guardara el archivo
+            PdfWriter.getInstance(documento, archivo);
+      documento.open();
+         
+      //logo de la UPS
+        Image image = Image.getInstance(local_path_images+"logo-ups-home.png");
+        image.setAlignment(Image.ALIGN_LEFT);
+        image.setAbsolutePosition(10, 780);
+        image.scalePercent(60, 55);
+        documento.add(image);
+        
+         Image image2 = Image.getInstance(local_path_images+"bkj2.png");
+        image2.setAlignment(Image.ALIGN_RIGHT);
+        image2.setAbsolutePosition(562, 458);
+        image2.scalePercent(60, 75);
+        documento.add(image2);
+        
+        Image image3 = Image.getInstance(local_path_images+"batl.png");
+        image3.setAlignment(Image.ALIGN_RIGHT);
+        image3.setAbsolutePosition(445, 775);
+        image3.scalePercent(6, 6);
+        documento.add(image3);
+             
+      documento.addAuthor("Universidad Politecnica Salesiana");
+      Paragraph salto_linea=new Paragraph("\n");
+      Paragraph linea_firma=new Paragraph("________________",estexto);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      documento.add(salto_linea);
+      
+      // T I T U L O
+      Paragraph p1=new Paragraph("REPORTE ESTUDIANTES",estitulo);
+      p1.setAlignment(Element.ALIGN_CENTER);
+      documento.add(p1);
+      documento.add(salto_linea);
+      
+       //tabla 1
+  PdfPTable table = new PdfPTable(2);//# columns
+        
+    List<Object[]> estudiantes;
+             DashboardTutDAO llamar=new DashboardTutDAO();
+        estudiantes=llamar.listartutore();
+  
+        //TITULO DE ROW = HEADER
+        table.addCell(new Paragraph("CÉDULA TUTOR",escuadro));
+  table.addCell(new Paragraph("CANTIDAD DE VISITAS",escuadro));
+  
+  for (Object[] row : estudiantes) {
+             long id=Long.parseLong(row[0].toString());
+             int horase=Integer.parseInt(row[1].toString());
+            
+                  table.addCell(new Paragraph(""+row[0],estexto));
+                  table.addCell(new Paragraph(""+horase,estexto));
+        
+  }//end of for
+          documento.add(salto_linea);
+
+             
+          documento.add(table);
+         //F I N  D O C U M E N T O 
+      documento.close();
+      exitoalguardar=true;
+        } catch (DocumentException | IOException e) {
+            e.printStackTrace();
+            exitoalguardar=false;
+        }
+    }
+
+  
+  
+  
   /*public boolean pdf_InformeSeguimientoTutor(long cedula,int numero_pdf,String des1,int hor1,int tec1,int per1,int cont1,String des2,int hor2,int tec2,int per2,int cont2,String des3,int hor3,int tec3,int per3,int cont3,String des4,int hor4,int tec4,int per4,int cont4,int totalhoras){//200
       exitoalguardar=false;
          //FORMATO CARTA COMPROMISO INTERINSTITUCIONAL

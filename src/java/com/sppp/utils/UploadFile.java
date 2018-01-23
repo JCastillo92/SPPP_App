@@ -413,6 +413,27 @@ public class UploadFile{
         
         
     }
+       
+       public void coordinador_tutores(long user){
+       try {
+            AlmacenamientoPDF obj_crearpdf = new AlmacenamientoPDF();
+           
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            ExternalContext context = facesContext.getExternalContext();
+            HttpServletRequest request = (HttpServletRequest) context.getRequest();
+            HttpServletResponse response = (HttpServletResponse) context.getResponse();
+
+            //mando a crear el archivo pdf, para que sea lo mas actual posible.
+            obj_crearpdf.listar_tutores(user, "Reporte_tutores");
+            //mando a llamar al mmismo archivo pdf en la aplicacion,  para que se pueda descargar
+            response.sendRedirect(request.getContextPath() + "/faces/user/coordinador/download1"+"/"+user+"/"+"Reporte_tutores" + ".pdf");
+            //response.sendRedirect("index.jsf");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+       
+       }
   public void download_file_coor(int opcion,long user) {///aqui recibir nombre de archivo 103.pdf
         try {
             //AlmacenamientoPDF obj_crearpdf = new AlmacenamientoPDF();
@@ -476,7 +497,7 @@ public class UploadFile{
        
        }
   
-       public void download_file_coor_1(long user) {///aqui recibir nombre de archivo 103.pdf
+       public void download_file_coor_1(long user,String observaciones) {///aqui recibir nombre de archivo 103.pdf
         try {
             SimpleDateFormat sdf_data = new SimpleDateFormat("dd-MM-yyyy"); 
         DateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
@@ -486,7 +507,7 @@ public class UploadFile{
             AlmacenamientoPDF obj_crearpdf = new AlmacenamientoPDF();
             
            obj_crearpdf.create_student_folder_first_time(user);
-             obj_crearpdf.listar(user,fecha1,hora);
+             obj_crearpdf.listar(user,fecha1,hora,observaciones);
        
            // HttpSession session = SessionUtils.getSession();
             //long id;
@@ -498,7 +519,7 @@ public class UploadFile{
             HttpServletResponse response = (HttpServletResponse) context.getResponse();
 
             //mando a crear el archivo pdf, para que sea lo mas actual posible.
-         obj_crearpdf.listar(user,fecha1,hora);
+         obj_crearpdf.listar(user,fecha1,hora,observaciones);
             //mando a llamar al mmismo archivo pdf en la aplicacion,  para que se pueda descargar
             response.sendRedirect(request.getContextPath() + "/faces/user/coordinador/download1"+"/"+user+"/"+fecha1 + ".pdf");
             //response.sendRedirect("index.jsf");

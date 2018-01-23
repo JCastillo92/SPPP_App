@@ -45,6 +45,11 @@
                                 <b:dataTableColumn value="#{dpalltrue[3].toString()}" label="Fecha fin"/>
                                 
                                 <b:dataTableColumn value="#{detallesDashboardTut.getPeriodo()}" label="Periodo"/>
+                                
+                                <b:dataTableColumn value="#{detallesDashboardTut.getTelefono(dpalltrue[0].toString())}" label="Telefono"/>
+                                
+                                <b:dataTableColumn value="#{detallesDashboardTut.getDireccion(dpalltrue[0].toString())}" label="Direccion"/>
+                                
                                 <b:dataTableColumn label="Acciones">
                                     <center>
                                         <b:button outcome="agendar_cita_tut.xhtml"  value="Agendar" look="success" size="sm" />

@@ -56,7 +56,7 @@
                         <div class="form-group">
                             <label>Reporte estudiantes<i class="fa fa-file-pdf-o fa-2x"></i></label>
                             
-                            <h:inputFile value="#{uploadFile.file}" required="true">
+                            <h:inputFile class="btn btn-outline btn-default" value="#{uploadFile.file}" required="true">
                                 <f:ajax listener="#{uploadFile.save_file_coor(login.user)}"/>
                                 
                             </h:inputFile>

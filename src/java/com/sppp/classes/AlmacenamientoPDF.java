@@ -1670,9 +1670,15 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
                   table.addCell(new Paragraph(""+periodoac,estexto));
                   table.addCell(new Paragraph(""+horastotales,estexto)); 
         }//end of for
+        
+          documento.add(table);
           documento.add(salto_linea);
 
                     //TABLA 3 INICIO
+                    
+      documento.add(new Paragraph("Observaciones:",estexto));
+      documento.add(salto_linea);
+
                     PdfPTable table3 = new PdfPTable(1);//# columns
                     //1 row
                     table3.addCell(new Paragraph("              " + "\n" + observaciones.toUpperCase(), estexto));
@@ -1681,7 +1687,6 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
                    
         
         
-          documento.add(table);
          //F I N  D O C U M E N T O 
       documento.close();
       exitoalguardar=true;

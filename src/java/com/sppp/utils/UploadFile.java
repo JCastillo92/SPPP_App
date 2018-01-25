@@ -395,7 +395,8 @@ public class UploadFile{
                     break;
                 case 7:
                     //7
-
+    Files.copy(input, new File(local_path + user, "204" + extension).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                
                     break;
                 default:
                     System.out.println("No se ha encontrado la orden para subir el archivo scaneado");

@@ -550,8 +550,8 @@ public class AlmacenamientoPDF{
       
       
       Paragraph cuerpo2=new Paragraph("A la vez me permito solicitar la respuesta a esta petición por escrito, y en "
-              + "caso de ser aceptada, al concluir dicha actividad, se emita un informe indicando el desempeño del "
-              + "estudiante y el área al que fue asignado.",estexto);
+              + "caso de ser aceptada, al concluir dicha actividad, se emita un informe indicando el desempeño "+giveMeGenderDEL(usuario.getGenero())+" "
+              + "estudiante y el área al que fue "+giveMeGenderASIGNA(usuario.getGenero())+".",estexto);
       cuerpo2.setAlignment(Element.ALIGN_JUSTIFIED);
       documento.add(cuerpo2);
       documento.add(salto_linea);
@@ -1594,6 +1594,16 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
         }
         if(genero.equals("MASCULINO")){
             genero="del";
+        }
+        return genero;
+    }
+    
+    public String giveMeGenderASIGNA(String genero){
+        if(genero.equals("Femenino")){
+            genero="asignada";
+        }
+        if(genero.equals("MASCULINO")){
+            genero="asignado";
         }
         return genero;
     }

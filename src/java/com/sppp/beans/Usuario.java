@@ -25,10 +25,21 @@ public class Usuario {
   private String apellido;
   private String telefono;
   private String direccion;
+  private boolean estado;
+  private String genero;
   private Perfil perfil;
   private Estudiante estudiante;
   private Tutor tutor;
-private boolean estado;
+
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+  
 
     public Tutor getTutor() {
         return tutor;

@@ -35,7 +35,6 @@ import com.sppp.beans.LocalTimeDate;
 import com.sppp.beans.Pasantia;
 import com.sppp.beans.Usuario;
 import com.sppp.beans.VisitaTutor;
-import java.awt.PageAttributes;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -261,7 +260,7 @@ public class AlmacenamientoPDF{
   table.addCell(cell);
   
   //5 row
-  table.addCell(new Paragraph("APELLIDOS Y NOMBRES DEL ESTUDIANTE:",escuadro));
+  table.addCell(new Paragraph("APELLIDOS Y NOMBRES "+giveMeGenderDEL(usuario.getGenero()).toUpperCase()+" ESTUDIANTE:",escuadro));
    cell = new PdfPCell(new Paragraph(usuario.getApellido()+" "+usuario.getNombre(),estexto));
   cell.setColspan(3);//total de celdas que va MERGE a esta FILA
   table.addCell(cell);
@@ -542,7 +541,7 @@ public class AlmacenamientoPDF{
       Paragraph cuerpo=new Paragraph("Reciba un cordial saludo de quienes conformamos la "
               + "Carrera de Ingeniería de Sistemas de la Universidad Politécnica Salesiana. "
               + "El motivo de la presente tiene como finalidad solicitar a usted, se dé facilidad para efectuar la "+giveMeNamePPP(pasantia.getTipo_ppp())+", "
-                      + "en el área de sistemas de la prestigiosa institución a su digno cargo; al señor: "+usuario.getNombre()+" "+usuario.getApellido()+" con "
+                      + "en el área de sistemas de la prestigiosa institución a su digno cargo; "+giveMeGender(usuario.getGenero())+" "+usuario.getNombre()+" "+usuario.getApellido()+" con "
                               + "documento de identificación N° "+usuario.getEstudiante().getCedula()+", estudiante de "+usuario.getEstudiante().getUltimoNivel()+" "
                                       + "semestre de la Carrera de Ingeniería de Sistemas.",estexto);
       cuerpo.setAlignment(Element.ALIGN_JUSTIFIED);
@@ -654,7 +653,7 @@ public class AlmacenamientoPDF{
       documento.add(salto_linea);
            
       // C U  E R  P O   DE  D O C U M E N T O 
-      Paragraph cuerpo=new Paragraph("Por medio de la presente comunicamos a usted, la aceptación del estudiante "
+      Paragraph cuerpo=new Paragraph("Por medio de la presente comunicamos a usted, la aceptación "+giveMeGenderDEL(usuario.getGenero())+" estudiante "
               + ""+usuario.getNombre()+" "+usuario.getApellido()+", con cédula de ciudadanía: "+usuario.getEstudiante().getCedula()+", "
                       + "para la ejecución de "+giveMeNamePPP(pasantia.getTipo_ppp())+", del "+pasantia.getFechaInicio()+" al "+pasantia.getFechaFin()+".",estexto);
       cuerpo.setAlignment(Element.ALIGN_JUSTIFIED);
@@ -1579,6 +1578,25 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
         return nameppp;
     }
     
+    public String giveMeGender(String genero){
+        if(genero.equals("Femenino")){
+            genero="a la señorita:";
+        }
+        if(genero.equals("MASCULINO")){
+            genero="al señor:";
+        }
+        return genero;
+    }
+    
+    public String giveMeGenderDEL(String genero){
+        if(genero.equals("Femenino")){
+            genero="de la";
+        }
+        if(genero.equals("MASCULINO")){
+            genero="del";
+        }
+        return genero;
+    }
     
     public void listar(long user,String fecha,String hora,String observaciones){
          exitoalguardar=false;

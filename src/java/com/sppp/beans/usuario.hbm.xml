@@ -16,6 +16,7 @@
         <property name="apellido" type="string"></property>
         <property name="telefono" type="string" not-null="false"></property>
         <property name="direccion" type="string" not-null="false"></property>
+        <property name="genero" type="string"></property>
           
         <many-to-one name="perfil" class="Perfil">
             <column name="id_perfil" not-null="true"></column>

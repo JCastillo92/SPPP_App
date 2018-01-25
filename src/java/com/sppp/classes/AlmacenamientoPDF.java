@@ -524,8 +524,11 @@ public class AlmacenamientoPDF{
       
        
       //D I R I G I D O AL GERENTE DE LA EMPRESA O INSTITUCION
+      /*
       documento.add(new Paragraph(encargado.getCargo_encargado(),estextoBold));
       documento.add(new Paragraph(encargado.getNombre_encargado(),estextoBold));
+      */
+      documento.add(new Paragraph(empresa.getNombre_gerente(),estextoBold));
       documento.add(new Paragraph(empresa.getNombre_empresa(),estextoBold));
       documento.add(salto_linea);
       documento.add(salto_linea);

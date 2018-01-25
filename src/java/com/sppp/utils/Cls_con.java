@@ -46,7 +46,7 @@ public class Cls_con {
         public Cls_con(){
             this.driver ="org.postgresql.Driver";
 		this.user="postgres";
-		this.pwd="jairo";
+		this.pwd="s3p@2018";
 		this.cadena="jdbc:postgresql://localhost:5432/db_sp3";	
 		this.con=this.crearConexion();
 	}

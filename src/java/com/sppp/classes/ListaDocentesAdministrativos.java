@@ -12,7 +12,8 @@ package com.sppp.classes;
 public class ListaDocentesAdministrativos {
     public String nombreDocenteAdministrativo(int codigo_cargo){
         String retorno="",
-                DireccionCarreraSistemas="\nING. PATSY MALENA PRIETO MSc. \nDIRECTORA DE LA CARRERA DE INGENIERÍA DE SISTEMAS",
+                DireccionCarreraSistemas="\nING. PATSY MALENA PRIETO MSc. "
+                + "\nDIRECTORA DE LA CARRERA DE INGENIERÍA DE SISTEMAS",
                 Secretaria="\nSecretaria de la UPS",
                 ConsejoCarreraSistemas="\nConsejo Carrera Sistemas",
                 DelegadoUPS="\nMgst. LOLA VASQUEZ. \nDirectora técnica de vinculación UPS. \n3962800 ext.2167"
@@ -48,11 +49,11 @@ public class ListaDocentesAdministrativos {
     
     public String corrreoDocenteAdministrativo(int codigo_correo){
         String devuelvo_correo="",
-                DireccionCarreraSistemas="blarat@est.ups.edu.ec",
-                Secretaria="kachig@est.ups.edu.ec",
-                ConsejoCarreraSistemas="jfloresg1@est.ups.edu.ec",
-                DelegadoUPS="jcastillor1@est.ups.edu.ec",
-                Gestor="jfloresg1@est.ups.edu.ec"
+                DireccionCarreraSistemas="",
+                Secretaria="",
+                ConsejoCarreraSistemas="",
+                DelegadoUPS="",
+                Gestor="aduchi@ups.edu.ec"
                 ;
         switch(codigo_correo){
             case 1:

@@ -53,7 +53,7 @@ public class ListaDocentesAdministrativos {
                 Secretaria="",
                 ConsejoCarreraSistemas="",
                 DelegadoUPS="",
-                Gestor="jfloresg1@est.ups.edu.ec"
+                Gestor="aduchi@ups.edu.ec"
                 ;
         switch(codigo_correo){
             case 1:

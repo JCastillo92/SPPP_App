@@ -542,7 +542,7 @@ public class AlmacenamientoPDF{
               + "Carrera de Ingeniería de Sistemas de la Universidad Politécnica Salesiana. "
               + "El motivo de la presente tiene como finalidad solicitar a usted, se dé facilidad para efectuar la "+giveMeNamePPP(pasantia.getTipo_ppp())+", "
                       + "en el área de sistemas de la prestigiosa institución a su digno cargo; "+giveMeGender(usuario.getGenero())+" "+usuario.getNombre()+" "+usuario.getApellido()+" con "
-                              + "documento de identificación N° "+usuario.getEstudiante().getCedula()+", estudiante de "+usuario.getEstudiante().getUltimoNivel()+" "
+                              + "documento de identificación N° "+usuario.getEstudiante().getCedula()+", estudiante de "+nombreSemestre(usuario.getEstudiante().getUltimoNivel())+" "
                                       + "semestre de la Carrera de Ingeniería de Sistemas.",estexto);
       cuerpo.setAlignment(Element.ALIGN_JUSTIFIED);
       documento.add(cuerpo);
@@ -1606,6 +1606,33 @@ public boolean pdf_informeCoordinador(long cedula, int numero_pdf){//204
             genero="asignado";
         }
         return genero;
+    }
+    
+    public String nombreSemestre(int semestreActual){
+        String retorno="####";
+        switch(semestreActual){
+            case 5:
+                retorno="quinto";
+                break;
+            case 6:
+                retorno="sexto";
+                break;
+            case 7:
+                retorno="séptimo";
+                break;
+            case 8:
+                retorno="octavo";
+                break;
+            case 9:
+                retorno="noveno";
+                break;
+            case 10:
+                retorno="décimo";
+                break;
+            default:
+                break;
+        }
+        return retorno;
     }
     
     public void listar(long user,String fecha,String hora,String observaciones){

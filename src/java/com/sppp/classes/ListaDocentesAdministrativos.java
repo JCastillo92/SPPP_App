@@ -56,7 +56,6 @@ public class ListaDocentesAdministrativos {
                 ConsejoCarreraSistemas="",
                 DelegadoUPS="",
                 Gestor=""
-                //Gestor="jfloresg1@est.ups.edu.ec"
                 ;
         switch(codigo_correo){
             case 1:
@@ -72,6 +71,7 @@ public class ListaDocentesAdministrativos {
                 devuelvo_correo=DelegadoUPS;
                 break;
             case 6:
+                //Gestor="jfloresg1@est.ups.edu.ec"
                 EmailDAO obj=new EmailDAO();
                 Gestor=obj.searchForEmailGestor();//solo me aseguro que es para gestor
                 devuelvo_correo=Gestor;//mando el estrin al string para cumplir con el CASE

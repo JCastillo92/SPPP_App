@@ -10,10 +10,12 @@ import com.sppp.DAO.DetallePasantiaDAO;
 import com.sppp.DAO.PasantiaDAO;
 import com.sppp.DAO.UsuarioDAO;
 import com.sppp.mailing.MailingMain;
+import com.sppp.utils.SessionUtils;
 import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -25,6 +27,7 @@ public class PdfValidacion {
 private MailingMain email_aprobado=new MailingMain();
     int id_estudiante;
     private String observacion;
+    private Usuario usuarioActual= new Usuario();//jairo
 
     public String getObservacion() {
         return observacion;
@@ -139,8 +142,15 @@ private MailingMain email_aprobado=new MailingMain();
             dp2.setObservacion(null);
             dpDAO.actualizarDetallePasantia(dp2);
             
+            //AQUI CARGO LOS DATOS DE LA SESION ACTUAL (GESTOR)
+            HttpSession session = SessionUtils.getSession();
+                long id;
+                id = (long) session.getAttribute("id");
+                UsuarioDAO uDAO = new UsuarioDAO();
+                usuarioActual = uDAO.findUsuario(id);
+
             //envio email al estudiante de aprobado y acercarse a SECRETARIA
-            email_aprobado.mensajes(4, usuario.getCorreo(), "\n\nAtentamente:\n"+usuario.getApellido()+" "+usuario.getNombre()+"");
+            email_aprobado.mensajes(4, usuario.getCorreo(), "\n\nAtentamente:\n"+usuarioActual.getApellido()+" "+usuarioActual.getNombre()+"");
             
             DetallePasantia dp3 = new DetallePasantia();
             dp3.setDescripcion("Resolucion de Proceso");
@@ -156,8 +166,15 @@ private MailingMain email_aprobado=new MailingMain();
             dp2.setObservacion(observacion);
             dpDAO.actualizarDetallePasantia(dp2);
             
+            //AQUI CARGO LOS DATOS DE LA SESION ACTUAL (GESTOR)
+            HttpSession session = SessionUtils.getSession();
+                long id;
+                id = (long) session.getAttribute("id");
+                UsuarioDAO uDAO = new UsuarioDAO();
+                usuarioActual = uDAO.findUsuario(id);
+                
             //envio email al estudiante de correccion
-            email_aprobado.mensajes(1, usuario.getCorreo(), observacion+"\n\nAtentamente:\n"+usuario.getApellido()+" "+usuario.getNombre()+"");
+            email_aprobado.mensajes(1, usuario.getCorreo(), observacion+"\n\nAtentamente:\n"+usuarioActual.getApellido()+" "+usuarioActual.getNombre()+"");
         }
         
         return "dashboard_gestor";

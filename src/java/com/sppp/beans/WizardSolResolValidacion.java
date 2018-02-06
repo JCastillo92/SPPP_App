@@ -10,11 +10,13 @@ import com.sppp.DAO.UsuarioDAO;
 import com.sppp.DAO.VisitaDAO;
 import com.sppp.classes.ConfirmaCita;
 import com.sppp.mailing.MailingMain;
+import com.sppp.utils.SessionUtils;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -27,6 +29,7 @@ public class WizardSolResolValidacion {
      private MailingMain email_aprobado=new MailingMain();
                 private Pasantia pasantia=new Pasantia();//jairo
                 List<Pasantia> empData=new LinkedList<>(); 
+                private Usuario usuarioActual= new Usuario();//jairo
 
     public List<Pasantia> getEmpData() {
         return empData;
@@ -122,9 +125,16 @@ int id_estudiante;
        
          String agregaUnaObservacion="vacio";
          if(!cod_resolucion.equals("")){
+             //preparo datos del USUARIO LOGUEADO (GESTOR)
+            HttpSession session = SessionUtils.getSession();
+                long id;
+                id = (long) session.getAttribute("id");
+                UsuarioDAO uDAO = new UsuarioDAO();
+                usuarioActual = uDAO.findUsuario(id);
+             
          //envio email al estudiante de aprobado
          agregaUnaObservacion="La Resolución de Inicio de Actividades es favorable. El código es: "+cod_resolucion+". Para la visita a las empresas por parte de los tutores es necesario que presenten a los tutores la resolución de consejo donde se autoriza el inicio de las actividades en las empresas. si no existe dicha resolución no se podrá realizar las visitas";
-            email_aprobado.mensajes(3, usuario.getCorreo(), agregaUnaObservacion+"\n\nAtentamente:\n"+usuario.getApellido()+" "+usuario.getNombre()+"");
+            email_aprobado.mensajes(3, usuario.getCorreo(), agregaUnaObservacion+"\n\nAtentamente:\n"+usuarioActual.getApellido()+" "+usuarioActual.getNombre()+"");
             
             //este mensaje le llegara al tutor asignado.
              ConfirmaCita confirma = new ConfirmaCita();

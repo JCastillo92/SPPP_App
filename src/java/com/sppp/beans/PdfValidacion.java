@@ -140,7 +140,7 @@ private MailingMain email_aprobado=new MailingMain();
             dpDAO.actualizarDetallePasantia(dp2);
             
             //envio email al estudiante de aprobado y acercarse a SECRETARIA
-            email_aprobado.mensajes(4, usuario.getCorreo(), "\nAtentamente:\nCoordinador de pasantías y extensiones universitarias.");
+            email_aprobado.mensajes(4, usuario.getCorreo(), "\n\nAtentamente:\n"+usuario.getApellido()+" "+usuario.getNombre()+"");
             
             DetallePasantia dp3 = new DetallePasantia();
             dp3.setDescripcion("Resolucion de Proceso");
@@ -157,7 +157,7 @@ private MailingMain email_aprobado=new MailingMain();
             dpDAO.actualizarDetallePasantia(dp2);
             
             //envio email al estudiante de correccion
-            email_aprobado.mensajes(1, usuario.getCorreo(), observacion+"\n\nAtentamente:\nCoordinador de pasantías y extensiones universitarias.");
+            email_aprobado.mensajes(1, usuario.getCorreo(), observacion+"\n\nAtentamente:\n"+usuario.getApellido()+" "+usuario.getNombre()+"");
         }
         
         return "dashboard_gestor";

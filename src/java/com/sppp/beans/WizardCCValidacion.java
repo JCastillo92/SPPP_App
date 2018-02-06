@@ -383,7 +383,7 @@ public class WizardCCValidacion extends WizardCC {
             dpDAO.actualizarDetallePasantia(dp2);
             
             //envio email al estudiante de aprobado
-            email_aprobado.mensajes(2, usuario.getCorreo(), "\nAtentamente:\nCoordinador de pasantías y extensiones universitarias.");
+            email_aprobado.mensajes(2, usuario.getCorreo(), "\n\nAtentamente:\n"+usuario.getApellido()+" "+usuario.getNombre()+"");
             
             //Paso a agregar el nuevo proceso 11
             DetallePasantia dp3 = new DetallePasantia();
@@ -401,7 +401,7 @@ public class WizardCCValidacion extends WizardCC {
             dpDAO.actualizarDetallePasantia(dp2);
             
             //envio email al estudiante de correccion
-            email_aprobado.mensajes(1, usuario.getCorreo(), observacion+"\n\nAtentamente:\nCoordinador de pasantías y extensiones universitarias.");
+            email_aprobado.mensajes(1, usuario.getCorreo(), observacion+"\n\nAtentamente:\n"+usuario.getApellido()+" "+usuario.getNombre()+"");
         }
         } catch (Exception e) {
             e.printStackTrace();

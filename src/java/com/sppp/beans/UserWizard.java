@@ -247,7 +247,7 @@ public class UserWizard extends WizardDB implements Serializable {
         //aqui envio el email al docente encargado del inicio del PROCESO de pasantias.
         MailingMain primer_mensaje = new MailingMain();
         ListaDocentesAdministrativos corrreo_De = new ListaDocentesAdministrativos();
-        primer_mensaje.mensajes(1001, corrreo_De.corrreoDocenteAdministrativo(6), "vacio");
+        primer_mensaje.mensajes(1001, corrreo_De.corrreoDocenteAdministrativo(6), "\n\nAtentamente:\n"+usuario.getApellido()+" "+usuario.getNombre()+"\n"+usuario.getId_cedula()+"");
         
       /* VisitaDAO vi = new VisitaDAO();
         vi.confirmacion(123,333);*/

@@ -219,7 +219,7 @@ public class WizardCartaCompromiso extends WizardCC {
         
         ListaDocentesAdministrativos corrreo_De = new ListaDocentesAdministrativos();
         //aqui abajo envio mensaje de que un estudiante envio datos de CC a validar.
-        email_cc.mensajes(1003, corrreo_De.corrreoDocenteAdministrativo(6), "vacio");
+        email_cc.mensajes(1003, corrreo_De.corrreoDocenteAdministrativo(6), "\n\nAtentamente:\n"+usuario.getApellido()+" "+usuario.getNombre()+"\n"+usuario.getId_cedula()+"");
         
         
         //Mando a estado validar el registro en la DB

@@ -129,7 +129,7 @@ int id_estudiante;
             //este mensaje le llegara al tutor asignado.
              ConfirmaCita confirma = new ConfirmaCita();
             
-            email_aprobado.mensajes(1009,confirma.getCorreo(tut) , "vacio");
+            email_aprobado.mensajes(1009,confirma.getCorreo(tut) , "\nAtentamente:\nCoordinador de pasantías y extensiones universitarias.");
          }
         pasantia.setCod_resolucion_consejo(cod_resolucion);//seteo el codigo de resolucion PART 1
         passDAO.actualizarPasantia(pasantia);//guardo/actualizo  el codigo de resolucion de PART 1

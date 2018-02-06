@@ -394,7 +394,7 @@ public class WizardDBValidacion extends WizardDB {
             dpDAO.actualizarDetallePasantia(dp);
             
             //envio email al estudiante de aprobado
-            email_aprobado.mensajes(2, usuario.getCorreo(), "vacio");
+            email_aprobado.mensajes(2, usuario.getCorreo(), "\nAtentamente:\nCoordinador de pasantías y extensiones universitarias.");
             
             
             //Paso a agregar el nuevo proceso 11
@@ -412,7 +412,7 @@ public class WizardDBValidacion extends WizardDB {
             dpDAO.actualizarDetallePasantia(dp);
             
             //envio email al estudiante de correccion
-            email_aprobado.mensajes(1, usuario.getCorreo(), observacion);
+            email_aprobado.mensajes(1, usuario.getCorreo(), observacion+"\n\nAtentamente:\nCoordinador de pasantías y extensiones universitarias.");
             
         }
          } catch (Exception e) {

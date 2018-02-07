@@ -5,8 +5,11 @@
  */
 package com.sppp.beans;
 
+import com.sppp.DAO.PasantiaPracticaDAO;
 import com.sppp.DAO.TutorDAO;
 import com.sppp.DAO.UsuarioDAO;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  *
@@ -92,15 +95,25 @@ public abstract class WizardCC {
                 private String tutorXXX;
 
     public String getTutorXXX() {
-        obten_ci_tutor=0;
+        obten_ci_tutor = 0;
         try {
-             TutorDAO obj = new TutorDAO();
-            obten_ci_tutor=obj.findTutorVisita().getCedula();
-        UsuarioDAO obj2 = new UsuarioDAO();
-        obj2.findUsuario(obten_ci_tutor);
-        tutorXXX=obj2.findUsuario(obten_ci_tutor).getNombre()+" "+obj2.findUsuario(obten_ci_tutor).getApellido();
-        }catch (Exception e){
-            tutorXXX="TUTOR NO ASIGNADO";
+            TutorDAO obj = new TutorDAO();
+            PasantiaPracticaDAO ppDAO = new PasantiaPracticaDAO();
+            
+            //Obtengo todas las cedulas de los Tutores
+            List<Long> ceds = new LinkedList<>();
+            ceds = obj.cedulasTutor();
+            
+            //Mando a consultar el Tutor con menos pasantias asignadas con estado True
+            //long cedulaTutor = ppDAO.cedulaTutorMenosPasantiasAsignadas(ceds);
+            //obten_ci_tutor = obj.findTutorVisita().getCedula();
+            obten_ci_tutor = ppDAO.cedulaTutorMenosPasantiasAsignadas(ceds);
+
+            UsuarioDAO obj2 = new UsuarioDAO();
+            obj2.findUsuario(obten_ci_tutor);
+            tutorXXX = obj2.findUsuario(obten_ci_tutor).getNombre() + " " + obj2.findUsuario(obten_ci_tutor).getApellido();
+        } catch (Exception e) {
+            tutorXXX = "TUTOR NO ASIGNADO";
         }
         return tutorXXX;
     }

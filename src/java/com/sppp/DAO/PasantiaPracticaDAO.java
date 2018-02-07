@@ -12,6 +12,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import com.sppp.beans.Pasantia;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -134,5 +135,46 @@ public class PasantiaPracticaDAO {
         
         return todosProcesos;
     }
+    
+    public long cedulaTutorMenosPasantiasAsignadas(List<Long> cedulas){
+        long cedulaTutorAsignado=0;
+        long temporal;
+        long comparador = 9999;
+        SessionFactory sf=HibernateUtil.getSessionFactory();
+        Session sesion=sf.openSession();
+        Transaction tx=null;    
+         try {
+            tx = sesion.beginTransaction();
+             for (Iterator<Long> iterator = cedulas.iterator(); iterator.hasNext();) {
+                 
+                 Long next = iterator.next();
+                 Query query = sesion.createQuery("SELECT COUNT(*) FROM Pasantia WHERE ced_tutor_asignado = :id_pro and estado = :verdad");
+                 query.setLong("id_pro", next);
+                 query.setBoolean("verdad", true);
+                 temporal = (Long)query.uniqueResult();
+                 
+                 //Comparo quien tiene menos pasantias asignadas
+                 if(temporal < comparador){
+                     comparador = temporal;
+                     cedulaTutorAsignado = next; 
+                 }
+                 
+             }
+      
+            tx.commit();
+        }catch (Exception e) {
+            if (tx != null){
+                tx.rollback();
+            }
+        }
+        finally{
+            //para cerrar seesion
+            sesion.close();
+        }
+        
+        
+        return cedulaTutorAsignado;
+    }
+    
     
 }//END OF CLASS

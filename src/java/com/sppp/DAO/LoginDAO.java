@@ -7,6 +7,8 @@ package com.sppp.DAO;
 
 import com.sppp.beans.Usuario;
 import com.sppp.utils.HibernateUtil;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.hibernate.Query;
@@ -30,7 +32,8 @@ public class LoginDAO {
         try {
             tx = sesion.beginTransaction();
 
-            System.out.println("INICIO SECCION PRUEBAS");           
+            System.out.println("INICIO SECCION PRUEBAS");    
+            System.out.println("===================="+user+"==============="+password);
             System.out.println("FIN SECCION DE PRUEBAS");
             
             System.out.println("U: " + user + " P: " + password);

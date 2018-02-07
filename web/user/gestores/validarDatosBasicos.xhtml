@@ -159,7 +159,8 @@
                                     <br></br></fieldset>
                                 </div>
                                 <div class="row">
-                            <b:commandButton value="Enviar" action="#{wizardDBValidacion.guardarDatos()}" look="success" />
+                            <b:commandButton value="Enviar" action="#{wizardDBValidacion.guardarDatos()}" look="success"
+                                             onclick="setTimeout('document.getElementById(\'' + this.id + '\').disabled=true;', 50);"/>
                                 </div>
                             </center>
                                     <p align="right">p&aacute;g 3/3</p>

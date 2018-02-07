@@ -58,7 +58,8 @@
                         </h:panelGrid>
                         <b:inputTextarea label="Observaci&oacute;n" value="#{pdfValidacion.observacion}"/>
                         
-                        <center><b:commandButton action="#{pdfValidacion.guardarDatos()}" value="Validar" look="success"/></center>
+                        <center><b:commandButton action="#{pdfValidacion.guardarDatos()}" value="Validar" look="success"
+                                                 onclick="setTimeout('document.getElementById(\'' + this.id + '\').disabled=true;', 50);"/></center>
 
 
                     </h:form>

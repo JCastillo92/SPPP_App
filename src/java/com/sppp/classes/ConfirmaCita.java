@@ -13,6 +13,7 @@ import com.sppp.beans.Pasantia;
 import com.sppp.beans.Usuario;
 import com.sppp.beans.VisitaTutor;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.model.SelectItem;
@@ -29,6 +30,7 @@ public class ConfirmaCita {
     
     private Usuario estudiantes;
      private String nombre_est;
+     private Date fecha;
      private String apellido_est;
      private String correo;
      private String correo2;
@@ -94,6 +96,12 @@ public class ConfirmaCita {
         this.nombre_est=citasdao.obtenerNombre(id);
         
         return nombre_est;
+    }
+
+    public Date getFecha(long id) {
+          CitasDao citasdao=new CitasDaoImp();
+        this.fecha=citasdao.obtenerFecha(id);
+        return fecha;
     }
 
     public String getApellido_est(long id) {

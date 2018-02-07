@@ -11,6 +11,7 @@ import com.sppp.classes.AlmacenamientoPDF;
 import com.sppp.classes.CitasAgendadas;
 import com.sppp.mailing.MailingMain;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -649,6 +650,15 @@ public void sendCancelacionTut(String tutor, String apellido,String correo,Strin
       
     }
     
+   public int fechita(Date a, Date b) throws ParseException{
+       int total=0;
+     
+                int dias=(int) ((a.getTime()-b.getTime())/86400000);
+ 
+     return dias;  
+      
+    }
+  
     /** evento para fecha seleccionado de agregar cita*/
   public void onDateSelect(SelectEvent event) {
         FacesContext facesContext = FacesContext.getCurrentInstance();

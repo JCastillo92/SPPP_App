@@ -11,6 +11,7 @@ import com.sppp.DAO.VisitaDAO;
 import com.sppp.classes.ConfirmaCita;
 import com.sppp.mailing.MailingMain;
 import com.sppp.utils.SessionUtils;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -113,7 +114,7 @@ int id_estudiante;
         return null;
     }
     
-    public String actualizarResolucion(long tut){
+    public String actualizarResolucion(long tut, Date fechita){
         
         long est = Long.valueOf(id_estudiante);
         
@@ -143,6 +144,7 @@ int id_estudiante;
             email_aprobado.mensajes(1009,confirma.getCorreo(tut) , "vacio");
          }
         pasantia.setCod_resolucion_consejo(cod_resolucion);//seteo el codigo de resolucion PART 1
+        pasantia.setFecha_registro(fechita);
         passDAO.actualizarPasantia(pasantia);//guardo/actualizo  el codigo de resolucion de PART 1
         
         vi.updateEstudianteAgendado2(est);

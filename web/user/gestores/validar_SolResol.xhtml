@@ -58,7 +58,7 @@
             <b:panel title="Ingreso N&uacute;mero Resoluci&oacute;n" look="default" style="width:400px; height:auto">
                 <h:form>
                     <b:inputText value="#{wizardSolResolValidacion.cod_resolucion}" label="C&oacute;digo de Resoluci&oacute;n" required="true" placeholder="12345-678-9123-45-67"/>
-                    <b:commandButton class="btn btn-success" value="Aprobar" action="#{wizardSolResolValidacion.actualizarResolucion(confirmaCita.getCe_tutor(wizardSolResolValidacion.id_estudiante))}"></b:commandButton>
+                    <b:commandButton class="btn btn-success" value="Aprobar" action="#{wizardSolResolValidacion.actualizarResolucion(confirmaCita.getCe_tutor(wizardSolResolValidacion.id_estudiante),fechaSistema.fecha())}"></b:commandButton>
                 </h:form>
                             </b:panel>
 

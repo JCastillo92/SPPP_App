@@ -9,6 +9,7 @@ import com.sppp.beans.Estudiante;
 import com.sppp.beans.Pasantia;
 import com.sppp.beans.Usuario;
 import com.sppp.beans.VisitaTutor;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,6 +23,7 @@ public interface CitasDao {
      public List<Pasantia> listar(long user);
      
      public String obtenerNombre(long id);
+     public Date obtenerFecha(long id);
      public long obtenercedulaTut(long id);
      public String obtenerApellido(long id);
      public String obtenerCorreo(long id);

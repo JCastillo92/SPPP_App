@@ -28,7 +28,7 @@ public class Pasantia implements Serializable{
     private Encargado encargado;
     private Estudiante estudiante;
     private Periodo periodo;
-    
+    private Date fecha_registro;// fecha en que se registro al tutor
     
 
     public Estudiante getEstudiante() {
@@ -145,6 +145,16 @@ public class Pasantia implements Serializable{
     public void setCod_resolucion_final(String cod_resolucion_final) {
         this.cod_resolucion_final = cod_resolucion_final;
     }
+
+    public Date getFecha_registro() {
+        return fecha_registro;
+    }
+
+    public void setFecha_registro(Date fecha_registro) {
+        this.fecha_registro = fecha_registro;
+    }
+
+   
 
  
     

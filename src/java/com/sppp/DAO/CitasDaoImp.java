@@ -10,6 +10,7 @@ import com.sppp.beans.Pasantia;
 import com.sppp.beans.Usuario;
 import com.sppp.beans.VisitaTutor;
 import com.sppp.utils.HibernateUtil;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -136,6 +137,32 @@ public class CitasDaoImp implements CitasDao {
          
 *///query.setInteger("id", id);
             tx.commit();
+        } catch (RuntimeException e) {
+            tx.rollback();
+            throw e;
+        }finally{
+            sesion.flush();
+             sesion.close();
+         }
+        
+        return nombre;
+    
+    }
+    
+     @Override
+    public Date obtenerFecha(long id) {
+        Date nombre;
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sesion = sf.openSession();
+            
+        Transaction tx = null;
+        
+        String sql = "SELECT fecha_registro FROM Pasantia WHERE cedula =:id";
+       
+        try {
+            tx = sesion.beginTransaction();
+        nombre =(Date) sesion.createQuery(sql).setParameter("id", id).uniqueResult();
+        tx.commit();
         } catch (RuntimeException e) {
             tx.rollback();
             throw e;

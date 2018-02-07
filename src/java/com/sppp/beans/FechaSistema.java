@@ -19,12 +19,12 @@ public class FechaSistema {
 
       
 
-public String fecha(){
+public Date fecha(){
      Date fechaSis = new Date();
       
         SimpleDateFormat sisFecha = new SimpleDateFormat("dd-MM-yyyy");  
       //System.out.println(sisFecha.format(fechaSis));
-           return sisFecha.format(fechaSis);  
+           return (fechaSis);  
 }
     
   

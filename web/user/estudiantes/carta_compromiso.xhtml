@@ -102,7 +102,8 @@
                                     <br></br></fieldset>
                                 </div>
                                 <div class="row">   
-                             <b:commandButton value="Enviar" action="#{wizardCartaCompromiso.guardarDatos()}" look="success"></b:commandButton>
+                             <b:commandButton value="Enviar" action="#{wizardCartaCompromiso.guardarDatos()}" look="success"
+                                              onclick="setTimeout('document.getElementById(\'' + this.id + '\').disabled=true;', 50);"></b:commandButton>
                             </div>
                                 </center>
                                 <p align="right">p&aacute;g 4/4</p>

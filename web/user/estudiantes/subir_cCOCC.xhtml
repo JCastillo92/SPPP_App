@@ -69,7 +69,8 @@
                         
                     </h:form>
                     <h:form>
-                        <center><b:commandButton value="Guardar" action="#{pdfEstudiante.guardarDatos()}" class="btn btn-success"/></center>
+                        <center><b:commandButton value="Guardar" action="#{pdfEstudiante.guardarDatos()}" class="btn btn-success"
+                                                 onclick="setTimeout('document.getElementById(\'' + this.id + '\').disabled=true;', 50);"/></center>
                     </h:form>
                 </div>
             </div>

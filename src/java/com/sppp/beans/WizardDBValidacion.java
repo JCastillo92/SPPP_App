@@ -13,6 +13,7 @@ import com.sppp.DAO.PasantiaDAO;
 import com.sppp.DAO.PasantiaPracticaDAO;
 import com.sppp.DAO.UsuarioDAO;
 import com.sppp.mailing.MailingMain;
+import com.sppp.utils.SessionUtils;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,6 +22,7 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,6 +36,7 @@ public class WizardDBValidacion extends WizardDB {
     DetallePasantia dp = new DetallePasantia();
     MailingMain email_aprobado=new MailingMain();
     String observacion;
+    private Usuario usuarioActual= new Usuario();//jairo
 
     public String getObservacion() {
         return observacion;
@@ -393,8 +396,15 @@ public class WizardDBValidacion extends WizardDB {
             dp.setObservacion(null);
             dpDAO.actualizarDetallePasantia(dp);
             
+            //preparo datos del USUARIO LOGUEADO (GESTOR)
+            HttpSession session = SessionUtils.getSession();
+                long id;
+                id = (long) session.getAttribute("id");
+                UsuarioDAO uDAO = new UsuarioDAO();
+                usuarioActual = uDAO.findUsuario(id);
+            
             //envio email al estudiante de aprobado
-            email_aprobado.mensajes(2, usuario.getCorreo(), "vacio");
+            email_aprobado.mensajes(2, usuario.getCorreo(), "\n\nAtentamente:\n"+usuarioActual.getApellido()+" "+usuarioActual.getNombre()+"");
             
             
             //Paso a agregar el nuevo proceso 11
@@ -411,8 +421,16 @@ public class WizardDBValidacion extends WizardDB {
             dp.setObservacion(observacion);
             dpDAO.actualizarDetallePasantia(dp);
             
+            
+            //preparo datos del USUARIO LOGUEADO (GESTOR)
+            HttpSession session = SessionUtils.getSession();
+                long id;
+                id = (long) session.getAttribute("id");
+                UsuarioDAO uDAO = new UsuarioDAO();
+                usuarioActual = uDAO.findUsuario(id);
+                
             //envio email al estudiante de correccion
-            email_aprobado.mensajes(1, usuario.getCorreo(), observacion);
+            email_aprobado.mensajes(1, usuario.getCorreo(), observacion+"\n\nAtentamente:\n"+usuarioActual.getApellido()+" "+usuarioActual.getNombre()+"");
             
         }
          } catch (Exception e) {

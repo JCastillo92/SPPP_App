@@ -144,7 +144,7 @@ public class PdfEstudiante {
         dpDAO.actualizarDetallePasantia(dp2);   
             
                     //envio mail a encargado mail para que revise scan de 4 PDFs
-        enviar_mail.mensajes(1004,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
+        enviar_mail.mensajes(1004,corrreo_De.corrreoDocenteAdministrativo(6),"\n\nAtentamente:\n"+usuario.getApellido()+" "+usuario.getNombre()+"\n"+usuario.getId_cedula()+"");
         } catch (Exception e) {
             e.printStackTrace();
         }

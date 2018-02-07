@@ -95,11 +95,11 @@
                                 <b:inputText id="dirEmp" value="#{userWizard.emp.direccion_empresa}" class="#{userWizard.datosAPintar[13] ? 'hola':'rojo_error'}" label="Direcci&oacute;n:" required="true"/>
                                 <b:inputText id="actEmp" value="#{userWizard.emp.actividad_principal_empresa}" class="#{userWizard.datosAPintar[14] ? 'hola':'rojo_error'}" label="Actividad Principal que Ejerce Empresa:" tooltip="Griro del negocio" required="true"/>
                                 <b:inputText validator="#{userWizard.validarCI}" value="#{userWizard.enc.ci_encargado}" class="#{userWizard.datosAPintar[15] ? 'hola':'rojo_error'}" 
-                                             label="C&eacute;dula Encargado:" required="true"
+                                             label="C&eacute;dula Encargado:" required="true" tooltip="CI: Jefe inmediato del alumno"
                                              onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;">
                                     <f:validateLength minimum="9" maximum="10"/>
                                 </b:inputText>
-                                <b:inputText value="#{userWizard.enc.nombre_encargado}" class="#{userWizard.datosAPintar[16] ? 'hola':'rojo_error'}" label="Nombres y Apellidos Encargado:" required="true" />
+                                <b:inputText value="#{userWizard.enc.nombre_encargado}" class="#{userWizard.datosAPintar[16] ? 'hola':'rojo_error'}" label="Nombres y Apellidos Encargado:" required="true" tooltip="Jefe inmediato del alumno"/>
                                 <b:inputText value="#{userWizard.enc.cargo_encargado}" class="#{userWizard.datosAPintar[17] ? 'hola':'rojo_error'}" label="Cargo / Profesi&oacute;n Encargado:" required="true"/>
                             <p align="right">p&aacute;g 2/3</p>
                             </b:panel>

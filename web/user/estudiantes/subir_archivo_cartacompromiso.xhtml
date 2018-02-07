@@ -57,7 +57,7 @@
                 <div class="panel-body">
                     <h:form enctype="multipart/form-data" role="form">
                         <div class="form-group">
-                            <label>Subir la carta compromiso en formato .pdf hasta 2MB <i class="fa fa-file-pdf-o fa-2x"></i></label>
+                            <label>Subir la carta compromiso firmada y sellada por la empresa en formato .pdf hasta 2MB <i class="fa fa-file-pdf-o fa-2x"></i></label>
                             <h:inputFile value="#{uploadFile.file}" required="true" class="btn btn-outline btn-default">
                                 <f:ajax listener="#{uploadFile.save_file(3)}"/>
                             </h:inputFile>
@@ -65,7 +65,7 @@
                         
                         
                          <div class="form-group">
-                            <label>Subir la solicitud Inicio de Actividades en formato .pdf hasta 2MB <i class="fa fa-file-pdf-o fa-2x"></i></label>
+                            <label>Subir la solicitud Inicio de Actividades firmada por el alumno en formato .pdf hasta 2MB <i class="fa fa-file-pdf-o fa-2x"></i></label>
                             <h:inputFile value="#{uploadFile.file}" required="true" class="btn btn-outline btn-default">
                                 <f:ajax listener="#{uploadFile.save_file(4)}"/>
                             </h:inputFile>

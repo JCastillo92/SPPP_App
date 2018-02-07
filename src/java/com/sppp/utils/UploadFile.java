@@ -9,10 +9,12 @@ import com.sppp.DAO.CitasDaoImp;
 import com.sppp.DAO.DatosDAO;
 import com.sppp.DAO.DetallePasantiaDAO;
 import com.sppp.DAO.PasantiaDAO;
+import com.sppp.DAO.UsuarioDAO;
 import com.sppp.beans.DetallePasantia;
 import com.sppp.beans.EnumEstado;
 import com.sppp.beans.Pasantia;
 import com.sppp.beans.Proceso;
+import com.sppp.beans.Usuario;
 import com.sppp.classes.AlmacenamientoPDF;
 import com.sppp.classes.ListaDocentesAdministrativos;
 import com.sppp.classes.Paths;
@@ -43,7 +45,7 @@ import javax.servlet.http.Part;
 public class UploadFile{
     DetallePasantia dp = new DetallePasantia();
     Pasantia p = new Pasantia();
-    
+    private Usuario usuario = new Usuario();//jairo
     private Part file;
 
     
@@ -221,13 +223,15 @@ public class UploadFile{
                 }
         break;
             case 3:
-         try {
-                //envio mail a encargado mail para que revise scan de 4 PDFs
-        primer_mensaje.mensajes(1004,corrreo_De.corrreoDocenteAdministrativo(6),"vacio");
-            
+         try {          
                 HttpSession session = SessionUtils.getSession();
                 long id;
                 id = (long) session.getAttribute("id");
+                UsuarioDAO uDAO = new UsuarioDAO();
+                usuario = uDAO.findUsuario(id);
+            
+                //envio mail a encargado mail para que revise scan de 4 PDFs
+        primer_mensaje.mensajes(1004,corrreo_De.corrreoDocenteAdministrativo(6),"\n\nAtentamente:\n"+usuario.getApellido()+" "+usuario.getNombre()+"\n"+usuario.getId_cedula()+"");
 
                 p = ppDAO.findPasantia(id);
 
@@ -258,9 +262,6 @@ public class UploadFile{
                 break;
             case 4:
         try {
-                //envio mail a encargado mail para que revise scan de SOLICITUD DE RESOLUCION
-        
-            
                 HttpSession session = SessionUtils.getSession();
                 long id;
                 id = (long) session.getAttribute("id");

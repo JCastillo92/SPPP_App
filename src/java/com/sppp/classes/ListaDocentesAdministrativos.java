@@ -5,6 +5,8 @@
  */
 package com.sppp.classes;
 
+import com.sppp.DAO.EmailDAO;
+
 /**
  *
  * @author Jairo
@@ -53,7 +55,7 @@ public class ListaDocentesAdministrativos {
                 Secretaria="",
                 ConsejoCarreraSistemas="",
                 DelegadoUPS="",
-                Gestor="aduchi@ups.edu.ec"
+                Gestor=""
                 ;
         switch(codigo_correo){
             case 1:
@@ -69,7 +71,10 @@ public class ListaDocentesAdministrativos {
                 devuelvo_correo=DelegadoUPS;
                 break;
             case 6:
-                devuelvo_correo=Gestor;
+                //Gestor="jfloresg1@est.ups.edu.ec"
+                EmailDAO obj=new EmailDAO();
+                Gestor=obj.searchForEmailGestor();//solo me aseguro que es para gestor
+                devuelvo_correo=Gestor;//mando el estrin al string para cumplir con el CASE
                 break;
             default:
                 break;

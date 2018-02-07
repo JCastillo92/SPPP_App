@@ -19,6 +19,7 @@
         <property name="ced_tutor_asignado" type="long"></property>
         <property name="estado_tut" type="boolean"></property>
         <property name="cod_resolucion_final" type="string"></property>
+        <property name="fecha_registro" type="date"></property>
                 
                 
         

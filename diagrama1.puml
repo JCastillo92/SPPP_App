@@ -1,0 +1,854 @@
+@startuml
+abstract class com.sppp.beans.WizardCC
+abstract class com.sppp.beans.WizardDB
+annotation java.lang.Override
+annotation javax.annotation.PostConstruct
+annotation javax.faces.bean.ManagedBean
+annotation javax.faces.bean.SessionScoped
+annotation javax.faces.bean.ViewScoped
+annotation javax.servlet.annotation.WebFilter
+annotation javax.servlet.annotation.WebServlet
+class com.itextpdf.text.Document
+class com.itextpdf.text.DocumentException
+class com.itextpdf.text.Element
+class com.itextpdf.text.Font
+class com.itextpdf.text.FontFactory
+class com.itextpdf.text.Image
+class com.itextpdf.text.PageSize
+class com.itextpdf.text.Paragraph
+class com.itextpdf.text.pdf.PdfPCell
+class com.itextpdf.text.pdf.PdfPTable
+class com.itextpdf.text.pdf.PdfWriter
+class com.spp.servlets.Download
+class com.spp.servlets.DownloadAllCoor
+class com.spp.servlets.DownloadCoor
+class com.spp.servlets.DownloadGestP1
+class com.spp.servlets.DownloadSec
+class com.spp.servlets.DownloadTut
+class com.sppp.DAO.CampoDAO
+class com.sppp.DAO.CitasDaoImp
+class com.sppp.DAO.DashboardTutDAO
+class com.sppp.DAO.DatosDAO
+class com.sppp.DAO.DatosTutDAO
+class com.sppp.DAO.DetallePasantiaDAO
+class com.sppp.DAO.EmpresaDAO
+class com.sppp.DAO.EncargadoDAO
+class com.sppp.DAO.EstudianteDAO
+class com.sppp.DAO.LoginDAO
+class com.sppp.DAO.PasantiaDAO
+class com.sppp.DAO.PasantiaPracticaDAO
+class com.sppp.DAO.PeriodoDAO
+class com.sppp.DAO.ProcesoDAO
+class com.sppp.DAO.ProcesoTutDao
+class com.sppp.DAO.TutorDAO
+class com.sppp.DAO.UsuarioDAO
+class com.sppp.DAO.VisitaDAO
+class com.sppp.DAO.WizardDAO
+class com.sppp.beans.Campo
+class com.sppp.beans.ControllerBean
+class com.sppp.beans.ControllerProcesos
+class com.sppp.beans.DashboardGestBean
+class com.sppp.beans.Datos
+class com.sppp.beans.DetalleEstudianteBean
+class com.sppp.beans.DetallePasantia
+class com.sppp.beans.DetallePasantiaBean
+class com.sppp.beans.DetallesDashboardTut
+class com.sppp.beans.Empresa
+class com.sppp.beans.Encargado
+class com.sppp.beans.EstadoProceso
+class com.sppp.beans.Estudiante
+class com.sppp.beans.FechaSistema
+class com.sppp.beans.Formato
+class com.sppp.beans.GraficasTut
+class com.sppp.beans.HorarioTutor
+class com.sppp.beans.LocalTimeDate
+class com.sppp.beans.Login
+class com.sppp.beans.Navegacion
+class com.sppp.beans.Pasantia
+class com.sppp.beans.PasantiaPracticaBean
+class com.sppp.beans.PdfEstudiante
+class com.sppp.beans.PdfValidacion
+class com.sppp.beans.Perfil
+class com.sppp.beans.Periodo
+class com.sppp.beans.PeriodoTutor
+class com.sppp.beans.Preguntas
+class com.sppp.beans.Proceso
+class com.sppp.beans.Respuesta
+class com.sppp.beans.TipoPregunta
+class com.sppp.beans.Tutor
+class com.sppp.beans.UserWizard
+class com.sppp.beans.Usuario
+class com.sppp.beans.VisitaTutor
+class com.sppp.beans.WizardCCValidacion
+class com.sppp.beans.WizardCartaCompromiso
+class com.sppp.beans.WizardDBValidacion
+class com.sppp.beans.WizardSolResolValidacion
+class com.sppp.classes.AlmacenamientoPDF
+class com.sppp.classes.ChangePassword
+class com.sppp.classes.CitasAgendadas
+class com.sppp.classes.Cls_PerfilNotation
+class com.sppp.classes.ConfirmaCita
+class com.sppp.classes.DatosFormatos
+class com.sppp.classes.ListaDocentesAdministrativos
+class com.sppp.classes.Paths
+class com.sppp.classes.TablasFormatos
+class com.sppp.mailing.MailingMain
+class com.sppp.utils.Cls_OutOfSystem
+class com.sppp.utils.Cls_con
+class com.sppp.utils.HibernateUtil
+class com.sppp.utils.LoginFilter
+class com.sppp.utils.PasswdReplacement
+class com.sppp.utils.PasswordRestoration
+class com.sppp.utils.SessionUtils
+class com.sppp.utils.UploadFile
+class com.sppp.utils.Validaciones
+class com.sun.javafx.scene.control.skin.VirtualFlow
+class java.io.File
+class java.io.FileNotFoundException
+class java.io.FileOutputStream
+class java.io.IOException
+class java.io.InputStream
+class java.io.PrintWriter
+class java.nio.file.Files
+class java.nio.file.StandardCopyOption
+class java.sql.DriverManager
+class java.sql.ResultSet
+class java.sql.SQLException
+class java.text.DateFormat
+class java.text.SimpleDateFormat
+class java.util.ArrayList
+class java.util.Arrays
+class java.util.Calendar
+class java.util.Date
+class java.util.GregorianCalendar
+class java.util.HashMap
+class java.util.Iterator
+class java.util.LinkedHashSet
+class java.util.LinkedList
+class java.util.List
+class java.util.Locale
+class java.util.Map
+class java.util.Properties
+class java.util.Set
+class java.util.logging.Level
+class java.util.logging.Logger
+class javax.enterprise.context.Dependent
+class javax.enterprise.context.SessionScoped
+class javax.faces.application.FacesMessage
+class javax.faces.component.UIComponent
+class javax.faces.context.ExternalContext
+class javax.faces.context.FacesContext
+class javax.faces.model.SelectItem
+class javax.faces.validator.ValidatorException
+class javax.inject.Named
+class javax.mail.internet.InternetAddress
+class javax.mail.internet.MimeMessage
+class javax.servlet.FilterChain
+class javax.servlet.FilterConfig
+class javax.servlet.ServletException
+class javax.servlet.ServletRequest
+class javax.servlet.ServletResponse
+class javax.servlet.http.HttpServlet
+class javax.servlet.http.HttpServletRequest
+class javax.servlet.http.HttpServletResponse
+class javax.servlet.http.HttpSession
+class javax.servlet.http.Part
+class javax.validation.constraints.NotNull
+class org.hibernate.Query
+class org.hibernate.SQLQuery
+class org.hibernate.Session
+class org.hibernate.SessionFactory
+class org.hibernate.Transaction
+class org.hibernate.cfg.AnnotationConfiguration
+class org.primefaces.event.FlowEvent
+class org.primefaces.event.SelectEvent
+class org.primefaces.model.chart.Axis
+class org.primefaces.model.chart.AxisType
+class org.primefaces.model.chart.BarChartModel
+class org.primefaces.model.chart.ChartSeries
+class org.primefaces.model.chart.HorizontalBarChartModel
+enum com.sppp.beans.EnumEstado
+interface com.sppp.DAO.CitasDao
+interface java.io.Serializable
+interface javax.servlet.Filter
+com.sppp.beans.WizardCC ..> com.sppp.DAO.TutorDAO
+com.sppp.beans.WizardCC ..> com.sppp.DAO.UsuarioDAO
+com.sppp.beans.WizardDB ..> java.util.HashMap
+com.sppp.beans.WizardDB ..> java.util.Map
+com.spp.servlets.Download ..> java.lang.Override
+com.spp.servlets.Download ..> javax.servlet.annotation.WebServlet
+com.spp.servlets.Download ..> com.sppp.DAO.UsuarioDAO
+com.spp.servlets.Download ..> com.sppp.classes.Paths
+com.spp.servlets.Download ..> com.sppp.utils.SessionUtils
+com.spp.servlets.Download ..> java.io.File
+com.spp.servlets.Download ..> java.io.IOException
+com.spp.servlets.Download ..> java.io.PrintWriter
+com.spp.servlets.Download ..> java.nio.file.Files
+com.spp.servlets.Download ..> javax.servlet.ServletException
+com.spp.servlets.Download --|> javax.servlet.http.HttpServlet
+com.spp.servlets.Download ..> javax.servlet.http.HttpServletRequest
+com.spp.servlets.Download ..> javax.servlet.http.HttpServletResponse
+com.spp.servlets.Download ..> javax.servlet.http.HttpSession
+com.spp.servlets.DownloadAllCoor ..> java.lang.Override
+com.spp.servlets.DownloadAllCoor ..> javax.servlet.annotation.WebServlet
+com.spp.servlets.DownloadAllCoor ..> com.sppp.DAO.UsuarioDAO
+com.spp.servlets.DownloadAllCoor ..> com.sppp.classes.Paths
+com.spp.servlets.DownloadAllCoor ..> com.sppp.utils.SessionUtils
+com.spp.servlets.DownloadAllCoor ..> java.io.File
+com.spp.servlets.DownloadAllCoor ..> java.io.IOException
+com.spp.servlets.DownloadAllCoor ..> java.io.PrintWriter
+com.spp.servlets.DownloadAllCoor ..> java.nio.file.Files
+com.spp.servlets.DownloadAllCoor ..> javax.servlet.ServletException
+com.spp.servlets.DownloadAllCoor --|> javax.servlet.http.HttpServlet
+com.spp.servlets.DownloadAllCoor ..> javax.servlet.http.HttpServletRequest
+com.spp.servlets.DownloadAllCoor ..> javax.servlet.http.HttpServletResponse
+com.spp.servlets.DownloadAllCoor ..> javax.servlet.http.HttpSession
+com.spp.servlets.DownloadCoor ..> java.lang.Override
+com.spp.servlets.DownloadCoor ..> javax.servlet.annotation.WebServlet
+com.spp.servlets.DownloadCoor ..> com.sppp.DAO.UsuarioDAO
+com.spp.servlets.DownloadCoor ..> com.sppp.classes.Paths
+com.spp.servlets.DownloadCoor ..> com.sppp.utils.SessionUtils
+com.spp.servlets.DownloadCoor ..> java.io.File
+com.spp.servlets.DownloadCoor ..> java.io.IOException
+com.spp.servlets.DownloadCoor ..> java.io.PrintWriter
+com.spp.servlets.DownloadCoor ..> java.nio.file.Files
+com.spp.servlets.DownloadCoor ..> javax.servlet.ServletException
+com.spp.servlets.DownloadCoor --|> javax.servlet.http.HttpServlet
+com.spp.servlets.DownloadCoor ..> javax.servlet.http.HttpServletRequest
+com.spp.servlets.DownloadCoor ..> javax.servlet.http.HttpServletResponse
+com.spp.servlets.DownloadCoor ..> javax.servlet.http.HttpSession
+com.spp.servlets.DownloadGestP1 ..> java.lang.Override
+com.spp.servlets.DownloadGestP1 ..> javax.servlet.annotation.WebServlet
+com.spp.servlets.DownloadGestP1 ..> com.sppp.classes.Paths
+com.spp.servlets.DownloadGestP1 ..> com.sppp.utils.SessionUtils
+com.spp.servlets.DownloadGestP1 ..> java.io.File
+com.spp.servlets.DownloadGestP1 ..> java.io.IOException
+com.spp.servlets.DownloadGestP1 ..> java.io.PrintWriter
+com.spp.servlets.DownloadGestP1 ..> java.nio.file.Files
+com.spp.servlets.DownloadGestP1 ..> javax.servlet.ServletException
+com.spp.servlets.DownloadGestP1 --|> javax.servlet.http.HttpServlet
+com.spp.servlets.DownloadGestP1 ..> javax.servlet.http.HttpServletRequest
+com.spp.servlets.DownloadGestP1 ..> javax.servlet.http.HttpServletResponse
+com.spp.servlets.DownloadGestP1 ..> javax.servlet.http.HttpSession
+com.spp.servlets.DownloadSec ..> java.lang.Override
+com.spp.servlets.DownloadSec ..> javax.servlet.annotation.WebServlet
+com.spp.servlets.DownloadSec ..> com.sppp.DAO.UsuarioDAO
+com.spp.servlets.DownloadSec ..> com.sppp.classes.Paths
+com.spp.servlets.DownloadSec ..> com.sppp.utils.SessionUtils
+com.spp.servlets.DownloadSec ..> java.io.File
+com.spp.servlets.DownloadSec ..> java.io.IOException
+com.spp.servlets.DownloadSec ..> java.io.PrintWriter
+com.spp.servlets.DownloadSec ..> java.nio.file.Files
+com.spp.servlets.DownloadSec ..> javax.servlet.ServletException
+com.spp.servlets.DownloadSec --|> javax.servlet.http.HttpServlet
+com.spp.servlets.DownloadSec ..> javax.servlet.http.HttpServletRequest
+com.spp.servlets.DownloadSec ..> javax.servlet.http.HttpServletResponse
+com.spp.servlets.DownloadSec ..> javax.servlet.http.HttpSession
+com.spp.servlets.DownloadTut ..> java.lang.Override
+com.spp.servlets.DownloadTut ..> javax.servlet.annotation.WebServlet
+com.spp.servlets.DownloadTut ..> com.sppp.DAO.UsuarioDAO
+com.spp.servlets.DownloadTut ..> com.sppp.classes.Paths
+com.spp.servlets.DownloadTut ..> com.sppp.utils.SessionUtils
+com.spp.servlets.DownloadTut ..> java.io.File
+com.spp.servlets.DownloadTut ..> java.io.IOException
+com.spp.servlets.DownloadTut ..> java.io.PrintWriter
+com.spp.servlets.DownloadTut ..> java.nio.file.Files
+com.spp.servlets.DownloadTut ..> javax.servlet.ServletException
+com.spp.servlets.DownloadTut --|> javax.servlet.http.HttpServlet
+com.spp.servlets.DownloadTut ..> javax.servlet.http.HttpServletRequest
+com.spp.servlets.DownloadTut ..> javax.servlet.http.HttpServletResponse
+com.spp.servlets.DownloadTut ..> javax.servlet.http.HttpSession
+com.sppp.DAO.CampoDAO ..> com.sppp.beans.Campo
+com.sppp.DAO.CampoDAO ..> com.sppp.beans.Estudiante
+com.sppp.DAO.CampoDAO ..> com.sppp.beans.Formato
+com.sppp.DAO.CampoDAO ..> com.sppp.beans.Perfil
+com.sppp.DAO.CampoDAO ..> com.sppp.beans.Preguntas
+com.sppp.DAO.CampoDAO ..> com.sppp.beans.Respuesta
+com.sppp.DAO.CampoDAO ..> com.sppp.beans.Usuario
+com.sppp.DAO.CampoDAO ..> com.sppp.utils.HibernateUtil
+com.sppp.DAO.CampoDAO ..> java.util.ArrayList
+com.sppp.DAO.CampoDAO ..> java.util.Iterator
+com.sppp.DAO.CampoDAO ..> java.util.List
+com.sppp.DAO.CampoDAO ..> java.util.Set
+com.sppp.DAO.CampoDAO ..> org.hibernate.Query
+com.sppp.DAO.CampoDAO ..> org.hibernate.Session
+com.sppp.DAO.CampoDAO ..> org.hibernate.SessionFactory
+com.sppp.DAO.CampoDAO ..> org.hibernate.Transaction
+com.sppp.DAO.CitasDaoImp ..> java.lang.Override
+com.sppp.DAO.CitasDaoImp ..> com.sppp.beans.Estudiante
+com.sppp.DAO.CitasDaoImp ..> com.sppp.beans.Pasantia
+com.sppp.DAO.CitasDaoImp ..> com.sppp.beans.Usuario
+com.sppp.DAO.CitasDaoImp ..> com.sppp.beans.VisitaTutor
+com.sppp.DAO.CitasDaoImp ..> com.sppp.utils.HibernateUtil
+com.sppp.DAO.CitasDaoImp ..> java.util.List
+com.sppp.DAO.CitasDaoImp ..> java.util.logging.Level
+com.sppp.DAO.CitasDaoImp ..> java.util.logging.Logger
+com.sppp.DAO.CitasDaoImp ..> org.hibernate.Query
+com.sppp.DAO.CitasDaoImp ..> org.hibernate.Session
+com.sppp.DAO.CitasDaoImp ..> org.hibernate.SessionFactory
+com.sppp.DAO.CitasDaoImp ..> org.hibernate.Transaction
+com.sppp.DAO.CitasDaoImp --|> com.sppp.DAO.CitasDao
+com.sppp.DAO.DashboardTutDAO ..> com.sppp.beans.Pasantia
+com.sppp.DAO.DashboardTutDAO ..> com.sppp.utils.HibernateUtil
+com.sppp.DAO.DashboardTutDAO ..> java.util.List
+com.sppp.DAO.DashboardTutDAO ..> java.util.logging.Level
+com.sppp.DAO.DashboardTutDAO ..> java.util.logging.Logger
+com.sppp.DAO.DashboardTutDAO ..> org.hibernate.Query
+com.sppp.DAO.DashboardTutDAO ..> org.hibernate.SQLQuery
+com.sppp.DAO.DashboardTutDAO ..> org.hibernate.Session
+com.sppp.DAO.DashboardTutDAO ..> org.hibernate.SessionFactory
+com.sppp.DAO.DashboardTutDAO ..> org.hibernate.Transaction
+com.sppp.DAO.DatosDAO ..> com.sppp.beans.Datos
+com.sppp.DAO.DatosDAO ..> com.sppp.beans.DetallePasantia
+com.sppp.DAO.DatosDAO ..> com.sppp.beans.Empresa
+com.sppp.DAO.DatosDAO ..> com.sppp.beans.Encargado
+com.sppp.DAO.DatosDAO ..> com.sppp.beans.Pasantia
+com.sppp.DAO.DatosDAO ..> com.sppp.beans.Respuesta
+com.sppp.DAO.DatosDAO ..> com.sppp.beans.Usuario
+com.sppp.DAO.DatosDAO ..> com.sppp.utils.HibernateUtil
+com.sppp.DAO.DatosDAO ..> java.util.Iterator
+com.sppp.DAO.DatosDAO ..> java.util.LinkedList
+com.sppp.DAO.DatosDAO ..> java.util.List
+com.sppp.DAO.DatosDAO ..> org.hibernate.Query
+com.sppp.DAO.DatosDAO ..> org.hibernate.Session
+com.sppp.DAO.DatosDAO ..> org.hibernate.SessionFactory
+com.sppp.DAO.DatosDAO ..> org.hibernate.Transaction
+com.sppp.DAO.DatosTutDAO ..> com.sppp.beans.Datos
+com.sppp.DAO.DatosTutDAO ..> com.sppp.beans.DetallePasantia
+com.sppp.DAO.DatosTutDAO ..> com.sppp.beans.Empresa
+com.sppp.DAO.DatosTutDAO ..> com.sppp.beans.Encargado
+com.sppp.DAO.DatosTutDAO ..> com.sppp.beans.Pasantia
+com.sppp.DAO.DatosTutDAO ..> com.sppp.beans.Respuesta
+com.sppp.DAO.DatosTutDAO ..> com.sppp.beans.Usuario
+com.sppp.DAO.DatosTutDAO ..> com.sppp.utils.HibernateUtil
+com.sppp.DAO.DatosTutDAO ..> org.hibernate.Session
+com.sppp.DAO.DatosTutDAO ..> org.hibernate.SessionFactory
+com.sppp.DAO.DatosTutDAO ..> org.hibernate.Transaction
+com.sppp.DAO.DetallePasantiaDAO ..> com.sppp.beans.DetallePasantia
+com.sppp.DAO.DetallePasantiaDAO ..> com.sppp.utils.HibernateUtil
+com.sppp.DAO.DetallePasantiaDAO ..> java.util.LinkedList
+com.sppp.DAO.DetallePasantiaDAO ..> java.util.List
+com.sppp.DAO.DetallePasantiaDAO ..> org.hibernate.Query
+com.sppp.DAO.DetallePasantiaDAO ..> org.hibernate.SQLQuery
+com.sppp.DAO.DetallePasantiaDAO ..> org.hibernate.Session
+com.sppp.DAO.DetallePasantiaDAO ..> org.hibernate.SessionFactory
+com.sppp.DAO.DetallePasantiaDAO ..> org.hibernate.Transaction
+com.sppp.DAO.EmpresaDAO ..> com.sppp.beans.Empresa
+com.sppp.DAO.EmpresaDAO ..> com.sppp.utils.HibernateUtil
+com.sppp.DAO.EmpresaDAO ..> org.hibernate.Query
+com.sppp.DAO.EmpresaDAO ..> org.hibernate.Session
+com.sppp.DAO.EmpresaDAO ..> org.hibernate.SessionFactory
+com.sppp.DAO.EmpresaDAO ..> org.hibernate.Transaction
+com.sppp.DAO.EncargadoDAO ..> com.sppp.beans.Encargado
+com.sppp.DAO.EncargadoDAO ..> com.sppp.utils.HibernateUtil
+com.sppp.DAO.EncargadoDAO ..> org.hibernate.Query
+com.sppp.DAO.EncargadoDAO ..> org.hibernate.Session
+com.sppp.DAO.EncargadoDAO ..> org.hibernate.SessionFactory
+com.sppp.DAO.EncargadoDAO ..> org.hibernate.Transaction
+com.sppp.DAO.EstudianteDAO ..> com.sppp.beans.Estudiante
+com.sppp.DAO.EstudianteDAO ..> com.sppp.beans.Usuario
+com.sppp.DAO.EstudianteDAO ..> com.sppp.utils.HibernateUtil
+com.sppp.DAO.EstudianteDAO ..> org.hibernate.Query
+com.sppp.DAO.EstudianteDAO ..> org.hibernate.Session
+com.sppp.DAO.EstudianteDAO ..> org.hibernate.SessionFactory
+com.sppp.DAO.EstudianteDAO ..> org.hibernate.Transaction
+com.sppp.DAO.LoginDAO ..> com.sppp.beans.Usuario
+com.sppp.DAO.LoginDAO ..> com.sppp.utils.HibernateUtil
+com.sppp.DAO.LoginDAO ..> java.util.logging.Level
+com.sppp.DAO.LoginDAO ..> java.util.logging.Logger
+com.sppp.DAO.LoginDAO ..> org.hibernate.Query
+com.sppp.DAO.LoginDAO ..> org.hibernate.Session
+com.sppp.DAO.LoginDAO ..> org.hibernate.SessionFactory
+com.sppp.DAO.LoginDAO ..> org.hibernate.Transaction
+com.sppp.DAO.PasantiaDAO ..> com.sppp.beans.Pasantia
+com.sppp.DAO.PasantiaDAO ..> com.sppp.utils.HibernateUtil
+com.sppp.DAO.PasantiaDAO ..> java.util.LinkedList
+com.sppp.DAO.PasantiaDAO ..> java.util.List
+com.sppp.DAO.PasantiaDAO ..> org.hibernate.Query
+com.sppp.DAO.PasantiaDAO ..> org.hibernate.Session
+com.sppp.DAO.PasantiaDAO ..> org.hibernate.SessionFactory
+com.sppp.DAO.PasantiaDAO ..> org.hibernate.Transaction
+com.sppp.DAO.PasantiaPracticaDAO ..> com.sppp.beans.Pasantia
+com.sppp.DAO.PasantiaPracticaDAO ..> com.sppp.utils.HibernateUtil
+com.sppp.DAO.PasantiaPracticaDAO ..> java.util.LinkedList
+com.sppp.DAO.PasantiaPracticaDAO ..> java.util.List
+com.sppp.DAO.PasantiaPracticaDAO ..> org.hibernate.Query
+com.sppp.DAO.PasantiaPracticaDAO ..> org.hibernate.Session
+com.sppp.DAO.PasantiaPracticaDAO ..> org.hibernate.SessionFactory
+com.sppp.DAO.PasantiaPracticaDAO ..> org.hibernate.Transaction
+com.sppp.DAO.PeriodoDAO ..> com.sppp.utils.HibernateUtil
+com.sppp.DAO.PeriodoDAO ..> org.hibernate.Query
+com.sppp.DAO.PeriodoDAO ..> org.hibernate.Session
+com.sppp.DAO.PeriodoDAO ..> org.hibernate.SessionFactory
+com.sppp.DAO.PeriodoDAO ..> org.hibernate.Transaction
+com.sppp.DAO.ProcesoDAO ..> com.sppp.beans.Pasantia
+com.sppp.DAO.ProcesoDAO ..> com.sppp.beans.Proceso
+com.sppp.DAO.ProcesoDAO ..> com.sppp.utils.HibernateUtil
+com.sppp.DAO.ProcesoDAO ..> org.hibernate.Query
+com.sppp.DAO.ProcesoDAO ..> org.hibernate.Session
+com.sppp.DAO.ProcesoDAO ..> org.hibernate.SessionFactory
+com.sppp.DAO.ProcesoDAO ..> org.hibernate.Transaction
+com.sppp.DAO.ProcesoTutDao ..> com.sppp.utils.HibernateUtil
+com.sppp.DAO.ProcesoTutDao ..> org.hibernate.Query
+com.sppp.DAO.ProcesoTutDao ..> org.hibernate.Session
+com.sppp.DAO.ProcesoTutDao ..> org.hibernate.SessionFactory
+com.sppp.DAO.ProcesoTutDao ..> org.hibernate.Transaction
+com.sppp.DAO.TutorDAO ..> com.sppp.beans.Tutor
+com.sppp.DAO.TutorDAO ..> com.sppp.utils.HibernateUtil
+com.sppp.DAO.TutorDAO ..> java.util.HashMap
+com.sppp.DAO.TutorDAO ..> org.hibernate.Query
+com.sppp.DAO.TutorDAO ..> org.hibernate.Session
+com.sppp.DAO.TutorDAO ..> org.hibernate.SessionFactory
+com.sppp.DAO.TutorDAO ..> org.hibernate.Transaction
+com.sppp.DAO.UsuarioDAO ..> com.sppp.beans.Estudiante
+com.sppp.DAO.UsuarioDAO ..> com.sppp.beans.Usuario
+com.sppp.DAO.UsuarioDAO ..> com.sppp.mailing.MailingMain
+com.sppp.DAO.UsuarioDAO ..> com.sppp.utils.HibernateUtil
+com.sppp.DAO.UsuarioDAO ..> java.util.HashMap
+com.sppp.DAO.UsuarioDAO ..> java.util.List
+com.sppp.DAO.UsuarioDAO ..> java.util.Map
+com.sppp.DAO.UsuarioDAO ..> org.hibernate.Query
+com.sppp.DAO.UsuarioDAO ..> org.hibernate.SQLQuery
+com.sppp.DAO.UsuarioDAO ..> org.hibernate.Session
+com.sppp.DAO.UsuarioDAO ..> org.hibernate.SessionFactory
+com.sppp.DAO.UsuarioDAO ..> org.hibernate.Transaction
+com.sppp.DAO.VisitaDAO ..> javax.faces.bean.ManagedBean
+com.sppp.DAO.VisitaDAO ..> com.sppp.beans.DetallePasantia
+com.sppp.DAO.VisitaDAO ..> com.sppp.beans.Pasantia
+com.sppp.DAO.VisitaDAO ..> com.sppp.beans.Proceso
+com.sppp.DAO.VisitaDAO ..> com.sppp.beans.Tutor
+com.sppp.DAO.VisitaDAO ..> com.sppp.beans.VisitaTutor
+com.sppp.DAO.VisitaDAO ..> com.sppp.utils.HibernateUtil
+com.sppp.DAO.VisitaDAO ..> com.sppp.utils.SessionUtils
+com.sppp.DAO.VisitaDAO ..> java.util.LinkedList
+com.sppp.DAO.VisitaDAO ..> java.util.List
+com.sppp.DAO.VisitaDAO ..> java.util.logging.Level
+com.sppp.DAO.VisitaDAO ..> java.util.logging.Logger
+com.sppp.DAO.VisitaDAO ..> javax.servlet.http.HttpSession
+com.sppp.DAO.VisitaDAO ..> org.hibernate.Query
+com.sppp.DAO.VisitaDAO ..> org.hibernate.Session
+com.sppp.DAO.VisitaDAO ..> org.hibernate.SessionFactory
+com.sppp.DAO.VisitaDAO ..> org.hibernate.Transaction
+com.sppp.DAO.VisitaDAO ..> com.sppp.beans.EnumEstado
+com.sppp.DAO.WizardDAO ..> com.sppp.beans.DetallePasantia
+com.sppp.DAO.WizardDAO ..> com.sppp.beans.Empresa
+com.sppp.DAO.WizardDAO ..> com.sppp.beans.Encargado
+com.sppp.DAO.WizardDAO ..> com.sppp.beans.Pasantia
+com.sppp.DAO.WizardDAO ..> com.sppp.beans.Proceso
+com.sppp.DAO.WizardDAO ..> com.sppp.beans.Usuario
+com.sppp.DAO.WizardDAO ..> com.sppp.utils.HibernateUtil
+com.sppp.DAO.WizardDAO ..> java.util.logging.Level
+com.sppp.DAO.WizardDAO ..> java.util.logging.Logger
+com.sppp.DAO.WizardDAO ..> org.hibernate.Session
+com.sppp.DAO.WizardDAO ..> org.hibernate.SessionFactory
+com.sppp.DAO.WizardDAO ..> org.hibernate.Transaction
+com.sppp.DAO.WizardDAO ..> com.sppp.beans.EnumEstado
+com.sppp.beans.Campo ..> java.util.List
+com.sppp.beans.ControllerBean ..> javax.faces.bean.ManagedBean
+com.sppp.beans.ControllerBean ..> javax.faces.bean.SessionScoped
+com.sppp.beans.ControllerBean ..> com.sppp.DAO.DashboardTutDAO
+com.sppp.beans.ControllerBean ..> com.sppp.DAO.VisitaDAO
+com.sppp.beans.ControllerBean ..> com.sppp.classes.AlmacenamientoPDF
+com.sppp.beans.ControllerBean ..> com.sppp.classes.CitasAgendadas
+com.sppp.beans.ControllerBean ..> com.sppp.mailing.MailingMain
+com.sppp.beans.ControllerBean ..> java.text.DateFormat
+com.sppp.beans.ControllerBean ..> java.text.SimpleDateFormat
+com.sppp.beans.ControllerBean ..> java.util.Calendar
+com.sppp.beans.ControllerBean ..> java.util.Date
+com.sppp.beans.ControllerBean ..> java.util.GregorianCalendar
+com.sppp.beans.ControllerBean ..> java.util.LinkedHashSet
+com.sppp.beans.ControllerBean ..> java.util.List
+com.sppp.beans.ControllerBean ..> java.util.Locale
+com.sppp.beans.ControllerBean ..> java.util.Set
+com.sppp.beans.ControllerBean ..> javax.faces.application.FacesMessage
+com.sppp.beans.ControllerBean ..> javax.faces.context.FacesContext
+com.sppp.beans.ControllerBean ..> org.primefaces.event.SelectEvent
+com.sppp.beans.ControllerProcesos ..> javax.faces.bean.ManagedBean
+com.sppp.beans.ControllerProcesos ..> com.sppp.utils.UploadFile
+com.sppp.beans.ControllerProcesos ..> java.io.IOException
+com.sppp.beans.ControllerProcesos ..> java.util.List
+com.sppp.beans.ControllerProcesos ..> javax.enterprise.context.SessionScoped
+com.sppp.beans.ControllerProcesos ..> javax.inject.Named
+com.sppp.beans.ControllerProcesos --|> java.io.Serializable
+com.sppp.beans.DashboardGestBean ..> javax.faces.bean.ManagedBean
+com.sppp.beans.DashboardGestBean ..> com.sppp.DAO.DetallePasantiaDAO
+com.sppp.beans.DashboardGestBean ..> com.sppp.DAO.PasantiaDAO
+com.sppp.beans.Datos ..> java.util.List
+com.sppp.beans.Datos ..> java.util.Set
+com.sppp.beans.DetalleEstudianteBean ..> javax.faces.bean.ManagedBean
+com.sppp.beans.DetalleEstudianteBean ..> com.sppp.DAO.DetallePasantiaDAO
+com.sppp.beans.DetalleEstudianteBean ..> com.sppp.DAO.EncargadoDAO
+com.sppp.beans.DetalleEstudianteBean ..> com.sppp.DAO.PasantiaDAO
+com.sppp.beans.DetalleEstudianteBean ..> com.sppp.DAO.ProcesoDAO
+com.sppp.beans.DetalleEstudianteBean ..> com.sppp.DAO.UsuarioDAO
+com.sppp.beans.DetalleEstudianteBean ..> java.util.Iterator
+com.sppp.beans.DetalleEstudianteBean ..> java.util.LinkedList
+com.sppp.beans.DetalleEstudianteBean ..> java.util.List
+com.sppp.beans.DetalleEstudianteBean ..> java.util.Set
+com.sppp.beans.DetallePasantia ..> java.util.Set
+com.sppp.beans.DetallePasantiaBean ..> javax.faces.bean.ManagedBean
+com.sppp.beans.DetallePasantiaBean ..> com.sppp.DAO.DetallePasantiaDAO
+com.sppp.beans.DetallePasantiaBean ..> java.util.List
+com.sppp.beans.DetallesDashboardTut ..> javax.faces.bean.ManagedBean
+com.sppp.beans.DetallesDashboardTut ..> com.sppp.DAO.CitasDaoImp
+com.sppp.beans.DetallesDashboardTut ..> com.sppp.DAO.DashboardTutDAO
+com.sppp.beans.DetallesDashboardTut ..> com.sppp.DAO.PeriodoDAO
+com.sppp.beans.DetallesDashboardTut ..> com.sppp.DAO.VisitaDAO
+com.sppp.beans.DetallesDashboardTut ..> com.sppp.classes.AlmacenamientoPDF
+com.sppp.beans.DetallesDashboardTut ..> com.sppp.mailing.MailingMain
+com.sppp.beans.DetallesDashboardTut ..> java.text.DateFormat
+com.sppp.beans.DetallesDashboardTut ..> java.text.SimpleDateFormat
+com.sppp.beans.DetallesDashboardTut ..> java.util.Date
+com.sppp.beans.DetallesDashboardTut ..> java.util.LinkedHashSet
+com.sppp.beans.DetallesDashboardTut ..> java.util.List
+com.sppp.beans.DetallesDashboardTut ..> java.util.Set
+com.sppp.beans.DetallesDashboardTut ..> javax.enterprise.context.Dependent
+com.sppp.beans.DetallesDashboardTut ..> javax.inject.Named
+com.sppp.beans.DetallesDashboardTut ..> com.sppp.DAO.CitasDao
+com.sppp.beans.Empresa ..> java.util.Set
+com.sppp.beans.Encargado ..> java.util.Set
+com.sppp.beans.EstadoProceso ..> javax.faces.bean.ManagedBean
+com.sppp.beans.EstadoProceso ..> com.sppp.DAO.DetallePasantiaDAO
+com.sppp.beans.EstadoProceso ..> com.sppp.DAO.ProcesoDAO
+com.sppp.beans.EstadoProceso ..> com.sppp.utils.SessionUtils
+com.sppp.beans.EstadoProceso ..> java.util.LinkedList
+com.sppp.beans.EstadoProceso ..> java.util.List
+com.sppp.beans.EstadoProceso ..> javax.servlet.http.HttpSession
+com.sppp.beans.Estudiante ..> com.sppp.DAO.EstudianteDAO
+com.sppp.beans.Estudiante ..> com.sppp.utils.SessionUtils
+com.sppp.beans.Estudiante ..> java.util.Set
+com.sppp.beans.Estudiante ..> javax.servlet.http.HttpSession
+com.sppp.beans.FechaSistema ..> javax.faces.bean.ManagedBean
+com.sppp.beans.FechaSistema ..> javax.faces.bean.SessionScoped
+com.sppp.beans.FechaSistema ..> java.text.SimpleDateFormat
+com.sppp.beans.FechaSistema ..> java.util.Date
+com.sppp.beans.Formato ..> java.util.Set
+com.sppp.beans.GraficasTut ..> javax.annotation.PostConstruct
+com.sppp.beans.GraficasTut ..> javax.faces.bean.ManagedBean
+com.sppp.beans.GraficasTut ..> com.sppp.DAO.PeriodoDAO
+com.sppp.beans.GraficasTut ..> com.sppp.DAO.ProcesoTutDao
+com.sppp.beans.GraficasTut ..> javax.enterprise.context.SessionScoped
+com.sppp.beans.GraficasTut ..> javax.inject.Named
+com.sppp.beans.GraficasTut ..> org.primefaces.model.chart.Axis
+com.sppp.beans.GraficasTut ..> org.primefaces.model.chart.AxisType
+com.sppp.beans.GraficasTut ..> org.primefaces.model.chart.BarChartModel
+com.sppp.beans.GraficasTut ..> org.primefaces.model.chart.ChartSeries
+com.sppp.beans.GraficasTut ..> org.primefaces.model.chart.HorizontalBarChartModel
+com.sppp.beans.GraficasTut --|> java.io.Serializable
+com.sppp.beans.LocalTimeDate ..> java.text.DateFormat
+com.sppp.beans.LocalTimeDate ..> java.text.SimpleDateFormat
+com.sppp.beans.LocalTimeDate ..> java.util.Calendar
+com.sppp.beans.LocalTimeDate ..> java.util.Date
+com.sppp.beans.Login ..> javax.faces.bean.ManagedBean
+com.sppp.beans.Login ..> javax.faces.bean.SessionScoped
+com.sppp.beans.Login ..> com.sppp.DAO.LoginDAO
+com.sppp.beans.Login ..> com.sppp.DAO.VisitaDAO
+com.sppp.beans.Login ..> com.sppp.classes.Cls_PerfilNotation
+com.sppp.beans.Login ..> com.sppp.utils.SessionUtils
+com.sppp.beans.Login ..> javax.faces.application.FacesMessage
+com.sppp.beans.Login ..> javax.faces.context.FacesContext
+com.sppp.beans.Login ..> javax.servlet.http.HttpSession
+com.sppp.beans.Login --|> java.io.Serializable
+com.sppp.beans.Navegacion ..> javax.faces.bean.ManagedBean
+com.sppp.beans.Navegacion ..> com.sppp.utils.SessionUtils
+com.sppp.beans.Navegacion ..> javax.servlet.http.HttpSession
+com.sppp.beans.Pasantia ..> java.util.Date
+com.sppp.beans.Pasantia ..> java.util.Set
+com.sppp.beans.Pasantia --|> java.io.Serializable
+com.sppp.beans.PasantiaPracticaBean ..> javax.faces.bean.ManagedBean
+com.sppp.beans.PasantiaPracticaBean ..> com.sppp.DAO.PasantiaPracticaDAO
+com.sppp.beans.PasantiaPracticaBean ..> java.util.LinkedList
+com.sppp.beans.PasantiaPracticaBean ..> java.util.List
+com.sppp.beans.PdfEstudiante ..> javax.faces.bean.ManagedBean
+com.sppp.beans.PdfEstudiante ..> com.sppp.DAO.DatosDAO
+com.sppp.beans.PdfEstudiante ..> com.sppp.DAO.DetallePasantiaDAO
+com.sppp.beans.PdfEstudiante ..> com.sppp.DAO.EmpresaDAO
+com.sppp.beans.PdfEstudiante ..> com.sppp.DAO.EncargadoDAO
+com.sppp.beans.PdfEstudiante ..> com.sppp.DAO.PasantiaDAO
+com.sppp.beans.PdfEstudiante ..> com.sppp.DAO.UsuarioDAO
+com.sppp.beans.PdfEstudiante ..> com.sppp.utils.SessionUtils
+com.sppp.beans.PdfEstudiante ..> java.io.IOException
+com.sppp.beans.PdfEstudiante ..> java.util.Arrays
+com.sppp.beans.PdfEstudiante ..> java.util.LinkedList
+com.sppp.beans.PdfEstudiante ..> java.util.List
+com.sppp.beans.PdfEstudiante ..> javax.faces.context.ExternalContext
+com.sppp.beans.PdfEstudiante ..> javax.faces.context.FacesContext
+com.sppp.beans.PdfEstudiante ..> javax.servlet.http.HttpSession
+com.sppp.beans.PdfValidacion ..> javax.faces.bean.ManagedBean
+com.sppp.beans.PdfValidacion ..> javax.faces.bean.ViewScoped
+com.sppp.beans.PdfValidacion ..> com.sppp.DAO.DatosDAO
+com.sppp.beans.PdfValidacion ..> com.sppp.DAO.DetallePasantiaDAO
+com.sppp.beans.PdfValidacion ..> com.sppp.DAO.PasantiaDAO
+com.sppp.beans.PdfValidacion ..> com.sppp.DAO.UsuarioDAO
+com.sppp.beans.PdfValidacion ..> com.sppp.mailing.MailingMain
+com.sppp.beans.PdfValidacion ..> java.util.LinkedList
+com.sppp.beans.PdfValidacion ..> java.util.List
+com.sppp.beans.Perfil ..> java.util.Set
+com.sppp.beans.Periodo ..> java.util.Set
+com.sppp.beans.PeriodoTutor ..> java.util.Set
+com.sppp.beans.Preguntas ..> java.util.Set
+com.sppp.beans.Proceso ..> java.util.Set
+com.sppp.beans.Respuesta ..> java.util.Set
+com.sppp.beans.TipoPregunta ..> java.util.Set
+com.sppp.beans.Tutor ..> java.util.Set
+com.sppp.beans.UserWizard --|> com.sppp.beans.WizardDB
+com.sppp.beans.UserWizard ..> javax.annotation.PostConstruct
+com.sppp.beans.UserWizard ..> javax.faces.bean.ManagedBean
+com.sppp.beans.UserWizard ..> javax.faces.bean.ViewScoped
+com.sppp.beans.UserWizard ..> com.sppp.DAO.CampoDAO
+com.sppp.beans.UserWizard ..> com.sppp.DAO.DatosDAO
+com.sppp.beans.UserWizard ..> com.sppp.DAO.DetallePasantiaDAO
+com.sppp.beans.UserWizard ..> com.sppp.DAO.EmpresaDAO
+com.sppp.beans.UserWizard ..> com.sppp.DAO.EncargadoDAO
+com.sppp.beans.UserWizard ..> com.sppp.DAO.PasantiaDAO
+com.sppp.beans.UserWizard ..> com.sppp.DAO.PasantiaPracticaDAO
+com.sppp.beans.UserWizard ..> com.sppp.DAO.PeriodoDAO
+com.sppp.beans.UserWizard ..> com.sppp.DAO.UsuarioDAO
+com.sppp.beans.UserWizard ..> com.sppp.DAO.VisitaDAO
+com.sppp.beans.UserWizard ..> com.sppp.DAO.WizardDAO
+com.sppp.beans.UserWizard ..> com.sppp.classes.AlmacenamientoPDF
+com.sppp.beans.UserWizard ..> com.sppp.classes.ListaDocentesAdministrativos
+com.sppp.beans.UserWizard ..> com.sppp.mailing.MailingMain
+com.sppp.beans.UserWizard ..> com.sppp.utils.SessionUtils
+com.sppp.beans.UserWizard ..> com.sppp.utils.Validaciones
+com.sppp.beans.UserWizard ..> java.io.IOException
+com.sppp.beans.UserWizard ..> java.util.ArrayList
+com.sppp.beans.UserWizard ..> java.util.Arrays
+com.sppp.beans.UserWizard ..> java.util.HashMap
+com.sppp.beans.UserWizard ..> java.util.Iterator
+com.sppp.beans.UserWizard ..> java.util.LinkedList
+com.sppp.beans.UserWizard ..> java.util.List
+com.sppp.beans.UserWizard ..> java.util.Map
+com.sppp.beans.UserWizard ..> java.util.logging.Level
+com.sppp.beans.UserWizard ..> java.util.logging.Logger
+com.sppp.beans.UserWizard ..> javax.faces.application.FacesMessage
+com.sppp.beans.UserWizard ..> javax.faces.component.UIComponent
+com.sppp.beans.UserWizard ..> javax.faces.context.ExternalContext
+com.sppp.beans.UserWizard ..> javax.faces.context.FacesContext
+com.sppp.beans.UserWizard ..> javax.faces.validator.ValidatorException
+com.sppp.beans.UserWizard ..> javax.servlet.http.HttpSession
+com.sppp.beans.UserWizard ..> org.primefaces.event.FlowEvent
+com.sppp.beans.UserWizard --|> java.io.Serializable
+com.sppp.beans.Usuario ..> javax.faces.bean.ManagedBean
+com.sppp.beans.Usuario ..> com.sppp.classes.ChangePassword
+com.sppp.beans.Usuario ..> com.sppp.utils.SessionUtils
+com.sppp.beans.Usuario ..> java.util.Set
+com.sppp.beans.Usuario ..> javax.servlet.http.HttpSession
+com.sppp.beans.VisitaTutor ..> javax.faces.bean.ManagedBean
+com.sppp.beans.VisitaTutor ..> java.util.Date
+com.sppp.beans.VisitaTutor --|> java.io.Serializable
+com.sppp.beans.WizardCCValidacion --|> com.sppp.beans.WizardCC
+com.sppp.beans.WizardCCValidacion ..> javax.faces.bean.ManagedBean
+com.sppp.beans.WizardCCValidacion ..> javax.faces.bean.ViewScoped
+com.sppp.beans.WizardCCValidacion ..> com.sppp.DAO.DatosDAO
+com.sppp.beans.WizardCCValidacion ..> com.sppp.DAO.DetallePasantiaDAO
+com.sppp.beans.WizardCCValidacion ..> com.sppp.DAO.EmpresaDAO
+com.sppp.beans.WizardCCValidacion ..> com.sppp.DAO.EncargadoDAO
+com.sppp.beans.WizardCCValidacion ..> com.sppp.DAO.PasantiaDAO
+com.sppp.beans.WizardCCValidacion ..> com.sppp.DAO.UsuarioDAO
+com.sppp.beans.WizardCCValidacion ..> com.sppp.mailing.MailingMain
+com.sppp.beans.WizardCCValidacion ..> java.util.LinkedList
+com.sppp.beans.WizardCCValidacion ..> java.util.List
+com.sppp.beans.WizardCartaCompromiso --|> com.sppp.beans.WizardCC
+com.sppp.beans.WizardCartaCompromiso ..> javax.faces.bean.ManagedBean
+com.sppp.beans.WizardCartaCompromiso ..> javax.faces.bean.ViewScoped
+com.sppp.beans.WizardCartaCompromiso ..> com.sppp.DAO.DatosDAO
+com.sppp.beans.WizardCartaCompromiso ..> com.sppp.DAO.DetallePasantiaDAO
+com.sppp.beans.WizardCartaCompromiso ..> com.sppp.DAO.EmpresaDAO
+com.sppp.beans.WizardCartaCompromiso ..> com.sppp.DAO.EncargadoDAO
+com.sppp.beans.WizardCartaCompromiso ..> com.sppp.DAO.PasantiaDAO
+com.sppp.beans.WizardCartaCompromiso ..> com.sppp.DAO.UsuarioDAO
+com.sppp.beans.WizardCartaCompromiso ..> com.sppp.DAO.VisitaDAO
+com.sppp.beans.WizardCartaCompromiso ..> com.sppp.classes.ListaDocentesAdministrativos
+com.sppp.beans.WizardCartaCompromiso ..> com.sppp.mailing.MailingMain
+com.sppp.beans.WizardCartaCompromiso ..> com.sppp.utils.SessionUtils
+com.sppp.beans.WizardCartaCompromiso ..> com.sun.javafx.scene.control.skin.VirtualFlow
+com.sppp.beans.WizardCartaCompromiso ..> java.io.IOException
+com.sppp.beans.WizardCartaCompromiso ..> java.util.Arrays
+com.sppp.beans.WizardCartaCompromiso ..> java.util.LinkedList
+com.sppp.beans.WizardCartaCompromiso ..> java.util.List
+com.sppp.beans.WizardCartaCompromiso ..> javax.faces.context.ExternalContext
+com.sppp.beans.WizardCartaCompromiso ..> javax.faces.context.FacesContext
+com.sppp.beans.WizardCartaCompromiso ..> javax.servlet.http.HttpSession
+com.sppp.beans.WizardDBValidacion --|> com.sppp.beans.WizardDB
+com.sppp.beans.WizardDBValidacion ..> javax.faces.bean.ManagedBean
+com.sppp.beans.WizardDBValidacion ..> javax.faces.bean.ViewScoped
+com.sppp.beans.WizardDBValidacion ..> com.sppp.DAO.DatosDAO
+com.sppp.beans.WizardDBValidacion ..> com.sppp.DAO.DetallePasantiaDAO
+com.sppp.beans.WizardDBValidacion ..> com.sppp.DAO.EmpresaDAO
+com.sppp.beans.WizardDBValidacion ..> com.sppp.DAO.EncargadoDAO
+com.sppp.beans.WizardDBValidacion ..> com.sppp.DAO.PasantiaDAO
+com.sppp.beans.WizardDBValidacion ..> com.sppp.DAO.PasantiaPracticaDAO
+com.sppp.beans.WizardDBValidacion ..> com.sppp.DAO.UsuarioDAO
+com.sppp.beans.WizardDBValidacion ..> com.sppp.mailing.MailingMain
+com.sppp.beans.WizardDBValidacion ..> java.text.DateFormat
+com.sppp.beans.WizardDBValidacion ..> java.text.SimpleDateFormat
+com.sppp.beans.WizardDBValidacion ..> java.util.Calendar
+com.sppp.beans.WizardDBValidacion ..> java.util.Date
+com.sppp.beans.WizardDBValidacion ..> java.util.LinkedList
+com.sppp.beans.WizardDBValidacion ..> java.util.List
+com.sppp.beans.WizardSolResolValidacion ..> javax.faces.bean.ManagedBean
+com.sppp.beans.WizardSolResolValidacion ..> javax.faces.bean.ViewScoped
+com.sppp.beans.WizardSolResolValidacion ..> com.sppp.DAO.PasantiaDAO
+com.sppp.beans.WizardSolResolValidacion ..> com.sppp.DAO.UsuarioDAO
+com.sppp.beans.WizardSolResolValidacion ..> com.sppp.DAO.VisitaDAO
+com.sppp.beans.WizardSolResolValidacion ..> com.sppp.mailing.MailingMain
+com.sppp.beans.WizardSolResolValidacion ..> java.util.LinkedList
+com.sppp.beans.WizardSolResolValidacion ..> java.util.List
+com.sppp.beans.WizardSolResolValidacion ..> java.util.Map
+com.sppp.classes.AlmacenamientoPDF ..> com.itextpdf.text.Document
+com.sppp.classes.AlmacenamientoPDF ..> com.itextpdf.text.DocumentException
+com.sppp.classes.AlmacenamientoPDF ..> com.itextpdf.text.Element
+com.sppp.classes.AlmacenamientoPDF ..> com.itextpdf.text.Font
+com.sppp.classes.AlmacenamientoPDF ..> com.itextpdf.text.FontFactory
+com.sppp.classes.AlmacenamientoPDF ..> com.itextpdf.text.Image
+com.sppp.classes.AlmacenamientoPDF ..> com.itextpdf.text.PageSize
+com.sppp.classes.AlmacenamientoPDF ..> com.itextpdf.text.Paragraph
+com.sppp.classes.AlmacenamientoPDF ..> com.itextpdf.text.pdf.PdfPCell
+com.sppp.classes.AlmacenamientoPDF ..> com.itextpdf.text.pdf.PdfPTable
+com.sppp.classes.AlmacenamientoPDF ..> com.itextpdf.text.pdf.PdfWriter
+com.sppp.classes.AlmacenamientoPDF ..> com.sppp.DAO.CitasDaoImp
+com.sppp.classes.AlmacenamientoPDF ..> com.sppp.DAO.DatosDAO
+com.sppp.classes.AlmacenamientoPDF ..> com.sppp.DAO.DetallePasantiaDAO
+com.sppp.classes.AlmacenamientoPDF ..> com.sppp.DAO.EmpresaDAO
+com.sppp.classes.AlmacenamientoPDF ..> com.sppp.DAO.EncargadoDAO
+com.sppp.classes.AlmacenamientoPDF ..> com.sppp.DAO.PasantiaDAO
+com.sppp.classes.AlmacenamientoPDF ..> com.sppp.DAO.PeriodoDAO
+com.sppp.classes.AlmacenamientoPDF ..> com.sppp.DAO.UsuarioDAO
+com.sppp.classes.AlmacenamientoPDF ..> com.sppp.beans.Datos
+com.sppp.classes.AlmacenamientoPDF ..> com.sppp.beans.DetallePasantia
+com.sppp.classes.AlmacenamientoPDF ..> com.sppp.beans.DetallesDashboardTut
+com.sppp.classes.AlmacenamientoPDF ..> com.sppp.beans.Empresa
+com.sppp.classes.AlmacenamientoPDF ..> com.sppp.beans.Encargado
+com.sppp.classes.AlmacenamientoPDF ..> com.sppp.beans.LocalTimeDate
+com.sppp.classes.AlmacenamientoPDF ..> com.sppp.beans.Pasantia
+com.sppp.classes.AlmacenamientoPDF ..> com.sppp.beans.Usuario
+com.sppp.classes.AlmacenamientoPDF ..> com.sppp.beans.VisitaTutor
+com.sppp.classes.AlmacenamientoPDF ..> java.io.File
+com.sppp.classes.AlmacenamientoPDF ..> java.io.FileNotFoundException
+com.sppp.classes.AlmacenamientoPDF ..> java.io.FileOutputStream
+com.sppp.classes.AlmacenamientoPDF ..> java.io.IOException
+com.sppp.classes.AlmacenamientoPDF ..> java.util.List
+com.sppp.classes.ChangePassword ..> com.sppp.DAO.UsuarioDAO
+com.sppp.classes.ChangePassword ..> com.sppp.beans.Usuario
+com.sppp.classes.CitasAgendadas ..> javax.faces.bean.ManagedBean
+com.sppp.classes.CitasAgendadas ..> javax.faces.bean.ViewScoped
+com.sppp.classes.CitasAgendadas ..> com.sppp.DAO.CitasDaoImp
+com.sppp.classes.CitasAgendadas ..> com.sppp.DAO.VisitaDAO
+com.sppp.classes.CitasAgendadas ..> com.sppp.beans.ControllerBean
+com.sppp.classes.CitasAgendadas ..> com.sppp.beans.Estudiante
+com.sppp.classes.CitasAgendadas ..> com.sppp.beans.Login
+com.sppp.classes.CitasAgendadas ..> com.sppp.beans.Pasantia
+com.sppp.classes.CitasAgendadas ..> com.sppp.beans.Tutor
+com.sppp.classes.CitasAgendadas ..> com.sppp.beans.VisitaTutor
+com.sppp.classes.CitasAgendadas ..> com.sppp.mailing.MailingMain
+com.sppp.classes.CitasAgendadas ..> java.util.ArrayList
+com.sppp.classes.CitasAgendadas ..> java.util.List
+com.sppp.classes.CitasAgendadas ..> com.sppp.DAO.CitasDao
+com.sppp.classes.CitasAgendadas --|> java.io.Serializable
+com.sppp.classes.ConfirmaCita ..> javax.faces.bean.ManagedBean
+com.sppp.classes.ConfirmaCita ..> com.sppp.DAO.CitasDaoImp
+com.sppp.classes.ConfirmaCita ..> com.sppp.beans.Estudiante
+com.sppp.classes.ConfirmaCita ..> com.sppp.beans.Login
+com.sppp.classes.ConfirmaCita ..> com.sppp.beans.Pasantia
+com.sppp.classes.ConfirmaCita ..> com.sppp.beans.Usuario
+com.sppp.classes.ConfirmaCita ..> com.sppp.beans.VisitaTutor
+com.sppp.classes.ConfirmaCita ..> java.util.ArrayList
+com.sppp.classes.ConfirmaCita ..> java.util.List
+com.sppp.classes.ConfirmaCita ..> javax.faces.model.SelectItem
+com.sppp.classes.ConfirmaCita ..> com.sppp.DAO.CitasDao
+com.sppp.classes.DatosFormatos ..> javax.faces.bean.ManagedBean
+com.sppp.classes.DatosFormatos ..> javax.faces.bean.SessionScoped
+com.sppp.classes.DatosFormatos ..> com.sppp.DAO.CitasDaoImp
+com.sppp.classes.DatosFormatos ..> com.sppp.beans.Empresa
+com.sppp.classes.DatosFormatos ..> com.sppp.beans.Encargado
+com.sppp.classes.DatosFormatos ..> com.sppp.beans.Estudiante
+com.sppp.classes.DatosFormatos ..> com.sppp.beans.Pasantia
+com.sppp.classes.DatosFormatos ..> com.sppp.beans.Usuario
+com.sppp.classes.DatosFormatos ..> java.util.ArrayList
+com.sppp.classes.DatosFormatos ..> java.util.List
+com.sppp.classes.DatosFormatos ..> javax.inject.Named
+com.sppp.classes.DatosFormatos ..> com.sppp.DAO.CitasDao
+com.sppp.classes.DatosFormatos --|> java.io.Serializable
+com.sppp.classes.TablasFormatos ..> javax.faces.bean.ManagedBean
+com.sppp.classes.TablasFormatos ..> com.sppp.DAO.DatosTutDAO
+com.sppp.classes.TablasFormatos ..> com.sppp.DAO.DetallePasantiaDAO
+com.sppp.classes.TablasFormatos ..> com.sppp.DAO.PasantiaDAO
+com.sppp.classes.TablasFormatos ..> com.sppp.DAO.VisitaDAO
+com.sppp.classes.TablasFormatos ..> com.sppp.beans.DetallePasantia
+com.sppp.classes.TablasFormatos ..> com.sppp.beans.Pasantia
+com.sppp.classes.TablasFormatos ..> com.sppp.mailing.MailingMain
+com.sppp.classes.TablasFormatos ..> javax.enterprise.context.SessionScoped
+com.sppp.classes.TablasFormatos ..> javax.inject.Named
+com.sppp.classes.TablasFormatos ..> javax.validation.constraints.NotNull
+com.sppp.classes.TablasFormatos --|> java.io.Serializable
+com.sppp.mailing.MailingMain ..> java.util.Properties
+com.sppp.mailing.MailingMain ..> javax.mail.internet.InternetAddress
+com.sppp.mailing.MailingMain ..> javax.mail.internet.MimeMessage
+com.sppp.utils.Cls_OutOfSystem ..> com.sppp.mailing.MailingMain
+com.sppp.utils.Cls_OutOfSystem ..> java.sql.ResultSet
+com.sppp.utils.Cls_con ..> java.sql.DriverManager
+com.sppp.utils.Cls_con ..> java.sql.ResultSet
+com.sppp.utils.Cls_con ..> java.sql.SQLException
+com.sppp.utils.HibernateUtil ..> org.hibernate.SessionFactory
+com.sppp.utils.HibernateUtil ..> org.hibernate.cfg.AnnotationConfiguration
+com.sppp.utils.LoginFilter ..> java.lang.Override
+com.sppp.utils.LoginFilter ..> javax.servlet.annotation.WebFilter
+com.sppp.utils.LoginFilter ..> com.sppp.classes.Cls_PerfilNotation
+com.sppp.utils.LoginFilter ..> java.io.IOException
+com.sppp.utils.LoginFilter ..> javax.servlet.FilterChain
+com.sppp.utils.LoginFilter ..> javax.servlet.FilterConfig
+com.sppp.utils.LoginFilter ..> javax.servlet.ServletException
+com.sppp.utils.LoginFilter ..> javax.servlet.ServletRequest
+com.sppp.utils.LoginFilter ..> javax.servlet.ServletResponse
+com.sppp.utils.LoginFilter ..> javax.servlet.http.HttpServletRequest
+com.sppp.utils.LoginFilter ..> javax.servlet.http.HttpServletResponse
+com.sppp.utils.LoginFilter ..> javax.servlet.http.HttpSession
+com.sppp.utils.LoginFilter --|> javax.servlet.Filter
+com.sppp.utils.PasswdReplacement ..> javax.faces.bean.ManagedBean
+com.sppp.utils.PasswdReplacement ..> com.sppp.DAO.UsuarioDAO
+com.sppp.utils.PasswdReplacement ..> com.sppp.classes.ChangePassword
+com.sppp.utils.PasswdReplacement ..> javax.servlet.http.HttpSession
+com.sppp.utils.PasswordRestoration ..> javax.faces.bean.ManagedBean
+com.sppp.utils.SessionUtils ..> javax.faces.context.FacesContext
+com.sppp.utils.SessionUtils ..> javax.servlet.http.HttpServletRequest
+com.sppp.utils.SessionUtils ..> javax.servlet.http.HttpSession
+com.sppp.utils.UploadFile ..> javax.faces.bean.ManagedBean
+com.sppp.utils.UploadFile ..> com.sppp.DAO.CitasDaoImp
+com.sppp.utils.UploadFile ..> com.sppp.DAO.DatosDAO
+com.sppp.utils.UploadFile ..> com.sppp.DAO.DetallePasantiaDAO
+com.sppp.utils.UploadFile ..> com.sppp.DAO.PasantiaDAO
+com.sppp.utils.UploadFile ..> com.sppp.beans.DetallePasantia
+com.sppp.utils.UploadFile ..> com.sppp.beans.Pasantia
+com.sppp.utils.UploadFile ..> com.sppp.beans.Proceso
+com.sppp.utils.UploadFile ..> com.sppp.classes.AlmacenamientoPDF
+com.sppp.utils.UploadFile ..> com.sppp.classes.ListaDocentesAdministrativos
+com.sppp.utils.UploadFile ..> com.sppp.classes.Paths
+com.sppp.utils.UploadFile ..> com.sppp.mailing.MailingMain
+com.sppp.utils.UploadFile ..> java.io.File
+com.sppp.utils.UploadFile ..> java.io.IOException
+com.sppp.utils.UploadFile ..> java.io.InputStream
+com.sppp.utils.UploadFile ..> java.nio.file.Files
+com.sppp.utils.UploadFile ..> java.nio.file.StandardCopyOption
+com.sppp.utils.UploadFile ..> java.text.DateFormat
+com.sppp.utils.UploadFile ..> java.text.SimpleDateFormat
+com.sppp.utils.UploadFile ..> java.util.ArrayList
+com.sppp.utils.UploadFile ..> java.util.Date
+com.sppp.utils.UploadFile ..> java.util.List
+com.sppp.utils.UploadFile ..> javax.faces.context.ExternalContext
+com.sppp.utils.UploadFile ..> javax.faces.context.FacesContext
+com.sppp.utils.UploadFile ..> javax.servlet.http.HttpServletRequest
+com.sppp.utils.UploadFile ..> javax.servlet.http.HttpServletResponse
+com.sppp.utils.UploadFile ..> javax.servlet.http.HttpSession
+com.sppp.utils.UploadFile ..> javax.servlet.http.Part
+com.sppp.utils.UploadFile ..> com.sppp.beans.EnumEstado
+com.sppp.utils.Validaciones ..> javax.faces.bean.ManagedBean
+com.sppp.utils.Validaciones ..> javax.faces.bean.ViewScoped
+com.sppp.utils.Validaciones ..> java.util.ArrayList
+com.sppp.utils.Validaciones ..> java.util.List
+com.sppp.DAO.CitasDao ..> com.sppp.beans.Estudiante
+com.sppp.DAO.CitasDao ..> com.sppp.beans.Pasantia
+com.sppp.DAO.CitasDao ..> com.sppp.beans.Usuario
+com.sppp.DAO.CitasDao ..> com.sppp.beans.VisitaTutor
+com.sppp.DAO.CitasDao ..> java.util.List
+@enduml

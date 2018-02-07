@@ -12,10 +12,12 @@ import com.sppp.DAO.EncargadoDAO;
 import com.sppp.DAO.PasantiaDAO;
 import com.sppp.DAO.UsuarioDAO;
 import com.sppp.mailing.MailingMain;
+import com.sppp.utils.SessionUtils;
 import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,6 +36,7 @@ public class WizardCCValidacion extends WizardCC {
     private String observacion;
     private String horasPasantia;
     private String tutorPasantia;
+    private Usuario usuarioActual= new Usuario();//jairo
 
     public String getHorasPasantia() {
         return horasPasantia;
@@ -382,8 +385,15 @@ public class WizardCCValidacion extends WizardCC {
             dp2.setObservacion(null);
             dpDAO.actualizarDetallePasantia(dp2);
             
+            //PREPARO DATOS USUARIO ACTUAL (GESTOR)
+            HttpSession session = SessionUtils.getSession();
+                long id;
+                id = (long) session.getAttribute("id");
+                UsuarioDAO uDAO = new UsuarioDAO();
+                usuarioActual = uDAO.findUsuario(id);
+            
             //envio email al estudiante de aprobado
-            email_aprobado.mensajes(2, usuario.getCorreo(), "vacio");
+            email_aprobado.mensajes(2, usuario.getCorreo(), "\n\nAtentamente:\n"+usuarioActual.getApellido()+" "+usuarioActual.getNombre()+"");
             
             //Paso a agregar el nuevo proceso 11
             DetallePasantia dp3 = new DetallePasantia();
@@ -400,8 +410,15 @@ public class WizardCCValidacion extends WizardCC {
             dp2.setObservacion(observacion);
             dpDAO.actualizarDetallePasantia(dp2);
             
+            //PREPARO DATOS USUARIO ACTUAL (GESTOR)
+            HttpSession session = SessionUtils.getSession();
+                long id;
+                id = (long) session.getAttribute("id");
+                UsuarioDAO uDAO = new UsuarioDAO();
+                usuarioActual = uDAO.findUsuario(id);
+            
             //envio email al estudiante de correccion
-            email_aprobado.mensajes(1, usuario.getCorreo(), observacion);
+            email_aprobado.mensajes(1, usuario.getCorreo(), observacion+"\n\nAtentamente:\n"+usuarioActual.getApellido()+" "+usuarioActual.getNombre()+"");
         }
         } catch (Exception e) {
             e.printStackTrace();

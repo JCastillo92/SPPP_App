@@ -37,7 +37,7 @@
                             
                             <b:dataTable value="#{detallesDashboardTut.getListarInforEst(login.user)}"
                                          var="dpalltrue" >
-                                <b:dataTableColumn  style="color: blue" labelStyle="color: black" value="#{controllerBean.fechita(fechaSistema.fecha(),confirmaCita.getFecha(dpalltrue[0]))}" label="Días Desde Asignación" />
+                                <b:dataTableColumn  style="color: blue; font-size: 200%;text-align: center" labelStyle="color: blue;font-size: 48%" value="#{controllerBean.fechita(fechaSistema.fecha(),confirmaCita.getFecha(dpalltrue[0]))}" label="Días Desde Asignación"  />
                                 <b:dataTableColumn value="#{dpalltrue[0].toString()}" label="Cédula" />
                                 <b:dataTableColumn value="#{citasAgendadas.getNombre_completo(dpalltrue[0].toString())}" label="Nombre"/>
                                 <b:dataTableColumn value="#{detallesDashboardTut.actividad(dpalltrue[1].toString())}" label="Actividad"/>
@@ -47,9 +47,9 @@
                                 
                                 <b:dataTableColumn value="#{detallesDashboardTut.getPeriodo()}" label="Periodo"/>
                                 
-                                <b:dataTableColumn value="#{detallesDashboardTut.getTelefono(dpalltrue[0].toString())}" label="Telefono"/>
+                                <b:dataTableColumn value="#{detallesDashboardTut.getTelefono(dpalltrue[0].toString())}" label="Teléfono"/>
                                 
-                                <b:dataTableColumn value="#{detallesDashboardTut.getDireccion(dpalltrue[0].toString())}" label="Direccion"/>
+                                <b:dataTableColumn value="#{detallesDashboardTut.getDireccion(dpalltrue[0].toString())}" label="Dirección"/>
                                 
                                 <b:dataTableColumn label="Acciones">
                                     <center>

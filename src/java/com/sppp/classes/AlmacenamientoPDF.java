@@ -411,7 +411,8 @@ public class AlmacenamientoPDF{
                     
                     //2 row
                     table7.addCell(new Paragraph("APELLIDOS Y NOMBRES DELEGADO UPS:", escuadro));
-                    cell = new PdfPCell(new Paragraph(buscar_docadmin.nombreDocenteAdministrativo(4),estexto));
+                    //cell = new PdfPCell(new Paragraph(buscar_docadmin.nombreDocenteAdministrativo(4),estexto));
+                    cell = new PdfPCell(new Paragraph("",estexto));
                     cell.setColspan(5);//total de celdas que va MERGE a esta FILA
                     table7.addCell(cell);
                     

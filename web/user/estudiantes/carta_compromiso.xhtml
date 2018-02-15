@@ -53,7 +53,7 @@
                                 <b:inputText value="#{wizardCartaCompromiso.pasantia.tipo_ppp}" label="C&oacute;digo:" disabled="true" tooltip="Tipo pasant&iacute;a o pr&acirc;ctica pre profesional"/>
                                 <b:inputText value="#{wizardCartaCompromiso.pasantia.cod_ppp}" label="No.:" disabled="true" tooltip="N&uacute;merro relacionado al c&oacute;digo"/>
                                 <b:inputText value="#{wizardCartaCompromiso.empresa.nombre_empresa}" label="Nombre de la empresa o instituci&oacute;n:" disabled="true" />
-                                <b:inputTextarea value="#{wizardCartaCompromiso.objetoDeLaActividad}" class="#{wizardCartaCompromiso.datosAPintar[11] ? 'hola':'rojo_error'}" label="Objeto de la Actividad Acad&eacute;mica:" placeholder="Describir todas las actividades." required="true" />
+                                <b:inputTextarea value="#{wizardCartaCompromiso.objetoDeLaActividad}" class="#{wizardCartaCompromiso.datosAPintar[11] ? 'hola':'rojo_error'}" label="Objeto de la Actividad Acad&eacute;mica:" placeholder="M&aacute;ximo 255 caracteres." required="true" />
                                 <b:inputText value="#{wizardCartaCompromiso.carrera_grado}" label="Carrera de Grado:" disabled="true" tooltip="Carrera a la que pertenece"/>
                                 <b:inputText value="#{wizardCartaCompromiso.usuario.estudiante.ultimoNivel}" label="Ciclo o Semestre que Cursa:" disabled="true" tooltip="Semestre en curso"/>
                                 <p align="right">p&aacute;g 1/4</p>
@@ -84,9 +84,9 @@
                         <!--INICIO ACTIVIDADES PREVISTAS A SER DESARROLLADAS EN LA ACTIVIDAD ACADÉMICA-->
                         <b:carouselItem style="width:400px;height:auto">
                             <b:panel title="Actividades Previstas a ser Desarrolladas en la Actividad Acad&eacute;mica p&aacute;g 3 de 3" look="default">
-                                <b:inputTextarea value="#{wizardCartaCompromiso.actividadPrevista}" class="#{wizardCartaCompromiso.datosAPintar[19] ? 'hola':'rojo_error'}" label="Se&ntilde;ale Aquellas actividades que Prev&eacute;n Resultados y Productos:" tooltip="Listar m&iacute;nimo 4" required="true" />
-                                <b:inputTextarea value="#{wizardCartaCompromiso.resultadosPrevistos}" class="#{wizardCartaCompromiso.datosAPintar[20] ? 'hola':'rojo_error'}" label="Resultados Previstos de la Actividad Acad&eacute;mica:" tooltip="Listar m&iacute;nimo 4" required="true" />
-                                <b:inputTextarea value="#{wizardCartaCompromiso.productosEntregables}" class="#{wizardCartaCompromiso.datosAPintar[21] ? 'hola':'rojo_error'}" label="Incluya el Listado de todos los Materiales F&iacute;sicos que se Generan en la Intervenci&oacute;n:" required="true" />
+                                <b:inputTextarea value="#{wizardCartaCompromiso.actividadPrevista}" class="#{wizardCartaCompromiso.datosAPintar[19] ? 'hola':'rojo_error'}" label="Se&ntilde;ale Aquellas actividades que Prev&eacute;n Resultados y Productos:" tooltip="Listar m&iacute;nimo 4" placeholder="M&aacute;ximo 255 caracteres." required="true" />
+                                <b:inputTextarea value="#{wizardCartaCompromiso.resultadosPrevistos}" class="#{wizardCartaCompromiso.datosAPintar[20] ? 'hola':'rojo_error'}" label="Resultados Previstos de la Actividad Acad&eacute;mica:" tooltip="Listar m&iacute;nimo 4" placeholder="M&aacute;ximo 255 caracteres." required="true" />
+                                <b:inputTextarea value="#{wizardCartaCompromiso.productosEntregables}" class="#{wizardCartaCompromiso.datosAPintar[21] ? 'hola':'rojo_error'}" label="Incluya el Listado de todos los Materiales F&iacute;sicos que se Generan en la Intervenci&oacute;n:" placeholder="M&aacute;ximo 255 caracteres." required="true" />
                                 <b:inputText value="#{wizardCartaCompromiso.tutorXXX}" label="Nombre del Tutor:" tooltip="Tutor asignado para visitas" disabled="true"/>
                                 <p align="right">p&aacute;g 3/4</p>
                             </b:panel>  

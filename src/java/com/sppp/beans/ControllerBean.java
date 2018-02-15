@@ -537,7 +537,7 @@ private Usuario usuario = new Usuario();
   }
  
 public void sendConfirmacion(String tutor, String apellido, String correo, String dia, String fecha_visita, String hora ,String est, String ap_est,String co_est,String tele_est){
-     String observaciones="Estimado(a) Ing. "+tutor+" "+apellido+", acepto que la visita se lleve a cabo el dia "+dia+" con fecha "+fecha_visita+" en la siguiente hora: "+ hora +"."+"\n"+"Observacion para visita:"+"\n"+ mensajeMail2+"\n"+"\n"+"**DATOS DEL ESTUDIANTE**"+"\n"+ "Nombre: "+est
+     String observaciones="Estimado(a) Ing. "+tutor+" "+apellido+", acepto que la visita se lleve a cabo el dia "+dia+" con fecha "+fecha_visita+" en la siguiente hora: "+ hora +"."+"\n"+"\n"+"**DATOS DEL ESTUDIANTE**"+"\n"+ "Nombre: "+est
              +" "+ap_est+"\n"+"Correo: "+co_est+"\n"+"Telefono: "+tele_est;
      
     MailingMain por = new MailingMain();

@@ -154,7 +154,8 @@ int id_estudiante;
                     e.printStackTrace();
             }
            
-           return null;//null allows you to refresh the page like an F5.
+           //return null;//null allows you to refresh the page like an F5.
+           return "dashboard_gestor";
     }
     
     

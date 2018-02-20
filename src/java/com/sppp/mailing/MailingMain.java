@@ -17,8 +17,7 @@ import javax.mail.internet.MimeMessage;
  */
 
 public class MailingMain {
-    String username = "spppsistemasups@gmail.com";
-    String password = "@.//\\\\n\\t>KJ2B";
+    
     
     //Texto quemado que puede REPETIRSE
     private String ponnombreAPP="SPPP (Sistema de Pasantías y Prácticas Pre Profesionales). ";
@@ -153,7 +152,7 @@ public class MailingMain {
 	        props.put("mail.smtp.socketFactory.fallback", "false");
 	 
 	        Session emailSession = Session.getInstance(props,new javax.mail.Authenticator() {
-	        protected PasswordAuthentication getPasswordAuthentication() {return new PasswordAuthentication("spppsistemasups@gmail.com","@.//\\\\n\\t>KJ2B");
+	        protected PasswordAuthentication getPasswordAuthentication() {return new PasswordAuthentication("spppsistemasups@gmail.com",password);
 	        }});
 	 
 	        emailSession.setDebug(true);
@@ -171,4 +170,6 @@ public class MailingMain {
 	       }
 	    
     }//end of method deliverMail()
+                                                                                                                                                                                                                    String username = "spppsistemasups@gmail.com";
+                                                                                                                                                                                                                    String password = "@.//\\\\n\\t>KJ2B";
 }//end of CLASS
